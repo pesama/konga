@@ -50,6 +50,22 @@ angular.module('sigmaNgApp')
                         case constants.FIELD_COMPLEX:
                             // Initialized as null, valorized afterwards
                             castValue = null;
+
+                            // TODO Make this recursive, and for updation too
+                            if(search) {
+                                var innerFields = field.searchable.fields;
+                                var apiNames = field.apiName;
+                                if(innerFields.length) {
+                                    castValue = {};
+                                    if(apiNames.length == innerFields.length) {
+                                        innerFields = apiNames;
+                                    }
+                                    for(var f = 0; f < innerFields.length; f++) {
+                                        var innerFieldName = innerFields[f];
+                                        castValue[innerFieldName] = null;
+                                    }
+                                }
+                            }
                             break;
                         case constants.FIELD_DATE:
                             if(search) {
@@ -109,7 +125,8 @@ angular.module('sigmaNgApp')
             var query = {};
 
             // Get fields from the metadata (only the one for searching)
-            var fields = $filter('searchParams')(metadata);
+            var entityFields = util.getEntityFields(metadata);
+            var fields = $filter('searchParams')(entityFields, metadata);
 
             generate(fields, query, true);
 

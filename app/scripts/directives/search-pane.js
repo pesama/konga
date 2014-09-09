@@ -83,9 +83,31 @@ angular.module('sigmaNgApp')
       link: function postLink(scope, element, attrs) {
         scope.fields = util.getEntityFields(scope.entityMetadata);
 
+        function rootifyQuery(query, obj) {
+          for(var i in obj) {
+            if(typeof(obj[i]) === 'object') {
+              rootifyQuery(query, obj[i]);
+            }
+            // TODO Control arrays
+            else {
+              query[i] = obj[i];
+            }
+          }
+        }
+
         scope.operations = {
-          updateField: function(property, value) {
-            var fieldName = property.fieldName;
+          updateField: function(property, value, query, parent) {
+            var fieldName = property.name;
+
+            // Is there an api name present?
+            if(parent) {
+
+              var apiNames = parent.apiName;
+              var index = parent.searchable.fields.indexOf(property.name);
+              if(apiNames.length >= index) {
+                fieldName = apiNames[index];
+              }
+            }
 
             // Special for checkboxes :)
             if(property.fieldType === constants.FIELD_BOOLEAN) {
@@ -112,7 +134,7 @@ angular.module('sigmaNgApp')
 
      
               // Update the query
-              scope.query[fieldName] = ret;
+              query[fieldName] = ret;
 
             
             return ret;
@@ -135,8 +157,13 @@ angular.module('sigmaNgApp')
             scope.$broadcast('reset');
           },
 
+
+
           submit: function() {
-            scope.submit(scope.query);
+            var query = {};
+            rootifyQuery(query, scope.query);
+
+            scope.submit(query);
           }
         };
 

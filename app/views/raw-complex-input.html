@@ -3,9 +3,10 @@
 		property="field"
 		vertical="true" 
 		ng-repeat="field in value.fields"
-		entity="entity" 
+		entity="entity[$parent.property.name]" 
 		metadata="value.metadata" 
-		on-update="update"
-		mode="{{mode}}">
+		on-update="updateEntity"
+		mode="{{mode}}"
+		parent-field="$parent.property">
 	</raw-input>
 </div>

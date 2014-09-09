@@ -10,50 +10,17 @@
  */
 angular.module('sigmaNgApp')
   .filter('updateParams', function () {
-    return function (entity) {
-      
-      // Get the fields of the entity
-      var entityFields = entity.fields;
+    return function (fields, metadata) {
+      var result = [];
 
-      // Security measures
-      if(!entityFields) return [];
+      for(var i = 0; i < fields.length; i++) {
+        var field = fields[i];
 
-      // Get the total fields
-      var totalFields = util.getEntityFields(entity);
-
-      // Initialize the matching files
-      var matchingFields = [];
-
-      // Move along the files
-      for(var i = 0; i < totalFields.length; i++) {
-      	var field = totalFields[i];
-
-      	// Is it shown in update forms?
-      	var showInUpdate = field.showInUpdate.value;
-
-      	// Is it direct?
-      	var direct = field.direct;
-
-      	// Is it a key
-      	var key = field.isKey;
-
-      	/*
-      	 * Criteria:
-      	 * 	- Show in update
-      	 * 	- isKey if the field has multiplicity MANY
-      	 */
-      	if(showInUpdate.value){
-      		if (key && (field.multiplicity === constants.MULTIPLICITY_MANY)) {
-      			matchingFields.push(field);
-      		}
-      		else{
-      			if (field.multiplicity !== constants.MULTIPLICITY_MANY) {
-      				matchingFields.push(field);
-      			}
-      		}
-      	}
+        if(field.showInUpdate.value) {
+            result.push(field);
+        }
       }
 
-      return matchingFields;
+      return result;
     };
   });

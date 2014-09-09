@@ -2,8 +2,7 @@
 <raw-input 
 	property="field"
 	vertical="true"
-	source-list="productCodes[field.name]"
-	ng-repeat="field in (metadata | updateParams) | orderBy:'order'" 
+	ng-repeat="field in fields | updateParams:metadata | orderBy:'order'" 
 	entity="entity" 
 	on-update="onUpdate"
 	on-change="onChange"

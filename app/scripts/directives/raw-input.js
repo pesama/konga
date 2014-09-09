@@ -75,12 +75,12 @@ angular.module('sigmaNgApp')
 	    	metadata: '=',
 	    	updateEntity: '=onUpdate',
 	    	changeEntity: '=onChange',
-	    	mode: '@'
+	    	mode: '@',
+	    	parentField: '='
 	      },
-	      controller: function($scope, $filter, $modal, $timeout, common, api) {
+	      controller: function($scope, $filter, $modal, $timeout, common, api, $rootScope) {
 	      	var resolveWatcher = null, valueWatcher = null;
 	      	var init = undefined, initCheck = false, initactive = true, initinactive = false;
-	      	$scope.sourceList = [];
 
 	      	$scope.value = {
 	      		text: '',
@@ -144,11 +144,15 @@ angular.module('sigmaNgApp')
 							var realMetadata = common.getMetadata(related);
 
 							// Store the entity
-							this.value.entity = realEntity;
+							this.value.entity = realMetadata;
 
 							// Store the values in the source list (for picking)
 							var localEndpoint = api.getLocalEndpoint(related);
-							$scope.sourceList = localEndpoint.search();
+							$rootScope.operations.requestLoading('raw-input>' + $scope.property.name + ' ' +$scope.property.owner);
+							localEndpoint.search({}, function(data) {
+								$scope.value.list = data;
+								$rootScope.operations.freeLoading('raw-input>' + $scope.property.name + ' ' +$scope.property.owner);
+							});
 
 							// If updating do some extra stuff
 							if($scope.mode === constants.SCOPE_UPDATE) {
@@ -301,7 +305,7 @@ angular.module('sigmaNgApp')
 	  					return false;
 	  				}
 
-	  				return $scope.property.required;
+	  				return $scope.property.validation.required;
 	  			},
 
 	  			minlength: function() {
@@ -310,7 +314,7 @@ angular.module('sigmaNgApp')
 	  					return 0;
 	  				}
 
-	  				var minLength = $scope.property.minLength;
+	  				var minLength = $scope.property.validation.minLength;
 
 	  				return minLength ? minLength : 0;
 	  			},
@@ -321,7 +325,7 @@ angular.module('sigmaNgApp')
 	  					return 0;
 	  				}
 
-	  				var maxLength = $scope.property.maxLength;
+	  				var maxLength = $scope.property.validation.maxLength;
 
 	  				return maxLength ? maxLength : 0;
 	  			}
@@ -335,7 +339,7 @@ angular.module('sigmaNgApp')
 
 					// Set the real value in the entity
 					var sendValue = angular.copy($scope.value);
-					var result = $scope.updateEntity($scope.property, sendValue);
+					var result = $scope.updateEntity($scope.property, sendValue, $scope.entity, $scope.parentField, $scope.$index);
 
 					// Notify the changes (verify if there's someone listening too)
 					if(result && $scope.changeEntity) {
@@ -397,7 +401,7 @@ angular.module('sigmaNgApp')
 			      size: 'lg',
 			      resolve: {
 			        items: function () {
-			          return $scope.sourceList;
+			          return $scope.value.list;
 			        },
 			        model: function() {
 			        	return angular.copy($scope.value);
@@ -453,12 +457,7 @@ angular.module('sigmaNgApp')
 			}
 	      },
 	      link: function(scope, element, attrs) {
-			var fieldType = '';
-			if( attrs.type){
-				fieldType = attrs.type;
-			}else if(scope.property){
-				fieldType = scope.property.fieldType;
-			}
+			var fieldType = scope.property.fieldType[scope.mode];
 
 			/*
 			 *  Map some variables

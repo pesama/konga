@@ -16,8 +16,7 @@ angular.module('sigmaNgApp')
 	      	entity: '=',
 	      	metadata: '=',
 	      	onUpdate: '=',
-	      	onChange: '=',
-	      	productCodes: '='
+	      	onChange: '='
       	},
       	controller: function ($scope, $routeParams, api, common, fieldMapper, $filter, $rootScope, scaffold) {
 	      	// Depending on the form type, the form will be rendered differently
@@ -34,6 +33,8 @@ angular.module('sigmaNgApp')
 		},
     	link: function postLink(scope, element, attrs) {
         	//element.text('this is the updateForm directive');
+
+        	scope.fields = util.getEntityFields(scope.metadata);
    		}
     };
   });

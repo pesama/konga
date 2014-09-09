@@ -88,3 +88,10 @@ div.input-group *.ng-invalid.ng-invalid-pattern ~ div.validation > div.validatio
 	border-top-right-radius: 0px;
 	margin-top: -5px;
 }
+
+.form-group.derived {
+    padding-right: 0px;
+}
+.input-group.derived {
+    width: 100% !important;
+}
