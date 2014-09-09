@@ -1,0 +1,30 @@
+.tabbable .padding-cero{
+	padding: 0 !important;
+}
+.tabbable>UL.sigma-nav-vertical{
+	border-bottom: 0;
+	width: 125px;
+}
+.tabbable>input.form-control{
+	border: 4px black solid;
+	
+}
+.tabbable>UL.sigma-nav-vertical>LI{
+	width: 102% !important;
+	margin-top: 0;
+}
+.tabbable>UL.sigma-nav-vertical>LI>A{
+	width: 100%;
+	margin-left: 0 !important;
+}
+.tabbable>.tab-content{
+	border: 1px solid #DDD; 
+	margin-left: 135px;
+	width: auto;
+}
+.tabbable .tab-pane{
+	padding: 10px;
+}
+.col-md-10 {
+width: 86.333333%;
+}

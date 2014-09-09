@@ -1,0 +1,24 @@
+<div class="complex-input {{ validation.required() ? 'required' : 'optional' }} {{ value.text.length ? 'valid' : 'invalid' }}">
+	<input 
+	type="text" 
+	class="sigma-form-search-input form-control" 
+	id="{{property.fieldName}}" 
+	placeholder="" 
+	ng-model="value.text" 
+	ng-disabled="disableField(mode, property)"
+	ng-pattern="validation.pattern()"
+	ng-required="validation.required()">
+	<button ng-hide="disableField(mode, property)" type="button" class="btn btn-link" ng-click="openMultiSelect()">
+		<i class="icon ion-ios7-search-strong"></i>
+	</button>
+	<span class="complex-label" ng-show="label.length">{{ label }}&nbsp;</span>
+	<span class="complex-label" ng-hide="label.length">&nbsp;</span>
+	<div class="validation">
+		<div class="validation-pattern btn-danger">
+			{{ 'message.field-validation.pattern' | translate }}
+		</div>
+		<div class="validation-required btn-danger">
+			{{ 'message.field-validation.required' | translate }}
+		</div>
+	</div>
+</div>

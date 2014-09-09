@@ -1,0 +1,31 @@
+<div class="padding-cero" ng-class="inLineClass.col2">
+	<label>{{ 'field.date-search.comparator' | translate }}</label>
+	<select name="comparator" ng-model="value.data.comparator"
+		class="form-control" ng-required="ngRequired">
+		<option value="LOWER_THAN">{{ 'field.date-search.LOWER_THAN' | translate }}</option>
+		<option value="LOWER_EQUALS">{{ 'field.date-search.LOWER_EQUALS' | translate }}</option>
+		<option value="EQUALS">{{ 'field.date-search.EQUALS' | translate }}</option>
+		<option value="GREATER_EQUALS">{{ 'field.date-search.GREATER_EQUALS' | translate }}</option>
+		<option value="GREATER_THAN">{{ 'field.date-search.GREATER_THAN' | translate }}</option>
+		<option value="BETWEEN">{{ 'field.date-search.BETWEEN' | translate }}</option>
+	</select>
+</div>
+<div class="padding-cero" ng-class="inLineClass.col2">
+	<label>{{ 'field.date-search.date' | translate }}</label>
+	<input type="date" name="date-since" ng-model="value.data.startDate"
+		class="form-control" ng-required="ngRequired">
+</div>
+<div class="padding-cero" ng-class="inLineClass.col2" ng-show="value.data.comparator == 'BETWEEN'">
+	<label>{{ 'field.date-search.otherdate' | translate }}</label>
+	<input type="date" name="to" ng-model="value.data.endDate"
+		class="form-control" ng-required="ngRequired">
+</div>
+<hr />
+<!-- <div class="col-md-2 padding-cero">
+	<button type="button" class="btn btn-default"
+		ng-click="toggleDatePicker()">
+		<i class="icon ion-ios7-calendar-outline"></i>
+	</button>
+</div> -->
+<!-- <datepicker ng-model="value.text" show-weeks="true"
+	class="well well-sm" ng-show="datePicker.opened"></datepicker> -->

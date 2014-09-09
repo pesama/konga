@@ -1,0 +1,12 @@
+
+<raw-input 
+	property="field"
+	vertical="true"
+	source-list="productCodes[field.name]"
+	ng-repeat="field in (metadata | updateParams) | orderBy:'order'" 
+	entity="entity" 
+	on-update="onUpdate"
+	on-change="onChange"
+	metadata="metadata"
+	mode="update">
+</raw-input>

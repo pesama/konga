@@ -1,0 +1,9 @@
+<div class="form-group col-md-12 mode-{{ mode }}">
+	<div class="padding-cero" ng-class="inLineClass.col1">
+		<label for="{{property.fieldName}}">{{property.label | translate:extra }}</label>
+	</div>
+	<div class="input-group col-md-8">
+		
+		<div ng-include="contentUrl"></div>
+	</div>
+</div>

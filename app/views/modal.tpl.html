@@ -1,0 +1,35 @@
+<div class="modal" tabindex="-1" role="dialog">
+
+  <!-- Dialog for the modal -->
+  <div class="modal-dialog">
+
+    <!-- Content for the modal -->
+    <div class="modal-content">
+
+      <!-- Header of the modal -->
+      <div class="modal-header" ng-show="modal.title">
+
+        <!-- Close button -->
+        <button type="button" class="close" ng-click="">&times;</button>
+
+        <!-- Title -->
+        <h4 class="modal-title" ng-bind="modal.title"></h4>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+
+        <!-- Include content -->
+        <div ng-include="modal.contentUrl"></div>
+      </div>
+
+      <!-- Footer of the modal -->
+      <div class="modal-footer">
+
+        <!-- Close button -->
+        <button type="button" class="btn btn-default" ng-click="$hide()">Cancel</button>
+        <button type="button" class="btn btn-default" ng-click="modal.save();$hide()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

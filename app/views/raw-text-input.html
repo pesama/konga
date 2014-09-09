@@ -1,0 +1,21 @@
+<input 
+	type="text"
+	class="form-control sigma-form-search-input sigma-form-simple-search-input"
+	id="{{property.fieldName}}"
+	placeholder=""
+	ng-model="value.text"
+	ng-disabled="disableField(mode, property)"
+	ng-pattern="validation.pattern()"
+	ng-required="validation.required()">
+	<!-- TODO This is not working (yet) -->
+	<!-- ng-minlength="property.minLength"
+	ng-maxlength="property.maxLength" -->
+
+<div class="validation">
+	<div class="validation-pattern btn-danger">
+		{{ 'message.field-validation.pattern' | translate }}
+	</div>
+	<div class="validation-required btn-danger">
+		{{ 'message.field-validation.required' | translate }}
+	</div>
+</div>

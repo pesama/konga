@@ -1,0 +1,12 @@
+<form class="form-horizontal" role="form">
+	<raw-input 
+		property="field"
+		vertical="true"
+		ng-repeat="field in entityMetadata.searchParams"
+		entity="$parent.entity">
+	</raw-input>
+	<div class="pull-right update-btn-group">
+		<button class="btn btn-default" ng-click="updateSubmit()">Valider</button>
+		<button class="btn btn-default" ng-click="closeTab(currentTab)">Annuler</button>
+	</div>
+</form>

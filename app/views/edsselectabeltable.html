@@ -1,0 +1,77 @@
+<div class="table-search-result col-md-12" >
+	<!-- ng-show="hideSearchSpiner"> -->
+	<div class="row">					
+		<div class="col-md-2">
+			<span class="total-items">{{paginationData.currentItems}}/{{paginationData.totalItems}}</span>
+		</div>
+		<div class="col-md-3">
+			<select class="form-control"
+				ng-model="paginationData.pageItems" ng-change="pageChanged()">
+				<option>5</option>
+				<option>10</option>
+				<option>15</option>
+				<option>20</option>
+				<option>25</option>
+			</select>
+		</div>
+		<div class="col-md-7" ng-show="paginationData.totalItems">
+			<span><a ng-click="pageChanged('first')">&lt;&lt;</a></span>
+			<span><a ng-click="pageChanged('previous')">&lt;</a></span>
+			<span>{{paginationData.currentPage}}</span>
+			<span><a ng-click="pageChanged('next')">&gt;</a></span>
+			<span><a ng-click="pageChanged('last')">&gt;&gt;</a></span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="checkbox">
+			  <label>
+			    <input type="checkbox" ng-model="selectAllItmsData">
+			    {{'message.ctrOperat.selector' | translate}}
+			  </label>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="checkbox">
+			  <label>
+			    <input type="checkbox" ng-model="displaySelectedItmsData">
+					{{'message.ctrOperat.elems' | translate}}
+				</label>
+			</div>
+		</div>
+
+		<div class="col-md-12 search-table-container">
+			<table class="table table-striped">
+				<tr class="table-header">
+					<th></th>
+					<th ng-repeat="field in fields">
+						<span>{{ field.fieldLabel }}</span>
+						<input type="text" class="form-control"
+								placeholder="{{field.fieldLabel}}" ng-model="quickSearchParams.param[field.fieldKey]">
+						</th>
+					
+				</tr>
+				<tr  ng-repeat="eds in listEds | filter:quickSearchParams.value | displaySelectedItms:displaySelectedItmsData |startFrom:(paginationData.currentPage-1)*paginationData.pageItems | limitTo:paginationData.pageItems">
+					<td ng-class="{checked : disabledIds[eds.id], enabled : disabledIds[eds.id]}">
+						<div class="checkbox">
+						  <label>
+						    <input type="checkbox" ng-model="eds.selected" ng-change="pageChanged()" ng-disabled="disabledIds[eds.id]">
+						  </label>
+						</div>
+					</td>
+					<td ng-class="{checked : disabledIds[eds.id], enabled : disabledIds[eds.id]}"
+						ng-repeat="field in fields"  ng-disabled="disabledIds[eds.id]">
+						<span >{{ eds | displayObjectData:field.fieldKey}}</span>
+					</td>
+				</tr>
+			</table>
+
+		</div>
+	</div>	
+	<div class="row chantier-btn-list">
+		<div class="col-md-5">
+			<button class="btn btn-default" ng-click="validate()">{{ 'message.action.validate' | translate }}</button>
+			<button class="btn btn-default" ng-click="cancel()">{{ 'message.action.cancel' | translate }}</button>
+		</div>
+	</div>
+</div>

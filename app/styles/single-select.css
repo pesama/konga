@@ -1,0 +1,7 @@
+.single-select {
+	
+}
+
+.single-select .list-group-item.selected {
+	background: #a2c8e5;
+}

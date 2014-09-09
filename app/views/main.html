@@ -1,0 +1,34 @@
+<!-- <div ng-init="operations.goHome()"> -->
+<div>
+	<div class="alert-container">
+		<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="operations.removeAlert($index)" 
+			ng-show="!alert.expired" class="alert-show-hide">{{alert.msg | translate}}</alert>
+	</div>
+	<div id="header">
+		<nav class="navbar navbar-default header-1" role="navigation" ng-include="metadata.headerNav1Url"></nav><!-- header-1 -->
+		<!-- Header 2 Menu navigation -->
+		<nav class="navbar navbar-default header-2" role="navigation" ng-include="metadata.headerNav2Url" ng-show="isFullyLogged"></nav><!-- header-2 -->
+	</div>
+	<div id="content" >
+		<div class="container">			
+			<div id="sigmaNavTabs">
+				<!--<div bs-tabs="tabs" ng-model="tabs.activeTab"></div>-->
+
+			<tabset>			    
+			    <tab ng-repeat="tab in tabs" active="tab.active" select="operations.redirectTo(tab)">
+			    	<tab-heading>
+				        <span class="tab-heading-title">{{ tab.title | translate:tabExtra[tab.id] }}{{ tab.hasChanges ? '*' : '' }}</span>
+				        <i class="icon ion-ios7-close-outline tab-close-btn" ng-click="operations.closeTab(tab)" ng-show="tab.closable"></i>
+				    </tab-heading>
+				    
+				</tab>
+			</tabset>
+				<!-- Tab panes Container-->
+				<div class="view-container">
+		    		<div ng-view></div>
+		    	</div>
+			</div><!-- End of navTab -->
+		</div>
+	</div>
+	<div id="footer" ng-include="metadata.footerTemplateUrl"></div><!-- Footer -->
+</div>

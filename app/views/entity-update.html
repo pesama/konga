@@ -1,0 +1,18 @@
+<div class="panel-body sogma-panel-body">
+	<div class="search-form col-md-offset-1 col-md-7">
+		<form class="form-horizontal" role="form" name="entityUpdate">
+			<update-form entity="entity" metadata="entityMetadata" on-change="operations.changeEntityField" on-update="operations.updateEntityField" product-codes="productCodes"></update-form>
+			<div class="pull-right update-btn-group">
+				<button class="btn btn-default" ng-click="operations.saveEntity()" ng-disabled="entityUpdate.$invalid || !changes.length">	{{ 'message.action.validate' | translate }}
+				</button>
+				<button class="btn btn-default" ng-click="operations.cancelUpdate()">
+					{{ 'message.action.cancel' | translate }}
+				</button>
+				<button class="btn btn-default" ng-click="operations.deleteEntity()" ng-hide="!deletable">
+					{{ 'message.action.delete' | translate }}
+				</button>
+			</div>
+		</form>
+		<form-info metadata="entityMetadata" entity="entity"></form-info>	
+	</div>
+</div>

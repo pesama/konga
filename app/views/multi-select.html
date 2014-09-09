@@ -1,0 +1,63 @@
+<div class="multi-select" ng-init="operations.init()">
+	<div class="modal-header" ng-show="true">
+	    <!-- Close button -->
+	    <button type="button" class="close" ng-click="multiselectModal.cancel()">&times;</button>
+
+		<!-- Filter -->
+		<!-- TODO Externalize -->
+	    <input type="text" name="filter" ng-model="filter" class="filter" placeholder="Filter..." />
+
+	    <!-- Title -->
+	    <h4 class="modal-title" ng-bind="multiselectModal.title"></h4>
+  	</div>
+	<div class="col-md-5 multi-select-modal-body-item">
+		<div class="multiselect-list list-group">
+			<a class="list-group-item"
+				ng-repeat="item in (sourceList | filter:filter | orderBy: key) | filter: {added: false}"
+				ng-click="operations.toggle(item)"
+				ng-class="{selected: item.selected}">
+				<h5>
+					{{ item.key }} <small>{{ item.value }}</small>
+				</h5>
+			</a>
+		</div>
+	</div>
+	<div class="col-md-2 multi-select-modal-body-item center">
+		<div class="add-remove-btn">
+			<button type="button" class="btn btn-default" ng-click="operations.add()">
+				<i class="icon ion-chevron-right"></i>
+			</button>
+			<button type="button" class="btn btn-default" ng-click="operations.remove()">
+				<i class="icon ion-chevron-left"></i>
+			</button>
+		</div>
+		<div class="add-remove-btn">
+			<button type="button" class="btn btn-default" ng-click="operations.addAll()">
+				<i class="icon icon-add-remove-all ion-chevron-right"></i><i
+					class="icon icon-add-remove-all ion-chevron-right"></i>
+			</button>
+			<button type="button" class="btn btn-default" ng-click="operations.removeAll()">
+				<i class="icon icon-add-remove-all ion-chevron-left"></i><i
+					class="icon icon-add-remove-all ion-chevron-left"></i>
+			</button>
+		</div>
+	</div>
+	<div class="col-md-5 multi-select-modal-body-item">
+		<div class="multiselect-list list-group">
+			<a a class="list-group-item"
+				ng-repeat="item in sourceList | filter: {added: true}"
+				ng-click="operations.toggle(item)"
+				ng-class="{selected: item.selected}">
+				<h5>
+					{{ item.key }}<small>{{ item.value }}</small>
+				</h5>
+			</a>
+		</div>
+	</div>
+	<div class="clear">&nbsp;</div>
+	<div class="modal-footer">
+		<!-- Close button -->
+		<button type="button" class="btn btn-default" ng-click="multiselectModal.cancel()">Cancel</button>
+		<button type="button" class="btn btn-default" ng-click="multiselectModal.save()">OK</button>
+	</div>
+</div>

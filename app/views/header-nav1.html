@@ -1,0 +1,49 @@
+<div class="container">
+	<!-- Brand and toggle get grouped for better mobile display -->
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
+			data-target="#header-1-navbar-collapse">
+			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+			<span class="icon-bar"></span> <span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand logo" href="#"><img src="images/logo.gif"
+			alt="Groupe NGE" /></a>
+	</div>
+
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse" id="header-1-navbar-collapse">
+		<ul class="nav navbar-nav navbar-right">
+			<li>
+			<!--  <i class="icon ion-person"></i>-->
+				<a ng-show="isLogged"><span class="nav-item">{{ username }}</span></a>
+			</li>
+			<li>
+				<a href="#"><span class="nav-item">Params</span></a>
+			</li>
+			<li>
+				<a><span class="nav-item"><b>{{ 'message.main.language' | translate }}:</b>&nbsp;{{ selectedLanguage | translate }}</span></a>
+			</li>
+
+			<!-- Available languages -->
+
+			<!-- French -->
+			<li>
+				<img ng-src="http://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Civil_and_Naval_Ensign_of_France.svg/1280px-Civil_and_Naval_Ensign_of_France.svg.png" class="locale-flag" ng-click="operations.changeLocale('fr')" />
+			</li>
+
+			<!-- English -->
+			<li>
+				<img ng-src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Union_flag_1606_(Kings_Colors).svg/1280px-Union_flag_1606_(Kings_Colors).svg.png" class="locale-flag" ng-click="operations.changeLocale('en')" />
+			</li>
+			
+			<li>
+				<a href="#" ng-click="deconnexion()" ng-show="isLogged"><span class="nav-item">{{ 'global.desconnexion' | translate }}</span></a>
+			</li>
+		</ul>
+	</div>
+	<!-- /.navbar-collapse -->
+</div>
+<!-- /.container -->
+<div class="container">
+	<h4 class="second-title" ng-show="isFullyLogged">{{'global.ctr-operat' | translate}}: {{ctrOperatName}}</h4>
+</div>

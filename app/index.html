@@ -1,0 +1,169 @@
+<!doctype html>
+<html class="no-js" ng-app="sigmaNgApp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/ionicons/css/ionicons.css" />
+    <link rel="stylesheet" href="bower_components/angular-motion/dist/angular-motion.min.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-dialog-service/dialogs.min.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+
+   <link rel="stylesheet" href="dist/styles/nge.css">      <!-- Local -->
+	  <!--   <link rel="stylesheet" href="styles/nge.css">  	-->		 <!-- Serve -->
+
+    
+  </head>
+  <body ng-controller="MainCtrl">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div ng-include="'views/main.html'"></div>
+    
+    <!-- Append the loader -->
+    <div ng-include="'views/loader.html'"></div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/oldieshim.js -->
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+    <!-- endbuild -->
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/dropdown.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <script src="bower_components/angular-dialog-service/dialogs.min.js"></script>
+    <script src="bower_components/angular-dialog-service/dialogs-default-translations.min.js"></script>
+    <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/services/chantiers.js"></script>
+        <script src="scripts/services/agences.js"></script>
+        <script src="scripts/services/societes.js"></script>
+        <script src="scripts/services/secteures.js"></script>
+        <script src="scripts/services/metadata.js"></script>
+        <script src="scripts/services/ctroperat.js"></script>
+        <script src="scripts/services/session.js"></script>
+        <script src="scripts/controllers/home.js"></script>
+        <script src="scripts/controllers/goHome.js"></script>
+        <script src="scripts/directives/search-pane.js"></script>
+        <script src="scripts/directives/raw-input.js"></script>
+        <script src="scripts/directives/result-table.js"></script>
+        <script src="scripts/services/api.js"></script>
+        <script src="scripts/services/common.js"></script>
+        <script src="scripts/filters/map-eds-field.js"></script>
+        <script src="scripts/services/field-mapper.js"></script>
+        <script src="scripts/directives/multi-select.js"></script>
+        <script src="scripts/filters/only-code-eds.js"></script>
+        <script src="scripts/directives/single-select.js"></script>
+        <script src="scripts/filters/search-params.js"></script>
+        <script src="scripts/filters/update-params.js"></script>
+        <script src="scripts/services/scaffold.js"></script>
+        <script src="scripts/filters/only-id-eds.js"></script>
+        <script src="scripts/controllers/multi-select.js"></script>
+        <script src="scripts/controllers/single-select.js"></script>
+        <script src="scripts/services/metiers.js"></script>
+        <script src="scripts/services/devise.js"></script>
+        <script src="scripts/services/postetec.js"></script>
+        <script src="scripts/directives/verticaltabs.js"></script>
+        <script src="scripts/controllers/ctroperatcreate.js"></script>
+        <script src="scripts/directives/tabcontent.js"></script>
+        <script src="scripts/directives/edsselectabeltable.js"></script>
+        <script src="scripts/services/reports.js"></script>
+        <script src="scripts/services/coderef.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/services/auth.js"></script>
+        <script src="scripts/services/refsimplifie.js"></script>
+        <script src="scripts/controllers/filter-manager.js"></script>
+        <script src="scripts/directives/filter-manager.js"></script>
+        <script src="scripts/services/filter-manager.js"></script>
+        <script src="scripts/services/token-handler.js"></script>
+        <script src="scripts/directives/update-form.js"></script>
+        <script src="scripts/controllers/entity-search.js"></script>
+        <script src="scripts/controllers/entity-update.js"></script>
+        <script src="scripts/services/ctrmecanique.js"></script>
+        <script src="scripts/directives/recap-table.js"></script>
+        <script src="scripts/services/unite-mesure.js"></script>
+        <script src="scripts/services/user.js"></script>
+        <script src="scripts/controllers/ctr-operat-choix.js"></script>
+        <script src="scripts/filters/user-ctr-operat-by-role.js"></script>
+        <script src="scripts/filters/locale.js"></script>
+         <script src="scripts/filters/statut.js"></script>
+        <script src="scripts/filters/selected-locale.js"></script>
+        <script src="scripts/services/utilisateurs.js"></script>
+        <script src="scripts/services/action.js"></script>
+        <script src="scripts/directives/form-info.js"></script>
+        <script src="scripts/filters/username.js"></script>
+        <script src="scripts/services/role.js"></script>
+        <script src="scripts/directives/list-input.js"></script>
+        <script src="scripts/services/postedepense.js"></script>
+        <script src="scripts/services/dossier.js"></script>
+        <script src="scripts/services/rubdepense.js"></script>
+        <script src="scripts/services/codetva.js"></script> 
+        <script src="scripts/services/comptecomptable.js"></script>
+        <script src="scripts/services/glac.js"></script>
+        <script src="scripts/filters/select-data.js"></script>
+        <script src="scripts/filters/result-params.js"></script>
+        <script src="scripts/filters/selected-fields.js"></script>
+        <!-- endbuild -->
+
+        <!-- Include cached views -->
+         <script type="text/javascript" src="dist/scripts/views.js"></script> 			 <!-- Local -->   
+ 		<!-- <script type="text/javascript" src="scripts/views.js"></script> -->			 <!-- Serve -->
+
+
+        <!-- Include javascript utils -->
+
+         <script type="text/javascript" src="dist/scripts/nge-util.js"></script>	 			 <!-- Local -->	
+        <!-- <script type="text/javascript" src="scripts/nge-util.js"></script> 	-->		 <!-- Serve -->
+
+</body>
+</html>

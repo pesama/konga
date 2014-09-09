@@ -1,0 +1,28 @@
+<div class="single-select" ng-init="operations.init()">
+	<div class="modal-header" ng-show="true">
+		<!-- Close button -->
+		<button type="button" class="close" ng-click="singleselectModal.cancel()">&times;</button>
+
+		<!-- Filter -->
+		<!-- TODO Externalize -->
+		<input type="text" name="filter" ng-model="filter" class="filter" placeholder="Filter..." />
+
+		<!-- Title -->
+		<h4 class="modal-title" ng-bind="singleselectModal.title"></h4>
+	</div>
+	<div class="multiselect-list list-group">
+		<a class="list-group-item"
+			ng-repeat="item in sourceList | filter:filter | orderBy: key"
+			ng-click="operations.toggle(item)"
+			ng-class="{selected: (item === selected)}">
+			<h5>
+				{{ item.key }} <small>{{ item.value }}</small>
+			</h5>
+		</a>
+	</div>
+	<div class="modal-footer">
+		<!-- Close button -->
+		<button type="button" class="btn btn-default" ng-click="singleselectModal.cancel()">Cancel</button>
+		<button type="button" class="btn btn-default" ng-click="singleselectModal.save()">OK</button>
+	</div>
+</div>
