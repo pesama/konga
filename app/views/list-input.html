@@ -23,7 +23,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-6">
+		<!-- <div class="col-md-6">
 			<div class="checkbox">
 			  <label>
 			    <input type="checkbox" ng-model="selectAllItmsData">
@@ -38,29 +38,29 @@
 			    Aficher éléments séléctionnés
 			  </label>
 			</div>
-		</div>
+		</div> -->
 
 		<div class="col-md-12 search-table-container">
 			<table class="table table-striped">
 				<tr class="table-header">
-					<th></th>
+					<!-- <th></th> -->
 					<th ng-repeat="field in fields">
-						<span>{{ field.fieldLabel | translate }}</span>
+						<span>{{ field.label | translate }}</span>
 						<!-- <input type="text" class="form-control"
 								placeholder="{{ field.fieldLabel | translate }}" ng-model="quickSearchParams.param[field.fieldKey]"> -->
 						</th>
 					
 				</tr>
 				<tr ng-repeat="entity in list | filter:quickSearchParams.value | displaySelectedItms:displaySelectedItmsData |startFrom:(paginationData.currentPage-1)*paginationData.pageItems | limitTo:paginationData.pageItems">
-					<td>
+					<!-- <td>
 						<div class="checkbox">
 						  <label>
 						    <input type="checkbox" ng-model="entity.selected" ng-change="pageChanged()" ng-disabled="disabledIds[entity.id]">
 						  </label>
 						</div>
-					</td>
+					</td> -->
 					<td ng-repeat="field in fields">
-						<span>{{entity | mapEdsField:field.fieldPath }}</span>
+						<span>{{entity | mapEdsField:field }}</span>
 					</td>
 				</tr>
 			</table>

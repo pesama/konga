@@ -40,20 +40,19 @@ angular.module('sigmaNgApp')
 				escapedValue = value.text; // It comes casted out-of-the-box :)
 				break;
 			case constants.FIELD_COMPLEX:
-			case constants.FIELD_LIST:
 				var ids = value.ids;
-				escapedValue = [];
-				for(var i = 0; i < ids.length; i++) {
-					var entityId = value.ids[i];
-					var entityType = fieldMetadata.type.complexType;
+				escapedValue = value.entity;
+				// for(var i = 0; i < ids.length; i++) {
+				// 	var entityId = value.ids[i];
+				// 	var entityType = fieldMetadata.type.complexType;
 
-					var localEndpoint = api.getLocalEndpoint(entityType);
-					escapedValue.push(localEndpoint.get({id: entityId}));
-				}
+				// 	var localEndpoint = api.getLocalEndpoint(entityType);
+				// 	escapedValue.push(localEndpoint.get({id: entityId}));
+				// }
 
-				if(fieldMetadata.multiplicity === constants.MULTIPLICITY_ONE) {
-					escapedValue = escapedValue[0];
-				}
+				// if(fieldMetadata.multiplicity === constants.MULTIPLICITY_ONE) {
+				// 	escapedValue = escapedValue[0];
+				// }
 
 				break;
 // 			TODO Other cases

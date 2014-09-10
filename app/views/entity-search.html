@@ -71,7 +71,7 @@
 				</div>
 				<div class="row chantier-btn-list">
 					<div class="col-md-2">
-						<button class="btn btn-default" ng-click="operations.openEntityCreate(entityMetadata)">
+						<button class="btn btn-default" ng-click="operations.openEntityCreate(entityMetadata)" ng-show="entityMetadata.createable">
 							<i class="icon ion-plus"></i>
 							{{ 'message.action.add' | translate }}
 						</button>

@@ -14,6 +14,7 @@ angular.module('sigmaNgApp')
       	// Stores the selected value
       	$scope.selected = null;      	
       	$scope.filter = '';
+      	$scope.idField = null;
 
       	/**
 		 * TODO Document
@@ -33,15 +34,29 @@ angular.module('sigmaNgApp')
 		};
 
       	function updateValue() {
-      		var codes = null;
-      		var ids = null;
+      		var codes = [];
+      		var ids = [];
+      		var entity = null;
       		if($scope.selected) {
-      			codes = $filter('onlyCodeEds')([$scope.selected]);
-				ids = $filter('onlyIdEds')([$scope.selected]);
+      			
+      			var selected = [];
+      			for(var i = 0; i < items.length; i++) {
+      				if(items[i][$scope.idField] === $scope.selected.id) {
+      					selected.push(items[i]);
+      				}
+      			}
+
+				// We are single-selecting, so get the first one of them
+				if(selected.length) {
+					entity = selected[0];
+					codes.push($scope.selected.key);
+					ids.push($scope.selected.id);
+				}
       		}
 			$scope.model = {
 				text: codes,
-				ids: ids
+				ids: ids,
+				entity: entity
 			};
 		};
 
@@ -50,13 +65,30 @@ angular.module('sigmaNgApp')
          */
         $scope.operations = {
         	init: function() {
+
 				var list = items;
 				var entityType = field.type.complexType;
 				var relatedMetadata = util.getMetadata(entityType);
+
+				// Get the id fieldname to use it afterwards
+        		$scope.idField = util.getEntityId(relatedMetadata, null, true);
+
 				$scope.sourceList = $filter('selectData')(relatedMetadata, list);
+
+				// Configure already added
+				var selectedId = $scope.model.entity[$scope.idField];
+
+				// Configure selected variable
+				for(var i = 0; i < $scope.sourceList.length; i++) {
+					if(selectedId === $scope.sourceList[i].id) {
+						$scope.selected = $scope.sourceList[i];
+						break;
+					}
+				}
 			},
 
 			toggle: function(item) {
+
 				// Is it already selected?
 				if (item == $scope.selected) {
 					$scope.selected = null;

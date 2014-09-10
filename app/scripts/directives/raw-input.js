@@ -118,21 +118,11 @@ angular.module('sigmaNgApp')
 				// if(this.mode === constants.SCOPE_UPDATE) {
 					// There's an entity and it's ready to be used
 					if(this.entity && this.entity.$resolved !== false) {
-
-						// On search path does not exist, and the entity field it's always a property directly under the query
-						var path = $scope.property.fieldName;
-
-						// But on update the path could be different, as some fields might be related, and thus 
-						// have longer paths
-						if(this.mode === constants.SCOPE_UPDATE) {
-							path = $scope.property.fieldPath;
-						}
-
 						var value;
 						if(this.mode === constants.SCOPE_UPDATE) {
 						    value = $filter('mapEdsField')($scope.entity, $scope.property);
 						} else {
-							value = $scope.entity[$scope.property.fieldName];
+							value = $scope.entity[$scope.property.name];
 						}
 
 						// If the field is complex, get the source list for the related entity
@@ -144,21 +134,39 @@ angular.module('sigmaNgApp')
 							var realMetadata = common.getMetadata(related);
 
 							// Store the entity
-							this.value.entity = realMetadata;
+							this.value.metadata = realMetadata;
 
 							// Store the values in the source list (for picking)
 							var localEndpoint = api.getLocalEndpoint(related);
-							$rootScope.operations.requestLoading('raw-input>' + $scope.property.name + ' ' +$scope.property.owner);
-							localEndpoint.search({}, function(data) {
-								$scope.value.list = data;
-								$rootScope.operations.freeLoading('raw-input>' + $scope.property.name + ' ' +$scope.property.owner);
-							});
+							if(localEndpoint) {
+								$rootScope.operations.requestLoading('raw-input>' + $scope.property.name + ' ' +$scope.property.owner);
+								localEndpoint.search({}, function(data) {
+									$scope.value.list = data;
+									$rootScope.operations.freeLoading('raw-input>' + $scope.property.name + ' ' +$scope.property.owner);
+								});
+							}
 
 							// If updating do some extra stuff
 							if($scope.mode === constants.SCOPE_UPDATE) {
-								var realEntity = $filter('mapEdsField')($scope.entity, $scope.property);
+								var realEntity;
+								if(!$scope.parentField || $scope.parentField.multiplicity === constants.MULTIPLICITY_ONE) {
+									realEntity = $filter('mapEdsField')($scope.entity, $scope.property);	
+								}
+								else {
+									realEntity = [];
+									for(var i = 0; i < $scope.entity.length; i++) {
+										realEntity.push($filter('mapEdsField')($scope.entity[i], $scope.property));
+									}
+								}
 
-								$scope.label = util.getEntityLabel(realMetadata, realEntity);
+								// Try and set a label
+								try {
+									$scope.label = util.getEntityLabel(realMetadata, realEntity);
+								}catch(e) {
+									// XXX muahahahahahhahahaha
+								}
+
+								$scope.value.entity = realEntity;
 
 								// TODO Control multiplicity
 								$scope.value.text = util.getEntityCode(realMetadata, realEntity);
@@ -179,59 +187,11 @@ angular.module('sigmaNgApp')
 								var allFields = util.getEntityFields(realMetadata);
 								var selectedFields = $filter('selectedFields')(allFields, nestFields);
 								$scope.value.fields = selectedFields;
-								$scope.value.metadata = realMetadata;
 							}
 						}
-						
-						else{
-							var isKey = $scope.property.isKey; 
-							if($scope.property.related && $scope.property.type.type === constants.FIELD_LIST &&  $scope.property.multiplicity === constants.MULTIPLICITY_MANY  && $scope.mode === constants.SCOPE_UPDATE && ($scope.property.isKey == true)) {
-								
-								var originalPath = $scope.property.fieldPath;
-								
-								//Split by entities
-								var entities = originalPath.split('.');
-							
-								// Get the real entity
-								//FIX THIS!!!!!! It's only valid for many to many cases (for instance: relActionRoles.action.libaction) 
-								var realEntity = $filter('mapEdsField')($scope.entity, entities[0]);
-								
-								//Set the values in the list
-								this.value.list = [];
-								
-								for (var i = 0; i < realEntity.length; i++){
-									
-									var prefix;
-									var variable;
-									
-									if (entities.length >= 4){
-										prefix = entities.slice(0, entities.length - 4).join('.');
-										variable = prefix.concat(entities.slice(entities-length-3, entities.length-2).join('.').concat('.'+i+'.').concat(entities.slice(entities.length-2, entities.length-1).join('.')));
-									}
-									else{
-										variable = entities.slice(entities.length-3, entities.length-2).join('.').concat('.'+i+'.').concat(entities.slice(entities.length-2, entities.length-1).join('.'));
-									}
-									
-									this.value.list.push($filter('mapEdsField')($scope.entity, variable));
-									
-
-								}
-							}
-
-							if(value !== undefined) {
-								if ($scope.property.type.type === constants.FIELD_DATE)
-									this.value.text = $filter("date")(new Date(value), 'yyyy-MM-dd'); 
-								else
-									this.value.text = value;
-							}
+						else {
+							$scope.value.text = value;
 						}
-
-						// if(typeof value === 'object') {
-						// 	this.value.data = value;
-						// 	if ($scope.property.type.type === constants.FIELD_COMPLEX || $scope.property.type.type === constants.FIELD_LIST) {
-						// 		this.value.text = value ? value.join(',') : '';
-						// 	}
-						// }
 
 						// Start watchers
 						// Listen to value updates
@@ -332,34 +292,20 @@ angular.module('sigmaNgApp')
 	  		}
 
 			valueWatcher = function() {
-				// if((init !== undefined && $scope.value.text != init) || (initCheck !== false && ($scope.value.active !== initactive || $scope.value.inactive !== initinactive))) {
+				initactive = $scope.value.active;
+				initinactive = $scope.value.inactive;
 
-					initactive = $scope.value.active;
-					initinactive = $scope.value.inactive;
+				// Set the real value in the entity
+				var sendValue = angular.copy($scope.value);
+				var result = $scope.updateEntity($scope.property, sendValue, $scope.entity, $scope.parentField, $scope.$index);
 
-					// Set the real value in the entity
-					var sendValue = angular.copy($scope.value);
-					var result = $scope.updateEntity($scope.property, sendValue, $scope.entity, $scope.parentField, $scope.$index);
-
-					// Notify the changes (verify if there's someone listening too)
-					if(result && $scope.changeEntity) {
-						// Submit the changes to the parent controller
-						var sendResult = angular.copy(result);
-						$scope.changeEntity($scope.property, sendResult);
-					}
-
-					init = result ? result.text : null;
-					// TODO Modify when auto-completing
-					if(init !== undefined) {
-						// TODO Change temp to $scope
-						if(init && init.split) $scope.modal.temp.value = init.split(',');
-						else $scope.modal.temp.value = init;
-					}
-					else {
-						$scope.modal.temp.value = null;
-					}
-				// }
-			}
+				// Notify the changes (verify if there's someone listening too)
+				if(result && $scope.changeEntity) {
+					// Submit the changes to the parent controller
+					var sendResult = angular.copy(result);
+					$scope.changeEntity($scope.property, sendResult);
+				}
+			};
 
 			// Listen for property changes
 			// On update mode we listen with the path. On search mode with the field name 
@@ -384,9 +330,19 @@ angular.module('sigmaNgApp')
 			 * If the input is in 'search' mode, all list inputs will be multi-selectable.
 			 * On 'update' mode, the list inputs only receive one value.
 			 */
+			var multiField = null;
+			if($scope.mode === constants.SCOPE_SEARCH) {
+				multiField = $scope.property.searchConf.multiplicity;
+			}
+			else if($scope.parentField) {
+				multiField = $scope.parentField.multiplicity;
+			}
+			else {
+				multiField = $scope.property.multiplicity;
+			}
 
-			var multi = $scope.mode === constants.SCOPE_SEARCH || $scope.property.multiplicity === constants.MULTIPLICITY_MANY;
-
+			var multi = multiField === constants.MULTIPLICITY_MANY;
+			
 			var selectTemplate 		= multi ? 'views/multi-select.html' : 'views/single-select.html';
 			var selectController 	= multi ? 'MultiSelectCtrl' : 'SingleSelectCtrl';
 
@@ -408,6 +364,9 @@ angular.module('sigmaNgApp')
 			        },
 			        field: function() {
 			        	return angular.copy($scope.property);
+			        },
+			        parentField: function() {
+			        	return angular.copy($scope.parentField);
 			        }
 			      }
 			    });
@@ -415,46 +374,16 @@ angular.module('sigmaNgApp')
 			    modalInstance.result.then(function (newValue) {
 			    		$scope.value.text = newValue.text ? newValue.text.join(',') : '';
 			    		$scope.value.ids = newValue.ids;
+			    		$scope.value.entity = newValue.entity;
+
+			    		// Get the label and in label
+			    		$scope.label = util.getEntityLabel($scope.value.metadata, $scope.value.entity);
+
 			    	 			    	
 			    }, function () {
 			      console.log('Operation canceled');
 			    });
 			  };
-
-			  // Inputs with multiplicity = MANY are rendered as lists
-			if($scope.property.multiplicity === constants.MULTIPLICITY_MANY) {
-				// Get the entityType
-				var related = $scope.property.related;
-
-				// Array of fields for the table
-				var allMetadatas = common.read('metadata');
-	      		var relatedMetadata = common.getMetadata(allMetadatas, related);
-	      		var entityFields = util.getEntityFields(relatedMetadata);
-	      		$scope.entityFields = $filter('showInResults')(entityFields, relatedMetadata);
-
-				// var list = $scope.sourceList;
-				// var res = [];
-				// for(var item in list) {
-				// 	var id = item;
-				// 	var key = list[item][0];
-				// 	var value = list[item][1];
-
-				// 	// TODO Verify added
-
-				// 	var obj = {
-				// 		id: id,
-				// 		key: key,
-				// 		value: value
-				// 	}
-				// 	res.push(obj);
-				// }
-				// $scope.sourceArray = res;
-
-				// var localEndpoint = api.getLocalEndpoint(related);
-				// $scope.sourceArray = localEndpoint.search();
-				//$scope.value.list = [];
-
-			}
 	      },
 	      link: function(scope, element, attrs) {
 			var fieldType = scope.property.fieldType[scope.mode];
@@ -484,11 +413,6 @@ angular.module('sigmaNgApp')
 			// Direct Entity keys are shown as text
 			if(scope.property.related === null && scope.property.isKey) {
 				fieldType = constants.FIELD_TEXT;
-			}
-
-			// Inputs with multiplicity = MANY are rendered as lists
-			if(scope.property.multiplicity === constants.MULTIPLICITY_MANY) {
-				fieldType = constants.FIELD_LIST;
 			}
 
 			scope.contentUrl = 'views/raw-' + fieldType.toLowerCase() + '-input.html';

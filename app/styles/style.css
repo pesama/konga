@@ -607,11 +607,11 @@ li.codes-list>a {
 }
 
 
-tr.enabled:hover {
+tr.enabled.editable:hover {
 	 background-color: rgba(105, 168, 236, 0.29) !important;
 	 cursor:pointer;
 }
-tr.ng-scope:hover {
+tr.ng-scope.editable:hover {
 	 background-color: rgba(105, 168, 236, 0.29) !important;
 	 cursor:pointer;
 }

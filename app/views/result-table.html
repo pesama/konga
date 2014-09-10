@@ -6,7 +6,7 @@
 			</th>
 		</tr>
 		<!-- Remove filter:  | filter: filterCode | startFrom:(paginationData.currentPage-1)*paginationData.itemsPerPage | limitTo:paginationData.itemsPerPage -->
-		<tr	ng-class="{disabled : !showInRed(entity.statut), enabled : showInRed(entity.statut)}" 
+		<tr	ng-class="{disabled : !showInRed(entity.statut), enabled : showInRed(entity.statut), editable: entityMetadata.editable}" 
 			ng-hide="chantierCtrl.emptyResult" 
 			ng-repeat="entity in entities"
 			ng-click="update(entityMetadata, entity)">

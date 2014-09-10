@@ -17,7 +17,9 @@ angular.module('sigmaNgApp')
 			var obj = {
 				id : util.getEntityId(metadata, entities[i]),
 				key : util.getEntityCode(metadata, entities[i]),
-				value : util.getEntityLabel(metadata, entities[i])
+				value : util.getEntityLabel(metadata, entities[i]),
+				added: false,
+				selected: false
 			}
 			result.push(obj);
 		}

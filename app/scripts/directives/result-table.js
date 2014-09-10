@@ -17,7 +17,7 @@ angular.module('sigmaNgApp')
       scope: {
       	entityMetadata: '=',
       	entities: '=',
-        update: '=onUpdate',
+        updateEntity: '=onUpdate',
         paginationData: '=',
         paginationUpdate:'=',
         filterCode : '='
@@ -34,6 +34,13 @@ angular.module('sigmaNgApp')
         
         scope.showInRed = function(statut) {
         	return (angular.isUndefined(statut) || statut == null || statut ==true); 
+        };
+
+        scope.update = function(metadata, entity) {
+          // Is it editable?
+          if(metadata.editable) {
+            scope.updateEntity(metadata, entity);
+          }
         }
       }
       

@@ -102,7 +102,7 @@ var util = {
 	 * @returns {*} The code of the entity
 	 */
 	getEntityCode: function(metadata, entity, fieldName) {
-		var code = constants.NEW_ENTITY_ID;
+		var code = null;
 
 		var fields = util.getEntityFields(metadata);
 		for(var i = 0; i < fields.length; i++) {
@@ -136,7 +136,7 @@ var util = {
 	 * @returns {String} The label of the entity
 	 */
 	getEntityLabel: function(metadata, entity, fieldName) {
-		var label = constants.NEW_ENTITY_ID;
+		var label = null;
 
 		var fields = util.getEntityFields(metadata);
 		for(var i = 0; i < fields.length; i++) {

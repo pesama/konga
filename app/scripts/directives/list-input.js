@@ -15,7 +15,7 @@ angular.module('sigmaNgApp')
   		scope : {
   			fields : '=',
   			list : '=',
-  			edsType : '@',
+  			metadata : '=',
   			setSelectedElements : '=',
   			disabledIds : '='
   		},

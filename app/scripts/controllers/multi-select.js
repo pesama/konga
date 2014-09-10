@@ -8,15 +8,14 @@
  * Controller of the sigmaNgApp
  */
 angular.module('sigmaNgApp')
-  .controller('MultiSelectCtrl', ['$scope', '$filter', '$modalInstance', 'items', 'model', 
-  	function ($scope, $filter, $modalInstance, items, model) {
+  .controller('MultiSelectCtrl', ['$scope', '$filter', '$modalInstance', 'items', 'model', 'field', 'parentField', 
+  	function ($scope, $filter, $modalInstance, items, model, field, parentField) {
    
-	  	$scope.sourceList = items;
-	  	$scope.model = model;
-
-	  	$scope.selected = null;
-
-	  	$scope.filter = '';
+	  	$scope.model = model;      
+      	// Stores the selected value
+      	$scope.selected = null;      	
+      	$scope.filter = '';
+      	$scope.idField = null;
 
 	  	/**
 		 * TODO Document
@@ -36,42 +35,64 @@ angular.module('sigmaNgApp')
 		};
 
 	  	function updateValue() {
-			var addedItems = $filter('filter')($scope.sourceList, {added: true});
-			var codes = $filter('onlyCodeEds')(addedItems);
-			var ids = $filter('onlyIdEds')(addedItems);
-			$scope.model.text = codes;
-			$scope.model.ids = ids;
-		}
+      		var codes = [];
+      		var ids = [];
+      		var entity = [];
+      		var selectedItems = $filter('filter')($scope.sourceList, { added: true });
+      		if(selectedItems.length) {
+      			for(var i = 0; i < selectedItems.length; i++) {
+   					ids.push(selectedItems[i].id);
+   					codes.push(selectedItems[i].key);
+	      		}	
+
+      			for(var f = 0; f < items.length; f++) {
+      				if(ids.indexOf(items[f][$scope.idField]) !== -1) {
+      					entity.push(items[f]);
+      				}
+      			}
+      		}
+			$scope.model = {
+				text: codes,
+				ids: ids,
+				entity: entity
+			};
+		};
 
 		/**
 		 * TODO Document
 		 */
 		$scope.operations = {
 			init: function() {
-				var list = $scope.sourceList;
-				var res = [];
-				for(var item in list) {
-					var id = item;
-					var key = list[item][0];
-					var value = list[item][1];
 
-
-					// Is it selected?
-					var added = false;
-					if($scope.model && $scope.model.text) {
-						added = $scope.model.text.indexOf(key) !== -1;
-					} 
-
-					var obj = {
-						id: id,
-						key: key,
-						value: value,
-						selected: false,
-						added: added
-					};
-					res.push(obj);
+				var list = items;
+				var entityType = null;
+				if(field.type.type === constants.FIELD_COMPLEX) {
+					entityType = field.type.complexType;
 				}
-				$scope.sourceList = res;
+				else {
+					// TODO careful! :)
+					entityType = parentField.type.complexType;
+				}
+
+				var relatedMetadata = util.getMetadata(entityType);
+
+				// Get the id fieldname to use it afterwards
+        		$scope.idField = util.getEntityId(relatedMetadata, null, true);
+
+				$scope.sourceList = $filter('selectData')(relatedMetadata, list);
+
+				// Configure already added
+				var selectedIds = [];
+				for(var i = 0; i < $scope.model.entity.length; i++) {
+					selectedIds.push($scope.model.entity[i][$scope.idField]);
+				}
+
+				// Configure 'added' value
+				for(var i = 0; i < $scope.sourceList.length; i++) {
+					if(selectedIds.indexOf($scope.sourceList[i].id) !== -1) {
+						$scope.sourceList[i].added = true;
+					}
+				}
 			},
 
 			toggle: function(item) {

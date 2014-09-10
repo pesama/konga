@@ -403,6 +403,8 @@
 	
 	"login.message.contact-administrator": "Veuillez contacter l'administrateur",
 	"login.warning.empty-nom-or-pass": "Nom d'utilisateur ou mot de passe vide!",
-	"login.incorrect-nom-or-pass": "Identifiant et/ou mot de passe incorrect. Veuillez réeessayer. "
-	
+	"login.incorrect-nom-or-pass": "Identifiant et/ou mot de passe incorrect. Veuillez réeessayer. ",
+
+	"field.rel-action-role.action": "Action",
+	"field.action.idAction": "Id"
 }
