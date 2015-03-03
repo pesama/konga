@@ -1,9 +1,21 @@
-<div class="form-group col-md-12 mode-{{ mode }} {{ parentField ? 'derived' : '' }}">
-	<div class="padding-cero" ng-class="inLineClass.col1">
-		<label for="{{property.fieldName}}">{{property.label | translate:extra }}</label>
-	</div>
-	<div class="input-group {{ parentField ? 'derived' : '' }}" style="width:95%">
+<div class="form-group mode-{{ mode }} {{ parentField ? 'derived' : '' }} {{(isExtended) ? 'extended' : '' }} {{displayMode}}" ng-class="templating.inputSize">
+	<label ng-hide="property.fieldType[mode] === 'COMPLEX'" ng-class="[templating.labelStyle, templating.labelWeight, templating.labelDecoration]">{{property.label | translate:extra }}</label>
+	<div class="{{ parentField ? 'derived' : '' }}" ng-class="templating.fieldSize">
 		
-		<div ng-include="contentUrl"></div>
+		<div ng-include="contentUrl" ng-class="classFormInput"></div>
+	</div>
+	<div ng-class="templating.validationStyle" ng-if="property.fieldType[mode] !== 'COMPLEX'">
+		<div class="validation-pattern text-danger" ng-show="!validation.valid_pattern()">
+			<i class="glyphicon glyphicon-remove"></i>
+			{{ 'message.field-validation.pattern' | translate }}
+		</div>
+		<div class="validation-forbidden-characters text-danger" ng-show="!validation.valid_forbiddenCharacters()">
+			<i class="glyphicon glyphicon-remove"></i>
+			{{ 'message.field-validation.forbidden-characters' | translate }}
+		</div>
+		<div class="validation-required text-danger" ng-show="!validation.valid_required()" >
+			<i class="glyphicon glyphicon-remove"></i>
+			{{ 'message.field-validation.required' | translate }}
+		</div>
 	</div>
 </div>

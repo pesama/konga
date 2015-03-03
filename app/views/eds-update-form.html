@@ -6,7 +6,7 @@
 		entity="$parent.entity">
 	</raw-input>
 	<div class="pull-right update-btn-group">
-		<button class="btn btn-default" ng-click="updateSubmit()">Valider</button>
-		<button class="btn btn-default" ng-click="closeTab(currentTab)">Annuler</button>
+		<button id="eds-update-validate-button.id" class="btn btn-default" ng-click="updateSubmit()">{{ 'message.action.validate' | translate }}</button>
+		<button id="eds-update-cancel-button.id" class="btn btn-default" ng-click="closeTab(currentTab, false)">{{ 'message.action.cancel' | translate }}</button>
 	</div>
 </form>

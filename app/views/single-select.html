@@ -1,28 +1,53 @@
 <div class="single-select" ng-init="operations.init()">
 	<div class="modal-header" ng-show="true">
 		<!-- Close button -->
-		<button type="button" class="close" ng-click="singleselectModal.cancel()">&times;</button>
+		<button id="singleselectModal.cancelX.id" type="button" class="close" ng-click="singleselectModal.cancel()">&times;</button>
 
 		<!-- Filter -->
 		<!-- TODO Externalize -->
-		<input type="text" name="filter" ng-model="filter" class="filter" placeholder="Filter..." />
+	<div class="filter">
+			<div class="form-inline" ng-repeat="quickSearchItem in quickSearch">
+				<div class="form-group">
+					<!-- <label for="filter" class="control-label col-md-4">5 résultats</label> -->
+					<div class="col-md-12">
+						<div class="input-group">
+						  <span class="input-group-addon">
+						  	&nbsp;
+						  	<i class="glyphicon glyphicon-filter"></i>
+						  	&nbsp;
+						  </span>
+						  <input  id="single-select-filter.id" type="text" class="form-control" name="filter" ng-model="quickSearchItem.value" placeholder="{{quickSearchItem.metadata.label | translate:quickSearchItem.extra }}" ng-change="executeQuickSearch()" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<!-- Title -->
-		<h4 class="modal-title" ng-bind="singleselectModal.title"></h4>
+		<h4 class="modal-title">{{ 'message.single-select.title' | translate }}</h4>
 	</div>
-	<div class="multiselect-list list-group">
+	<div class="multiselect-list list-group" scroll-watcher>
 		<a class="list-group-item"
-			ng-repeat="item in sourceList | filter:filter | orderBy: key"
+			ng-repeat="item in sourceList | filter:filter.value | orderBy: key"
 			ng-click="operations.toggle(item)"
 			ng-class="{selected: (item === selected)}">
 			<h5>
 				{{ item.key }} <small>{{ item.value }}</small>
 			</h5>
 		</a>
+		<div class="loading-data" ng-if="loading">&nbsp;</div>
+		<div class="no-results" ng-show="!loading && !sourceList.length">{{ 'field.searchResults.noresults' | translate }}</div>
 	</div>
 	<div class="modal-footer">
 		<!-- Close button -->
-		<button type="button" class="btn btn-default" ng-click="singleselectModal.cancel()">Cancel</button>
-		<button type="button" class="btn btn-default" ng-click="singleselectModal.save()">OK</button>
+		<button  type="button" class="btn btn-success" ng-click="singleselectModal.save()" id="single-select-save">
+			<i class="glyphicon glyphicon-ok"></i>
+			{{ 'message.action.validate' | translate }}
+		</button>
+		<button  type="button" class="btn btn-default" ng-click="singleselectModal.cancel()" id="single-select-cancel">
+			<i class="glyphicon glyphicon-remove"></i>
+			{{ 'message.action.cancel' | translate }}
+		</button>
+		
 	</div>
 </div>

@@ -2,31 +2,105 @@
 
 /**
  * @ngdoc directive
- * @name sigmaNgApp.directive:listInput
+ * @name kongaUI.directive:listInput
  * @description
  * # listInput
  */
 angular.module('sigmaNgApp')
   .directive('listInput', function () {
     return {
-  		templateUrl : 'views/list-input.html',
+  		templateUrl : '/views/list-input.html',
   		restrict: 'E',
   		transclude : false,
+  		replace: true,
   		scope : {
-  			fields : '=',
+  			originalFields : '=fields',
   			list : '=',
+  			actions: '=',
   			metadata : '=',
+  			property: '=?',
   			setSelectedElements : '=',
-  			disabledIds : '='
+  			disabledIds : '=',
+  			dispatchFieldAction : '='
   		},
   		controller: function ($scope, $filter) {
+  			$scope.paginate = true;
+
+  			// Read configuration
+  			var configuration = $scope.property.fieldType.configuration[0];
+  			var matchingConfiguration = $filter('filter')(configuration, { key: constants.SHOW_PAGINATION, value: 'false' }, true);
+
+  			if(matchingConfiguration && matchingConfiguration.length) {
+  				$scope.paginate = false;
+  			}
+
+  			$scope.filteredList = $scope.list;
+
+  			function filterList() {
+				// Is there any filter configured?
+				if ($scope.property) {
+					var filter = $scope.property.type.filter;
+
+					var newList = $scope.list;
+					if(filter && filter.length) {
+						newList = $filter(filter)($scope.list);
+					}
+					$scope.filteredList = newList;
+				}
+  			}
+
+  			var listenerName = $scope.property.owner + '_' + $scope.property.name;
+ 			$scope.$on('updateFilter_'+listenerName, function() {
+	         	filterList();
+	        });
+
+  			$scope.$watchCollection('originalFields', function(newFields){
+  				
+	  			$scope.originalFields = newFields;
+	  			// Generate fields
+		        // var allFields = $filter('orderBy')($scope.originalFields, '+priority.results');
+		        var allFields = newFields;
+		        
+		        $scope.fields = [];
+		
+		        function divideComplexField(field) {
+		          var relatedMetadata = util.getMetadata(field.type.complexType);
+		          var relatedFields = util.getEntityFields(relatedMetadata);
+		          var nestFields = field.showInResults.fields;
+		          var selectedFields = $filter('selectedFields')(relatedFields, nestFields);
+		          for(var fi = 0; fi < selectedFields.length; fi++) {
+		            if(selectedFields[fi].fieldType.results === constants.FIELD_COMPLEX) {
+		              divideComplexField(selectedFields[fi]);
+		            }
+		            else {
+		              // Append the source
+		              selectedFields[fi].derivedPath.splice(0, 0, field);
+
+		              // Push the field
+		              $scope.fields.push(selectedFields[fi]);
+		            }
+		          }
+		        }
+
+		        // Control complex fields
+		        for(var f = 0; f < allFields.length; f++) {
+		          var field = allFields[f];
+		          if(field.type.type === constants.FIELD_COMPLEX && field.fieldType.results === constants.FIELD_COMPLEX && field.showInResults.fields.length) {
+		            divideComplexField(field);
+		          }
+		          else {
+		            $scope.fields.push(field);
+		          }
+        		}
+  			});
+  			
   			$scope.selectAllItmsData = false;
-  			$scope.displaySelectedItmsData = false;
+  			$scope.selectedData = false;
   			$scope.paginationData = {
 	  			currentItems : 0,
 	  			totalItems : 0,
-	  			pageItems : 5,
-	  			currentPage : 1,
+	  			limit : $scope.paginate ? 10 : 1000, // TODO Change this
+	  			offset : 1,
 	  			maxPages : 1
   			};
 
@@ -40,9 +114,9 @@ angular.module('sigmaNgApp')
 			};
 
   			$scope.getTotalItems = function () {
-  				var totalItems = $scope.paginationData.totalItems = ($scope.list)? $scope.list.length:0;
+  				var totalItems = $scope.paginationData.count = ($scope.list)? $scope.list.length:0;
 		  		var count = 0;
-		  		if ($scope.displaySelectedItmsData) {
+		  		if ($scope.selectedData) {
 		  			angular.forEach($scope.list, function (item) {
 		  				if (item.selected) {
 		  					count++;
@@ -51,12 +125,12 @@ angular.module('sigmaNgApp')
 		  			totalItems = count;
 		  		}
 		  		return totalItems;
-  			}
+  			};
   			
   			$scope.currentItems = function() {
   				var totalItems = $scope.getTotalItems();
 		    	if (totalItems>0) {
-		    		var items = $scope.paginationData.currentPage*$scope.paginationData.pageItems;
+		    		var items = $scope.paginationData.offset * $scope.paginationData.limit;
 		    		$scope.paginationData.currentItems = (items > totalItems)? totalItems : items;
 		    	} else {
 		    		$scope.paginationData.currentItems =  0;
@@ -66,9 +140,9 @@ angular.module('sigmaNgApp')
 		  	  
 		  	$scope.maxPages = function () {
 		  		var totalItems = $scope.getTotalItems();
-		  		$scope.paginationData.maxPages = Math.ceil(totalItems/$scope.paginationData.pageItems);
-		  		if ($scope.paginationData.maxPages < $scope.paginationData.currentPage && $scope.paginationData.maxPages > 0) {
-		  			$scope.paginationData.currentPage = $scope.paginationData.maxPages;
+		  		$scope.paginationData.maxPages = Math.ceil(totalItems/$scope.paginationData.limit);
+		  		if ($scope.paginationData.maxPages < $scope.paginationData.offset && $scope.paginationData.maxPages > 0) {
+		  			$scope.paginationData.offset = $scope.paginationData.maxPages;
 		  		}
 		  	};
 		  	/**
@@ -78,16 +152,16 @@ angular.module('sigmaNgApp')
 		  	$scope.pageChanged = function(orientation) {
 		  		switch (orientation) {
 		  			case 'first':
-		  				$scope.paginationData.currentPage = 1;
+		  				$scope.paginationData.offset = 1;
 		  				break;
 		  			case 'previous':
-		  				$scope.paginationData.currentPage = ($scope.paginationData.currentPage-1 > 1)? $scope.paginationData.currentPage-1: 1;
+		  				$scope.paginationData.offset = ($scope.paginationData.offset-1 > 1)? $scope.paginationData.offset-1: 1;
 		  				break;
 		  			case 'next':
-		  				$scope.paginationData.currentPage = ($scope.paginationData.currentPage+1 < $scope.paginationData.maxPages)? $scope.paginationData.currentPage+1: $scope.paginationData.maxPages;
+		  				$scope.paginationData.offset = ($scope.paginationData.offset+1 < $scope.paginationData.maxPages)? $scope.paginationData.offset+1: $scope.paginationData.maxPages;
 		  				break;
 		  			case 'last':
-		  				$scope.paginationData.currentPage = $scope.paginationData.maxPages;
+		  				$scope.paginationData.offset = $scope.paginationData.maxPages;
 		  				break;
 		  		}
 		  		if (!orientation || typeof orientation == 'undefined') {
@@ -108,12 +182,13 @@ angular.module('sigmaNgApp')
 				$scope.pageChanged();
 			};
 			$scope.onDisplaySelectedItems = function() {
-				$scope.paginationData.currentPage = 1;
+				$scope.paginationData.offset = 1;
 				$scope.pageChanged();
 			};
 
 			$scope.onSelectListEds = function () {
 				$scope.pageChanged();
+				$scope.filteredList = $scope.list;
 			};
 
 			$scope.quickSearchHandler = function () {
@@ -141,12 +216,27 @@ angular.module('sigmaNgApp')
 					}
 				});
 				$scope.quickSearchParams.value =	result;
-				$scope.paginationData.currentPage = 1;
+				$scope.paginationData.offset = 1;
 				$scope.pageChanged();
 			};
+			
+			if($scope.property.fieldType.update == constants.FIELD_PICK_LIST) {
+				var validation = $scope.property.validation;
 
+				var length = $scope.list ? $scope.list.length : 0;
+				
+				if(validation.minLength && length < validation.minLength) {
+//					realInput.addClass('invalid-min-length');
+					$scope.$emit('form-invalid', {
+						field: $scope.property.name,
+						owner: $scope.property.owner,
+						validation: 'min-length',
+						valid: false
+					});
+				}
+			}
   			$scope.validate = function () {
-  				var dataFilter = $filter('displaySelectedItms')($scope.list, true);
+  				var dataFilter = $filter('filter')($scope.list, { selected: true }, transclude);
   		// 		var listIds = [];
   		// 		for (var i = 0; i < dataFilter.length; i++) {
 				// 	listIds[dataFilter[i].id]=true;
@@ -159,16 +249,38 @@ angular.module('sigmaNgApp')
   				$scope.selectAllItmsData = false;
   				$scope.selectAllHandler();
   			};
+  			
+  			/*$scope.dispatchFieldAction = function(action, entitySelected) {
+		  		var actions = $scope.actions;
+		  		var matchingActions = null;
+		  		if(actions.length) {
+		  			matchingActions = $filter('filter')(actions, { name: action.name });
+		  		}
 
+		  		// Custom actions
+		  		if(matchingActions && matchingActions.length) {
+		  			$rootScope.operations.dispatchActionBatch(matchingActions, { id: util.getEntityId($scope.metadata, $scope.entity), entityType: $scope.metadata.name, self: $scope, item: $scope.entity, field: $scope.property, entitySelected : entitySelected});
+		  		}
+			};*/
+
+			var watchers = null;
+	        $scope.$on('suspend', function() {
+	          watchers = $scope.$$watchers;
+	          $scope.$$watchers = [];
+	        });
+
+	        $scope.$on('resume', function() {
+	          $scope.$$watchers = watchers;
+	        });
   		},
-  		link : function (scope, element, attrs, ctrl) {
+  		link : function (scope) {
 			scope.$watchCollection('selectAllItmsData', scope.selectAllHandler);
-			scope.$watchCollection('displaySelectedItmsData', scope.onDisplaySelectedItems);
+			scope.$watchCollection('selectedData', scope.onDisplaySelectedItems);
 			scope.$watchCollection('list', scope.onSelectListEds);
 			scope.$watchCollection('quickSearchParams.param',scope.quickSearchHandler);
 			scope.$watchCollection('disabledIds', function () {
 				console.log('disabledIds '+scope.disabledIds);	
-			})
+			});
   		}
   	};
   });

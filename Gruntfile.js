@@ -8,6 +8,7 @@
 // 'test/spec/**/*.js'
 
 module.exports = function (grunt) {
+  var modRewrite = require('connect-modrewrite');
 
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
@@ -78,25 +79,23 @@ module.exports = function (grunt) {
     // The actual grunt server settings
     connect: {
       options: {
-        port: 9000,
+        port: 9010,
         // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
-        livereload: 35729
+        hostname: '0.0.0.0',
+        livereload: 35730
       },
       livereload: {
         options: {
           open: true,
           middleware: function (connect) {
             return [
+              modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.png|\\.gif|\\.jpg|\\.jpeg|\\.ttf|\\.eot|\\.woff|\\.less|\\.ico$ /index.html [L]']),
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
                 connect.static('./bower_components')
               ),
-              connect().use(
-                '/dist',
-                connect.static('./dist')
-              ),
+              connect.static('./dist'),
               connect().use(
                 '/docs',
                 connect.static('./docs')
@@ -106,6 +105,7 @@ module.exports = function (grunt) {
                 // res.setHeader('Access-Control-Allow-Credentials', true);
                 res.setHeader('Access-Control-Allow-Origin', '*');
                 res.setHeader('Access-Control-Allow-Methods', '*');
+                res.setHeader('Access-Control-Allow-Headers', '*');
                 // a console.log('foo'); here is helpful to see if it runs
                 return next();
               }
@@ -141,7 +141,9 @@ module.exports = function (grunt) {
     jshint: {
       options: {
         jshintrc: '.jshintrc',
-        reporter: require('jshint-stylish')
+        // reporter: require('jshint-stylish')
+        reporter: require('jshint-html-reporter'),
+        reporterOutput: 'jshint-report.html'
       },
       all: {
         src: [
@@ -170,7 +172,20 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      server: '.tmp'
+      server: '.tmp',
+      deploy: {
+        files: [{
+          dot: true,
+          src: [
+            '../.ui-deployed/{,*/}*',
+            '!../.ui-deployed/WEB-INF',
+            '!../.ui-deployed/WEB-INF/{,*/}*'
+          ]
+        }],
+        options: {
+          force: true
+        }
+      }
     },
 
     // Add vendor prefixed styles
@@ -254,7 +269,8 @@ module.exports = function (grunt) {
         flow: {
           html: {
             steps: {
-              js: ['concat'], //, 'uglifyjs'
+              js: ['concat', 'uglifyjs'],
+              // js: ['concat'], //, 'uglifyjs'
               css: ['cssmin']
             },
             post: {}
@@ -266,6 +282,7 @@ module.exports = function (grunt) {
     // Performs rewrites based on filerev and the useminPrepare configuration
     usemin: {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
+      // js: ['dist/scripts/{,*/}*.js'],
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css', 'dist/styles/*.css'],
       options: {
         assetsDirs: ['<%= yeoman.dist %>','<%= yeoman.dist %>/images']
@@ -296,12 +313,16 @@ module.exports = function (grunt) {
     // },
     concat: {
       util: {
-        src: ['app/scripts/constants.js', 'app/scripts/util.js'],
+        src: ['app/scripts/constants.js', 'app/scripts/mapper.js', 'app/scripts/util.js'],
         dest: 'dist/scripts/nge-util.js'
       },
       css: {
-        src: 'app/styles/*.css',
+        src: ['app/styles/*.css', 'app/styles/custom/*.css'],
         dest: 'dist/styles/nge.css'
+      },
+      app4doc: {
+        src: ['app/scripts/**/*.js', 'dist/scripts/config.js', 'dist/scripts/views.js'],
+        dest: 'docs/app-scripts.js'
       }
     },
 
@@ -379,6 +400,7 @@ module.exports = function (grunt) {
             '.htaccess',
             '*.html',
             '*.jsp',
+            'app.js',
             'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
             'fonts/*',
@@ -413,6 +435,96 @@ module.exports = function (grunt) {
         cwd: 'bower_components',
         src: '**/fonts/*.{ttf,woff,svg}',
         dest: 'dist/fonts/'
+      },
+
+      deploy: {
+        expand: true,
+        cwd: 'dist',
+        src: [
+          '**/styles/**',
+          '{,*/}*',
+          'config.js'
+        ],
+        dest: '../.ui-deployed/'
+      },
+      index: {
+        expand: true,
+        cwd: 'app',
+        src: ['index.html'],
+        dest: 'dist'
+      },
+      deployIndex: {
+        expand: true,
+        cwd: 'dist',
+        src: ['**/index-html'],
+        dest: '../.ui-deployed/'
+      },
+      deployApp: {
+        expand: true,
+        cwd: 'app',
+        src: [
+        	'**/images/**',
+        	'**/locale/**',
+        	'**/scripts/**',
+        	'**/styles/**',
+        	'**/404.html',
+        	'**/.htaccess',
+        	'**/robots.txt',
+        	'**/favicon.ico',
+
+        ],
+        dest: '../.ui-deployed/'
+      },
+      deployVendor: {
+        expand: true,
+        src: 'bower_components/**',
+        dest: '../.ui-deployed/'
+      },
+      vendor4doc: {
+        cwd: 'dist/scripts/',
+        expand: true,
+        src: 'vendor.js',
+        dest: 'docs/'
+      }
+    },
+
+    rename: {
+      deployIndex: {
+        src: '../.ui-deployed/index.html',
+        dest: '../.ui-deployed/index.jsp'
+      }
+    },
+
+    ngconstant: {
+      // Options for all targets
+      options: {
+        space: '  ',
+        wrap: '"use strict";\n\n {%= __ngModule %}',
+        name: 'config',
+        dest: '<%= yeoman.dist %>/scripts/config.js'
+      },
+      // Environment targets
+      development: {
+        constants: {
+          ENV: {
+            name: 'development',
+            apiEndpoint: 'http://api.presupuestor.com',
+            deployPath: '',
+            version: 'DEV Environment',
+            deployTime: new Date().getTime()
+          }
+        }
+      },
+      deploy: {
+        constants: {
+          ENV: {
+            name: 'testing',
+            apiEndpoint: 'http://api.presupuestor.com',
+            deployPath: '/' + grunt.option('deploy-path'),
+            version: 'v' + grunt.option('target-version'),
+            deployTime: new Date().getTime()
+          }
+        }
       }
     },
 
@@ -442,14 +554,20 @@ module.exports = function (grunt) {
     ngtemplates: {
       sigmaNgApp: {
         cwd: 'app/',
-        src: 'views/**.html',
-        dest: 'dist/scripts/views.js'
+        src: 'views/**/**.html',
+        dest: 'dist/scripts/views.js',
+        options:  {
+          url:    function(url) { return '/' + url; }
+        }
       }
     },
 
     ngdocs: {
       options: {
-        scripts: ['angular.js', '../app/scripts/*.js'],
+        scripts: [
+          'docs/vendor.js',
+          'docs/app-scripts.js'
+        ],
         html5Mode: false,
         startPage: '/api',
         title: 'New Sigma UI jsDoc',
@@ -466,6 +584,22 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.registerTask('compile', 'Compile the sources for deployment on an environment', function(target) {
+  	grunt.task.run([
+  		'clean:server',
+		  'clean:dist',
+		  'ngconstant:' + target,
+		  'ngtemplates',
+		  // 'imagemin',
+		  'copy:bower_fonts',
+		  'concat',
+		  //'ngdocs',
+		  'wiredep',
+		  'concurrent:server',
+		  'autoprefixer',
+  	]);
+  });
+
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
@@ -473,15 +607,7 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
-      'clean:server',
-      'ngtemplates',
-      // 'imagemin',
-      'copy:bower_fonts',
-      'concat',
-      'ngdocs',
-      'wiredep',
-      'concurrent:server',
-      'autoprefixer',
+      'compile:development',
       'connect:livereload',
       'watch'
     ]);
@@ -519,6 +645,14 @@ module.exports = function (grunt) {
     'htmlmin'
   ]);
 
+  grunt.registerTask('minify-vendor', [
+    'useminPrepare',
+    'concat:generated',
+    'uglify:generated',
+    'cssmin:generated',
+    'usemin'
+  ]);
+
 
   grunt.registerTask('default', [
     'newer:jshint',
@@ -526,5 +660,28 @@ module.exports = function (grunt) {
     'build'
   ]);
 
+  grunt.registerTask('deploy', [
+    'compile:deploy',
+    'clean:deploy',
+    'copy:index',
+    'minify-vendor',
+    'copy:deployApp',
+    'copy:deploy', 
+    'copy:deployIndex', 
+    // 'copy:deployVendor'
+  ]);
+
+grunt.registerTask('deploy-test', [
+    'serve',
+    'wait-forever'
+  ]);
+
+  grunt.registerTask('doc', [
+    'concat:app4doc',
+    'copy:vendor4doc',
+    'ngdocs'
+  ]);
+
   grunt.loadNpmTasks('grunt-ngdocs');
+  grunt.loadNpmTasks('grunt-wait-forever');
 };

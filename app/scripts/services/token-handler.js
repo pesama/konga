@@ -27,7 +27,7 @@ angular.module('sigmaNgApp')
     var wrappedResource = resource;
     for (var i=0; i < actions.length; i++) {
       tokenWrapper( wrappedResource, actions[i] );
-    };
+    }
     // return modified copy of resource
     return wrappedResource;
   };

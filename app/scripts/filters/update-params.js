@@ -2,22 +2,33 @@
 
 /**
  * @ngdoc filter
- * @name sigmaNgApp.filter:updateParams
+ * @name kongaUI.filter:updateParams
  * @function
  * @description
  * # updateParams
- * It receives an entity, and returns all its fields that could be used for updating purposes.
+ * It receives an array of fields , metadata and category, and it returns all entity's fields that could be used for updating purposes.
+ * @param {Array} fields Defines an array of fields of the entity.
+ * @param {Object} metadata Defines the metadata of the entity
+ * @param {Object} the category of the entity
+ * 
  */
 angular.module('sigmaNgApp')
   .filter('updateParams', function () {
-    return function (fields, metadata) {
+    return function (fields, metadata, category) {
       var result = [];
 
       for(var i = 0; i < fields.length; i++) {
         var field = fields[i];
 
-        if(field.showInUpdate.value) {
-            result.push(field);
+        // TODO Verify permissions
+        if(field.showInUpdate.value !== null) {
+            if(category !== undefined) {
+              if(field.categories.indexOf(category) !== -1) {
+                result.push(field);
+              }
+            }
+            else 
+              result.push(field);
         }
       }
 

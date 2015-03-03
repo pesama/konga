@@ -6,7 +6,8 @@
  * @function
  * @description
  * # selectedLocale
- * Filter in the sigmaNgApp.
+ * It receives an array of locales , and it returns an locale object which have the value of selected field equal true or returns empty.
+ * @param {Array} locales Defines the array of locale
  */
 angular.module('sigmaNgApp')
   .filter('selectedLocale', function () {

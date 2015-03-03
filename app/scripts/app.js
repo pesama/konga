@@ -7,75 +7,102 @@
  * #Overview
  * This is the documentation of the <b>NGE's New Sigma</b> UI project. Along these pages you should find enough information to understand the source code, and continue with interface's development. Below you will find a general description of the project with all the main stuff it uses defined, so if it's your first time here, go ahead and take a look to this page, it'd guide you through all the documentation.
  *
+ * ## Dependencies
  * 
- * # Scope
- * The scope of this documentation contains all source code from the Angular-based UI Application. Other parts of the application, and the logic, methodology and processes, are documented elsewhere. Yet, you will see some other parts referenced many times. 
- * Some of the projects that exist, that may be referenced from within this documentation, are briefly described below.
+ * ### Konga UI {@link kongaUI `API Documentation`}
  *
- * ## Technical specification
- * There's a document called <i>NGE Developer Guide</i> (accesible <a href="NGE_DEV_GUIDE">here</a>), that contains all technical specifications for both server and client's side, as well as the project methodology. Please refer to that document for understanding how we work.
+ * Konga UI is the User Interface Builder for <b>Konga Engine</b>. It provides standard functionality to build fully functional forms using the metadata provided by `Konga Metadata`. In addition, it provides access points to extend standard behavior, or to use completely custom functionality. 
+ *
+ * ### Konga UI Tools {@link kongaUITools `API Documentation`}
+ *
+ * This module contains tools and other useful methods for managing the data and contextualize the applications. <b>TODO</b> Move to AngularUI constants and `deprecate`.
+ *
+ * ### sigmaNgApp {@link sigmaNgApp `API Documentation`}
+ * 
+ * This is the main source package of the project. It contains all custom behavior implemented to override Konga's standard, and connects all stuff together so the application is functional and compliant with the specification. 
  *
  * 
- * ## Common model and metadata
- * This project is a form generator, that uses a common model shared by a REST service which this application uses for consuming and managing data. So this project <b>needs</b> such REST service to know what the UI is intended to do with the data it receives. `TODO Link sigma-api`
- *
- * ## Metadata
- * The service menctioned above contains an operation, called `metadata`, whose purpose is to give the UI information about the entities from the common model it needs to manage. Via annotation descriptions, and a reflective generation engine, all entities that belong to the common model are shared to the UI on the application launching process, and the UI handles the data, providing pages for managing such entities. You can see more information on the technical specification. `TODO Link sigma-model`
- *
- * # Structure
- * This documentation is structured in many parts. The first vertical level comprehends modules, and this sytem has two modules.
+ */
+
+ /**
+ * @ngdoc overview
+ * @name kongaUI
+ * @module kongaUI
+ * @description
+ * # Konga Engine
  * 
- * ## {@link sigmaNgApp `sigmaNgApp`}
- * This module contains all the system, and the logic involved. It consists on several dependencies:
+ * Konga Engine is a tool for constructing <i>AngularJS-powered</i> forms using metadata that defines the entities forms should manage. It's based on two sub-projects (i.e. `Konga Metadata` and `Konga UI`). This documentation describes how the UI works, every component it has, and how the flow is.
  *
+ * ## Runtime flow
+ * 
+ * <b>TODO</b> Describe flow and append diagram.
+ *
+ * ## Components
+ * 
+ * `kongaUI` contains several components, that build the application and all its parts.
+ * 
  * ### Controllers
- * {@link sigmaNgApp.MainCtrl `MainCtrl`}: Controls all the application and provides tab management, notifications and loading processes.
- * <br />
- * {@link sigmaNgApp.HomeCtrl `HomeCtrl`}: Binds favorite management, and controls all metadata service calls.
- * <br />
- * {@link sigmaNgApp.controller:EdsSearchCtrl `EdsSearchCtrl`}: Used for searching entities.
- * <br />
- * {@link sigmaNgApp.controller:UpdateEdsCtrl `UpdateEdsCtrl`}: Used for updating entities and creating new ones.
- * <br />
- * {@link sigmaNgApp.controller:MultiSelectCtrl `MultiSelectCtrl`}: Handles all multi select form fields.
- * <br />
- * {@link sigmaNgApp.controller:SingleSelectCtrl `SingleSelectCtrl`}: Handles all single select form fields.
+ * 
+ * * {@link kongaUI.controller:EntitySearchCtrl `entity-search`}: This controller builds-up a standard {@link kongaUI.directive:searchPane search pane} with all fields configured in the metadata to be <i>searchable</i>. It also appends a {@link kongaUI.directive:resultTable result table} with the search results (having as columns every one declared to be <i>shown in results</i>).
+ * * {@link kongaUI.controller.EntityUpdateCtrl `entity-update`}: This controller builds-up a standard {@link kongaUI.directive:updateForm update form} with all fields configured in the metadata to be <i>shown in update</i>.
+ *
+ * #### Component controllers
+ *
+ * * {@link kongaUI.controller.MultiSelectCtrl multi-select}: Controls all processes for the multi-select UI component. <b>TODO</b> Move to a directive, and `deprecate`.
+ * * {@link kongaUI.controller.SingleSelectCtrl single-select}: Controls all processes for the single-select UI component. <b>TODO</b> Move to a directive, and `deprecate`.
+ *
  *
  * ### Directives
- * {@link sigmaNgApp.directive:rawInput `raw-input`}: Generates a form field that changes its aspect depending on the data type.
- * <br />
- * {@link sigmaNgApp.directive:resultTable `result-table`}: Renders a table with information about entity search results.
- * <br />
- * {@link sigmaNgApp.directive:searchPane `search-pane`}: Creates a form with search mode, for modifying entity search criteria.
+ * 
+ * #### Form directives
+ * 
+ * * {@link kongaUI.directive:searchPane `search-pane`}: Creates a search pane with all the fields configured to be <i>searchable</i>.
+ * * {@link kongaUI.directive:resultTable `result-pane`}: Creates a result table with all fields configured to be <i>shown in results</i>.
+ * * {@link kongaUI.directive:updateForm `update-form`}: Creates a form with all fields configured to be <i>shown in update</i>.
+ *
+ * #### Component directives
+ *
+ * * {@link kongaUI.directive:rawInput `raw-input`}: Creates a form field that changes it's appearance depending on the field type.
+ * * {@link kongaUI.directive:listInput `list-input`}: Creates a list to render a complex field.
+ * * {@link kongaUI.directive:tableHeader `table-header`}: Creates a header for a table column.
+ * * {@link kongaUI.directive:tableCell `table-cell`}: Creates a cell for a table.
+ * * {@link kongaUI.directive:kongaSelect `konga-select`}: Provides functionality to the `single-select` and `multi-select` components.
+ *
+ * #### Util directives
+ * 
+ * * {@link kongaUI.directive:scrollWatcher `scroll-watcher`}: Provides a method for listening to scroll changes on the target UI component.
+ *
+ * #### Misc directives
+ *
+ * * {@link kongaUI.directive:menu `menu`}: Renders a menu for the application (i.e. navbar).
+ * * {@link kongaUI.directive:menuItem `menu-item`}: Renders a menu item.
+ * * {@link kongaUI.directive:formInfo `form-info`}: Creates a component that displays basic data for the entity being shown in update mode.
+ *
  *
  * ### Filters
- * {@link sigmaNgApp.filter:mapEdsField `map-eds-field`}: Reads the value of an entity property, given its path.
- * <br />
- * {@link sigmaNgApp.filter:onlyCodeEds `only-code-eds`}: Receives an array of entities and returns its codes. `TODO Change`.
- * <br />
- * {@link sigmaNgApp.filter:onlyIdEds `only-id-eds`}: Receives an array of entities and returns its ids.
- * <br />
- * {@link sigmaNgApp.filter:searchParams `search-params`}: Receives an entity metadata information and returns an array of fields, that can be used to query for entities of that type.
- * <br />
- * {@link sigmaNgApp.filter:updateParams `update-params`}: Receives an entity metadata information and returns an array of fields, for modifying the entity.
- * 
- * ### Services
- * {@link sigmaNgApp.Api `api`}: Used to query for entities.
- * <br />
- * {@link sigmaNgApp.Common `common`}: Used to store common information used all across the application.
- * <br />
- * {@link sigmaNgApp.FieldMapper `field-mapper`}: Used for updating an entity when a field value changes on a form.
- * <br />
- * {@link sigmaNgApp.Metadata `metadata`}: Used to receive metadata information about the entities involved in the application.
- * <br />
- * {@link sigmaNgApp.Scaffold `scaffold`}: Used to create new entities based on the metadata definition of its type.
  *
- * ## {@link sigmaTools `sigmaTools`}
- * 
- * {@link sigmaTools.constants}: Provides constants for using them in the application.
- * <br />
- * {@link sigmaTools.util}: Common methods for using them in the application.
- * 
+ * * {@link kongaUI.filter:mapEdsField `map-eds-field`}: Receives an entity and a field metadata definition, and returns the value of such field within the entity. 
+ * * {@link kongaUI.filter:quickSearch `quick-search`}: Returns the fields within an entity definition configured to be used as <i>quick search</i> fields.
+ * * {@link kongaUI.filter:searchParams `search-params`}: Returns all fields from a entity metadata definition configured to be <i>searchable</i>
+ * * {@link kongaUI.filter:resultParams `result-params`}: Returns all fields from a entity metadata definition configured to be <i>shown in results</i>
+ * * {@link kongaUI.filter:updateParams `update-params`}: Returns all fields from a entity metadata definition configured to be <i>shown in updates</i>
+ * * {@link kongaUI.filter:selectData `select-data`}: Receives a set of entities, and returns the same list but with only the fields required for a single-select or multi-select.
+ * * {@link kongaUI.filter:shortify `shortify`}: Receives an String and a length, and returns a substring of that length.
+ * * {@link kongaUI.filter:tableRendererComplex `table-renderer-complex`}: Serializes a complex field to be shown in a table cell.
+ * * {@link kongaUI.filter:translateComplex `translate-complex`}: Configures a complex field to be translated using standard `translate` filter. 
+ *
+ *
+ * ### Services
+ *
+ * * {@link kongaUI.actionManager `action-manager`}: Defines and controls all available actions to dispatch from the application. <b>TODO</b> extract the action definitions elsewhere.
+ * * {@link kongaUI.Api `api`}: Connects the UI with the REST services that handle the information.
+ * * {@link kongaUI.Common `common`}: Stores stuff that's accessible all across the application.
+ * * {@link kongaUI.configurationManager `configuration-manager`}: Handles all configuration for the application (defined via metadata).
+ * * {@link kongaUI.fieldMapper `field-mapper`}: Helps mapping a field's value into a given entity. 
+ * * {@link kongaUI.metadata `metadata`}: Connects to the metadata REST service to receive all application definition.
+ * * {@link kongaUI.permissionManager `permission-manager`}: Handles the permissions for the application.
+ * * {@link kongaUI.Scaffold `scaffold`}: Builds-up new entities for creating, and queries for searching.
+ *
  */
 
 /**
@@ -112,17 +139,28 @@ var sigmaNgApp = angular
     'ngSanitize',
     'ngTouch',
     'ui.bootstrap',
+    'ui.bootstrap.datetimepicker',
+    'mgcrea.ngStrap.popover',
+    'mgcrea.ngStrap.select',
     'pascalprecht.translate',
     'dialogs.main',
+    'config',
+    'angularFileUpload'
   ])
   .run(['$route', function ($route) {
       $route.reload();
     }
   ])
+  .config(function($popoverProvider) {
+    angular.extend($popoverProvider.defaults, {
+      autoClose: true,
+      html: true
+    });
+  })
   .config(['$httpProvider',  function($httpProvider) {
       $httpProvider.defaults.useXDomain = true;
       delete $httpProvider.defaults.headers.common['X-Requested-With'];
-
+      
       /* Register error provider that shows message on failed requests or redirects to login page on
        * unauthenticated requests 
        */
@@ -150,6 +188,12 @@ var sigmaNgApp = angular
       $httpProvider.interceptors.push(function ($q, $rootScope, $location, Session, $cookieStore) {
           return {
             request: function(config) {
+              // Configure encoding
+              // TODO Improve
+              if(!config.file) {
+                config.headers['Content-Type'] = 'application/json';
+              }
+
               var authTokenCookie = $cookieStore.get('authToken');
               var authTokenSession = Session.data.authToken;
               if (authTokenCookie || authTokenSession) {
@@ -166,59 +210,75 @@ var sigmaNgApp = angular
       });
     }
   ])
-  .config(['$routeProvider', function($routeProvider) {
+  .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
       // Configure routes
-      $routeProvider.when('/home/', {
-          templateUrl: 'views/home.html',
+      $routeProvider
+        .when('/home/', {
+          templateUrl: '/views/home.html',
           controller: 'HomeCtrl',
           restricted: true
         })
-        .when('/entity/:entityType/search/', {
-          templateUrl: 'views/entity-search.html',
-          controller: 'EntitySearchCtrl',
+        .when('/admin/', {
+          templateUrl: '/views/admin.html',
+          controller: 'AdminCtrl',
           restricted: true
         })
-        .when('/ctrOperat/:entityType/:entityId/', {
-          templateUrl: 'views/ctr-operat-update.html',
-          controller: 'CtroperatcreateCtrl',
-          restricted: true
+        .when('/entity/:entityType/search/', {
+          templateUrl: '/views/entity-search.html',
+          controller: 'EntitySearchCtrl',
+          restricted: true,
         })
         .when('/entity/:entityType/:entityId/', {
-          templateUrl: 'views/entity-update.html',
+          templateUrl: '/views/entity-update.html',
           controller: 'EntityUpdateCtrl',
-          restricted: true
+          restricted: true,
         })
-        .when('/ctrOperatChoix/', {
-          templateUrl:'views/ctr-operat-choix.html',
-          controller: 'CtrOperatChoixCtrl',
-          restricted: true
+
+        // Catalog
+        .when('/catalog/search/', {
+          templateUrl: '/views/custom/catalog-search.html',
+          controller: 'CatalogSearchCtrl',
+          restricted: true,
         })
+        .when('/catalog/order/', {
+          templateUrl: '/views/custom/catalog-order.html',
+          controller: 'CatalogOrderCtrl',
+          restricted: true,
+        })   
+
+        // Init
         .when('/login/', {
-          templateUrl:'views/login.html',
+          templateUrl:'/views/login.html',
           controller: 'LoginCtrl'
         })
+
+        // Default
         .otherwise({
-        	templateUrl: 'views/empty.html',
-        	controller: 'GoHomeCtrl',
+        	templateUrl: '/views/home.html',
+        	controller: 'HomeCtrl',
         	restricted: true
         });
 
-    // Enable HTML5 route mode (if available)
-    // $locationProvider.html5Mode(true);
+      $locationProvider.html5Mode(true);
     }
   ])
-  .config(['$translateProvider', function($translateProvider) {
+  .config(['$translateProvider', 'ENV', function($translateProvider, ENV) {
 
       $translateProvider.useStaticFilesLoader({
-        prefix: '/locale/messages_',          						//local
-       // prefix: '/sigma-ihm/locale/messages_',					//serve
+        prefix: '/locale/messages_',
         suffix: '.json'
       });
 
-      // Setting up french as default
-      $translateProvider.preferredLanguage('fr');
+      // Setting up spanish as default
+      $translateProvider.preferredLanguage('es');
+      moment.locale('es');
     }
   ]);
+  // .config(function($modalProvider) {
+  //   angular.extend($modalProvider.options, {
+  //     backdrop: 'static'
+  //   });
+  // });
 
 angular.module('sigmaNgApp').provider('sigmaNGELogProvider', function () {
     this.$get = function () {
@@ -257,3 +317,76 @@ angular.module('sigmaNgApp').provider('sigmaNGELogProvider', function () {
 sigmaNgApp.run(['$log', 'sigmaNGELogProvider', function ($log, sigmaNGELogProvider) {
 	sigmaNGELogProvider.sigmaNGELog($log);
 }]);
+
+/*
+ * External modules needed for the application
+ */ 
+
+// ng-strap parseOptions
+angular.module('mgcrea.ngStrap.helpers.parseOptions', [])
+
+  .provider('$parseOptions', function() {
+
+    var defaults = this.defaults = {
+      regexp: /^\s*(.*?)(?:\s+as\s+(.*?))?(?:\s+group\s+by\s+(.*))?\s+for\s+(?:([\$\w][\$\w]*)|(?:\(\s*([\$\w][\$\w]*)\s*,\s*([\$\w][\$\w]*)\s*\)))\s+in\s+(.*?)(?:\s+track\s+by\s+(.*?))?$/
+    };
+
+    this.$get = function($parse, $q) {
+
+      function ParseOptionsFactory(attr, config) {
+
+        var $parseOptions = {};
+
+        // Common vars
+        var options = angular.extend({}, defaults, config);
+        $parseOptions.$values = [];
+
+        // Private vars
+        var match, displayFn, valueName, keyName, groupByFn, valueFn, valuesFn;
+
+        $parseOptions.init = function() {
+          $parseOptions.$match = match = attr.match(options.regexp);
+          displayFn = $parse(match[2] || match[1]),
+          valueName = match[4] || match[6],
+          keyName = match[5],
+          groupByFn = $parse(match[3] || ''),
+          valueFn = $parse(match[2] ? match[1] : valueName),
+          valuesFn = $parse(match[7]);
+        };
+
+        $parseOptions.valuesFn = function(scope, controller) {
+          return $q.when(valuesFn(scope, controller))
+          .then(function(values) {
+            $parseOptions.$values = values ? parseValues(values, scope) : {};
+            return $parseOptions.$values;
+          });
+        };
+
+        $parseOptions.displayValue = function(modelValue) {
+          var scope = {};
+          scope[valueName] = modelValue;
+          return displayFn(scope);
+        };
+
+        // Private functions
+
+        function parseValues(values, scope) {
+          return values.map(function(match, index) {
+            var locals = {}, label, value;
+            locals[valueName] = match;
+            label = displayFn(scope, locals);
+            value = valueFn(scope, locals);
+            return {label: label, value: value, index: index};
+          });
+        }
+
+        $parseOptions.init();
+        return $parseOptions;
+
+      }
+
+      return ParseOptionsFactory;
+
+    };
+
+  });

@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc directive
- * @name sigmaNgApp.directive:searchPane
+ * @name kongaUI.directive:searchPane
  * @scope
  * @restrict E
  * @description
@@ -11,7 +11,7 @@
 angular.module('sigmaNgApp')
   .directive('searchPane', function () {
     return {
-      templateUrl: 'views/search-pane.html',
+      templateUrl: '/views/search-pane.html',
       replace: true, 
       restrict: 'E',
       scope: {
@@ -20,58 +20,102 @@ angular.module('sigmaNgApp')
         productCodes: '=',
         submit: '=onSubmit'
       },
-      controller:function($scope, $filter, $modal) {
+      controller:function($scope, $filter, $modal, $timeout, scaffold) {
+        $scope.fields = [];
+        $scope.categories = [];
+
+        $scope.init = function() {
+          $scope.fields = util.getEntityFields($scope.entityMetadata);
+          $scope.categories = util.getEntityCategories($scope.entityMetadata, 1);
+
+          var formType = $scope.entityMetadata.searchType;
+
+          if(formType === constants.CUSTOM_FORM) {
+            var configuration = $filter('filter')($scope.entityMetadata.configuration, { key: constants.SEARCH_CUSTOM_VIEW });
+            if(!configuration.length) {
+              // TODO Show exception
+            }
+            $scope.contentUrl = mapper[configuration[0].value];
+          }
+          else {
+            $scope.contentUrl = '/views/' + formType.toLowerCase() + '-search-pane.html';
+
+            // Custom behavior for each form type
+            switch(formType) {
+            case constants.CATEGORIZED_CASCADE_FORM:
+              // Get the categories used for search
+              var configuration = $filter('filter')($scope.entityMetadata.configuration, { key: constants.SEARCH_USE_CATEGORY }, true);
+              $scope.categories = [];
+              for(var i = 0; i < configuration.length; i++) {
+                var cat = configuration[i].value;
+                $scope.categories.push(cat);
+              }
+              break;
+            default:
+              // Nothing to do
+            }
+          }
+        };
+
+        function setupQuery(obj, query) {
+          for(var i in obj) {
+            if(typeof obj[i] === 'object') {
+              setupQuery(obj[i], query[i]);
+            }
+            else {
+              query[i] = obj[i];
+            }
+          }
+        }
+
     	  //THis function will open the Save filter
     	  $scope.openFilterModel = function (property) {
     		  
     		  //Correct data for query: all fieldType is complex need to convert to Array
     		  var fields = util.getEntityFields($scope.entityMetadata);
-			  for(var i = 0; i < fields.length; i++) {
-				  var fieldName = fields[i].fieldName;
-	              if($scope.query[fieldName] !== undefined) {
-	            	  if (fields[i].fieldType === constants.FIELD_COMPLEX 
-	            			  && $scope.query[fieldName] !== null
-	            			  && !(typeof  $scope.query[fieldName] === 'object')) {
-	            		  var codes = $scope.query[fieldName].split(',');
-	            		  $scope.query[fieldName] = codes;
-	            	  }
-	              }
-			  }
+  			  for(var i = 0; i < fields.length; i++) {
+  				  var fieldName = fields[i].fieldName;
+  	              if($scope.query[fieldName] !== undefined) {
+  	            	  if (fields[i].fieldType === constants.FIELD_COMPLEX 
+  	            			  && $scope.query[fieldName] !== null
+  	            			  && !(typeof  $scope.query[fieldName] === 'object')) {
+  	            		  var codes = $scope.query[fieldName].split(',');
+  	            		  $scope.query[fieldName] = codes;
+  	            	  }
+  	              }
+  			  }
     		  
     		  var modalInstance = $modal.open({
-			  templateUrl: 'views/filter-manager.html',
-			  controller: 'FilterManagerCtrl',
-			  resolve: {
-				  method: function () {
-					  return property.operation;
-				  },
-				  formProperties: function() {
-					  return $scope.query;
-				  },
-				  items: function () {
-					  return $scope.sourceList;
-				  },
-				  model: function() {
-					  return $scope.value;
-				  }
-			  }
+    			  templateUrl: '/views/filter-manager.html',
+    			  controller: 'FilterManagerCtrl',
+    			  resolve: {
+    				  method: function () {
+    					  return property.operation;
+    				  },
+    				  formProperties: function() {
+    					  return $scope.query;
+    				  },
+    				  items: function () {
+    					  return $scope.sourceList;
+    				  },
+    				  model: function() {
+    					  return $scope.value;
+    				  }
+    			  }
     		  });
 		
     		  modalInstance.result.then(function (newValue) {
     			  if (newValue !== null && newValue !== undefined) {
-    				  var fields = util.getEntityFields($scope.entityMetadata);
-    				  for(var i = 0; i < fields.length; i++) {
-    					  var fieldName = fields[i].fieldName;
-    		          
-    		              if($scope.query[fieldName] !== undefined && newValue[fieldName] !== undefined) {
-    		            	  //if (newValue[fieldName]  !== null && typeof  newValue[fieldName] === 'object') {
-    		            	  //	$scope.query[fieldName]  = newValue[fieldName].join(','); 
-    		            	  //} else {
-    		            		  $scope.query[fieldName] = newValue[fieldName];
-    		            	 // }
-    		            	  
-    		            	  $scope.$broadcast('update_' + fieldName);
-    		              }
+
+              $scope.resetQuery();
+              
+              setupQuery(newValue, $scope.query);
+
+    				  for(var i = 0; i < $scope.fields.length; i++) {
+    					  var field = $scope.fields[i];
+
+          		  var eventName = 'update_' + field.owner + '_' + field.name;
+          	    $scope.$broadcast(eventName);
     				  }
     			  }
     			  console.log('Save successful');
@@ -79,38 +123,42 @@ angular.module('sigmaNgApp')
     			  console.log('Operation canceled');
     		  });
     	  };
-	  },
-      link: function postLink(scope, element, attrs) {
-        scope.fields = util.getEntityFields(scope.entityMetadata);
 
-        function rootifyQuery(query, obj) {
-          for(var i in obj) {
-            if(typeof(obj[i]) === 'object') {
-              rootifyQuery(query, obj[i]);
-            }
-            // TODO Control arrays
-            else {
-              query[i] = obj[i];
-            }
+        $scope.resetQuery = function() {
+          var newQuery = scaffold.newQuery($scope.entityMetadata);
+          for(var param in $scope.query) {
+            $scope.query[param] = newQuery[param];
           }
-        }
+        };
 
+        $scope.delayedSubmit = function() {
+          $timeout(function() {
+            $scope.operations.submit();
+          }, 100);
+        };
+
+        var watchers = null;
+        $scope.$on('suspend', function() {
+          watchers = $scope.$$watchers;
+          $scope.$$watchers = [];
+        });
+
+        $scope.$on('resume', function() {
+          $scope.$$watchers = watchers;
+        });
+  	  },
+      link: function postLink(scope) {
         scope.operations = {
           updateField: function(property, value, query, parent) {
             var fieldName = property.name;
 
             // Is there an api name present?
             if(parent) {
-
-              var apiNames = parent.apiName;
-              var index = parent.searchable.fields.indexOf(property.name);
-              if(apiNames.length >= index) {
-                fieldName = apiNames[index];
-              }
+              fieldName = property.apiName;
             }
 
             // Special for checkboxes :)
-            if(property.fieldType === constants.FIELD_BOOLEAN) {
+            if(property.fieldType.search === constants.FIELD_BOOLEAN) {
               if(value.active == value.inactive) {
                 // None or all, same thing
                 value.text = '';
@@ -121,49 +169,51 @@ angular.module('sigmaNgApp')
               }
             }
 
-            if(property.fieldType === constants.FIELD_DATE) {
-              value.text  = value.comparator;
-              value.text += '#';
-              value.text += new Date(value.startDate);
-              value.text += '#';
-              value.text += new Date(value.endDate);
-            } 
+            if(property.fieldType.search === constants.FIELD_DATE) {
+              value.date.startDate = (value.date.startDate == "") ? 0 : value.date.startDate;
+              value.date.endDate = (value.date.endDate == "") ? 0 : value.date.endDate;
+              value.text = value.date;
+            }
+            else if(property.searchConf.policy === constants.VALIDATOR_RANGE) {
+              value.text = value.range;
+            }
 
             var ret = value.text;
             // if(ret && typeof ret === 'object') ret = ret.join(',');
-
-     
-              // Update the query
-              query[fieldName] = ret;
-
-            
+            // Update the query
+            query[fieldName] = ret;
             return ret;
           },
 
           clear: function() {
-            var fields = util.getEntityFields(scope.entityMetadata);
-            for(var i = 0; i < fields.length; i++) {
-              var fieldName = fields[i].fieldName;
-              var defaults = fields[i].defaultValue;
+            // return;
+            // var fields = util.getEntityFields(scope.entityMetadata);
+            // for(var i = 0; i < fields.length; i++) {
+            //   var fieldName = fields[i].name;
+            //   var defaults = fields[i].defaults;
 
-              // Does the field exist on the query?
-              if(scope.query[fieldName] !== undefined) {
-                scope.query[fieldName] = defaults;
-              }
-            }
+            //   // Does the field exist on the query?
+            //   if(scope.query[fieldName] !== undefined) {
+            //     scope.query[fieldName] = defaults;
+            //   }
+            // }
+            
+            //Call Search function to get the result with default search criteria
+            // scope.resetQuery();
 
             // Submit the reset downwards
             // TODO Do we need to put extra stuff for the reset?
-            scope.$broadcast('reset');
+            scope.$broadcast('reset-form');
+
+            scope.delayedSubmit();
           },
 
 
 
           submit: function() {
-            var query = {};
-            rootifyQuery(query, scope.query);
-
-            scope.submit(query);
+        	  scope.query.resetPaging = true;
+        	  scope.query.resetSorting = true;
+        	  scope.submit(scope.query);
           }
         };
 

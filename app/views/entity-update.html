@@ -1,18 +1,26 @@
-<div class="panel-body sogma-panel-body">
-	<div class="search-form col-md-offset-1 col-md-7">
-		<form class="form-horizontal" role="form" name="entityUpdate">
-			<update-form entity="entity" metadata="entityMetadata" on-change="operations.changeEntityField" on-update="operations.updateEntityField"></update-form>
-			<div class="pull-right update-btn-group">
-				<button class="btn btn-default" ng-click="operations.saveEntity()" ng-disabled="entityUpdate.$invalid || !changes.length">	{{ 'message.action.validate' | translate }}
-				</button>
-				<button class="btn btn-default" ng-click="operations.cancelUpdate()">
-					{{ 'message.action.cancel' | translate }}
-				</button>
-				<button class="btn btn-default" ng-click="operations.deleteEntity()" ng-hide="!deletable">
-					{{ 'message.action.delete' | translate }}
-				</button>
-			</div>
-		</form>
-		<form-info metadata="entityMetadata" entity="entity"></form-info>	
+<div class="wall">
+	<div class="panel-body sogma-panel-body">
+		<div class="search-form col-md-12">
+			<form ng-class="formStyle" role="form" name="entityUpdate" novalidate>
+				<update-form entity="entity" changes="changes" metadata="entityMetadata" params="params" on-change="operations.changeEntityField" on-update="operations.updateEntityField" creating="creating"></update-form>
+				<div class="pull-right update-btn-group">
+					<button class="btn btn-default" ng-repeat="action in entityMetadata.actions" ng-model="action" ng-click="operations.dispatchAction(action)" ng-show="action.scope==='UPDATE'" ng-disabled="action.scope!=='UPDATE'" id="update-action-dispatcher-{{ action.name }}">
+								{{ action.label | translate }}
+					</button>
+					<button type="submit" class="btn btn-success" ng-click="operations.dispatchEntityAction('save', params)" ng-disabled="entityUpdate.$invalid || !changes.length || invalid || (entityMetadata.name==='Materiel' && !entity.validCtrOperat && entity.id != null) || customDisableValider || alreadyValidated" id="save-entity">	
+						<i class="glyphicon glyphicon-ok"></i>
+						{{ 'message.action.validate' | translate }}
+					</button>
+					<button class="btn btn-default" ng-click="operations.cancelUpdate()" id="cancel-update">
+						<i class="glyphicon glyphicon-remove"></i>
+						{{ 'message.action.cancel' | translate }}
+					</button>
+					<button class="btn btn-danger" ng-click="operations.deleteEntity()" ng-hide="deletable == false" id="delete-entity" ng-disabled="disabledDelete">
+						<i class="glyphicon glyphicon-trash"></i>
+						{{ 'message.action.delete' | translate }}
+					</button>
+				</div>
+			</form>
+		</div>
 	</div>
 </div>

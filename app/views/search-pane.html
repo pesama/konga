@@ -1,27 +1,35 @@
-<div class="search-pane">
+<div class="search-pane" ng-init="init()">
 	<div class="search-form">
+		<h3>{{ 'message.search-filters.title' | translate }}</h3>
 		<form role="form">
-			<raw-input 
-				property="field"
-				vertical="true" 
-				source-list="productCodes[field.name]"
-				ng-repeat="field in fields | searchParams | orderBy:'priority'"
-				entity="query" 
-				metadata="entityMetadata" 
-				on-update="operations.updateField"
-				mode="search">
-			</raw-input>
-			<button type="reset" class="btn btn-default" ng-click="operations.clear()">Clean</button>
-			<button type="submit" class="btn btn-default" ng-click="operations.submit()">Search</button>
+			<div ng-include="contentUrl"></div>
+			<div class="col-md-12 form-group mode-search">
+				<div class="col-md-12 text-right">
+					<button id="clear-search-pane.id" type="button" class="btn btn-default" ng-click="operations.clear()">
+						<i class="glyphicon glyphicon-remove"></i>
+						{{'message.action.clean' | translate}}
+					</button>
+					<button id="submit-search-pane.id" type="submit" class="btn btn-success" ng-click="operations.submit()">
+						<i class="glyphicon glyphicon-ok"></i>
+						{{'message.action.search' | translate}}
+					</button>
+				</div>
+			</div>
+			<div class="col-md-12 form-group mode-search" ng-if="entityMetadata.favoriteable">
+				<label class="font-bold">
+					<i class="glyphicon glyphicon-star"></i>
+					{{ 'message.favorite-filter.title' | translate }}
+				</label>
+				<div class="col-md-12 nowrap">
+					<button id="openFilterModelPost.id" class="btn btn-link" ng-click="openFilterModel({ dataType: 'filtermgt', operation: 'post'})">
+						<i class="glyphicon glyphicon-floppy-save"></i>
+						{{'message.favorite-filter.save-filter' | translate}}
+					</button>
+					<button id="openFilterModelGet.id" class="btn btn-link" ng-click="openFilterModel({ dataType: 'filtermgt', operation: 'get'})">
+						<i class="glyphicon glyphicon-floppy-open"></i>
+						{{'message.favorite-filter.load-filter' | translate}}
+					</button>
+			</div>
 		</form>
-	</div>
-	<div class="filtermanagement">
-		<button class="btn btn-link"
-			ng-click="openFilterModel({ dataType: 'filtermgt', operation: 'post'})">Enregistrer
-			ce filtre comme favori</button>
-		<br />
-		<button class="btn btn-link"
-			ng-click="openFilterModel({ dataType: 'filtermgt', operation: 'get'})">Charger
-			filtre favori</button>
 	</div>
 </div>

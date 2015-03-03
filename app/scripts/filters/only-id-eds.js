@@ -7,6 +7,7 @@
  * @description
  * # onlyIdEds
  * It receives an array of ENTITY entities, and returns another one containing just their ids.
+ * @param {Array} input Defines the array of entities to manage
  */
 angular.module('sigmaNgApp')
   .filter('onlyIdEds', function () {

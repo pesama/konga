@@ -17,7 +17,12 @@
     "bootstrap": "~3.2.0",
     "angular-bootstrap": "~0.11.0",
     "angular-dialog-service": "~5.1.1",
-    "angular-translate-loader-static-files": "~2.2.0"
+    "angular-translate-loader-static-files": "~2.2.0",
+    "angular-ui-tree": "~2.1.5",
+    "angular-ui-sortable": "~0.13.0",
+    "angular-bootstrap-datetimepicker": "~0.3.7",
+    "angular-strap": "~2.1.4",
+    "angular-file-upload": "~1.1.5"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",
@@ -26,6 +31,8 @@
   "appPath": "app",
   "resolutions": {
     "angular-translate": "~2.2.0",
-    "bootstrap": "~3.2.0"
+    "bootstrap": "~3.2.0",
+    "angular": "1.2.16",
+    "es5-shim": "~3.1.0"
   }
 }

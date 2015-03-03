@@ -1,0 +1,7 @@
+<li>
+	<div>
+		<a href="" ng-click="click(item)">{{ item.label | translate }}</a>
+		<i class="text-success" ng-class="{ 'glyphicon glyphicon-ok': item.selected && !item.children.length }"></i>
+		<recursive-list list="item.children" on-click-item="click"></recursive-list>
+	</div>
+</li>

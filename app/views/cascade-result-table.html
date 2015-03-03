@@ -1,0 +1,27 @@
+<table class="table table-result">
+	<thead>
+		<tr class="table-header">
+			<th ng-repeat="field in fields | allowed:'results'" style="cursor: pointer;">
+				<table-header field="field" sorting="sorting" showSorting="showSorting" mode="results"></table-header>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr	ng-class="{disabled : !showInRed(entity.statut), enabled : showInRed(entity.statut), editable: isEditable, resultClick: entityMetadata.resultClick.length}" 
+			ng-hide="chantierCtrl.emptyResult" 
+			ng-repeat="entity in entities"
+			ng-click="resultClick(entityMetadata, entity, $index)" ng-show="entities.length > 0">
+			<!-- <td>
+				<a ng-click="updateChantier(result)">
+					<span>{{entity.codeEds}}</span>
+				</a>
+			</td> -->
+			<td ng-repeat="field in fields | allowed:'results'">
+				<table-cell entity="entity" field="field"></table-cell>
+			</td>
+		</tr>
+		<tr ng-hide="entities.length > 0">
+			<td colspan="{{ fields.length }}" class="align-center">{{'field.searchResults.noresults' | translate }}</td>
+		</tr>
+	</tbody>
+</table>

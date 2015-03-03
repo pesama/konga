@@ -1,0 +1,11 @@
+<raw-input 
+	property="field"
+	vertical="true" 
+	source-list="productCodes[field.name]"
+	ng-repeat="field in fields | searchParams | orderBy:'priority.search' | allowed:'search'"
+	entity="query" 
+	metadata="entityMetadata" 
+	on-update="operations.updateField"
+	mode="search"
+	index="$index">
+</raw-input>

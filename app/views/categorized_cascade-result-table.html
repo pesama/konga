@@ -1,0 +1,32 @@
+<table class="table table-result" cellpadding="0" cellspacing="0" border="0">
+	<thead>
+		<tr class="table-header categories">
+			<th ng-repeat="category in categories" style="cursor: pointer;" colspan="{{ categoryFields[category.name].length }}" ng-class="{ noHeader: !category.showHeader }">
+				<span ng-if="category.showHeader">{{ category.name | translate }}</span>
+			</th>
+		</tr>
+		<tr class="table-header">
+			<th ng-repeat="field in sortedFieldsByCategory" style="cursor: pointer;">
+				<table-header field="field" sorting="sorting" showSorting="showSorting" mode="results"></table-header>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr	ng-class="{disabled : !showInRed(entity.statut), enabled : showInRed(entity.statut), editable: entityMetadata.editable !== null, resultClick: entityMetadata.resultClick.length}" 
+			ng-hide="chantierCtrl.emptyResult" 
+			ng-repeat="entity in entities"
+			ng-click="resultClick(entityMetadata, entity)" ng-show="entities.length > 0">
+			<!-- <td>
+				<a ng-click="updateChantier(result)">
+					<span>{{entity.codeEds}}</span>
+				</a>
+			</td> -->
+			<td ng-repeat="field in sortedFieldsByCategory">
+				<table-cell entity="entity" field="field"></table-cell>
+			</td>
+		</tr>
+		<tr ng-hide="entities.length > 0">
+			<td colspan="{{ fields.length }}" class="align-center">{{'field.searchResults.noresults' | translate }}</td>
+		</tr>
+	</tbody>
+</table>

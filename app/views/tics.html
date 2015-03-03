@@ -1,0 +1,54 @@
+<div class="tics" ng-init="init()">
+	<table width="100%" cellspacing="0" cellpadding="1" border="1">
+		<thead>
+			<tr class="categories">
+				<th rowspan="3" class="text-center">Composants</th>
+				<th rowspan="3"class="text-center">Evenements</th>
+				<th colspan="32"class="text-center">{{ structure.monthName | translate }} {{ structure.yearNo }}</th>
+			</tr>
+			<tr>
+				<th class="text-center" ng-repeat="day in structure.columns">{{ day.dayName | translate | shortify:dayLength }}</th> <!-- TODO Set week day -->
+				<th class="text-center" rowspan="2">Total</th>
+			</tr>
+			<tr>
+				<th class="text-center" ng-repeat="day in structure.columns">{{ $index + 1 }}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat-start="cat in structure.categories">
+				<td class="text-center" rowspan="{{ cat.elements.length + 1 }}">
+					{{ cat.name }} <!-- TODO Translate -->
+				</td>
+				<td class="text-center">
+					{{ cat.elements[0].name }}<!-- TODO Translate -->
+				</td>
+				<td class="text-center" ng-class="{ invalid: !evt.valid, weekend: structure.columns[$index].isFestive, dontbelong: showAll && !evt.$belongs, multi: showAll && evt.multi }" ng-repeat="evt in cat.elements[0].events">
+					<input class="hideArrows" type="number" size="2" ng-model="evt.input" ng-change="updateDay(evt, cat.elements[0])" ng-disabled="!inputEnabled" step="any" ng-hide="showAll" />
+					<input type="number" class="hideArrows" ng-show="showAll" size="2" ng-model="evt.input" bs-popover="evt.popover" readonly>
+				</td>
+				<td class="text-center total">
+					<input type="text" size="4" ng-model="cat.elements[0].total" readonly />
+				</td>
+			</tr>
+			<tr ng-repeat="elt in cat.elements" ng-if="$index > 0">
+				<td class="text-center">
+					{{ elt.name }}<!-- TODO Translate -->
+				</td>
+				<td class="text-center" ng-class="{ invalid: !evt.valid, weekend: structure.columns[$index].isFestive, dontbelong: showAll && !evt.$belongs, multi: showAll && evt.multi }" ng-repeat="evt in elt.events">
+					<input class="hideArrows" type="number" size="2" ng-model="evt.input" ng-change="updateDay(evt, elt)" ng-disabled="!inputEnabled" step="any" ng-hide="showAll" />
+					<input type="number" class="hideArrows" ng-show="showAll" size="2" ng-model="evt.input" bs-popover="evt.popover" readonly>
+				</td>
+				<td class="text-center total">
+					<input type="text" size="4" ng-model="elt.total" readonly />
+				</td>
+			</tr>
+			<tr ng-repeat-end>
+				<td class="text-right summary title" colspan="{{ eventSize + 1 }}">Total {{ cat.name }}</td>
+				<td class="text-center summary" style="background: black">
+					<input type="text" size="4" ng-model="cat.total" readonly />
+				</td>
+			</tr>
+		</tbody>
+
+	</table>
+</div>

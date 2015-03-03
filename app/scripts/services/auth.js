@@ -8,17 +8,17 @@
  * Factory in the sigmaNgApp.
  */
 angular.module('sigmaNgApp')
-  .factory('auth', ['$http', 'TokenHandler', 
-    function ($http, TokenHandler) {
+  .factory('auth', ['$http', 'TokenHandler', 'ENV', 
+    function ($http, TokenHandler, ENV) {
 
 
         // Methods
         return {
           auth: function(loginData) {
-            return $http.post(constants.API_HOST + '/user/auth', loginData);
+            return $http.post(ENV.apiEndpoint + '/auth/login', loginData);
           },
           fullauth: function(ctrOperatId) {
-            return $http.post(constants.API_HOST + '/user/fullauth', ctrOperatId);
+            return $http.post(ENV.apiEndpoint + '/user/fullauth', ctrOperatId);
           }
         };
     }]);

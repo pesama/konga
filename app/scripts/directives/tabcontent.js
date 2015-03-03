@@ -8,11 +8,12 @@ angular.module('sigmaNgApp')
 	directiveDefinitionObject.transclude= true;
 	directiveDefinitionObject.replace = true;
 	directiveDefinitionObject.scope= {
-		title: '@'
+		title: '@',
+		id: '=tabId'
 	};
 	directiveDefinitionObject.link= function(scope, element, attrs, tabsCtrl){
 			tabsCtrl.addTabContent(scope);
 	};
-	directiveDefinitionObject.templateUrl = 'views/vertical-tabs-element.tp.html';
+	directiveDefinitionObject.templateUrl = '/views/vertical-tabs-element.tp.html';
 	return directiveDefinitionObject;
   });

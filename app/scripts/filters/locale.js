@@ -6,7 +6,8 @@
  * @function
  * @description
  * # locale
- * Filter in the sigmaNgApp.
+ * It receives an input , and it returns a message which locate in index equal input.
+ * @param {Number} input Defines the index of message
  */
 angular.module('sigmaNgApp')
   .filter('locale', ['common', 

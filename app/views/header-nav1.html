@@ -1,49 +1,84 @@
-<div class="container">
+<div class="container-fluid">
 	<!-- Brand and toggle get grouped for better mobile display -->
 	<div class="navbar-header">
-		<button type="button" class="navbar-toggle" data-toggle="collapse"
-			data-target="#header-1-navbar-collapse">
-			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
-			<span class="icon-bar"></span> <span class="icon-bar"></span>
-		</button>
-		<a class="navbar-brand logo" href="#"><img src="images/logo.gif"
-			alt="Groupe NGE" /></a>
+		<a class="navbar-brand" href="#">
+			<img src="/images/logo.png" height="30">
+		</a>
 	</div>
-
 	<!-- Collect the nav links, forms, and other content for toggling -->
-	<div class="collapse navbar-collapse" id="header-1-navbar-collapse">
-		<ul class="nav navbar-nav navbar-right">
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<ul class="nav navbar-nav">
 			<li>
-			<!--  <i class="icon ion-person"></i>-->
-				<a ng-show="isLogged"><span class="nav-item">{{ username }}</span></a>
+				<a href="#" ng-click="operations.goHome()">
+					<i class="glyphicon glyphicon-home"></i>
+					Home
+				</a>
 			</li>
-			<li>
-				<a href="#"><span class="nav-item">Params</span></a>
+			<!-- <li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+					<i class="glyphicon glyphicon-cloud"></i>
+					Aplicaciones <span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="#">Catálogo</a></li>
+				</ul>
+			</li> -->
+			<li class="dropdown" ng-if="user.admin || user.superadmin">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+					<i class="glyphicon glyphicon-lock"></i>
+					Administración <span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu" role="menu">
+					<!-- <li><a href="#" ng-click="operations.goAdmin()">Panel</a></li>
+					<li class="divider"></li>
+					<li class="dropdown-submenu"> -->
+						<!-- <a href="#">Elementos</a> -->
+						<!-- <ul class="dropdown-menu" role="menu"> -->
+							<li ng-repeat="entity in metadata.entities | filter:{access: 'PUBLIC'} | orderBy: '+label'">
+								<a href="#" ng-click="operations.openEntitySearch(entity)">{{ entity.label }}</a>
+							</li>
+						<!-- </ul> -->
+					<!-- </li> -->
+				</ul>
 			</li>
-			<li>
-				<a><span class="nav-item"><b>{{ 'message.main.language' | translate }}:</b>&nbsp;{{ selectedLanguage | translate }}</span></a>
-			</li>
-
-			<!-- Available languages -->
-
-			<!-- French -->
-			<li>
-				<img ng-src="http://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Civil_and_Naval_Ensign_of_France.svg/1280px-Civil_and_Naval_Ensign_of_France.svg.png" class="locale-flag" ng-click="operations.changeLocale('fr')" />
-			</li>
-
-			<!-- English -->
-			<li>
-				<img ng-src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Union_flag_1606_(Kings_Colors).svg/1280px-Union_flag_1606_(Kings_Colors).svg.png" class="locale-flag" ng-click="operations.changeLocale('en')" />
-			</li>
-			
-			<li>
-				<a href="#" ng-click="deconnexion()" ng-show="isLogged"><span class="nav-item">{{ 'global.desconnexion' | translate }}</span></a>
+			<li class="dropdown" ng-if="user.id === 1">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+					<i class="glyphicon glyphicon-cog"></i>
+					Webmaster <span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu" role="menu">
+					<li ng-repeat="entity in metadata.entities | filter:{access:'!HIDDEN'} | orderBy: '+label'">
+						<a href="#" ng-click="operations.openEntitySearch(entity)">{{ entity.label }}</a>
+					</li>
+				</ul>
 			</li>
 		</ul>
-	</div>
-	<!-- /.navbar-collapse -->
-</div>
-<!-- /.container -->
-<div class="container">
-	<h4 class="second-title" ng-show="isFullyLogged">{{'global.ctr-operat' | translate}}: {{ctrOperatName}}</h4>
-</div>
+		<ul class="nav navbar-nav navbar-right">
+			<li>
+				<a href="#" ng-click="operations.openEntityUpdate('user', user, { title: 'Mis datos', type: 'glyphicon glyphicon-user' })">
+					<i class="glyphicon glyphicon-user"></i>
+					{{ user.name }}
+				</a>
+			</li>
+			<!-- <li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+					<i class="glyphicon glyphicon-cog"></i>
+					Ajustes <span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="#">Action</a></li>
+					<li><a href="#">Another action</a></li>
+					<li><a href="#">Something else here</a></li>
+					<li class="divider"></li>
+					<li><a href="#">Separated link</a></li>
+				</ul>
+			</li> -->
+			<li>
+				<a href="#" ng-click="operations.dispatchAction({ name: 'logout' })">
+					<i class="glyphicon glyphicon-off"></i>
+					Salir
+				</a>
+			</li>
+		</ul>
+	</div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->

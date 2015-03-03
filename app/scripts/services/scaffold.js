@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc service
- * @name sigmaNgApp.Scaffold
+ * @name kongaUI.Scaffold
  * @description
  * # scaffold
  * Service in the sigmaNgApp.
@@ -21,7 +21,7 @@ angular.module('sigmaNgApp')
                 //if(search) {
 
                     // Get the multiplicity
-                    var multiplicity = field.multiplicity;
+                    var multiplicity = !search ? field.multiplicity : field.searchConf.multiplicity;
 
                     // Get the type
                     var type = field.type.type;
@@ -39,7 +39,7 @@ angular.module('sigmaNgApp')
                     if(defaultValue == 'null' || field.isId) {
                         castValue = null;
                     }
-                    else if(multiplicity == constants.MULTIPLICITY_MANY) {
+                    else if(multiplicity == constants.MULTIPLICITY_MANY && !(search && field.fieldType.search === constants.FIELD_COMPLEX)) {
                         castValue = [];
                     }
                     else if(type !== constants.FIELD_TEXT) {
@@ -51,18 +51,23 @@ angular.module('sigmaNgApp')
                             // Initialized as null, valorized afterwards
                             castValue = null;
 
-                            // TODO Make this recursive, and for updation too
-                            if(search) {
+                            // Control if field rendering is also complex
+                            // TODO Make this recursive (and for updation too)
+                            if(search && field.fieldType.search === constants.FIELD_COMPLEX) {
                                 var innerFields = field.searchable.fields;
                                 var apiNames = field.apiName;
                                 if(innerFields.length) {
                                     castValue = {};
-                                    if(apiNames.length == innerFields.length) {
+                                    if(apiNames && apiNames.length == innerFields.length) {
                                         innerFields = apiNames;
                                     }
                                     for(var f = 0; f < innerFields.length; f++) {
                                         var innerFieldName = innerFields[f];
-                                        castValue[innerFieldName] = null;
+
+                                        castValue[$filter('fieldApiName')(innerFieldName)] = null;
+
+
+                                        
                                     }
                                 }
                             }
@@ -73,12 +78,12 @@ angular.module('sigmaNgApp')
                                     startDate: 0,
                                     endDate: 0,
                                     comparator: constants.DATE_COMPARATOR_EQUALS
-                                }
+                                };
                             }
                             else {
-                                var strDate = defaultValue;
+                                //var strDate = defaultValue;
                                 if(defaultValue == constants.DATE_DEFAULT_NOW) {
-                                    castValue = (((new Date().getTime()) / 1000) | 0);
+                                    castValue = new Date().getTime();
                                 }
                                 else {
                                     // TODO Cast date :)
@@ -86,6 +91,14 @@ angular.module('sigmaNgApp')
                                 }
                             }
                             break;
+                        case constants.FIELD_NUMBER:
+                            castValue = defaultValue ? parseInt(defaultValue) : defaultValue;
+                            break;
+                        case constants.FIELD_STRING:
+                        	if(typeof defaultValue !== 'undefined') {
+                        		castValue = defaultValue;
+                        	}
+                        	break;
                         }
                     }
                     else {
@@ -109,8 +122,13 @@ angular.module('sigmaNgApp')
         this.newEntity = function(metadata, resource) {
 
         	// Create the new entity
-        	var entity = new resource();
-
+        	var entity = null;
+        	
+        	if (resource === undefined) 
+        		entity = {};
+        	else
+        		entity = new resource(); 
+        	
         	// Get all fields
         	var fields = util.getEntityFields(metadata);
 

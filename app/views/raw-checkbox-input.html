@@ -1,9 +1,12 @@
-<div class="checkbox-inline">
-	<label> <input type="checkbox" ng-value="true" ng-model="value.active" ng-di> Active
-	</label>
-</div>
-<div class="checkbox-inline">
-	<label> <input type="checkbox" ng-value="false" ng-model="value.inactive">
-		Inactive
-	</label>
+<div class="col-md-12">
+	<div class="checkbox-inline">
+		<label for="{{ fieldId }}-true"> <input name="{{ property.name }}"type="checkbox" ng-value="true" ng-model="value.active" id="{{ fieldId }}-true"> 
+			{{ true | activeInactive:property | translate}}
+		</label>
+	</div>
+	<div class="checkbox-inline">
+		<label for="{{ fieldId }}-false"> <input name="{{ property.name }}"type="checkbox" ng-value="false" ng-model="value.inactive" id="{{ fieldId }}-false">
+			{{ false | activeInactive:property | translate}}
+		</label>
+	</div>
 </div>

@@ -8,9 +8,9 @@
  * Factory in the sigmaNgApp.
  */
 angular.module('sigmaNgApp')
-  .factory('Role', ['$resource','$routeParams', function ($resource,$routeParams) {
+  .factory('Role', ['$resource','$routeParams', 'ENV', function ($resource, $routeParams, ENV) {
 	// Public API here
-	    return $resource(constants.API_HOST + '/role/:id', {}, {
+	    return $resource(ENV.apiEndpoint + '/role/:id/ ', {}, {
 	        get: {
 	          method: 'GET',
 	          params: {
@@ -23,7 +23,7 @@ angular.module('sigmaNgApp')
 	            id: null
 	          },
 	          isArray: true,
-	          transformResponse: function (data, headers) {
+	          transformResponse: function (data) {
 	            	var jsonData = JSON.parse(data);
 	            	$routeParams.total = jsonData.total;
 	            	return jsonData.roles; 

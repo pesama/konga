@@ -1,42 +1,58 @@
 <div class="multi-select" ng-init="operations.init()">
 	<div class="modal-header" ng-show="true">
 	    <!-- Close button -->
-	    <button type="button" class="close" ng-click="multiselectModal.cancel()">&times;</button>
+	    <button id="multiselectModal.cancelX.id" type="button" class="close" ng-click="multiselectModal.cancel()">&times;</button>
 
-		<!-- Filter -->
-		<!-- TODO Externalize -->
-	    <input type="text" name="filter" ng-model="filter" class="filter" placeholder="Filter..." />
+		<div class="filter">
+			<div class="form-inline" ng-repeat="quickSearchItem in quickSearch">
+				<div class="form-group">
+					<!-- <label for="filter" class="control-label col-md-4">5 résultats</label> -->
+					<div class="col-md-12">
+						<div class="input-group">
+						  <span class="input-group-addon">
+						  	&nbsp;
+						  	<i class="glyphicon glyphicon-filter"></i>
+						  	&nbsp;
+						  </span>
+						  <input type="text" id="multi-select-filter" class="form-control" name="filter" ng-model="quickSearchItem.value" placeholder="{{quickSearchItem.metadata.label | translate:quickSearchItem.extra }}" ng-change="executeQuickSearch()" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 	    <!-- Title -->
 	    <h4 class="modal-title" ng-bind="multiselectModal.title"></h4>
   	</div>
 	<div class="col-md-5 multi-select-modal-body-item">
-		<div class="multiselect-list list-group">
+		<div class="multiselect-list list-group" scroll-watcher>
 			<a class="list-group-item"
-				ng-repeat="item in (sourceList | filter:filter | orderBy: key) | filter: {added: false}"
-				ng-click="operations.toggle(item)"
+				ng-repeat="item in sourceList | filter:filter.value | filter: {added: false} | orderBy: '+key'"
+				ng-click="operations.toggle(item, !item.selected)"
+				ng-dblclick="operations.toggle(item, true);operations.add()"
 				ng-class="{selected: item.selected}">
 				<h5>
-					{{ item.key }} <small>{{ item.value }}</small>
+					{{ item.key }} <small>{{ item.value | translate }}</small>
 				</h5>
 			</a>
+			<div class="loading-data" ng-if="loading">&nbsp;</div>
 		</div>
 	</div>
 	<div class="col-md-2 multi-select-modal-body-item center">
 		<div class="add-remove-btn">
-			<button type="button" class="btn btn-default" ng-click="operations.add()">
+			<button id="add-multi-select.id" type="button" class="btn btn-default" ng-click="operations.add()">
 				<i class="icon ion-chevron-right"></i>
 			</button>
-			<button type="button" class="btn btn-default" ng-click="operations.remove()">
+			<button id="remove-multi-select.id" type="button" class="btn btn-default" ng-click="operations.remove()">
 				<i class="icon ion-chevron-left"></i>
 			</button>
 		</div>
 		<div class="add-remove-btn">
-			<button type="button" class="btn btn-default" ng-click="operations.addAll()">
+			<button id="addAll-button.id" type="button" class="btn btn-default bulk-option" ng-click="operations.addAll()">
 				<i class="icon icon-add-remove-all ion-chevron-right"></i><i
 					class="icon icon-add-remove-all ion-chevron-right"></i>
 			</button>
-			<button type="button" class="btn btn-default" ng-click="operations.removeAll()">
+			<button id="removeAll-button.id" type="button" class="btn btn-default bulk-option" ng-click="operations.removeAll()">
 				<i class="icon icon-add-remove-all ion-chevron-left"></i><i
 					class="icon icon-add-remove-all ion-chevron-left"></i>
 			</button>
@@ -45,11 +61,12 @@
 	<div class="col-md-5 multi-select-modal-body-item">
 		<div class="multiselect-list list-group">
 			<a a class="list-group-item"
-				ng-repeat="item in sourceList | filter: {added: true}"
-				ng-click="operations.toggle(item)"
+				ng-repeat="item in sourceList | filter: {added: true} | orderBy: '+key'"
+				ng-click="operations.toggle(item)" 
+				ng-dblclick="operations.toggle(item, true);operations.remove()"
 				ng-class="{selected: item.selected}">
-				<h5>
-					{{ item.key }}<small>{{ item.value }}</small>
+				<h5>   
+					{{ item.key }} <small>{{ item.value | translate }}</small>
 				</h5>
 			</a>
 		</div>
@@ -57,7 +74,14 @@
 	<div class="clear">&nbsp;</div>
 	<div class="modal-footer">
 		<!-- Close button -->
-		<button type="button" class="btn btn-default" ng-click="multiselectModal.cancel()">Cancel</button>
-		<button type="button" class="btn btn-default" ng-click="multiselectModal.save()">OK</button>
+		<button  type="button" class="btn btn-success" ng-click="multiselectModal.save()" id="multi-select-save">
+			<i class="glyphicon glyphicon-ok"></i>
+			{{ 'message.action.validate' | translate }}
+		</button>
+		<button  type="button" class="btn btn-default" ng-click="multiselectModal.cancel()" id="multi-select-cancel">
+			<i class="glyphicon glyphicon-remove"></i>
+			{{ 'message.action.cancel' | translate }}
+		</button>
+		
 	</div>
 </div>

@@ -1,8 +1,8 @@
 <div class="tabbable">
-	<ul class="nav nav-tabs nav-stacked sigma-nav-vertical col-md-2 padding-cero">
+	<ul class="nav nav-pills nav-stacked sigma-nav-vertical col-md-3 no-padding-right">
 		<li ng-repeat="tabContent in tabContentList" ng-class="{active:tabContent.selected}">
 			<a href="" ng-click="select(tabContent)">{{tabContent.title}}</a>
 		</li>
 	</ul>
-	<div class="tab-content col-md-14 padding-cero" ng-transclude></div>
+	<div class="tab-content col-md-offset-3 padding-cero" ng-transclude></div>
 </div>

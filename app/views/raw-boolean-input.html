@@ -1,11 +1,14 @@
-<div class="radio-inline">
-	<label> <input type="radio" name="{{property.fieldName}}"
-		ng-value="true" ng-model="value.text">
-		{{ 'message.radio.active' | translate }}
-	</label>
+<div class="col-md-12">
+	<div class="radio-inline">
+		<label for="{{ fieldId }}-true">
+			<input name="{{ property.name }}"type="radio" name="{{property.name}}" ng-value="true" ng-model="value.text" id="{{ fieldId }}-true" ng-disabled="disableField(mode, property)">
+			{{ true | activeInactive:property:mode | translate }}
+		</label>
+	</div>
+	<div class="radio-inline">
+		<label for="{{ fieldId }}-false">
+			<input type="radio" name="{{property.name}}" ng-value="false" ng-model="value.text" id="{{ fieldId }}-false" ng-disabled="disableField(mode, property)">
+			{{ false | activeInactive:property:mode | translate }}
+		</label>
+	</div>
 </div>
-<div class="radio-inline">
-	<label> <input type="radio" name="{{property.fieldName}}"
-		ng-value="false" ng-model="value.text"> {{ 'message.radio.inactive' | translate }}
-	</label>
-</div>  

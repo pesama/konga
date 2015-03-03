@@ -1,70 +1,71 @@
-<div class="table-search-result col-md-12" >
-	<!-- ng-show="hideSearchSpiner"> -->
-	<div class="row">					
-		<div class="col-md-2">
-			<span class="total-items">{{paginationData.currentItems}}/{{paginationData.totalItems}}</span>
-		</div>
-		<div class="col-md-3">
-			<select class="form-control"
-				ng-model="paginationData.pageItems" ng-change="pageChanged()">
-				<option>5</option>
-				<option>10</option>
-				<option>15</option>
-				<option>20</option>
-				<option>25</option>
-			</select>
-		</div>
-		<div class="col-md-7" ng-show="paginationData.totalItems">
-			<span><a ng-click="pageChanged('first')">&lt;&lt;</a></span>
-			<span><a ng-click="pageChanged('previous')">&lt;</a></span>
-			<span>{{paginationData.currentPage}}</span>
-			<span><a ng-click="pageChanged('next')">&gt;</a></span>
-			<span><a ng-click="pageChanged('last')">&gt;&gt;</a></span>
+<div class="list-input col-md-12 padding-cero">
+	<div class="col-md-12 padding-cero" ng-if="paginate">
+		<!-- ng-show="hideSearchSpiner"> -->
+		<div class="row">
+			<div class="col-md-4 form-inline position-pagination" style="margin-top:10px" ng-show="paginationData.count">
+				<label class="control-label font-normal">
+					{{ 'message.pagination.results-per-page' | translate }}
+				</label>
+				<select class="form-control" ng-model="paginationData.limit" ng-change="pageChanged()">
+					<option>10</option>
+					<option>20</option>
+					<option>50</option>
+				</select>
+			</div>
+			<div class="col-md-6 text-right" ng-show="paginationData.count">
+				<div class="form-inline">
+					<div class="form-group">
+						<span class="total-items">{{'message.pagination.results' | translate:paginationData }}</span>
+					</div>
+					<div class="form-group">
+						<pagination boundary-links="true" total-items="paginationData.count" items-per-page="paginationData.limit" max-size="2" rotate="false" ng-model="paginationData.offset" ng-change="paginationSubmit()" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"> </pagination>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-	<div class="row">
-		<!-- <div class="col-md-6">
-			<div class="checkbox">
-			  <label>
-			    <input type="checkbox" ng-model="selectAllItmsData">
-			    Sélectionner / Désélectionner Tout
-			  </label>
-			</div>
-		</div>
-		<div class="col-md-6">
-			<div class="checkbox">
-			  <label>
-			    <input type="checkbox" ng-model="displaySelectedItmsData">
-			    Aficher éléments séléctionnés
-			  </label>
-			</div>
-		</div> -->
-
-		<div class="col-md-12 search-table-container">
+	<div class="col-md-12 padding-cero">
+		<div class="table-search-result">
 			<table class="table table-striped">
 				<tr class="table-header">
 					<!-- <th></th> -->
 					<th ng-repeat="field in fields">
-						<span>{{ field.label | translate }}</span>
-						<!-- <input type="text" class="form-control"
+						<table-header field="field" showSorting="showSorting" mode="update"></table-header>
+					</th>
+					<th ng-show="actions && actions.length">
+						<span>{{ 'field.list-input.actions' | translate }}</span>
+						<!-- <input id="test" type="text" class="form-control"
 								placeholder="{{ field.fieldLabel | translate }}" ng-model="quickSearchParams.param[field.fieldKey]"> -->
-						</th>
+					</th>
 					
 				</tr>
-				<tr ng-repeat="entity in list | filter:quickSearchParams.value | displaySelectedItms:displaySelectedItmsData |startFrom:(paginationData.currentPage-1)*paginationData.pageItems | limitTo:paginationData.pageItems">
+				<tr ng-hide="filteredList.length > 0">
+					<td colspan="{{ fields.length + 1 }}" class="align-center">{{'field.searchResults.noresults' | translate }}</td>
+				</tr>
+				<tr ng-show="filteredList.length>0" ng-repeat="entity in filteredList | filter:quickSearchParams.value">
 					<!-- <td>
 						<div class="checkbox">
 						  <label>
-						    <input type="checkbox" ng-model="entity.selected" ng-change="pageChanged()" ng-disabled="disabledIds[entity.id]">
+						    <input id="checkbox.id-list-input" type="checkbox" ng-model="entity.selected" ng-change="pageChanged()" ng-disabled="disabledIds[entity.id]">
 						  </label>
 						</div>
 					</td> -->
 					<td ng-repeat="field in fields">
-						<span>{{entity | mapEdsField:field }}</span>
+						<table-cell entity="entity" field="field"></table-cell>
+					</td>
+	<!-- 					<table-cell entity="entity" field="field"></table-cell> -->
+					<td ng-show="actions && actions.length">
+						<button class="btn btn-link no-button-styles" ng-repeat="action in actions" ng-click="dispatchFieldAction(action.name, {entity: entity})" id="{{ fieldId + '-' + action.name }}">
+							<i ng-class="action.icon" ng-show="action.icon.length"></i>
+							{{ action.label | translate }}
+						</button>
+						&nbsp;
 					</td>
 				</tr>
+				<tr ng-hide="fields.length > 0">
+					<td colspan="{{ fields.length }}" class="align-center">{{'field.searchResults.noresults' | translate }}</td>
+				</tr>
 			</table>
-
 		</div>
 	</div>
 </div>

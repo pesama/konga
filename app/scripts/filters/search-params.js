@@ -2,10 +2,13 @@
 
 /**
  * @ngdoc filter
- * @name sigmaNgApp.filter:searchParams
+ * @name kongaUI.filter:searchParams
  * @function
  * @description
- * It receives an entity, and returns all its fields that could be used for searching purposes. 
+ * # searchParams
+ * It receives an entity metadata information, and returns all its fields that could be used for searching purposes.
+ * @param {Array} fields Defines an array of fields of the entity
+ * @param {Object=} metadata Defines the metadata of the entity 
  */
 angular.module('sigmaNgApp')
   .filter('searchParams', function () {
@@ -15,7 +18,8 @@ angular.module('sigmaNgApp')
       for(var i = 0; i < fields.length; i++) {
         var field = fields[i];
 
-        if(field.searchable.value) {
+        // TODO Verify permissions
+        if(field.searchable.value !== null) {
             result.push(field);
         }
       }

@@ -1,0 +1,8 @@
+<div class="col-md-12">
+	<button type="button" class="btn btn-default combobox-button" ng-model="value.text" ng-disabled="disableField(mode, property)" ng-required="validation.required()" data-html="0" ng-options="item.key as item.value | translate for item in value.list" data-animation="am-flip-x" data-placeholder="{{ 'combobox.placeholder' | translate }}" bs-select ng-if="!multiple">
+	  Action <span class="caret"></span>
+	</button>
+	<button type="button" class="btn btn-default combobox-button" ng-model="value.text" ng-disabled="disableField(mode, property)" ng-required="validation.required()" data-html="0" ng-options="item.key as item.value | translate for item in value.list" data-multiple="{{ multiple }}" data-animation="am-flip-x" data-placeholder="{{ 'combobox.placeholder' | translate }}" bs-select ng-if="multiple">
+	  Action <span class="caret"></span>
+	</button>
+</div>

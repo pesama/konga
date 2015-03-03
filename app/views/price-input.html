@@ -1,0 +1,7 @@
+<div class="input-group">
+  <input name="{{ property.name }}" type="text" class="form-control text-right"
+	id="{{ fieldId }}" placeholder="" ng-model="inner.text" ng-change="formatInput()"
+ 	ng-disabled="disableField(mode, property)"
+	ng-pattern="validation.pattern()" ng-required="validation.required()" aria-describedby="{{fieldId}}_addon">
+  <span class="input-group-addon" id="{{fieldId}}_addon">&nbsp;<b>{{ currency }}&nbsp;</b></span>
+</div>

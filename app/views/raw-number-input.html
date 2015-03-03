@@ -1,9 +1,9 @@
 
-<input type="number"
+<input name="{{ property.name }}"type="number"
 	class="form-control sigma-form-search-input sigma-form-simple-search-input"
-	id="{{property.fieldName}}" placeholder="" ng-model="value.text"
-	ng-disabled="disabled" ng-disabled="disableField(mode, property)"
-	ng-pattern="validation.pattern()" ng-required="validation.required()">
+	id="{{ fieldId }}" placeholder="" ng-model="value.text"
+ 	ng-disabled="disableField(mode, property)"
+	ng-pattern="validation.pattern()" ng-required="validation.required()" min="{{ validation.minvalue() }}" max="{{ validation.maxvalue() }}" tabindex="{{ (index + 1) * 12 }}">
 
 <div class="validation">
 	<div class="validation-pattern btn-danger">

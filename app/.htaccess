@@ -515,6 +515,10 @@ FileETag None
 #   <!--#include file="plugins/jquery.idletimer.js" -->
 # and they would be included into this single file.
 
+RewriteEngine on
+RewriteCond %{REQUEST_URI} !\.html|\.js|\.svg|\.css|\.png|\.gif|\.jpg|\.jpeg|\.ttf|\.eot|\.woff|\.less|\.ico$
+RewriteRule . / [R=302,L]
+
 # <IfModule mod_include.c>
 #    <FilesMatch "\.combined\.js$">
 #        Options +Includes

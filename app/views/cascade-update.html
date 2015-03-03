@@ -1,11 +1,14 @@
-
-<raw-input 
-	property="field"
-	vertical="true"
-	ng-repeat="field in fields | updateParams:metadata | orderBy:'order'" 
-	entity="entity" 
-	on-update="onUpdate"
-	on-change="onChange"
-	metadata="metadata"
-	mode="update">
-</raw-input>
+<div class="form-cascade">
+	<raw-input 
+		property="field"
+		vertical="true"
+		ng-repeat="field in fields | updateParams:metadata | orderBy:'+priority.update' | allowed:'update'" 
+		entity="entity" 
+		on-update="onUpdate"
+		on-change="onChange"
+		metadata="metadata"
+		mode="update"
+		creating="creating"
+		index="$index">
+	</raw-input>
+</div>

@@ -3,4 +3,9 @@ dist
 .tmp
 .sass-cache
 bower_components
-docs
+
+*.sublime-*
+
+docs/
+.ui-deployed
+*/jshint-report.html

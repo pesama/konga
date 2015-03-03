@@ -1,0 +1,68 @@
+<div class="single-select" ng-init="operations.init()">
+	<div class="modal-header" ng-show="true">
+		<!-- Close button -->
+		<button id="singleselectModal.cancelX.id" type="button" class="close" ng-click="singleselectModal.cancel()">&times;</button>
+
+		<!-- Filter -->
+		<!-- TODO Externalize -->
+		<div class="filter">
+			<div class="form-inline" ng-repeat="quickSearchItem in quickSearch">
+				<div class="form-group">
+					<!-- <label for="filter" class="control-label col-md-4">5 résultats</label> -->
+					<div class="col-md-12">
+						<div class="input-group">
+						  <span class="input-group-addon">
+						  	&nbsp;
+						  	<i class="glyphicon glyphicon-filter"></i>
+						  	&nbsp;
+						  </span>
+						  <input  id="filter.id" type="text" class="form-control" name="filter" ng-model="quickSearchItem.value" placeholder="{{quickSearchItem.metadata.label | translate:quickSearchItem.extra }}" ng-change="executeQuickSearch()" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Title -->
+		<h4 class="modal-title" >{{singleselectModal.title | translate}}</h4>
+	</div>
+	<div class="col-md-12 search-table-container">
+	<div class="multiselect-list list-group" scroll-watcher>
+		<table class="table table-result">
+			<tr class="table-header">
+				<th ng-repeat="field in fields" ng-click="sorting(field)" style="cursor: pointer;">
+					<span ng-hide="field.complex">{{ field.label | translate:{label: field.owner} }}</span>
+				</th>
+			</tr>
+			<tr	class=""
+				ng-repeat="entity in realList"
+				ng-click="operations.toggle(entity)"
+				ng-class="{selected: (entity === selected)}"
+				ng-show="realList.length > 0">
+				<td ng-repeat="field in fields">
+					<!-- 
+					<span ng-hide="field.complex || field.type.type === 'COMPLEX' || field.type.type === 'DATE' || ((field.type.type === 'BOOLEAN' && (field.name === 'statut' || field.name === 'atMadEr' || field.name === 'indSocGestion')))">{{ entity | mapEdsField:field }}</span>
+					<span ng-show="!field.complex && (field.type.type === 'BOOLEAN' && (field.name === 'statut' || field.name === 'atMadEr' || field.name === 'indSocGestion'))">{{ entity | mapEdsField:field |activeInactive | translate}}</span>
+					<span ng-show="!field.complex && field.type.type === 'DATE'">{{ entity | mapEdsField:field | date:'dd/MM/yyyy'}}</span>
+					<span ng-show="field.type.type === 'COMPLEX'">{{ (entity | mapEdsField:field) | tableRendererComplex:field }}</span> 
+					 -->
+					<span ng-hide="field.type === 'DATE' || field.type === 'COMPLEX'">{{ entity[field.name] | listRenderer:field}}</span>
+					<span ng-show="field.type === 'DATE'">{{ entity[field.name] | date:'dd/MM/yyyy' }}</span>
+					<span ng-show="field.type === 'COMPLEX'">{{ entity[field.name][field.field] }}</span>
+				</td>
+			</tr>
+			<tr ng-hide="realList.length > 0">
+				<td colspan="{{ fields.length }}" class="align-center">{{'field.searchResults.noresults' | translate }}</td>
+			</tr>
+		</table>
+		<div class="loading-data" ng-show="loading">&nbsp;</div>
+	</div>
+	</div>
+	<div class="clear"></div>
+	<div class="modal-footer">
+		<!-- Close button -->
+		<button  id="singleselectModal.save.id" type="button" class="btn btn-default" ng-click="singleselectModal.save()">{{ 'message.action.validate' | translate }}</button>
+		<button id="singleselectModal.cancel.id" type="button" class="btn btn-default" ng-click="singleselectModal.cancel()">{{ 'message.action.cancel' | translate }}</button>
+		
+	</div>
+</div>

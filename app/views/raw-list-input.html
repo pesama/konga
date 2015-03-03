@@ -1,13 +1,13 @@
 <div class="form-group">
 	<div class="padding-cero" ng-class="inLineClass.col1">
-		<label for="{{property.fieldName}}">{{property.fieldLabel | translate:extra }}</label>
+		<label for="{{ fieldId }}">{{property.fieldLabel | translate:extra }}</label>
 	</div>
 	<div class="input-group" ng-class="inLineClass.col3">
 		<list-input fields="entityFields" list="value.list" eds-type="societe" disabled-ids="[]"></list-input>
 	</div>
 	<div class="row chantier-btn-list">
 		<div class="col-md-5">
-			<button class="btn btn-default" ng-click="openMultiSelect()">Ajouter</button>
+			<button class="btn btn-default" ng-click="openMultiSelect()" id="{{ fieldId }}-add">{{'message.action.add' | translate}}</button>
 		</div>
 	</div>
 </div>
