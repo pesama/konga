@@ -923,6 +923,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Konga",
 			"Konga UI",
 			"../.ui-deployed/",
 			"\n",
@@ -1049,8 +1050,7 @@
 			"('",
 			"provider",
 			"tailoring-types",
-			"family_id",
-			"policy_id"
+			"family_id"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1107,7 +1107,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -1137,7 +1137,7 @@
 						"translation.y": 1522.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1184,7 +1184,7 @@
 						[
 							[
 								16,
-								16
+								21
 							]
 						],
 						"settings":
@@ -1197,7 +1197,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1227,7 +1227,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{

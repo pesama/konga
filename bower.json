@@ -85,6 +85,9 @@
     "dist/scripts/views.js",
     "dist/styles/nge.css"
   ],
+  "ignore": [
+    "app/index.html"
+  ],
   "dependencies": {
     "angular": "1.2.16",
     "json3": "~3.3.1",
