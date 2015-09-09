@@ -3,7 +3,7 @@
 describe('Filter: allowed', function () {
 
   // load the filter's module
-  beforeEach(module('sigmaNgApp'));
+  beforeEach(module('ui.konga'));
 
   // initialize a new instance of the filter before each test
   var allowed;

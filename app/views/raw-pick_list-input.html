@@ -10,7 +10,7 @@
 	</div>
 	<div class="col-md-12 no-padding chantier-btn-list">
 		<div class="row">
-			<div class="col-md-1">
+			<div class="col-md-1" ng-if="!readonly">
 				<button class="btn btn-default"
 					ng-click="dispatchFieldAction('add')" id="{{ fieldId }}-add"
 					ng-hide="disableField(mode, property)">

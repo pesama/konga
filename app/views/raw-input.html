@@ -4,7 +4,7 @@
 		
 		<div ng-include="contentUrl" ng-class="classFormInput"></div>
 	</div>
-	<div ng-class="templating.validationStyle" ng-if="property.fieldType[mode] !== 'COMPLEX'">
+	<div ng-class="templating.validationStyle" ng-if="['COMPLEX', 'TABLE'].indexOf(property.fieldType[mode]) === -1">
 		<div class="validation-pattern text-danger" ng-show="!validation.valid_pattern()">
 			<i class="glyphicon glyphicon-remove"></i>
 			{{ 'message.field-validation.pattern' | translate }}

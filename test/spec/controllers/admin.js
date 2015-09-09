@@ -3,7 +3,7 @@
 describe('Controller: AdminCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('sigmaNgApp'));
+  beforeEach(module('ui.konga'));
 
   var AdminCtrl,
     scope;

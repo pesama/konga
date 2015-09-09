@@ -1,0 +1,12 @@
+<div class="tailoring-input option-price-field row">
+	<div class="col-md-6 text-center" ng-repeat="option in step.options">
+		<div class="tailoring-input-option" id="{{ option.name }}" ng-click="model.option = option" ng-class="{ checked: model.option === option }">
+			<div class="image">
+				&nbsp;
+			</div>
+			<div class="name">
+				{{ option.name }}
+			</div>
+		</div>
+	</div>
+</div>

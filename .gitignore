@@ -1,11 +1,7 @@
 node_modules
-dist
 .tmp
 .sass-cache
 bower_components
 
-*.sublime-*
-
 docs/
 .ui-deployed
-*/jshint-report.html

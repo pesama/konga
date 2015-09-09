@@ -1,0 +1,10 @@
+.presupuestor-offer {
+	width: 100%;
+	float: right;
+}
+
+.offer-button {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+}

@@ -1,0 +1,51 @@
+<div class="panel-body">
+
+	<div class="modal-header" ng-show="true">
+		<button type="button" id="cancelX" class="close" ng-click="cancel()">&times;</button>
+		<h4 class="modal-title">Añadir campo</h4> 
+	</div>  
+	<form name="addTailoringTypeTailoringTypeField">
+		<div class="modal-body">
+			<div class="row">
+				<div class="form-cascade">
+					<raw-input 
+						property="field"
+						vertical="true"
+						ng-repeat="field in fields | updateParams:metadata" 
+						entity="entity" 
+						on-update="updateEntity"
+						metadata="metadata"
+						mode="update"
+						creating="creating">
+					</raw-input>
+
+					<div class="col-md-12">
+						<div class="well">
+							Selecciona un valor estático solo si el campo no va a ser parte de las preguntas que se le hagan al usuario, y su valor va a ser el mismo independientemente de cada confección de este tipo.
+						</div>
+					</div>
+
+					<div class="col-md-12">
+						<div class="col-md-4">
+							Valor estático:
+						</div>
+						<div class="col-md-8">
+							<presupuestor-tailoring-static entity="entity" field="'defaults'" type="entity.type"
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<div class="clear">&nbsp;</div>
+	<div class="modal-footer">
+		<button type="submit" id="save" class="btn btn-success" ng-click="save()" ng-disabled="addTailoringTypeTailoringTypeField.$invalid">
+			<i class="glyphicon glyphicon-ok"></i>
+			{{'message.action.validate' | translate }}
+		</button>
+		<button type="button" id="cancel" class="btn btn-default" ng-click="cancel()">
+			<i class="glyphicon glyphicon-remove"></i>
+			{{'message.action.cancel' | translate }}
+		</button>
+	</div>
+</div>

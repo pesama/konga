@@ -1,0 +1,58 @@
+<div class="panel-body">
+
+	<div class="modal-header" ng-show="true">
+		<button type="button" id="cancelRejectVentilerX" class="close" ng-click="close()">&times;</button>
+		<h4 class="modal-title">Carrito de la compra</h4> 
+	</div>  
+	<div class="modal-body">
+		<div class="row">
+			<div class="form-cascade">
+				<raw-input 
+					property="field"
+					vertical="true"
+					ng-repeat="field in fields | orderBy:'+priority.update'" 
+					entity="entity" 
+					on-update="operations.updateEntityField"
+					on-change="operations.changeEntityField"
+					metadata="metadata"
+					mode="update"
+					creating="creating">
+				</raw-input>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="well">
+					<h3>Datos:</h3>
+					<div class="row">
+						<div class="col-md-4"><b>Total referencias</b></div>
+						<div class="col-md-8">{{ details.references }}</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4"><b>Total elementos</b></div>
+						<div class="col-md-8">{{ details.count }}</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4"><b>Ref2</b></div>
+						<div class="col-md-8">9{{ details.buyPrice | number:2 }}</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4"><b>Precio</b></div>
+						<div class="col-md-8">{{ details.sellPrice | number:2 }}&euro;</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clear">&nbsp;</div>
+	<div class="modal-footer">
+		<button type="button" id="cancel" class="btn btn-default" ng-click="close()">
+			<i class="glyphicon glyphicon-remove"></i>
+			{{'message.action.close' | translate }}
+		</button>
+		<button type="submit" id="order" class="btn btn-success" ng-click="order()" ng-disabled="!entity.items.length">
+			<i class="glyphicon glyphicon-ok"></i>
+			{{'message.action.proceed-order' | translate }}
+		</button>
+	</div>
+</div>

@@ -1,0 +1,42 @@
+.glac-left {
+	margin-top: 1em;
+}
+
+.field_label {
+	font-weight: bold;
+	padding: 0.2em;
+}
+
+.field_value {
+	padding: 0.2em;
+	font-size: 13px;
+	font-style: italic;
+}
+
+.modal-body-glac-ventiler-rejet{
+	height:211px;
+}
+
+.glac .table-result{
+	margin-top: 20px;
+}
+.glac .table.table-result thead tr th:first-child{
+	border-top-left-radius: 7px;
+}
+.glac .table-result tr th:last-child{
+	border-top-right-radius: 7px !important;
+}
+.glac .search-panel{
+	white-space: nowrap;
+	border: 0;
+}
+.glac .search-panel .inner-panel{
+	background: rgba(128, 116, 116, 0.1);
+	border-radius: 7px;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.glac .update-btn-group{
+	margin: 30px
+}

@@ -1,0 +1,36 @@
+<raw-input 
+	property="field"
+	vertical="true" 
+	source-list="productCodes[field.name]"
+	ng-repeat="field in fields | searchParams | orderBy:'priority.search' | allowed:'search' | filter: {categories: 'search_first'}"
+	entity="query" 
+	metadata="entityMetadata" 
+	on-update="operations.updateField"
+	mode="search"
+	index="$index">
+</raw-input>
+
+<div class="col-md-12 form-group mode-search">
+	<div class="col-md-12 text-right">
+		<button id="clear-search-pane.id" type="button" class="btn btn-default" ng-click="operations.clear()">
+			<i class="glyphicon glyphicon-remove"></i>
+			{{'message.action.clean' | translate}}
+		</button>
+		<button id="submit-search-pane.id" type="submit" class="btn btn-success" ng-click="operations.submit()">
+			<i class="glyphicon glyphicon-ok"></i>
+			{{'message.action.search' | translate}}
+		</button>
+	</div>
+</div>
+
+<raw-input 
+	property="field"
+	vertical="true" 
+	source-list="productCodes[field.name]"
+	ng-repeat="field in fields | searchParams | orderBy:'priority.search' | allowed:'search' | filter: {categories: '!search_first'}"
+	entity="query" 
+	metadata="entityMetadata" 
+	on-update="operations.updateField"
+	mode="search"
+	index="$index">
+</raw-input>

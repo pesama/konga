@@ -1,0 +1,12 @@
+<div class="presupuestor-quantity-field">
+	<br />
+	<br />
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1">
+			<slider ng-model="model.quantity" min="1" step="1" max="20" value="1" tooltip="always" tooltip-position="bottom"></slider>
+		</div>
+		<div class="col-md-5" ng-if="model.quantity">
+			{{ model.quantity }} unidades
+		</div>
+	</div>
+</div>

@@ -3,7 +3,7 @@
 describe('Service: catalogProduct', function () {
 
   // load the service's module
-  beforeEach(module('sigmaNgApp'));
+  beforeEach(module('ui.konga'));
 
   // instantiate service
   var catalogProduct;

@@ -3,7 +3,7 @@
 describe('Service: user', function () {
 
   // load the service's module
-  beforeEach(module('sigmaNgApp'));
+  beforeEach(module('ui.konga'));
 
   // instantiate service
   var user;

@@ -1,0 +1,110 @@
+input.ng-invalid,
+input.invalid,
+input.ng-invalid:focus,
+input.invalid-min-length,
+input.invalid-max-length,
+input.invalid-date,
+select.ng-invalid,
+div.input-datetimepicker.ng-invalid input {
+	border-color: #e33b3b;
+	outline-color: #e33b3b;
+}
+
+/*
+Validation configuration
+*/
+
+.validation {
+	position: relative;
+	display: none;
+	clear: both;
+}
+
+.validation div {
+	display: none;
+}
+
+div.bg-invalid {
+	opacity: 0;
+}
+
+div.input-group *.ng-invalid + div.bg-invalid {
+	opacity: 1;
+}
+
+/* Enable validation divs on invalid input */
+div.input-group *.ng-invalid ~ div.validation,
+div.input-group *.invalid-min-length ~ div.validation,
+div.input-group *.invalid-max-length ~ div.validation,
+div.input-group *.invalid-date ~ div.validation {
+	display: block;
+	margin: 0px 5px;
+}
+
+div.input-group *.ng-invalid.ng-invalid-required ~ div.validation > div.validation-required {
+	display: block;
+}
+
+div.input-group *.ng-invalid.ng-invalid-pattern ~ div.validation > div.validation-pattern {
+	display: block;
+}
+
+div.input-group *.invalid-min-length ~ div.validation > div.validation-min-length {
+	display: block;
+}
+
+div.input-group *.invalid-max-length ~ div.validation > div.validation-max-length {
+	display: block;
+}
+
+div.input-group *.invalid-date ~ div.validation > div.validation-invalid-date {
+	display: block;
+}
+
+.validation div {
+	padding: 0.5em 1em;
+	border-radius: 5px;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	margin-top: -5px;
+	padding: 1px 12px;
+}
+
+.form-group.derived {
+	padding-left: 0px;
+    padding-right: 0px;
+}
+.complex-container .form-group:last-child{
+	margin-bottom: 0px;
+}
+.input-group.derived {
+    width: 100% !important;
+}
+
+.input-group .form-control {
+	width: 100%;
+}
+
+/*.form-group.col-md-12.mode-update {
+	width: 75%;
+}
+
+.form-group.col-md-12.mode-update.extend {
+	width: 100%;
+}
+
+.form-group.col-md-12.mode-search {
+	width: 80%;
+}
+
+.form-group.col-md-12.mode-search.derived {
+	width: 100%;
+}
+
+.form-group.col-md-12.mode-update.extended {
+	width: 92%;
+}
+.form-group.col-md-12.mode-update.extended.extended {
+	width: 92%;
+}
+*/

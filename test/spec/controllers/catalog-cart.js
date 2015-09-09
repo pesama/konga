@@ -3,7 +3,7 @@
 describe('Controller: CatalogCartCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('sigmaNgApp'));
+  beforeEach(module('ui.konga'));
 
   var CatalogCartCtrl,
     scope;

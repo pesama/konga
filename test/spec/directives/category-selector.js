@@ -3,7 +3,7 @@
 describe('Directive: categorySelector', function () {
 
   // load the directive's module
-  beforeEach(module('sigmaNgApp'));
+  beforeEach(module('ui.konga'));
 
   var element,
     scope;

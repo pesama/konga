@@ -28,6 +28,10 @@ module.exports = function (grunt) {
     // Project settings
     yeoman: appConfig,
 
+    konga: {
+      deployDest: 'dist/'
+    },
+
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       bower: {
@@ -35,7 +39,7 @@ module.exports = function (grunt) {
         tasks: ['wiredep']
       },
       js: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
+        files: ['<%= yeoman.app %>/scripts/**/*.js'],
         tasks: ['newer:jshint:all', 'concat:util', 'ngdocs'],
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -46,15 +50,18 @@ module.exports = function (grunt) {
         tasks: ['newer:jshint:test', 'karma']
       },
       css: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
+        files: ['<%= yeoman.app %>/styles/**/*.css'],
         tasks: ['concat:css'],
         options: {
           livereload: '<%= connect.options.livereload %>'
         }
       },
       html: {
-        files: ['<%= yeoman.app %>/views/{,*/}*.html'],
-        tasks: ['ngtemplates']
+        files: ['<%= yeoman.app %>/views/**/*.html'],
+        tasks: ['ngtemplates'],
+        options: {
+          livereload: '<%= connect.options.livereload %>'
+        },
       },
       compass: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
@@ -69,7 +76,6 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
-          '<%= yeoman.app %>/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
@@ -177,9 +183,9 @@ module.exports = function (grunt) {
         files: [{
           dot: true,
           src: [
-            '../.ui-deployed/{,*/}*',
-            '!../.ui-deployed/WEB-INF',
-            '!../.ui-deployed/WEB-INF/{,*/}*'
+            '<%= konga.deployDest %>{,*/}*',
+            '!<%= konga.deployDest %>WEB-INF', // For Java webapps
+            '!<%= konga.deployDest %>WEB-INF/{,*/}*' // For Java webapps
           ]
         }],
         options: {
@@ -205,12 +211,17 @@ module.exports = function (grunt) {
 
     // Automatically inject Bower components into the app
     wiredep: {
-      options: {
-        cwd: '<%= yeoman.app %>'
-      },
       app: {
         src: ['<%= yeoman.app %>/index.html'],
-        ignorePath:  /\.\.\//
+        ignorePath:  /\.\.\//,
+        fileTypes: {
+          html: {
+            replace: {
+              js: '<script src="/{{filePath}}" type="text/javascript"></script>',
+              css: '<link rel="stylesheet" href="/{{filePath}}" />'
+            }
+          }
+        }
       },
       sass: {
         src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
@@ -445,7 +456,7 @@ module.exports = function (grunt) {
           '{,*/}*',
           'config.js'
         ],
-        dest: '../.ui-deployed/'
+        dest: '<%= konga.deployDest %>'
       },
       index: {
         expand: true,
@@ -457,7 +468,7 @@ module.exports = function (grunt) {
         expand: true,
         cwd: 'dist',
         src: ['**/index-html'],
-        dest: '../.ui-deployed/'
+        dest: '<%= konga.deployDest %>'
       },
       deployApp: {
         expand: true,
@@ -473,12 +484,12 @@ module.exports = function (grunt) {
         	'**/favicon.ico',
 
         ],
-        dest: '../.ui-deployed/'
+        dest: '<%= konga.deployDest %>'
       },
       deployVendor: {
         expand: true,
         src: 'bower_components/**',
-        dest: '../.ui-deployed/'
+        dest: '<%= konga.deployDest %>'
       },
       vendor4doc: {
         cwd: 'dist/scripts/',
@@ -490,8 +501,8 @@ module.exports = function (grunt) {
 
     rename: {
       deployIndex: {
-        src: '../.ui-deployed/index.html',
-        dest: '../.ui-deployed/index.jsp'
+        src: '<%= konga.deployDest %>index.html',
+        dest: '<%= konga.deployDest %>index.jsp'
       }
     },
 
@@ -508,7 +519,7 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'development',
-            apiEndpoint: 'http://api.presupuestor.com',
+            apiEndpoint: 'http://api.presupuestor.dev',
             deployPath: '',
             version: 'DEV Environment',
             deployTime: new Date().getTime()
@@ -552,7 +563,7 @@ module.exports = function (grunt) {
     },
 
     ngtemplates: {
-      sigmaNgApp: {
+      'ui.konga': {
         cwd: 'app/',
         src: 'views/**/**.html',
         dest: 'dist/scripts/views.js',
@@ -660,20 +671,15 @@ module.exports = function (grunt) {
     'build'
   ]);
 
-  grunt.registerTask('deploy', [
-    'compile:deploy',
+  grunt.registerTask('lib', [
     'clean:deploy',
+    'compile:deploy',
     'copy:index',
     'minify-vendor',
     'copy:deployApp',
     'copy:deploy', 
     'copy:deployIndex', 
     // 'copy:deployVendor'
-  ]);
-
-grunt.registerTask('deploy-test', [
-    'serve',
-    'wait-forever'
   ]);
 
   grunt.registerTask('doc', [
@@ -683,5 +689,5 @@ grunt.registerTask('deploy-test', [
   ]);
 
   grunt.loadNpmTasks('grunt-ngdocs');
-  grunt.loadNpmTasks('grunt-wait-forever');
+  grunt.loadNpmTasks('grunt-daemon');
 };

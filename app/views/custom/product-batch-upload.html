@@ -1,0 +1,43 @@
+<div class="panel-body">
+
+	<div class="modal-header" ng-show="true">
+		<button type="button" id="cancelRejectVentilerX" class="close" ng-click="cancel()">&times;</button>
+		<h4 class="modal-title">Carga masiva de productos</h4> 
+	</div>  
+	<div class="modal-body">
+		<div class="well">
+			<h3 class="text-warning">Atención!</h3>
+			<p>
+				Este procedimiento <b>elimina los productos existentes</b>, así como sus relaciones. Esto afecta a <b>toda</b> la aplicación. Use esta herramienta con cuidado.
+			</p>
+		</div>
+		<div class="row">
+			<div class="form-cascade">
+				<form name="info">
+					<raw-input 
+						property="field"
+						vertical="true"
+						ng-repeat="field in fields | orderBy:'+priority.update'" 
+						entity="entity" 
+						on-update="operations.updateEntityField"
+						on-change="operations.changeEntityField"
+						metadata="metadata"
+						mode="update"
+						creating="creating">
+					</raw-input>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="clear" ng-init="form = info">&nbsp;</div>
+	<div class="modal-footer">
+		<button type="submit" id="saveRejectVentiler" class="btn btn-success" ng-click="save()" ng-disabled="form.$invalid">
+			<i class="glyphicon glyphicon-ok"></i>
+			{{'message.action.validate' | translate }}
+		</button>
+		<button type="button" id="cancelRejetVentiler" class="btn btn-default" ng-click="cancel()">
+			<i class="glyphicon glyphicon-remove"></i>
+			{{'message.action.cancel' | translate }}
+		</button>
+	</div>
+</div>

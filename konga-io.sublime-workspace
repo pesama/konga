@@ -1,0 +1,1890 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"fim",
+				"field_meq_position"
+			],
+			[
+				"Taty",
+				"TailoringTypeField"
+			],
+			[
+				"Tail",
+				"TailoringTypeField"
+			],
+			[
+				"border-radiu",
+				"border-top-left-radius"
+			],
+			[
+				"tailoring",
+				"tailoringType"
+			],
+			[
+				"tai",
+				"tailoring"
+			],
+			[
+				"butt",
+				"buttonConfiguration"
+			],
+			[
+				"uiS",
+				"uiStepWidth"
+			],
+			[
+				"stepN",
+				"stepNumbers"
+			],
+			[
+				"tail",
+				"tailoringType"
+			],
+			[
+				"ACTION_",
+				"ACTION_TYPE_MODAL"
+			],
+			[
+				"invali",
+				"invalidSteps"
+			],
+			[
+				"step",
+				"stepX"
+			],
+			[
+				"existe",
+				"existingSteps"
+			],
+			[
+				"resl",
+				"resolveWatcher"
+			],
+			[
+				"borderri",
+				"border-right-width"
+			],
+			[
+				"CONS",
+				"constants"
+			],
+			[
+				"addre",
+				"address"
+			],
+			[
+				"stoty",
+				"storeType"
+			],
+			[
+				"sty",
+				"storeType"
+			],
+			[
+				"prosto",
+				"productStoreType"
+			],
+			[
+				"proS",
+				"productStoreType"
+			],
+			[
+				"pros",
+				"productStoreTypes"
+			],
+			[
+				"repro",
+				"realProduct"
+			],
+			[
+				"prod",
+				"productStoreType"
+			],
+			[
+				"con",
+				"configuration"
+			],
+			[
+				"reprodu",
+				"realProduct"
+			],
+			[
+				"al",
+				"alreadyRefs"
+			],
+			[
+				"entity",
+				"entity"
+			],
+			[
+				"nameA",
+				"nameAttrs"
+			],
+			[
+				"innfi",
+				"innerFieldName"
+			],
+			[
+				"product",
+				"productDTO"
+			],
+			[
+				"catapro",
+				"catalogProduct"
+			],
+			[
+				"retCha",
+				"retCharacteristic"
+			],
+			[
+				"selec",
+				"selectedFamilies"
+			],
+			[
+				"retS",
+				"retStoreType"
+			],
+			[
+				"enti",
+				"entityType"
+			],
+			[
+				"date",
+				"dateArr"
+			],
+			[
+				"rol",
+				"roleStoreUser"
+			],
+			[
+				"test",
+				"testStore_ANRE1"
+			],
+			[
+				"border-bo",
+				"border-bottom-left-radius"
+			],
+			[
+				"sho",
+				"showAll"
+			],
+			[
+				"peri",
+				"periodeSplit"
+			],
+			[
+				"han",
+				"handlerOK"
+			],
+			[
+				"diS",
+				"disabledShowAll"
+			],
+			[
+				"acde",
+				"actionDefinition"
+			],
+			[
+				"eventIn",
+				"eventInDay"
+			],
+			[
+				"inpuda",
+				"inputDateStr"
+			],
+			[
+				"pero",
+				"periodePointages"
+			],
+			[
+				"elem",
+				"element"
+			],
+			[
+				"perio",
+				"periodePointages"
+			],
+			[
+				"per",
+				"periodeSplit"
+			],
+			[
+				"outline",
+				"outline-color"
+			],
+			[
+				"SEL",
+				"SELF_FIELD"
+			],
+			[
+				"pad",
+				"padding-right"
+			],
+			[
+				"catego",
+				"categoryFields"
+			],
+			[
+				"cate",
+				"categories"
+			],
+			[
+				"ele",
+				"elementTotal"
+			],
+			[
+				"input",
+				"inputDate"
+			],
+			[
+				"pro",
+				"propagating"
+			],
+			[
+				"exisTa",
+				"existingTabs"
+			],
+			[
+				"tabty",
+				"TAB_TYPE_UPDATE"
+			],
+			[
+				"infi",
+				"innerField"
+			],
+			[
+				"fiel",
+				"fieldEntity"
+			],
+			[
+				"multi",
+				"multiplicity"
+			],
+			[
+				"roo",
+				"rootEntity"
+			],
+			[
+				"quiS",
+				"quickSearchFields"
+			],
+			[
+				"quise",
+				"quickSearchFields"
+			],
+			[
+				"contet",
+				"contentUrl"
+			],
+			[
+				"JSON",
+				"JSON_IDENTITY_INFO"
+			],
+			[
+				"standard",
+				"standardApi"
+			],
+			[
+				"standa",
+				"standardApi"
+			],
+			[
+				"sorte",
+				"sortedResult"
+			],
+			[
+				"sor",
+				"sortedResult"
+			],
+			[
+				"Rele",
+				"Relevés"
+			],
+			[
+				"menuFa",
+				"menuFavoris"
+			],
+			[
+				"sele",
+				"selectedFavorites"
+			],
+			[
+				"selefa",
+				"selectedFavorites"
+			],
+			[
+				"selected",
+				"selectedFavorites"
+			],
+			[
+				"casca",
+				"cascadeField"
+			],
+			[
+				"selecte",
+				"selectedFavorites"
+			],
+			[
+				"selecfa",
+				"selectedFavorites"
+			],
+			[
+				"sup",
+				"SCOPE_UPDATE"
+			],
+			[
+				"table",
+				"table-header"
+			],
+			[
+				"deriev",
+				"derivedPath"
+			],
+			[
+				"cufi",
+				"currentField"
+			],
+			[
+				"fi",
+				"field"
+			],
+			[
+				"complex",
+				"complexType"
+			],
+			[
+				"inl",
+				"inline-block"
+			],
+			[
+				"override",
+				"overrideDefaults"
+			],
+			[
+				"loader",
+				"loaderId"
+			],
+			[
+				"root",
+				"rootifyQuery"
+			],
+			[
+				"veri",
+				"verifyValidateable"
+			],
+			[
+				"depen",
+				"dependencyInjector"
+			],
+			[
+				"para",
+				"parameters"
+			],
+			[
+				"acpa",
+				"actionParameters"
+			],
+			[
+				"dispat",
+				"dispatchAction"
+			],
+			[
+				"dispa",
+				"dispatch"
+			],
+			[
+				"acti",
+				"actionParam"
+			],
+			[
+				"ACTION_TY",
+				"ACTION_TYPE_TAB"
+			],
+			[
+				"ACTION",
+				"ACTION_TYPE_MODAL"
+			],
+			[
+				"enticon",
+				"entityConfiguration"
+			],
+			[
+				"padding",
+				"padding-left"
+			],
+			[
+				"templa",
+				"templating"
+			],
+			[
+				"fise",
+				"fieldsets"
+			],
+			[
+				"su",
+				"superClass"
+			],
+			[
+				"field",
+				"fieldsets"
+			],
+			[
+				"rubde",
+				"rubDepenseField"
+			],
+			[
+				"rese",
+				"resetQuery"
+			],
+			[
+				"tea",
+				"text-align"
+			],
+			[
+				"cu",
+				"currentPage"
+			],
+			[
+				"close",
+				"closeTabById"
+			],
+			[
+				"autho",
+				"authorized"
+			],
+			[
+				"comp",
+				"complexMetadata"
+			],
+			[
+				"cur",
+				"currentFields"
+			],
+			[
+				"action",
+				"actionDefinition"
+			],
+			[
+				"ACTION_TYE",
+				"ACTION_TYPE_NOTIFY"
+			],
+			[
+				"disp",
+				"dispatchAction"
+			],
+			[
+				"error",
+				"Error"
+			],
+			[
+				"vali",
+				"validation"
+			],
+			[
+				"valida",
+				"validationData"
+			],
+			[
+				"comple",
+				"complexProperty"
+			],
+			[
+				"pare",
+				"parentField"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"selecteI",
+				"selectedIds"
+			],
+			[
+				"mu",
+				"multiplicity"
+			],
+			[
+				"real",
+				"realEntity"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app/scripts/app.js",
+			"settings":
+			{
+				"buffer_size": 11999,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Gruntfile.js",
+			"settings":
+			{
+				"buffer_size": 17396,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "bower.json",
+			"settings":
+			{
+				"buffer_size": 4666,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 1553,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": ".gitignore",
+			"settings":
+			{
+				"buffer_size": 66,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": ".bowerrc",
+			"settings":
+			{
+				"buffer_size": 218,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "css",
+		"selected_items":
+		[
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"came",
+				"Convert Case: camelCase"
+			],
+			[
+				"cam",
+				"Convert Case: camelCase"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"case",
+				"Convert Case: Lower Case"
+			],
+			[
+				"innu",
+				"Insert Nums"
+			],
+			[
+				"in",
+				"Insert Nums"
+			],
+			[
+				"i",
+				"Package Control: Install Package"
+			],
+			[
+				"snip",
+				"Snippet: html"
+			],
+			[
+				"ssjs",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"jscri",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"ssphp",
+				"Set Syntax: PHP"
+			],
+			[
+				"ssph",
+				"Set Syntax: PHP"
+			],
+			[
+				"ssc++",
+				"Set Syntax: C++"
+			],
+			[
+				"sshtml",
+				"Set Syntax: HTML"
+			],
+			[
+				"sscss",
+				"Set Syntax: CSS"
+			],
+			[
+				"sssql",
+				"Set Syntax: SQL"
+			],
+			[
+				"sstext",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"sslate",
+				"Set Syntax: LaTeX Log"
+			],
+			[
+				"ssjava",
+				"Set Syntax: Java"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"ssjson",
+				"Set Syntax: JSON"
+			],
+			[
+				"sscs",
+				"Set Syntax: CSS"
+			],
+			[
+				"ssht",
+				"Set Syntax: HTML"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 174.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/sm/workspace/konga-ui"
+	],
+	"file_history":
+	[
+		"/Users/sm/workspace/konga-ui/bower.json",
+		"/Users/sm/workspace/konga-ui/app/index.html",
+		"/Users/sm/workspace/konga-ui/Gruntfile.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/home.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/admin.js",
+		"/Users/sm/workspace/presupuestor/ui/Gruntfile.js",
+		"/Users/sm/workspace/presupuestor/ui/app/index.html",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/app.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/custom/store-selector.js",
+		"/Users/sm/workspace/presupuestor/ui/app/views/home.html",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/entity-update.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/services/user.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/login.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/entity-search.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/main.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/multi-select.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/single-select.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/file-input.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/konga-select.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/list-input.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/menu-item.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/menu.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/option-input.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/price-input.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/raw-input.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/recursive-list-item.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/recursive-list.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/result-table.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/scroll-watcher.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/search-pane.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/select-input.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/table-cell.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/table-header.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/table-input.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/tics.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/update-form.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/active-inactive.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/allowed.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/custom-filter.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/extended.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/field-api-name.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/field-multiplicity.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/form-type.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/htmlify.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/locale.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/map-eds-field.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/only-code-eds.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/only-id-eds.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/query-parser.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/quick-search.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/recursive-filter.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/result-params.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/scroll.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/search-params.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/select-data.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/selected-fields.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/selected-locale.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/shortify.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/table-renderer-complex.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/tics-categories.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/tics-day-events.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/tics-elements.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/tics-events.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/tics-popover.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/translate-complex.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/update-params.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/urlify.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/action-manager.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/action.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/api.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/auth.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/common.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/configuration-manager.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/exception-manager.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/field-mapper.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/loadData.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/metadata.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/permission-manager.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/role.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/scaffold.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/session.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/standard-api.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/token-handler.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/user.js",
+		"/Users/sm/workspace/presupuestor/ui/dist/scripts/views.js",
+		"/Users/sm/workspace/presupuestor/ui/docs/app-scripts.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/controllers/add-role-store-user.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/controllers/admin.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/controllers/catalog-cart.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/controllers/catalog-product-details.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/controllers/product-batch-upload.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/controllers/store-selector.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/controllers/tailoring-add-tailoring-type-tailoring-type-field.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/controllers/tailoring-add-tailoring-type-tailoring-type-step.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/controllers/tailoring-type-tailoring-type-step-manage-options.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/controllers/tailoring-type-update.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/directives/category-selector.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/directives/file-input.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/directives/option-input.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/directives/presupuestor-tailoring-static.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/directives/price-input.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/directives/table-input.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/filters/allowed.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/filters/custom-filter.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/filters/field-api-name.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/filters/field-multiplicity.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/filters/price-with-policy.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/filters/query-parser.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/filters/uglify-ref2.js",
+		"/Users/sm/workspace/presupuestor/ui/test/spec/services/catalog-product.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/util.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/mapper.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/constants.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/single-select-custom.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/add-role-store-user.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/custom/add-order-product.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/custom/add-product-characteristic.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/custom/add-product-storetype.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/custom/add-role-store-user.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/custom/catalog-cart-edit-item.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/custom/catalog-cart.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/custom/catalog-order.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/custom/catalog-product-details.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/custom/catalog-search.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/custom/catalog-settings.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/custom/customizer-home.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/custom/customizer-new-tailoring.js",
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/custom/image-option.js"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 102.0,
+		"where_history":
+		[
+			"/Users/sm/workspace/konga-ui",
+			"/Users/sm/workspace/presupuestor/ui/app/scripts",
+			"-custom/*.js",
+			"",
+			"/Users/sm/workspace/presupuestor/ui",
+			"",
+			"/Users/sm/workspace/presupuestor/ui/app",
+			"C:\\Users\\psanchezmarg\\external-workspace\\presupuestor\\ui",
+			"/Users/sm/workspace/presupuestor-api/ui/app/scripts",
+			"/Users/sm/workspace/presupuestor-api/ui/app/styles/custom",
+			"/Users/sm/workspace/presupuestor-api/ui/app/views/",
+			"/Users/sm/workspace/presupuestor-api/ui/app/views/raw-",
+			"/Users/sm/workspace/presupuestor-api/ui/app/views/raw-*",
+			"/Users/sm/workspace/presupuestor-api/ui/app/views/raw-*-input.html",
+			"C:\\Users\\psanchezmarg\\external-workspace\\presupuestor\\ui\\app\\styles",
+			"C:\\Users\\psanchezmarg\\external-workspace\\presupuestor\\ui\\app",
+			"C:\\Users\\psanchezmarg\\external-workspace\\presupuestor\\ui",
+			"C:\\Users\\psanchezmarg\\external-workspace\\presupuestor",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app\\scripts",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app\\scripts\\controllers",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app\\scripts\\filters",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app\\scripts",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app\\styles",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app\\scripts",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app\\styles",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app\\views",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app\\scripts",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app\\scripts\\services",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app\\styles",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app\\views",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app\\styles",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app\\scripts",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app\\styles",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app\\views",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app\\styles",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app\\scripts",
+			"C:\\Users\\psanchezmarg\\workspace\\v0.3\\sigma-parent\\sigma-ng\\app",
+			"C:\\Users\\psanchezmarg\\workspace\\sigma-parent\\sigma-ng\\app",
+			"C:\\Users\\psanchezmarg\\workspace\\sigma-parent\\sigma-ng\\app\\views",
+			"C:\\Users\\psanchezmarg\\workspace\\sigma-parent\\sigma-ng\\app",
+			"C:\\Users\\psanchezmarg\\workspace\\sigma-parent\\sigma-ng\\app\\styles",
+			"C:\\Users\\psanchezmarg\\workspace\\sigma-parent\\sigma-ng\\app",
+			"C:\\Users\\psanchezmarg\\workspace\\sigma-parent\\sigma-ng",
+			"C:\\Users\\psanchezmarg\\workspace\\nge\\trunk\\sigma-ng\\app",
+			"C:\\Users\\psanchezmarg\\workspace\\nge\\trunk\\sigma-ng\\app\\scripts\\services",
+			"C:\\Users\\psanchezmarg\\workspace\\nge\\trunk\\sigma-ng\\app",
+			"C:\\Users\\psanchezmarg\\workspace\\nge\\trunk\\sigma-ng\\app\\scripts",
+			"C:\\Users\\psanchezmarg\\workspace\\nge\\trunk\\sigma-ng\\app",
+			"C:\\Users\\psanchezmarg\\workspace\\nge\\trunk\\sigma-ng\\app\\views",
+			"C:\\Users\\psanchezmarg\\workspace\\sigma-ng\\app",
+			"C:\\Users\\psanchezmarg\\workspace\\sigma-ng\\app\\views",
+			"C:\\Users\\psanchezmarg\\workspace\\sigma-ng\\app\\scripts",
+			"C:\\Users\\psanchezmarg\\workspace\\sigma-ng\\app\\views",
+			"C:\\Users\\psanchezmarg\\workspace\\sigma-ng\\app\\styles",
+			"C:\\Users\\psanchezmarg\\workspace\\sigma-ng",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"Konga UI",
+			"../.ui-deployed/",
+			"\n",
+			"\"></script>",
+			"<script src=\"",
+			"<script type=\"text/javascript\" src=\"",
+			"ui_konga",
+			"ui.konga",
+			"angular.module('konga.ui')",
+			"konga.ui",
+			"ui.konga",
+			"presupuestorApp",
+			"angular.module('konga')",
+			"presupuestorApp",
+			"sigmaNgApp",
+			"search",
+			"scope",
+			"readonlyConfiguration",
+			"configuration",
+			"paginationConfiguration",
+			"matchingConfiguration",
+			"entity.defaults",
+			"value = ",
+			"value.files",
+			"data.done",
+			"done",
+			"finished",
+			".done",
+			"updatePrices",
+			"sortedSteps.",
+			"\\'",
+			"=\\'",
+			"===",
+			"dependency",
+			"    ",
+			"		",
+			"step_fallType",
+			"color_white",
+			"fallType_cascade",
+			"->tailoringtype_id",
+			"field_spt_type",
+			"no",
+			"supportType_",
+			"supportType",
+			"supportType_ceiling",
+			"ceiling",
+			"actuator_remote",
+			"step_position",
+			"actuator_remote",
+			"position_left",
+			"Izquierda",
+			"left",
+			"$engine_manual",
+			"step_fallType",
+			"->image_url",
+			"engine_chain",
+			"fallType_tight",
+			"fallType_cascade",
+			"		",
+			", ",
+			">step",
+			"fallType",
+			"step_fallType",
+			"step_color",
+			"step_quantity",
+			"step_measurements",
+			"field_measurements",
+			"	",
+			", '",
+			"	",
+			"  	",
+			"->tailoringtype_id",
+			"field_color",
+			"field_fall_type",
+			"fall_type",
+			"field_color",
+			"= ",
+			"->",
+			"field_measurements",
+			"field_name",
+			"model.option",
+			"$scope.step = $filter('filter')($scope.steps, { stepNo: $scope.index });",
+			"localEn",
+			"entity",
+			"{{ filePath }}",
+			"wiredep",
+			"span",
+			"h3",
+			"$scope.",
+			"$scope.tailoring",
+			"        ",
+			", value=\"",
+			"key=\"",
+			"option1",
+			"class=\"name",
+			" (cm)",
+			"configuration",
+			"step",
+			"items",
+			"fieldConfig",
+			"=\"",
+			"update",
+			"{{step.index}}",
+			"\"step",
+			"stepNo",
+			"$on",
+			"update",
+			"\">",
+			">",
+			"addTailoringTypeTailoringTypeStepOption",
+			"addTailoringTypeTailoringTypeField",
+			"fieldField",
+			"TailoringTypeFieldControlle",
+			"-fields",
+			"fields",
+			"-field",
+			"tailoring-types",
+			"add-product-characteristic",
+			"category",
+			"TailoringTypeTransformer",
+			"question",
+			"field",
+			"TailoringAddTailoringTypeTailoringTypeFieldCtrl",
+			"('",
+			"provider",
+			"tailoring-types",
+			"family_id",
+			"policy_id"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"angular.module('ui.konga')",
+			"ui.konga",
+			"angular.module('ui.konga')",
+			"konga",
+			"presupuestorApp",
+			"entity[field]",
+			"<input name=\"{{ property.name }}\"",
+			"{Array}",
+			"{Number}",
+			"{String}",
+			"{Object}",
+			"['$resource', '$routeParams', 'ENV', function ($resource, $routeParams, ENV)",
+			"['$resource','$routeParams', 'ENV', function ($resource, $routeParams, ENV) {",
+			"['$resource','$routeParams', 'ENV', function ($resource, $routeParams, ENV)",
+			"ENV.apiEndpoint + ",
+			"showInUpdate.value",
+			"showInResults.value",
+			"ShowInResults.value",
+			"ShowInSearch.value",
+			"field.type.type",
+			"field.name",
+			"field.type",
+			"showInResults",
+			"entityMetadata.label",
+			"entityMetadata.name",
+			"entityMetadata.label",
+			" | translate",
+			"property.fieldLabel | locale",
+			"ENTITY",
+			"sigmaNgApp.Api",
+			"orderBy:'order'",
+			"orderBy: property.order",
+			"field.fieldName",
+			"",
+			"property.fieldLabel",
+			"property.fieldType",
+			"property.fieldName",
+			"constants",
+			"images/"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": false,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/scripts/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11999,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8606,
+								8887
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1522.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Gruntfile.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17396,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								17059,
+								17059
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 9621.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "bower.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4666,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								16,
+								16
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "package.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1553,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								62,
+								62
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": ".gitignore",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 66,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12,
+								12
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": ".bowerrc",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 218,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								25,
+								216
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 194.0
+	},
+	"pinned_build_system": "",
+	"project": "konga-io.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"packa",
+				"package.json"
+			],
+			[
+				"bowerr",
+				".bowerrc"
+			],
+			[
+				"gitigno",
+				".gitignore"
+			],
+			[
+				".bower",
+				".bowerrc"
+			],
+			[
+				"bower",
+				"bower.json"
+			],
+			[
+				"grunt",
+				"Gruntfile.js"
+			],
+			[
+				"app",
+				"app/scripts/app.js"
+			],
+			[
+				"index",
+				"app/index.html"
+			],
+			[
+				"grutn",
+				"ui/Gruntfile.js"
+			],
+			[
+				"storeselector",
+				"ui/app/scripts/controllers/custom/store-selector.js"
+			],
+			[
+				"home",
+				"ui/app/views/home.html"
+			],
+			[
+				"manageopi",
+				"ui/app/scripts/controllers/custom/tailoring-type-tailoring-type-step-manage-options.js"
+			],
+			[
+				"pretafi",
+				"ui/app/scripts/directives/custom/presupuestor-tailoring-field.js"
+			],
+			[
+				"routes",
+				"api/app/routes.php"
+			],
+			[
+				"casup",
+				"ui/app/views/cascade-update.html"
+			],
+			[
+				"entiup",
+				"ui/app/views/entity-update.html"
+			],
+			[
+				"pretaitase",
+				"ui/app/scripts/controllers/custom/presupuestor-tailoring-price-table-selector.js"
+			],
+			[
+				"optionsta",
+				"ui/app/views/custom/presupuestor-tailoring-option-static.html"
+			],
+			[
+				"pritasta",
+				"ui/app/views/custom/presupuestor-tailoring-price-table-static.html"
+			],
+			[
+				"probatup",
+				"ui/app/scripts/controllers/custom/product-batch-upload.js"
+			],
+			[
+				"",
+				"ui/app/scripts/directives/raw-input.js"
+			],
+			[
+				"rawin",
+				"ui/app/scripts/directives/raw-input.js"
+			],
+			[
+				"rawpicl",
+				"ui/app/views/raw-pick_list-input.html"
+			],
+			[
+				"rawliin",
+				"ui/app/views/raw-list-input.html"
+			],
+			[
+				"liin",
+				"ui/app/scripts/directives/list-input.js"
+			],
+			[
+				"rawpiliin",
+				"ui/app/views/raw-pick_list-input.html"
+			],
+			[
+				"consta",
+				"ui/app/scripts/constants.js"
+			],
+			[
+				"lisinput",
+				"ui/app/views/list-input.html"
+			],
+			[
+				"listin",
+				"ui/app/scripts/directives/list-input.js"
+			],
+			[
+				"taitytai",
+				"ui/app/views/custom/tailoring-add-tailoring-type-tailoring-type-field.html"
+			],
+			[
+				"stepmanageop",
+				"ui/app/scripts/controllers/custom/tailoring-type-tailoring-type-step-manage-options.js"
+			],
+			[
+				"conm",
+				"ui/app/scripts/services/configuration-manager.js"
+			],
+			[
+				"database",
+				"api/app/config/database.php"
+			],
+			[
+				"manageoptions",
+				"ui/app/scripts/controllers/custom/tailoring-type-tailoring-type-step-manage-options.js"
+			],
+			[
+				"pretaista",
+				"ui/app/scripts/directives/custom/presupuestor-tailoring-static.js"
+			],
+			[
+				"pretasta",
+				"ui/test/spec/directives/presupuestor-tailoring-static.js"
+			],
+			[
+				"inde",
+				"ui/app/index.html"
+			],
+			[
+				"taiaddtai",
+				"ui/app/views/custom/tailoring-add-tailoring-type-tailoring-type-field.html"
+			],
+			[
+				"taiadd",
+				"ui/app/views/custom/tailoring-add-tailoring-type-tailoring-type-field.html"
+			],
+			[
+				"pretaiprice",
+				"ui/app/views/custom/presupuestor-tailoring-price-static.html"
+			],
+			[
+				"pretaiboo",
+				"ui/app/views/custom/presupuestor-tailoring-boolean-static.html"
+			],
+			[
+				"pretaioptsta",
+				"ui/app/views/custom/presupuestor-tailoring-option-static.html"
+			],
+			[
+				"premeasusta",
+				"ui/app/views/custom/presupuestor-tailoring-measurements-static.html"
+			],
+			[
+				"pretaboo",
+				"ui/app/views/custom/presupuestor-tailoring-boolean-static.html"
+			],
+			[
+				"taadd",
+				"ui/app/views/custom/tailoring-add-tailoring-type-tailoring-type-field.html"
+			],
+			[
+				"tatyfields",
+				"ui/app/scripts/controllers/custom/tailoring-add-tailoring-type-tailoring-type-field.js"
+			],
+			[
+				"tatystepopnt",
+				"ui/app/scripts/controllers/custom/tailoring-type-tailoring-type-step-manage-options.js"
+			],
+			[
+				"nullsta",
+				"ui/app/views/presupuestor-tailoring-null-static.html"
+			],
+			[
+				"addpretyfi",
+				"ui/app/views/custom/tailoring-add-tailoring-type-tailoring-type-field.html"
+			],
+			[
+				"pretafie",
+				"ui/app/scripts/directives/custom/presupuestor-tailoring-field.js"
+			],
+			[
+				"tatyfiel",
+				"ui/app/views/custom/tailoring-add-tailoring-type-tailoring-type-field.html"
+			],
+			[
+				"tatypu",
+				"ui/app/views/custom/tailoring-type-update.html"
+			],
+			[
+				"tatystepcon",
+				"api/app/controllers/TailoringTypeStepController.php"
+			],
+			[
+				"tatycon",
+				"api/app/controllers/TailoringTypeController.php"
+			],
+			[
+				"csvdat",
+				"api/app/util/CSVDatabaseSeeder.php"
+			],
+			[
+				"csvhand",
+				"api/app/util/CsvHandler.php"
+			],
+			[
+				"fimap",
+				"ui/app/scripts/services/field-mapper.js"
+			],
+			[
+				"probauo",
+				"ui/app/scripts/controllers/custom/product-batch-upload.js"
+			],
+			[
+				"prodcon",
+				"api/app/controllers/ProductController.php"
+			],
+			[
+				"tailoringup",
+				"ui/app/views/custom/tailoring-update.html"
+			],
+			[
+				"taings",
+				"ui/app/styles/custom/tailorings.css"
+			],
+			[
+				"entiy",
+				"ui/app/scripts/controllers/entity-update.js"
+			],
+			[
+				"stan",
+				"ui/app/scripts/services/standard-api.js"
+			],
+			[
+				"querypar",
+				"ui/app/scripts/filters/query-parser.js"
+			],
+			[
+				"taing",
+				"ui/app/styles/custom/tailorings.css"
+			],
+			[
+				"taiseeder",
+				"api/app/database/seeds/TailoringTypeTableSeeder.php"
+			],
+			[
+				"taiup",
+				"ui/app/views/custom/tailoring-update.html"
+			],
+			[
+				"prefimapper",
+				"ui/app/scripts/filters/custom/presupuestor-field-mapper.js"
+			],
+			[
+				"tailoseed",
+				"api/app/database/seeds/TailoringTypeTableSeeder.php"
+			],
+			[
+				"fieldmapper",
+				"ui/app/scripts/filters/custom/presupuestor-field-mapper.js"
+			],
+			[
+				"pretaiop",
+				"ui/app/views/custom/presupuestor-tailoring-option-info-field.html"
+			],
+			[
+				"tatytase",
+				"api/app/database/seeds/TailoringTypeTableSeeder.php"
+			],
+			[
+				"tatytr",
+				"api/app/transformers/TailoringTypeTransformer.php"
+			],
+			[
+				"taup",
+				"ui/app/views/custom/tailoring-update.html"
+			],
+			[
+				"stepdep",
+				"ui/app/scripts/filters/custom/step-dependencies.js"
+			],
+			[
+				"presupuestormap",
+				"ui/app/scripts/filters/custom/presupuestor-field-mapper.js"
+			],
+			[
+				"pretacol",
+				"ui/app/views/custom/presupuestor-tailoring-table-selection-field.html"
+			],
+			[
+				"taitysteps",
+				"api/app/database/migrations/2015_07_13_163216_tailoring-type-steps.php"
+			],
+			[
+				"composer",
+				"api/composer.json"
+			],
+			[
+				"storetyetabs",
+				"api/app/database/seeds/StoreTypeTableSeeder.php"
+			],
+			[
+				"datasee",
+				"api/app/database/seeds/DatabaseSeeder.php"
+			],
+			[
+				"usertabl",
+				"api/app/database/seeds/UserTableSeeder.php"
+			],
+			[
+				"tatysteps",
+				"api/app/database/migrations/2015_07_13_163216_tailoring-type-steps.php"
+			],
+			[
+				"tatysteo",
+				"api/app/models/TailoringTypeStepOption.php"
+			],
+			[
+				"tatyste",
+				"api/app/models/TailoringTypeStep.php"
+			],
+			[
+				"tatystep",
+				"api/app/models/TailoringTypeStep.php"
+			],
+			[
+				"tailorintyfie",
+				"api/app/models/TailoringTypeField.php"
+			],
+			[
+				"tatype.",
+				"api/app/models/TailoringType.php"
+			],
+			[
+				"seeder",
+				"api/app/database/seeds/StoreTableSeeder.php"
+			],
+			[
+				"tatytatystepop",
+				"ui/app/scripts/controllers/custom/tailoring-type-tailoring-type-step-manage-options.js"
+			],
+			[
+				"tatystecon",
+				"api/app/controllers/TailoringTypeStepController.php"
+			],
+			[
+				"taitablsel",
+				"ui/app/views/custom/presupuestor-tailoring-table-selection-field.html"
+			],
+			[
+				"pretaioptpri",
+				"ui/app/views/custom/presupuestor-tailoring-option-price-field.html"
+			],
+			[
+				"selein",
+				"ui/app/scripts/directives/select-input.js"
+			],
+			[
+				"singlese",
+				"ui/app/scripts/controllers/single-select.js"
+			],
+			[
+				"taiu",
+				"ui/app/scripts/controllers/custom/tailoring-update.js"
+			],
+			[
+				"data",
+				"api/app/config/database.php"
+			],
+			[
+				"taitystepcon",
+				"api/app/controllers/TailoringTypeStepController.php"
+			],
+			[
+				"tailoringtypestep",
+				"api/app/models/TailoringTypeStep.php"
+			],
+			[
+				"tailoringtypetra",
+				"api/app/transformers/TailoringTypeTransformer.php"
+			],
+			[
+				"taitycontr",
+				"api/app/controllers/TailoringTypeController.php"
+			],
+			[
+				"taiop",
+				"ui/app/views/custom/presupuestor-tailoring-option-info-field.html"
+			],
+			[
+				"pretamea",
+				"ui/app/views/custom/presupuestor-tailoring-measurements-field.html"
+			],
+			[
+				"tailoring",
+				"ui/app/views/custom/tailoring-update.html"
+			],
+			[
+				"pretaquafi",
+				"ui/app/views/custom/presupuestor-tailoring-quantity-field.html"
+			],
+			[
+				"app.js",
+				"ui/app/scripts/app.js"
+			],
+			[
+				"pretaqua",
+				"ui/app/views/custom/presupuestor-tailoring-quantity-field.html"
+			],
+			[
+				"pretaimeas",
+				"ui/app/views/custom/presupuestor-tailoring-measurements-field.html"
+			],
+			[
+				"tailoringfiel.js",
+				"ui/app/scripts/directives/custom/presupuestor-tailoring-field.js"
+			],
+			[
+				"tailoringtypecon",
+				"api/app/controllers/TailoringTypeController.php"
+			],
+			[
+				"tailorngtypefields.p",
+				"api/app/database/migrations/2015_07_13_163208_tailoring-type-fields.php"
+			],
+			[
+				"tailoringtypefields",
+				"ui/test/spec/controllers/tailoring-add-tailoring-type-tailoring-type-field.js"
+			],
+			[
+				"tailo",
+				"ui/app/styles/custom/tailorings.css"
+			],
+			[
+				"tai",
+				"ui/app/styles/custom/tailorings.css"
+			],
+			[
+				"tacss",
+				"ui/app/styles/custom/tailorings.css"
+			],
+			[
+				"tail",
+				"ui/app/styles/custom/tailorings.css"
+			],
+			[
+				"taityfields",
+				"api/app/database/migrations/2015_07_13_163208_tailoring-type-fields.php"
+			],
+			[
+				"tailoringcss",
+				"ui/app/styles/custom/tailorings.css"
+			],
+			[
+				"pretastr",
+				"ui/app/views/custom/presupuestor-tailoring-string-field.html"
+			],
+			[
+				"optioninfo",
+				"ui/app/views/custom/presupuestor-tailoring-option-info-field.html"
+			],
+			[
+				"pretaistr",
+				"ui/app/views/custom/presupuestor-tailoring-string-field.html"
+			],
+			[
+				"pretafiel",
+				"ui/app/scripts/directives/custom/presupuestor-tailoring-field.js"
+			],
+			[
+				"entup",
+				"ui/app/scripts/controllers/entity-update.js"
+			],
+			[
+				"enti",
+				"ui/app/views/entity-update.html"
+			],
+			[
+				"cons",
+				"ui/app/scripts/constants.js"
+			],
+			[
+				"tatytatyste",
+				"ui/app/scripts/controllers/custom/tailoring-add-tailoring-type-tailoring-type-step.js"
+			],
+			[
+				"taiupda",
+				"ui/app/scripts/controllers/custom/tailoring-update.js"
+			],
+			[
+				"mapp",
+				"ui/app/scripts/mapper.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/workspace/presupuestor/presupuestor.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 299.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

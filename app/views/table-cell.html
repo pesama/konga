@@ -2,4 +2,7 @@
 	<span class="table-cell-content" ng-show="type === 'text'"></span>
 	<img ng-src="{{ content }}" ng-if="type === 'image'" width="{{ image.width }}" height="{{ image.height }}">
 	<div class="{{ content }}" ng-if="type === 'styling'"></div>
+	<div class="{{}}" ng-if="type === 'plain-filtered'">
+		{{ content | customFilter:filter }}
+	</div>
 </div>

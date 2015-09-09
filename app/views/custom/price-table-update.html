@@ -1,0 +1,65 @@
+<div class="form-cascade price-table-update">
+
+	<!-- Ident fields -->
+	<h2>Identificación de la tabla</h2>
+	<raw-input 
+		property="field"
+		vertical="true"
+		ng-repeat="field in fields | updateParams:metadata | orderBy:'+priority.update' | allowed:'update' | filter:{ categories: 'ident' }:true" 
+		entity="entity" 
+		on-update="onUpdate"
+		on-change="onChange"
+		metadata="metadata"
+		mode="update"
+		creating="creating"
+		index="1">
+	</raw-input>
+
+	<h2>Configuración de la tabla</h2>
+	<div class="col-md-12">
+		<h3>Límites</h3>
+	</div>
+	<div class="col-md-6" ng-repeat="field in fields | updateParams:metadata | orderBy:'+priority.update' | allowed:'update' | filter:{ categories: 'limits' }:true">
+		<raw-input 
+			property="field"
+			vertical="true"
+			entity="entity" 
+			on-update="onUpdate"
+			on-change="onChange"
+			metadata="metadata"
+			mode="update"
+			creating="creating"
+			index="2">
+		</raw-input>
+	</div>
+
+	<div class="col-md-12">
+		<h3>Paso</h3>
+	</div>
+	<div class="col-md-6" ng-repeat="field in fields | updateParams:metadata | orderBy:'+priority.update' | allowed:'update' | filter:{ categories: 'stepping' }:true">
+		<raw-input 
+			property="field"
+			vertical="true"
+			entity="entity" 
+			on-update="onUpdate"
+			on-change="onChange"
+			metadata="metadata"
+			mode="update"
+			creating="creating"
+			index="3">
+		</raw-input>
+	</div>
+
+	<raw-input 
+		property="field"
+		vertical="true"
+		ng-repeat="field in fields | updateParams:metadata | orderBy:'+priority.update' | allowed:'update' | filter:{ categories: 'table' }:true" 
+		entity="entity" 
+		on-update="onUpdate"
+		on-change="onChange"
+		metadata="metadata"
+		mode="update"
+		creating="creating"
+		index="4">
+	</raw-input>
+</div>

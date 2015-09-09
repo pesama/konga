@@ -1,0 +1,130 @@
+<div class="tailoring-update" ng-controller="TailoringUpdateCtrl">
+
+	<!-- Pre data -->
+	<div class="row pre-data" ng-if="!steps.length">
+		<div class="col-md-12">
+			<div class="question">Lo primero...</div>
+		</div>
+		<div class="col-md-12">
+			<raw-input 
+				property="field"
+				vertical="true"
+				ng-repeat="field in fields | filter:{ name: 'tailoringType' }:true" 
+				entity="entity" 
+				on-update="updateEntity"
+				metadata="metadata"
+				mode="update"
+				creating="creating">
+			</raw-input>
+		</div>
+	</div>
+
+	<div class="row" ng-if="steps.length">
+		<div class="col-md-9">
+			<div class="step-info">
+				<div class="stepper-background">
+					<div class="stepper-backgrund-active" ng-style="styles.stepperActive()"></div>
+				</div>
+				<div class="step text-center" ng-style="styles.step(_step.index)" ng-repeat="_step in steps | orderBy:'+index'">
+					<span class="step-number" ng-class="{ active: _step.index === index, past: _step.index < index || index === 0 }">
+						{{ _step.index }}
+					</span>
+				</div>
+			</div>
+			<div class="separator"></div>
+
+			<!-- Stepper -->
+			<div class="row tailoring-stepper" ng-if="steps.length">
+				<div class="col-md-12 step" ng-repeat="_step in steps | orderBy:'+index'" ng-class="{ 'past': step.index > _step.index || index === 0, 'future': step.index < _step.index, 'current': step.index === _step.index }" ng-if="!data.done">
+					<div class="row">
+						<div class="col-md-12" ng-repeat="item in _step.items | stepDependencies:data.tailoring:entity.tailoringType.fields | orderBy:'+order'">
+							<div class="question">{{ item.question }}</div>
+							<div class="helpText" ng-if="item.helpText">{{ item.helpText }}</div>
+
+							<presupuestor-tailoring-field entity="data.tailoring" step="item" on-update="map"></presupuestor-tailoring-field>
+						</div>
+					</div>
+				</div>
+
+				<!-- Done -->
+				<div class="col-md-12 step" ng-if="data.done">
+					<div class="question">Hemos terminado</div>
+					<div class="helpText">Aquí tienes los datos de tu confección</div>
+					<hr />
+					<div class="row" ng-repeat="field in entity.tailoringType.fields" ng-if="!!data.tailoring[field.name]">
+						<div class="col-md-6">
+							{{ field.name }}
+						</div>
+						<div class="col-md-6" ng-if="!!data.tailoring[field.name]">
+							<strong>{{ data.tailoring[field.name] | presupuestorFieldMapper:field.type }}</strong>
+						</div>
+						<div class="col-md-6" ng-if="!data.tailoring[field.name]">
+							<span>Sin determinar</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							Precio/unidad
+						</div>
+						<div class="col-md-6">
+							<strong>{{ data.price | number:2 }}€</strong>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							TOTAL:
+						</div>
+						<div class="col-md-6">
+							<strong>{{ data.price * data.tailoring.Cantidad | number:2 }}€</strong>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-3 tailoring-summary" ng-if="steps.length" ng-class="{ finished: data.done }">
+		<div class="summary-stepper-background"></div>
+		<div class="col-md-12 text-left">
+			<span class="step-number">
+				<i class="glyphicon glyphicon-ok"></i>
+			</span>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="tailoring-summary-title">Aquí tienes tu confección de {{ entity.tailoringType.name }}</div>
+				<div class="row" ng-repeat="field in entity.tailoringType.fields" ng-if="!!data.tailoring[field.name]">
+					<div class="col-md-6">
+						{{ field.name }}
+					</div>
+					<div class="col-md-6" ng-if="!!data.tailoring[field.name]">
+						<strong>{{ data.tailoring[field.name] | presupuestorFieldMapper:field.type }}</strong>
+					</div>
+					<div class="col-md-6" ng-if="!data.tailoring[field.name]">
+						<span>Sin determinar</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="actions">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="price-label">
+						{{ data.price | number:2 }}€/u
+					</div>
+				</div>
+				<div class="col-md-9 text-right">
+
+					<!-- Configuration of current step -->
+					<ng-form name="tailoringUpdateStep" role="form">
+						<input type="hidden" ng-repeat="item in step.items | stepDependencies:data.tailoring:entity.tailoringType.fields | orderBy:'+order'" name="item.field.name" ng-model="data.tailoring[item.field.name]" ng-required="item.field.required" />
+					</ng-form>
+
+					<button ng-disabled="step.index === 1" class="btn btn-default" ng-click="back()">Anterior</button>
+					<button ng-if="step.index < steps.length" class="btn btn-primary" ng-disabled="tailoringUpdateStep.$invalid" ng-click="forward()">Siguiente</button>
+					<button ng-if="step.index >= steps.length" class="btn btn-success" ng-disabled="tailoringUpdateStep.$invalid" ng-click="submit()">Validar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
