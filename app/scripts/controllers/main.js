@@ -131,51 +131,6 @@ angular.module('ui.konga')
 			$location.path("/userParams");
 		};
 		
-		$rootScope.changeCtrOperat = function(){
-			var modalInstance = $modal.open({
-			      templateUrl: '/views/ctr-operat-choix.html',
-			      controller: 'CtrOperatChoixUpdateCtrl',
-			      size: 'md',
-			      resolve: {
-			        change: function () {
-			          return true;
-			        },
-			      }
-			    });
-			
-			modalInstance.result.then(
-			   function (newCtrOperatId) {
-				   CtrOperat.get({ id: newCtrOperatId }, 
-					function(ctrOperat) {
-								// Store the centre operat
-								common.store('ctr-operat', ctrOperat);
-
-								// Complete authentication
-								$rootScope.operations.completeAuthentication(ctrOperat);								
-					},
-					function (error) { // Error when getting the operational center
-						$scope.logout();
-						console.log('POST Error' + error);
-					});	
-		    }, function () {
-		      console.log('Operation canceled');
-		    });
-		};
-		
-		$rootScope.deconnexion = function(){
-    		
-			$rootScope.operations.confirm('message.title.confirmation-desconnexion', 'message.confirmation-desconnexion', 
-					function() {
-						$rootScope.operations.closeAllTabs(true);
-				 		$rootScope.logout();
-				 		$window.location.reload();
-					},
-					function() {
-						// Do nothing
-					});    		
-    		
-    	};
-		
 		$rootScope.logout = function(reload) {
 			deleteSessionInformation();
  			$cookieStore.remove('authToken');
@@ -188,14 +143,6 @@ angular.module('ui.konga')
  			if(reload)
  				window.location.reload();
 		};
-		
-		deleteSessionInformation = function() {
- 			Session.data = {};
-     		delete $rootScope.isLogged;
- 			delete $rootScope.username;	
- 			delete $rootScope.isFullyLogged;
-     	};
-		
 	}])
 	.controller('MainCtrl', ['$scope', '$location', '$filter', '$rootScope', '$timeout','common', 'scaffold', 'Metadata', 'dialogs', '$translate', 'Session', 'auth', 'User', '$cookieStore', 'actionManager', '$modal', 'permissionManager', 'ENV', 
 		function($scope, $location, $filter, $rootScope, $timeout,common, scaffold, Metadata, dialogs, $translate, Session, auth, User, $cookieStore, actionManager, $modal, permissionManager, ENV) {
@@ -224,14 +171,6 @@ angular.module('ui.konga')
 
 			$scope.loading = [];
 			$scope.loadingMessage = null;
-
-			// *
-			//  * @description
-			//  * Metadata object.
-			//  * Holds information about the site.
-
-			// Array of available languages
-			$scope.selectedLanguage = 'message.languages.fr';
 
 			/*
 		  	 * TODO Document
