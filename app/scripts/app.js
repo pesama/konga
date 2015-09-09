@@ -203,7 +203,7 @@ angular.module('ui.konga', [
   //             return config;
   //           }
   //         };
-      });
+  //    });
     }
   ])
   .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
