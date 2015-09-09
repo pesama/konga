@@ -3,7 +3,7 @@
   "version": "0.1",
   "repository": {
     "type": "git",
-    "url": "https://pritok@bitbucket.org/konga-project/konga-ui.git"
+    "url": "git@bitbucket.org:konga-project/konga-ui.git"
   },
   "main": [
     "dist/scripts/nge-util.js",
