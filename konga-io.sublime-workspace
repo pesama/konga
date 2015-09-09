@@ -523,7 +523,7 @@
 			"file": "app/scripts/app.js",
 			"settings":
 			{
-				"buffer_size": 11999,
+				"buffer_size": 12001,
 				"line_ending": "Unix"
 			}
 		},
@@ -1099,7 +1099,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1108,15 +1108,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11999,
+						"buffer_size": 12001,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8606,
-								8887
+								11099,
+								11099
 							]
 						],
 						"settings":
@@ -1126,10 +1126,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1522.0,
+						"translation.y": 2910.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1189,7 +1189,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1300,6 +1300,10 @@
 		"selected_items":
 		[
 			[
+				"app",
+				"app/scripts/app.js"
+			],
+			[
 				"pack",
 				"package.json"
 			],
@@ -1326,10 +1330,6 @@
 			[
 				"grunt",
 				"Gruntfile.js"
-			],
-			[
-				"app",
-				"app/scripts/app.js"
 			],
 			[
 				"index",
