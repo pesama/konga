@@ -678,6 +678,7 @@
 	],
 	"file_history":
 	[
+		"/Users/sm/workspace/konga-ui/app/scripts/services/configuration-manager.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/controllers/entity-search.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/controllers/main.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/controllers/entity-update.js",
@@ -804,8 +805,7 @@
 		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/single-select-custom.js",
 		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/add-role-store-user.js",
 		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/custom/add-order-product.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/custom/add-product-characteristic.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/custom/add-product-storetype.js"
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/custom/add-product-characteristic.js"
 	],
 	"find":
 	{
@@ -1120,6 +1120,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"confma",
+				"app/scripts/services/configuration-manager.js"
+			],
 			[
 				"app",
 				"app/scripts/app.js"
@@ -1627,10 +1631,6 @@
 			[
 				"tatytatyste",
 				"ui/app/scripts/controllers/custom/tailoring-add-tailoring-type-tailoring-type-step.js"
-			],
-			[
-				"taiupda",
-				"ui/app/scripts/controllers/custom/tailoring-update.js"
 			]
 		],
 		"width": 0.0
