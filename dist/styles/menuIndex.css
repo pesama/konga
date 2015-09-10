@@ -1,0 +1,120 @@
+.menuNavegation{ }
+.dropdown-submenu{
+    position:relative;
+    color:black;
+}
+ 
+.dropdown-submenu > .dropdown-menu
+{
+	background-color:(255, 215, 0, 0.38);
+    top:0;
+    left:100%;
+    margin-top:-6px;
+    margin-left:1px;
+    -webkit-border-radius:0 6px 6px 6px;
+    -moz-border-radius:0 6px 6px 6px;
+    border-radius:0 6px 6px 6px;
+}
+ 
+.dropdown-submenu:hover > .dropdown-menu{
+    display:block;
+    color:black;
+}
+ 
+.dropdown-submenu > a:after{
+    display:block;
+    content:" ";
+    float:right;
+    width:0;
+    height:0;
+    border-color:transparent;
+    border-style:solid;
+    border-width:5px 0 5px 5px;
+    border-left-color:#cccccc;
+    margin-top:5px;
+    margin-right:-10px;
+}
+ 
+.dropdown-submenu:hover > a:after{
+    border-left-color:#ffffff;
+}
+ 
+.dropdown-submenu .pull-left{
+    float:none;
+}
+ 
+.dropdown-submenu.pull-left > .dropdown-menu{
+    left:-100%;
+    margin-left:10px;
+    -webkit-border-radius:6px 0 6px 6px;
+    -moz-border-radius:6px 0 6px 6px;
+    border-radius:6px 0 6px 6px;
+}
+li.dropdown-submenu {
+border: none!important;
+}
+ul.dropdown-menu {
+	 color:black;
+}
+ul.dropdown-menu li{
+	border:none;
+	color:black;
+	margin-left:2px;
+    cursor: pointer;
+}
+.dropdown-menu > li > a{
+	display: block;
+padding: 3px 20px;
+clear: both;
+font-weight: normal;
+line-height: 1.42857143;
+color: #333 !important;
+white-space: nowrap;
+	
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+color: #555;
+background-color: #6778AC;}
+
+a.navbar-brand.logoVersion {
+    background: url('../images/logoVersion.png') center top no-repeat;
+    background-size: auto 70%;
+}
+
+span.version {
+    position: absolute;
+    bottom: 15px;
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    padding-left: 4em;
+}
+
+span.deploy-time {
+    position: absolute;  
+    bottom: 0px;  display: block;  text-align: center;  
+    font-size: 10px;  
+    padding-left: 4.5em;
+}
+
+/*.navbar-nav > li > .dropdown-menu {
+    margin-top: 8px;
+    padding: 0;
+}
+
+.navbar-nav li > .dropdown-menu > li
+ {
+    padding: 5px 3px;
+    border: none;  
+    color: white;  
+    cursor: pointer;
+    margin: 0;
+}*/
+
+/*.navbar-nav li > .dropdown-menu > li:nth-child(odd) {
+    background: #408DB8;
+}
+
+.navbar-nav li > .dropdown-menu > li:nth-child(even) {
+    background: #347599;
+}*/

@@ -1,0 +1,98 @@
+.table-header > th {
+	background-color: #428BCA !important;
+}
+
+.table-header.categories > th {
+	background-color: #428BCA !important;
+	border: 0 !important;
+}
+
+.table-header.categories > th.noHeader {
+	background-color: transparent !important;
+}
+
+.table-header.categories + .table-header th {
+	border: 0 !important;
+	font-weight: normal !important;
+}
+
+.table-result > tbody > tr:nth-child(even) {
+	background: #fff;
+}
+
+.table-result > tbody > tr:nth-child(odd) {
+	background: #efefef;	
+}
+
+.table-result > tbody > tr.disabled:nth-child(odd) {
+	background: rgb(250, 210, 210);
+}
+
+.table-result > tbody > tr.disabled:nth-child(even)   {
+	background: rgb(250, 180, 180);
+}
+
+.table-result > tbody >tr:nth-child(odd)>td.checked   {
+	color: rgb(216, 216, 216);
+	background: rgb(251, 251, 251);
+	cursor: not-allowed;
+}
+
+.table-result>tbody>tr:nth-child(odd)>td.checked > .centerText  {
+	color: rgb(216, 216, 216);
+}
+
+td.checked {
+	background: rgb(216, 216, 216);
+	color: rgb(251, 251, 251);
+	cursor: not-allowed;
+}
+
+td.checked > .centerText  {
+	color: rgb(251, 251, 251);
+}
+
+.table-ctr-operat .table-striped tr:nth-child(odd) td.checked .centerText {
+	color: rgb(216, 216, 216);
+} 
+
+.quickSearchBox, .numItemsBox{
+	margin-top:10px;
+}
+
+.table-header {
+	position: relative;
+}
+
+.table-header.sortable {
+	padding-right: 1.5em;
+}
+
+.table-header .sorting {
+	position: absolute;
+	right: 0px;
+	top: 50%;
+	width: 2em;
+	height: 1em;
+	margin-top: -1em;
+	text-align: center;
+	font-size: 8px;
+}
+
+.table-header .sorting .select-sorting {
+	display: block;
+	opacity: 0.3;
+}
+
+.table-header .sorting .select-sorting.active {
+	/*color: #51b84c;*/
+	opacity: 1 !important;
+}
+
+.table-header .sorting .sorting-asc {
+	padding-left: 1px;
+}
+
+.table-header .sorting .sorting-desc {
+	
+}
