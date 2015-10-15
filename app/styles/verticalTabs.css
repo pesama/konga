@@ -6,19 +6,19 @@
 	border: 4px black solid;
 	
 }
-.tabbable>UL.sigma-nav-vertical{
+.tabbable>UL.konga-nav-vertical{
 	border-bottom: 0;
 }
-.tabbable>UL.sigma-nav-vertical>LI{
+.tabbable>UL.konga-nav-vertical>LI{
 	margin-top: 0;
 	width: 100%;
 }
-.tabbable>UL.sigma-nav-vertical>LI>A{
+.tabbable>UL.konga-nav-vertical>LI>A{
 	width: 100%;
 	margin-left: 0 !important;
 }
 
-.tabbable > ul.sigma-nav-vertical > li.active > A{
+.tabbable > ul.konga-nav-vertical > li.active > A{
 	background-color: #428BCA !important;
 }
 

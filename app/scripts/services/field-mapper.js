@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc service
- * @name kongaUI.fieldMapper
+ * @name ui.konga.fieldMapper
  * @description
  * This service helps managing the connection between the entities and their forms within the UI. 
  * When a field is changed in the form, its value is stored into the entity. 

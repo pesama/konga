@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc directive
- * @name ui.konga.directive:priceInput
+ * @name ui.konga.directive:Price input
  * @description
  * # priceInput
  */

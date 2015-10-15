@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc directive
- * @name kongaUI.directive:tics
+ * @name ui.konga.directive:Time Card system
  * @description
  * # tics
  */

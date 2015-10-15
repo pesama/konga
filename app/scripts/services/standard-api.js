@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc service
- * @name kongaUI.standardApi
+ * @name ui.konga.standardApi
  * @description
  * # standardApi
  * Factory in the ui.konga.

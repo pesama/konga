@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc service
- * @name kongaUI.Scaffold
+ * @name ui.konga.Scaffold
  * @description
  * # scaffold
  * Service in the ui.konga.

@@ -1,7 +1,7 @@
 <div class="select-input {{(isExtended) ? 'extend' : 'non-extended'}}" ng-class="{ disabled: disableSelect(property) }" konga-select>
 	<div ng-class="{'col-md-6': mode === 'update', 'col-md-12': mode === 'search'}">
 		<div class="input-group {{ validation.required() ? 'required' : 'optional' }} {{ value.text.length ? 'valid' : 'invalid' }}">
-			<input name="{{ property.name }}"type="text" class="sigma-form-search-input form-control" id="{{ fieldId }}-input" ng-model="textinput" ng-disabled="disableField(mode, property)" ng-pattern="validation.pattern()" ng-required="validation.required()" ng-change="writeValue()" typeahead="item.label for item in getElements($viewValue)" typeahead-on-select="formatInput($item, $model, $label)" tabindex="{{ (index + 1) * 12 }}">
+			<input name="{{ property.name }}"type="text" class="konga-form-search-input form-control" id="{{ fieldId }}-input" ng-model="textinput" ng-disabled="disableField(mode, property)" ng-pattern="validation.pattern()" ng-required="validation.required()" ng-change="writeValue()" typeahead="item.label for item in getElements($viewValue)" typeahead-on-select="formatInput($item, $model, $label)" tabindex="{{ (index + 1) * 12 }}">
 			<div class="input-group-addon">
 				<button type="button" class="btn btn-link" ng-disabled="disableField(mode, property)"
 					ng-click="dispatchFieldAction('open-select')" id="{{ fieldId }}-select">

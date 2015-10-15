@@ -858,17 +858,17 @@ body {
 	font-size: 20px;
 }
 
-.sigma-datepicker-container {
+.konga-datepicker-container {
 	margin-bottom: 20px;
 }
 
-.sigma-datepicker-container>.input-group-addon {
+.konga-datepicker-container>.input-group-addon {
 	padding: 0;
 	background: none;
 	border: none;
 }
 
-.sigma-datepicker-container>.input-group-addon>select {
+.konga-datepicker-container>.input-group-addon>select {
 	height: 105%;
 	border-bottom-left-radius: 5px;
 	border-top-left-radius: 5px;
@@ -876,7 +876,7 @@ body {
 	border-right: 0;
 }
 
-.sigma-form-simple-search-input {
+.konga-form-simple-search-input {
 	border-radius: 5px !important;
 }
 
@@ -1050,16 +1050,16 @@ li.borderLine, a.borderLine {
 }
 
 /* Tabs Style */
-/*#sigmaNavTabs {
+/*#kongaNavTabs {
 	background-color: white;
 }*/
 
-#sigmaNavTabs .nav-tabs {
+#kongaNavTabs .nav-tabs {
 	height: 40px;
 	border-bottom: none !important;
 }
 
-#sigmaNavTabs .view-container {
+#kongaNavTabs .view-container {
 	position: absolute;
 	top: 40px;
 	left: 15px;
@@ -1070,30 +1070,30 @@ li.borderLine, a.borderLine {
 	padding-bottom: 30px;
 }
 
-#sigmaNavTabs .nav-tabs li {
+#kongaNavTabs .nav-tabs li {
 	margin-right: -5px;
 }
 
-#sigmaNavTabs .nav-tabs li.active {
+#kongaNavTabs .nav-tabs li.active {
 	z-index: 5;
 }
 
-#sigmaNavTabs .nav-tabs li:nth-child(last) {
+#kongaNavTabs .nav-tabs li:nth-child(last) {
 	margin-right: 0px;	
 }
 
-#sigmaNavTabs .nav-tabs li:not(.active) {
+#kongaNavTabs .nav-tabs li:not(.active) {
 	cursor: pointer;
 	margin-top: 5px;
 	z-index: 4;
 }
 
-#sigmaNavTabs .nav-tabs li.active > a {
+#kongaNavTabs .nav-tabs li.active > a {
 	background-color: rgba(255, 255, 255, 0.95) !important;
 	border: none !important;
 }
 
-#sigmaNavTabs .nav-tabs li:not(.active ) > a {
+#kongaNavTabs .nav-tabs li:not(.active ) > a {
 	background: #222 !important;
 	font-size: 12px;
 	padding: 8px 15px;
@@ -1102,7 +1102,7 @@ li.borderLine, a.borderLine {
 	border-left: 1px solid #666;
 }
 
-/*#sigmaNavTabs .nav-tabs li:nth-child(n+2)>a {
+/*#kongaNavTabs .nav-tabs li:nth-child(n+2)>a {
 	border-right: 1px solid #DDD;
 	margin-left: -3px;
 	border-radius: 0px;
@@ -1131,7 +1131,7 @@ li.borderLine, a.borderLine {
 	font-size: 8pt;
 }*/
 
-/*#sigmaNavTabs .nav-tabs li>a {
+/*#kongaNavTabs .nav-tabs li>a {
 	display: inline-block;
 	color: black;
 	margin-top: 1px;
@@ -1153,7 +1153,7 @@ li.borderLine, a.borderLine {
 	color: white !important;
 }*/
 
-#sigmaNavTabs .tab-close-btn {
+#kongaNavTabs .tab-close-btn {
 	margin-left: 20px;
 	cursor: pointer;
 	font-size: 18px;
@@ -1162,7 +1162,7 @@ li.borderLine, a.borderLine {
 	margin-top: -3px;
 }
 
-#sigmaNavTabs .tab-close-btn:hover {
+#kongaNavTabs .tab-close-btn:hover {
 	/*color: rgb(250, 79, 79);*/
 }
 
@@ -1170,7 +1170,7 @@ li.borderLine, a.borderLine {
 	cursor: pointer;
 }
 
-.sigma-content-container {
+.konga-content-container {
 	padding-top: 10px;
 	min-height: 460px;
 	padding-bottom: 10px;
@@ -1289,47 +1289,47 @@ nav.header-2 {
 	font-weight: bold;
 }
 
-.sigma-content-tabpanel .tab-row>ul {
+.konga-content-tabpanel .tab-row>ul {
 	list-style: none;
 	width: 100%;
 	padding: 0;
 	margin: 0;
 }
 
-.sigma-content-tabpanel .tab-row>ul>li {
+.konga-content-tabpanel .tab-row>ul>li {
 	display: inline-table !important;
 	padding: 10px 20px;
 }
 
-.sigma-content-tabpanel .tab-row>ul>li.selected {
+.konga-content-tabpanel .tab-row>ul>li.selected {
 	border: 1px solid #e7e7e7;
 	border-bottom-color: transparent;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 }
 
-.sigma-content-tabpanel .tab-row>ul>li:hover {
+.konga-content-tabpanel .tab-row>ul>li:hover {
 	background-color: #eee;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	padding-bottom: 1px;
 }
 
-.sigma-content-tabpanel .tab-row>ul>li>a {
+.konga-content-tabpanel .tab-row>ul>li>a {
 	display: inline-block !important;
 	padding-right: 2px !important;
 }
 
-.sigma-content-tabpanel .tab-row>ul>li.home-nave-tab {
+.konga-content-tabpanel .tab-row>ul>li.home-nave-tab {
 	padding-right: 10px;
 }
 
-.sigma-content-tabpanel .tab-row>ul>li>i {
+.konga-content-tabpanel .tab-row>ul>li>i {
 	padding: 10px 6px;
 	border: 1px solid transparent;
 }
 
-.sigma-content-tabpanel .tab-row>ul>li>i:hover {
+.konga-content-tabpanel .tab-row>ul>li>i:hover {
 	width: 19px;
 	padding: 0;
 	height: 20px;
@@ -1342,7 +1342,7 @@ nav.header-2 {
 	border: 1px solid rgb(209, 205, 205);
 }
 
-.sigma-content-tabpanel .tab-row>ul>li.active,.sigma-content-tabpanel .tab-row>ul>li.active:hover,.sigma-content-tabpanel .tab-row>ul>li.active:focus
+.konga-content-tabpanel .tab-row>ul>li.active,.konga-content-tabpanel .tab-row>ul>li.active:hover,.konga-content-tabpanel .tab-row>ul>li.active:focus
 	{
 	border: 1px solid #ddd;
 	border-bottom-color: transparent;
@@ -1351,7 +1351,7 @@ nav.header-2 {
 	background-color: #fff;
 }
 
-.sigma-content-tabpanel .tab-row>ul>li.active>a,.sigma-content-tabpanel .tab-row>ul>li.active>a:hover,.sigma-content-tabpanel .tab-row>ul>li.active>a:focus
+.konga-content-tabpanel .tab-row>ul>li.active>a,.konga-content-tabpanel .tab-row>ul>li.active>a:hover,.konga-content-tabpanel .tab-row>ul>li.active>a:focus
 	{
 	border: 1px solid transparent !important;
 }
@@ -1436,11 +1436,11 @@ span.total-items {
 	line-height: 20px;
 }
 
-.form-group .sigma-icon-form {
+.form-group .konga-icon-form {
 	padding: 0;
 }
 
-.form-group .sigma-icon-form:first-child {
+.form-group .konga-icon-form:first-child {
 	padding-left: 10px;
 }
 
@@ -1449,7 +1449,7 @@ li.codes-list>a {
 	cursor: pointer;
 }
 
-.sigma-submit-search {
+.konga-submit-search {
 	margin-top: 35px;
 }
 
@@ -1505,7 +1505,7 @@ tr.ng-scope.resultClick:hover {
 	margin: 10px 5px 5px 5px !important;
 }
 
-.sigma-tab-body-content {
+.konga-tab-body-content {
 	min-height: 450px;
 	overflow-x: hidden;
 }
@@ -1550,7 +1550,7 @@ tr.ng-scope.resultClick:hover {
 /*.ng-binding {
 	padding-left: 0px;
 }*/
-.sigma-form-search-input form-control ng-pristine ng-valid {
+.konga-form-search-input form-control ng-pristine ng-valid {
 	border-raius: 0px !important;
 }
 
@@ -2190,19 +2190,19 @@ div.input-group *.invalid-date ~ div.validation > div.validation-invalid-date {
 	border: 4px black solid;
 	
 }
-.tabbable>UL.sigma-nav-vertical{
+.tabbable>UL.konga-nav-vertical{
 	border-bottom: 0;
 }
-.tabbable>UL.sigma-nav-vertical>LI{
+.tabbable>UL.konga-nav-vertical>LI{
 	margin-top: 0;
 	width: 100%;
 }
-.tabbable>UL.sigma-nav-vertical>LI>A{
+.tabbable>UL.konga-nav-vertical>LI>A{
 	width: 100%;
 	margin-left: 0 !important;
 }
 
-.tabbable > ul.sigma-nav-vertical > li.active > A{
+.tabbable > ul.konga-nav-vertical > li.active > A{
 	background-color: #428BCA !important;
 }
 

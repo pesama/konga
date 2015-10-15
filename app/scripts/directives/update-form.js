@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc directive
- * @name kongaUI.directive:updateForm
+ * @name ui.konga.directive:Update form
  * @description
  * # updateForm
  */

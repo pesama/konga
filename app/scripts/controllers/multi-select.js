@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc controller
- * @name kongaUI.controller:MultiSelectCtrl
+ * @name ui.konga.controller:Multi Select
  * @description
  * # MultiSelectCtrl
  * Controller of the ui.konga

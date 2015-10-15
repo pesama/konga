@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc directive
- * @name ui.konga.directive:selectInput
+ * @name ui.konga.directive:Select input
  * @description
  * # selectInput
  */

@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc directive
- * @name kongaUI.directive:searchPane
+ * @name ui.konga.directive:Search Pane
  * @scope
  * @restrict E
  * @description

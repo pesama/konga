@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc service
- * @name kongaUI.actionManager
+ * @name ui.konga.actionManager
  * @description
  * # actionManager
  * Provider in the ui.konga.

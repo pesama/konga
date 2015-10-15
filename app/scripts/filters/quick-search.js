@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc filter
- * @name kongaUI.filter:quickSearch
+ * @name ui.konga.filter:quickSearch
  * @function
  * @description
  * # quickSearch

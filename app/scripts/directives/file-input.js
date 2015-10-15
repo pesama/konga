@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc directive
- * @name ui.konga.directive:fileInput
+ * @name ui.konga.directive:File input
  * @description
  * # fileInput
  */

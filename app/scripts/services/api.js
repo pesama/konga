@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc service
- * @name kongaUI.Api
+ * @name ui.konga.Api
  * @description
  * This factory connects the source to a factory, depending on the type of entity that's being looked for. 
  */
@@ -31,7 +31,7 @@ angular.module('ui.konga')
 /**
  * @ngdoc method
  * @name get
- * @methodOf kongaUI.Api
+ * @methodOf ui.konga.Api
  * @description
  * Returns an entity identified with the unique id provided
  * @param {*} id The unique id for the entity
@@ -43,7 +43,7 @@ angular.module('ui.konga')
  /**
  * @ngdoc method
  * @name search
- * @methodOf kongaUI.Api
+ * @methodOf ui.konga.Api
  * @description
  * Search for entities filtering with the input query
  * @param {Object} query Query to filter with (sent via `GET` parameters, so they must be serializable, and serialized).

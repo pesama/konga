@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc directive
- * @name ui.konga.directive:optionInput
+ * @name ui.konga.directive:Option input
  * @description
  * # optionInput
  */

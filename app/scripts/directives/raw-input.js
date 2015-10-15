@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc directive
- * @name kongaUI.directive:rawInput
+ * @name ui.konga.directive:Raw input
  * @scope
  * @restrict E
  * @description
@@ -22,7 +22,7 @@
  * @param {Object=} rootMetadata Defines the root metadata (for complex fields)
  * @param {Function} updateEntity Function to call when the field is updated to update the entity
  * @param {Function} changeEntity Function to call when the field is updated to control changes
- * @param {String} mode Defines the mode of the field (i.e. Search, Update). See {@link sigmaTools.Constants constants}
+ * @param {String} mode Defines the mode of the field (i.e. Search, Update). See {@link kongaTools.Constants constants}
  * @param {Boolean} creating Defines whether the field is in creation mode or in update
  * @param {Object} parentField Defines the parent field (for complex fields)
  * @param {Object=} style If set, it overrides the default styling options for the field

@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc directive
- * @name ui.konga.directive:recursiveList
+ * @name ui.konga.directive:Recursive list
  * @description
  * # recursiveList
  */

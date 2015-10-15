@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc object
- * @name kongaUITools.Util
+ * @name lib.konga.util
  * @description
  * 
  * Provides a set of common utils used all across the application.
@@ -24,7 +24,7 @@ var util = {
 
 	/**
 	 * @ngdoc method
-	 * @methodOf kongaUITools.Util
+	 * @methodOf lib.konga.util
 	 * @name getEntityFields
 	 * @description
 	 * Returns all fields for an entity type following all hierarchy upwards.
@@ -77,7 +77,7 @@ var util = {
 
 	/**
 	 * @ngdoc method
-	 * @methodOf kongaUITools.Util
+	 * @methodOf lib.konga.util
 	 * @name getEntityId
 	 * @description
 	 * Returns the ID of an entity, or 'new' if the entity is not provided or the id does not exist
@@ -111,7 +111,7 @@ var util = {
 
 	/**
 	 * @ngdoc method
-	 * @methodOf kongaUITools.Util
+	 * @methodOf lib.konga.util
 	 * @name getEntityCode
 	 * @description
 	 * Returns the code of an entity, or 'new' if the entity is not provided or the code does not exist
@@ -145,7 +145,7 @@ var util = {
 
 	/**
 	 * @ngdoc method
-	 * @methodOf kongaUITools.Util
+	 * @methodOf lib.konga.util
 	 * @name getEntityLabel
 	 * @description
 	 * Returns the label of an entity, or 'new' if the entity is not provided or the label does not exist
@@ -179,7 +179,7 @@ var util = {
 	
 	/**
 	 * @ngdoc method
-	 * @methodOf kongaUITools.Util
+	 * @methodOf lib.konga.util
 	 * @name downloadFile
 	 * @description
 	 * Download the file that we get from a service
@@ -195,7 +195,7 @@ var util = {
 	
 	/**
 	 * @ngdoc method
-	 * @methodOf kongaUITools.Util
+	 * @methodOf lib.konga.util
 	 * @name getEntityCategories
 	 * @description
 	 * Returns all Categories for an entity 
@@ -228,7 +228,7 @@ var util = {
 
 	/**
 	 * @ngdoc method
-	 * @methodOf kongaUITools.Util
+	 * @methodOf lib.konga.util
 	 * @name getEntityFieldSets
 	 * @description
 	 * Returns all Field sets for an entity 
@@ -258,7 +258,7 @@ var util = {
 
 	/**
 	 * @ngdoc method
-	 * @methodOf kongaUITools.Util
+	 * @methodOf lib.konga.util
 	 * @name convertUtf8ToWindow1250
 	 * @description
 	 * Convert an UTF8 string to window-1250 page code 

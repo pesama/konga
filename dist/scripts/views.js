@@ -530,7 +530,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
     "<div id=\"wrapper\">\n" +
     "\t<div id=\"content\" >\n" +
     "\t\t<div class=\"container\">\t\t\t\n" +
-    "\t\t\t<div id=\"sigmaNavTabs\" class=\"container-fluid\">\n" +
+    "\t\t\t<div id=\"kongaNavTabs\" class=\"container-fluid\">\n" +
     "\t\t\t\t<!--<div bs-tabs=\"tabs\" ng-model=\"tabs.activeTab\"></div>-->\n" +
     "\n" +
     "\t\t\t<tabset>\t\t\t    \n" +
@@ -750,7 +750,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('/views/raw-color-input.html',
     "<div class=\"col-md-12\">\n" +
-    "\t<input name=\"{{ property.name }}\" type=\"color\" class=\"form-control sigma-form-search-input\" id=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" maxlength=\"{{ validation.maxlength() }}\">\n" +
+    "\t<input name=\"{{ property.name }}\" type=\"color\" class=\"form-control konga-form-search-input\" id=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" maxlength=\"{{ validation.maxlength() }}\">\n" +
     "\t<!-- TODO This is not working (yet) -->\n" +
     "\t<!-- ng-minlength=\"property.minLength\"\n" +
     "\tng-maxlength=\"property.maxLength\" -->\n" +
@@ -906,7 +906,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('/views/raw-image-input.html',
     "<div class=\"col-md-12\">\n" +
-    "\t<!-- <input name=\"{{ property.name }}\"type=\"text\" class=\"form-control sigma-form-search-input\" id=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" maxlength=\"{{ validation.maxlength() }}\"> -->\n" +
+    "\t<!-- <input name=\"{{ property.name }}\"type=\"text\" class=\"form-control konga-form-search-input\" id=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" maxlength=\"{{ validation.maxlength() }}\"> -->\n" +
     "\t\n" +
     "\t<img ng-src=\"{{ value.text }}\" width=\"200\" />\n" +
     "</div>"
@@ -958,7 +958,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   $templateCache.put('/views/raw-number-input.html',
     "\n" +
     "<input name=\"{{ property.name }}\"type=\"number\"\n" +
-    "\tclass=\"form-control sigma-form-search-input sigma-form-simple-search-input\"\n" +
+    "\tclass=\"form-control konga-form-search-input konga-form-simple-search-input\"\n" +
     "\tid=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\"\n" +
     " \tng-disabled=\"disableField(mode, property)\"\n" +
     "\tng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" min=\"{{ validation.minvalue() }}\" max=\"{{ validation.maxvalue() }}\" tabindex=\"{{ (index + 1) * 12 }}\">\n" +
@@ -1017,7 +1017,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('/views/raw-password-input.html',
     "<div class=\"col-md-12\">\n" +
-    "\t<input name=\"{{ property.name }}\"type=\"password\" class=\"form-control sigma-form-search-input\" id=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" maxlength=\"{{ validation.maxlength() }}\" autocomplete=\"off\">\n" +
+    "\t<input name=\"{{ property.name }}\"type=\"password\" class=\"form-control konga-form-search-input\" id=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" maxlength=\"{{ validation.maxlength() }}\" autocomplete=\"off\">\n" +
     "\t<!-- TODO This is not working (yet) -->\n" +
     "\t<!-- ng-minlength=\"property.minLength\"\n" +
     "\tng-maxlength=\"property.maxLength\" -->\n" +
@@ -1067,7 +1067,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('/views/raw-plain-input.html',
     "<div class=\"col-md-12\">\n" +
-    "\t<input name=\"{{ property.name }}\"type=\"text\" class=\"form-control sigma-form-search-input\" id=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" maxlength=\"{{ validation.maxlength() }}\" tabindex=\"{{ (index + 1) * 12 }}\">\n" +
+    "\t<input name=\"{{ property.name }}\"type=\"text\" class=\"form-control konga-form-search-input\" id=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" maxlength=\"{{ validation.maxlength() }}\" tabindex=\"{{ (index + 1) * 12 }}\">\n" +
     "\t<!-- TODO This is not working (yet) -->\n" +
     "\t<!-- ng-minlength=\"property.minLength\"\n" +
     "\tng-maxlength=\"property.maxLength\" -->\n" +
@@ -1114,7 +1114,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   $templateCache.put('/views/raw-textarea-input.html',
     "<textarea \n" +
     "\ttype=\"text\"\n" +
-    "\tclass=\"form-control sigma-form-search-input sigma-form-simple-search-input\"\n" +
+    "\tclass=\"form-control konga-form-search-input konga-form-simple-search-input\"\n" +
     "\tid=\"{{fieldId}}\"\n" +
     "\tplaceholder=\"\"\n" +
     "\tng-model=\"value.text\"\n" +
@@ -1211,7 +1211,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
     "<div class=\"select-input {{(isExtended) ? 'extend' : 'non-extended'}}\" ng-class=\"{ disabled: disableSelect(property) }\" konga-select>\n" +
     "\t<div ng-class=\"{'col-md-6': mode === 'update', 'col-md-12': mode === 'search'}\">\n" +
     "\t\t<div class=\"input-group {{ validation.required() ? 'required' : 'optional' }} {{ value.text.length ? 'valid' : 'invalid' }}\">\n" +
-    "\t\t\t<input name=\"{{ property.name }}\"type=\"text\" class=\"sigma-form-search-input form-control\" id=\"{{ fieldId }}-input\" ng-model=\"textinput\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" ng-change=\"writeValue()\" typeahead=\"item.label for item in getElements($viewValue)\" typeahead-on-select=\"formatInput($item, $model, $label)\" tabindex=\"{{ (index + 1) * 12 }}\">\n" +
+    "\t\t\t<input name=\"{{ property.name }}\"type=\"text\" class=\"konga-form-search-input form-control\" id=\"{{ fieldId }}-input\" ng-model=\"textinput\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" ng-change=\"writeValue()\" typeahead=\"item.label for item in getElements($viewValue)\" typeahead-on-select=\"formatInput($item, $model, $label)\" tabindex=\"{{ (index + 1) * 12 }}\">\n" +
     "\t\t\t<div class=\"input-group-addon\">\n" +
     "\t\t\t\t<button type=\"button\" class=\"btn btn-link\" ng-disabled=\"disableField(mode, property)\"\n" +
     "\t\t\t\t\tng-click=\"dispatchFieldAction('open-select')\" id=\"{{ fieldId }}-select\">\n" +
@@ -1556,7 +1556,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('/views/verticaltab.tp.html',
     "<div class=\"tabbable\">\n" +
-    "\t<ul class=\"nav nav-pills nav-stacked sigma-nav-vertical col-md-3 no-padding-right\">\n" +
+    "\t<ul class=\"nav nav-pills nav-stacked konga-nav-vertical col-md-3 no-padding-right\">\n" +
     "\t\t<li ng-repeat=\"tabContent in tabContentList\" ng-class=\"{active:tabContent.selected}\">\n" +
     "\t\t\t<a href=\"\" ng-click=\"select(tabContent)\">{{tabContent.title}}</a>\n" +
     "\t\t</li>\n" +

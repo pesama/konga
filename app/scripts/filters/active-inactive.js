@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc filter
- * @name kongaUI.filter:statut
+ * @name ui.konga.filter:statut
  * @function
  * @description
  * # statut

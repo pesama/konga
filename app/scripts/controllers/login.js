@@ -1,8 +1,8 @@
 'use strict';
 
 /**
- * @ngdoc function
- * @name ui.konga.controller:LoginCtrl
+ * @ngdoc controller
+ * @name ui.konga.controller:Login
  * @description
  * # LoginCtrl
  * Controller of the ui.konga

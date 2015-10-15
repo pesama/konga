@@ -2,14 +2,12 @@
 
 /**
  * @ngdoc controller
- * @name kongaUI.controller:MainCtrl
- * @module kongaUI
+ * @name ui.konga.controller:MainCtrl
+ * @module ui.konga
  * @description
- * Main controller. It's always engaged, controlling the tabs, the authentication, and other common stuff.
+ * This must be the root controller of the application, and it's suggested to be placed at the `<body>` element. It contains all common {@link lib.konga.operations `operations`}. 
+ *  
  * 
- * # Authentication 
- * TODO Document
- *
  *
  * # Tab management
  * The application uses tabs to locate their content, and separate it from other sections with different content. All functionalities of this tab management are located within this controller. 
@@ -47,13 +45,13 @@
  * By calling this function, a `/home` tab will be created, and the location will change to the application's home page.
  * 
  * ### openEntitySearch
- * It creates a new tab for <i>entity</i> searching. It <b>must</b> receive an entity definition, like the ones defined within the {@link kongaUI.Metadata metadata} service calls.
+ * It creates a new tab for <i>entity</i> searching. It <b>must</b> receive an entity definition, like the ones defined within the {@link ui.konga.Metadata metadata} service calls.
  *
  * ### openEntityUpdate
- * When called, it launches a new tab whose purpose is to update an <i>entity</i> It must receive the {@link kongaUI.Metadata metadata} information from the entity, as well as the entity itself.
+ * When called, it launches a new tab whose purpose is to update an <i>entity</i> It must receive the {@link ui.konga.Metadata metadata} information from the entity, as well as the entity itself.
  *
  * ### openEntityCreate
- * This method does the exactly same operation as the `openEntityUpdate`, but with the purpose of creating a new <i>entity</i>. It only requires to receive the {@link kongaUI.Metadata metadata} information, and a new {@link kongaUI.Scaffold scaffold} object for the received entity type will be created. 
+ * This method does the exactly same operation as the `openEntityUpdate`, but with the purpose of creating a new <i>entity</i>. It only requires to receive the {@link ui.konga.Metadata metadata} information, and a new {@link ui.konga.Scaffold scaffold} object for the received entity type will be created. 
  * 
  * # Notifications
  * This controller handles the notifications, that are shown to the user in the form of a <i>bootstrap</i> `alert`. Every controller within the application can use this system, by calling the operation `addAlert` available on the `$rootScope`. It's useful to notify the user when a server-related operation finished, both for success and error response types. Notification system is engaged on any place where the `$rootScope` dependency is included. 
@@ -172,11 +170,19 @@ angular.module('ui.konga')
 			$scope.loading = [];
 			$scope.loadingMessage = null;
 
-			/*
-		  	 * TODO Document
-		  	 */ 
+			// This is documented on app.js
 		  	$rootScope.operations = $scope.operations = {
 
+		  		/**
+		  		 * @ngdoc method
+		  		 * @name addAlert
+		  		 * @methodOf lib.konga.operations
+		  		 * @param {String} type The type of alert (e.g. `success`, `error`). It inherites _Bootstrap_'s `bg-...` classes.
+		  		 * @param {String} message The message for the alert
+		  		 * @param {Object=} parameters If the message provided is a placeholder for a locale-provided text, you can give the translator a key-value parameters for the message.
+		  		 * @description
+		  		 * Show a toast alert to the user, with a translatable/parametrizeable message.
+		  		 */
 		  		addAlert: function(type, msg, parameters) {
 		  			var alert = {
 		  				type: type,
@@ -191,13 +197,33 @@ angular.module('ui.konga')
 		  			$timeout(function() {
 		  				//$scope.alerts.splice(newLength-1, 1);
 		  				 alert.expired = true;
-		  	          }, 4000);
+		  	          }, 4000); // TODO KONGA_ALERT_TIMEOUT
 		  		},
 
+		  		/**
+		  		 * @ngdoc method
+		  		 * @name removeAlert
+		  		 * @methodOf lib.konga.operations
+		  		 * @param {Number} index the position of the alert within the stack.
+		  		 * @description
+		  		 * Removes an alert from the stack, and therefore from the screen. This method is executed automatically after alert timeout's reached
+		  		 */
 		  		removeAlert: function(index) {
 		  			$scope.alerts.splice(index, 1);
 		  		},
 
+		  		/**
+		  		 * @ngdoc method
+		  		 * @name confirm
+		  		 * @methodOf lib.konga.operations
+		  		 * @param {String} title The title for the confirmation dialog.
+		  		 * @param {String} message The message for the confirm dialog
+		  		 * @param {Function=} okHandler Callback to execute when the user confirms
+		  		 * @param {Function=} koHandler Callback to execute when the user cancels
+		  		 * @param {Object=} params Parameters for the translation messages and the handlers.
+		  		 * @description
+		  		 * Shows a confirm dialog, and execute custom actions depending on user's response.
+		  		 */
 		  		confirm: function(title, message, okHandler, koHandler, params) {
 		  			var dlg = null;
 
@@ -216,6 +242,17 @@ angular.module('ui.konga')
 			        });
 		  		},
 		  		
+		  		/**
+		  		 * @ngdoc method
+		  		 * @name notify
+		  		 * @methodOf lib.konga.operations
+		  		 * @param {String} title The title for the confirmation dialog.
+		  		 * @param {String} message The message for the confirm dialog
+		  		 * @param {String=} [type=notify] Type of dialog (inherited from Bootstrap's `bg...` classes)
+		  		 * @param {Object=} params Parameters for the translation messages and the handlers.
+		  		 * @description
+		  		 * Shows a notification to the user.
+		  		 */ 
 		  		notify: function(title, message, type, params) {
 		  			// If no type is provided, we notify
 		  			if(!type) type = 'notify';
@@ -236,20 +273,17 @@ angular.module('ui.konga')
 		  		},
 
 		  		/**
-		  		 * TODO Document
+		  		 * @ngdoc method
+		  		 * @name goHome
+		  		 * @methodOf lib.konga.operations
+		  		 * @description
+		  		 * Takes the user to the home screen. You must define the `/home/` route with home's content
 		  		 */
-		  		addFavorite: function() {
-
-		  		},
-
-		  		// *
-		  		//  * TODO Document
-		  		 
 		  		goHome: function() {
 		  			var homeTab = {
 						id:'home', 
 						title: 'message.tabs.home', 
-						href:'/home/', 
+						href:'/home/', // TODO KONGA_HOME_URI
 						closable: false,
 						type: constants.TAB_TYPE_HOME
 					};
@@ -257,6 +291,13 @@ angular.module('ui.konga')
 					this.addTab(homeTab);
 		  		},
 
+		  		/**
+		  		 * @ngdoc method
+		  		 * @name goAdmin
+		  		 * @methodOf lib.konga.operations
+		  		 * @description
+		  		 * If your application has an _admin_ section, use this link to go to that page. You must direct the `/admin/` route to the admin's content.
+		  		 */
 		  		goAdmin: function() {
 		  			var homeTab = {
 						id:'admin', 
@@ -269,118 +310,15 @@ angular.module('ui.konga')
 					this.addTab(homeTab);
 		  		},
 
-		  		login: function() {
-		  			var loginTab = {
-		  				id:'login', 
-		  				title: 'message.tabs.login', 
-		  				href:'/login/', 
-		  				closable:false, 
-		  				templateInclude: {
-		  					title: 'Login', 
-		  					url:'templates/login.html'
-		  				}
-		  			};
-
-		  			this.addTab(loginTab);
-		  		},
-		  		
-			  	/**
-				 * Complete used authentications, redirects user to home and saves the data from his operational center. 
-				 * This function is called only when the user has just one operational center.
-				 * @function completeAuthentication 
-				 */
-				completeAuthentication : function(ctrOperat){
-					
-					$rootScope.operations.requestLoading('completeAuthentication');
-					
-					var ctrOperatId = (ctrOperat!=null)?ctrOperat.id:"";
-					
-					auth.fullauth(ctrOperat.id)
-					.success(function(completeToken) {					 
-						var authToken = completeToken;
-						Session.data.authToken = authToken;	
-						//If Remember Me, or we are changing the operational center and there is already a cookie
-						if (Session.data.rememberMe || $cookieStore.get('authToken')!=null) {
-							$cookieStore.put('authToken', authToken);
-						}
-
-						var userOk = false;
-						var menuOk = false;
-
-						User.get(
-								function (resourceUser) {
-									Session.data.ctrOperatName =  (ctrOperat != null) ? ctrOperat.libCtrOperat : '';
-									Session.data.ctrOperatId =  (ctrOperat != null) ? ctrOperat.id : null;
-									Session.data.isFullyLogged = true;
-									//If Remember Me, or we are changing the operational center and there is already a cookie
-									if (Session.data.rememberMe || $cookieStore.get('ctrOperatId')!=null) {
-										$cookieStore.put('isFullyLogged', Session.data.isFullyLogged);
-										$cookieStore.put('ctrOperatName', Session.data.ctrOperatName);
-										$cookieStore.put('ctrOperatId', Session.data.ctrOperatId);
-										$cookieStore.put('moreThanOneCtrOperat', Session.data.moreThanOneCtrOperat);
-									}	
-									
-									$rootScope.saveSessionInformation(resourceUser);
-									User.roles(
-											function (roles) {
-												//Save roles in session
-												Session.data.roles = roles;												
-												// Close login
-												$rootScope.operations.closeTabById('login');
-												userOk = true;
-												
-												//Update the Favorits for the user and the new ctrOperat 
-												$rootScope.$broadcast('favoritesChanged',{});
-												
-												if(menuOk) {
-													// Go home
-													$rootScope.operations.goHome();
-												}
-												$rootScope.operations.freeLoading('completeAuthentication');
-											},
-											function (error) {
-												$rootScope.logout();
-												console.log('POST Error ' + error);
-												$rootScope.operations.freeLoading('completeAuthentication');
-											}
-									);
-								},
-								function() {
-									$scope.logout();
-									console.log('POST Error');
-									$rootScope.operations.freeLoading('completeAuthentication');
-								}
-						);		
-
-						Metadata.mainmenu(
-							function(menu) {
-								$rootScope.mainmenu = $scope.mainmenu = menu;
-								// Store the menu on common
-								common.store('mainmenu', $scope.mainmenu);
-	
-								menuOk = true;
-								if(userOk) {
-									// Go home
-									$rootScope.operations.goHome();
-								}
-							},
-							function() {
-								console.log('Error loading mainmenu');
-							});	
-					
-						
-				    }).error(function(err) {
-				    	$scope.logout();
-				    	console.error('Error setting the operational center for the user', err);
-				    	$rootScope.operations.freeLoading('completeAuthentication');
-				    });					
-				},
-
-		  		// *
-		  		//  * @ngdoc
-		  		//  * @description
-		  		//  * Opens a search pane for the entity selected
-		  		 
+		  		/**
+		  		 * @ngdoc method
+		  		 * @name openEntitySearch
+		  		 * @methodOf lib.konga.operations
+		  		 * @param {Entity|String} metadata The metadata of the entity (or it's name) to be searched.
+		  		 * @oaram {Object=} params Parameters to create custom configuration for the pane
+		  		 * @description
+		  		 * Opens an entity-search tab to search an entity.
+		  		 */
 		  		openEntitySearch: function(entityMetadata, params) {
 		  			if(typeof entityMetadata === 'string') {
 		  				entityMetadata = util.getMetadata(entityMetadata);
@@ -417,9 +355,16 @@ angular.module('ui.konga')
 					$scope.operations.addTab(tab);
 		  		},
 
-		  		// *
-		  		//  * TODO Document
-		  		 
+		  		/**
+		  		 * @ngdoc method
+		  		 * @name openEntityUpdate
+		  		 * @methodOf lib.konga.operations
+		  		 * @param {Entity|String} metadata The metadata of the entity (or it's name) to be updated.
+		  		 * @param {Object} entity The entity to be updated
+		  		 * @oaram {Object=} params Parameters to create custom configuration for the pane
+		  		 * @description
+		  		 * Opens an entity-update tab to update a given entity.
+		  		 */
 		  		openEntityUpdate: function(entityMetadata, entity, params) {
 		  			if(typeof entityMetadata === 'string') {
 		  				entityMetadata = util.getMetadata(entityMetadata);
@@ -464,9 +409,14 @@ angular.module('ui.konga')
 					$scope.operations.addTab(tab);
 		  		},
 
-		  		// *
-		  		//  * TODO Document
-		  		 
+		  		/**
+		  		 * @ngdoc method
+		  		 * @name openEntityCreated
+		  		 * @methodOf lib.konga.operations
+		  		 * @param {Entity} metadata The metadata of the entity to be updated.
+		  		 * @description
+		  		 * Opens an entity-update tab to create a new entity of the metadata given.
+		  		 */
 		  		openEntityCreate: function(entityMetadata) {
 		  			// Verify permissions
 		  			var permission = entityMetadata.createable;
@@ -481,24 +431,24 @@ angular.module('ui.konga')
 		  			}
 		  		},
 
+		  		/**
+		  		 * @ngdoc method
+		  		 * @name openModal
+		  		 * @methodOf lib.konga.operations
+		  		 * @param {Modal} parameters The parameters that define the action. {@link lib.konga.types.Modal `See Modal specification`}
+		  		 * @description
+		  		 * Opens an entity-update tab to update a given entity. The parameters are given in a {@link lib.konga.types.Modal `Modal`} object.
+		  		 */
 		  		openModal: function(action) {
 
 		  			$rootScope.$broadcast('suspend', {});
 
 		  			var currentTab = null;
-		  			if(action.parameters.closeTab) {
-		  				var existingTabs = $filter('filter')($scope.tabs, { id: $scope.tabId });
-		  				currentTab = existingTabs[0];
-		  				var homeTab = $filter('filter')($scope.tabs, { id: 'home' })[0];
-		  				$scope.operations.redirectTo(homeTab);
-		  			}
 			  	
 		  			var modalInstance = $modal.open({
 				      templateUrl: action.template,
 				      controller: action.controller,
 				      size: 'lg',
-				      windowClass: action.windowClass,
-				      backdrop: action.backdrop ? action.backdrop : true,
 				      resolve:{
 				  		params: function(){
 				  			return action.parameters;
@@ -515,11 +465,14 @@ angular.module('ui.konga')
 				    });
 		  		},
 
-		  	// 	*
-				 // * Add new tab if doesn't exist, or open a tab if exist.
-				 // * @function addTab
-				 // * @param newTab
-				 
+		  		/**
+		  		 * @ngdoc method
+		  		 * @name addTab
+		  		 * @methodOf lib.konga.operations
+		  		 * @param {Tab} tab The tab configuration
+		  		 * @description
+		  		 * Opens a tab with the configured {@link DataTypes.Tab `parameters`}.
+		  		 */
 				addTab : function(newTab) {
 					// Get the active tab
 					var tabActive = $filter('filter')($scope.tabs, { active: true })[0];
@@ -572,12 +525,15 @@ angular.module('ui.konga')
 					$scope.operations.redirectTo(existingTabs[0]);
 				},
 
-				// *
-				//  * Handle the tab closing
-				//  * @function closeTab
-				//  * @param tab
-				//	* @param force
-				 
+				/**
+		  		 * @ngdoc method
+		  		 * @name closeTab
+		  		 * @methodOf lib.konga.operations
+		  		 * @param {Tab} tab tab to be closed
+		  		 * @param {Boolean=} force whether to force closing (and discard changes - if any)
+		  		 * @description
+		  		 * Closes the tab given. If the tab has change management enabled, and there is any change on the model, a confirmation will show. If you pass force=true, you will override confirmation and the tab will be instantly closed.
+		  		 */
 				closeTab : function(tab, force) {
 					var changesOKHandler = function() {
 						deleteTab(i, tab);
@@ -626,6 +582,14 @@ angular.module('ui.konga')
 					}
 				},
 
+				/**
+		  		 * @ngdoc method
+		  		 * @name closeTabById
+		  		 * @methodOf lib.konga.operations
+		  		 * @param {id} id id of the tab to be closed
+		  		 * @description
+		  		 * Closes the tab that matches an id given. If no tab is found, it doesn't do anything.
+		  		 */				
 				closeTabById: function(id) {
 					for(var i=0; i<$rootScope.tabs.length; i++){
 						if ($scope.tabs[i].id === id) {
@@ -635,15 +599,14 @@ angular.module('ui.konga')
 					}
 				},
 				
-				closeAllTabsButHome: function(force) {
-					var copyTabs = $rootScope.tabs.slice(0);
-					for(var i=0; i<copyTabs.length; i++){
-						if(copyTabs[i].id != 'home'){
-							$scope.operations.closeTab(copyTabs[i], force);
-						}
-					}
-				},
-				
+				/**
+		  		 * @ngdoc method
+		  		 * @name closeAllTabs
+		  		 * @methodOf lib.konga.operations
+		  		 * @param {Boolean=} force whether to force closing (and discard changes - if any)
+		  		 * @description
+		  		 * Closes all opened tabs
+		  		 */
 				closeAllTabs: function(force) {
 					var copyTabs = $rootScope.tabs.slice(0);
 					for(var i=0; i<copyTabs.length; i++){
@@ -651,11 +614,14 @@ angular.module('ui.konga')
 					}
 				},
 
-				// *
-				//  * Redirect to tab href if exist
-				//  * @function redirectTo
-				//  * @param tab 
-				 
+				/**
+		  		 * @ngdoc method
+		  		 * @name redirectTo
+		  		 * @methodOf lib.konga.operations
+		  		 * @param {Tab} tab tab to be focused
+		  		 * @description
+		  		 * Switches the system into a tab. The tab <b>must be</b> in the `tab stack`.
+		  		 */
 				redirectTo : function(tab) {					
 					angular.forEach($rootScope.tabs, function(item){item.active = false;});
 					// Select the tab
@@ -670,20 +636,28 @@ angular.module('ui.konga')
 					$scope.tabId = tab.id;
 				},
 
-				// *
-				//  * Create a new global var updateData to communicate between search page and update pages
-				//  * @function setUpdateData
-				//  * @param data
-				 
-				setUpdateData : function(data) {
-					$scope.updateData = data;
-				},
-
+				/**
+		  		 * @ngdoc method
+		  		 * @name requestLoading
+		  		 * @methodOf lib.konga.operations
+		  		 * @param {String} id Unique id for the loader. It will be identified with this parameter for deletion when freed.
+		  		 * @param {String=} message If defined, appends a message to the loader (useful for heavy loading)
+		  		 * @description
+		  		 * Appends a loader into the `loader stack`. When the stack contains elements, the whole screen is blocked until all loaders are freed.
+		  		 */
 				requestLoading: function(source, message) {
 					$scope.loading.push(source);
 					$scope.loadingMessage = message;
 				},
 
+				/**
+		  		 * @ngdoc method
+		  		 * @name freeLoading
+		  		 * @methodOf lib.konga.operations
+		  		 * @param {String} id Unique id for the loader. It must be the same id given when the loader was requested.
+		  		 * @description
+		  		 * Removes a loader from the `loader stack`. When the stack is emptied, the user recovers control of the screen.
+		  		 */
 				freeLoading: function(source) {
 					var index = $scope.loading.indexOf(source);
 					if (index === -1) {
@@ -692,10 +666,26 @@ angular.module('ui.konga')
 					$scope.loading.splice(index, 1);
 				},
 
+				/**
+		  		 * @ngdoc method
+		  		 * @name setLoadingMessage
+		  		 * @methodOf lib.konga.operations
+		  		 * @param {String=} message The message to set into the loading process
+		  		 * @description
+		  		 * During longer loading processes, you can redefine the message being shown via this method. The message will be live-updated, and you could provide the user with more information. This method is useful for uploading progresses.
+		  		 */
 				setLoadingMessage: function(message) {
 					$scope.loadingMessage = message;
 				},
 
+				/**
+		  		 * @ngdoc method
+		  		 * @name changeLocale
+		  		 * @methodOf lib.konga.operations
+		  		 * @param {String=} locale The language to change to
+		  		 * @description
+		  		 * This mehtod changes the language of the full engine and its running application. It also notifies via a {@link Events.locale-change `locale-change`} event broadcasted to all listening controllers.
+		  		 */
 				changeLocale: function(newLocale) {
 					$scope.selectedLanguage = constants.LANGUAGE_MESSAGE_PREFFIX + newLocale;
 
@@ -706,7 +696,7 @@ angular.module('ui.konga')
 					$translate.use(newLocale);
 					moment.locale(newLocale);
 
-					$scope.$broadcast('locale-change', { old: oldLocale, new: newLocale });
+					$scope.$broadcast('locale-change', { 'old': oldLocale, 'new': newLocale });
 				},
 				
 				//TODO : Add function for Search Action

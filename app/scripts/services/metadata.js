@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc service
- * @name kongaUI.Metadata
+ * @name ui.konga.Metadata
  * @description
  * Factory to connect to metadata's endpoint. 
  */
@@ -13,7 +13,7 @@ angular.module('ui.konga')
       /**
        * @ngdoc method
        * @name get
-       * @methodOf kongaUI.Metadata
+       * @methodOf ui.konga.Metadata
        * @description
        * Retrieves the metadata for the application
        * @param {String} lang The language the user logged in with
@@ -34,7 +34,7 @@ angular.module('ui.konga')
       /**
        * @ngdoc method
        * @name codes
-       * @methodOf kongaUI.Metadata
+       * @methodOf ui.konga.Metadata
        * @description
        * Returns all product codes available for the application.
        * @returns {Array} An array containing all list of codes for each entity type

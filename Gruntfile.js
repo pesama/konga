@@ -39,8 +39,15 @@ module.exports = function (grunt) {
         tasks: ['wiredep']
       },
       js: {
-        files: ['<%= yeoman.app %>/scripts/**/*.js'],
+        files: ['<%= yeoman.app %>/scripts/**/*.js', 'app/docs/inner/**/*.js'],
         tasks: ['newer:jshint:all', 'concat:util', 'ngdocs'],
+        options: {
+          livereload: '<%= connect.options.livereload %>'
+        }
+      },
+      docs: {
+        files: ['<%= yeoman.app %>/docs/**/*'],
+        tasks: ['ngdocs'],
         options: {
           livereload: '<%= connect.options.livereload %>'
         }
@@ -95,7 +102,7 @@ module.exports = function (grunt) {
           open: true,
           middleware: function (connect) {
             return [
-              modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.png|\\.gif|\\.jpg|\\.jpeg|\\.ttf|\\.eot|\\.woff|\\.less|\\.ico$ /index.html [L]']),
+              // modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.png|\\.gif|\\.jpg|\\.jpeg|\\.ttf|\\.eot|\\.woff|\\.less|\\.ico$ /index.html [L]']),
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
@@ -176,6 +183,12 @@ module.exports = function (grunt) {
             '<%= yeoman.dist %>/{,*/}*',
             '!<%= yeoman.dist %>/.git*'
           ]
+        }]
+      },
+      docs: {
+        files: [{
+          dot: true,
+          src: 'docs'
         }]
       },
       server: '.tmp',
@@ -325,11 +338,11 @@ module.exports = function (grunt) {
     concat: {
       util: {
         src: ['app/scripts/constants.js', 'app/scripts/mapper.js', 'app/scripts/util.js'],
-        dest: 'dist/scripts/nge-util.js'
+        dest: 'dist/scripts/konga-util.js'
       },
       css: {
         src: ['app/styles/*.css', 'app/styles/custom/*.css'],
-        dest: 'dist/styles/nge.css'
+        dest: 'dist/styles/konga.css'
       },
       app4doc: {
         src: ['app/scripts/**/*.js', 'dist/scripts/config.js', 'dist/scripts/views.js'],
@@ -575,15 +588,27 @@ module.exports = function (grunt) {
 
     ngdocs: {
       options: {
-        scripts: [
-          'docs/vendor.js',
-          'docs/app-scripts.js'
-        ],
+        // scripts: [
+        //   'docs/vendor.js',
+        //   'docs/app-scripts.js'
+        // ],
         html5Mode: false,
         startPage: '/api',
-        title: 'New Sigma UI jsDoc',
+        title: 'Konga documentation',
+        template: 'app/docs/docs.tmpl',
+        bestMatch: true,
+        analytics: {
+          account: 'UA-68065842-1'
+        },
       },
-      all: [
+      // api: {
+
+      // },
+      // metadata: {
+
+      // },
+      api: [
+        'app/docs/inner/**/*.js',
         'app/scripts/filters/*.js',
         'app/scripts/directives/*.js',
         'app/scripts/services/*.js',
@@ -604,7 +629,7 @@ module.exports = function (grunt) {
 		  // 'imagemin',
 		  'copy:bower_fonts',
 		  'concat',
-		  //'ngdocs',
+		  'ngdocs',
 		  'wiredep',
 		  'concurrent:server',
 		  'autoprefixer',

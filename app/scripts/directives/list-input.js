@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc directive
- * @name kongaUI.directive:listInput
+ * @name ui.konga.directive:List input
  * @description
  * # listInput
  */

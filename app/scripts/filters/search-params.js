@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc filter
- * @name kongaUI.filter:searchParams
+ * @name ui.konga.filter:searchParams
  * @function
  * @description
  * # searchParams

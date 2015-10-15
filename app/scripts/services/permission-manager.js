@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc service
- * @name kongaUI.permissionManager
+ * @name ui.konga.permissionManager
  * @description
  * # permissionManager
  * Provider in the ui.konga.

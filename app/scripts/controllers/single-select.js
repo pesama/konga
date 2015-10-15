@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc controller
- * @name kongaUI.controller:SingleSelectCtrl
+ * @name ui.konga.controller:Single Select
  * @description
  * # SingleSelectCtrl
  * Controller of the ui.konga

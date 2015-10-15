@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc filter
- * @name kongaUI.filter:mapEdsField
+ * @name ui.konga.filter:mapEdsField
  * @function
  * 
  * @description

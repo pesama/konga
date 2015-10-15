@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc directive
- * @name ui.konga.directive:tableInput
+ * @name ui.konga.directive:Table input
  * @description
  * # tableInput
  */

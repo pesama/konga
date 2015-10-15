@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc directive
- * @name kongaUI.directive:menuItem
+ * @name ui.konga.directive:Menu Item
  * @description 
  * # menuItem
  */

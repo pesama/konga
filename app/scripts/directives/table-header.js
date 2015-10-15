@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc directive
- * @name kongaUI.directive:tableHeader
+ * @name ui.konga.directive:Table header
  * @description
  * # tableHeader
  */

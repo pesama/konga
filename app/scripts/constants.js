@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc object
- * @name kongaUITools.Constants
+ * @name ui.konga.constants
  * @description
  * Stores common constants used all across the application
  * @property {String} API_HOST Defines where is the api located
@@ -24,10 +24,6 @@
  *
  */
 var constants = {
-
-	 API_HOST 							: 'http://localhost:8080/sigma-ihm/api',      //local
-	//API_HOST 							: 'http://20.34.36.150:8080/sigma-ihm/api',      //server (dev)
-	// API_HOST 						: '/sigma-ihm-0.0.10/api',   //serve
 
 	ALERT_TYPE_ERROR 					: 'danger',
 	ALERT_TYPE_SUCCESS 					: 'success',

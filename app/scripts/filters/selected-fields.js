@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc filter
- * @name kongaUI.filter:selectedFields
+ * @name ui.konga.filter:selectedFields
  * @function
  * @description
  * # selectedFields
