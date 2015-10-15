@@ -1,6 +1,6 @@
 {
   "name": "ui.konga",
-  "version": "0.1",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "git@bitbucket.org:konga-project/konga-ui.git"
@@ -21,7 +21,7 @@
     "dist/scripts/directives/option-input.js",
     "dist/scripts/directives/price-input.js",
     "dist/scripts/directives/raw-input.js",
-    "dist/scripts/directives/recursive-list-item.js    ",
+    "dist/scripts/directives/recursive-list-item.js",
     "dist/scripts/directives/recursive-list.js",
     "dist/scripts/directives/result-table.js",
     "dist/scripts/directives/scroll-watcher.js",

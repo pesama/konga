@@ -705,6 +705,7 @@ module.exports = function (grunt) {
     'copy:deploy', 
     'copy:deployIndex', 
     // 'copy:deployVendor'
+    'doc'
   ]);
 
   grunt.registerTask('doc', [
