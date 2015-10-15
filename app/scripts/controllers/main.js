@@ -5,7 +5,7 @@
  * @name ui.konga.controller:MainCtrl
  * @module ui.konga
  * @description
- * This must be the root controller of the application, and it's suggested to be placed at the `<body>` element. It contains all common {@link lib.konga.operations `operations`}. 
+ * This must be the root controller of the application, and it's suggested to be placed at the `<body>` element. It contains all common {@link konga.operations `operations`}. 
  *  
  * 
  *
@@ -176,7 +176,7 @@ angular.module('ui.konga')
 		  		/**
 		  		 * @ngdoc method
 		  		 * @name addAlert
-		  		 * @methodOf lib.konga.operations
+		  		 * @methodOf konga.operations
 		  		 * @param {String} type The type of alert (e.g. `success`, `error`). It inherites _Bootstrap_'s `bg-...` classes.
 		  		 * @param {String} message The message for the alert
 		  		 * @param {Object=} parameters If the message provided is a placeholder for a locale-provided text, you can give the translator a key-value parameters for the message.
@@ -203,7 +203,7 @@ angular.module('ui.konga')
 		  		/**
 		  		 * @ngdoc method
 		  		 * @name removeAlert
-		  		 * @methodOf lib.konga.operations
+		  		 * @methodOf konga.operations
 		  		 * @param {Number} index the position of the alert within the stack.
 		  		 * @description
 		  		 * Removes an alert from the stack, and therefore from the screen. This method is executed automatically after alert timeout's reached
@@ -215,7 +215,7 @@ angular.module('ui.konga')
 		  		/**
 		  		 * @ngdoc method
 		  		 * @name confirm
-		  		 * @methodOf lib.konga.operations
+		  		 * @methodOf konga.operations
 		  		 * @param {String} title The title for the confirmation dialog.
 		  		 * @param {String} message The message for the confirm dialog
 		  		 * @param {Function=} okHandler Callback to execute when the user confirms
@@ -245,7 +245,7 @@ angular.module('ui.konga')
 		  		/**
 		  		 * @ngdoc method
 		  		 * @name notify
-		  		 * @methodOf lib.konga.operations
+		  		 * @methodOf konga.operations
 		  		 * @param {String} title The title for the confirmation dialog.
 		  		 * @param {String} message The message for the confirm dialog
 		  		 * @param {String=} [type=notify] Type of dialog (inherited from Bootstrap's `bg...` classes)
@@ -275,7 +275,7 @@ angular.module('ui.konga')
 		  		/**
 		  		 * @ngdoc method
 		  		 * @name goHome
-		  		 * @methodOf lib.konga.operations
+		  		 * @methodOf konga.operations
 		  		 * @description
 		  		 * Takes the user to the home screen. You must define the `/home/` route with home's content
 		  		 */
@@ -294,7 +294,7 @@ angular.module('ui.konga')
 		  		/**
 		  		 * @ngdoc method
 		  		 * @name goAdmin
-		  		 * @methodOf lib.konga.operations
+		  		 * @methodOf konga.operations
 		  		 * @description
 		  		 * If your application has an _admin_ section, use this link to go to that page. You must direct the `/admin/` route to the admin's content.
 		  		 */
@@ -313,7 +313,7 @@ angular.module('ui.konga')
 		  		/**
 		  		 * @ngdoc method
 		  		 * @name openEntitySearch
-		  		 * @methodOf lib.konga.operations
+		  		 * @methodOf konga.operations
 		  		 * @param {Entity|String} metadata The metadata of the entity (or it's name) to be searched.
 		  		 * @oaram {Object=} params Parameters to create custom configuration for the pane
 		  		 * @description
@@ -358,7 +358,7 @@ angular.module('ui.konga')
 		  		/**
 		  		 * @ngdoc method
 		  		 * @name openEntityUpdate
-		  		 * @methodOf lib.konga.operations
+		  		 * @methodOf konga.operations
 		  		 * @param {Entity|String} metadata The metadata of the entity (or it's name) to be updated.
 		  		 * @param {Object} entity The entity to be updated
 		  		 * @oaram {Object=} params Parameters to create custom configuration for the pane
@@ -412,7 +412,7 @@ angular.module('ui.konga')
 		  		/**
 		  		 * @ngdoc method
 		  		 * @name openEntityCreated
-		  		 * @methodOf lib.konga.operations
+		  		 * @methodOf konga.operations
 		  		 * @param {Entity} metadata The metadata of the entity to be updated.
 		  		 * @description
 		  		 * Opens an entity-update tab to create a new entity of the metadata given.
@@ -434,7 +434,7 @@ angular.module('ui.konga')
 		  		/**
 		  		 * @ngdoc method
 		  		 * @name openModal
-		  		 * @methodOf lib.konga.operations
+		  		 * @methodOf konga.operations
 		  		 * @param {Modal} parameters The parameters that define the action. {@link lib.konga.types.Modal `See Modal specification`}
 		  		 * @description
 		  		 * Opens an entity-update tab to update a given entity. The parameters are given in a {@link lib.konga.types.Modal `Modal`} object.
@@ -468,7 +468,7 @@ angular.module('ui.konga')
 		  		/**
 		  		 * @ngdoc method
 		  		 * @name addTab
-		  		 * @methodOf lib.konga.operations
+		  		 * @methodOf konga.operations
 		  		 * @param {Tab} tab The tab configuration
 		  		 * @description
 		  		 * Opens a tab with the configured {@link DataTypes.Tab `parameters`}.
@@ -528,7 +528,7 @@ angular.module('ui.konga')
 				/**
 		  		 * @ngdoc method
 		  		 * @name closeTab
-		  		 * @methodOf lib.konga.operations
+		  		 * @methodOf konga.operations
 		  		 * @param {Tab} tab tab to be closed
 		  		 * @param {Boolean=} force whether to force closing (and discard changes - if any)
 		  		 * @description
@@ -585,7 +585,7 @@ angular.module('ui.konga')
 				/**
 		  		 * @ngdoc method
 		  		 * @name closeTabById
-		  		 * @methodOf lib.konga.operations
+		  		 * @methodOf konga.operations
 		  		 * @param {id} id id of the tab to be closed
 		  		 * @description
 		  		 * Closes the tab that matches an id given. If no tab is found, it doesn't do anything.
@@ -602,7 +602,7 @@ angular.module('ui.konga')
 				/**
 		  		 * @ngdoc method
 		  		 * @name closeAllTabs
-		  		 * @methodOf lib.konga.operations
+		  		 * @methodOf konga.operations
 		  		 * @param {Boolean=} force whether to force closing (and discard changes - if any)
 		  		 * @description
 		  		 * Closes all opened tabs
@@ -617,7 +617,7 @@ angular.module('ui.konga')
 				/**
 		  		 * @ngdoc method
 		  		 * @name redirectTo
-		  		 * @methodOf lib.konga.operations
+		  		 * @methodOf konga.operations
 		  		 * @param {Tab} tab tab to be focused
 		  		 * @description
 		  		 * Switches the system into a tab. The tab <b>must be</b> in the `tab stack`.
@@ -639,7 +639,7 @@ angular.module('ui.konga')
 				/**
 		  		 * @ngdoc method
 		  		 * @name requestLoading
-		  		 * @methodOf lib.konga.operations
+		  		 * @methodOf konga.operations
 		  		 * @param {String} id Unique id for the loader. It will be identified with this parameter for deletion when freed.
 		  		 * @param {String=} message If defined, appends a message to the loader (useful for heavy loading)
 		  		 * @description
@@ -653,7 +653,7 @@ angular.module('ui.konga')
 				/**
 		  		 * @ngdoc method
 		  		 * @name freeLoading
-		  		 * @methodOf lib.konga.operations
+		  		 * @methodOf konga.operations
 		  		 * @param {String} id Unique id for the loader. It must be the same id given when the loader was requested.
 		  		 * @description
 		  		 * Removes a loader from the `loader stack`. When the stack is emptied, the user recovers control of the screen.
@@ -669,7 +669,7 @@ angular.module('ui.konga')
 				/**
 		  		 * @ngdoc method
 		  		 * @name setLoadingMessage
-		  		 * @methodOf lib.konga.operations
+		  		 * @methodOf konga.operations
 		  		 * @param {String=} message The message to set into the loading process
 		  		 * @description
 		  		 * During longer loading processes, you can redefine the message being shown via this method. The message will be live-updated, and you could provide the user with more information. This method is useful for uploading progresses.
@@ -681,7 +681,7 @@ angular.module('ui.konga')
 				/**
 		  		 * @ngdoc method
 		  		 * @name changeLocale
-		  		 * @methodOf lib.konga.operations
+		  		 * @methodOf konga.operations
 		  		 * @param {String=} locale The language to change to
 		  		 * @description
 		  		 * This mehtod changes the language of the full engine and its running application. It also notifies via a {@link Events.locale-change `locale-change`} event broadcasted to all listening controllers.
