@@ -3,5 +3,7 @@ node_modules
 .sass-cache
 bower_components
 
-docs/
+docs
+!app/docs
+
 .ui-deployed
