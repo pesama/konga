@@ -1,0 +1,28 @@
+.multi-select {
+	position: relative;
+	width: 100%;
+	height: auto;
+}
+
+.multi-select .clear {
+	display: block;
+	clear: both;
+}
+
+.multi-select .list-group-item.selected {
+	background: #a2c8e5;
+}
+
+.multi-select .bulk-option {
+	padding-left: 9px;
+	padding-right: 9px;
+}
+
+.non-extended {
+	position: relative;
+	display: table;
+}
+
+.select-input > .col-md-6:nth-child(1) {
+	padding-left: 0px;
+}

@@ -1,0 +1,20 @@
+.modal-body-bareme-popup{
+	height:980px;
+}
+.modal-body-bareme-poste-technique-popup{
+	height:888px;
+}
+.bareme-choix {
+    border: 1px solid;
+    border-radius: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.modal-body-materiel-bareme-applicable-popup{
+	height: 80%;
+	overflow-x: auto;
+	overflow-y: auto;		
+}
+.app-modal-materiel-bareme-applicable .modal-dialog {
+  width: 90%;
+}

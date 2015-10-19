@@ -2,6 +2,6 @@
 
  angular.module('config', [])
 
-.constant('ENV', {name:'development',apiEndpoint:'http://api.presupuestor.dev',deployPath:'',version:'DEV Environment',deployTime:1443544432852})
+.constant('ENV', {name:'testing',apiEndpoint:'http://api.presupuestor.com',deployPath:'/undefined',version:'vundefined',deployTime:1445274703611})
 
 ;

@@ -1,0 +1,26 @@
+div.filtermanagement {
+	margin-top: 1em;
+	text-align: center;
+}
+
+.filtermanager .getFilters tr td {
+	vertical-align: top;
+}
+
+.filtermanager .getFilters tr td div {
+	padding: 0.2em 3em 0.2em 1em;
+	cursor: pointer;
+}
+
+.filtermanager .getFilters tr td div:nth-child(odd) {
+	background: #E5F3FF;
+}
+
+.filtermanager .getFilters tr td div:nth-child(even) {
+	background: #C4DDF1;
+}
+
+.filtermanager .getFilters tr td div.selected {
+	background: #4286C0;
+	color: white;
+}

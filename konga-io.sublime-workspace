@@ -520,18 +520,10 @@
 	"buffers":
 	[
 		{
-			"file": "app/scripts/controllers/main.js",
+			"file": "app/scripts/app.js",
 			"settings":
 			{
-				"buffer_size": 28665,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Gruntfile.js",
-			"settings":
-			{
-				"buffer_size": 17949,
+				"buffer_size": 13145,
 				"line_ending": "Unix"
 			}
 		}
@@ -686,22 +678,18 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/sm/workspace/konga-ui",
-		"/Users/sm/workspace/konga-ui/app",
-		"/Users/sm/workspace/konga-ui/app/docs",
-		"/Users/sm/workspace/konga-ui/app/docs/inner",
-		"/Users/sm/workspace/konga-ui/app/scripts",
-		"/Users/sm/workspace/konga-ui/app/scripts/controllers"
+		"/Users/sm/workspace/konga-ui"
 	],
 	"file_history":
 	[
+		"/Users/sm/workspace/konga-ui/Gruntfile.js",
+		"/Users/sm/workspace/konga-ui/app/docs/inner/main.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/controllers/main.js",
+		"/Users/sm/workspace/konga-ui/.gitignore",
 		"/Users/sm/workspace/konga-ui/app/scripts/controllers/entity-update.js",
 		"/Users/sm/workspace/konga-ui/app/docs/inner/events.js",
 		"/Users/sm/workspace/konga-ui/app/docs/docs.tmpl",
-		"/Users/sm/workspace/konga-ui/app/scripts/controllers/main.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/util.js",
-		"/Users/sm/workspace/konga-ui/app/docs/inner/main.js",
-		"/Users/sm/workspace/konga-ui/Gruntfile.js",
 		"/Users/sm/workspace/konga-ui/app/docs/inner/tab.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/app.js",
 		"/Users/sm/workspace/konga-ui/app/docs/inner/modal.js",
@@ -770,7 +758,6 @@
 		"/Users/sm/workspace/konga-ui/app/views/verticaltab.tp.html",
 		"/Users/sm/workspace/konga-ui/app/scripts/mapper.js",
 		"/Users/sm/workspace/konga-ui/.bowerrc",
-		"/Users/sm/workspace/konga-ui/.gitignore",
 		"/Users/sm/workspace/konga-ui/bower.json",
 		"/Users/sm/workspace/konga-ui/package.json",
 		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/home.js",
@@ -903,6 +890,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"lib.konga.operations",
+			"'lib'",
 			"ngdocs:",
 			"lib.konga",
 			"ui.konga.util",
@@ -1028,9 +1017,7 @@
 			"{{ filePath }}",
 			"wiredep",
 			"span",
-			"h3",
-			"$scope.",
-			"$scope.tailoring"
+			"h3"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1091,53 +1078,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/scripts/controllers/main.js",
+					"file": "app/scripts/app.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 28665,
+						"buffer_size": 13145,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6060,
-								6117
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1538.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "Gruntfile.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 17949,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								816,
-								816
+								12593,
+								12767
 							]
 						],
 						"settings":
@@ -1147,7 +1105,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 9.0,
+						"translation.y": 3360.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1205,6 +1163,10 @@
 		"selected_items":
 		[
 			[
+				"app",
+				"app/scripts/app.js"
+			],
+			[
 				"grunt",
 				"Gruntfile.js"
 			],
@@ -1231,10 +1193,6 @@
 			[
 				"modal",
 				"app/views/modal.tpl.html"
-			],
-			[
-				"app",
-				"app/scripts/app.js"
 			],
 			[
 				"const",
@@ -1727,7 +1685,7 @@
 		[
 			[
 				"",
-				"~/workspace/presupuestor/presupuestor.sublime-project"
+				"~/workspace/ui.konga-cloud/ui.konga-cloud.sublime-project"
 			]
 		],
 		"width": 380.0

@@ -1,0 +1,463 @@
+/*
+ * Application definition
+ */
+.category-selector {
+    position: relative;
+}
+
+.category-selector .aside {
+    position: fixed;
+    top: 10%;
+    left: 70%;
+    width: 25%;
+    height: 80%;
+    padding: 1em;
+    border-radius: 1em;
+    background: #dddddd;
+}
+
+.category-selector .aside .asideStep span {
+    font-size: 16px;
+}
+
+.category-selector .aside .asideStep  > span:nth-child(odd) {
+    color: #666666;
+}
+.category-selector .aside .asideStep  > span:nth-child(even) {
+    color: #999999;
+}
+
+.category-selector .aside h1 {
+    color: #aaa;
+    font-size: 24px;
+}
+
+.category-selector .aside .asideStep h2 {
+    color: #5bb0d7;
+    font-size: 18px;
+}
+
+.category-selector .aside .asideStep .configuration > span.msg {
+    color: #aaa;
+}
+
+.category-selector .aside .asideStep .configuration > span.value {
+    font-size: 16px;
+    color: #666;
+}
+
+.category-selector .aside .counter {
+    position: absolute;
+    bottom: 1em;
+    left: 5%;
+    width: 90%;
+    padding: 0.5em;
+    border: none;
+    outline: none;
+    border-radius: 0.85em;
+    text-align: center;
+    background: #0eda17;
+    font-family: Comic Sans MS;
+    color: white;
+}
+
+.category-selector .step {
+    margin-bottom: 1em;
+    position: relative;
+}
+
+.category-selector .step.past {
+    width: 100%;
+}
+
+.category-selector .step.actual {
+    width: 100%;
+}
+
+.category-selector .step.future {
+    display: none;
+}
+
+.category-selector .step h1 {
+    display: inline-block;
+    margin: 0;
+}
+
+.category-selector .step.actual h1 {
+    font-size: 30px;
+    
+}
+
+.category-selector .step.past h1 {
+    font-size: 18px;
+}
+
+.category-selector .step button {
+    vertical-align: middle;
+    padding: 0.2em 1em;
+
+    font-size: 14px;
+
+    border: none;
+    border-radius: 1em;
+}
+
+.category-selector .step button,
+.category-selector .step div.family {
+    background: white;
+    color: #666666;
+    outline: none;
+}
+
+.category-selector .step .pagination {
+    position: absolute;
+    top: 50%;
+    margin-top: -40px;
+
+    width: 22px;
+    height: 80px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 100% 100%;
+}
+
+.category-selector .step.past .pagination {
+    display: none;
+}
+
+.category-selector .step .pagination.backwards {
+    left: -40px;
+    background-image: url('../img/pagination_bwd.png');
+}
+
+.category-selector .step .pagination.forwards {
+    right: -40px;
+    background-image: url('../img/pagination_fwd.png');
+}
+
+.category-selector .step div.selected,
+.category-selector .step div.selected {
+    /*background: url('../img/family-selected.png') center bottom no-repeat;*/
+    background: #eee;
+    color: white;
+}
+
+.category-selector .step .families {
+    margin-top: 1em;
+}
+
+.category-selector .step .families div.family {
+    position: relative;
+    /*display: inline-block;*/
+    display: inline-table;
+
+    text-align: center;
+
+    font-family: Comic Sans MS, Helvetica;
+    font-size: 16px;
+    color: #222222;
+
+    text-transform: capitalize;
+
+    border-radius: 0.5em;
+    cursor: pointer;
+
+    /*white-space: nowrap;*/
+
+    height: 120px;
+}
+
+.category-selector .step .families div.family.subfamily {
+    font-size: 14px !important;
+    border-radius: 0.25em !important;
+    padding: 5px 5px !important;
+    margin: 5px !important;
+    white-space: nowrap;
+    min-height: auto !important;
+    height: auto !important;
+}
+
+.category-selector .step .families div.family:hover,
+.category-selector .step .families div.family.selected {
+    color: white;
+}
+
+.category-selector .step .families div.family.selected {
+
+}
+
+.category-selector .step .families div.family span {
+    font-size: 12px;
+    color: #222;
+    font-weight: normal;
+}
+
+/*
+ * Tick handler (✓)
+ */
+.category-selector .step .families div.family div.tick,
+.category-selector .step .semaphores button div.tick {
+    font-size: 0;
+}
+
+.category-selector .step .families div.family.selected div.tick,
+.category-selector .step .semaphores div.selected div.tick {
+    position: absolute;
+    top: -0.4em;
+    right: -0.2em;
+    
+    background: url('../img/check_bg.png') left center no-repeat; 
+
+    font-size: 24px;
+    color: #0eda17;
+}
+
+.category-selector .step .families div.family.selected div.tick:before,
+.category-selector .step .semaphores div.selected div.tick:before {
+    margin-top: -1em;
+    content: "\2713";
+} {
+    position: absolute;
+    top: -0.4em;
+    right: -0.2em;
+    
+    background: url('../img/check_bg.png') left center no-repeat; 
+
+    font-size: 24px;
+    color: #0eda17;
+}
+
+.category-selector .step .families div.family.selected div.tick:before,
+.category-selector .step .semaphores div.selected div.tick:before {
+    margin-top: -1em;
+    content: "\2713";
+}
+
+.category-selector .step.actual .families div.family {
+    width: 100px;
+    height: 80px;
+    padding: 5px;
+    margin: 0.5em;
+}
+
+.category-selector .step.past .families div.family {
+    display: none;
+}
+
+.category-selector .step.actual .families div.family img {
+    max-width: 80px;
+    height: 70px;
+
+    padding-bottom: 0.5em;
+    margin: auto;
+
+    display: block;
+}
+
+.category-selector .step.past .families button,
+.category-selector .step.past .families div.family {
+    padding: 5px !important;
+    border-radius: 5px !important;
+    font-size: 0 !important;
+    display: none !important;
+}
+
+.category-selector .step.past input {
+    display: none !important;
+}
+
+.category-selector .step.past .families div.family img {
+    width: 30px;
+    height: 30px;
+}
+
+.category-selector .step h1 span.index {
+    display: none;
+}
+
+.category-selector .step.actual h1 span.index {
+    display: inline-block;
+}
+
+.category-selector .step h1 span.info {
+    display: none;
+}
+
+.category-selector .step.past h1 {
+    cursor: pointer;
+}
+
+.category-selector .step.past h1 span.info {
+    display: inline-block;
+    color: #aaa;
+    font-size: 14px;
+}
+
+.category-selector .step button.action {
+    display: none;
+    padding: 2px 5px !important;
+}
+
+.category-selector .step.actual button.forward,
+.category-selector .step.past button.back {
+    display: inline-block !important;
+}
+
+.category-selector .step.past button.back:after {
+    content: "\2934";
+}
+
+.category-selector .step.actual button.forward:after {
+    content: "\2935";
+}
+
+.category-selector .step.past h1 span:nth-child(odd) {
+    color: #666;
+}
+
+.category-selector .step.past h1 span:nth-child(even) {
+    color: #aaa;
+}
+
+.category-selector .step.past h1 span.info:before,
+.category-selector .step.past.ko h1 span.info:before {
+    font-size: 24px !important;
+    margin-right: 5px;
+}
+
+.category-selector .step.past.ok h1 span.info:before {
+    color: #0eda17;
+    content: "\2713";
+}
+
+.category-selector .step.past.ko h1 span.info:before {
+    color: #d51515;
+    content: "\2718";
+}
+
+.category-selector label {
+    text-indent: 10px;
+    margin-right: 20px;
+}
+
+.category-selector input[type="text"],
+.category-selector input[type="date"] {
+    width: 60%;
+    display: inline-block;
+    font-family: Comic Sans MS, Helvetica;
+    border-radius: 1em;
+    text-indent: 1em;
+    border: 1px solid #aaa;
+    outline: none;
+
+    margin: 1em 0;
+}
+
+.category-selector input[type="date"] {
+    margin-top: 0px !important;
+}
+
+.category-selector .code h1 {
+    font-size: 18px;
+    display: inline-block;
+}
+
+.category-selector .code h1 + input {
+    display: inline-block;
+    width: 12em;
+}
+
+span.invalid {
+    display: none;
+    color: #d51515;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.category-selector input[type="text"].ng-invalid {
+    border-color: #d51515 !important;
+}
+
+.category-selector input[type="text"].ng-invalid + span.invalid {
+    display: inline-block !important;
+}
+
+.category-selector input[type="text"]:focus {
+    border-color: #666;
+}
+
+.semaphores {
+    position: relative;
+    margin-top: 0.5em;
+}
+
+.category-selector .step .semaphores div {
+    opacity: 0.6;
+}
+
+.category-selector .step .semaphores div.selected {
+    opacity: 1 !important;
+}
+
+.semaphores label {
+    float: left;
+    padding-top: 10px;
+}
+
+.step.past .semaphores {
+    display: none;
+}
+
+.category-selector .aside .semaphores {
+    display: inline-block;
+}
+
+.semaphores div.semaphore {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin: 0 0.5em !important;
+    display: inline-block;
+    border-radius: 20px;
+}
+
+.category-selector .aside .semaphores div {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    position: relative;
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.semaphores div:hover {
+    opacity: 0.8;
+}
+
+.semaphores .red,
+.semaphores .r {
+    background: #d51515 !important;
+}
+
+.semaphores .ambar,
+.semaphores .a {
+    background: #e1a820 !important;
+}
+
+.semaphores .green,
+.semaphores .v {
+    background: #0eda17 !important;
+}
+
+.semaphores .blue,
+.semaphores .az {
+    background: #2b51dc !important;
+}
+
+div.providerContainer ul {
+    width: 250px;
+    max-height: 300px;
+    overflow: auto;
+}
