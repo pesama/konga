@@ -70,40 +70,6 @@
 angular.module('ui.konga')
 	.run(['$rootScope', '$location', '$cookieStore', '$http', 'Session', 'auth', 'User', '$modal', 'common', 'Metadata', '$window', 
 	 function($rootScope, $location, $cookieStore, $http, Session, auth, User, $modal, common, Metadata, $window) {
-		
-		/* Reset error when a new view is loaded */
- 		$rootScope.$on('$viewContentLoaded', function() {
- 			delete $rootScope.error;
- 		});
-
- 		$rootScope.$on('rootSearch', function(conf, data) {
- 			$rootScope.$broadcast('entity-search', { type : data.type });
- 		});
- 		
-		$rootScope.$on('$routeChangeStart', function (event, next) {
-			if (next.restricted) {
-				var originalPath = $location.path();
-				var authTokenCookie = $cookieStore.get('authToken');
-				var authTokenSession = Session.data.authToken;
-				if (authTokenCookie !== undefined || authTokenSession !== undefined) {
-					if (Session != null && Session.data != null && Session.data.user != null) {
-						$location.path(originalPath);
-					} else {
-						User.get( //Get user information
-							function(serviceUser) {						
-								$rootScope.saveSessionInformation(serviceUser);
-								
-								
-							},
-							function () {
-								$rootScope.logout();
-							});
-					}
-				} else {					
-					$rootScope.logout();
-				}
-			}
-		 });
 		 
 		$rootScope.saveSessionInformation = function(serviceUser){
 			$rootScope.user = Session.data.user = serviceUser;

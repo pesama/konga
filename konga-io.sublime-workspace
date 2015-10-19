@@ -523,7 +523,7 @@
 			"file": "app/scripts/app.js",
 			"settings":
 			{
-				"buffer_size": 13145,
+				"buffer_size": 13045,
 				"line_ending": "Unix"
 			}
 		},
@@ -532,6 +532,62 @@
 			"settings":
 			{
 				"buffer_size": 1660,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/util.js",
+			"settings":
+			{
+				"buffer_size": 18530,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Gruntfile.js",
+			"settings":
+			{
+				"buffer_size": 17959,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 1555,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dist/scripts/konga-util.js",
+			"settings":
+			{
+				"buffer_size": 25422,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "bower.json",
+			"settings":
+			{
+				"buffer_size": 4616,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/metadata.js",
+			"settings":
+			{
+				"buffer_size": 1668,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/controllers/main.js",
+			"settings":
+			{
+				"buffer_size": 28585,
 				"line_ending": "Unix"
 			}
 		}
@@ -686,7 +742,10 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/sm/workspace/konga-ui"
+		"/Users/sm/workspace/konga-ui",
+		"/Users/sm/workspace/konga-ui/dist",
+		"/Users/sm/workspace/konga-ui/dist/scripts",
+		"/Users/sm/workspace/konga-ui/dist/styles"
 	],
 	"file_history":
 	[
@@ -898,6 +957,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"'lib'",
 			"lib.konga.operations",
 			"'lib'",
 			"ngdocs:",
@@ -1024,8 +1084,7 @@
 			"entity",
 			"{{ filePath }}",
 			"wiredep",
-			"span",
-			"h3"
+			"span"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1086,7 +1145,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 8,
 			"sheets":
 			[
 				{
@@ -1095,15 +1154,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13145,
+						"buffer_size": 13045,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								12593,
-								12767
+								12709,
+								12709
 							]
 						],
 						"settings":
@@ -1113,7 +1172,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3360.0,
+						"translation.y": 3300.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -1143,6 +1202,213 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/scripts/util.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18530,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Gruntfile.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17959,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								15004,
+								15230
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 8357.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "package.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1555,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 32.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "dist/scripts/konga-util.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 25422,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "bower.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4616,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3501,
+								3501
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/scripts/services/metadata.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1668,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								305,
+								305
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 309.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/scripts/controllers/main.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 28585,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								28302,
+								28313
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 1.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
@@ -1201,12 +1467,16 @@
 		"selected_items":
 		[
 			[
-				"api",
-				"app/scripts/services/api.js"
-			],
-			[
 				"app",
 				"app/scripts/app.js"
+			],
+			[
+				"metadata",
+				"app/scripts/services/metadata.js"
+			],
+			[
+				"packa",
+				"package.json"
 			],
 			[
 				"grunt",
@@ -1217,12 +1487,20 @@
 				"app/scripts/controllers/main.js"
 			],
 			[
-				"docs.",
-				"app/docs/docs.tmpl"
+				"bower",
+				"bower.json"
 			],
 			[
 				"util",
 				"app/scripts/util.js"
+			],
+			[
+				"api",
+				"app/scripts/services/api.js"
+			],
+			[
+				"docs.",
+				"app/docs/docs.tmpl"
 			],
 			[
 				"entityupdate",
@@ -1361,10 +1639,6 @@
 				"package.json"
 			],
 			[
-				"packa",
-				"package.json"
-			],
-			[
 				"bowerr",
 				".bowerrc"
 			],
@@ -1375,10 +1649,6 @@
 			[
 				".bower",
 				".bowerrc"
-			],
-			[
-				"bower",
-				"bower.json"
 			],
 			[
 				"grutn",
@@ -1707,10 +1977,6 @@
 			[
 				"tatystecon",
 				"api/app/controllers/TailoringTypeStepController.php"
-			],
-			[
-				"taitablsel",
-				"ui/app/views/custom/presupuestor-tailoring-table-selection-field.html"
 			]
 		],
 		"width": 0.0
@@ -1718,16 +1984,16 @@
 	"select_project":
 	{
 		"height": 500.0,
-		"last_filter": "pre",
+		"last_filter": "",
 		"selected_items":
 		[
 			[
-				"pre",
-				"~/workspace/presupuestor/presupuestor.sublime-project"
-			],
-			[
 				"",
 				"~/workspace/ui.konga-cloud/ui.konga-cloud.sublime-project"
+			],
+			[
+				"pre",
+				"~/workspace/presupuestor/presupuestor.sublime-project"
 			]
 		],
 		"width": 380.0

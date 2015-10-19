@@ -241,16 +241,12 @@ angular.module('ui.konga', [
       $routeProvider
         .when('/entity/:entityType/search/', {
           templateUrl: '/views/entity-search.html',
-          controller: 'EntitySearchCtrl',
-          restricted: true,
+          controller: 'EntitySearchCtrl'
         })
         .when('/entity/:entityType/:entityId/', {
           templateUrl: '/views/entity-update.html',
-          controller: 'EntityUpdateCtrl',
-          restricted: true,
+          controller: 'EntityUpdateCtrl'
         })
-
-      $locationProvider.html5Mode(true);
     }
   ])
   .config(['$translateProvider', 'ENV', function($translateProvider, ENV) {
