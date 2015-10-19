@@ -1138,7 +1138,7 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1154,7 +1154,7 @@
 						"selection":
 						[
 							[
-								12709,
+								12413,
 								12709
 							]
 						],
@@ -1168,7 +1168,7 @@
 						"translation.y": 3300.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1376,7 +1376,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]

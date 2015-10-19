@@ -914,27 +914,29 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/views/raw-input.html',
-    "<div class=\"form-group mode-{{ mode }} {{ parentField ? 'derived' : '' }} {{(isExtended) ? 'extended' : '' }} {{displayMode}}\" ng-class=\"templating.inputSize\">\n" +
-    "\t<label ng-hide=\"property.fieldType[mode] === 'COMPLEX'\" ng-class=\"[templating.labelStyle, templating.labelWeight, templating.labelDecoration]\">{{property.label | translate:extra }}</label>\n" +
-    "\t<div class=\"{{ parentField ? 'derived' : '' }}\" ng-class=\"templating.fieldSize\">\n" +
-    "\t\t\n" +
-    "\t\t<div ng-include=\"contentUrl\" ng-class=\"classFormInput\"></div>\n" +
+    "<div class=\"row\">\n" +
+    "\t<div class=\"form-group mode-{{ mode }} {{ parentField ? 'derived' : '' }} {{(isExtended) ? 'extended' : '' }} {{displayMode}}\" ng-class=\"templating.inputSize\">\n" +
+    "\t\t<label ng-hide=\"property.fieldType[mode] === 'COMPLEX'\" ng-class=\"[templating.labelStyle, templating.labelWeight, templating.labelDecoration]\">{{property.label | translate:extra }}</label>\n" +
+    "\t\t<div class=\"{{ parentField ? 'derived' : '' }}\" ng-class=\"templating.fieldSize\">\n" +
+    "\t\t\t\n" +
+    "\t\t\t<div ng-include=\"contentUrl\" ng-class=\"classFormInput\"></div>\n" +
+    "\t\t</div>\n" +
+    "\t\t<div ng-class=\"templating.validationStyle\" ng-if=\"['COMPLEX', 'TABLE'].indexOf(property.fieldType[mode]) === -1\">\n" +
+    "\t\t\t<div class=\"validation-pattern text-danger\" ng-show=\"!validation.valid_pattern()\">\n" +
+    "\t\t\t\t<i class=\"glyphicon glyphicon-remove\"></i>\n" +
+    "\t\t\t\t{{ 'message.field-validation.pattern' | translate }}\n" +
+    "\t\t\t</div>\n" +
+    "\t\t\t<div class=\"validation-forbidden-characters text-danger\" ng-show=\"!validation.valid_forbiddenCharacters()\">\n" +
+    "\t\t\t\t<i class=\"glyphicon glyphicon-remove\"></i>\n" +
+    "\t\t\t\t{{ 'message.field-validation.forbidden-characters' | translate }}\n" +
+    "\t\t\t</div>\n" +
+    "\t\t\t<div class=\"validation-required text-danger\" ng-show=\"!validation.valid_required()\" >\n" +
+    "\t\t\t\t<i class=\"glyphicon glyphicon-remove\"></i>\n" +
+    "\t\t\t\t{{ 'message.field-validation.required' | translate }}\n" +
+    "\t\t\t</div>\n" +
+    "\t\t</div>\n" +
     "\t</div>\n" +
-    "\t<div ng-class=\"templating.validationStyle\" ng-if=\"['COMPLEX', 'TABLE'].indexOf(property.fieldType[mode]) === -1\">\n" +
-    "\t\t<div class=\"validation-pattern text-danger\" ng-show=\"!validation.valid_pattern()\">\n" +
-    "\t\t\t<i class=\"glyphicon glyphicon-remove\"></i>\n" +
-    "\t\t\t{{ 'message.field-validation.pattern' | translate }}\n" +
-    "\t\t</div>\n" +
-    "\t\t<div class=\"validation-forbidden-characters text-danger\" ng-show=\"!validation.valid_forbiddenCharacters()\">\n" +
-    "\t\t\t<i class=\"glyphicon glyphicon-remove\"></i>\n" +
-    "\t\t\t{{ 'message.field-validation.forbidden-characters' | translate }}\n" +
-    "\t\t</div>\n" +
-    "\t\t<div class=\"validation-required text-danger\" ng-show=\"!validation.valid_required()\" >\n" +
-    "\t\t\t<i class=\"glyphicon glyphicon-remove\"></i>\n" +
-    "\t\t\t{{ 'message.field-validation.required' | translate }}\n" +
-    "\t\t</div>\n" +
-    "\t</div>\n" +
-    "</div>\n"
+    "</div>"
   );
 
 
