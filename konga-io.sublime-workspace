@@ -526,6 +526,14 @@
 				"buffer_size": 13145,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "app/scripts/services/api.js",
+			"settings":
+			{
+				"buffer_size": 1660,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "",
@@ -1078,7 +1086,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1106,6 +1114,36 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 3360.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/scripts/services/api.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1660,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								36,
+								36
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1162,6 +1200,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"api",
+				"app/scripts/services/api.js"
+			],
 			[
 				"app",
 				"app/scripts/app.js"
@@ -1669,10 +1711,6 @@
 			[
 				"taitablsel",
 				"ui/app/views/custom/presupuestor-tailoring-table-selection-field.html"
-			],
-			[
-				"pretaioptpri",
-				"ui/app/views/custom/presupuestor-tailoring-option-price-field.html"
 			]
 		],
 		"width": 0.0
@@ -1680,9 +1718,13 @@
 	"select_project":
 	{
 		"height": 500.0,
-		"last_filter": "",
+		"last_filter": "pre",
 		"selected_items":
 		[
+			[
+				"pre",
+				"~/workspace/presupuestor/presupuestor.sublime-project"
+			],
 			[
 				"",
 				"~/workspace/ui.konga-cloud/ui.konga-cloud.sublime-project"

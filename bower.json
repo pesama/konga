@@ -63,7 +63,7 @@
     "dist/scripts/filters/tics-popover.js",
     "dist/scripts/filters/update-params.js",
     "dist/scripts/filters/urlify.js",
-    "dist/scripts/nge-util.js",
+    "dist/scripts/konga-util.js",
     "dist/scripts/services/action-manager.js",
     "dist/scripts/services/api.js",
     "dist/scripts/services/auth.js",
@@ -81,7 +81,7 @@
     "dist/scripts/services/token-handler.js",
     "dist/scripts/services/user.js",
     "dist/scripts/views.js",
-    "dist/styles/nge.css"
+    "dist/styles/konga.css"
   ],
   "ignore": [
     "app/index.html"
