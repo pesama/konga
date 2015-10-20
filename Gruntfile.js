@@ -525,34 +525,10 @@ module.exports = function (grunt) {
         space: '  ',
         wrap: '"use strict";\n\n {%= __ngModule %}',
         name: 'config',
-        dest: '<%= yeoman.dist %>/scripts/config.js'
+        dest: '<%= yeoman.dist %>/scripts/config.js',
       },
-      // Environment targets
-      development: {
+      all: {
         constants: {
-          ENV: {
-            name: 'development',
-            apiEndpoint: 'http://api.presupuestor.dev',
-            deployPath: '',
-            version: 'DEV Environment',
-            deployTime: new Date().getTime()
-          },
-          i18n: {
-            es: grunt.file.readJSON('app/locale/messages_es.json'),
-            en: grunt.file.readJSON('app/locale/messages_en.json'),
-            fr: grunt.file.readJSON('app/locale/messages_fr.json'),
-          }
-        }
-      },
-      deploy: {
-        constants: {
-          ENV: {
-            name: 'testing',
-            apiEndpoint: 'http://api.presupuestor.com',
-            deployPath: '/' + grunt.option('deploy-path'),
-            version: 'v' + grunt.option('target-version'),
-            deployTime: new Date().getTime()
-          },
           i18n: {
             es: grunt.file.readJSON('app/locale/messages_es.json'),
             en: grunt.file.readJSON('app/locale/messages_en.json'),
@@ -634,7 +610,7 @@ module.exports = function (grunt) {
   	grunt.task.run([
   		'clean:server',
 		  'clean:dist',
-		  'ngconstant:' + target,
+		  'ngconstant',
 		  'ngtemplates',
 		  // 'imagemin',
 		  'copy:bower_fonts',
