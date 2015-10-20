@@ -6,8 +6,8 @@
     "url": "git@bitbucket.org:konga-project/konga-ui.git"
   },
   "main": [
-    "dist/scripts/app.js",
     "dist/scripts/config.js",
+    "dist/scripts/app.js",
     "dist/scripts/controllers/entity-search.js",
     "dist/scripts/controllers/entity-update.js",
     "dist/scripts/controllers/login.js",
