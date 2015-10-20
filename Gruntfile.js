@@ -536,6 +536,11 @@ module.exports = function (grunt) {
             deployPath: '',
             version: 'DEV Environment',
             deployTime: new Date().getTime()
+          },
+          i18n: {
+            es: grunt.file.readJSON('app/locale/messages_es.json'),
+            en: grunt.file.readJSON('app/locale/messages_en.json'),
+            fr: grunt.file.readJSON('app/locale/messages_fr.json'),
           }
         }
       },

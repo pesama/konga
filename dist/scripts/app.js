@@ -249,15 +249,15 @@ angular.module('ui.konga', [
         })
     }
   ])
-  .config(['$translateProvider', 'ENV', function($translateProvider, ENV) {
+  .config(['$translateProvider', 'i18n', function($translateProvider, i18n) {
 
-      $translateProvider.useStaticFilesLoader({
-        prefix: '/locale/messages_',
-        suffix: '.json'
-      });
+      for(var lang in i18n) {
+        $translateProvider.translations(lang, i18n[lang]);
+      }
+      
 
       // Setting up spanish as default
-      $translateProvider.preferredLanguage('es');
-      moment.locale('es');
+      $translateProvider.preferredLanguage('en');
+      moment.locale('en');
     }
   ]);
