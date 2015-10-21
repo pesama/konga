@@ -20,6 +20,27 @@
 .konga-nav-vertical {
     border-right: 5px solid #444444;
 }
+
+.konga-container {
+	position: relative;
+}
+
+.pwd {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    padding: 0px;
+    padding-bottom: 3em;
+    z-index: 2;
+}
+
+.container {
+    position: relative;
+}
+
+.ng-scope.plain-app > * {
+    padding-top: 3em;
+}
 div.filtermanagement {
 	margin-top: 1em;
 	text-align: center;
