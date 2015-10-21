@@ -912,8 +912,8 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   $templateCache.put('/konga/views/raw-input.html',
     "<div class=\"row\">\n" +
     "\t<div class=\"form-group mode-{{ mode }} {{ parentField ? 'derived' : '' }} {{(isExtended) ? 'extended' : '' }} {{displayMode}}\">\n" +
-    "\t\t<label ng-hide=\"property.fieldType[mode] === 'COMPLEX'\" class=\"col-xs-12 col-sm-12 col-md-4 col-lg-8\">{{property.label | translate:extra }}</label>\n" +
-    "\t\t<div ng-class=\"{ 'derived': !!parentField, 'full-width-component': ['COMPLEX', 'TABLE', 'PICK_LIST'].indexOf(property.fieldType[mode]) === -1 }\" class=\"col-xs-12 col-sm-12 col-md-8 col-lg-10\">\n" +
+    "\t\t<label ng-hide=\"property.fieldType[mode] === 'COMPLEX'\" class=\"col-xs-12 col-sm-12 col-md-4 col-lg-2\">{{property.label | translate:extra }}</label>\n" +
+    "\t\t<div ng-class=\"{ 'derived': !!parentField, 'full-width-component': !!['', 'COMPLEX', 'TABLE', 'PICK_LIST'].indexOf(property.fieldType[mode]) }\" class=\"col-xs-12 col-sm-12 col-md-8 col-lg-10\">\n" +
     "\t\t\t<div ng-include=\"contentUrl\" ng-class=\"classFormInput\"></div>\n" +
     "\t\t</div>\n" +
     "\t\t<div ng-class=\"templating.validationStyle\" ng-if=\"['COMPLEX', 'TABLE'].indexOf(property.fieldType[mode]) === -1\">\n" +
@@ -1005,8 +1005,6 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-pick_list-input.html',
-    "\n" +
-    "<legend for=\"{{ fieldId }}\">{{property.fieldLabel | translate:extra }}</legend>\n" +
     "<div class=\"col-md-12 padding-cero\" ng-class=\"inLineClass.col3\">\n" +
     "\t<list-input fields=\"value.fields\" actions=\"property.actions\"\n" +
     "\t\tlist=\"value.entity\" property=\"property\" metadata=\"metadata\"\n" +
@@ -1052,7 +1050,16 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-select-input.html',
-    "<select-input></select-input>"
+    "<select-input></select-input>\n" +
+    "<div class=\"col-md-12\" ng-if=\"mode === 'search'\">\n" +
+    "\t<div class=\"row\">\n" +
+    "\t\t<button class=\"btn btn-default btn-xs\" ng-repeat=\"item in value.entity\" ng-click=\"removeItem($index)\">\n" +
+    "\t\t\t<i class=\"glyphicon glyphicon-remove\"></i>\n" +
+    "\t\t\t{{ item | mapEdsField:labelField | shortify:15 }}\n" +
+    "\t\t\t{{ (item | mapEdsField:labelField).length > 15 ? '...' : '' }}\n" +
+    "\t\t</button>\n" +
+    "\t</div>\n" +
+    "</div>"
   );
 
 
@@ -1183,20 +1190,6 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
     "\t\t\t'message.field-validation.pattern' | translate }}</div>\n" +
     "\t\t<div class=\"validation-required btn-danger\">{{\n" +
     "\t\t\t'message.field-validation.required' | translate }}</div>\n" +
-    "\t</div>\n" +
-    "</div>\n" +
-    "<div class=\"{{(isExtended) ? 'col-md-2 extend' : 'non-extended'}}\">\n" +
-    "\t<span class=\"complex-label-extended\"\n" +
-    "\t\tng-show=\"label.length && mode === 'update' && value.isExtended\">({{\n" +
-    "\t\tvalue.extended.firstField }}) &nbsp;</span>\n" +
-    "</div>\n" +
-    "<div class=\"col-md-12\" ng-if=\"mode === 'search'\">\n" +
-    "\t<div class=\"row\">\n" +
-    "\t\t<button class=\"btn btn-default btn-xs\" ng-repeat=\"item in value.entity\" ng-click=\"removeItem($index)\">\n" +
-    "\t\t\t<i class=\"glyphicon glyphicon-remove\"></i>\n" +
-    "\t\t\t{{ item | mapEdsField:labelField | shortify:15 }}\n" +
-    "\t\t\t{{ (item | mapEdsField:labelField).length > 15 ? '...' : '' }}\n" +
-    "\t\t</button>\n" +
     "\t</div>\n" +
     "</div>"
   );

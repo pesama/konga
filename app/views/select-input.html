@@ -21,17 +21,3 @@
 			'message.field-validation.required' | translate }}</div>
 	</div>
 </div>
-<div class="{{(isExtended) ? 'col-md-2 extend' : 'non-extended'}}">
-	<span class="complex-label-extended"
-		ng-show="label.length && mode === 'update' && value.isExtended">({{
-		value.extended.firstField }}) &nbsp;</span>
-</div>
-<div class="col-md-12" ng-if="mode === 'search'">
-	<div class="row">
-		<button class="btn btn-default btn-xs" ng-repeat="item in value.entity" ng-click="removeItem($index)">
-			<i class="glyphicon glyphicon-remove"></i>
-			{{ item | mapEdsField:labelField | shortify:15 }}
-			{{ (item | mapEdsField:labelField).length > 15 ? '...' : '' }}
-		</button>
-	</div>
-</div>
