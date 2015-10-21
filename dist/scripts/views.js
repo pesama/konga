@@ -397,7 +397,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/konga-content-plain.html',
-    "<div class=\"konga-container\">\n" +
+    "<div class=\"konga-container plain-app\">\n" +
     "\t<div class=\"pwd text-center\">\n" +
     "        <h1>\n" +
     "            <i class=\"{{ (tabs | filter:{ id: tabId })[0].type }}\"></i>\n" +
@@ -913,7 +913,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
     "<div class=\"row\">\n" +
     "\t<div class=\"form-group mode-{{ mode }} {{ parentField ? 'derived' : '' }} {{(isExtended) ? 'extended' : '' }} {{displayMode}}\">\n" +
     "\t\t<label ng-hide=\"property.fieldType[mode] === 'COMPLEX'\" class=\"col-xs-12 col-sm-12 col-md-4 col-lg-8\">{{property.label | translate:extra }}</label>\n" +
-    "\t\t<div ng-class=\"{ 'derived': !!parentField }}\" class=\"col-xs-12 col-sm-12 col-md-8 col-lg-10\">\n" +
+    "\t\t<div ng-class=\"{ 'derived': !!parentField, 'full-width-component': ['COMPLEX', 'TABLE', 'PICK_LIST'].indexOf(property.fieldType[mode]) === -1 }\" class=\"col-xs-12 col-sm-12 col-md-8 col-lg-10\">\n" +
     "\t\t\t<div ng-include=\"contentUrl\" ng-class=\"classFormInput\"></div>\n" +
     "\t\t</div>\n" +
     "\t\t<div ng-class=\"templating.validationStyle\" ng-if=\"['COMPLEX', 'TABLE'].indexOf(property.fieldType[mode]) === -1\">\n" +

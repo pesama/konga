@@ -31,10 +31,16 @@
     z-index: 2;
 }
 
-.container {
+.konga-container.plain-app .wall {
     position: relative;
+    padding-top: 3em;
+
 }
 
 .ng-scope.plain-app > * {
     padding-top: 3em;
+}
+
+.full-width-component {
+	width: 100%;
 }

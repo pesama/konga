@@ -21,11 +21,6 @@ body {
 }
 
 #wrapper {
-	position: absolute;
-	top: 60px;
-	left: 0.5%;
-	width: 99%;
-	bottom: 0px;
 	background: transparent;
 }
 
