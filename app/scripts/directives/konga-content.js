@@ -12,6 +12,7 @@ angular.module('ui.konga')
 	    return {
 	      templateUrl: '/konga/views/konga-content.html',
 	      restrict: 'E',
+	      replace: true,
 	      link: function postLink(scope, element, attrs) {
 
 	        function init() {
