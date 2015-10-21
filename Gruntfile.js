@@ -567,7 +567,7 @@ module.exports = function (grunt) {
         src: 'views/**/**.html',
         dest: 'dist/scripts/views.js',
         options:  {
-          url:    function(url) { return '/' + url; }
+          url:    function(url) { return '/konga/' + url; }
         }
       }
     },

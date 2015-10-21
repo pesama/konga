@@ -14,7 +14,7 @@
  * <pre>
 {
   controller: 'MyProjectModalCtrl',
-  template: '/views/my-project-modal-tpl.html',
+  template: '/views/konga/my-project-modal-tpl.html',
   parameters: {
     // Custom parameters to use within the controller and the handlers
   },

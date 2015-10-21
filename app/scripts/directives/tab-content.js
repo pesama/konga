@@ -14,6 +14,6 @@ angular.module('ui.konga')
 	directiveDefinitionObject.link= function(scope, element, attrs, tabsCtrl){
 			tabsCtrl.addTabContent(scope);
 	};
-	directiveDefinitionObject.templateUrl = '/views/vertical-tabs-element.tp.html';
+	directiveDefinitionObject.templateUrl = '/views/konga/vertical-tabs-element.tp.html';
 	return directiveDefinitionObject;
   });

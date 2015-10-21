@@ -35,7 +35,7 @@ angular.module('ui.konga')
 		};
 	};
 	
-	directiveDefinitionObject.templateUrl = '/views/verticaltab.tp.html';
+	directiveDefinitionObject.templateUrl = '/views/konga/verticaltab.tp.html';
 	
 	return directiveDefinitionObject;
   });

@@ -1,12 +1,12 @@
 angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('/views/about.html',
+  $templateCache.put('/konga/views/about.html',
     "<p>This is the about view.</p>\n"
   );
 
 
-  $templateCache.put('/views/cascade-result-table.html',
+  $templateCache.put('/konga/views/cascade-result-table.html',
     "<table class=\"table table-result\">\n" +
     "\t<thead>\n" +
     "\t\t<tr class=\"table-header\">\n" +
@@ -37,7 +37,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/cascade-search-pane.html',
+  $templateCache.put('/konga/views/cascade-search-pane.html',
     "<raw-input \n" +
     "\tproperty=\"field\"\n" +
     "\tvertical=\"true\" \n" +
@@ -52,7 +52,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/cascade-update.html',
+  $templateCache.put('/konga/views/cascade-update.html',
     "<div class=\"form-cascade\">\n" +
     "\t<raw-input \n" +
     "\t\tproperty=\"field\"\n" +
@@ -70,7 +70,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/categorized_cascade-result-table.html',
+  $templateCache.put('/konga/views/categorized_cascade-result-table.html',
     "<table class=\"table table-result\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n" +
     "\t<thead>\n" +
     "\t\t<tr class=\"table-header categories\">\n" +
@@ -106,7 +106,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/categorized_cascade-search-pane.html',
+  $templateCache.put('/konga/views/categorized_cascade-search-pane.html',
     "<div ng-repeat=\"category in categories\" ng-if=\"(fields | searchParams | filter:{ categories: category }).length > 0\">\n" +
     "\t<h4>{{ category | translate }}</h1>\n" +
     "\t<raw-input \n" +
@@ -124,7 +124,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/custom_tabbed-update.html',
+  $templateCache.put('/konga/views/custom_tabbed-update.html',
     "<vertical-tabs>\n" +
     "\t<tab-content ng-repeat=\"fs in fieldsets\" title=\"{{fs.name | translate}}\" tab-id=\"fs.name\" is-show=\"true\">\n" +
     "\t\t<div ng-include=\"getView(fs.configuration.view)\"></div>\n" +
@@ -133,7 +133,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/eds-update-form.html',
+  $templateCache.put('/konga/views/eds-update-form.html',
     "<form class=\"form-horizontal\" role=\"form\">\n" +
     "\t<raw-input \n" +
     "\t\tproperty=\"field\"\n" +
@@ -149,7 +149,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/entity-search.html',
+  $templateCache.put('/konga/views/entity-search.html',
     "<div class=\"wall\" ng-init=\"init()\">\n" +
     "\t<div class=\"entity-search\">\n" +
     "\t\t<div class=\"col-md-3 search-panel\" ng-class=\"filterClass\">\n" +
@@ -255,9 +255,9 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/entity-update.html',
+  $templateCache.put('/konga/views/entity-update.html',
     "<div class=\"wall\">\n" +
-    "\t<div class=\"panel-body sogma-panel-body\">\n" +
+    "\t<div class=\"panel-body\">\n" +
     "\t\t<div class=\"search-form col-md-12\">\n" +
     "\t\t\t<form ng-class=\"formStyle\" role=\"form\" name=\"entityUpdate\" novalidate>\n" +
     "\t\t\t\t<update-form entity=\"entity\" changes=\"changes\" metadata=\"entityMetadata\" params=\"params\" on-change=\"operations.changeEntityField\" on-update=\"operations.updateEntityField\" creating=\"creating\"></update-form>\n" +
@@ -285,7 +285,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/file-input.html',
+  $templateCache.put('/konga/views/file-input.html',
     "<div class=\"col-md-12 file-input\">\n" +
     "\t<button multiple=\"{{ property.multiplicity === 'MANY' }}\" ng-file-select ng-model=\"value.files\">\n" +
     "\t<i class=\"glyphicon glyphicon-open\"></i>\n" +
@@ -297,14 +297,14 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/footer.html',
+  $templateCache.put('/konga/views/footer.html',
     "<div class=\"container\">\n" +
     "\t<p>{{ 'message.common.footer' | translate }}</p>\n" +
     "</div>"
   );
 
 
-  $templateCache.put('/views/header-nav1.html',
+  $templateCache.put('/konga/views/header-nav1.html',
     "<div class=\"container-fluid\">\n" +
     "\t<!-- Brand and toggle get grouped for better mobile display -->\n" +
     "\t<div class=\"navbar-header\">\n" +
@@ -396,12 +396,12 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/konga-content-plain.html',
+  $templateCache.put('/konga/views/konga-content-plain.html',
     "<div ng-view></div>"
   );
 
 
-  $templateCache.put('/views/konga-content-tabs.html',
+  $templateCache.put('/konga/views/konga-content-tabs.html',
     "<div class=\"container\">\t\t\t\n" +
     "\t<div id=\"kongaNavTabs\" class=\"container-fluid\">\n" +
     "\t\t<!--<div bs-tabs=\"tabs\" ng-model=\"tabs.activeTab\"></div>-->\n" +
@@ -425,12 +425,12 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/konga-content.html',
+  $templateCache.put('/konga/views/konga-content.html',
     "<div ng-include=\"contentView\"></div>"
   );
 
 
-  $templateCache.put('/views/list-input.html',
+  $templateCache.put('/konga/views/list-input.html',
     "<div class=\"list-input col-md-12 padding-cero\">\n" +
     "\t<div class=\"col-md-12 padding-cero\" ng-if=\"paginate\">\n" +
     "\t\t<!-- ng-show=\"hideSearchSpiner\"> -->\n" +
@@ -505,7 +505,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/loader.html',
+  $templateCache.put('/konga/views/loader.html',
     "<div class=\"loader\" ng-show=\"loading.length > 0\">\n" +
     "\t<div class=\"blocker\"></div>\n" +
     "\t<div class=\"loading\"></div>\n" +
@@ -514,7 +514,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/login.html',
+  $templateCache.put('/konga/views/login.html',
     "<div class=\"container-fluid\">\n" +
     "\t<div class=\"jumbotron col-md-6 col-md-offset-3 login-pane\">\n" +
     "\t\t<img src=\"/images/logo.png\" />\n" +
@@ -554,7 +554,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/main.html',
+  $templateCache.put('/konga/views/main.html',
     "\n" +
     "<!-- Alerts -->\n" +
     "<div class=\"alert-container\">\n" +
@@ -573,7 +573,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/modal.tpl.html',
+  $templateCache.put('/konga/views/modal.tpl.html',
     "<div class=\"modal\" tabindex=\"-1\" role=\"dialog\">\n" +
     "\n" +
     "  <!-- Dialog for the modal -->\n" +
@@ -613,13 +613,13 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/multi-select-modal.html',
+  $templateCache.put('/konga/views/multi-select-modal.html',
     "<!-- Multi select for modal views -->\n" +
     "<multi-select source-list=\"sourceList\" model=\"modal.temp\"></multi-select>"
   );
 
 
-  $templateCache.put('/views/multi-select.html',
+  $templateCache.put('/konga/views/multi-select.html',
     "<div class=\"multi-select\" ng-init=\"operations.init()\">\n" +
     "\t<div class=\"modal-header\" ng-show=\"true\">\n" +
     "\t    <!-- Close button -->\n" +
@@ -710,19 +710,19 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/ng-view.html',
+  $templateCache.put('/konga/views/ng-view.html',
     "<div class=\"view-container\">\n" +
     "\t<div ng-view></div>\n" +
     "</div>"
   );
 
 
-  $templateCache.put('/views/option-input.html',
+  $templateCache.put('/konga/views/option-input.html',
     "<p>This is the option-input view.</p>\n"
   );
 
 
-  $templateCache.put('/views/price-input.html',
+  $templateCache.put('/konga/views/price-input.html',
     "<div class=\"input-group\">\n" +
     "  <input name=\"{{ property.name }}\" type=\"text\" class=\"form-control text-right\"\n" +
     "\tid=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"inner.text\" ng-change=\"formatInput()\"\n" +
@@ -733,7 +733,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/raw-boolean-input.html',
+  $templateCache.put('/konga/views/raw-boolean-input.html',
     "<div class=\"col-md-12\">\n" +
     "\t<div class=\"radio-inline\">\n" +
     "\t\t<label for=\"{{ fieldId }}-true\">\n" +
@@ -751,7 +751,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/raw-checkbox-input.html',
+  $templateCache.put('/konga/views/raw-checkbox-input.html',
     "<div class=\"col-md-12\">\n" +
     "\t<div class=\"checkbox-inline\">\n" +
     "\t\t<label for=\"{{ fieldId }}-true\"> <input name=\"{{ property.name }}\"type=\"checkbox\" ng-value=\"true\" ng-model=\"value.active\" id=\"{{ fieldId }}-true\"> \n" +
@@ -767,7 +767,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/raw-color-input.html',
+  $templateCache.put('/konga/views/raw-color-input.html',
     "<div class=\"col-md-12\">\n" +
     "\t<input name=\"{{ property.name }}\" type=\"color\" class=\"form-control konga-form-search-input\" id=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" maxlength=\"{{ validation.maxlength() }}\">\n" +
     "\t<!-- TODO This is not working (yet) -->\n" +
@@ -782,7 +782,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/raw-combobox-input.html',
+  $templateCache.put('/konga/views/raw-combobox-input.html',
     "<div class=\"col-md-12\">\n" +
     "\t<button type=\"button\" class=\"btn btn-default combobox-button\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-required=\"validation.required()\" data-html=\"0\" ng-options=\"item.key as item.value | translate for item in value.list\" data-animation=\"am-flip-x\" data-placeholder=\"{{ 'combobox.placeholder' | translate }}\" bs-select ng-if=\"!multiple\">\n" +
     "\t  Action <span class=\"caret\"></span>\n" +
@@ -794,7 +794,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/raw-complex-input.html',
+  $templateCache.put('/konga/views/raw-complex-input.html',
     "<div class=\"complex-container\">\n" +
     "\t<raw-input \n" +
     "\t\tproperty=\"field\"\n" +
@@ -815,12 +815,12 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/raw-css-input.html',
+  $templateCache.put('/konga/views/raw-css-input.html',
     "<div ng-class=\"value.text\"></div>"
   );
 
 
-  $templateCache.put('/views/raw-date-input.html',
+  $templateCache.put('/konga/views/raw-date-input.html',
     "<div class=\"col-md-12\">\n" +
     "\t<input name=\"{{ property.name }}\" id=\"{{ fieldId }}\" type=\"date\" placeholder=\"yyyy-MM-dd\" ng-model=\"value.text\" name=\"{{property.fieldName}}\"\n" +
     "\t\tclass=\"form-control\" ng-required=\"validation.required()\" ng-disabled=\"disableField(mode, property)\" value=\"{{ value.text }}\">\n" +
@@ -834,7 +834,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/raw-date-search-input.html',
+  $templateCache.put('/konga/views/raw-date-search-input.html',
     "<div class=\"col-md-12\">\n" +
     "\t<div class=\"padding-cero\">\n" +
     "\t\t<label>{{ 'field.date-search.comparator' | translate }}</label>\n" +
@@ -870,7 +870,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/raw-datetime-input.html',
+  $templateCache.put('/konga/views/raw-datetime-input.html',
     "<div class=\"col-md-12\">\n" +
     "\t<div class=\"dropdown\">\n" +
     "\t  <a class=\"dropdown-toggle\" id=\"dropdown2\" role=\"button\" data-toggle=\"dropdown\" ng-disabled=\"disableField(mode, property)\" data-target=\"#\" href=\"#\">\n" +
@@ -903,7 +903,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/raw-file-input.html',
+  $templateCache.put('/konga/views/raw-file-input.html',
     "<div class=\"col-md-12\">\n" +
     "\t<file-input></file-input>\n" +
     "\t<!-- TODO This is not working (yet) -->\n" +
@@ -918,12 +918,12 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/raw-filtered_select-input.html',
+  $templateCache.put('/konga/views/raw-filtered_select-input.html',
     "<p>This is the raw-filtered_select-input view.</p>\n"
   );
 
 
-  $templateCache.put('/views/raw-image-input.html',
+  $templateCache.put('/konga/views/raw-image-input.html',
     "<div class=\"col-md-12\">\n" +
     "\t<!-- <input name=\"{{ property.name }}\"type=\"text\" class=\"form-control konga-form-search-input\" id=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" maxlength=\"{{ validation.maxlength() }}\"> -->\n" +
     "\t\n" +
@@ -932,7 +932,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/raw-input.html',
+  $templateCache.put('/konga/views/raw-input.html',
     "<div class=\"row\">\n" +
     "\t<div class=\"form-group mode-{{ mode }} {{ parentField ? 'derived' : '' }} {{(isExtended) ? 'extended' : '' }} {{displayMode}}\" ng-class=\"templating.inputSize\">\n" +
     "\t\t<label ng-hide=\"property.fieldType[mode] === 'COMPLEX'\" ng-class=\"[templating.labelStyle, templating.labelWeight, templating.labelDecoration]\">{{property.label | translate:extra }}</label>\n" +
@@ -959,7 +959,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/raw-list-input.html',
+  $templateCache.put('/konga/views/raw-list-input.html',
     "<div class=\"form-group\">\n" +
     "\t<div class=\"padding-cero\" ng-class=\"inLineClass.col1\">\n" +
     "\t\t<label for=\"{{ fieldId }}\">{{property.fieldLabel | translate:extra }}</label>\n" +
@@ -976,7 +976,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/raw-number-input.html',
+  $templateCache.put('/konga/views/raw-number-input.html',
     "\n" +
     "<input name=\"{{ property.name }}\"type=\"number\"\n" +
     "\tclass=\"form-control konga-form-search-input konga-form-simple-search-input\"\n" +
@@ -995,7 +995,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/raw-number-range-input.html',
+  $templateCache.put('/konga/views/raw-number-range-input.html',
     "<div class=\"col-md-12\">\n" +
     "\t<div class=\"padding-cero\">\n" +
     "\t\t<label>{{ 'field.number-range.comparator' | translate }}</label>\n" +
@@ -1031,12 +1031,12 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/raw-option-input.html',
+  $templateCache.put('/konga/views/raw-option-input.html',
     "<option-input></option-input>"
   );
 
 
-  $templateCache.put('/views/raw-password-input.html',
+  $templateCache.put('/konga/views/raw-password-input.html',
     "<div class=\"col-md-12\">\n" +
     "\t<input name=\"{{ property.name }}\"type=\"password\" class=\"form-control konga-form-search-input\" id=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" maxlength=\"{{ validation.maxlength() }}\" autocomplete=\"off\">\n" +
     "\t<!-- TODO This is not working (yet) -->\n" +
@@ -1051,7 +1051,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/raw-pick_list-input.html',
+  $templateCache.put('/konga/views/raw-pick_list-input.html',
     "<div class=\"col-md-12\">\n" +
     "\t<div class=\"col-md-12 padding-cero\" ng-class=\"inLineClass.col1\">\n" +
     "\t\t<label for=\"{{ fieldId }}\">{{property.fieldLabel |\n" +
@@ -1086,7 +1086,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/raw-plain-input.html',
+  $templateCache.put('/konga/views/raw-plain-input.html',
     "<div class=\"col-md-12\">\n" +
     "\t<input name=\"{{ property.name }}\"type=\"text\" class=\"form-control konga-form-search-input\" id=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" maxlength=\"{{ validation.maxlength() }}\" tabindex=\"{{ (index + 1) * 12 }}\">\n" +
     "\t<!-- TODO This is not working (yet) -->\n" +
@@ -1101,7 +1101,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/raw-price-input.html',
+  $templateCache.put('/konga/views/raw-price-input.html',
     "<price-input></price-input>\n" +
     "<div class=\"validation\">\n" +
     "\t<div class=\"validation-pattern btn-danger\">\n" +
@@ -1114,12 +1114,12 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/raw-select-input.html',
+  $templateCache.put('/konga/views/raw-select-input.html',
     "<select-input></select-input>"
   );
 
 
-  $templateCache.put('/views/raw-table-input.html',
+  $templateCache.put('/konga/views/raw-table-input.html',
     "<div class=\"col-md-12\">\n" +
     "\t<div class=\"col-md-12 padding-cero\" ng-class=\"inLineClass.col1\">\n" +
     "\t\t<label for=\"{{ fieldId }}\">{{property.fieldLabel |\n" +
@@ -1132,7 +1132,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/raw-textarea-input.html',
+  $templateCache.put('/konga/views/raw-textarea-input.html',
     "<textarea \n" +
     "\ttype=\"text\"\n" +
     "\tclass=\"form-control konga-form-search-input konga-form-simple-search-input\"\n" +
@@ -1159,12 +1159,12 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/raw-tics-input.html',
+  $templateCache.put('/konga/views/raw-tics-input.html',
     "<tics field=\"property\" entity=\"entity\" value=\"value\"></tics>"
   );
 
 
-  $templateCache.put('/views/recursive-list-item.html',
+  $templateCache.put('/konga/views/recursive-list-item.html',
     "<li>\n" +
     "\t<div>\n" +
     "\t\t<a href=\"\" ng-click=\"click(item)\">{{ item.label | translate }}</a>\n" +
@@ -1175,21 +1175,21 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/recursive-list.html',
+  $templateCache.put('/konga/views/recursive-list.html',
     "<ul>\n" +
     "\t<recursive-list-item ng-repeat=\"item in list\" item=\"item\" on-click=\"clickItem\"></recursive-list-item>\n" +
     "</ul>"
   );
 
 
-  $templateCache.put('/views/result-table.html',
+  $templateCache.put('/konga/views/result-table.html',
     "<div class=\"col-md-12 search-table-container\" ng-init=\"init()\">\n" +
     "\t<div ng-include=\"contentUrl\"></div>\n" +
     "</div>"
   );
 
 
-  $templateCache.put('/views/search-pane.html',
+  $templateCache.put('/konga/views/search-pane.html',
     "<div class=\"search-pane\" ng-init=\"init()\">\n" +
     "\t<div class=\"search-form\">\n" +
     "\t\t<h3>{{ 'message.search-filters.title' | translate }}</h3>\n" +
@@ -1228,7 +1228,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/select-input.html',
+  $templateCache.put('/konga/views/select-input.html',
     "<div class=\"select-input {{(isExtended) ? 'extend' : 'non-extended'}}\" ng-class=\"{ disabled: disableSelect(property) }\" konga-select>\n" +
     "\t<div ng-class=\"{'col-md-6': mode === 'update', 'col-md-12': mode === 'search'}\">\n" +
     "\t\t<div class=\"input-group {{ validation.required() ? 'required' : 'optional' }} {{ value.text.length ? 'valid' : 'invalid' }}\">\n" +
@@ -1271,7 +1271,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/single-select-custom.html',
+  $templateCache.put('/konga/views/single-select-custom.html',
     "<div class=\"single-select\" ng-init=\"operations.init()\">\n" +
     "\t<div class=\"modal-header\" ng-show=\"true\">\n" +
     "\t\t<!-- Close button -->\n" +
@@ -1343,12 +1343,12 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/single-select-modal.html',
+  $templateCache.put('/konga/views/single-select-modal.html',
     "<single-select source-list=\"sourceList\" model=\"modal.temp\"></single-select>"
   );
 
 
-  $templateCache.put('/views/single-select.html',
+  $templateCache.put('/konga/views/single-select.html',
     "<div class=\"single-select\" ng-init=\"operations.init()\">\n" +
     "\t<div class=\"modal-header\" ng-show=\"true\">\n" +
     "\t\t<!-- Close button -->\n" +
@@ -1405,7 +1405,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/tabbed-update-user.html',
+  $templateCache.put('/konga/views/tabbed-update-user.html',
     "<vertical-tabs>\n" +
     "\t<tab-content title=\"{{'category.informations.principales'| translate}}\">\n" +
     "\t\t<raw-input \n" +
@@ -1430,7 +1430,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/tabbed-update.html',
+  $templateCache.put('/konga/views/tabbed-update.html',
     "<vertical-tabs>\n" +
     "\t<tab-content ng-repeat=\"cat in categories\" title=\"{{cat | translate}}\" is-show=\"(fields | updateParams:metadata | filter: {category: cat}).length\">\n" +
     "\t\t<raw-input \n" +
@@ -1451,7 +1451,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/table-cell.html',
+  $templateCache.put('/konga/views/table-cell.html',
     "<div class=\"table-cell\" ng-class=\"styles\">\n" +
     "\t<span class=\"table-cell-content\" ng-show=\"type === 'text'\"></span>\n" +
     "\t<img ng-src=\"{{ content }}\" ng-if=\"type === 'image'\" width=\"{{ image.width }}\" height=\"{{ image.height }}\">\n" +
@@ -1463,7 +1463,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/table-header.html',
+  $templateCache.put('/konga/views/table-header.html',
     "<div class=\"table-header {{ field.sortable ? 'sortable' : '' }}\" ng-class=\"styles\">\n" +
     "\t<span class=\"header-label\">{{ label | translate:{label: owner} }}</span>\n" +
     "\t<!-- <b ng-class=\"showSorting(field.sorting, true)\"><b ng-class=\"showSorting(field.sorting, false)\"></b></b> -->\n" +
@@ -1475,7 +1475,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/table-input.html',
+  $templateCache.put('/konga/views/table-input.html',
     "<div class=\"table-input col-md-12 padding-cero\">\n" +
     "\t<div ng-if=\"!rows || !columns || rows.length === 0 || columns.length === 0\" class=\"col-md-12 text-center text-danger\">{{ 'message.table-input.not-yet-configured' | translate }}</div>\n" +
     "\t<table ng-if=\"rows.length > 0 && columns.length > 0\">\n" +
@@ -1512,7 +1512,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/tics.html',
+  $templateCache.put('/konga/views/tics.html',
     "<div class=\"tics\" ng-init=\"init()\">\n" +
     "\t<table width=\"100%\" cellspacing=\"0\" cellpadding=\"1\" border=\"1\">\n" +
     "\t\t<thead>\n" +
@@ -1570,12 +1570,12 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('/views/vertical-tabs-element.tp.html',
+  $templateCache.put('/konga/views/vertical-tabs-element.tp.html',
     "<div class=\"tab-pane\" ng-show=\"selected\" ng-class=\"active\" ng-transclude></div>"
   );
 
 
-  $templateCache.put('/views/verticaltab.tp.html',
+  $templateCache.put('/konga/views/verticaltab.tp.html',
     "<div class=\"tabbable\">\n" +
     "\t<ul class=\"nav nav-pills nav-stacked konga-nav-vertical col-md-3 no-padding-right\">\n" +
     "\t\t<li ng-repeat=\"tabContent in tabContentList\" ng-class=\"{active:tabContent.selected}\">\n" +

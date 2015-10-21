@@ -9,7 +9,7 @@
 angular.module('ui.konga')
   .directive('priceInput', ['$filter', '$timeout', function ($filter, $timeout) {
     return {
-      templateUrl: '/views/price-input.html',
+      templateUrl: '/views/konga/price-input.html',
       restrict: 'E',
       link: function postLink(scope, element, attrs) {
         scope.currency = '';

@@ -11,7 +11,7 @@
 angular.module('ui.konga')
   .directive('searchPane', function () {
     return {
-      templateUrl: '/views/search-pane.html',
+      templateUrl: '/views/konga/search-pane.html',
       replace: true, 
       restrict: 'E',
       scope: {
@@ -38,7 +38,7 @@ angular.module('ui.konga')
             $scope.contentUrl = mapper[configuration[0].value];
           }
           else {
-            $scope.contentUrl = '/views/' + formType.toLowerCase() + '-search-pane.html';
+            $scope.contentUrl = '/views/konga/' + formType.toLowerCase() + '-search-pane.html';
 
             // Custom behavior for each form type
             switch(formType) {
@@ -86,7 +86,7 @@ angular.module('ui.konga')
   			  }
     		  
     		  var modalInstance = $modal.open({
-    			  templateUrl: '/views/filter-manager.html',
+    			  templateUrl: '/views/konga/filter-manager.html',
     			  controller: 'FilterManagerCtrl',
     			  resolve: {
     				  method: function () {

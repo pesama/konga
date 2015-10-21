@@ -9,7 +9,7 @@
 angular.module('ui.konga')
   .directive('tableCell', function () {
     return {
-      templateUrl: '/views/table-cell.html',
+      templateUrl: '/views/konga/table-cell.html',
       restrict: 'E',
       replace: true,
       scope: {

@@ -10,7 +10,7 @@ angular.module('ui.konga')
   .directive('kongaContent', ['$filter', 
   	function ($filter) {
 	    return {
-	      templateUrl: '/views/konga-content.html',
+	      templateUrl: '/views/konga/konga-content.html',
 	      restrict: 'E',
 	      link: function postLink(scope, element, attrs) {
 
@@ -22,7 +22,7 @@ angular.module('ui.konga')
 	        	appLookAndFeel = lookAndFeelConf.value;
 	        }
 
-	        scope.contentView = '/views/konga-content-' + appLookAndFeel + '.html';
+	        scope.contentView = '/views/konga/konga-content-' + appLookAndFeel + '.html';
 	      }
 	    };
 	  }]);

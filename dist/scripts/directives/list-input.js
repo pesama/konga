@@ -9,7 +9,7 @@
 angular.module('ui.konga')
   .directive('listInput', function () {
     return {
-  		templateUrl : '/views/list-input.html',
+  		templateUrl : '/views/konga/list-input.html',
   		restrict: 'E',
   		transclude : false,
   		replace: true,

@@ -9,7 +9,7 @@
 angular.module('ui.konga')
   .directive('tics', function () {
     return {
-      templateUrl: '/views/tics.html',
+      templateUrl: '/views/konga/tics.html',
       restrict: 'E',
       replace: true,
       scope: {

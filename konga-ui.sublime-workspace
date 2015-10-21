@@ -527,13 +527,21 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 392.0,
-		"last_filter": "case",
+		"height": 147.0,
+		"last_filter": "ssjo",
 		"selected_items":
 		[
 			[
-				"case",
-				"Convert Case: Title Case"
+				"ssjo",
+				"Set Syntax: JSON"
+			],
+			[
+				"js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
 			],
 			[
 				"sort",
@@ -542,10 +550,6 @@
 			[
 				"css",
 				"Set Syntax: CSS"
-			],
-			[
-				"html",
-				"Set Syntax: HTML"
 			],
 			[
 				"php",
@@ -562,6 +566,10 @@
 			[
 				"ins",
 				"Package Control: Install Package"
+			],
+			[
+				"case",
+				"Convert Case: Lower Case"
 			],
 			[
 				"innu",
@@ -581,10 +589,6 @@
 			],
 			[
 				"ssjs",
-				"Set Syntax: JavaScript"
-			],
-			[
-				"js",
 				"Set Syntax: JavaScript"
 			],
 			[
@@ -670,28 +674,107 @@
 	},
 	"file_history":
 	[
-		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/services/configuration-manager.js",
-		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/services/action-manager.js",
-		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/util.js",
-		"/Users/pelayosanchez/Personal/konga-ui/Gruntfile.js",
-		"/Users/pelayosanchez/Personal/konga-ui/app/locale/messages_en.json",
-		"/Users/pelayosanchez/Personal/konga-ui/app/views/main.html",
-		"/Users/pelayosanchez/Personal/konga-ui/bower.json",
-		"/Users/pelayosanchez/Personal/konga-ui/package.json",
-		"/Users/sm/workspace/konga-ui/app/scripts/services/configuration-manager.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/controllers/entity-search.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/controllers/main.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/controllers/entity-update.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/controllers/login.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/controllers/multi-select.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/controllers/single-select.js",
-		"/Users/sm/workspace/konga-ui/.bowerrc",
-		"/Users/sm/workspace/konga-ui/.gitignore",
+		"/Users/sm/workspace/ui.konga-cloud/bower_components/ui.konga/app/views/raw-pick_list-input.html",
+		"/Users/sm/workspace/ui.konga-cloud/bower_components/ui.konga/app/scripts/directives/list-input.js",
+		"/Users/sm/workspace/ui.konga-cloud/bower_components/ui.konga/app/scripts/controllers/main.js",
+		"/Users/sm/workspace/ui.konga-cloud/app/scripts/controllers/google-login.js",
+		"/Users/sm/workspace/ui.konga-cloud/app/scripts/controllers/auth.js",
+		"/Users/sm/workspace/ui.konga-cloud/Gruntfile.js",
+		"/Users/sm/workspace/ui.konga-cloud/app/index.html",
+		"/Users/sm/workspace/ui.konga-cloud/app/views/main-container.html",
+		"/Users/sm/workspace/ui.konga-cloud/bower.json",
+		"/Users/sm/workspace/ui.konga-cloud/app/scripts/directives/hooks/sidebar.js",
+		"/Users/sm/workspace/ui.konga-cloud/app/scripts/app.js",
+		"/Users/sm/workspace/ui.konga-cloud/bower_components/ui.konga/app/views/main.html",
+		"/Users/sm/workspace/ui.konga-cloud/app/views/hooks/sidebar.html",
+		"/Users/sm/workspace/ui.konga-cloud/app/styles/overrides.css",
+		"/Users/sm/workspace/ui.konga-cloud/app/.htaccess",
+		"/Users/sm/workspace/ui.konga-cloud/.tmp/styles/overrides.css",
+		"/Users/sm/workspace/ui.konga-cloud/app/views/home.html",
+		"/Users/sm/workspace/ui.konga-cloud/app/scripts/controllers/home.js",
+		"/Users/sm/workspace/ui.konga-cloud/.bowerrc",
+		"/Users/sm/workspace/ui.konga-cloud/manifest.json",
+		"/Users/sm/workspace/ui.konga-cloud/app/scripts/directives/google-auth.js",
+		"/Users/sm/workspace/ui.konga-cloud/app/styles/main.css",
+		"/Users/sm/workspace/smarla-control-center/app/index.html",
 		"/Users/sm/workspace/konga-ui/Gruntfile.js",
-		"/Users/sm/workspace/konga-ui/bower.json",
+		"/Users/sm/workspace/konga-ui/app/docs/inner/main.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/controllers/main.js",
+		"/Users/sm/workspace/konga-ui/.gitignore",
+		"/Users/sm/workspace/konga-ui/app/scripts/controllers/entity-update.js",
+		"/Users/sm/workspace/konga-ui/app/docs/inner/events.js",
+		"/Users/sm/workspace/konga-ui/app/docs/docs.tmpl",
+		"/Users/sm/workspace/konga-ui/app/scripts/util.js",
+		"/Users/sm/workspace/konga-ui/app/docs/inner/tab.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/app.js",
-		"/Users/sm/workspace/konga-ui/package.json",
+		"/Users/sm/workspace/konga-ui/app/docs/inner/modal.js",
+		"/Users/sm/workspace/konga-ui/app/views/modal.tpl.html",
+		"/Users/sm/workspace/konga-ui/app/scripts/constants.js",
+		"/Users/sm/workspace/konga-ui/app/docs/getting-started-metadata-initial.html",
+		"/Users/sm/workspace/konga-ui/app/scripts/controllers/single-select.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/konga-select.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/list-input.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/menu.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/menu-item.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/option-input.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/price-input.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/raw-input.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/recursive-list.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/recursive-list-item.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/result-table.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/scroll-watcher.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/search-pane.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/select-input.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/table-cell.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/table-header.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/table-input.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/tics.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/update-form.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/controllers/login.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/file-input.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/controllers/entity-search.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/controllers/multi-select.js",
+		"/Users/sm/workspace/konga-ui/konga-ui.sublime-project",
+		"/Users/sm/workspace/konga-ui/app/scripts/filters/active-inactive.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/filters/map-eds-field.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/filters/quick-search.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/filters/result-params.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/filters/search-params.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/filters/select-data.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/filters/selected-fields.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/filters/shortify.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/filters/table-renderer-complex.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/filters/translate-complex.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/filters/update-params.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/services/action-manager.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/services/api.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/services/common.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/services/configuration-manager.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/services/field-mapper.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/services/metadata.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/services/permission-manager.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/services/scaffold.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/services/standard-api.js",
+		"/Users/sm/workspace/konga-ui/docs/app-scripts.js",
+		"/Users/sm/workspace/konga-ui/docs/js/docs-setup.js",
+		"/Users/sm/workspace/konga-ui/docs/partials/api/kongaUI.controller.EntitySearchCtrl.html",
+		"/Users/sm/workspace/konga-ui/docs/partials/api/kongaUI.controller.MainCtrl.html",
 		"/Users/sm/workspace/konga-ui/app/index.html",
+		"/Users/sm/workspace/konga-ui/app/styles/style.css",
+		"/Users/sm/workspace/konga-ui/app/styles/verticalTabs.css",
+		"/Users/sm/workspace/konga-ui/app/views/main.html",
+		"/Users/sm/workspace/konga-ui/app/views/raw-color-input.html",
+		"/Users/sm/workspace/konga-ui/app/views/raw-image-input.html",
+		"/Users/sm/workspace/konga-ui/app/views/raw-number-input.html",
+		"/Users/sm/workspace/konga-ui/app/views/raw-password-input.html",
+		"/Users/sm/workspace/konga-ui/app/views/raw-plain-input.html",
+		"/Users/sm/workspace/konga-ui/app/views/raw-textarea-input.html",
+		"/Users/sm/workspace/konga-ui/app/views/select-input.html",
+		"/Users/sm/workspace/konga-ui/app/views/verticaltab.tp.html",
+		"/Users/sm/workspace/konga-ui/app/scripts/mapper.js",
+		"/Users/sm/workspace/konga-ui/.bowerrc",
+		"/Users/sm/workspace/konga-ui/bower.json",
+		"/Users/sm/workspace/konga-ui/package.json",
 		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/home.js",
 		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/admin.js",
 		"/Users/sm/workspace/presupuestor/ui/Gruntfile.js",
@@ -718,86 +801,7 @@
 		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/recursive-list.js",
 		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/result-table.js",
 		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/scroll-watcher.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/search-pane.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/select-input.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/table-cell.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/table-header.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/table-input.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/tics.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/update-form.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/active-inactive.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/allowed.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/custom-filter.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/extended.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/field-api-name.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/field-multiplicity.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/form-type.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/htmlify.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/locale.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/map-eds-field.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/only-code-eds.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/only-id-eds.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/query-parser.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/quick-search.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/recursive-filter.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/result-params.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/scroll.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/search-params.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/select-data.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/selected-fields.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/selected-locale.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/shortify.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/table-renderer-complex.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/tics-categories.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/tics-day-events.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/tics-elements.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/tics-events.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/tics-popover.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/translate-complex.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/update-params.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/filters/urlify.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/action-manager.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/action.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/api.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/auth.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/common.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/configuration-manager.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/exception-manager.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/field-mapper.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/loadData.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/metadata.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/permission-manager.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/role.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/scaffold.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/session.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/standard-api.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/token-handler.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/services/user.js",
-		"/Users/sm/workspace/presupuestor/ui/dist/scripts/views.js",
-		"/Users/sm/workspace/presupuestor/ui/docs/app-scripts.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/controllers/add-role-store-user.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/controllers/admin.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/controllers/catalog-cart.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/controllers/catalog-product-details.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/controllers/product-batch-upload.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/controllers/store-selector.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/controllers/tailoring-add-tailoring-type-tailoring-type-field.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/controllers/tailoring-add-tailoring-type-tailoring-type-step.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/controllers/tailoring-type-tailoring-type-step-manage-options.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/controllers/tailoring-type-update.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/directives/category-selector.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/directives/file-input.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/directives/option-input.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/directives/presupuestor-tailoring-static.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/directives/price-input.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/directives/table-input.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/filters/allowed.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/filters/custom-filter.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/filters/field-api-name.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/filters/field-multiplicity.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/filters/price-with-policy.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/filters/query-parser.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/filters/uglify-ref2.js"
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/search-pane.js"
 	],
 	"find":
 	{
@@ -808,7 +812,13 @@
 		"height": 102.0,
 		"where_history":
 		[
-			"/Users/pelayosanchez/Personal/konga-ui/app",
+			"/Users/sm/workspace/ui.konga-cloud/app",
+			"/Users/sm/workspace/ui.konga-cloud/bower_components/ui.konga",
+			"/Users/sm/workspace/ui.konga-cloud/app/styles",
+			"/Users/sm/workspace/ui.konga-cloud",
+			"/Users/sm/workspace/konga-ui/app",
+			"/Users/sm/workspace/konga-ui",
+			"/Users/sm/workspace/konga-ui/app",
 			"/Users/sm/workspace/konga-ui",
 			"/Users/sm/workspace/presupuestor/ui/app/scripts",
 			"-custom/*.js",
@@ -876,12 +886,83 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"customAc",
-			"customAction",
-			"Previous",
-			"Confirma tu acción",
-			"message.action.",
-			"'ngdocs'",
+			"$rootScope.tabs",
+			"currentTab",
+			"dist/",
+			"src=\"//",
+			"src=\"",
+			"href=\"//",
+			"href=\"",
+			"src=\"//",
+			"src=\"",
+			"href=\"//",
+			"href=\"",
+			"styles",
+			"script",
+			".*",
+			"bower_components",
+			"fonts",
+			"bower_components",
+			"[R]",
+			"[L]",
+			";",
+			"'/'",
+			"/login",
+			".authToken",
+			"presupuestor",
+			"class=\"active\" ",
+			"item.",
+			": {",
+			"priority",
+			"scope.",
+			"  function",
+			"   ",
+			"  ",
+			"        ",
+			"search",
+			".body-container",
+			"sidebar",
+			"document.body",
+			"bootstrap",
+			"angular",
+			"lib.konga.operations",
+			"'lib'",
+			"ngdocs:",
+			"lib.konga",
+			"ui.konga.util",
+			"methodOf ui.konga.util.operations",
+			"ui.konga.util.operations",
+			"@ngdoc method",
+			"ui.konga.util",
+			"ui.konga.util.types",
+			"ui.konga.util.operations",
+			"@methodOf Operations",
+			"methodOf ui.konga.util.operations",
+			"'",
+			"setUpdateData",
+			"closeAllTabsButHome",
+			"Action",
+			"docs",
+			"{@link DataTypes.Modal#",
+			"controller",
+			"closeTab",
+			"parameters.closeTab",
+			".backdrop",
+			"windowClass",
+			"types.",
+			"ui.konga.operations",
+			"kongaUITools",
+			"constants",
+			"kongaUI.",
+			"ngdocs",
+			"ngdocs: ",
+			"ngdocs",
+			"kongaUI",
+			"nge",
+			"nge.",
+			"nge-",
+			"sigma",
+			"nge",
 			"presupuestorApp",
 			"Konga",
 			"Konga UI",
@@ -932,78 +1013,7 @@
 			"ceiling",
 			"actuator_remote",
 			"step_position",
-			"actuator_remote",
-			"position_left",
-			"Izquierda",
-			"left",
-			"$engine_manual",
-			"step_fallType",
-			"->image_url",
-			"engine_chain",
-			"fallType_tight",
-			"fallType_cascade",
-			"		",
-			", ",
-			">step",
-			"fallType",
-			"step_fallType",
-			"step_color",
-			"step_quantity",
-			"step_measurements",
-			"field_measurements",
-			"	",
-			", '",
-			"	",
-			"  	",
-			"->tailoringtype_id",
-			"field_color",
-			"field_fall_type",
-			"fall_type",
-			"field_color",
-			"= ",
-			"->",
-			"field_measurements",
-			"field_name",
-			"model.option",
-			"$scope.step = $filter('filter')($scope.steps, { stepNo: $scope.index });",
-			"localEn",
-			"entity",
-			"{{ filePath }}",
-			"wiredep",
-			"span",
-			"h3",
-			"$scope.",
-			"$scope.tailoring",
-			"        ",
-			", value=\"",
-			"key=\"",
-			"option1",
-			"class=\"name",
-			" (cm)",
-			"configuration",
-			"step",
-			"items",
-			"fieldConfig",
-			"=\"",
-			"update",
-			"{{step.index}}",
-			"\"step",
-			"stepNo",
-			"$on",
-			"update",
-			"\">",
-			">",
-			"addTailoringTypeTailoringTypeStepOption",
-			"addTailoringTypeTailoringTypeField",
-			"fieldField",
-			"TailoringTypeFieldControlle",
-			"-fields",
-			"fields",
-			"-field",
-			"tailoring-types",
-			"add-product-characteristic",
-			"category",
-			"TailoringTypeTransformer"
+			"actuator_remote"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1011,6 +1021,10 @@
 		"regex": false,
 		"replace_history":
 		[
+			"ui.konga.",
+			"konga.",
+			"konga-",
+			"konga",
 			"angular.module('ui.konga')",
 			"ui.konga",
 			"angular.module('ui.konga')",
@@ -1101,7 +1115,7 @@
 		"height": 194.0
 	},
 	"pinned_build_system": "",
-	"project": "konga-io.sublime-project",
+	"project": "konga-ui.sublime-project",
 	"replace":
 	{
 		"height": 42.0
@@ -1114,44 +1128,236 @@
 		"selected_items":
 		[
 			[
+				"maincon",
+				"app/views/main-container.html"
+			],
+			[
+				"main",
+				"bower_components/ui.konga/app/scripts/controllers/main.js"
+			],
+			[
 				"grunt",
 				"Gruntfile.js"
+			],
+			[
+				"app",
+				"app/scripts/app.js"
+			],
+			[
+				"index",
+				"app/index.html"
+			],
+			[
+				"liin",
+				"bower_components/ui.konga/app/scripts/directives/list-input.js"
+			],
+			[
+				"picklis",
+				"bower_components/ui.konga/app/views/raw-pick_list-input.html"
+			],
+			[
+				".hta",
+				"app/.htaccess"
+			],
+			[
+				"overri",
+				"app/styles/overrides.css"
+			],
+			[
+				"overr",
+				".tmp/styles/overrides.css"
+			],
+			[
+				"sideba",
+				"app/views/hooks/sidebar.html"
+			],
+			[
+				"goog",
+				"app/scripts/controllers/google-login.js"
+			],
+			[
+				"auth",
+				"app/scripts/controllers/auth.js"
+			],
+			[
+				"googlelo",
+				"app/scripts/controllers/google-login.js"
+			],
+			[
+				"main.js",
+				"bower_components/ui.konga/app/scripts/controllers/main.js"
+			],
+			[
+				"google",
+				"app/scripts/controllers/google-login.js"
+			],
+			[
+				"bower",
+				"bower.json"
+			],
+			[
+				"main.html",
+				"bower_components/ui.konga/app/views/main.html"
+			],
+			[
+				"sideb",
+				"app/scripts/directives/hooks/sidebar.js"
+			],
+			[
+				"home",
+				"app/views/home.html"
+			],
+			[
+				"googlau",
+				"app/scripts/directives/google-auth.js"
+			],
+			[
+				"sidebar",
+				"app/views/hooks/sidebar.html"
+			],
+			[
+				"inde",
+				"app/index.html"
+			],
+			[
+				"side",
+				"app/scripts/directives/hooks/sidebar.js"
+			],
+			[
+				"docs.",
+				"app/docs/docs.tmpl"
 			],
 			[
 				"util",
 				"app/scripts/util.js"
 			],
 			[
-				"actionmana",
-				"app/scripts/services/action-manager.js"
+				"entityupdate",
+				"app/scripts/controllers/entity-update.js"
+			],
+			[
+				"gunt",
+				"Gruntfile.js"
+			],
+			[
+				"modal",
+				"app/views/modal.tpl.html"
+			],
+			[
+				"const",
+				"app/scripts/constants.js"
+			],
+			[
+				"logi",
+				"app/scripts/controllers/login.js"
+			],
+			[
+				"upform",
+				"app/scripts/directives/update-form.js"
+			],
+			[
+				"tics",
+				"app/scripts/directives/tics.js"
+			],
+			[
+				"tabinpu",
+				"app/scripts/directives/table-input.js"
+			],
+			[
+				"tabhead",
+				"app/scripts/directives/table-header.js"
+			],
+			[
+				"tabce",
+				"app/scripts/directives/table-cell.js"
+			],
+			[
+				"selein",
+				"app/scripts/directives/select-input.js"
+			],
+			[
+				"seapa",
+				"app/scripts/directives/search-pane.js"
+			],
+			[
+				"scrowa",
+				"app/scripts/directives/scroll-watcher.js"
+			],
+			[
+				"reta",
+				"app/scripts/directives/result-table.js"
+			],
+			[
+				"recursivelis",
+				"app/scripts/directives/recursive-list-item.js"
+			],
+			[
+				"reclist",
+				"app/scripts/directives/recursive-list.js"
+			],
+			[
+				"rawinpu",
+				"app/scripts/directives/raw-input.js"
+			],
+			[
+				"pricein",
+				"app/scripts/directives/price-input.js"
+			],
+			[
+				"optin",
+				"app/scripts/directives/option-input.js"
+			],
+			[
+				"menuitem",
+				"app/scripts/directives/menu-item.js"
+			],
+			[
+				"menu",
+				"app/scripts/directives/menu.js"
+			],
+			[
+				"konsel",
+				"app/scripts/directives/konga-select.js"
+			],
+			[
+				"filein",
+				"app/scripts/directives/file-input.js"
+			],
+			[
+				"sinsel",
+				"app/scripts/controllers/single-select.js"
+			],
+			[
+				"mulse",
+				"app/scripts/controllers/multi-select.js"
+			],
+			[
+				"eup",
+				"app/scripts/controllers/entity-update.js"
+			],
+			[
+				"ese",
+				"app/scripts/controllers/entity-search.js"
+			],
+			[
+				"appscri",
+				"docs/app-scripts.js"
+			],
+			[
+				"cons",
+				"app/scripts/constants.js"
+			],
+			[
+				"mapper",
+				"app/scripts/mapper.js"
 			],
 			[
 				"confma",
 				"app/scripts/services/configuration-manager.js"
 			],
 			[
-				"main",
-				"app/views/main.html"
-			],
-			[
-				"message",
-				"app/locale/messages_en.json"
-			],
-			[
-				"bowe",
-				"bower.json"
-			],
-			[
 				"pack",
 				"package.json"
-			],
-			[
-				"grun",
-				"Gruntfile.js"
-			],
-			[
-				"app",
-				"app/scripts/app.js"
 			],
 			[
 				"packa",
@@ -1170,24 +1376,12 @@
 				".bowerrc"
 			],
 			[
-				"bower",
-				"bower.json"
-			],
-			[
-				"index",
-				"app/index.html"
-			],
-			[
 				"grutn",
 				"ui/Gruntfile.js"
 			],
 			[
 				"storeselector",
 				"ui/app/scripts/controllers/custom/store-selector.js"
-			],
-			[
-				"home",
-				"ui/app/views/home.html"
 			],
 			[
 				"manageopi",
@@ -1242,10 +1436,6 @@
 				"ui/app/views/raw-list-input.html"
 			],
 			[
-				"liin",
-				"ui/app/scripts/directives/list-input.js"
-			],
-			[
 				"rawpiliin",
 				"ui/app/views/raw-pick_list-input.html"
 			],
@@ -1288,10 +1478,6 @@
 			[
 				"pretasta",
 				"ui/test/spec/directives/presupuestor-tailoring-static.js"
-			],
-			[
-				"inde",
-				"ui/app/index.html"
 			],
 			[
 				"taiaddtai",
@@ -1452,178 +1638,6 @@
 			[
 				"pretacol",
 				"ui/app/views/custom/presupuestor-tailoring-table-selection-field.html"
-			],
-			[
-				"taitysteps",
-				"api/app/database/migrations/2015_07_13_163216_tailoring-type-steps.php"
-			],
-			[
-				"composer",
-				"api/composer.json"
-			],
-			[
-				"storetyetabs",
-				"api/app/database/seeds/StoreTypeTableSeeder.php"
-			],
-			[
-				"datasee",
-				"api/app/database/seeds/DatabaseSeeder.php"
-			],
-			[
-				"usertabl",
-				"api/app/database/seeds/UserTableSeeder.php"
-			],
-			[
-				"tatysteps",
-				"api/app/database/migrations/2015_07_13_163216_tailoring-type-steps.php"
-			],
-			[
-				"tatysteo",
-				"api/app/models/TailoringTypeStepOption.php"
-			],
-			[
-				"tatyste",
-				"api/app/models/TailoringTypeStep.php"
-			],
-			[
-				"tatystep",
-				"api/app/models/TailoringTypeStep.php"
-			],
-			[
-				"tailorintyfie",
-				"api/app/models/TailoringTypeField.php"
-			],
-			[
-				"tatype.",
-				"api/app/models/TailoringType.php"
-			],
-			[
-				"seeder",
-				"api/app/database/seeds/StoreTableSeeder.php"
-			],
-			[
-				"tatytatystepop",
-				"ui/app/scripts/controllers/custom/tailoring-type-tailoring-type-step-manage-options.js"
-			],
-			[
-				"tatystecon",
-				"api/app/controllers/TailoringTypeStepController.php"
-			],
-			[
-				"taitablsel",
-				"ui/app/views/custom/presupuestor-tailoring-table-selection-field.html"
-			],
-			[
-				"pretaioptpri",
-				"ui/app/views/custom/presupuestor-tailoring-option-price-field.html"
-			],
-			[
-				"selein",
-				"ui/app/scripts/directives/select-input.js"
-			],
-			[
-				"singlese",
-				"ui/app/scripts/controllers/single-select.js"
-			],
-			[
-				"taiu",
-				"ui/app/scripts/controllers/custom/tailoring-update.js"
-			],
-			[
-				"data",
-				"api/app/config/database.php"
-			],
-			[
-				"taitystepcon",
-				"api/app/controllers/TailoringTypeStepController.php"
-			],
-			[
-				"tailoringtypestep",
-				"api/app/models/TailoringTypeStep.php"
-			],
-			[
-				"tailoringtypetra",
-				"api/app/transformers/TailoringTypeTransformer.php"
-			],
-			[
-				"taitycontr",
-				"api/app/controllers/TailoringTypeController.php"
-			],
-			[
-				"taiop",
-				"ui/app/views/custom/presupuestor-tailoring-option-info-field.html"
-			],
-			[
-				"pretamea",
-				"ui/app/views/custom/presupuestor-tailoring-measurements-field.html"
-			],
-			[
-				"tailoring",
-				"ui/app/views/custom/tailoring-update.html"
-			],
-			[
-				"pretaquafi",
-				"ui/app/views/custom/presupuestor-tailoring-quantity-field.html"
-			],
-			[
-				"app.js",
-				"ui/app/scripts/app.js"
-			],
-			[
-				"pretaqua",
-				"ui/app/views/custom/presupuestor-tailoring-quantity-field.html"
-			],
-			[
-				"pretaimeas",
-				"ui/app/views/custom/presupuestor-tailoring-measurements-field.html"
-			],
-			[
-				"tailoringfiel.js",
-				"ui/app/scripts/directives/custom/presupuestor-tailoring-field.js"
-			],
-			[
-				"tailoringtypecon",
-				"api/app/controllers/TailoringTypeController.php"
-			],
-			[
-				"tailorngtypefields.p",
-				"api/app/database/migrations/2015_07_13_163208_tailoring-type-fields.php"
-			],
-			[
-				"tailoringtypefields",
-				"ui/test/spec/controllers/tailoring-add-tailoring-type-tailoring-type-field.js"
-			],
-			[
-				"tailo",
-				"ui/app/styles/custom/tailorings.css"
-			],
-			[
-				"tai",
-				"ui/app/styles/custom/tailorings.css"
-			],
-			[
-				"tacss",
-				"ui/app/styles/custom/tailorings.css"
-			],
-			[
-				"tail",
-				"ui/app/styles/custom/tailorings.css"
-			],
-			[
-				"taityfields",
-				"api/app/database/migrations/2015_07_13_163208_tailoring-type-fields.php"
-			],
-			[
-				"tailoringcss",
-				"ui/app/styles/custom/tailorings.css"
-			],
-			[
-				"pretastr",
-				"ui/app/views/custom/presupuestor-tailoring-string-field.html"
-			],
-			[
-				"optioninfo",
-				"ui/app/views/custom/presupuestor-tailoring-option-info-field.html"
 			]
 		],
 		"width": 0.0
@@ -1631,16 +1645,20 @@
 	"select_project":
 	{
 		"height": 500.0,
-		"last_filter": "",
+		"last_filter": "ko",
 		"selected_items":
 		[
 			[
-				"",
-				"~/Personal/ui.konga-cloud/ui.konga-cloud.sublime-project"
+				"ko",
+				"~/workspace/konga-ui/konga-ui.sublime-project"
 			],
 			[
-				"presu",
-				"~/Personal/presupuestor/presupuestor.sublime-project"
+				"",
+				"~/workspace/konga-ui/konga-ui.sublime-project"
+			],
+			[
+				"kon",
+				"~/workspace/konga-ui/konga-ui.sublime-project"
 			]
 		],
 		"width": 380.0

@@ -240,11 +240,11 @@ angular.module('ui.konga', [
       // Configure routes
       $routeProvider
         .when('/entity/:entityType/search/', {
-          templateUrl: '/views/entity-search.html',
+          templateUrl: '/views/konga/entity-search.html',
           controller: 'EntitySearchCtrl'
         })
         .when('/entity/:entityType/:entityId/', {
-          templateUrl: '/views/entity-update.html',
+          templateUrl: '/views/konga/entity-update.html',
           controller: 'EntityUpdateCtrl'
         })
     }
