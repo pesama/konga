@@ -519,22 +519,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "app/locale/messages_en.json",
-			"settings":
-			{
-				"buffer_size": 4061,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/main.html",
-			"settings":
-			{
-				"buffer_size": 1214,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -543,10 +527,14 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 147.0,
-		"last_filter": "sort",
+		"height": 392.0,
+		"last_filter": "case",
 		"selected_items":
 		[
+			[
+				"case",
+				"Convert Case: Title Case"
+			],
 			[
 				"sort",
 				"Sort Lines"
@@ -574,10 +562,6 @@
 			[
 				"ins",
 				"Package Control: Install Package"
-			],
-			[
-				"case",
-				"Convert Case: Lower Case"
 			],
 			[
 				"innu",
@@ -690,9 +674,14 @@
 	],
 	"file_history":
 	[
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/services/configuration-manager.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/services/action-manager.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/util.js",
+		"/Users/pelayosanchez/Personal/konga-ui/Gruntfile.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/locale/messages_en.json",
+		"/Users/pelayosanchez/Personal/konga-ui/app/views/main.html",
 		"/Users/pelayosanchez/Personal/konga-ui/bower.json",
 		"/Users/pelayosanchez/Personal/konga-ui/package.json",
-		"/Users/pelayosanchez/Personal/konga-ui/Gruntfile.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/services/configuration-manager.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/controllers/entity-search.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/controllers/main.js",
@@ -812,12 +801,7 @@
 		"/Users/sm/workspace/presupuestor/ui/test/spec/filters/field-multiplicity.js",
 		"/Users/sm/workspace/presupuestor/ui/test/spec/filters/price-with-policy.js",
 		"/Users/sm/workspace/presupuestor/ui/test/spec/filters/query-parser.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/filters/uglify-ref2.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/services/catalog-product.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/util.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/mapper.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/constants.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/single-select-custom.js"
+		"/Users/sm/workspace/presupuestor/ui/test/spec/filters/uglify-ref2.js"
 	],
 	"find":
 	{
@@ -828,6 +812,7 @@
 		"height": 102.0,
 		"where_history":
 		[
+			"/Users/pelayosanchez/Personal/konga-ui/app",
 			"/Users/sm/workspace/konga-ui",
 			"/Users/sm/workspace/presupuestor/ui/app/scripts",
 			"-custom/*.js",
@@ -895,6 +880,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"customAc",
+			"customAction",
+			"Previous",
+			"Confirma tu acción",
+			"message.action.",
 			"'ngdocs'",
 			"presupuestorApp",
 			"Konga",
@@ -1017,12 +1007,7 @@
 			"tailoring-types",
 			"add-product-characteristic",
 			"category",
-			"TailoringTypeTransformer",
-			"question",
-			"field",
-			"TailoringAddTailoringTypeTailoringTypeFieldCtrl",
-			"('",
-			"provider"
+			"TailoringTypeTransformer"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1079,67 +1064,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "app/locale/messages_en.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4061,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": -0.0,
-						"translation.y": 504.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/views/main.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1214,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -1192,6 +1118,22 @@
 		"selected_items":
 		[
 			[
+				"grunt",
+				"Gruntfile.js"
+			],
+			[
+				"util",
+				"app/scripts/util.js"
+			],
+			[
+				"actionmana",
+				"app/scripts/services/action-manager.js"
+			],
+			[
+				"confma",
+				"app/scripts/services/configuration-manager.js"
+			],
+			[
 				"main",
 				"app/views/main.html"
 			],
@@ -1210,10 +1152,6 @@
 			[
 				"grun",
 				"Gruntfile.js"
-			],
-			[
-				"confma",
-				"app/scripts/services/configuration-manager.js"
 			],
 			[
 				"app",
@@ -1238,10 +1176,6 @@
 			[
 				"bower",
 				"bower.json"
-			],
-			[
-				"grunt",
-				"Gruntfile.js"
 			],
 			[
 				"index",
@@ -1694,14 +1628,6 @@
 			[
 				"optioninfo",
 				"ui/app/views/custom/presupuestor-tailoring-option-info-field.html"
-			],
-			[
-				"pretaistr",
-				"ui/app/views/custom/presupuestor-tailoring-string-field.html"
-			],
-			[
-				"pretafiel",
-				"ui/app/scripts/directives/custom/presupuestor-tailoring-field.js"
 			]
 		],
 		"width": 0.0
@@ -1714,7 +1640,11 @@
 		[
 			[
 				"",
-				"~/workspace/projects/hoy-necesito.sublime-project"
+				"~/Personal/ui.konga-cloud/ui.konga-cloud.sublime-project"
+			],
+			[
+				"presu",
+				"~/Personal/presupuestor/presupuestor.sublime-project"
 			]
 		],
 		"width": 380.0

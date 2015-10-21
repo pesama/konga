@@ -33,7 +33,7 @@
     "dist/scripts/directives/table-input.js",
     "dist/scripts/directives/tics.js",
     "dist/scripts/directives/update-form.js",
-    "dist/scripts/directives/verticaltabs.js",
+    "dist/scripts/directives/vertical-tabs.js",
     "dist/scripts/filters/active-inactive.js",
     "dist/scripts/filters/allowed.js",
     "dist/scripts/filters/custom-filter.js",
