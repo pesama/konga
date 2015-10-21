@@ -27,7 +27,7 @@
     "dist/scripts/directives/scroll-watcher.js",
     "dist/scripts/directives/search-pane.js",
     "dist/scripts/directives/select-input.js",
-    "dist/scripts/directives/tabcontent.js",
+    "dist/scripts/directives/tab-content.js",
     "dist/scripts/directives/table-cell.js",
     "dist/scripts/directives/table-header.js",
     "dist/scripts/directives/table-input.js",
