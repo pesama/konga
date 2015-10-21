@@ -519,6 +519,22 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "app/scripts/app.js",
+			"settings":
+			{
+				"buffer_size": 13044,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "bower.json",
+			"settings":
+			{
+				"buffer_size": 4666,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -672,8 +688,39 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/Users/sm/workspace/konga-ui",
+		"/Users/sm/workspace/konga-ui/app",
+		"/Users/sm/workspace/konga-ui/app/scripts"
+	],
 	"file_history":
 	[
+		"/Users/sm/workspace/konga-ui/app/views/konga-content-tabs.html",
+		"/Users/sm/workspace/konga-ui/app/views/konga-content-plain.html",
+		"/Users/sm/workspace/konga-ui/app/docs/inner/modal.js",
+		"/Users/sm/workspace/konga-ui/Gruntfile.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/app.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/controllers/multi-select.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/controllers/single-select.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/file-input.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/konga-content.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/list-input.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/menu.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/price-input.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/raw-input.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/recursive-list-item.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/recursive-list.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/result-table.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/search-pane.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/select-input.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/tab-content.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/table-cell.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/table-header.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/table-input.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/tics.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/update-form.js",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/vertical-tabs.js",
 		"/Users/sm/workspace/ui.konga-cloud/bower_components/ui.konga/app/views/raw-pick_list-input.html",
 		"/Users/sm/workspace/ui.konga-cloud/bower_components/ui.konga/app/scripts/directives/list-input.js",
 		"/Users/sm/workspace/ui.konga-cloud/bower_components/ui.konga/app/scripts/controllers/main.js",
@@ -697,7 +744,6 @@
 		"/Users/sm/workspace/ui.konga-cloud/app/scripts/directives/google-auth.js",
 		"/Users/sm/workspace/ui.konga-cloud/app/styles/main.css",
 		"/Users/sm/workspace/smarla-control-center/app/index.html",
-		"/Users/sm/workspace/konga-ui/Gruntfile.js",
 		"/Users/sm/workspace/konga-ui/app/docs/inner/main.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/controllers/main.js",
 		"/Users/sm/workspace/konga-ui/.gitignore",
@@ -706,34 +752,15 @@
 		"/Users/sm/workspace/konga-ui/app/docs/docs.tmpl",
 		"/Users/sm/workspace/konga-ui/app/scripts/util.js",
 		"/Users/sm/workspace/konga-ui/app/docs/inner/tab.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/app.js",
-		"/Users/sm/workspace/konga-ui/app/docs/inner/modal.js",
 		"/Users/sm/workspace/konga-ui/app/views/modal.tpl.html",
 		"/Users/sm/workspace/konga-ui/app/scripts/constants.js",
 		"/Users/sm/workspace/konga-ui/app/docs/getting-started-metadata-initial.html",
-		"/Users/sm/workspace/konga-ui/app/scripts/controllers/single-select.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/directives/konga-select.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/directives/list-input.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/directives/menu.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/directives/menu-item.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/directives/option-input.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/directives/price-input.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/directives/raw-input.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/directives/recursive-list.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/directives/recursive-list-item.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/directives/result-table.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/directives/scroll-watcher.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/directives/search-pane.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/directives/select-input.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/directives/table-cell.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/directives/table-header.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/directives/table-input.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/directives/tics.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/directives/update-form.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/controllers/login.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/directives/file-input.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/controllers/entity-search.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/controllers/multi-select.js",
 		"/Users/sm/workspace/konga-ui/konga-ui.sublime-project",
 		"/Users/sm/workspace/konga-ui/app/scripts/filters/active-inactive.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/filters/map-eds-field.js",
@@ -796,22 +823,18 @@
 		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/menu.js",
 		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/option-input.js",
 		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/price-input.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/raw-input.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/recursive-list-item.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/recursive-list.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/result-table.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/scroll-watcher.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/search-pane.js"
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/raw-input.js"
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
 		"height": 102.0,
 		"where_history":
 		[
+			"/Users/sm/workspace/konga-ui/app",
 			"/Users/sm/workspace/ui.konga-cloud/app",
 			"/Users/sm/workspace/ui.konga-cloud/bower_components/ui.konga",
 			"/Users/sm/workspace/ui.konga-cloud/app/styles",
@@ -886,6 +909,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"/views/konga/",
+			"/views/",
 			"$rootScope.tabs",
 			"currentTab",
 			"dist/",
@@ -1011,8 +1036,6 @@
 			"supportType",
 			"supportType_ceiling",
 			"ceiling",
-			"actuator_remote",
-			"step_position",
 			"actuator_remote"
 		],
 		"highlight": true,
@@ -1021,6 +1044,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"/konga/views/",
+			"/views/konga/",
 			"ui.konga.",
 			"konga.",
 			"konga-",
@@ -1074,8 +1099,69 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "app/scripts/app.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 13044,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3300.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "bower.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4666,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								634,
+								634
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 27.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -1128,16 +1214,28 @@
 		"selected_items":
 		[
 			[
+				"bower",
+				"bower.json"
+			],
+			[
+				"kocopla",
+				"app/views/konga-content-plain.html"
+			],
+			[
+				"kocota",
+				"app/views/konga-content-tabs.html"
+			],
+			[
+				"grunt",
+				"Gruntfile.js"
+			],
+			[
 				"maincon",
 				"app/views/main-container.html"
 			],
 			[
 				"main",
 				"bower_components/ui.konga/app/scripts/controllers/main.js"
-			],
-			[
-				"grunt",
-				"Gruntfile.js"
 			],
 			[
 				"app",
@@ -1190,10 +1288,6 @@
 			[
 				"google",
 				"app/scripts/controllers/google-login.js"
-			],
-			[
-				"bower",
-				"bower.json"
 			],
 			[
 				"main.html",
@@ -1630,14 +1724,6 @@
 			[
 				"stepdep",
 				"ui/app/scripts/filters/custom/step-dependencies.js"
-			],
-			[
-				"presupuestormap",
-				"ui/app/scripts/filters/custom/presupuestor-field-mapper.js"
-			],
-			[
-				"pretacol",
-				"ui/app/views/custom/presupuestor-tailoring-table-selection-field.html"
 			]
 		],
 		"width": 0.0
@@ -1645,15 +1731,15 @@
 	"select_project":
 	{
 		"height": 500.0,
-		"last_filter": "ko",
+		"last_filter": "",
 		"selected_items":
 		[
 			[
-				"ko",
-				"~/workspace/konga-ui/konga-ui.sublime-project"
+				"",
+				"~/workspace/ui.konga-cloud/ui.konga-cloud.sublime-project"
 			],
 			[
-				"",
+				"ko",
 				"~/workspace/konga-ui/konga-ui.sublime-project"
 			],
 			[

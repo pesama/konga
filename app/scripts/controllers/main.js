@@ -780,6 +780,7 @@ angular.module('ui.konga')
 				common.store('metadata', $scope.metadata);
 				util.init(data);
 				$scope.operations.freeLoading('metadata');
+				$rootScope.$broadcast('metadata-ready');
 			});
 
 			$scope.showHeader = function() {
