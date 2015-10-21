@@ -668,10 +668,6 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/Users/pelayosanchez/Personal/konga-ui"
-	],
 	"file_history":
 	[
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/services/configuration-manager.js",
@@ -805,7 +801,7 @@
 	],
 	"find":
 	{
-		"height": 35.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{

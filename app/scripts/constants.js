@@ -190,5 +190,9 @@ var constants = {
 	TABLE_CONF_X_AXIS_MAX 				: 'X_AXIS_MAX',
 	TABLE_CONF_Y_AXIS_MAX 				: 'Y_AXIS_MAX',
 	TABLE_CONF_X_AXIS_STEP 				: 'X_AXIS_STEP',
-	TABLE_CONF_Y_AXIS_STEP 				: 'Y_AXIS_STEP'
+	TABLE_CONF_Y_AXIS_STEP 				: 'Y_AXIS_STEP',
+
+	LOOK_AND_FEEL_PLAIN 				: 'plain',
+	LOOK_AND_FEEL_TABS 					: 'tabs',
+	CONFIG_LOOK_AND_FEEL 				: 'look-and-feel'
 };

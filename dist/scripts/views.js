@@ -396,6 +396,40 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('/views/konga-content-plain.html',
+    "<div ng-view></div>"
+  );
+
+
+  $templateCache.put('/views/konga-content-tabs.html',
+    "<div class=\"container\">\t\t\t\n" +
+    "\t<div id=\"kongaNavTabs\" class=\"container-fluid\">\n" +
+    "\t\t<!--<div bs-tabs=\"tabs\" ng-model=\"tabs.activeTab\"></div>-->\n" +
+    "\n" +
+    "\t<tabset>\t\t\t    \n" +
+    "\t    <tab ng-repeat=\"tab in tabs\" active=\"tab.active\" select=\"operations.redirectTo(tab)\">\n" +
+    "\t    \t<tab-heading>\n" +
+    "\t    \t\t<i ng-class=\"tab.type\"></i></span>\n" +
+    "\t\t        <span class=\"tab-heading-title\">{{ tab.title | translate:tabExtra[tab.id] }}{{ tab.hasChanges ? '*' : '' }}\n" +
+    "\t\t        <i class=\"glyphicon glyphicon-remove tab-close-btn\" ng-click=\"operations.closeTab(tab, false)\" ng-show=\"tab.closable\"></i></span>\n" +
+    "\t\t    </tab-heading>\n" +
+    "\t\t    \n" +
+    "\t\t</tab>\n" +
+    "\t</tabset>\n" +
+    "\t<!-- Tab panes Container-->\n" +
+    "\t<div class=\"view-container\">\n" +
+    "\t\t<div ng-view></div>\n" +
+    "\t</div>\n" +
+    "\t</div><!-- End of navTab -->\n" +
+    "</div>"
+  );
+
+
+  $templateCache.put('/views/konga-content.html',
+    "<div ng-include=\"contentView\"></div>"
+  );
+
+
   $templateCache.put('/views/list-input.html',
     "<div class=\"list-input col-md-12 padding-cero\">\n" +
     "\t<div class=\"col-md-12 padding-cero\" ng-if=\"paginate\">\n" +
@@ -522,33 +556,18 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('/views/main.html',
     "\n" +
+    "<!-- Alerts -->\n" +
     "<div class=\"alert-container\">\n" +
     "\t<alert ng-repeat=\"alert in alerts\" type=\"{{alert.type}}\" close=\"operations.removeAlert($index)\" \n" +
     "\t\tng-show=\"!alert.expired\" class=\"alert-show-hide\">{{alert.msg | translate:alert.parameters}}</alert>\n" +
     "</div>\n" +
-    "<nav class=\"navbar navbar-inverse\" role=\"navigation\" ng-include=\"'/views/header-nav1.html'\" ng-if=\"showHeader()\"></nav><!-- header-1 -->\n" +
+    "\n" +
+    "<!-- TODO Include header -->\n" +
+    "\n" +
+    "<!-- Content -->\n" +
     "<div id=\"wrapper\">\n" +
     "\t<div id=\"content\" >\n" +
-    "\t\t<div class=\"container\">\t\t\t\n" +
-    "\t\t\t<div id=\"kongaNavTabs\" class=\"container-fluid\">\n" +
-    "\t\t\t\t<!--<div bs-tabs=\"tabs\" ng-model=\"tabs.activeTab\"></div>-->\n" +
-    "\n" +
-    "\t\t\t<tabset>\t\t\t    \n" +
-    "\t\t\t    <tab ng-repeat=\"tab in tabs\" active=\"tab.active\" select=\"operations.redirectTo(tab)\">\n" +
-    "\t\t\t    \t<tab-heading>\n" +
-    "\t\t\t    \t\t<i ng-class=\"tab.type\"></i></span>\n" +
-    "\t\t\t\t        <span class=\"tab-heading-title\">{{ tab.title | translate:tabExtra[tab.id] }}{{ tab.hasChanges ? '*' : '' }}\n" +
-    "\t\t\t\t        <i class=\"glyphicon glyphicon-remove tab-close-btn\" ng-click=\"operations.closeTab(tab, false)\" ng-show=\"tab.closable\"></i></span>\n" +
-    "\t\t\t\t    </tab-heading>\n" +
-    "\t\t\t\t    \n" +
-    "\t\t\t\t</tab>\n" +
-    "\t\t\t</tabset>\n" +
-    "\t\t\t<!-- Tab panes Container-->\n" +
-    "\t\t\t<div class=\"view-container\">\n" +
-    "\t    \t\t<div ng-view></div>\n" +
-    "\t    \t</div>\n" +
-    "\t\t\t</div><!-- End of navTab -->\n" +
-    "\t\t</div>\n" +
+    "\t\t<konga-content></konga-content>\n" +
     "\t</div>\n" +
     "</div>"
   );

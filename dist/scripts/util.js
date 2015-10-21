@@ -12,6 +12,10 @@ var util = {
 
 	metadataObject : null,
 
+	getConfiguration: function() {
+		return util.metadataObject.configuration;
+	},
+
 	getMetadata: function(name) {
 		for(var i = 0; i < util.metadataObject.entities.length; i++) {
 			var current = util.metadataObject.entities[i];
