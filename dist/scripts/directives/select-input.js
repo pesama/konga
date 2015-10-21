@@ -11,6 +11,7 @@ angular.module('ui.konga')
     return {
       templateUrl: '/konga/views/select-input.html',
       restrict: 'E',
+      replace: true,
       link: function postLink(scope, element, attrs) {
         scope.textinput = scope.value.text;
 

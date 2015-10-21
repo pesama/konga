@@ -154,23 +154,23 @@ div.complex-input button.btn.btn-link-remove {
 	background: white !important;
 }
 
-.form-control,
 .combobox-button {
-	font-size: 8pt !important;
-	font-family: "verdana" !important;
-	font-weight: normal !important;
-	color: black !important;
-	height: 28px; 
-}
+	position: relative;
+	display: block !important;
+	width: 100%;
+	text-overflow: ellipsis;
+	padding-right: 20px;
 
-.combobox-button {
-	width: 100% !important;
-	text-align: left;
+	font-size: 0.85em !important;
+	font-weight: normal !important;
+	color: #444444;
 }
 
 .combobox-button span.caret {
-	float: right;
-	margin-top: 0.6em;
+	position: absolute;
+	right: 8px;
+	top: 50%;
+	margin-top: -2px;
 }
 
 input.hideArrows::-webkit-outer-spin-button,

@@ -1,7 +1,5 @@
-<div class="col-md-12">
-	<input name="{{ property.name }}" id="{{ fieldId }}" type="date" placeholder="yyyy-MM-dd" ng-model="value.text" name="{{property.fieldName}}"
+<input name="{{ property.name }}" id="{{ fieldId }}" type="date" placeholder="yyyy-MM-dd" ng-model="value.text" name="{{property.fieldName}}"
 		class="form-control" ng-required="validation.required()" ng-disabled="disableField(mode, property)" value="{{ value.text }}">
-</div>
 
 <div class="validation">
 	<div class="validation-invalid-date btn-danger">

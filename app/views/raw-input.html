@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="form-group mode-{{ mode }} {{ parentField ? 'derived' : '' }} {{(isExtended) ? 'extended' : '' }} {{displayMode}}" ng-class="templating.inputSize">
+	<div class="form-group mode-{{ mode }} {{ parentField ? 'derived' : '' }} {{(isExtended) ? 'extended' : '' }} {{displayMode}}">
 		<label ng-hide="property.fieldType[mode] === 'COMPLEX'" ng-class="[templating.labelStyle, templating.labelWeight, templating.labelDecoration]">{{property.label | translate:extra }}</label>
 		<div class="{{ parentField ? 'derived' : '' }}" ng-class="templating.fieldSize">
 			

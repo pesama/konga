@@ -1,26 +1,24 @@
-<div class="col-md-12">
-	<div class="padding-cero">
-		<label>{{ 'field.date-search.comparator' | translate }}</label>
-		<select name="comparator" ng-model="value.date.comparator"
-			class="form-control" ng-required="ngRequired" id="{{ fieldId }}-comparator">
-			<option value="LOWER_THAN">{{ 'field.date-search.LOWER_THAN' | translate }}</option>
-			<option value="LOWER_EQUALS">{{ 'field.date-search.LOWER_EQUALS' | translate }}</option>
-			<option value="EQUALS">{{ 'field.date-search.EQUALS' | translate }}</option>
-			<option value="GREATER_EQUALS">{{ 'field.date-search.GREATER_EQUALS' | translate }}</option>
-			<option value="GREATER_THAN">{{ 'field.date-search.GREATER_THAN' | translate }}</option>
-			<option value="BETWEEN">{{ 'field.date-search.BETWEEN' | translate }}</option>
-		</select>
-	</div>
-	<div class="padding-cero">
-		<label for="{{ fieldId }}-dateSince">{{ 'field.date-search.date' | translate }}</label>
-		<input name="{{ property.name }}"type="date" name="date-since" ng-model="value.date.startDate"
-			class="form-control" ng-required="ngRequired" id="{{ fieldId }}-dateSince"
-	</div>
-	<div class="padding-cero" ng-show="value.date.comparator == 'BETWEEN'">
-		<label for="{{ fieldId }}-dateTo">{{ 'field.date-search.otherdate' | translate }}</label>
-		<input name="{{ property.name }}"type="date" name="to" ng-model="value.date.endDate"
-			class="form-control" ng-required="ngRequired" id="{{ fieldId }}-dateTo">
-	</div>
+<div class="padding-cero">
+	<label>{{ 'field.date-search.comparator' | translate }}</label>
+	<select name="comparator" ng-model="value.date.comparator"
+		class="form-control" ng-required="ngRequired" id="{{ fieldId }}-comparator">
+		<option value="LOWER_THAN">{{ 'field.date-search.LOWER_THAN' | translate }}</option>
+		<option value="LOWER_EQUALS">{{ 'field.date-search.LOWER_EQUALS' | translate }}</option>
+		<option value="EQUALS">{{ 'field.date-search.EQUALS' | translate }}</option>
+		<option value="GREATER_EQUALS">{{ 'field.date-search.GREATER_EQUALS' | translate }}</option>
+		<option value="GREATER_THAN">{{ 'field.date-search.GREATER_THAN' | translate }}</option>
+		<option value="BETWEEN">{{ 'field.date-search.BETWEEN' | translate }}</option>
+	</select>
+</div>
+<div class="padding-cero">
+	<label for="{{ fieldId }}-dateSince">{{ 'field.date-search.date' | translate }}</label>
+	<input name="{{ property.name }}"type="date" name="date-since" ng-model="value.date.startDate"
+		class="form-control" ng-required="ngRequired" id="{{ fieldId }}-dateSince"
+</div>
+<div class="padding-cero" ng-show="value.date.comparator == 'BETWEEN'">
+	<label for="{{ fieldId }}-dateTo">{{ 'field.date-search.otherdate' | translate }}</label>
+	<input name="{{ property.name }}"type="date" name="to" ng-model="value.date.endDate"
+		class="form-control" ng-required="ngRequired" id="{{ fieldId }}-dateTo">
 </div>
 <!-- <div class="col-md-2 padding-cero">
 	<button id="toggleDatePicker.id" type="button" class="btn btn-default"

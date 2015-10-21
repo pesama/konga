@@ -1,32 +1,22 @@
-<div class="col-md-12">
-	<div class="padding-cero">
-		<label>{{ 'field.number-range.comparator' | translate }}</label>
-		<select name="comparator" ng-model="value.range.comparator"
-			class="form-control" ng-required="ngRequired" id="{{ fieldId }}-comparator">
-			<option value="LOWER_THAN">{{ 'field.number-range.LOWER_THAN' | translate }}</option>
-			<option value="LOWER_EQUALS">{{ 'field.number-range.LOWER_EQUALS' | translate }}</option>
-			<option value="EQUALS">{{ 'field.number-range.EQUALS' | translate }}</option>
-			<option value="GREATER_EQUALS">{{ 'field.number-range.GREATER_EQUALS' | translate }}</option>
-			<option value="GREATER_THAN">{{ 'field.number-range.GREATER_THAN' | translate }}</option>
-			<option value="BETWEEN">{{ 'field.number-range.BETWEEN' | translate }}</option>
-		</select>
-	</div>
-	<div class="padding-cero">
-		<label for="{{ fieldId }}-dateSince">{{ 'field.number-range.number' | translate }}</label>
-		<input name="{{ property.name }}" type="number" name="from" ng-model="value.range.from"
-			class="form-control" ng-required="ngRequired" id="{{ fieldId }}-dateSince"
-	</div>
-	<div class="padding-cero" ng-show="value.range.comparator == 'BETWEEN'">
-		<label for="{{ fieldId }}-dateTo">{{ 'field.number-range.othernumber' | translate }}</label>
-		<input name="{{ property.name }}" type="number" name="to" ng-model="value.range.to"
-			class="form-control" ng-required="ngRequired" id="{{ fieldId }}-dateTo">
-	</div>
+<div class="padding-cero">
+	<label>{{ 'field.number-range.comparator' | translate }}</label>
+	<select name="comparator" ng-model="value.range.comparator"
+		class="form-control" ng-required="ngRequired" id="{{ fieldId }}-comparator">
+		<option value="LOWER_THAN">{{ 'field.number-range.LOWER_THAN' | translate }}</option>
+		<option value="LOWER_EQUALS">{{ 'field.number-range.LOWER_EQUALS' | translate }}</option>
+		<option value="EQUALS">{{ 'field.number-range.EQUALS' | translate }}</option>
+		<option value="GREATER_EQUALS">{{ 'field.number-range.GREATER_EQUALS' | translate }}</option>
+		<option value="GREATER_THAN">{{ 'field.number-range.GREATER_THAN' | translate }}</option>
+		<option value="BETWEEN">{{ 'field.number-range.BETWEEN' | translate }}</option>
+	</select>
 </div>
-<!-- <div class="col-md-2 padding-cero">
-	<button id="toggleDatePicker.id" type="button" class="btn btn-default"
-		ng-click="toggleDatePicker()">
-		<i class="icon ion-ios7-calendar-outline"></i>
-	</button>
-</div> -->
-<!-- <datepicker ng-model="value.text" show-weeks="true"
-	class="well well-sm" ng-show="datePicker.opened"></datepicker> -->
+<div class="padding-cero">
+	<label for="{{ fieldId }}-dateSince">{{ 'field.number-range.number' | translate }}</label>
+	<input name="{{ property.name }}" type="number" name="from" ng-model="value.range.from"
+		class="form-control" ng-required="ngRequired" id="{{ fieldId }}-dateSince"
+</div>
+<div class="padding-cero" ng-show="value.range.comparator == 'BETWEEN'">
+	<label for="{{ fieldId }}-dateTo">{{ 'field.number-range.othernumber' | translate }}</label>
+	<input name="{{ property.name }}" type="number" name="to" ng-model="value.range.to"
+		class="form-control" ng-required="ngRequired" id="{{ fieldId }}-dateTo">
+</div>

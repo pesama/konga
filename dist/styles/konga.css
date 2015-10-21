@@ -4,6 +4,22 @@
 .wall {
 	
 }
+
+
+/* WHERE AM I */
+.pwd {
+    padding: 0px;
+    padding-bottom: 3em;
+}
+
+.pwd h1 {
+    font-size: 1.2em;
+    float: left;
+}
+
+.konga-nav-vertical {
+    border-right: 5px solid #444444;
+}
 div.filtermanagement {
 	margin-top: 1em;
 	text-align: center;
@@ -328,7 +344,6 @@ span.deploy-time {
 
 .non-extended {
 	position: relative;
-	display: table;
 }
 
 .select-input > .col-md-6:nth-child(1) {
@@ -490,23 +505,23 @@ div.complex-input button.btn.btn-link-remove {
 	background: white !important;
 }
 
-.form-control,
 .combobox-button {
-	font-size: 8pt !important;
-	font-family: "verdana" !important;
-	font-weight: normal !important;
-	color: black !important;
-	height: 28px; 
-}
+	position: relative;
+	display: block !important;
+	width: 100%;
+	text-overflow: ellipsis;
+	padding-right: 20px;
 
-.combobox-button {
-	width: 100% !important;
-	text-align: left;
+	font-size: 0.85em !important;
+	font-weight: normal !important;
+	color: #444444;
 }
 
 .combobox-button span.caret {
-	float: right;
-	margin-top: 0.6em;
+	position: absolute;
+	right: 8px;
+	top: 50%;
+	margin-top: -2px;
 }
 
 input.hideArrows::-webkit-outer-spin-button,
@@ -2152,27 +2167,7 @@ div.input-group *.invalid-date ~ div.validation > div.validation-invalid-date {
 }
 .tabbable .tab-pane{
 	padding: 10px;
-	padding-left: 10%;
 }
-
-/*Special case for operational center*/
-#ctr-operat .tabbable>.tab-content{
-	border: none; 
-}
-#ctr-operat .tabbable>.tab-content .box{
-	border: 1px solid #DDD;
-}
-#ctr-operat .tabbable .tab-pane{
-	padding: 0;
-}
-#ctr-operat .tabbable .tab-pane .box{
-	padding: 10px;
-}
-#ctr-operat .tab-pane .box{
-	overflow: hidden;
-	display: block;
-}
-/*End of special case for operational center*/
 
 .col-md-10 {
 width: 86.333333%;

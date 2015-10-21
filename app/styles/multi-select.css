@@ -20,7 +20,6 @@
 
 .non-extended {
 	position: relative;
-	display: table;
 }
 
 .select-input > .col-md-6:nth-child(1) {

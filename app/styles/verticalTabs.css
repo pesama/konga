@@ -28,27 +28,7 @@
 }
 .tabbable .tab-pane{
 	padding: 10px;
-	padding-left: 10%;
 }
-
-/*Special case for operational center*/
-#ctr-operat .tabbable>.tab-content{
-	border: none; 
-}
-#ctr-operat .tabbable>.tab-content .box{
-	border: 1px solid #DDD;
-}
-#ctr-operat .tabbable .tab-pane{
-	padding: 0;
-}
-#ctr-operat .tabbable .tab-pane .box{
-	padding: 10px;
-}
-#ctr-operat .tab-pane .box{
-	overflow: hidden;
-	display: block;
-}
-/*End of special case for operational center*/
 
 .col-md-10 {
 width: 86.333333%;

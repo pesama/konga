@@ -1,3 +1,19 @@
 .wall {
 	
 }
+
+
+/* WHERE AM I */
+.pwd {
+    padding: 0px;
+    padding-bottom: 3em;
+}
+
+.pwd h1 {
+    font-size: 1.2em;
+    float: left;
+}
+
+.konga-nav-vertical {
+    border-right: 5px solid #444444;
+}

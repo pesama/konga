@@ -397,7 +397,13 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/konga-content-plain.html',
-    "<div class=\"container\">\t\t\t\n" +
+    "<div class=\"container\">\n" +
+    "\t<div class=\"pwd text-center\">\n" +
+    "        <h1>\n" +
+    "            <i class=\"{{ (tabs | filter:{ id: tabId })[0].type }}\"></i>\n" +
+    "            {{ (tabs | filter:{ id: tabId })[0].title | translate:tabExtra[tabId] }}\n" +
+    "        </h1>\n" +
+    "    </div>\n" +
     "\t<div ng-view></div>\n" +
     "</div>"
   );
@@ -736,63 +742,55 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-boolean-input.html',
-    "<div class=\"col-md-12\">\n" +
-    "\t<div class=\"radio-inline\">\n" +
-    "\t\t<label for=\"{{ fieldId }}-true\">\n" +
-    "\t\t\t<input name=\"{{ property.name }}\"type=\"radio\" name=\"{{property.name}}\" ng-value=\"true\" ng-model=\"value.text\" id=\"{{ fieldId }}-true\" ng-disabled=\"disableField(mode, property)\">\n" +
-    "\t\t\t{{ true | activeInactive:property:mode | translate }}\n" +
-    "\t\t</label>\n" +
-    "\t</div>\n" +
-    "\t<div class=\"radio-inline\">\n" +
-    "\t\t<label for=\"{{ fieldId }}-false\">\n" +
-    "\t\t\t<input type=\"radio\" name=\"{{property.name}}\" ng-value=\"false\" ng-model=\"value.text\" id=\"{{ fieldId }}-false\" ng-disabled=\"disableField(mode, property)\">\n" +
-    "\t\t\t{{ false | activeInactive:property:mode | translate }}\n" +
-    "\t\t</label>\n" +
-    "\t</div>\n" +
+    "<div class=\"radio-inline\">\n" +
+    "\t<label for=\"{{ fieldId }}-true\">\n" +
+    "\t\t<input name=\"{{ property.name }}\"type=\"radio\" name=\"{{property.name}}\" ng-value=\"true\" ng-model=\"value.text\" id=\"{{ fieldId }}-true\" ng-disabled=\"disableField(mode, property)\">\n" +
+    "\t\t{{ true | activeInactive:property:mode | translate }}\n" +
+    "\t</label>\n" +
+    "</div>\n" +
+    "<div class=\"radio-inline\">\n" +
+    "\t<label for=\"{{ fieldId }}-false\">\n" +
+    "\t\t<input type=\"radio\" name=\"{{property.name}}\" ng-value=\"false\" ng-model=\"value.text\" id=\"{{ fieldId }}-false\" ng-disabled=\"disableField(mode, property)\">\n" +
+    "\t\t{{ false | activeInactive:property:mode | translate }}\n" +
+    "\t</label>\n" +
     "</div>"
   );
 
 
   $templateCache.put('/konga/views/raw-checkbox-input.html',
-    "<div class=\"col-md-12\">\n" +
-    "\t<div class=\"checkbox-inline\">\n" +
-    "\t\t<label for=\"{{ fieldId }}-true\"> <input name=\"{{ property.name }}\"type=\"checkbox\" ng-value=\"true\" ng-model=\"value.active\" id=\"{{ fieldId }}-true\"> \n" +
-    "\t\t\t{{ true | activeInactive:property | translate}}\n" +
-    "\t\t</label>\n" +
-    "\t</div>\n" +
-    "\t<div class=\"checkbox-inline\">\n" +
-    "\t\t<label for=\"{{ fieldId }}-false\"> <input name=\"{{ property.name }}\"type=\"checkbox\" ng-value=\"false\" ng-model=\"value.inactive\" id=\"{{ fieldId }}-false\">\n" +
-    "\t\t\t{{ false | activeInactive:property | translate}}\n" +
-    "\t\t</label>\n" +
-    "\t</div>\n" +
+    "<div class=\"checkbox-inline\">\n" +
+    "\t<label for=\"{{ fieldId }}-true\"> <input name=\"{{ property.name }}\"type=\"checkbox\" ng-value=\"true\" ng-model=\"value.active\" id=\"{{ fieldId }}-true\"> \n" +
+    "\t\t{{ true | activeInactive:property | translate}}\n" +
+    "\t</label>\n" +
+    "</div>\n" +
+    "<div class=\"checkbox-inline\">\n" +
+    "\t<label for=\"{{ fieldId }}-false\"> <input name=\"{{ property.name }}\"type=\"checkbox\" ng-value=\"false\" ng-model=\"value.inactive\" id=\"{{ fieldId }}-false\">\n" +
+    "\t\t{{ false | activeInactive:property | translate}}\n" +
+    "\t</label>\n" +
     "</div>"
   );
 
 
   $templateCache.put('/konga/views/raw-color-input.html',
-    "<div class=\"col-md-12\">\n" +
-    "\t<input name=\"{{ property.name }}\" type=\"color\" class=\"form-control konga-form-search-input\" id=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" maxlength=\"{{ validation.maxlength() }}\">\n" +
-    "\t<!-- TODO This is not working (yet) -->\n" +
-    "\t<!-- ng-minlength=\"property.minLength\"\n" +
-    "\tng-maxlength=\"property.maxLength\" -->\n" +
-    "  <!-- <div class=\"input-group-addon bg-invalid\">\n" +
-    "  \t<button type=\"button\" class=\"btn btn-link\">\n" +
-    "  \t\t<i class=\"glyphicon glyphicon-remove text-bg-invalid\"></i>\n" +
-    "  \t</button>\n" +
-    "  </div> -->\n" +
-    "</div>"
+    "<input name=\"{{ property.name }}\" type=\"color\" class=\"form-control konga-form-search-input\" id=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" maxlength=\"{{ validation.maxlength() }}\">\n" +
+    "<!-- TODO This is not working (yet) -->\n" +
+    "<!-- ng-minlength=\"property.minLength\"\n" +
+    "ng-maxlength=\"property.maxLength\" -->\n" +
+    "<!-- <div class=\"input-group-addon bg-invalid\">\n" +
+    "\t<button type=\"button\" class=\"btn btn-link\">\n" +
+    "\t\t<i class=\"glyphicon glyphicon-remove text-bg-invalid\"></i>\n" +
+    "\t</button>\n" +
+    "</div> -->"
   );
 
 
   $templateCache.put('/konga/views/raw-combobox-input.html',
-    "<div class=\"col-md-12\">\n" +
-    "\t<button type=\"button\" class=\"btn btn-default combobox-button\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-required=\"validation.required()\" data-html=\"0\" ng-options=\"item.key as item.value | translate for item in value.list\" data-animation=\"am-flip-x\" data-placeholder=\"{{ 'combobox.placeholder' | translate }}\" bs-select ng-if=\"!multiple\">\n" +
-    "\t  Action <span class=\"caret\"></span>\n" +
-    "\t</button>\n" +
-    "\t<button type=\"button\" class=\"btn btn-default combobox-button\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-required=\"validation.required()\" data-html=\"0\" ng-options=\"item.key as item.value | translate for item in value.list\" data-multiple=\"{{ multiple }}\" data-animation=\"am-flip-x\" data-placeholder=\"{{ 'combobox.placeholder' | translate }}\" bs-select ng-if=\"multiple\">\n" +
-    "\t  Action <span class=\"caret\"></span>\n" +
-    "\t</button>\n" +
-    "</div>"
+    "<button type=\"button\" class=\"btn btn-default combobox-button\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-required=\"validation.required()\" data-html=\"0\" ng-options=\"item.key as item.value | translate for item in value.list\" data-animation=\"am-flip-x\" data-placeholder=\"{{ 'combobox.placeholder' | translate }}\" bs-select ng-if=\"!multiple\">\n" +
+    "\tAction <span class=\"caret\"></span>\n" +
+    "</button>\n" +
+    "<button type=\"button\" class=\"btn btn-default combobox-button\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-required=\"validation.required()\" data-html=\"0\" ng-options=\"item.key as item.value | translate for item in value.list\" data-multiple=\"{{ multiple }}\" data-animation=\"am-flip-x\" data-placeholder=\"{{ 'combobox.placeholder' | translate }}\" bs-select ng-if=\"multiple\">\n" +
+    "\tAction <span class=\"caret\"></span>\n" +
+    "</button>"
   );
 
 
@@ -823,10 +821,8 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-date-input.html',
-    "<div class=\"col-md-12\">\n" +
-    "\t<input name=\"{{ property.name }}\" id=\"{{ fieldId }}\" type=\"date\" placeholder=\"yyyy-MM-dd\" ng-model=\"value.text\" name=\"{{property.fieldName}}\"\n" +
+    "<input name=\"{{ property.name }}\" id=\"{{ fieldId }}\" type=\"date\" placeholder=\"yyyy-MM-dd\" ng-model=\"value.text\" name=\"{{property.fieldName}}\"\n" +
     "\t\tclass=\"form-control\" ng-required=\"validation.required()\" ng-disabled=\"disableField(mode, property)\" value=\"{{ value.text }}\">\n" +
-    "</div>\n" +
     "\n" +
     "<div class=\"validation\">\n" +
     "\t<div class=\"validation-invalid-date btn-danger\">\n" +
@@ -837,29 +833,27 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-date-search-input.html',
-    "<div class=\"col-md-12\">\n" +
-    "\t<div class=\"padding-cero\">\n" +
-    "\t\t<label>{{ 'field.date-search.comparator' | translate }}</label>\n" +
-    "\t\t<select name=\"comparator\" ng-model=\"value.date.comparator\"\n" +
-    "\t\t\tclass=\"form-control\" ng-required=\"ngRequired\" id=\"{{ fieldId }}-comparator\">\n" +
-    "\t\t\t<option value=\"LOWER_THAN\">{{ 'field.date-search.LOWER_THAN' | translate }}</option>\n" +
-    "\t\t\t<option value=\"LOWER_EQUALS\">{{ 'field.date-search.LOWER_EQUALS' | translate }}</option>\n" +
-    "\t\t\t<option value=\"EQUALS\">{{ 'field.date-search.EQUALS' | translate }}</option>\n" +
-    "\t\t\t<option value=\"GREATER_EQUALS\">{{ 'field.date-search.GREATER_EQUALS' | translate }}</option>\n" +
-    "\t\t\t<option value=\"GREATER_THAN\">{{ 'field.date-search.GREATER_THAN' | translate }}</option>\n" +
-    "\t\t\t<option value=\"BETWEEN\">{{ 'field.date-search.BETWEEN' | translate }}</option>\n" +
-    "\t\t</select>\n" +
-    "\t</div>\n" +
-    "\t<div class=\"padding-cero\">\n" +
-    "\t\t<label for=\"{{ fieldId }}-dateSince\">{{ 'field.date-search.date' | translate }}</label>\n" +
-    "\t\t<input name=\"{{ property.name }}\"type=\"date\" name=\"date-since\" ng-model=\"value.date.startDate\"\n" +
-    "\t\t\tclass=\"form-control\" ng-required=\"ngRequired\" id=\"{{ fieldId }}-dateSince\"\n" +
-    "\t</div>\n" +
-    "\t<div class=\"padding-cero\" ng-show=\"value.date.comparator == 'BETWEEN'\">\n" +
-    "\t\t<label for=\"{{ fieldId }}-dateTo\">{{ 'field.date-search.otherdate' | translate }}</label>\n" +
-    "\t\t<input name=\"{{ property.name }}\"type=\"date\" name=\"to\" ng-model=\"value.date.endDate\"\n" +
-    "\t\t\tclass=\"form-control\" ng-required=\"ngRequired\" id=\"{{ fieldId }}-dateTo\">\n" +
-    "\t</div>\n" +
+    "<div class=\"padding-cero\">\n" +
+    "\t<label>{{ 'field.date-search.comparator' | translate }}</label>\n" +
+    "\t<select name=\"comparator\" ng-model=\"value.date.comparator\"\n" +
+    "\t\tclass=\"form-control\" ng-required=\"ngRequired\" id=\"{{ fieldId }}-comparator\">\n" +
+    "\t\t<option value=\"LOWER_THAN\">{{ 'field.date-search.LOWER_THAN' | translate }}</option>\n" +
+    "\t\t<option value=\"LOWER_EQUALS\">{{ 'field.date-search.LOWER_EQUALS' | translate }}</option>\n" +
+    "\t\t<option value=\"EQUALS\">{{ 'field.date-search.EQUALS' | translate }}</option>\n" +
+    "\t\t<option value=\"GREATER_EQUALS\">{{ 'field.date-search.GREATER_EQUALS' | translate }}</option>\n" +
+    "\t\t<option value=\"GREATER_THAN\">{{ 'field.date-search.GREATER_THAN' | translate }}</option>\n" +
+    "\t\t<option value=\"BETWEEN\">{{ 'field.date-search.BETWEEN' | translate }}</option>\n" +
+    "\t</select>\n" +
+    "</div>\n" +
+    "<div class=\"padding-cero\">\n" +
+    "\t<label for=\"{{ fieldId }}-dateSince\">{{ 'field.date-search.date' | translate }}</label>\n" +
+    "\t<input name=\"{{ property.name }}\"type=\"date\" name=\"date-since\" ng-model=\"value.date.startDate\"\n" +
+    "\t\tclass=\"form-control\" ng-required=\"ngRequired\" id=\"{{ fieldId }}-dateSince\"\n" +
+    "</div>\n" +
+    "<div class=\"padding-cero\" ng-show=\"value.date.comparator == 'BETWEEN'\">\n" +
+    "\t<label for=\"{{ fieldId }}-dateTo\">{{ 'field.date-search.otherdate' | translate }}</label>\n" +
+    "\t<input name=\"{{ property.name }}\"type=\"date\" name=\"to\" ng-model=\"value.date.endDate\"\n" +
+    "\t\tclass=\"form-control\" ng-required=\"ngRequired\" id=\"{{ fieldId }}-dateTo\">\n" +
     "</div>\n" +
     "<!-- <div class=\"col-md-2 padding-cero\">\n" +
     "\t<button id=\"toggleDatePicker.id\" type=\"button\" class=\"btn btn-default\"\n" +
@@ -873,25 +867,23 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-datetime-input.html',
-    "<div class=\"col-md-12\">\n" +
-    "\t<div class=\"dropdown\">\n" +
-    "\t  <a class=\"dropdown-toggle\" id=\"dropdown2\" role=\"button\" data-toggle=\"dropdown\" ng-disabled=\"disableField(mode, property)\" data-target=\"#\" href=\"#\">\n" +
-    "\t    <div class=\"input-group\">\n" +
-    "\t    \t<div class=\"input-datetimepicker\" ng-model=\"value.text\">\n" +
-    "\t\t    \t<input name=\"{{ property.name }}\"id=\"{{ fieldId }}\" type=\"text\" class=\"form-control\" name=\"{{property.fieldName}}\"\n" +
-    "\t\t\t\t\t\tplaceholder=\"dd/MM/yyyy HH:mm\" value=\"{{ value.text | date:'dd/MM/yyyy HH:mm' }}\" ng-required=\"validation.required()\" ng-disabled=\"disableField(mode, property)\">\n" +
-    "\t\t\t\t<div></div>\n" +
-    "\t    \t</div>\n" +
-    "\t\t\t<div class=\"input-group-addon\">\n" +
-    "\t\t\t\t<button type=\"button\" class=\"btn btn-link\" ng-disabled=\"disableField(mode, property)\"id=\"raw-input-dateHeure-releve-select\">\n" +
-    "\t\t\t\t\t<i class=\"glyphicon glyphicon-calendar\"></i></button>\n" +
-    "\t\t\t</div>\n" +
-    "\t    </div>\n" +
-    "\t  </a>\n" +
-    "\t  <ul class=\"dropdown-menu\" role=\"menu\" aria-labelledby=\"dLabel\">\n" +
-    "\t    <datetimepicker data-ng-model=\"value.text\" data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2' }\" />\n" +
-    "\t  </ul>\n" +
-    "\t</div>\n" +
+    "<div class=\"dropdown\">\n" +
+    "  <a class=\"dropdown-toggle\" id=\"dropdown2\" role=\"button\" data-toggle=\"dropdown\" ng-disabled=\"disableField(mode, property)\" data-target=\"#\" href=\"#\">\n" +
+    "    <div class=\"input-group\">\n" +
+    "    \t<div class=\"input-datetimepicker\" ng-model=\"value.text\">\n" +
+    "\t    \t<input name=\"{{ property.name }}\"id=\"{{ fieldId }}\" type=\"text\" class=\"form-control\" name=\"{{property.fieldName}}\"\n" +
+    "\t\t\t\t\tplaceholder=\"dd/MM/yyyy HH:mm\" value=\"{{ value.text | date:'dd/MM/yyyy HH:mm' }}\" ng-required=\"validation.required()\" ng-disabled=\"disableField(mode, property)\">\n" +
+    "\t\t\t<div></div>\n" +
+    "    \t</div>\n" +
+    "\t\t<div class=\"input-group-addon\">\n" +
+    "\t\t\t<button type=\"button\" class=\"btn btn-link\" ng-disabled=\"disableField(mode, property)\"id=\"raw-input-dateHeure-releve-select\">\n" +
+    "\t\t\t\t<i class=\"glyphicon glyphicon-calendar\"></i></button>\n" +
+    "\t\t</div>\n" +
+    "    </div>\n" +
+    "  </a>\n" +
+    "  <ul class=\"dropdown-menu\" role=\"menu\" aria-labelledby=\"dLabel\">\n" +
+    "    <datetimepicker data-ng-model=\"value.text\" data-datetimepicker-config=\"{ dropdownSelector: '#dropdown2' }\" />\n" +
+    "  </ul>\n" +
     "</div>\n" +
     "\n" +
     "<div class=\"validation\">\n" +
@@ -906,37 +898,20 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-file-input.html',
-    "<div class=\"col-md-12\">\n" +
-    "\t<file-input></file-input>\n" +
-    "\t<!-- TODO This is not working (yet) -->\n" +
-    "\t<!-- ng-minlength=\"property.minLength\"\n" +
-    "\tng-maxlength=\"property.maxLength\" -->\n" +
-    "  <!-- <div class=\"input-group-addon bg-invalid\">\n" +
-    "  \t<button type=\"button\" class=\"btn btn-link\">\n" +
-    "  \t\t<i class=\"glyphicon glyphicon-remove text-bg-invalid\"></i>\n" +
-    "  \t</button>\n" +
-    "  </div> -->\n" +
-    "</div>"
-  );
-
-
-  $templateCache.put('/konga/views/raw-filtered_select-input.html',
-    "<p>This is the raw-filtered_select-input view.</p>\n"
+    "<file-input></file-input>"
   );
 
 
   $templateCache.put('/konga/views/raw-image-input.html',
-    "<div class=\"col-md-12\">\n" +
-    "\t<!-- <input name=\"{{ property.name }}\"type=\"text\" class=\"form-control konga-form-search-input\" id=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" maxlength=\"{{ validation.maxlength() }}\"> -->\n" +
-    "\t\n" +
-    "\t<img ng-src=\"{{ value.text }}\" width=\"200\" />\n" +
-    "</div>"
+    "<!-- <input name=\"{{ property.name }}\"type=\"text\" class=\"form-control konga-form-search-input\" id=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" maxlength=\"{{ validation.maxlength() }}\"> -->\n" +
+    "\n" +
+    "<img ng-src=\"{{ value.text }}\" width=\"200\" />"
   );
 
 
   $templateCache.put('/konga/views/raw-input.html',
     "<div class=\"row\">\n" +
-    "\t<div class=\"form-group mode-{{ mode }} {{ parentField ? 'derived' : '' }} {{(isExtended) ? 'extended' : '' }} {{displayMode}}\" ng-class=\"templating.inputSize\">\n" +
+    "\t<div class=\"form-group mode-{{ mode }} {{ parentField ? 'derived' : '' }} {{(isExtended) ? 'extended' : '' }} {{displayMode}}\">\n" +
     "\t\t<label ng-hide=\"property.fieldType[mode] === 'COMPLEX'\" ng-class=\"[templating.labelStyle, templating.labelWeight, templating.labelDecoration]\">{{property.label | translate:extra }}</label>\n" +
     "\t\t<div class=\"{{ parentField ? 'derived' : '' }}\" ng-class=\"templating.fieldSize\">\n" +
     "\t\t\t\n" +
@@ -962,24 +937,21 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-list-input.html',
-    "<div class=\"form-group\">\n" +
-    "\t<div class=\"padding-cero\" ng-class=\"inLineClass.col1\">\n" +
-    "\t\t<label for=\"{{ fieldId }}\">{{property.fieldLabel | translate:extra }}</label>\n" +
-    "\t</div>\n" +
-    "\t<div class=\"input-group\" ng-class=\"inLineClass.col3\">\n" +
-    "\t\t<list-input fields=\"entityFields\" list=\"value.list\" eds-type=\"societe\" disabled-ids=\"[]\"></list-input>\n" +
-    "\t</div>\n" +
-    "\t<div class=\"row chantier-btn-list\">\n" +
-    "\t\t<div class=\"col-md-5\">\n" +
-    "\t\t\t<button class=\"btn btn-default\" ng-click=\"openMultiSelect()\" id=\"{{ fieldId }}-add\">{{'message.action.add' | translate}}</button>\n" +
-    "\t\t</div>\n" +
+    "<div class=\"padding-cero\" ng-class=\"inLineClass.col1\">\n" +
+    "\t<label for=\"{{ fieldId }}\">{{property.fieldLabel | translate:extra }}</label>\n" +
+    "</div>\n" +
+    "<div class=\"input-group\" ng-class=\"inLineClass.col3\">\n" +
+    "\t<list-input fields=\"entityFields\" list=\"value.list\" eds-type=\"societe\" disabled-ids=\"[]\"></list-input>\n" +
+    "</div>\n" +
+    "<div class=\"row\">\n" +
+    "\t<div class=\"col-md-12\">\n" +
+    "\t\t<button class=\"btn btn-default\" ng-click=\"openMultiSelect()\" id=\"{{ fieldId }}-add\">{{'message.action.add' | translate}}</button>\n" +
     "\t</div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('/konga/views/raw-number-input.html',
-    "\n" +
     "<input name=\"{{ property.name }}\"type=\"number\"\n" +
     "\tclass=\"form-control konga-form-search-input konga-form-simple-search-input\"\n" +
     "\tid=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\"\n" +
@@ -998,38 +970,28 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-number-range-input.html',
-    "<div class=\"col-md-12\">\n" +
-    "\t<div class=\"padding-cero\">\n" +
-    "\t\t<label>{{ 'field.number-range.comparator' | translate }}</label>\n" +
-    "\t\t<select name=\"comparator\" ng-model=\"value.range.comparator\"\n" +
-    "\t\t\tclass=\"form-control\" ng-required=\"ngRequired\" id=\"{{ fieldId }}-comparator\">\n" +
-    "\t\t\t<option value=\"LOWER_THAN\">{{ 'field.number-range.LOWER_THAN' | translate }}</option>\n" +
-    "\t\t\t<option value=\"LOWER_EQUALS\">{{ 'field.number-range.LOWER_EQUALS' | translate }}</option>\n" +
-    "\t\t\t<option value=\"EQUALS\">{{ 'field.number-range.EQUALS' | translate }}</option>\n" +
-    "\t\t\t<option value=\"GREATER_EQUALS\">{{ 'field.number-range.GREATER_EQUALS' | translate }}</option>\n" +
-    "\t\t\t<option value=\"GREATER_THAN\">{{ 'field.number-range.GREATER_THAN' | translate }}</option>\n" +
-    "\t\t\t<option value=\"BETWEEN\">{{ 'field.number-range.BETWEEN' | translate }}</option>\n" +
-    "\t\t</select>\n" +
-    "\t</div>\n" +
-    "\t<div class=\"padding-cero\">\n" +
-    "\t\t<label for=\"{{ fieldId }}-dateSince\">{{ 'field.number-range.number' | translate }}</label>\n" +
-    "\t\t<input name=\"{{ property.name }}\" type=\"number\" name=\"from\" ng-model=\"value.range.from\"\n" +
-    "\t\t\tclass=\"form-control\" ng-required=\"ngRequired\" id=\"{{ fieldId }}-dateSince\"\n" +
-    "\t</div>\n" +
-    "\t<div class=\"padding-cero\" ng-show=\"value.range.comparator == 'BETWEEN'\">\n" +
-    "\t\t<label for=\"{{ fieldId }}-dateTo\">{{ 'field.number-range.othernumber' | translate }}</label>\n" +
-    "\t\t<input name=\"{{ property.name }}\" type=\"number\" name=\"to\" ng-model=\"value.range.to\"\n" +
-    "\t\t\tclass=\"form-control\" ng-required=\"ngRequired\" id=\"{{ fieldId }}-dateTo\">\n" +
-    "\t</div>\n" +
+    "<div class=\"padding-cero\">\n" +
+    "\t<label>{{ 'field.number-range.comparator' | translate }}</label>\n" +
+    "\t<select name=\"comparator\" ng-model=\"value.range.comparator\"\n" +
+    "\t\tclass=\"form-control\" ng-required=\"ngRequired\" id=\"{{ fieldId }}-comparator\">\n" +
+    "\t\t<option value=\"LOWER_THAN\">{{ 'field.number-range.LOWER_THAN' | translate }}</option>\n" +
+    "\t\t<option value=\"LOWER_EQUALS\">{{ 'field.number-range.LOWER_EQUALS' | translate }}</option>\n" +
+    "\t\t<option value=\"EQUALS\">{{ 'field.number-range.EQUALS' | translate }}</option>\n" +
+    "\t\t<option value=\"GREATER_EQUALS\">{{ 'field.number-range.GREATER_EQUALS' | translate }}</option>\n" +
+    "\t\t<option value=\"GREATER_THAN\">{{ 'field.number-range.GREATER_THAN' | translate }}</option>\n" +
+    "\t\t<option value=\"BETWEEN\">{{ 'field.number-range.BETWEEN' | translate }}</option>\n" +
+    "\t</select>\n" +
     "</div>\n" +
-    "<!-- <div class=\"col-md-2 padding-cero\">\n" +
-    "\t<button id=\"toggleDatePicker.id\" type=\"button\" class=\"btn btn-default\"\n" +
-    "\t\tng-click=\"toggleDatePicker()\">\n" +
-    "\t\t<i class=\"icon ion-ios7-calendar-outline\"></i>\n" +
-    "\t</button>\n" +
-    "</div> -->\n" +
-    "<!-- <datepicker ng-model=\"value.text\" show-weeks=\"true\"\n" +
-    "\tclass=\"well well-sm\" ng-show=\"datePicker.opened\"></datepicker> -->"
+    "<div class=\"padding-cero\">\n" +
+    "\t<label for=\"{{ fieldId }}-dateSince\">{{ 'field.number-range.number' | translate }}</label>\n" +
+    "\t<input name=\"{{ property.name }}\" type=\"number\" name=\"from\" ng-model=\"value.range.from\"\n" +
+    "\t\tclass=\"form-control\" ng-required=\"ngRequired\" id=\"{{ fieldId }}-dateSince\"\n" +
+    "</div>\n" +
+    "<div class=\"padding-cero\" ng-show=\"value.range.comparator == 'BETWEEN'\">\n" +
+    "\t<label for=\"{{ fieldId }}-dateTo\">{{ 'field.number-range.othernumber' | translate }}</label>\n" +
+    "\t<input name=\"{{ property.name }}\" type=\"number\" name=\"to\" ng-model=\"value.range.to\"\n" +
+    "\t\tclass=\"form-control\" ng-required=\"ngRequired\" id=\"{{ fieldId }}-dateTo\">\n" +
+    "</div>"
   );
 
 
@@ -1039,48 +1001,32 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-password-input.html',
-    "<div class=\"col-md-12\">\n" +
-    "\t<input name=\"{{ property.name }}\"type=\"password\" class=\"form-control konga-form-search-input\" id=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" maxlength=\"{{ validation.maxlength() }}\" autocomplete=\"off\">\n" +
-    "\t<!-- TODO This is not working (yet) -->\n" +
-    "\t<!-- ng-minlength=\"property.minLength\"\n" +
-    "\tng-maxlength=\"property.maxLength\" -->\n" +
-    "  <!-- <div class=\"input-group-addon bg-invalid\">\n" +
-    "  \t<button type=\"button\" class=\"btn btn-link\">\n" +
-    "  \t\t<i class=\"glyphicon glyphicon-remove text-bg-invalid\"></i>\n" +
-    "  \t</button>\n" +
-    "  </div> -->\n" +
-    "</div>"
+    "<input name=\"{{ property.name }}\"type=\"password\" class=\"form-control konga-form-search-input\" id=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" maxlength=\"{{ validation.maxlength() }}\" autocomplete=\"off\">"
   );
 
 
   $templateCache.put('/konga/views/raw-pick_list-input.html',
-    "<div class=\"col-md-12\">\n" +
-    "\t<div class=\"col-md-12 padding-cero\" ng-class=\"inLineClass.col1\">\n" +
-    "\t\t<label for=\"{{ fieldId }}\">{{property.fieldLabel |\n" +
-    "\t\t\ttranslate:extra }}</label>\n" +
+    "\n" +
+    "<legend for=\"{{ fieldId }}\">{{property.fieldLabel | translate:extra }}</legend>\n" +
+    "<div class=\"col-md-12 padding-cero\" ng-class=\"inLineClass.col3\">\n" +
+    "\t<list-input fields=\"value.fields\" actions=\"property.actions\"\n" +
+    "\t\tlist=\"value.entity\" property=\"property\" metadata=\"metadata\"\n" +
+    "\t\tdisabled-ids=\"[]\" dispatch-field-action='dispatchFieldAction'></list-input>\n" +
+    "</div>\n" +
+    "<div class=\"row\">\n" +
+    "\t<div class=\"col-md-1\" ng-if=\"!readonly\">\n" +
+    "\t\t<button class=\"btn btn-default\"\n" +
+    "\t\t\tng-click=\"dispatchFieldAction('add')\" id=\"{{ fieldId }}-add\"\n" +
+    "\t\t\tng-hide=\"disableField(mode, property)\">\n" +
+    "\t\t\t\t<i class=\"glyphicon glyphicon-plus\"></i>\n" +
+    "\t\t\t\t{{ 'message.action.add' | translate }}\n" +
+    "\t\t\t</button>\n" +
     "\t</div>\n" +
-    "\t<div class=\"col-md-12 padding-cero\" ng-class=\"inLineClass.col3\">\n" +
-    "\t\t<list-input fields=\"value.fields\" actions=\"property.actions\"\n" +
-    "\t\t\tlist=\"value.entity\" property=\"property\" metadata=\"metadata\"\n" +
-    "\t\t\tdisabled-ids=\"[]\" dispatch-field-action='dispatchFieldAction'></list-input>\n" +
-    "\t</div>\n" +
-    "\t<div class=\"col-md-12 no-padding chantier-btn-list\">\n" +
-    "\t\t<div class=\"row\">\n" +
-    "\t\t\t<div class=\"col-md-1\" ng-if=\"!readonly\">\n" +
-    "\t\t\t\t<button class=\"btn btn-default\"\n" +
-    "\t\t\t\t\tng-click=\"dispatchFieldAction('add')\" id=\"{{ fieldId }}-add\"\n" +
-    "\t\t\t\t\tng-hide=\"disableField(mode, property)\">\n" +
-    "\t\t\t\t\t\t<i class=\"glyphicon glyphicon-plus\"></i>\n" +
-    "\t\t\t\t\t\t{{ 'message.action.add' | translate }}\n" +
-    "\t\t\t\t\t</button>\n" +
-    "\t\t\t</div>\n" +
-    "\t\t\t<div class=\"col-md-8\">\n" +
-    "\t\t\t\t<div ng-show=\"!validation.valid_minlength()\">\n" +
-    "\t\t\t\t\t<div class=\"validation-pick-pattern text-danger ng-binding\">\n" +
-    "\t\t\t\t\t\t<i class=\"glyphicon glyphicon-remove\"></i> {{\n" +
-    "\t\t\t\t\t\t'message.field-validation.array-min-length' | translate:{ elem: 'situation'} }}\n" +
-    "\t\t\t\t\t</div>\n" +
-    "\t\t\t\t</div>\n" +
+    "\t<div class=\"col-md-11\">\n" +
+    "\t\t<div ng-show=\"!validation.valid_minlength()\">\n" +
+    "\t\t\t<div class=\"validation-pick-pattern text-danger ng-binding\">\n" +
+    "\t\t\t\t<i class=\"glyphicon glyphicon-remove\"></i> {{\n" +
+    "\t\t\t\t'message.field-validation.array-min-length' | translate:{ elem: 'situation'} }}\n" +
     "\t\t\t</div>\n" +
     "\t\t</div>\n" +
     "\t</div>\n" +
@@ -1089,17 +1035,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-plain-input.html',
-    "<div class=\"col-md-12\">\n" +
-    "\t<input name=\"{{ property.name }}\"type=\"text\" class=\"form-control konga-form-search-input\" id=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" maxlength=\"{{ validation.maxlength() }}\" tabindex=\"{{ (index + 1) * 12 }}\">\n" +
-    "\t<!-- TODO This is not working (yet) -->\n" +
-    "\t<!-- ng-minlength=\"property.minLength\"\n" +
-    "\tng-maxlength=\"property.maxLength\" -->\n" +
-    "  <!-- <div class=\"input-group-addon bg-invalid\">\n" +
-    "  \t<button type=\"button\" class=\"btn btn-link\">\n" +
-    "  \t\t<i class=\"glyphicon glyphicon-remove text-bg-invalid\"></i>\n" +
-    "  \t</button>\n" +
-    "  </div> -->\n" +
-    "</div>"
+    "<input name=\"{{ property.name }}\"type=\"text\" class=\"form-control konga-form-search-input\" id=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" maxlength=\"{{ validation.maxlength() }}\" tabindex=\"{{ (index + 1) * 12 }}\">"
   );
 
 
@@ -1122,14 +1058,12 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-table-input.html',
-    "<div class=\"col-md-12\">\n" +
-    "\t<div class=\"col-md-12 padding-cero\" ng-class=\"inLineClass.col1\">\n" +
-    "\t\t<label for=\"{{ fieldId }}\">{{property.fieldLabel |\n" +
-    "\t\t\ttranslate:extra }}</label>\n" +
-    "\t</div>\n" +
-    "\t<div class=\"col-md-12 padding-cero\" ng-class=\"inLineClass.col3\">\n" +
-    "\t\t<table-input></table-input>\n" +
-    "\t</div>\n" +
+    "<div class=\"col-md-12 padding-cero\" ng-class=\"inLineClass.col1\">\n" +
+    "\t<label for=\"{{ fieldId }}\">{{property.fieldLabel |\n" +
+    "\t\ttranslate:extra }}</label>\n" +
+    "</div>\n" +
+    "<div class=\"col-md-12 padding-cero\" ng-class=\"inLineClass.col3\">\n" +
+    "\t<table-input></table-input>\n" +
     "</div>"
   );
 
@@ -1185,9 +1119,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/result-table.html',
-    "<div class=\"col-md-12 search-table-container\" ng-init=\"init()\">\n" +
-    "\t<div ng-include=\"contentUrl\"></div>\n" +
-    "</div>"
+    "<div ng-include=\"contentUrl\"></div>"
   );
 
 
@@ -1198,7 +1130,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
     "\t\t<form role=\"form\">\n" +
     "\t\t\t<div ng-include=\"contentUrl\"></div>\n" +
     "\t\t\t<div class=\"col-md-12 form-group mode-search\">\n" +
-    "\t\t\t\t<div class=\"col-md-12 text-right\">\n" +
+    "\t\t\t\t<div class=\"text-right\">\n" +
     "\t\t\t\t\t<button id=\"clear-search-pane.id\" type=\"button\" class=\"btn btn-default\" ng-click=\"operations.clear()\">\n" +
     "\t\t\t\t\t\t<i class=\"glyphicon glyphicon-remove\"></i>\n" +
     "\t\t\t\t\t\t{{'message.action.clean' | translate}}\n" +
@@ -1232,18 +1164,16 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('/konga/views/select-input.html',
     "<div class=\"select-input {{(isExtended) ? 'extend' : 'non-extended'}}\" ng-class=\"{ disabled: disableSelect(property) }\" konga-select>\n" +
-    "\t<div ng-class=\"{'col-md-6': mode === 'update', 'col-md-12': mode === 'search'}\">\n" +
-    "\t\t<div class=\"input-group {{ validation.required() ? 'required' : 'optional' }} {{ value.text.length ? 'valid' : 'invalid' }}\">\n" +
-    "\t\t\t<input name=\"{{ property.name }}\"type=\"text\" class=\"konga-form-search-input form-control\" id=\"{{ fieldId }}-input\" ng-model=\"textinput\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" ng-change=\"writeValue()\" typeahead=\"item.label for item in getElements($viewValue)\" typeahead-on-select=\"formatInput($item, $model, $label)\" tabindex=\"{{ (index + 1) * 12 }}\">\n" +
-    "\t\t\t<div class=\"input-group-addon\">\n" +
-    "\t\t\t\t<button type=\"button\" class=\"btn btn-link\" ng-disabled=\"disableField(mode, property)\"\n" +
-    "\t\t\t\t\tng-click=\"dispatchFieldAction('open-select')\" id=\"{{ fieldId }}-select\">\n" +
-    "\t\t\t\t\t<i class=\"glyphicon glyphicon-search\"></i>\n" +
-    "\t\t\t\t</button>\n" +
-    "\t\t\t\t<!-- <button type=\"button\" class=\"btn btn-link btn-bordered-left\" ng-show=\"showRemove(property)\" ng-click=\"removeField(property)\" id=\"{{ fieldId }}-remove\">\n" +
-    "\t\t\t\t\t<i class=\"glyphicon glyphicon-remove\"></i>\n" +
-    "\t\t\t\t</button> -->\n" +
-    "\t\t\t</div>\n" +
+    "\t<div class=\"input-group {{ validation.required() ? 'required' : 'optional' }} {{ value.text.length ? 'valid' : 'invalid' }}\">\n" +
+    "\t\t<input name=\"{{ property.name }}\"type=\"text\" class=\"konga-form-search-input form-control\" id=\"{{ fieldId }}-input\" ng-model=\"textinput\" ng-disabled=\"disableField(mode, property)\" ng-pattern=\"validation.pattern()\" ng-required=\"validation.required()\" ng-change=\"writeValue()\" typeahead=\"item.label for item in getElements($viewValue)\" typeahead-on-select=\"formatInput($item, $model, $label)\" tabindex=\"{{ (index + 1) * 12 }}\">\n" +
+    "\t\t<div class=\"input-group-addon\">\n" +
+    "\t\t\t<button type=\"button\" class=\"btn btn-link\" ng-disabled=\"disableField(mode, property)\"\n" +
+    "\t\t\t\tng-click=\"dispatchFieldAction('open-select')\" id=\"{{ fieldId }}-select\">\n" +
+    "\t\t\t\t<i class=\"glyphicon glyphicon-search\"></i>\n" +
+    "\t\t\t</button>\n" +
+    "\t\t\t<!-- <button type=\"button\" class=\"btn btn-link btn-bordered-left\" ng-show=\"showRemove(property)\" ng-click=\"removeField(property)\" id=\"{{ fieldId }}-remove\">\n" +
+    "\t\t\t\t<i class=\"glyphicon glyphicon-remove\"></i>\n" +
+    "\t\t\t</button> -->\n" +
     "\t\t</div>\n" +
     "\t</div>\n" +
     "\t<div class=\"col-md-6 complex-label\" ng-show=\"mode === 'update'\">\n" +
