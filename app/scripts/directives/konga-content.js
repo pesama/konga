@@ -30,9 +30,9 @@ angular.module('ui.konga')
 	        	init();
 	        }
 	        else {
-	        	scope.$on('metadata-ready') {
+	        	scope.$on('metadata-ready', function() {
 	        		init();
-	        	}
+	        	});
 	        }
 	      }
 	    };
