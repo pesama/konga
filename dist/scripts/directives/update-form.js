@@ -24,7 +24,7 @@ angular.module('ui.konga')
       	},
       	controller: function ($scope, $routeParams, api, common, fieldMapper, $filter) {
 	      	// Depending on the form type, the form will be rendered differently
-	      	$scope.templateUrl = '/views/konga/cascade-update.html';
+	      	$scope.templateUrl = '/konga/views/cascade-update.html';
 
 	      	if(!$scope.fields) {
 	      		$scope.fields = util.getEntityFields($scope.metadata);
@@ -32,7 +32,7 @@ angular.module('ui.konga')
 
 	      	switch($scope.metadata.updateType) {
 		      	case constants.TABBED_FORM:
-		      		$scope.templateUrl = '/views/konga/tabbed-update.html';
+		      		$scope.templateUrl = '/konga/views/tabbed-update.html';
 		      		//Get the Categories
 		    		$scope.categories = util.getEntityCategories($scope.metadata, 1);
 	
@@ -43,7 +43,7 @@ angular.module('ui.konga')
 	
 		      		break;
 		      	case constants.CUSTOM_TABBED_FORM:
-		      		$scope.templateUrl = '/views/konga/custom_tabbed-update.html';
+		      		$scope.templateUrl = '/konga/views/custom_tabbed-update.html';
 
 		      		//Get the Categories
 		    		$scope.fieldsets = util.getEntityFieldSets($scope.metadata);

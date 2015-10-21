@@ -1153,7 +1153,7 @@ angular.module('ui.konga')
 			var multi = multiField === constants.MULTIPLICITY_MANY;
 			$scope.multiple = multi;
 			
-			var selectTemplate 		= multi ? '/views/konga/multi-select.html' : '/views/konga/single-select.html';
+			var selectTemplate 		= multi ? '/konga/views/multi-select.html' : '/konga/views/single-select.html';
 			var selectController 	= multi ? 'MultiSelectCtrl' : 'SingleSelectCtrl';
 			
 			if (typeof($scope.property.singleSelectCustom) === 'object' && $scope.property.singleSelectCustom.selectTemplate !== '' && $scope.property.singleSelectCustom.selectController !== '') {
@@ -1346,7 +1346,7 @@ angular.module('ui.konga')
 				}
 			}
 
-			scope.contentUrl = '/views/konga/raw-' + fieldType.toLowerCase() + inputSuffix + '-input.html';
+			scope.contentUrl = '/konga/views/raw-' + fieldType.toLowerCase() + inputSuffix + '-input.html';
 			scope.datePicker = { opened: false };
 			scope.toggleDatePicker = function(){
 				scope.datePicker.opened = (scope.datePicker.opened)? false:true;
@@ -1511,6 +1511,6 @@ angular.module('ui.konga')
 			// Setup a unique id for the form element
 			scope.fieldId = 'raw-input-' + scope.property.name + '-' + scope.property.owner;
 		},
-	    templateUrl: '/views/konga/raw-input.html'
+	    templateUrl: '/konga/views/raw-input.html'
 	};
 });

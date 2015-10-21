@@ -9,7 +9,7 @@
 angular.module('ui.konga')
   .directive('selectInput', ['api', '$filter', function (api, $filter) {
     return {
-      templateUrl: '/views/konga/select-input.html',
+      templateUrl: '/konga/views/select-input.html',
       restrict: 'E',
       link: function postLink(scope, element, attrs) {
         scope.textinput = scope.value.text;

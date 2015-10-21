@@ -9,7 +9,7 @@
 angular.module('ui.konga')
   .directive('fileInput', ['$upload', function () {
     return {
-      templateUrl: '/views/konga/file-input.html',
+      templateUrl: '/konga/views/file-input.html',
       restrict: 'E',
       replace: true,
       link: function postLink(scope, element, attrs) {

@@ -11,7 +11,7 @@
 angular.module('ui.konga')
   .directive('resultTable', function () {
     return {
-      templateUrl: '/views/konga/result-table.html',
+      templateUrl: '/konga/views/result-table.html',
       replace: true, 
       restrict: 'E',
       scope: {
@@ -60,7 +60,7 @@ angular.module('ui.konga')
             $scope.contentUrl = mapper[configuration[0].value];
           }
           else {
-            $scope.contentUrl = '/views/konga/' + formType.toLowerCase() + '-result-table.html';
+            $scope.contentUrl = '/konga/views/' + formType.toLowerCase() + '-result-table.html';
 
             // Custom behavior for each form type
             switch(formType) {

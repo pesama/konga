@@ -18,7 +18,7 @@ angular.module('ui.konga')
       	itemClass: '@'
       },
       link: function postLink(scope) {
-      	scope.contentUrl = '/views/konga/recursive-list.html';
+      	scope.contentUrl = '/konga/views/recursive-list.html';
       }
     };
   });

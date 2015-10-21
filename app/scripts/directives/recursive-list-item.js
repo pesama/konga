@@ -9,7 +9,7 @@
 angular.module('ui.konga')
   .directive('recursiveListItem', function () {
     return {
-      templateUrl: '/views/konga/recursive-list-item.html',
+      templateUrl: '/konga/views/recursive-list-item.html',
       restrict: 'E',
       replace: true,
       scope: {

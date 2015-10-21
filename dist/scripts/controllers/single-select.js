@@ -46,7 +46,7 @@ angular.module('ui.konga')
 		 * TODO Document
 		 */
 		$scope.singleselectModal = {
-			contentUrl : '/views/konga/multi-select-modal.html',
+			contentUrl : '/konga/views/multi-select-modal.html',
 			animation : 'am-fade-and-slide-top',
 			save: function() {
 				var newValue = $scope.model;			

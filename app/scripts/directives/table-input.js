@@ -9,7 +9,7 @@
 angular.module('ui.konga')
   .directive('tableInput', ['$filter', '$timeout', 'scaffold', function ($filter, $timeout, scaffold) {
     return {
-      templateUrl: '/views/konga/table-input.html',
+      templateUrl: '/konga/views/table-input.html',
       restrict: 'E',
       replace: true,
       link: function postLink(scope, element, attrs) {
