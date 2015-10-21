@@ -397,7 +397,9 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/konga-content-plain.html',
-    "<div ng-view></div>"
+    "<div class=\"container\">\t\t\t\n" +
+    "\t<div ng-view></div>\n" +
+    "</div>"
   );
 
 
