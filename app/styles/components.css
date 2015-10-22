@@ -44,3 +44,7 @@
 .full-width-component {
     width: 100% !important;
 }
+
+.form-group.mode-update {
+    width: 100%;
+}

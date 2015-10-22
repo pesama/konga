@@ -47,6 +47,10 @@
 .full-width-component {
     width: 100% !important;
 }
+
+.form-group.mode-update {
+    width: 100%;
+}
 div.filtermanagement {
 	margin-top: 1em;
 	text-align: center;

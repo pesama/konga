@@ -520,26 +520,10 @@
 	"buffers":
 	[
 		{
-			"file": "bower.json",
+			"file": "app/views/raw-input.html",
 			"settings":
 			{
-				"buffer_size": 4666,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/directives/konga-content.js",
-			"settings":
-			{
-				"buffer_size": 1055,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/konga-content-plain.html",
-			"settings":
-			{
-				"buffer_size": 277,
+				"buffer_size": 1403,
 				"line_ending": "Unix"
 			}
 		},
@@ -547,15 +531,7 @@
 			"file": "app/styles/components.css",
 			"settings":
 			{
-				"buffer_size": 134,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/controllers/main.js",
-			"settings":
-			{
-				"buffer_size": 27625,
+				"buffer_size": 552,
 				"line_ending": "Unix"
 			}
 		}
@@ -714,13 +690,18 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/sm/workspace/konga-ui",
-		"/Users/sm/workspace/konga-ui/app",
-		"/Users/sm/workspace/konga-ui/app/scripts",
-		"/Users/sm/workspace/konga-ui/app/styles"
+		"/Users/pelayosanchez/Personal/konga-ui",
+		"/Users/pelayosanchez/Personal/konga-ui/app",
+		"/Users/pelayosanchez/Personal/konga-ui/app/styles"
 	],
 	"file_history":
 	[
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/raw-input.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/main.js",
+		"/Users/pelayosanchez/Personal/konga-ui/bower.json",
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/konga-content.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/views/konga-content-plain.html",
+		"/Users/pelayosanchez/Personal/konga-ui/app/styles/components.css",
 		"/Users/sm/workspace/konga-ui/dist/styles/konga.css",
 		"/Users/sm/workspace/konga-ui/app/scripts/util.js",
 		"/Users/sm/workspace/konga-ui/app/views/konga-content-tabs.html",
@@ -842,13 +823,7 @@
 		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/main.js",
 		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/multi-select.js",
 		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/single-select.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/file-input.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/konga-select.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/list-input.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/menu-item.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/menu.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/option-input.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/price-input.js"
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/file-input.js"
 	],
 	"find":
 	{
@@ -1124,88 +1099,30 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "bower.json",
+					"file": "app/views/raw-input.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4666,
+						"buffer_size": 1403,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								634,
-								634
+								736,
+								736
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 27.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/scripts/directives/konga-content.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1055,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								325,
-								325
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/views/konga-content-plain.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 277,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								249,
-								249
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1215,60 +1132,33 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 1,
 					"file": "app/styles/components.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 134,
+						"buffer_size": 552,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								115,
-								115
+								549,
+								549
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage"
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": -0.0,
+						"translation.y": 244.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/scripts/controllers/main.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 27625,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								27534,
-								27534
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -1322,6 +1212,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"rawin",
+				"app/views/raw-input.html"
+			],
 			[
 				"konga",
 				"dist/styles/konga.css"
@@ -1643,10 +1537,6 @@
 				"ui/app/scripts/directives/raw-input.js"
 			],
 			[
-				"rawin",
-				"ui/app/scripts/directives/raw-input.js"
-			],
-			[
 				"rawpicl",
 				"ui/app/views/raw-pick_list-input.html"
 			],
@@ -1845,7 +1735,7 @@
 		[
 			[
 				"",
-				"~/workspace/ui.konga-cloud/ui.konga-cloud.sublime-project"
+				"~/workspace/bbva-onestopshop2/sublime-configuration/hoy-necesito.sublime-workspace"
 			],
 			[
 				"ko",
