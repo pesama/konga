@@ -520,58 +520,26 @@
 	"buffers":
 	[
 		{
+			"file": "app/views/list-input.html",
+			"settings":
+			{
+				"buffer_size": 3152,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "app/styles/style.css",
 			"settings":
 			{
-				"buffer_size": 20837,
+				"buffer_size": 20720,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/styles/verticalTabs.css",
+			"file": "app/scripts/directives/list-input.js",
 			"settings":
 			{
-				"buffer_size": 515,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/styles/components.css",
-			"settings":
-			{
-				"buffer_size": 762,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/controllers/main.js",
-			"settings":
-			{
-				"buffer_size": 27625,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/controllers/entity-update.js",
-			"settings":
-			{
-				"buffer_size": 23437,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/verticaltab.tp.html",
-			"settings":
-			{
-				"buffer_size": 388,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/entity-update.html",
-			"settings":
-			{
-				"buffer_size": 1633,
+				"buffer_size": 9228,
 				"line_ending": "Unix"
 			}
 		}
@@ -734,13 +702,17 @@
 	],
 	"file_history":
 	[
+		"/Users/pelayosanchez/Personal/konga-ui/app/views/entity-update.html",
+		"/Users/pelayosanchez/Personal/konga-ui/app/views/verticaltab.tp.html",
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/entity-update.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/main.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/styles/style.css",
+		"/Users/pelayosanchez/Personal/konga-ui/app/styles/verticalTabs.css",
 		"/Users/pelayosanchez/Personal/konga-ui/app/styles/components.css",
 		"/Users/pelayosanchez/Personal/konga-ui/dist/styles/konga.css",
 		"/Users/pelayosanchez/Personal/konga-ui/app/views/raw-input.html",
 		"/Users/pelayosanchez/Personal/konga-ui/app/views/tabbed-update.html",
-		"/Users/pelayosanchez/Personal/konga-ui/app/views/verticaltab.tp.html",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/raw-input.js",
-		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/main.js",
 		"/Users/pelayosanchez/Personal/konga-ui/bower.json",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/konga-content.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/views/konga-content-plain.html",
@@ -857,11 +829,7 @@
 		"/Users/sm/workspace/presupuestor/ui/app/index.html",
 		"/Users/sm/workspace/presupuestor/ui/app/scripts/app.js",
 		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/custom/store-selector.js",
-		"/Users/sm/workspace/presupuestor/ui/app/views/home.html",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/entity-update.js",
-		"/Users/sm/workspace/presupuestor/ui/test/spec/services/user.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/login.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/entity-search.js"
+		"/Users/sm/workspace/presupuestor/ui/app/views/home.html"
 	],
 	"find":
 	{
@@ -872,6 +840,7 @@
 		"height": 102.0,
 		"where_history":
 		[
+			"/Users/pelayosanchez/Personal/konga-ui/app",
 			"/Users/pelayosanchez/Personal/konga-ui/app/styles",
 			"/Users/sm/workspace/konga-ui/app",
 			"/Users/sm/workspace/ui.konga-cloud/app",
@@ -948,6 +917,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			" !important",
+			"startFrom",
+			"filtere",
 			"overflow: hidden",
 			">A",
 			"LI",
@@ -1072,10 +1044,7 @@
 			"    ",
 			"		",
 			"step_fallType",
-			"color_white",
-			"fallType_cascade",
-			"->tailoringtype_id",
-			"field_spt_type"
+			"color_white"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1138,198 +1107,24 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/styles/style.css",
+					"file": "app/views/list-input.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 20837,
+						"buffer_size": 3152,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								12542,
-								12542
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/styles/verticalTabs.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 515,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								47,
-								47
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/styles/components.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 762,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								361,
-								361
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": -0.0,
-						"translation.y": 238.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/scripts/controllers/main.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 27625,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								19096,
-								19127
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 9240.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/scripts/controllers/entity-update.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 23437,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								12730,
-								12766
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": -0.0,
-						"translation.y": 7206.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/views/verticaltab.tp.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 388,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								16,
-								16
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "app/views/entity-update.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1633,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1626,
-								1619
+								2096,
+								2096
 							]
 						],
 						"settings":
@@ -1338,10 +1133,67 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 80.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/styles/style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 20720,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								531,
+								531
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 127.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/scripts/directives/list-input.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9228,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1397,
+								1410
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": -0.0,
+						"translation.y": 1632.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1396,6 +1248,22 @@
 		"selected_items":
 		[
 			[
+				"style",
+				"app/styles/style.css"
+			],
+			[
+				"liin",
+				"app/scripts/directives/list-input.js"
+			],
+			[
+				"lisinput",
+				"app/views/list-input.html"
+			],
+			[
+				"",
+				"app/scripts/controllers/main.js"
+			],
+			[
 				"entity",
 				"app/scripts/controllers/entity-update.js"
 			],
@@ -1406,10 +1274,6 @@
 			[
 				"verti",
 				"app/views/verticaltab.tp.html"
-			],
-			[
-				"style",
-				"app/styles/style.css"
 			],
 			[
 				"vertica",
@@ -1470,10 +1334,6 @@
 			[
 				"index",
 				"app/index.html"
-			],
-			[
-				"liin",
-				"bower_components/ui.konga/app/scripts/directives/list-input.js"
 			],
 			[
 				"picklis",
@@ -1740,10 +1600,6 @@
 				"ui/app/scripts/controllers/custom/product-batch-upload.js"
 			],
 			[
-				"",
-				"ui/app/scripts/directives/raw-input.js"
-			],
-			[
 				"rawpicl",
 				"ui/app/views/raw-pick_list-input.html"
 			],
@@ -1758,10 +1614,6 @@
 			[
 				"consta",
 				"ui/app/scripts/constants.js"
-			],
-			[
-				"lisinput",
-				"ui/app/views/list-input.html"
 			],
 			[
 				"listin",
