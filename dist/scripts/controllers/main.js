@@ -383,11 +383,15 @@ angular.module('ui.konga')
 		  		 * @description
 		  		 * Opens an entity-update tab to create a new entity of the metadata given.
 		  		 */
-		  		openEntityCreate: function(entityMetadata) {
+		  		openEntityCreate: function(entityMetadata, params) {
+		  			if(typeof entityMetadata === 'string') {
+		  				entityMetadata = util.getMetadata(entityMetadata);
+		  			}
+
 		  			// Verify permissions
 		  			var permission = entityMetadata.createable;
 		  			if(permissionManager.isAllowed(permission)) {
-		  				$scope.operations.openEntityUpdate(entityMetadata);
+		  				$scope.operations.openEntityUpdate(entityMetadata, null, params);
 		  			}
 		  			else {
 		  				var forbidden = {
