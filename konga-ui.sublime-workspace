@@ -520,18 +520,42 @@
 	"buffers":
 	[
 		{
-			"file": "app/views/raw-input.html",
+			"file": "app/styles/style.css",
 			"settings":
 			{
-				"buffer_size": 1403,
+				"buffer_size": 20837,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/styles/components.css",
+			"file": "app/styles/raw-input.css",
 			"settings":
 			{
-				"buffer_size": 552,
+				"buffer_size": 2960,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/styles/verticalTabs.css",
+			"settings":
+			{
+				"buffer_size": 515,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/verticaltab.tp.html",
+			"settings":
+			{
+				"buffer_size": 388,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/entity-update.html",
+			"settings":
+			{
+				"buffer_size": 1633,
 				"line_ending": "Unix"
 			}
 		}
@@ -696,12 +720,16 @@
 	],
 	"file_history":
 	[
+		"/Users/pelayosanchez/Personal/konga-ui/app/styles/components.css",
+		"/Users/pelayosanchez/Personal/konga-ui/dist/styles/konga.css",
+		"/Users/pelayosanchez/Personal/konga-ui/app/views/raw-input.html",
+		"/Users/pelayosanchez/Personal/konga-ui/app/views/tabbed-update.html",
+		"/Users/pelayosanchez/Personal/konga-ui/app/views/verticaltab.tp.html",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/raw-input.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/main.js",
 		"/Users/pelayosanchez/Personal/konga-ui/bower.json",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/konga-content.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/views/konga-content-plain.html",
-		"/Users/pelayosanchez/Personal/konga-ui/app/styles/components.css",
 		"/Users/sm/workspace/konga-ui/dist/styles/konga.css",
 		"/Users/sm/workspace/konga-ui/app/scripts/util.js",
 		"/Users/sm/workspace/konga-ui/app/views/konga-content-tabs.html",
@@ -819,11 +847,7 @@
 		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/entity-update.js",
 		"/Users/sm/workspace/presupuestor/ui/test/spec/services/user.js",
 		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/login.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/entity-search.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/main.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/multi-select.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/single-select.js",
-		"/Users/sm/workspace/presupuestor/ui/app/scripts/directives/file-input.js"
+		"/Users/sm/workspace/presupuestor/ui/app/scripts/controllers/entity-search.js"
 	],
 	"find":
 	{
@@ -834,6 +858,7 @@
 		"height": 102.0,
 		"where_history":
 		[
+			"/Users/pelayosanchez/Personal/konga-ui/app/styles",
 			"/Users/sm/workspace/konga-ui/app",
 			"/Users/sm/workspace/ui.konga-cloud/app",
 			"/Users/sm/workspace/ui.konga-cloud/bower_components/ui.konga",
@@ -909,6 +934,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"overflow: hidden",
+			">A",
+			"LI",
+			"UL",
+			".tabbable>.tab-content",
 			"getMetada",
 			"/views/konga/",
 			"/views/",
@@ -1031,12 +1061,7 @@
 			"color_white",
 			"fallType_cascade",
 			"->tailoringtype_id",
-			"field_spt_type",
-			"no",
-			"supportType_",
-			"supportType",
-			"supportType_ceiling",
-			"ceiling"
+			"field_spt_type"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1099,30 +1124,116 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/views/raw-input.html",
+					"file": "app/styles/style.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1403,
+						"buffer_size": 20837,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								736,
-								736
+								12542,
+								12542
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/CSS/CSS.tmLanguage",
 							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 12794.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/styles/raw-input.css",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 2960,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1235,
+								1237
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1164.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/styles/verticalTabs.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 515,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								47,
+								47
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/views/verticaltab.tp.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 388,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								16,
+								16
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1132,30 +1243,29 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "app/styles/components.css",
+					"buffer": 4,
+					"file": "app/views/entity-update.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 552,
+						"buffer_size": 1633,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								549,
-								549
+								1626,
+								1619
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
-						"translation.x": -0.0,
-						"translation.y": 244.0,
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1212,6 +1322,30 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"entity",
+				"app/views/entity-update.html"
+			],
+			[
+				"verti",
+				"app/views/verticaltab.tp.html"
+			],
+			[
+				"style",
+				"app/styles/style.css"
+			],
+			[
+				"vertica",
+				"app/views/verticaltab.tp.html"
+			],
+			[
+				"tabbed",
+				"app/views/tabbed-update.html"
+			],
+			[
+				"konga.",
+				"dist/styles/konga.css"
+			],
 			[
 				"rawin",
 				"app/views/raw-input.html"
@@ -1699,30 +1833,6 @@
 			[
 				"taing",
 				"ui/app/styles/custom/tailorings.css"
-			],
-			[
-				"taiseeder",
-				"api/app/database/seeds/TailoringTypeTableSeeder.php"
-			],
-			[
-				"taiup",
-				"ui/app/views/custom/tailoring-update.html"
-			],
-			[
-				"prefimapper",
-				"ui/app/scripts/filters/custom/presupuestor-field-mapper.js"
-			],
-			[
-				"tailoseed",
-				"api/app/database/seeds/TailoringTypeTableSeeder.php"
-			],
-			[
-				"fieldmapper",
-				"ui/app/scripts/filters/custom/presupuestor-field-mapper.js"
-			],
-			[
-				"pretaiop",
-				"ui/app/views/custom/presupuestor-tailoring-option-info-field.html"
 			]
 		],
 		"width": 0.0
@@ -1735,7 +1845,7 @@
 		[
 			[
 				"",
-				"~/workspace/bbva-onestopshop2/sublime-configuration/hoy-necesito.sublime-workspace"
+				"~/Personal/ui.konga-cloud/ui.konga-cloud.sublime-project"
 			],
 			[
 				"ko",

@@ -16,6 +16,13 @@
 
 .konga-nav-vertical {
     border-right: 5px solid #444444;
+    border-collapse: collapse;
+}
+
+.konga-nav-vertical + div.tab-content {
+    border-left: 5px solid #444444;
+    border-collapse: collapse;
+    margin-left: -5px;
 }
 
 .konga-container {
