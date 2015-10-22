@@ -1,35 +1,32 @@
-.tabbable .padding-cero{
+.tabbable {
+    clear: both;
+    width: 100%;
+}
+
+.tabbable .padding-cero {
 	padding: 0 !important;
 }
 
-.tabbable>input.form-control{
+.tabbable > input.form-control {
 	border: 4px black solid;
 	
 }
-.tabbable>UL.konga-nav-vertical{
+.tabbable > ul.konga-nav-vertical {
 	border-bottom: 0;
 }
-.tabbable>UL.konga-nav-vertical>LI{
+.tabbable > ul.konga-nav-vertical > li {
 	margin-top: 0;
 	width: 100%;
 }
-.tabbable>UL.konga-nav-vertical>LI>A{
+.tabbable>ul.konga-nav-vertical > li > a {
 	width: 100%;
 	margin-left: 0 !important;
 }
 
-.tabbable > ul.konga-nav-vertical > li.active > A{
+.tabbable > ul.konga-nav-vertical > li.active > a {
 	background-color: #428BCA !important;
 }
 
-.tabbable>.tab-content{
-	border: 1px solid #DDD; 
-	width: auto;
-}
 .tabbable .tab-pane{
 	padding: 10px;
-}
-
-.col-md-10 {
-width: 86.333333%;
 }

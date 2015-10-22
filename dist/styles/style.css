@@ -655,10 +655,6 @@ nav.header-2 {
 	border: 1px solid transparent !important;
 }
 
-.tab-pane {
-	overflow: hidden;
-}
-
 .panel-heading>.panel-title>button {
 	color: #FFF !important;
 	padding: 0;

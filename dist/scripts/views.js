@@ -257,30 +257,26 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('/konga/views/entity-update.html',
     "<div class=\"wall\">\n" +
-    "\t<div class=\"panel-body\">\n" +
-    "\t\t<div class=\"search-form col-md-12\">\n" +
-    "\t\t\t<form ng-class=\"formStyle\" role=\"form\" name=\"entityUpdate\" novalidate>\n" +
-    "\t\t\t\t<update-form entity=\"entity\" changes=\"changes\" metadata=\"entityMetadata\" params=\"params\" on-change=\"operations.changeEntityField\" on-update=\"operations.updateEntityField\" creating=\"creating\"></update-form>\n" +
-    "\t\t\t\t<div class=\"pull-right update-btn-group\" ng-if=\"showActions\">\n" +
-    "\t\t\t\t\t<button class=\"btn btn-default\" ng-repeat=\"action in entityMetadata.actions\" ng-model=\"action\" ng-click=\"operations.dispatchAction(action)\" ng-show=\"action.scope==='UPDATE'\" ng-disabled=\"action.scope!=='UPDATE'\" id=\"update-action-dispatcher-{{ action.name }}\">\n" +
-    "\t\t\t\t\t\t\t\t{{ action.label | translate }}\n" +
-    "\t\t\t\t\t</button>\n" +
-    "\t\t\t\t\t<button type=\"submit\" class=\"btn btn-success\" ng-click=\"operations.dispatchEntityAction('save', params)\" ng-disabled=\"entityUpdate.$invalid || !changes.length || invalid || (entityMetadata.name==='Materiel' && !entity.validCtrOperat && entity.id != null) || customDisableValider || alreadyValidated\" id=\"save-entity\">\t\n" +
-    "\t\t\t\t\t\t<i class=\"glyphicon glyphicon-ok\"></i>\n" +
-    "\t\t\t\t\t\t{{ 'message.action.validate' | translate }}\n" +
-    "\t\t\t\t\t</button>\n" +
-    "\t\t\t\t\t<button class=\"btn btn-default\" ng-click=\"operations.cancelUpdate()\" id=\"cancel-update\">\n" +
-    "\t\t\t\t\t\t<i class=\"glyphicon glyphicon-remove\"></i>\n" +
-    "\t\t\t\t\t\t{{ 'message.action.cancel' | translate }}\n" +
-    "\t\t\t\t\t</button>\n" +
-    "\t\t\t\t\t<button class=\"btn btn-danger\" ng-click=\"operations.deleteEntity()\" ng-hide=\"deletable == false\" id=\"delete-entity\" ng-disabled=\"disabledDelete\">\n" +
-    "\t\t\t\t\t\t<i class=\"glyphicon glyphicon-trash\"></i>\n" +
-    "\t\t\t\t\t\t{{ 'message.action.delete' | translate }}\n" +
-    "\t\t\t\t\t</button>\n" +
-    "\t\t\t\t</div>\n" +
-    "\t\t\t</form>\n" +
+    "\t<form ng-class=\"formStyle\" role=\"form\" name=\"entityUpdate\" novalidate>\n" +
+    "\t\t<update-form entity=\"entity\" changes=\"changes\" metadata=\"entityMetadata\" params=\"params\" on-change=\"operations.changeEntityField\" on-update=\"operations.updateEntityField\" creating=\"creating\"></update-form>\n" +
+    "\t\t<div class=\"pull-right update-btn-group\" ng-if=\"showActions\">\n" +
+    "\t\t\t<button class=\"btn btn-default\" ng-repeat=\"action in entityMetadata.actions\" ng-model=\"action\" ng-click=\"operations.dispatchAction(action)\" ng-show=\"action.scope==='UPDATE'\" ng-disabled=\"action.scope!=='UPDATE'\" id=\"update-action-dispatcher-{{ action.name }}\">\n" +
+    "\t\t\t\t\t\t{{ action.label | translate }}\n" +
+    "\t\t\t</button>\n" +
+    "\t\t\t<button type=\"submit\" class=\"btn btn-success\" ng-click=\"operations.dispatchEntityAction('save', params)\" ng-disabled=\"entityUpdate.$invalid || !changes.length || invalid || (entityMetadata.name==='Materiel' && !entity.validCtrOperat && entity.id != null) || customDisableValider || alreadyValidated\" id=\"save-entity\">\t\n" +
+    "\t\t\t\t<i class=\"glyphicon glyphicon-ok\"></i>\n" +
+    "\t\t\t\t{{ 'message.action.validate' | translate }}\n" +
+    "\t\t\t</button>\n" +
+    "\t\t\t<button class=\"btn btn-default\" ng-click=\"operations.cancelUpdate()\" id=\"cancel-update\">\n" +
+    "\t\t\t\t<i class=\"glyphicon glyphicon-remove\"></i>\n" +
+    "\t\t\t\t{{ 'message.action.cancel' | translate }}\n" +
+    "\t\t\t</button>\n" +
+    "\t\t\t<button class=\"btn btn-danger\" ng-click=\"operations.deleteEntity()\" ng-hide=\"deletable == false\" id=\"delete-entity\" ng-disabled=\"disabledDelete\">\n" +
+    "\t\t\t\t<i class=\"glyphicon glyphicon-trash\"></i>\n" +
+    "\t\t\t\t{{ 'message.action.delete' | translate }}\n" +
+    "\t\t\t</button>\n" +
     "\t\t</div>\n" +
-    "\t</div>\n" +
+    "\t</form>\n" +
     "</div>"
   );
 
@@ -1500,7 +1496,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/verticaltab.tp.html',
-    "<div class=\"tabbable\">\n" +
+    "<div class=\"row tabbable\">\n" +
     "\t<ul class=\"nav nav-pills nav-stacked konga-nav-vertical col-xs-12 col-sm-12 col-md-4 col-lg-3\">\n" +
     "\t\t<li ng-repeat=\"tabContent in tabContentList\" ng-class=\"{active:tabContent.selected}\">\n" +
     "\t\t\t<a href=\"\" ng-click=\"select(tabContent)\">{{tabContent.title}}</a>\n" +
