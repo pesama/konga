@@ -1136,7 +1136,7 @@ angular.module('ui.konga')
 		  	$scope.$on('field-updated', function(data) {
 		  		// Am I linked?
 		  		// IF yes, verify if i'm linked with the field being updated
-		  		if(!field.linked || data.field.apiPath !== field.linked.to) {
+		  		if(!$scope.property.linked || data.field.apiPath !== $scope.property.linked.to) {
 		  			return;
 		  		}
 

@@ -523,7 +523,7 @@
 			"file": "app/scripts/directives/raw-input.js",
 			"settings":
 			{
-				"buffer_size": 50584,
+				"buffer_size": 50585,
 				"line_ending": "Unix"
 			}
 		}
@@ -1101,15 +1101,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 50584,
+						"buffer_size": 50585,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								38498,
-								38498
+								30756,
+								30756
 							]
 						],
 						"settings":
@@ -1118,7 +1118,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 21449.0,
+						"translation.y": 21356.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
