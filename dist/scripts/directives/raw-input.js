@@ -873,6 +873,9 @@ angular.module('ui.konga')
 					var sendResult = angular.copy(result);
 					$scope.changeEntity($scope.property, sendResult, $scope.entity);
 				}
+
+				// Search for linked fields
+				$rootScope.$broadcast('field-updated', { field: scope.property });
 			};
 
 			// Listen for property changes
@@ -1128,6 +1131,17 @@ angular.module('ui.konga')
 
 		  		// Change the locale in the tabs
 		  		$scope.extra.label = $filter('translate')($scope.extra.labelPlaceholder);
+		  	});
+
+		  	$scope.$on('field-updated', function(data) {
+		  		// Am I linked?
+		  		// IF yes, verify if i'm linked with the field being updated
+		  		if(!field.linked || data.field.apiPath !== field.linked.to) {
+		  			return;
+		  		}
+
+		  		var action = field.via;
+		  		$scope.dispatchFieldAction(action, { source: data.field });
 		  	});
 
 			/*
