@@ -194,5 +194,8 @@ var constants = {
 
 	LOOK_AND_FEEL_PLAIN 				: 'plain',
 	LOOK_AND_FEEL_TABS 					: 'tabs',
-	CONFIG_LOOK_AND_FEEL 				: 'look-and-feel'
+	CONFIG_LOOK_AND_FEEL 				: 'look-and-feel',
+
+	HIDE_ON_CREATION 					: 'hide-on-creation',
+	HIDE_ON_UPDATION 					: 'hide-on-edition'
 };

@@ -519,14 +519,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "app/scripts/directives/raw-input.js",
-			"settings":
-			{
-				"buffer_size": 50720,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -686,6 +678,10 @@
 	],
 	"file_history":
 	[
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/update-form.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/filters/update-params.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/constants.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/raw-input.js",
 		"/Users/pelayosanchez/Personal/konga-ui/dist/scripts/directives/raw-input.js",
 		"/Users/sm/workspace/konga-ui/app/views/konga-content-plain.html",
 		"/Users/sm/workspace/konga-ui/app/styles/style.css",
@@ -809,11 +805,7 @@
 		"/Users/sm/workspace/konga-ui/docs/partials/api/kongaUI.controller.EntitySearchCtrl.html",
 		"/Users/sm/workspace/konga-ui/docs/partials/api/kongaUI.controller.MainCtrl.html",
 		"/Users/sm/workspace/konga-ui/app/index.html",
-		"/Users/sm/workspace/konga-ui/app/views/main.html",
-		"/Users/sm/workspace/konga-ui/app/views/raw-textarea-input.html",
-		"/Users/sm/workspace/konga-ui/app/views/verticaltab.tp.html",
-		"/Users/sm/workspace/konga-ui/app/scripts/mapper.js",
-		"/Users/sm/workspace/konga-ui/.bowerrc"
+		"/Users/sm/workspace/konga-ui/app/views/main.html"
 	],
 	"find":
 	{
@@ -902,6 +894,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"constants.",
 			"field",
 			"$on",
 			".derived",
@@ -1028,8 +1021,7 @@
 			"		",
 			"step_fallType",
 			"color_white",
-			"fallType_cascade",
-			"->tailoringtype_id"
+			"fallType_cascade"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1092,38 +1084,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "app/scripts/directives/raw-input.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 50720,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								42930,
-								42930
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 119.0,
-						"translation.y": 23743.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -1175,6 +1137,18 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"updateparams",
+				"app/scripts/filters/update-params.js"
+			],
+			[
+				"const",
+				"app/scripts/constants.js"
+			],
+			[
+				"updateform",
+				"app/scripts/directives/update-form.js"
+			],
 			[
 				"rawin",
 				"dist/scripts/directives/raw-input.js"
@@ -1338,10 +1312,6 @@
 			[
 				"modal",
 				"app/views/modal.tpl.html"
-			],
-			[
-				"const",
-				"app/scripts/constants.js"
 			],
 			[
 				"logi",
@@ -1678,14 +1648,6 @@
 			[
 				"taing",
 				"ui/app/styles/custom/tailorings.css"
-			],
-			[
-				"taiseeder",
-				"api/app/database/seeds/TailoringTypeTableSeeder.php"
-			],
-			[
-				"taiup",
-				"ui/app/views/custom/tailoring-update.html"
 			]
 		],
 		"width": 0.0
