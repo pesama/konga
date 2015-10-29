@@ -1140,7 +1140,7 @@ angular.module('ui.konga')
 		  			return;
 		  		}
 
-		  		var action = field.via;
+		  		var action = $scope.property.linked.via;
 		  		$scope.dispatchFieldAction(action, { source: data.field });
 		  	});
 
