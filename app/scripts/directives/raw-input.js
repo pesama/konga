@@ -875,7 +875,7 @@ angular.module('ui.konga')
 				}
 
 				// Search for linked fields
-				$rootScope.$broadcast('field-updated', { field: $scope.property });
+				$rootScope.$broadcast('field-updated', { field: $scope.property, value: $scope.value });
 			};
 
 			// Listen for property changes
@@ -1141,7 +1141,7 @@ angular.module('ui.konga')
 		  		}
 
 		  		var action = $scope.property.linked.via;
-		  		$scope.dispatchFieldAction(action, { source: data.field });
+		  		$scope.dispatchFieldAction(action, { source: data.field, value: data.value });
 		  	});
 
 			/*

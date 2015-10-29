@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"root",
+				"rootScope"
+			],
+			[
 				"pro",
 				"property"
 			],
@@ -372,10 +376,6 @@
 				"loaderId"
 			],
 			[
-				"root",
-				"rootifyQuery"
-			],
-			[
 				"veri",
 				"verifyValidateable"
 			],
@@ -523,15 +523,7 @@
 			"file": "app/scripts/directives/raw-input.js",
 			"settings":
 			{
-				"buffer_size": 50619,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "dist/scripts/directives/raw-input.js",
-			"settings":
-			{
-				"buffer_size": 50619,
+				"buffer_size": 50720,
 				"line_ending": "Unix"
 			}
 		}
@@ -694,6 +686,7 @@
 	],
 	"file_history":
 	[
+		"/Users/pelayosanchez/Personal/konga-ui/dist/scripts/directives/raw-input.js",
 		"/Users/sm/workspace/konga-ui/app/views/konga-content-plain.html",
 		"/Users/sm/workspace/konga-ui/app/styles/style.css",
 		"/Users/sm/workspace/konga-ui/app/styles/components.css",
@@ -820,8 +813,7 @@
 		"/Users/sm/workspace/konga-ui/app/views/raw-textarea-input.html",
 		"/Users/sm/workspace/konga-ui/app/views/verticaltab.tp.html",
 		"/Users/sm/workspace/konga-ui/app/scripts/mapper.js",
-		"/Users/sm/workspace/konga-ui/.bowerrc",
-		"/Users/sm/workspace/konga-ui/package.json"
+		"/Users/sm/workspace/konga-ui/.bowerrc"
 	],
 	"find":
 	{
@@ -1100,7 +1092,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1109,15 +1101,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 50619,
+						"buffer_size": 50720,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								38218,
-								38218
+								42930,
+								42930
 							]
 						],
 						"settings":
@@ -1125,37 +1117,8 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 1.0,
-						"translation.y": 21372.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "dist/scripts/directives/raw-input.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 50619,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								38369,
-								38376
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 15.0,
-						"translation.y": 21320.0,
+						"translation.x": 119.0,
+						"translation.y": 23743.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
