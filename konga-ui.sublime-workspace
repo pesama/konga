@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"pro",
+				"property"
+			],
+			[
 				"padd",
 				"padding"
 			],
@@ -242,10 +246,6 @@
 			[
 				"input",
 				"inputDate"
-			],
-			[
-				"pro",
-				"propagating"
 			],
 			[
 				"exisTa",
@@ -519,6 +519,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "app/scripts/directives/raw-input.js",
+			"settings":
+			{
+				"buffer_size": 50584,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -674,11 +682,7 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/sm/workspace/konga-ui",
-		"/Users/sm/workspace/konga-ui/app",
-		"/Users/sm/workspace/konga-ui/app/scripts",
-		"/Users/sm/workspace/konga-ui/app/styles",
-		"/Users/sm/workspace/konga-ui/app/views"
+		"/Users/pelayosanchez/Personal/konga-ui"
 	],
 	"file_history":
 	[
@@ -898,6 +902,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"$on",
 			".derived",
 			".combobox-button",
 			".non-extended",
@@ -1024,8 +1029,7 @@
 			"color_white",
 			"fallType_cascade",
 			"->tailoringtype_id",
-			"field_spt_type",
-			"no"
+			"field_spt_type"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1088,8 +1092,38 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "app/scripts/directives/raw-input.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 50584,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								38498,
+								38498
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 21449.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -1142,6 +1176,10 @@
 		"selected_items":
 		[
 			[
+				"rawin",
+				"app/scripts/directives/raw-input.js"
+			],
+			[
 				"rawsele",
 				"app/views/raw-select-input.html"
 			],
@@ -1152,10 +1190,6 @@
 			[
 				"styl",
 				"app/styles/style.css"
-			],
-			[
-				"rawin",
-				"app/views/raw-input.html"
 			],
 			[
 				"koco",
@@ -1664,7 +1698,7 @@
 		[
 			[
 				"",
-				"~/workspace/api.konga-cloud/api.konga-cloud.sublime-project"
+				"~/Personal/ui.konga-cloud/ui.konga-cloud.sublime-project"
 			],
 			[
 				"ko",

@@ -875,7 +875,7 @@ angular.module('ui.konga')
 				}
 
 				// Search for linked fields
-				$rootScope.$broadcast('field-updated', { field: scope.property });
+				$rootScope.$broadcast('field-updated', { field: $scope.property });
 			};
 
 			// Listen for property changes
