@@ -1133,10 +1133,10 @@ angular.module('ui.konga')
 		  		$scope.extra.label = $filter('translate')($scope.extra.labelPlaceholder);
 		  	});
 
-		  	$scope.$on('field-updated', function(data) {
+		  	$scope.$on('field-updated', function(evt, data) {
 		  		// Am I linked?
 		  		// IF yes, verify if i'm linked with the field being updated
-		  		if(!$scope.property.linked || data.field.apiPath !== $scope.property.linked.to) {
+		  		if(!$scope.property.linked || $scope.property.linked.to.indexOf(data.field.name) === -1) {
 		  			return;
 		  		}
 
