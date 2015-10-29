@@ -196,6 +196,6 @@ var constants = {
 	LOOK_AND_FEEL_TABS 					: 'tabs',
 	CONFIG_LOOK_AND_FEEL 				: 'look-and-feel',
 
-	HIDE_ON_CREATION 					: 'hide-on-creation',
-	HIDE_ON_UPDATION 					: 'hide-on-edition'
+	HIDE_WHEN_CREATING 					: 'hide-when-creation',
+	HIDE_WHEN_UPDATING 					: 'hide-when-updating'
 };
