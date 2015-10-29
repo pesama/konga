@@ -1253,15 +1253,15 @@ angular.module('ui.konga')
 		  		}
 
 		  		// Custom actions
+	  			var actionParams =  {
+	  					id: util.getEntityId($scope.metadata, $scope.entity), 
+	  					entityType: $scope.metadata.name, 
+	  					self: $scope, 
+	  					item: $scope.entity, 
+	  					field: $scope.property, 
+	  					data: params
+	  			};
 		  		if(matchingActions && matchingActions.length) {
-		  			var actionParams =  {
-		  					id: util.getEntityId($scope.metadata, $scope.entity), 
-		  					entityType: $scope.metadata.name, 
-		  					self: $scope, 
-		  					item: $scope.entity, 
-		  					field: $scope.property, 
-		  					data: params
-		  			};
 		  			$rootScope.operations.dispatchActionBatch(matchingActions, actionParams);
 		  		}
 		  		else {
@@ -1271,6 +1271,8 @@ angular.module('ui.konga')
 				  	case 'open-select':
 				  			$scope.openMultiSelect();
 				  		break;
+				  	default:
+				  		$rootScope.operations.dispatchAction({ name: name }, actionParams);
 				  	}
 				}
 			  };
