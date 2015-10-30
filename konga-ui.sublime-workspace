@@ -519,6 +519,22 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "app/views/raw-input.html",
+			"settings":
+			{
+				"buffer_size": 1408,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/constants.js",
+			"settings":
+			{
+				"buffer_size": 7107,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -1084,8 +1100,67 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "app/views/raw-input.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1408,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								714,
+								714
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/scripts/constants.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7107,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7103,
+								7103
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 3189.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -1138,6 +1213,14 @@
 		"selected_items":
 		[
 			[
+				"cons",
+				"app/scripts/constants.js"
+			],
+			[
+				"rawin",
+				"app/views/raw-input.html"
+			],
+			[
 				"updateparams",
 				"app/scripts/filters/update-params.js"
 			],
@@ -1148,10 +1231,6 @@
 			[
 				"updateform",
 				"app/scripts/directives/update-form.js"
-			],
-			[
-				"rawin",
-				"dist/scripts/directives/raw-input.js"
 			],
 			[
 				"rawsele",
@@ -1404,10 +1483,6 @@
 			[
 				"appscri",
 				"docs/app-scripts.js"
-			],
-			[
-				"cons",
-				"app/scripts/constants.js"
 			],
 			[
 				"mapper",

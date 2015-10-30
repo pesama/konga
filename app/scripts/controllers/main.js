@@ -336,7 +336,13 @@ angular.module('ui.konga')
 		  				entityMetadata = util.getMetadata(entityMetadata);
 		  			}
 
-		  			var entityId = util.getEntityId(entityMetadata, entity);
+		  			if(!params.useEntity) {
+		  				var entityId = entity;
+		  			}
+		  			else {
+		  				entityId = 'app-creation-' + new Date().getTime();
+		  				common.store(entityId, entity);
+		  			}
 
 		  			// Generate the id for the new tab
 		  			var tabId = constants.ENTITY_ID_PREFFIX + 

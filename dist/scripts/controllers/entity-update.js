@@ -228,22 +228,30 @@ angular.module('ui.konga')
 			  // Get the path for the call
 			  var path = metadata.apiPath;
 
-			  // Get the current entity
-			  $scope.entity = pageData.entity = localEndpoint.get({path: path, id: entityId}, function(data) {
-				//TODO: (Future general annotation rework)annotate a custom-action on the  resultClick from materiel and execute a function to control if ctrOperat is valid
-				if(entityType==="Materiel" && !data.validCtrOperat){
-					$rootScope.operations.notify('entity.materiel.warning-ctr-operat-title', 'entity.materiel.warning-ctr-operat');
-				}
-			    pageData.original = angular.copy($scope.entity);
-			    $rootScope.operations.freeLoading('update_' + entityId);
-			    if(entityType == 'ctrOperat'){
-					$scope.entity.societes = $scope.entityMetadata.societes;
-					$scope.entity.agences = $scope.entityMetadata.agences;
-					$scope.entity.secteurs = $scope.entityMetadata.secteurs;
-					$scope.entity.ctrMecaniques = $scope.entityMetadata.ctrMecaniques;
-					$scope.entity.chantieres = $scope.entityMetadata.chantieres;
-				}
-			  });
+			  // Try and get from storage
+			  var entity = common.read(entityId);
+			  if(entity) {
+			  	$scope.entity = entity;
+			  }
+			  else {
+				  // Get the current entity
+				  $scope.entity = pageData.entity = localEndpoint.get({path: path, id: entityId}, function(data) {
+					//TODO: (Future general annotation rework)annotate a custom-action on the  resultClick from materiel and execute a function to control if ctrOperat is valid
+					if(entityType==="Materiel" && !data.validCtrOperat){
+						$rootScope.operations.notify('entity.materiel.warning-ctr-operat-title', 'entity.materiel.warning-ctr-operat');
+					}
+				    pageData.original = angular.copy($scope.entity);
+				    $rootScope.operations.freeLoading('update_' + entityId);
+				    if(entityType == 'ctrOperat'){
+						$scope.entity.societes = $scope.entityMetadata.societes;
+						$scope.entity.agences = $scope.entityMetadata.agences;
+						$scope.entity.secteurs = $scope.entityMetadata.secteurs;
+						$scope.entity.ctrMecaniques = $scope.entityMetadata.ctrMecaniques;
+						$scope.entity.chantieres = $scope.entityMetadata.chantieres;
+					}
+				  });
+			  }
+
 			} else {
 			  $scope.creating = true;
 			  $rootScope.pageData.creating = $scope.creating;
