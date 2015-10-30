@@ -336,8 +336,9 @@ angular.module('ui.konga')
 		  				entityMetadata = util.getMetadata(entityMetadata);
 		  			}
 
+		  			var entityId = null;
 		  			if(!params || !params.useEntity) {
-		  				var entityId = entity;
+		  				entityId = util.getEntityId(entityMetadata, entity);
 		  			}
 		  			else {
 		  				entityId = 'app-creation-' + new Date().getTime();
