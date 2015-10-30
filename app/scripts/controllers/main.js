@@ -336,7 +336,7 @@ angular.module('ui.konga')
 		  				entityMetadata = util.getMetadata(entityMetadata);
 		  			}
 
-		  			if(!params.useEntity) {
+		  			if(!params || !params.useEntity) {
 		  				var entityId = entity;
 		  			}
 		  			else {
