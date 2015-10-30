@@ -523,7 +523,7 @@
 			"file": "app/scripts/controllers/main.js",
 			"settings":
 			{
-				"buffer_size": 28048,
+				"buffer_size": 28049,
 				"line_ending": "Unix"
 			}
 		},
@@ -531,7 +531,7 @@
 			"file": "app/scripts/controllers/entity-update.js",
 			"settings":
 			{
-				"buffer_size": 23602,
+				"buffer_size": 23655,
 				"line_ending": "Unix"
 			}
 		}
@@ -910,6 +910,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"common.read",
 			"$scope.entity = ",
 			"constants.",
 			"field",
@@ -1036,8 +1037,7 @@
 			"dependency",
 			"    ",
 			"		",
-			"step_fallType",
-			"color_white"
+			"step_fallType"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1109,15 +1109,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 28048,
+						"buffer_size": 28049,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								13829,
-								13829
+								13990,
+								13990
 							]
 						],
 						"settings":
@@ -1138,15 +1138,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 23602,
+						"buffer_size": 23655,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8088,
-								8088
+								8141,
+								8141
 							]
 						],
 						"settings":
@@ -1155,7 +1155,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3282.0,
+						"translation.y": 4109.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,

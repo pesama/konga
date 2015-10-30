@@ -231,7 +231,7 @@ angular.module('ui.konga')
 			  // Try and get from storage
 			  var entity = common.read(entityId);
 			  if(entity) {
-			  	$scope.entity = entity;
+			  	$scope.entity = pageData.entity = entity;
 			  	entityId = util.getEntityId(metadata, entity);
 			  }
 			  else {
