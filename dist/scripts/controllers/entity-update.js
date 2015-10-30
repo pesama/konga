@@ -232,6 +232,7 @@ angular.module('ui.konga')
 			  var entity = common.read(entityId);
 			  if(entity) {
 			  	$scope.entity = entity;
+			  	entityId = util.getEntityId(metadata, entity);
 			  }
 			  else {
 				  // Get the current entity

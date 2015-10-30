@@ -341,7 +341,7 @@ angular.module('ui.konga')
 		  				entityId = util.getEntityId(entityMetadata, entity);
 		  			}
 		  			else {
-		  				entityId = 'app-creation-' + new Date().getTime();
+		  				entityId = 'stored-entity-' + new Date().getTime();
 		  				common.store(entityId, entity);
 		  			}
 
