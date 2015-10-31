@@ -177,87 +177,96 @@ angular.module('ui.konga', [
   'angularFileUpload',
   'ui.bootstrap-slider'
 ])
+.config(['$httpProvider',  function($httpProvider) {
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    
+    // /* Register error provider that shows message on failed requests or redirects to login page on
+    //  * unauthenticated requests 
+    //  */
+    // $httpProvider.interceptors.push(function ($q, $rootScope, $location) {
+    //   return {
+    //     responseError: function (rejection) {
+    //       var status = rejection.status;
+    //       var config = rejection.config;
+    //       var method = config.method;
+    //       var url = config.url;
+    
+    //       if (status == 401) {
+    //         $location.path( '/login/' );
+    //       } else {
+    //         $rootScope.error = method + ' on ' + url + ' failed with status ' + status;
+    //       }
+            
+    //       return $q.reject(rejection);
+    //     }
+    //   };
+    // });
 
-  .run(['$route', function ($route) {
-      $route.reload();
+//     /* Registers auth token interceptor, auth token is either passed by header or by query parameter
+//      * as soon as there is an authenticated user */
+//     $httpProvider.interceptors.push(function ($q, $rootScope, $location, Session, $cookieStore) {
+//         return {
+//           request: function(config) {
+//             // Configure encoding
+//             // TODO Improve
+//             if(!config.file) {
+//               config.headers['Content-Type'] = 'application/json';
+//             }
+
+//             var authTokenCookie = $cookieStore.get('authToken');
+//             var authTokenSession = Session.data.authToken;
+//             if (authTokenCookie || authTokenSession) {
+//               var authToken = authTokenCookie || authTokenSession;
+// //                if (exampleAppConfig.useAuthTokenHeader) {
+//                 config.headers['X-Auth-Token'] = authToken;
+// //                } else {
+// //                  config.url = config.url + "?token=" + authToken;
+// //                }
+//             }
+//             return config;
+//           }
+//         };
+//    });
+  }
+])
+.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+    // Configure routes
+    $routeProvider
+      .when('/entity/:entityType/search/', {
+        templateUrl: '/konga/views/entity-search.html',
+        controller: 'EntitySearchCtrl'
+      })
+      .when('/entity/:entityType/:entityId/', {
+        templateUrl: '/konga/views/entity-update.html',
+        controller: 'EntityUpdateCtrl'
+      })
+      .when('/loading/:after', {
+        templateUrl: '/konga/views/app-loader.html',
+        controller: 'AppLoaderCtrl'
+      });
+  }
+])
+.config(['$translateProvider', 'i18n', function($translateProvider, i18n) {
+
+    for(var lang in i18n) {
+      $translateProvider.translations(lang, i18n[lang]);
     }
-  ])
-  
-  .config(['$httpProvider',  function($httpProvider) {
-      $httpProvider.defaults.useXDomain = true;
-      delete $httpProvider.defaults.headers.common['X-Requested-With'];
-      
-      // /* Register error provider that shows message on failed requests or redirects to login page on
-      //  * unauthenticated requests 
-      //  */
-      // $httpProvider.interceptors.push(function ($q, $rootScope, $location) {
-      //   return {
-      //     responseError: function (rejection) {
-      //       var status = rejection.status;
-      //       var config = rejection.config;
-      //       var method = config.method;
-      //       var url = config.url;
-      
-      //       if (status == 401) {
-      //         $location.path( '/login/' );
-      //       } else {
-      //         $rootScope.error = method + ' on ' + url + ' failed with status ' + status;
-      //       }
-              
-      //       return $q.reject(rejection);
-      //     }
-      //   };
-      // });
+    
 
-  //     /* Registers auth token interceptor, auth token is either passed by header or by query parameter
-  //      * as soon as there is an authenticated user */
-  //     $httpProvider.interceptors.push(function ($q, $rootScope, $location, Session, $cookieStore) {
-  //         return {
-  //           request: function(config) {
-  //             // Configure encoding
-  //             // TODO Improve
-  //             if(!config.file) {
-  //               config.headers['Content-Type'] = 'application/json';
-  //             }
+    // Setting up spanish as default
+    $translateProvider.preferredLanguage('en');
+    moment.locale('en');
+  }
+])
+.run(['Metadata', '$rootScope', 'common', function(Metadata, $rootScope, common) {
+  // TODO Change when configurable metadata retrieval
 
-  //             var authTokenCookie = $cookieStore.get('authToken');
-  //             var authTokenSession = Session.data.authToken;
-  //             if (authTokenCookie || authTokenSession) {
-  //               var authToken = authTokenCookie || authTokenSession;
-  // //                if (exampleAppConfig.useAuthTokenHeader) {
-  //                 config.headers['X-Auth-Token'] = authToken;
-  // //                } else {
-  // //                  config.url = config.url + "?token=" + authToken;
-  // //                }
-  //             }
-  //             return config;
-  //           }
-  //         };
-  //    });
-    }
-  ])
-  .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-      // Configure routes
-      $routeProvider
-        .when('/entity/:entityType/search/', {
-          templateUrl: '/konga/views/entity-search.html',
-          controller: 'EntitySearchCtrl'
-        })
-        .when('/entity/:entityType/:entityId/', {
-          templateUrl: '/konga/views/entity-update.html',
-          controller: 'EntityUpdateCtrl'
-        })
-    }
-  ])
-  .config(['$translateProvider', 'i18n', function($translateProvider, i18n) {
-
-      for(var lang in i18n) {
-        $translateProvider.translations(lang, i18n[lang]);
-      }
-      
-
-      // Setting up spanish as default
-      $translateProvider.preferredLanguage('en');
-      moment.locale('en');
-    }
-  ]);
+  // Load metadata
+  $scope.metadata = $rootScope.metadata = Metadata.get({lang: 'es'}, function(data) {
+    // Store the metadata on common
+    common.store('metadata', $scope.metadata);
+    util.init(data);
+    $rootScope.$broadcast('load-ready', { code: 'metadata' });
+  });
+}]);

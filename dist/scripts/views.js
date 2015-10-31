@@ -6,6 +6,11 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('/konga/views/app-loader.html',
+    "Loading..."
+  );
+
+
   $templateCache.put('/konga/views/cascade-result-table.html',
     "<table class=\"table table-result\">\n" +
     "\t<thead>\n" +
@@ -438,7 +443,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('/konga/views/list-input.html',
     "<div class=\"list-input col-md-12 padding-cero\">\n" +
-    "\t<div class=\"col-md-12 padding-cero\" ng-if=\"paginate\">\n" +
+    "\t<div class=\"col-md-12 padding-cero\" ng-if=\"paginate && filteredList.length > 10\">\n" +
     "\t\t<!-- ng-show=\"hideSearchSpiner\"> -->\n" +
     "\t\t<div class=\"row\">\n" +
     "\t\t\t<div class=\"col-md-4 form-inline position-pagination\" style=\"margin-top:10px\" ng-show=\"paginationData.count\">\n" +
@@ -473,8 +478,6 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t\t</th>\n" +
     "\t\t\t\t\t<th ng-show=\"actions && actions.length\">\n" +
     "\t\t\t\t\t\t<span>{{ 'field.list-input.actions' | translate }}</span>\n" +
-    "\t\t\t\t\t\t<!-- <input id=\"test\" type=\"text\" class=\"form-control\"\n" +
-    "\t\t\t\t\t\t\t\tplaceholder=\"{{ field.fieldLabel | translate }}\" ng-model=\"quickSearchParams.param[field.fieldKey]\"> -->\n" +
     "\t\t\t\t\t</th>\n" +
     "\t\t\t\t\t\n" +
     "\t\t\t\t</tr>\n" +

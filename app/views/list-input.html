@@ -1,5 +1,5 @@
 <div class="list-input col-md-12 padding-cero">
-	<div class="col-md-12 padding-cero" ng-if="paginate">
+	<div class="col-md-12 padding-cero" ng-if="paginate && filteredList.length > 10">
 		<!-- ng-show="hideSearchSpiner"> -->
 		<div class="row">
 			<div class="col-md-4 form-inline position-pagination" style="margin-top:10px" ng-show="paginationData.count">
@@ -34,8 +34,6 @@
 					</th>
 					<th ng-show="actions && actions.length">
 						<span>{{ 'field.list-input.actions' | translate }}</span>
-						<!-- <input id="test" type="text" class="form-control"
-								placeholder="{{ field.fieldLabel | translate }}" ng-model="quickSearchParams.param[field.fieldKey]"> -->
 					</th>
 					
 				</tr>

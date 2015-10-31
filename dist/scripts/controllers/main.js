@@ -68,50 +68,26 @@
  * @param {Scaffold} scaffold Used to create new objects for the entities
  */
 angular.module('ui.konga')
-	.run(['$rootScope', '$location', '$cookieStore', '$http', 'Session', 'auth', 'User', '$modal', 'common', 'Metadata', '$window', 
-	 function($rootScope, $location, $cookieStore, $http, Session, auth, User, $modal, common, Metadata, $window) {
-		 
-		$rootScope.saveSessionInformation = function(serviceUser){
-			$rootScope.user = Session.data.user = serviceUser;
-			Session.data.roles = [];
-		 };
-		 
-		var deleteSessionInformation = function() {
-			Session.data.isLogged = false;
-			delete $rootScope.isLogged;
-			delete $rootScope.username;	
-			delete $rootScope.isFullyLogged;
-		};
-		
-		$rootScope.openParams = function(){
-			var userParamsTab = {
-  				id:'userParams', 
-  				title: 'message.tabs.user-params', 
-  				href:'/userParams/', 
-  				closable:true
-	  		};
-
-			$rootScope.operations.addTab(userParamsTab);
-			$location.path("/userParams");
-		};
-		
-		$rootScope.logout = function(reload) {
-			deleteSessionInformation();
- 			$cookieStore.remove('authToken');
- 			$cookieStore.remove('isFullyLogged');
- 			
- 			$rootScope.tabs.splice(0, $rootScope.tabs.length);
- 			$location.path('/login/');
-
- 			// FIXME Remove this.
- 			if(reload)
- 				window.location.reload();
-		};
-	}])
 	.controller('MainCtrl', ['$scope', '$location', '$filter', '$rootScope', '$timeout','common', 'scaffold', 'Metadata', 'dialogs', '$translate', 'Session', 'auth', 'User', '$cookieStore', 'actionManager', '$modal', 'permissionManager', 'ENV', 
 		function($scope, $location, $filter, $rootScope, $timeout,common, scaffold, Metadata, dialogs, $translate, Session, auth, User, $cookieStore, actionManager, $modal, permissionManager, ENV) {
 
 			$scope.configConstants = ENV;
+
+			$rootScope.status = {
+				load: true,
+				loaders: ['metadata']
+			};
+
+			// Route listening for loading purposes
+			$rootScope.$on('$routeChangeStart', function(evt, data) {
+				var next = data.next;
+				if(next.indexOf('/loading') === 0) return;
+
+				if($rootScope.status.loaders.length) {
+					var after = encodeUriComponent(next);
+					$location.path('/loading/' + after);
+				}
+			})
 
 			/**
 			 * @name tabs
@@ -784,18 +760,6 @@ angular.module('ui.konga')
 		  			extra.label = $filter('translate')(extra.labelPlaceholder);
 		  		}
 		  	});
-		  	
-		  	// Request loading
-			$scope.operations.requestLoading('metadata');
-
-			// Get ENTITY information
-			$scope.metadata = $rootScope.metadata = Metadata.get({lang: 'es'}, function(data) {
-				// Store the metadata on common
-				common.store('metadata', $scope.metadata);
-				util.init(data);
-				$scope.operations.freeLoading('metadata');
-				$rootScope.$broadcast('metadata-ready');
-			});
 
 			$scope.showHeader = function() {
 				return !!Session.data.user;

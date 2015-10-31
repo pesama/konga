@@ -531,7 +531,31 @@
 			"file": "app/scripts/controllers/entity-update.js",
 			"settings":
 			{
-				"buffer_size": 23655,
+				"buffer_size": 23673,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/list-input.html",
+			"settings":
+			{
+				"buffer_size": 3006,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "bower.json",
+			"settings":
+			{
+				"buffer_size": 4666,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/directives/list-input.js",
+			"settings":
+			{
+				"buffer_size": 9228,
 				"line_ending": "Unix"
 			}
 		}
@@ -910,6 +934,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"$scope.paginate",
 			"common.read",
 			"$scope.entity = ",
 			"constants.",
@@ -1036,8 +1061,7 @@
 			"===",
 			"dependency",
 			"    ",
-			"		",
-			"step_fallType"
+			"		"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1116,8 +1140,8 @@
 						"selection":
 						[
 							[
-								13990,
-								13990
+								10260,
+								10306
 							]
 						],
 						"settings":
@@ -1125,8 +1149,8 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 6253.0,
+						"translation.x": 59.0,
+						"translation.y": 4200.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1138,15 +1162,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 23655,
+						"buffer_size": 23673,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8141,
-								8141
+								8105,
+								8105
 							]
 						],
 						"settings":
@@ -1154,11 +1178,98 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
+						"translation.x": 6.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/views/list-input.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3006,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								128,
+								128
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
 						"translation.x": 0.0,
-						"translation.y": 4109.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "bower.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4666,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1616.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/scripts/directives/list-input.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9228,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								574,
+								589
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 214.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -1213,12 +1324,24 @@
 		"selected_items":
 		[
 			[
-				"entityup",
-				"app/scripts/controllers/entity-update.js"
-			],
-			[
 				"main",
 				"app/scripts/controllers/main.js"
+			],
+			[
+				"bower",
+				"bower.json"
+			],
+			[
+				"lisinput",
+				"app/scripts/directives/list-input.js"
+			],
+			[
+				"listinpu",
+				"app/views/list-input.html"
+			],
+			[
+				"entityup",
+				"app/scripts/controllers/entity-update.js"
 			],
 			[
 				"cons",
@@ -1275,10 +1398,6 @@
 			[
 				"kocon",
 				"app/scripts/directives/konga-content.js"
-			],
-			[
-				"bower",
-				"bower.json"
 			],
 			[
 				"kocopla",
@@ -1581,10 +1700,6 @@
 				"ui/app/scripts/constants.js"
 			],
 			[
-				"lisinput",
-				"ui/app/views/list-input.html"
-			],
-			[
 				"listin",
 				"ui/app/scripts/directives/list-input.js"
 			],
@@ -1719,10 +1834,6 @@
 			[
 				"stan",
 				"ui/app/scripts/services/standard-api.js"
-			],
-			[
-				"querypar",
-				"ui/app/scripts/filters/query-parser.js"
 			]
 		],
 		"width": 0.0
