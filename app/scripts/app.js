@@ -263,10 +263,14 @@ angular.module('ui.konga', [
   // TODO Change when configurable metadata retrieval
 
   // Load metadata
-  $scope.metadata = $rootScope.metadata = Metadata.get({lang: 'es'}, function(data) {
-    // Store the metadata on common
-    common.store('metadata', $scope.metadata);
+  $rootScope.metadata = Metadata.get({lang: 'es'}, function(data) {
+    // Store the metadata
+    common.store('metadata', $rootScope.metadata);
+
+    // Init the tools
     util.init(data);
+
+    // Notify
     $rootScope.$broadcast('load-ready', { code: 'metadata' });
   });
 }]);

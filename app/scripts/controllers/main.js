@@ -78,16 +78,12 @@ angular.module('ui.konga')
 				loaders: ['metadata']
 			};
 
-			// Route listening for loading purposes
-			$rootScope.$on('$routeChangeStart', function(evt, data) {
-				var next = data.next;
-				if(next.indexOf('/loading') === 0) return;
-
-				if($rootScope.status.loaders.length) {
-					var after = encodeUriComponent(next);
-					$location.path('/loading/' + after);
-				}
-			})
+			// Redirect for loading if needed
+			var path = $location.path();
+			if(path.indexOf('/loading') !== 0 && $rootScope.status.loaders.length) {
+				var after = encodeUriComponent(path);
+				$location.path('/loading/' + after);
+			}
 
 			/**
 			 * @name tabs
