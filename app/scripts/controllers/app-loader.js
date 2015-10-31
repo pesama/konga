@@ -10,7 +10,7 @@
 angular.module('ui.konga')
   .controller('AppLoaderCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 
   	function ($scope, $routeParams, $location) {
-  		var after = $routeParams.after ? decodeUriComponent($routeParams.after) : '/';
+  		var after = $routeParams.after ? decodeURIComponent($routeParams.after) : '/';
 
   		$scope.$on('load-ready', function(evt, data) {
   			var code = data.code;

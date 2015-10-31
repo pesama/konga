@@ -81,7 +81,7 @@ angular.module('ui.konga')
 			// Redirect for loading if needed
 			var path = $location.path();
 			if(path.indexOf('/loading') !== 0 && $rootScope.status.loaders.length) {
-				var after = encodeUriComponent(path);
+				var after = encodeURIComponent(path);
 				$location.path('/loading/' + after);
 			}
 
