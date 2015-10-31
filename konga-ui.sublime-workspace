@@ -520,26 +520,10 @@
 	"buffers":
 	[
 		{
-			"file": "app/scripts/controllers/main.js",
+			"file": "app/scripts/controllers/app-loader.js",
 			"settings":
 			{
-				"buffer_size": 28049,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/controllers/entity-update.js",
-			"settings":
-			{
-				"buffer_size": 23673,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/list-input.html",
-			"settings":
-			{
-				"buffer_size": 3006,
+				"buffer_size": 706,
 				"line_ending": "Unix"
 			}
 		},
@@ -547,15 +531,31 @@
 			"file": "bower.json",
 			"settings":
 			{
-				"buffer_size": 4666,
+				"buffer_size": 4725,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/scripts/directives/list-input.js",
+			"file": "app/views/app-loader.html",
 			"settings":
 			{
-				"buffer_size": 9228,
+				"buffer_size": 10,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/app.js",
+			"settings":
+			{
+				"buffer_size": 12951,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/controllers/main.js",
+			"settings":
+			{
+				"buffer_size": 26461,
 				"line_ending": "Unix"
 			}
 		}
@@ -567,10 +567,14 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 147.0,
-		"last_filter": "ssjo",
+		"height": 392.0,
+		"last_filter": "case",
 		"selected_items":
 		[
+			[
+				"case",
+				"Convert Case: Title Case"
+			],
 			[
 				"ssjo",
 				"Set Syntax: JSON"
@@ -606,10 +610,6 @@
 			[
 				"ins",
 				"Package Control: Install Package"
-			],
-			[
-				"case",
-				"Convert Case: Lower Case"
 			],
 			[
 				"innu",
@@ -714,15 +714,27 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/pelayosanchez/Personal/konga-ui"
+		"/Users/pelayosanchez/Personal/konga-ui",
+		"/Users/pelayosanchez/Personal/konga-ui/test"
 	],
 	"file_history":
 	[
+		"/Users/pelayosanchez/Personal/konga-ui/Gruntfile.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/services/metadata-old.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/services/metadata.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/raw-input.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/loader.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/list-input.js",
+		"/Users/pelayosanchez/Personal/konga-ui/bower.json",
+		"/Users/pelayosanchez/Personal/konga-ui/app/views/list-input.html",
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/entity-update.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/main.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/styles/raw-input.css",
+		"/Users/pelayosanchez/Personal/konga-ui/dist/styles/konga.css",
 		"/Users/pelayosanchez/Personal/konga-ui/app/views/raw-input.html",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/constants.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/update-form.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/filters/update-params.js",
-		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/raw-input.js",
 		"/Users/pelayosanchez/Personal/konga-ui/dist/scripts/directives/raw-input.js",
 		"/Users/sm/workspace/konga-ui/app/views/konga-content-plain.html",
 		"/Users/sm/workspace/konga-ui/app/styles/style.css",
@@ -834,18 +846,7 @@
 		"/Users/sm/workspace/konga-ui/app/scripts/filters/update-params.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/services/action-manager.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/services/api.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/services/common.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/services/configuration-manager.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/services/field-mapper.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/services/metadata.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/services/permission-manager.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/services/scaffold.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/services/standard-api.js",
-		"/Users/sm/workspace/konga-ui/docs/app-scripts.js",
-		"/Users/sm/workspace/konga-ui/docs/js/docs-setup.js",
-		"/Users/sm/workspace/konga-ui/docs/partials/api/kongaUI.controller.EntitySearchCtrl.html",
-		"/Users/sm/workspace/konga-ui/docs/partials/api/kongaUI.controller.MainCtrl.html",
-		"/Users/sm/workspace/konga-ui/app/index.html"
+		"/Users/sm/workspace/konga-ui/app/scripts/services/common.js"
 	],
 	"find":
 	{
@@ -934,6 +935,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"\n",
+			",",
+			"\n",
 			"$scope.paginate",
 			"common.read",
 			"$scope.entity = ",
@@ -1058,10 +1062,7 @@
 			"sortedSteps.",
 			"\\'",
 			"=\\'",
-			"===",
-			"dependency",
-			"    ",
-			"		"
+			"==="
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1124,88 +1125,31 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/scripts/controllers/main.js",
+					"file": "app/scripts/controllers/app-loader.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 28049,
+						"buffer_size": 706,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10260,
-								10306
+								359,
+								361
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 59.0,
-						"translation.y": 4200.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/scripts/controllers/entity-update.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 23673,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8105,
-								8105
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 6.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/views/list-input.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3006,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								128,
-								128
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1215,20 +1159,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 1,
 					"file": "bower.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4666,
+						"buffer_size": 4725,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								177,
+								177
 							]
 						],
 						"settings":
@@ -1238,38 +1182,97 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1616.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "app/scripts/directives/list-input.js",
+					"buffer": 2,
+					"file": "app/views/app-loader.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9228,
+						"buffer_size": 10,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								574,
-								589
+								10,
+								10
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 214.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/scripts/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12951,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12948,
+								12948
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4310.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/scripts/controllers/main.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 26461,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5271,
+								5271
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1188.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1324,8 +1327,44 @@
 		"selected_items":
 		[
 			[
+				"grunt",
+				"Gruntfile.js"
+			],
+			[
+				"metadata",
+				"app/scripts/services/metadata.js"
+			],
+			[
+				"bower.js",
+				"bower.json"
+			],
+			[
+				"apploader",
+				"app/views/app-loader.html"
+			],
+			[
+				"rawin",
+				"app/scripts/directives/raw-input.js"
+			],
+			[
+				"app",
+				"app/scripts/app.js"
+			],
+			[
 				"main",
 				"app/scripts/controllers/main.js"
+			],
+			[
+				"loaderjs",
+				"app/scripts/controllers/loader.js"
+			],
+			[
+				"konga",
+				"dist/styles/konga.css"
+			],
+			[
+				"raw",
+				"app/styles/raw-input.css"
 			],
 			[
 				"bower",
@@ -1346,10 +1385,6 @@
 			[
 				"cons",
 				"app/scripts/constants.js"
-			],
-			[
-				"rawin",
-				"app/views/raw-input.html"
 			],
 			[
 				"updateparams",
@@ -1388,10 +1423,6 @@
 				"app/styles/style.css"
 			],
 			[
-				"konga",
-				"dist/styles/konga.css"
-			],
-			[
 				"uti",
 				"app/scripts/util.js"
 			],
@@ -1408,16 +1439,8 @@
 				"app/views/konga-content-tabs.html"
 			],
 			[
-				"grunt",
-				"Gruntfile.js"
-			],
-			[
 				"maincon",
 				"app/views/main-container.html"
-			],
-			[
-				"app",
-				"app/scripts/app.js"
 			],
 			[
 				"index",
@@ -1814,26 +1837,6 @@
 			[
 				"probauo",
 				"ui/app/scripts/controllers/custom/product-batch-upload.js"
-			],
-			[
-				"prodcon",
-				"api/app/controllers/ProductController.php"
-			],
-			[
-				"tailoringup",
-				"ui/app/views/custom/tailoring-update.html"
-			],
-			[
-				"taings",
-				"ui/app/styles/custom/tailorings.css"
-			],
-			[
-				"entiy",
-				"ui/app/scripts/controllers/entity-update.js"
-			],
-			[
-				"stan",
-				"ui/app/scripts/services/standard-api.js"
 			]
 		],
 		"width": 0.0

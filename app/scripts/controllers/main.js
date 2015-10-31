@@ -73,18 +73,6 @@ angular.module('ui.konga')
 
 			$scope.configConstants = ENV;
 
-			$rootScope.status = {
-				load: true,
-				loaders: ['metadata']
-			};
-
-			// Redirect for loading if needed
-			var path = $location.path();
-			if(path.indexOf('/loading') !== 0 && $rootScope.status.loaders.length) {
-				var after = encodeURIComponent(path);
-				$location.path('/loading/' + after);
-			}
-
 			/**
 			 * @name tabs
 			 * @object

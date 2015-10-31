@@ -257,20 +257,4 @@ angular.module('ui.konga', [
     // Setting up spanish as default
     $translateProvider.preferredLanguage('en');
     moment.locale('en');
-  }
-])
-.run(['Metadata', '$rootScope', 'common', function(Metadata, $rootScope, common) {
-  // TODO Change when configurable metadata retrieval
-
-  // Load metadata
-  $rootScope.metadata = Metadata.get({lang: 'es'}, function(data) {
-    // Store the metadata
-    common.store('metadata', $rootScope.metadata);
-
-    // Init the tools
-    util.init(data);
-
-    // Notify
-    $rootScope.$broadcast('load-ready', { code: 'metadata' });
-  });
-}]);
+  }]);
