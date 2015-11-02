@@ -469,54 +469,52 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
     "\t\t</div>\n" +
     "\t</div>\n" +
     "\t<div class=\"col-md-12 padding-cero\">\n" +
-    "\t\t<div class=\"table-search-result\">\n" +
-    "\t\t\t<table class=\"table table-striped\">\n" +
-    "\t\t\t\t<tr class=\"table-header\">\n" +
-    "\t\t\t\t\t<!-- <th></th> -->\n" +
-    "\t\t\t\t\t<th ng-repeat=\"field in fields\">\n" +
-    "\t\t\t\t\t\t<table-header field=\"field\" showSorting=\"showSorting\" mode=\"update\"></table-header>\n" +
-    "\t\t\t\t\t</th>\n" +
-    "\t\t\t\t\t<th ng-show=\"actions && actions.length\">\n" +
-    "\t\t\t\t\t\t<span>{{ 'field.list-input.actions' | translate }}</span>\n" +
-    "\t\t\t\t\t</th>\n" +
-    "\t\t\t\t\t\n" +
-    "\t\t\t\t</tr>\n" +
-    "\t\t\t\t<tr ng-hide=\"filteredList.length > 0\">\n" +
-    "\t\t\t\t\t<td colspan=\"{{ fields.length + 1 }}\" class=\"text-center no-results\">{{'field.searchResults.noresults' | translate }}</td>\n" +
-    "\t\t\t\t</tr>\n" +
-    "\t\t\t\t<tr ng-if=\"!disableField(mode, property)\">\n" +
-    "\t\t\t\t\t<td colspan=\"{{ fields.length + 1 }}\" class=\"text-center\">\n" +
-    "\t\t\t\t\t\t<button class=\"btn btn-link\" ng-click=\"dispatchFieldAction('add')\" id=\"{{ fieldId }}-add\">\n" +
-    "\t\t\t\t\t\t\t<i class=\"glyphicon glyphicon-plus\"></i>\n" +
-    "\t\t\t\t\t\t\t{{ 'message.action.add' | translate }}\n" +
-    "\t\t\t\t\t\t</button>\n" +
-    "\t\t\t\t\t</td>\n" +
-    "\t\t\t\t</tr>\n" +
-    "\t\t\t\t<tr ng-show=\"filteredList.length>0\" ng-repeat=\"entity in filteredList | filter:quickSearchParams.value\">\n" +
-    "\t\t\t\t\t<!-- <td>\n" +
-    "\t\t\t\t\t\t<div class=\"checkbox\">\n" +
-    "\t\t\t\t\t\t  <label>\n" +
-    "\t\t\t\t\t\t    <input id=\"checkbox.id-list-input\" type=\"checkbox\" ng-model=\"entity.selected\" ng-change=\"pageChanged()\" ng-disabled=\"disabledIds[entity.id]\">\n" +
-    "\t\t\t\t\t\t  </label>\n" +
-    "\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t</td> -->\n" +
-    "\t\t\t\t\t<td ng-repeat=\"field in fields\">\n" +
-    "\t\t\t\t\t\t<table-cell entity=\"entity\" field=\"field\"></table-cell>\n" +
-    "\t\t\t\t\t</td>\n" +
-    "\t<!-- \t\t\t\t\t<table-cell entity=\"entity\" field=\"field\"></table-cell> -->\n" +
-    "\t\t\t\t\t<td ng-show=\"actions && actions.length\">\n" +
-    "\t\t\t\t\t\t<button class=\"btn btn-link no-button-styles\" ng-repeat=\"action in actions\" ng-click=\"dispatchFieldAction(action.name, {entity: entity})\" id=\"{{ fieldId + '-' + action.name }}\">\n" +
-    "\t\t\t\t\t\t\t<i ng-class=\"action.icon\" ng-show=\"action.icon.length\"></i>\n" +
-    "\t\t\t\t\t\t\t{{ action.label | translate }}\n" +
-    "\t\t\t\t\t\t</button>\n" +
-    "\t\t\t\t\t\t&nbsp;\n" +
-    "\t\t\t\t\t</td>\n" +
-    "\t\t\t\t</tr>\n" +
-    "\t\t\t\t<tr ng-hide=\"fields.length > 0\">\n" +
-    "\t\t\t\t\t<td colspan=\"{{ fields.length }}\" class=\"align-center\">{{'field.searchResults.noresults' | translate }}</td>\n" +
-    "\t\t\t\t</tr>\n" +
-    "\t\t\t</table>\n" +
-    "\t\t</div>\n" +
+    "\t\t<table class=\"table table-striped\">\n" +
+    "\t\t\t<tr class=\"table-header\">\n" +
+    "\t\t\t\t<!-- <th></th> -->\n" +
+    "\t\t\t\t<th ng-repeat=\"field in fields\">\n" +
+    "\t\t\t\t\t<table-header field=\"field\" showSorting=\"showSorting\" mode=\"update\"></table-header>\n" +
+    "\t\t\t\t</th>\n" +
+    "\t\t\t\t<th ng-show=\"actions && actions.length\">\n" +
+    "\t\t\t\t\t<span>{{ 'field.list-input.actions' | translate }}</span>\n" +
+    "\t\t\t\t</th>\n" +
+    "\t\t\t\t\n" +
+    "\t\t\t</tr>\n" +
+    "\t\t\t<tr ng-if=\"!disableField(mode, property)\">\n" +
+    "\t\t\t\t<td colspan=\"{{ fields.length + 1 }}\" class=\"text-center\">\n" +
+    "\t\t\t\t\t<button class=\"btn btn-link\" ng-click=\"dispatchFieldAction('add')\" id=\"{{ fieldId }}-add\">\n" +
+    "\t\t\t\t\t\t<i class=\"glyphicon glyphicon-plus\"></i>\n" +
+    "\t\t\t\t\t\t{{ 'message.action.add' | translate }}\n" +
+    "\t\t\t\t\t</button>\n" +
+    "\t\t\t\t</td>\n" +
+    "\t\t\t</tr>\n" +
+    "\t\t\t<tr ng-hide=\"filteredList.length > 0\">\n" +
+    "\t\t\t\t<td colspan=\"{{ fields.length + 1 }}\" class=\"text-center no-results\">{{'field.searchResults.noresults' | translate }}</td>\n" +
+    "\t\t\t</tr>\n" +
+    "\t\t\t<tr ng-show=\"filteredList.length>0\" ng-repeat=\"entity in filteredList | filter:quickSearchParams.value\">\n" +
+    "\t\t\t\t<!-- <td>\n" +
+    "\t\t\t\t\t<div class=\"checkbox\">\n" +
+    "\t\t\t\t\t  <label>\n" +
+    "\t\t\t\t\t    <input id=\"checkbox.id-list-input\" type=\"checkbox\" ng-model=\"entity.selected\" ng-change=\"pageChanged()\" ng-disabled=\"disabledIds[entity.id]\">\n" +
+    "\t\t\t\t\t  </label>\n" +
+    "\t\t\t\t\t</div>\n" +
+    "\t\t\t\t</td> -->\n" +
+    "\t\t\t\t<td ng-repeat=\"field in fields\">\n" +
+    "\t\t\t\t\t<table-cell entity=\"entity\" field=\"field\"></table-cell>\n" +
+    "\t\t\t\t</td>\n" +
+    "<!-- \t\t\t\t\t<table-cell entity=\"entity\" field=\"field\"></table-cell> -->\n" +
+    "\t\t\t\t<td ng-show=\"actions && actions.length\">\n" +
+    "\t\t\t\t\t<button class=\"btn btn-link no-button-styles\" ng-repeat=\"action in actions\" ng-click=\"dispatchFieldAction(action.name, {entity: entity})\" id=\"{{ fieldId + '-' + action.name }}\">\n" +
+    "\t\t\t\t\t\t<i ng-class=\"action.icon\" ng-show=\"action.icon.length\"></i>\n" +
+    "\t\t\t\t\t\t{{ action.label | translate }}\n" +
+    "\t\t\t\t\t</button>\n" +
+    "\t\t\t\t\t&nbsp;\n" +
+    "\t\t\t\t</td>\n" +
+    "\t\t\t</tr>\n" +
+    "\t\t\t<tr ng-hide=\"fields.length > 0\">\n" +
+    "\t\t\t\t<td colspan=\"{{ fields.length }}\" class=\"align-center\">{{'field.searchResults.noresults' | translate }}</td>\n" +
+    "\t\t\t</tr>\n" +
+    "\t\t</table>\n" +
     "\t</div>\n" +
     "</div>"
   );
