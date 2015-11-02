@@ -38,7 +38,7 @@
 					
 				</tr>
 				<tr ng-hide="filteredList.length > 0">
-					<td colspan="{{ fields.length + 1 }}" class="align-center">{{'field.searchResults.noresults' | translate }}</td>
+					<td colspan="{{ fields.length + 1 }}" class="align-center no-results">{{'field.searchResults.noresults' | translate }}</td>
 				</tr>
 				<tr ng-show="filteredList.length>0" ng-repeat="entity in filteredList | filter:quickSearchParams.value">
 					<!-- <td>

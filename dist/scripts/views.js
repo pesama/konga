@@ -482,7 +482,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t\t\n" +
     "\t\t\t\t</tr>\n" +
     "\t\t\t\t<tr ng-hide=\"filteredList.length > 0\">\n" +
-    "\t\t\t\t\t<td colspan=\"{{ fields.length + 1 }}\" class=\"align-center\">{{'field.searchResults.noresults' | translate }}</td>\n" +
+    "\t\t\t\t\t<td colspan=\"{{ fields.length + 1 }}\" class=\"align-center no-results\">{{'field.searchResults.noresults' | translate }}</td>\n" +
     "\t\t\t\t</tr>\n" +
     "\t\t\t\t<tr ng-show=\"filteredList.length>0\" ng-repeat=\"entity in filteredList | filter:quickSearchParams.value\">\n" +
     "\t\t\t\t\t<!-- <td>\n" +

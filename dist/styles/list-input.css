@@ -31,3 +31,8 @@
 .table-striped > tbody > tr:nth-child(even) > td, .table-striped > tbody > tr:nth-child(even) > th {
   background-color: white;
 }
+
+.list-input .no-results {
+  text-align: center;
+  font-weight: bold;
+}
