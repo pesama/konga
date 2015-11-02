@@ -519,6 +519,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "app/views/raw-input.html",
+			"settings":
+			{
+				"buffer_size": 1514,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -674,9 +682,7 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/pelayosanchez/Personal/konga-ui",
-		"/Users/pelayosanchez/Personal/konga-ui/app",
-		"/Users/pelayosanchez/Personal/konga-ui/test"
+		"/Users/sm/workspace/konga-ui"
 	],
 	"file_history":
 	[
@@ -1086,8 +1092,38 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "app/views/raw-input.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1514,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1477,
+								1477
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -1140,16 +1176,16 @@
 		"selected_items":
 		[
 			[
+				"rawin",
+				"app/views/raw-input.html"
+			],
+			[
 				"style",
 				"app/styles/style.css"
 			],
 			[
 				"selein",
 				"app/views/select-input.html"
-			],
-			[
-				"rawin",
-				"app/scripts/directives/raw-input.js"
 			],
 			[
 				"messages",
@@ -1662,7 +1698,7 @@
 		[
 			[
 				"",
-				"~/Personal/ui.konga-cloud/ui.konga-cloud.sublime-project"
+				"~/workspace/ui.konga-cloud/ui.konga-cloud.sublime-project"
 			],
 			[
 				"ko",

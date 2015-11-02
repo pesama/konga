@@ -1,23 +1,5 @@
-<div class="col-md-12 padding-cero" ng-class="inLineClass.col3" ng-init="hideGlobalValidation()">
+<div ng-init="hideGlobalValidation()">
 	<list-input fields="value.fields" actions="property.actions"
 		list="value.entity" property="property" metadata="metadata"
 		disabled-ids="[]" dispatch-field-action='dispatchFieldAction'></list-input>
-</div>
-<div class="row">
-	<div class="col-md-1" ng-if="!readonly">
-		<button class="btn btn-default"
-			ng-click="dispatchFieldAction('add')" id="{{ fieldId }}-add"
-			ng-hide="disableField(mode, property)">
-				<i class="glyphicon glyphicon-plus"></i>
-				{{ 'message.action.add' | translate }}
-			</button>
-	</div>
-	<div class="col-md-11">
-		<div ng-show="!validation.valid_minlength()">
-			<div class="validation-pick-pattern text-danger ng-binding">
-				<i class="glyphicon glyphicon-remove"></i> {{
-				'message.field-validation.array-min-length' | translate:{ elem: 'situation'} }}
-			</div>
-		</div>
-	</div>
 </div>

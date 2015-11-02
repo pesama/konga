@@ -38,7 +38,15 @@
 					
 				</tr>
 				<tr ng-hide="filteredList.length > 0">
-					<td colspan="{{ fields.length + 1 }}" class="align-center no-results">{{'field.searchResults.noresults' | translate }}</td>
+					<td colspan="{{ fields.length + 1 }}" class="text-center no-results">{{'field.searchResults.noresults' | translate }}</td>
+				</tr>
+				<tr ng-if="disableField(mode, property)">
+					<td colspan="{{ fields.length + 1 }}" class="text-center">
+						<button class="btn btn-link" ng-click="dispatchFieldAction('add')" id="{{ fieldId }}-add">
+							<i class="glyphicon glyphicon-plus"></i>
+							{{ 'message.action.add' | translate }}
+						</button>
+					</td>
 				</tr>
 				<tr ng-show="filteredList.length>0" ng-repeat="entity in filteredList | filter:quickSearchParams.value">
 					<!-- <td>

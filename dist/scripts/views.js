@@ -482,7 +482,15 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t\t\n" +
     "\t\t\t\t</tr>\n" +
     "\t\t\t\t<tr ng-hide=\"filteredList.length > 0\">\n" +
-    "\t\t\t\t\t<td colspan=\"{{ fields.length + 1 }}\" class=\"align-center no-results\">{{'field.searchResults.noresults' | translate }}</td>\n" +
+    "\t\t\t\t\t<td colspan=\"{{ fields.length + 1 }}\" class=\"text-center no-results\">{{'field.searchResults.noresults' | translate }}</td>\n" +
+    "\t\t\t\t</tr>\n" +
+    "\t\t\t\t<tr ng-if=\"disableField(mode, property)\">\n" +
+    "\t\t\t\t\t<td colspan=\"{{ fields.length + 1 }}\" class=\"text-center\">\n" +
+    "\t\t\t\t\t\t<button class=\"btn btn-link\" ng-click=\"dispatchFieldAction('add')\" id=\"{{ fieldId }}-add\">\n" +
+    "\t\t\t\t\t\t\t<i class=\"glyphicon glyphicon-plus\"></i>\n" +
+    "\t\t\t\t\t\t\t{{ 'message.action.add' | translate }}\n" +
+    "\t\t\t\t\t\t</button>\n" +
+    "\t\t\t\t\t</td>\n" +
     "\t\t\t\t</tr>\n" +
     "\t\t\t\t<tr ng-show=\"filteredList.length>0\" ng-repeat=\"entity in filteredList | filter:quickSearchParams.value\">\n" +
     "\t\t\t\t\t<!-- <td>\n" +
@@ -1019,28 +1027,10 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-pick_list-input.html',
-    "<div class=\"col-md-12 padding-cero\" ng-class=\"inLineClass.col3\" ng-init=\"hideGlobalValidation()\">\n" +
+    "<div ng-init=\"hideGlobalValidation()\">\n" +
     "\t<list-input fields=\"value.fields\" actions=\"property.actions\"\n" +
     "\t\tlist=\"value.entity\" property=\"property\" metadata=\"metadata\"\n" +
     "\t\tdisabled-ids=\"[]\" dispatch-field-action='dispatchFieldAction'></list-input>\n" +
-    "</div>\n" +
-    "<div class=\"row\">\n" +
-    "\t<div class=\"col-md-1\" ng-if=\"!readonly\">\n" +
-    "\t\t<button class=\"btn btn-default\"\n" +
-    "\t\t\tng-click=\"dispatchFieldAction('add')\" id=\"{{ fieldId }}-add\"\n" +
-    "\t\t\tng-hide=\"disableField(mode, property)\">\n" +
-    "\t\t\t\t<i class=\"glyphicon glyphicon-plus\"></i>\n" +
-    "\t\t\t\t{{ 'message.action.add' | translate }}\n" +
-    "\t\t\t</button>\n" +
-    "\t</div>\n" +
-    "\t<div class=\"col-md-11\">\n" +
-    "\t\t<div ng-show=\"!validation.valid_minlength()\">\n" +
-    "\t\t\t<div class=\"validation-pick-pattern text-danger ng-binding\">\n" +
-    "\t\t\t\t<i class=\"glyphicon glyphicon-remove\"></i> {{\n" +
-    "\t\t\t\t'message.field-validation.array-min-length' | translate:{ elem: 'situation'} }}\n" +
-    "\t\t\t</div>\n" +
-    "\t\t</div>\n" +
-    "\t</div>\n" +
     "</div>"
   );
 
