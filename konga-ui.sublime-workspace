@@ -519,14 +519,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "app/scripts/directives/raw-input.js",
-			"settings":
-			{
-				"buffer_size": 50685,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -683,15 +675,17 @@
 	"expanded_folders":
 	[
 		"/Users/pelayosanchez/Personal/konga-ui",
+		"/Users/pelayosanchez/Personal/konga-ui/app",
 		"/Users/pelayosanchez/Personal/konga-ui/test"
 	],
 	"file_history":
 	[
+		"/Users/pelayosanchez/Personal/konga-ui/app/styles/style.css",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/raw-input.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/views/select-input.html",
 		"/Users/pelayosanchez/Personal/konga-ui/app/views/raw-plain-input.html",
 		"/Users/pelayosanchez/Personal/konga-ui/app/views/raw-link-input.html",
 		"/Users/pelayosanchez/Personal/konga-ui/app/locale/messages_en.json",
-		"/Users/pelayosanchez/Personal/konga-ui/app/styles/style.css",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/main.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/app-loader.js",
 		"/Users/pelayosanchez/Personal/konga-ui/bower.json",
@@ -813,12 +807,11 @@
 		"/Users/sm/workspace/konga-ui/app/scripts/filters/map-eds-field.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/filters/quick-search.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/filters/result-params.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/filters/search-params.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/filters/select-data.js"
+		"/Users/sm/workspace/konga-ui/app/scripts/filters/search-params.js"
 	],
 	"find":
 	{
-		"height": 54.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -903,6 +896,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"$watch(",
+			"$watch",
 			"\n",
 			",",
 			"\n",
@@ -1028,9 +1023,7 @@
 			".done",
 			"updatePrices",
 			"sortedSteps.",
-			"\\'",
-			"=\\'",
-			"==="
+			"\\'"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1093,38 +1086,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "app/scripts/directives/raw-input.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 50685,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								41822,
-								41822
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 120.0,
-						"translation.y": 23518.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -1177,12 +1140,16 @@
 		"selected_items":
 		[
 			[
-				"rawin",
-				"app/scripts/directives/raw-input.js"
-			],
-			[
 				"style",
 				"app/styles/style.css"
+			],
+			[
+				"selein",
+				"app/views/select-input.html"
+			],
+			[
+				"rawin",
+				"app/scripts/directives/raw-input.js"
 			],
 			[
 				"messages",
@@ -1195,10 +1162,6 @@
 			[
 				"rawlin",
 				"app/views/raw-link-input.html"
-			],
-			[
-				"selein",
-				"app/scripts/directives/select-input.js"
 			],
 			[
 				"grunt",
