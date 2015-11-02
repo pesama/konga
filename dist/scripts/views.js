@@ -442,8 +442,8 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/list-input.html',
-    "<div class=\"list-input col-md-12 padding-cero\">\n" +
-    "\t<div class=\"col-md-12 padding-cero\" ng-if=\"paginate && filteredList.length > 10\">\n" +
+    "<div class=\"list-input padding-cero\">\n" +
+    "\t<div ng-if=\"paginate && filteredList.length > 10\">\n" +
     "\t\t<!-- ng-show=\"hideSearchSpiner\"> -->\n" +
     "\t\t<div class=\"row\">\n" +
     "\t\t\t<div class=\"col-md-4 form-inline position-pagination\" style=\"margin-top:10px\" ng-show=\"paginationData.count\">\n" +
@@ -468,7 +468,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
     "\t\t\t</div>\n" +
     "\t\t</div>\n" +
     "\t</div>\n" +
-    "\t<div class=\"col-md-12 padding-cero\">\n" +
+    "\t<div>\n" +
     "\t\t<table class=\"table table-striped\">\n" +
     "\t\t\t<tr class=\"table-header\">\n" +
     "\t\t\t\t<!-- <th></th> -->\n" +
@@ -479,14 +479,6 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t\t<span>{{ 'field.list-input.actions' | translate }}</span>\n" +
     "\t\t\t\t</th>\n" +
     "\t\t\t\t\n" +
-    "\t\t\t</tr>\n" +
-    "\t\t\t<tr ng-if=\"!disableField(mode, property)\">\n" +
-    "\t\t\t\t<td colspan=\"{{ fields.length + 1 }}\" class=\"text-center\">\n" +
-    "\t\t\t\t\t<button class=\"btn btn-link\" ng-click=\"dispatchFieldAction('add')\" id=\"{{ fieldId }}-add\">\n" +
-    "\t\t\t\t\t\t<i class=\"glyphicon glyphicon-plus\"></i>\n" +
-    "\t\t\t\t\t\t{{ 'message.action.add' | translate }}\n" +
-    "\t\t\t\t\t</button>\n" +
-    "\t\t\t\t</td>\n" +
     "\t\t\t</tr>\n" +
     "\t\t\t<tr ng-hide=\"filteredList.length > 0\">\n" +
     "\t\t\t\t<td colspan=\"{{ fields.length + 1 }}\" class=\"text-center no-results\">{{'field.searchResults.noresults' | translate }}</td>\n" +
@@ -511,8 +503,13 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t\t&nbsp;\n" +
     "\t\t\t\t</td>\n" +
     "\t\t\t</tr>\n" +
-    "\t\t\t<tr ng-hide=\"fields.length > 0\">\n" +
-    "\t\t\t\t<td colspan=\"{{ fields.length }}\" class=\"align-center\">{{'field.searchResults.noresults' | translate }}</td>\n" +
+    "\t\t\t<tr ng-if=\"!disableField(mode, property)\">\n" +
+    "\t\t\t\t<td colspan=\"{{ fields.length + 1 }}\" class=\"text-center\">\n" +
+    "\t\t\t\t\t<button class=\"btn btn-link\" ng-click=\"dispatchFieldAction('add')\" id=\"{{ fieldId }}-add\">\n" +
+    "\t\t\t\t\t\t<i class=\"glyphicon glyphicon-plus\"></i>\n" +
+    "\t\t\t\t\t\t{{ 'message.action.add' | translate }}\n" +
+    "\t\t\t\t\t</button>\n" +
+    "\t\t\t\t</td>\n" +
     "\t\t\t</tr>\n" +
     "\t\t</table>\n" +
     "\t</div>\n" +

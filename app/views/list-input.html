@@ -1,5 +1,5 @@
-<div class="list-input col-md-12 padding-cero">
-	<div class="col-md-12 padding-cero" ng-if="paginate && filteredList.length > 10">
+<div class="list-input padding-cero">
+	<div ng-if="paginate && filteredList.length > 10">
 		<!-- ng-show="hideSearchSpiner"> -->
 		<div class="row">
 			<div class="col-md-4 form-inline position-pagination" style="margin-top:10px" ng-show="paginationData.count">
@@ -24,7 +24,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-12 padding-cero">
+	<div>
 		<table class="table table-striped">
 			<tr class="table-header">
 				<!-- <th></th> -->
@@ -35,14 +35,6 @@
 					<span>{{ 'field.list-input.actions' | translate }}</span>
 				</th>
 				
-			</tr>
-			<tr ng-if="!disableField(mode, property)">
-				<td colspan="{{ fields.length + 1 }}" class="text-center">
-					<button class="btn btn-link" ng-click="dispatchFieldAction('add')" id="{{ fieldId }}-add">
-						<i class="glyphicon glyphicon-plus"></i>
-						{{ 'message.action.add' | translate }}
-					</button>
-				</td>
 			</tr>
 			<tr ng-hide="filteredList.length > 0">
 				<td colspan="{{ fields.length + 1 }}" class="text-center no-results">{{'field.searchResults.noresults' | translate }}</td>
@@ -67,8 +59,13 @@
 					&nbsp;
 				</td>
 			</tr>
-			<tr ng-hide="fields.length > 0">
-				<td colspan="{{ fields.length }}" class="align-center">{{'field.searchResults.noresults' | translate }}</td>
+			<tr ng-if="!disableField(mode, property)">
+				<td colspan="{{ fields.length + 1 }}" class="text-center">
+					<button class="btn btn-link" ng-click="dispatchFieldAction('add')" id="{{ fieldId }}-add">
+						<i class="glyphicon glyphicon-plus"></i>
+						{{ 'message.action.add' | translate }}
+					</button>
+				</td>
 			</tr>
 		</table>
 	</div>
