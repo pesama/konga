@@ -25,7 +25,7 @@ angular.module('ui.konga')
       	var metadata = util.getMetadata(entityType);
       	var apiPath = metadata.apiPath;
       	var quickSearch = $filter('quickSearch')(metadata)[0];
-      	var paramName = $filter('fieldApiName')(quickSearch.metadata.name, quickSearch.metadata);
+      	var paramName = !quickSearch.metadata ? null : $filter('fieldApiName')(quickSearch.metadata.name, quickSearch.metadata);
 
         var fields = util.getEntityFields(metadata);
         var codeField = $filter('filter')(fields, { isKey: true}, true)[0];

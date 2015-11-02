@@ -1342,11 +1342,6 @@ angular.module('ui.konga')
 				fieldType = constants.FIELD_TEXTAREA;
 			}
 
-			// Direct Entity keys are shown as text
-			if(!scope.parentField && scope.property.isKey) {
-				fieldType = constants.FIELD_PLAIN;
-			}
-
 			// Non complex fields with inner fields selected are rendered as complex
 			if(scope.value.fields.length) {
 				fieldType = constants.FIELD_COMPLEX;

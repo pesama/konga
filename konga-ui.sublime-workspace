@@ -547,7 +547,7 @@
 			"file": "app/scripts/app.js",
 			"settings":
 			{
-				"buffer_size": 12951,
+				"buffer_size": 10947,
 				"line_ending": "Unix"
 			}
 		},
@@ -719,10 +719,11 @@
 	],
 	"file_history":
 	[
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/raw-input.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/views/raw-input.html",
 		"/Users/pelayosanchez/Personal/konga-ui/Gruntfile.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/services/metadata-old.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/services/metadata.js",
-		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/raw-input.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/loader.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/list-input.js",
 		"/Users/pelayosanchez/Personal/konga-ui/bower.json",
@@ -731,7 +732,6 @@
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/main.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/styles/raw-input.css",
 		"/Users/pelayosanchez/Personal/konga-ui/dist/styles/konga.css",
-		"/Users/pelayosanchez/Personal/konga-ui/app/views/raw-input.html",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/constants.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/update-form.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/filters/update-params.js",
@@ -850,7 +850,7 @@
 	],
 	"find":
 	{
-		"height": 35.0
+		"height": 54.0
 	},
 	"find_in_files":
 	{
@@ -1222,15 +1222,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12951,
+						"buffer_size": 10947,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								12948,
-								12948
+								10203,
+								10203
 							]
 						],
 						"settings":
@@ -1240,7 +1240,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4310.0,
+						"translation.y": 3338.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1327,6 +1327,10 @@
 		"selected_items":
 		[
 			[
+				"rawin",
+				"app/scripts/directives/raw-input.js"
+			],
+			[
 				"grunt",
 				"Gruntfile.js"
 			],
@@ -1341,10 +1345,6 @@
 			[
 				"apploader",
 				"app/views/app-loader.html"
-			],
-			[
-				"rawin",
-				"app/scripts/directives/raw-input.js"
 			],
 			[
 				"app",
