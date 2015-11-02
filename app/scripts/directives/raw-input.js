@@ -1271,6 +1271,9 @@ angular.module('ui.konga')
 				  	case 'open-select':
 				  			$scope.openMultiSelect();
 				  		break;
+				  	// case 'open-link':
+				  	// 	// TODO
+				  		// break;
 				  	default:
 				  		$rootScope.operations.dispatchAction({ name: name }, actionParams);
 				  	}

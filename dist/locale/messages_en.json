@@ -59,6 +59,8 @@
 	"field.number-range.GREATER_THAN": "Greater than",
 	"field.number-range.BETWEEN": "Between",
 
+	"field.link.text": "Select value",
+
 	"message.table-input.not-yet-configured": "The table hasn't been configured yet",
 
 	"field.list-input.actions": "Actions",

@@ -520,42 +520,10 @@
 	"buffers":
 	[
 		{
-			"file": "app/scripts/controllers/app-loader.js",
+			"file": "app/scripts/directives/raw-input.js",
 			"settings":
 			{
-				"buffer_size": 706,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "bower.json",
-			"settings":
-			{
-				"buffer_size": 4725,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/app-loader.html",
-			"settings":
-			{
-				"buffer_size": 10,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/app.js",
-			"settings":
-			{
-				"buffer_size": 10947,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/controllers/main.js",
-			"settings":
-			{
-				"buffer_size": 26461,
+				"buffer_size": 50620,
 				"line_ending": "Unix"
 			}
 		}
@@ -719,6 +687,12 @@
 	],
 	"file_history":
 	[
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/main.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/app-loader.js",
+		"/Users/pelayosanchez/Personal/konga-ui/bower.json",
+		"/Users/pelayosanchez/Personal/konga-ui/app/views/app-loader.html",
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/app.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/select-input.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/raw-input.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/views/raw-input.html",
 		"/Users/pelayosanchez/Personal/konga-ui/Gruntfile.js",
@@ -726,10 +700,8 @@
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/services/metadata.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/loader.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/list-input.js",
-		"/Users/pelayosanchez/Personal/konga-ui/bower.json",
 		"/Users/pelayosanchez/Personal/konga-ui/app/views/list-input.html",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/entity-update.js",
-		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/main.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/styles/raw-input.css",
 		"/Users/pelayosanchez/Personal/konga-ui/dist/styles/konga.css",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/constants.js",
@@ -842,15 +814,11 @@
 		"/Users/sm/workspace/konga-ui/app/scripts/filters/selected-fields.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/filters/shortify.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/filters/table-renderer-complex.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/filters/translate-complex.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/filters/update-params.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/services/action-manager.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/services/api.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/services/common.js"
+		"/Users/sm/workspace/konga-ui/app/scripts/filters/translate-complex.js"
 	],
 	"find":
 	{
-		"height": 54.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -1125,142 +1093,24 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/scripts/controllers/app-loader.js",
+					"file": "app/scripts/directives/raw-input.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 706,
+						"buffer_size": 50620,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								359,
-								361
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "bower.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4725,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								177,
-								177
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/views/app-loader.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10,
-								10
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/scripts/app.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10947,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10203,
-								10203
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3338.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/scripts/controllers/main.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 26461,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5271,
-								5271
+								44926,
+								44926
 							]
 						],
 						"settings":
@@ -1269,10 +1119,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1188.0,
+						"translation.y": 25498.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1329,6 +1179,10 @@
 			[
 				"rawin",
 				"app/scripts/directives/raw-input.js"
+			],
+			[
+				"selein",
+				"app/scripts/directives/select-input.js"
 			],
 			[
 				"grunt",
@@ -1401,10 +1255,6 @@
 			[
 				"rawsele",
 				"app/views/raw-select-input.html"
-			],
-			[
-				"selein",
-				"app/views/select-input.html"
 			],
 			[
 				"styl",

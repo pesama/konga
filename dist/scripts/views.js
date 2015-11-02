@@ -936,6 +936,15 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('/konga/views/raw-link-input.html',
+    "<button class=\"btn btn-link\" ng-click=\"dispatchFieldAction('open-link')\">\n" +
+    "\t<i class=\"glyphicon glyphicon-plus\" ng-if=\"creating\"></i>\n" +
+    "\t<i class=\"glyphicon glyphicon-pencil\" ng-if=\"!creating\"></i>\n" +
+    "\t<span>{{ 'field.link.text' | translate }}</span>\n" +
+    "</button>"
+  );
+
+
   $templateCache.put('/konga/views/raw-list-input.html',
     "<div class=\"padding-cero\" ng-class=\"inLineClass.col1\">\n" +
     "\t<label for=\"{{ fieldId }}\">{{property.fieldLabel | translate:extra }}</label>\n" +
