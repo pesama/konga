@@ -1,8 +1,9 @@
 
 <!-- Alerts -->
 <div class="alert-container">
-	<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="operations.removeAlert($index)" 
-		ng-show="!alert.expired" class="alert-show-hide">{{alert.msg | translate:alert.parameters}}</alert>
+	<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="operations.removeAlert($index)" ng-show="!alert.expired" class="alert">
+		{{alert.msg | translate:alert.parameters}}
+	</alert>
 </div>
 
 <!-- TODO Include header -->

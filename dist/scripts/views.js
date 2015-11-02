@@ -567,8 +567,9 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
     "\n" +
     "<!-- Alerts -->\n" +
     "<div class=\"alert-container\">\n" +
-    "\t<alert ng-repeat=\"alert in alerts\" type=\"{{alert.type}}\" close=\"operations.removeAlert($index)\" \n" +
-    "\t\tng-show=\"!alert.expired\" class=\"alert-show-hide\">{{alert.msg | translate:alert.parameters}}</alert>\n" +
+    "\t<alert ng-repeat=\"alert in alerts\" type=\"{{alert.type}}\" close=\"operations.removeAlert($index)\" ng-show=\"!alert.expired\" class=\"alert\">\n" +
+    "\t\t{{alert.msg | translate:alert.parameters}}\n" +
+    "\t</alert>\n" +
     "</div>\n" +
     "\n" +
     "<!-- TODO Include header -->\n" +
