@@ -616,19 +616,6 @@ input.hideArrows::-webkit-inner-spin-button {
 .radio-inline {
 	padding-left: 20px !important;
 }
-.table-header > th {
-	background-color: #428BCA !important;
-}
-
-.table-header.categories > th {
-	background-color: #428BCA !important;
-	border: 0 !important;
-}
-
-.table-header.categories > th.noHeader {
-	background-color: transparent !important;
-}
-
 .table-header.categories + .table-header th {
 	border: 0 !important;
 	font-weight: normal !important;
