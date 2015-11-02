@@ -384,13 +384,23 @@ angular.module('ui.konga')
 							}
 						});
 						
-						if ($scope.value.entity && $scope.value.entity instanceof Array) {
-							$scope.$watchCollection('value.entity', function(newValue, oldValue) {
-								if(!angular.equals(newValue, oldValue)) {
-									$scope.fieldValidation();
-									$timeout(valueWatcher, 50);
-								}
-							}, true);
+						if ($scope.value.entity) {
+							if($scope.value.entity instanceof Array) {
+								$scope.$watchCollection('value.entity', function(newValue, oldValue) {
+									if(!angular.equals(newValue, oldValue)) {
+										$scope.fieldValidation();
+										$timeout(valueWatcher, 50);
+									}
+								}, true);
+							}
+							else {
+								$scope.$watch('value.entity', function(newValue, oldValue) {
+									if(!angular.equals(newValue, oldValue)) {
+										$scope.fieldValidation();
+										$timeout(valueWatcher, 50);
+									}
+								}, true);
+							}
 						}
 
 						// Special treatment for checkboxes on search

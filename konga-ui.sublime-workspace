@@ -523,7 +523,7 @@
 			"file": "app/scripts/directives/raw-input.js",
 			"settings":
 			{
-				"buffer_size": 50620,
+				"buffer_size": 50685,
 				"line_ending": "Unix"
 			}
 		}
@@ -687,13 +687,17 @@
 	],
 	"file_history":
 	[
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/raw-input.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/views/raw-plain-input.html",
+		"/Users/pelayosanchez/Personal/konga-ui/app/views/raw-link-input.html",
+		"/Users/pelayosanchez/Personal/konga-ui/app/locale/messages_en.json",
+		"/Users/pelayosanchez/Personal/konga-ui/app/styles/style.css",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/main.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/app-loader.js",
 		"/Users/pelayosanchez/Personal/konga-ui/bower.json",
 		"/Users/pelayosanchez/Personal/konga-ui/app/views/app-loader.html",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/app.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/select-input.js",
-		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/raw-input.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/views/raw-input.html",
 		"/Users/pelayosanchez/Personal/konga-ui/Gruntfile.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/services/metadata-old.js",
@@ -810,15 +814,11 @@
 		"/Users/sm/workspace/konga-ui/app/scripts/filters/quick-search.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/filters/result-params.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/filters/search-params.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/filters/select-data.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/filters/selected-fields.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/filters/shortify.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/filters/table-renderer-complex.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/filters/translate-complex.js"
+		"/Users/sm/workspace/konga-ui/app/scripts/filters/select-data.js"
 	],
 	"find":
 	{
-		"height": 35.0
+		"height": 54.0
 	},
 	"find_in_files":
 	{
@@ -1102,15 +1102,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 50620,
+						"buffer_size": 50685,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								44926,
-								44926
+								41822,
+								41822
 							]
 						],
 						"settings":
@@ -1118,8 +1118,8 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 25498.0,
+						"translation.x": 120.0,
+						"translation.y": 23518.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1179,6 +1179,22 @@
 			[
 				"rawin",
 				"app/scripts/directives/raw-input.js"
+			],
+			[
+				"style",
+				"app/styles/style.css"
+			],
+			[
+				"messages",
+				"app/locale/messages_en.json"
+			],
+			[
+				"rawpla",
+				"app/views/raw-plain-input.html"
+			],
+			[
+				"rawlin",
+				"app/views/raw-link-input.html"
 			],
 			[
 				"selein",
@@ -1267,10 +1283,6 @@
 			[
 				"compo",
 				"app/styles/components.css"
-			],
-			[
-				"style",
-				"app/styles/style.css"
 			],
 			[
 				"uti",
@@ -1675,18 +1687,6 @@
 			[
 				"csvdat",
 				"api/app/util/CSVDatabaseSeeder.php"
-			],
-			[
-				"csvhand",
-				"api/app/util/CsvHandler.php"
-			],
-			[
-				"fimap",
-				"ui/app/scripts/services/field-mapper.js"
-			],
-			[
-				"probauo",
-				"ui/app/scripts/controllers/custom/product-batch-upload.js"
 			]
 		],
 		"width": 0.0
