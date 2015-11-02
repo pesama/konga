@@ -14,24 +14,6 @@
 	margin-top: 10px;
 }
 
-.table-search-result th {
-  /*font-size: 9px;*/
-  white-space: nowrap;
-  /*font-family: "Verdana";*/
-  color: #fff;
-  /*font-weight: bold;*/
-}
-
-.table-search-result td {
-  font-size: 10.5pt;
-  white-space: nowrap;
-  text-align: left;
-}
-
-.table-striped > tbody > tr:nth-child(even) > td, .table-striped > tbody > tr:nth-child(even) > th {
-  background-color: white;
-}
-
 .list-input .no-results {
   text-align: center;
   font-weight: bold;

@@ -520,10 +520,26 @@
 	"buffers":
 	[
 		{
-			"file": "app/views/raw-input.html",
+			"file": "app/views/raw-pick_list-input.html",
 			"settings":
 			{
-				"buffer_size": 1514,
+				"buffer_size": 247,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/list-input.html",
+			"settings":
+			{
+				"buffer_size": 3034,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/styles/table-input.css",
+			"settings":
+			{
+				"buffer_size": 1303,
 				"line_ending": "Unix"
 			}
 		}
@@ -686,6 +702,8 @@
 	],
 	"file_history":
 	[
+		"/Users/sm/workspace/konga-ui/app/views/list-input.html",
+		"/Users/sm/workspace/konga-ui/app/views/raw-input.html",
 		"/Users/pelayosanchez/Personal/konga-ui/app/styles/style.css",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/raw-input.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/views/select-input.html",
@@ -716,7 +734,6 @@
 		"/Users/sm/workspace/konga-ui/app/styles/style.css",
 		"/Users/sm/workspace/konga-ui/app/styles/components.css",
 		"/Users/sm/workspace/konga-ui/app/scripts/directives/raw-input.js",
-		"/Users/sm/workspace/konga-ui/app/views/raw-input.html",
 		"/Users/sm/workspace/konga-ui/app/views/raw-pick_list-input.html",
 		"/Users/sm/workspace/konga-ui/app/views/select-input.html",
 		"/Users/sm/workspace/konga-ui/app/views/raw-select-input.html",
@@ -812,8 +829,7 @@
 		"/Users/sm/workspace/konga-ui/app/scripts/filters/active-inactive.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/filters/map-eds-field.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/filters/quick-search.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/filters/result-params.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/filters/search-params.js"
+		"/Users/sm/workspace/konga-ui/app/scripts/filters/result-params.js"
 	],
 	"find":
 	{
@@ -1092,24 +1108,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/views/raw-input.html",
+					"file": "app/views/raw-pick_list-input.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1514,
+						"buffer_size": 247,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1477,
-								1477
+								4,
+								4
 							]
 						],
 						"settings":
@@ -1121,7 +1137,64 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/views/list-input.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3034,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3008,
+								3008
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 730.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/styles/table-input.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1303,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1303,
+								1303
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 560.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1129,7 +1202,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 25.0
 	},
 	"input":
 	{
@@ -1166,7 +1239,7 @@
 	"project": "konga-ui.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1175,6 +1248,22 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"table",
+				"app/styles/table-input.css"
+			],
+			[
+				"lisin",
+				"app/views/list-input.html"
+			],
+			[
+				"rawpicklis",
+				"app/views/raw-pick_list-input.html"
+			],
+			[
+				"listin",
+				"app/views/list-input.html"
+			],
 			[
 				"rawin",
 				"app/views/raw-input.html"
@@ -1584,10 +1673,6 @@
 				"ui/app/scripts/constants.js"
 			],
 			[
-				"listin",
-				"ui/app/scripts/directives/list-input.js"
-			],
-			[
 				"taitytai",
 				"ui/app/views/custom/tailoring-add-tailoring-type-tailoring-type-field.html"
 			],
@@ -1674,18 +1759,6 @@
 			[
 				"tatypu",
 				"ui/app/views/custom/tailoring-type-update.html"
-			],
-			[
-				"tatystepcon",
-				"api/app/controllers/TailoringTypeStepController.php"
-			],
-			[
-				"tatycon",
-				"api/app/controllers/TailoringTypeController.php"
-			],
-			[
-				"csvdat",
-				"api/app/util/CSVDatabaseSeeder.php"
 			]
 		],
 		"width": 0.0
