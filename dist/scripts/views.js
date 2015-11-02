@@ -797,7 +797,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-complex-input.html',
-    "<div class=\"complex-container\">\n" +
+    "<div class=\"complex-container\" ng-init=\"hideGlobalValidation()\">\n" +
     "\t<raw-input \n" +
     "\t\tproperty=\"field\"\n" +
     "\t\tvertical=\"true\" \n" +
@@ -918,7 +918,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
     "\t\t<div ng-class=\"{ 'derived': !!parentField, 'full-width-component': (['COMPLEX', 'TABLE', 'PICK_LIST'].indexOf(property.fieldType[mode]) !== -1) }\" class=\"col-xs-12 col-sm-12 col-md-6 col-lg-8\">\n" +
     "\t\t\t<div ng-include=\"contentUrl\" ng-class=\"classFormInput\"></div>\n" +
     "\t\t</div>\n" +
-    "\t\t<div ng-if=\"['COMPLEX', 'TABLE', 'PICK_LIST'].indexOf(property.fieldType[mode]) === -1\" class=\"col-xs-12 col-sm-12 col-md-8 col-md-offset-6 col-lg-10 col-lg-offset-4\">\n" +
+    "\t\t<div ng-if=\"globalValidation\" class=\"col-xs-12 col-sm-12 col-md-8 col-md-offset-6 col-lg-10 col-lg-offset-4\">\n" +
     "\t\t\t<div class=\"validation-pattern text-danger\" ng-show=\"!validation.valid_pattern()\">\n" +
     "\t\t\t\t<i class=\"glyphicon glyphicon-remove\"></i>\n" +
     "\t\t\t\t{{ 'message.field-validation.pattern' | translate }}\n" +
@@ -938,7 +938,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-link-input.html',
-    "<button class=\"btn btn-link\" ng-click=\"dispatchFieldAction('open-link')\">\n" +
+    "<button class=\"btn btn-link\" ng-click=\"dispatchFieldAction('open-link')\" ng-init=\"hideGlobalValidation()\">\n" +
     "\t<i class=\"glyphicon glyphicon-plus\" ng-if=\"creating\"></i>\n" +
     "\t<i class=\"glyphicon glyphicon-pencil\" ng-if=\"!creating\"></i>\n" +
     "\t<span>{{ 'field.link.text' | translate }}</span>\n" +
@@ -1016,7 +1016,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-pick_list-input.html',
-    "<div class=\"col-md-12 padding-cero\" ng-class=\"inLineClass.col3\">\n" +
+    "<div class=\"col-md-12 padding-cero\" ng-class=\"inLineClass.col3\" ng-init=\"hideGlobalValidation()\">\n" +
     "\t<list-input fields=\"value.fields\" actions=\"property.actions\"\n" +
     "\t\tlist=\"value.entity\" property=\"property\" metadata=\"metadata\"\n" +
     "\t\tdisabled-ids=\"[]\" dispatch-field-action='dispatchFieldAction'></list-input>\n" +
@@ -1075,7 +1075,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-table-input.html',
-    "<div class=\"col-md-12 padding-cero\" ng-class=\"inLineClass.col1\">\n" +
+    "<div class=\"col-md-12 padding-cero\" ng-class=\"inLineClass.col1\" ng-init=\"hideGlobalValidation()\">\n" +
     "\t<label for=\"{{ fieldId }}\">{{property.fieldLabel |\n" +
     "\t\ttranslate:extra }}</label>\n" +
     "</div>\n" +

@@ -56,6 +56,9 @@ angular.module('ui.konga')
 	      	var resolveWatcher = null, valueWatcher = null;
 	      	var init = undefined, initCheck = false, initactive = true, initinactive = false;
 	      	
+	      	// Global validation
+	      	$scope.globalValidation = true;
+
 	      	// Flags for the cascade and propagation
 	      	$scope.cascadeEnabled = true;
 	      	$scope.propagateEnabled = true;
@@ -1320,9 +1323,12 @@ angular.module('ui.konga')
 			});
 			
 			$scope.$on('force-validation', function() {
-				
 				$scope.fieldValidation();
 			});
+
+			$scope.hideGlobalValidation = function() {
+				$scope.globalValidation = false;
+			};
 			
 	      },
 	      link: function(scope, element, attrs) {
