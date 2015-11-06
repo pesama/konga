@@ -150,287 +150,287 @@ angular.module('ui.konga')
 
 			$scope.update = function(init) {
 				var value = '';
-				// if(this.mode === constants.SCOPE_UPDATE) {
-					// There's an entity and it's ready to be used
-					if(this.entity && this.entity.$resolved !== false) {
-						var value;
-						if(this.mode === constants.SCOPE_UPDATE) {
-						    value = $filter('mapEdsField')($scope.entity, $scope.property);
-						} else {
-							value = $scope.entity[$scope.property.name];
+				if(this.entity && this.entity.$resolved !== false) {
+					var value;
+					if(this.mode === constants.SCOPE_UPDATE) {
+					    value = $filter('mapEdsField')($scope.entity, $scope.property);
+					} else {
+						value = $scope.entity[$scope.property.name];
+					}
+					//try to get values based on the parent object
+					if (value == null ) {
+						var parent = $scope.parentField;
+						if (parent) {
+							var apiNames = parent.apiName;
+							// TODO Control other modes
+							// var fields = $scope.mode === constants.SCOPE_SEARCH ? parent.searchable.fields : parent.showInUpdate.fields;
+							// var index = fields.indexOf($scope.property.name);
+							// if($scope) {
+								value = $scope.entity[$scope.property.apiName];
+							// }
 						}
-						//try to get values based on the parent object
-						if (value == null ) {
-							var parent = $scope.parentField;
-							if (parent) {
-								var apiNames = parent.apiName;
-								// TODO Control other modes
-								// var fields = $scope.mode === constants.SCOPE_SEARCH ? parent.searchable.fields : parent.showInUpdate.fields;
-								// var index = fields.indexOf($scope.property.name);
-								// if($scope) {
-									value = $scope.entity[$scope.property.apiName];
-								// }
-							}
-						}
+					}
 
-						// If the field is complex, get the source list for the related entity
-						var complexProperty = null;
-						var complexEntity = $scope.entity;
+					// If the field is complex, get the source list for the related entity
+					var complexProperty = null;
+					var complexEntity = $scope.entity;
 
-						// TODO Move somewhere else to put this
-						if($scope.property.isSelf) {
-							complexEntity = $scope.rootEntity;
-						}
+					// TODO Move somewhere else to put this
+					if($scope.property.isSelf) {
+						complexEntity = $scope.rootEntity;
+					}
 
-						if($scope.property.type.type === constants.FIELD_COMPLEX) {
-							complexProperty = $scope.property;
-						}
-						else if($scope.parentField && $scope.parentField.type.type === constants.FIELD_COMPLEX) {
-							complexProperty = $scope.parentField;
-						}
+					if($scope.property.type.type === constants.FIELD_COMPLEX) {
+						complexProperty = $scope.property;
+					}
+					else if($scope.parentField && $scope.parentField.type.type === constants.FIELD_COMPLEX) {
+						complexProperty = $scope.parentField;
+					}
 
-						if(complexProperty) {
+					if(complexProperty) {
 
-							var related = complexProperty.type.complexType;
+						var related = complexProperty.type.complexType;
 
-							// Get the real metadata
-							var realMetadata = common.getMetadata(related);
+						// Get the real metadata
+						var realMetadata = common.getMetadata(related);
 
-							// Store the entity
-							this.value.metadata = realMetadata;
+						// Store the entity
+						this.value.metadata = realMetadata;
 
-							// If updating do some extra stuff
-							if($scope.mode === constants.SCOPE_UPDATE) {
-								var realEntity;
-								if(!$scope.parentField || $scope.parentField.multiplicity === constants.MULTIPLICITY_ONE) {
-									realEntity = $filter('mapEdsField')(complexEntity, $scope.property);
-									
-									// TODO Move this elsewhere
-									// JSON Identity verification
-									var configuration = configurationManager.getConf(constants.JSON_IDENTITY_INFO, 1);
+						// If updating do some extra stuff
+						if($scope.mode === constants.SCOPE_UPDATE) {
+							var realEntity;
+							if(!$scope.parentField || $scope.parentField.multiplicity === constants.MULTIPLICITY_ONE) {
+								realEntity = $filter('mapEdsField')(complexEntity, $scope.property);
+								
+								// TODO Move this elsewhere
+								// JSON Identity verification
+								var configuration = configurationManager.getConf(constants.JSON_IDENTITY_INFO, 1);
 
-									if(configuration.length) {
-										var followJsonIdentity = configuration[0];
-										if(followJsonIdentity.value) {
-											// Get the object type
-											if($scope.property.type.type === constants.FIELD_COMPLEX && realEntity && realEntity.reason === constants.JSON_IDENTITY_INFO) {
-												// Get the metadata
-												var metadata = util.getMetadata($scope.property.type.complexType);
-												var apiPath = metadata.apiPath;
-												var entityId = realEntity.id;
-												realEntity = standardApi.get({ path: apiPath, id: entityId }, 
-													function(data) {
-														// Set the real value in the entity
-														$scope.value.entity = data;
-														var sendValue = angular.copy($scope.value);
-														var result = $scope.updateEntity($scope.property, sendValue, $scope.entity);
-														$scope.update(true);
-													}, function(error) {
+								if(configuration.length) {
+									var followJsonIdentity = configuration[0];
+									if(followJsonIdentity.value) {
+										// Get the object type
+										if($scope.property.type.type === constants.FIELD_COMPLEX && realEntity && realEntity.reason === constants.JSON_IDENTITY_INFO) {
+											// Get the metadata
+											var metadata = util.getMetadata($scope.property.type.complexType);
+											var apiPath = metadata.apiPath;
+											var entityId = realEntity.id;
+											realEntity = standardApi.get({ path: apiPath, id: entityId }, 
+												function(data) {
+													// Set the real value in the entity
+													$scope.value.entity = data;
+													var sendValue = angular.copy($scope.value);
+													var result = $scope.updateEntity($scope.property, sendValue, $scope.entity);
+													$scope.update(true);
+												}, function(error) {
 
-													});
-												return;
-											}
+												});
+											return;
 										}
 									}
-								}
-								else {
-									realEntity = [];
-									for(var i = 0; i < complexEntity.length; i++) {
-										realEntity.push($filter('mapEdsField')(complexEntity[i], $scope.property));
-									}
-								}
-
-								// Try and set a label
-								try {
-									$scope.setLabel(realMetadata, realEntity);
-								}catch(e) {
-									// XXX muahahahahahhahahaha
-								}
-
-								
-								//FIXME The metadata contain the value of the field extended and maybe this is not the best place
-								if ($scope.property.isExtended){
-									$scope.value.extended = $scope.property.labelExtended;
-									$scope.value.isExtended = $scope.property.isExtended; 
-								}
-								
-								$scope.value.entity = realEntity;
-
-								var entityCode = util.getEntityCode(realMetadata, realEntity);
-
-								// TODO Control multiplicity
-								if(entityCode !== null) {
-									$scope.value.text = entityCode;
-								}
-								else {
-									$scope.value.text = '';
-								}
-								
-								//ano 8142
-								$timeout(function(){
-									// Lookup for cascade filters
-									if($scope.property.derived) {
-										var source = $scope.parentField;
-										var	configuration = source.showInUpdate.configuration;
-										var listenerName = $scope.parentField.owner + '_' + $scope.parentField.name;
-										var cascadeConfiguration = $filter('filter')(configuration, { key: constants.CASCADE_UPDATE });
-										if(cascadeConfiguration.length) {
-											$scope.$emit('reset_cascade_' + listenerName, { reset: false, source: $scope.property, configuration: cascadeConfiguration, query: $scope.value.text });
-										}
-									}
-								}, 50);
-
-							}
-
-							// If there are some nested fields used, go on
-							var nestFields = null;
-							if($scope.mode === constants.SCOPE_SEARCH && $scope.property.searchable.fields && $scope.property.searchable.fields.length) {
-								nestFields = $scope.property.searchable.fields;
-							} // for search :)
-							else if($scope.mode === constants.SCOPE_UPDATE && $scope.property.showInUpdate.fields.length) { // And for update!
-								nestFields = $scope.property.showInUpdate.fields;
-							}
-
-							// Is there some field to nest?
-							if(nestFields && init) {
-								var allFields = util.getEntityFields(realMetadata);
-								var selectedFields = $filter('selectedFields')(allFields, nestFields, $scope.property);
-								for (var i = 0; i < selectedFields.length; i++){
-									// Setup the path source
-									// selectedFields[i].derivedPath.splice(0, 0, $scope.property);
-
-									$scope.value.fields.push(selectedFields[i]);
-								}								
-							}
-							if($scope.mode === constants.SCOPE_SEARCH) {
-								$scope.value.text = value;
-							}
-						}
-
-						switch($scope.property.type.type) {
-						case constants.FIELD_COMPLEX:
-							// Nothing to do here
-							break;
-						case constants.FIELD_BOOLEAN:
-							if($scope.mode === constants.SCOPE_SEARCH) {
-								$scope.value.text = value;
-								if($scope.value.text === '' || $scope.value.text === null) {
-									$scope.value.active = true;
-									$scope.value.inactive = true;
-								}								
-								else {
-									$scope.value.active = !!$scope.value.text;
-									$scope.value.inactive = !$scope.value.text;
 								}
 							}
 							else {
-								$scope.value.text = !!value;
-							}
-							break;
-						case constants.FIELD_DATE:
-							if ($scope.mode === constants.SCOPE_UPDATE) {
-								$scope.value.text = value;
-								if ($scope.property.fieldType.update == constants.FIELD_DATE) {
-									$scope.value.text = $filter('date')(value, 'yyyy-MM-dd');
-								} 
-								
-							} else if ($scope.mode === constants.SCOPE_SEARCH) {
-								$scope.value.date = value;
-							}
-							break;
-						default:
-							if($scope.property.type.type === constants.FIELD_NUMBER && value!="" && value!=null){
-								$scope.value.text = Number(value);
-							}else{
-								$scope.value.text = value;
-							}
-							if($scope.property.type.list) {
-								$scope.value.list = angular.copy($scope.property.type.list);
-
-								var multi = null;
-								if($scope.mode === constants.SCOPE_SEARCH) {
-									multi = fieldToMatch.searchConf.multiplicity;
-								}
-								else {
-									multi = fieldToMatch.multiplicity;
-								}
-
-								// if multiplicity is one, append a null value to de-select
-								if(multi === constants.MULTIPLICITY_ONE) {
-									$scope.value.list.splice(0, 0, { key: null, value: 'combobox.placeholder'});
+								realEntity = [];
+								for(var i = 0; i < complexEntity.length; i++) {
+									realEntity.push($filter('mapEdsField')(complexEntity[i], $scope.property));
 								}
 							}
 
-							if (value == undefined && $scope.property.defaults != undefined && $scope.creating) {
-								// set default property value if any
-								$scope.value.text = $scope.property.defaults;
+							// Try and set a label
+							try {
+								$scope.setLabel(realMetadata, realEntity);
+							}catch(e) {
+								// XXX muahahahahahhahahaha
 							}
+
+							
+							//FIXME The metadata contain the value of the field extended and maybe this is not the best place
+							if ($scope.property.isExtended){
+								$scope.value.extended = $scope.property.labelExtended;
+								$scope.value.isExtended = $scope.property.isExtended; 
+							}
+							
+							$scope.value.entity = realEntity;
+
+							var entityCode = util.getEntityCode(realMetadata, realEntity);
+
+							// TODO Control multiplicity
+							if(entityCode !== null) {
+								$scope.value.text = entityCode;
+							}
+							else {
+								$scope.value.text = '';
+							}
+							
+							//ano 8142
+							$timeout(function(){
+								// Lookup for cascade filters
+								if($scope.property.derived) {
+									var source = $scope.parentField;
+									var	configuration = source.showInUpdate.configuration;
+									var listenerName = $scope.parentField.owner + '_' + $scope.parentField.name;
+									var cascadeConfiguration = $filter('filter')(configuration, { key: constants.CASCADE_UPDATE });
+									if(cascadeConfiguration.length) {
+										$scope.$emit('reset_cascade_' + listenerName, { reset: false, source: $scope.property, configuration: cascadeConfiguration, query: $scope.value.text });
+									}
+								}
+							}, 50);
+
+						}
+
+						// If there are some nested fields used, go on
+						var nestFields = null;
+						if($scope.mode === constants.SCOPE_SEARCH && $scope.property.searchable.fields && $scope.property.searchable.fields.length) {
+							nestFields = $scope.property.searchable.fields;
+						} // for search :)
+						else if($scope.mode === constants.SCOPE_UPDATE && $scope.property.showInUpdate.fields.length) { // And for update!
+							nestFields = $scope.property.showInUpdate.fields;
+						}
+
+						// Is there some field to nest?
+						if(nestFields && init) {
+							var allFields = util.getEntityFields(realMetadata);
+							var selectedFields = $filter('selectedFields')(allFields, nestFields, $scope.property);
+							for (var i = 0; i < selectedFields.length; i++){
+								// Setup the path source
+								// selectedFields[i].derivedPath.splice(0, 0, $scope.property);
+
+								$scope.value.fields.push(selectedFields[i]);
+							}								
+						}
+						if($scope.mode === constants.SCOPE_SEARCH) {
+							$scope.value.text = value;
 						}
 					}
-					else if(this.entity && this.entity.$resolved === false) {
-						resolveWatcher = $scope.$watch('entity.$resolved', function() {
-							if($scope.entity.$resolved !== false) {
-								resolveWatcher();
-								$scope.update(true);
+
+					switch($scope.property.type.type) {
+					case constants.FIELD_COMPLEX:
+						// Nothing to do here
+						break;
+					case constants.FIELD_BOOLEAN:
+						if($scope.mode === constants.SCOPE_SEARCH) {
+							$scope.value.text = value;
+							if($scope.value.text === '' || $scope.value.text === null) {
+								$scope.value.active = true;
+								$scope.value.inactive = true;
+							}								
+							else {
+								$scope.value.active = !!$scope.value.text;
+								$scope.value.inactive = !$scope.value.text;
 							}
-						});
+						}
+						else {
+							$scope.value.text = !!value;
+						}
+						break;
+					case constants.FIELD_DATE:
+						if ($scope.mode === constants.SCOPE_UPDATE) {
+							$scope.value.text = value;
+							if ($scope.property.fieldType.update == constants.FIELD_DATE) {
+								$scope.value.text = $filter('date')(value, 'yyyy-MM-dd');
+							} 
+							
+						} else if ($scope.mode === constants.SCOPE_SEARCH) {
+							$scope.value.date = value;
+						}
+						break;
+					default:
+						if($scope.property.type.type === constants.FIELD_NUMBER && value!="" && value!=null){
+							$scope.value.text = Number(value);
+						}else{
+							$scope.value.text = value;
+						}
+						if($scope.property.type.list) {
+							$scope.value.list = angular.copy($scope.property.type.list);
 
+							var multi = null;
+							if($scope.mode === constants.SCOPE_SEARCH) {
+								multi = fieldToMatch.searchConf.multiplicity;
+							}
+							else {
+								multi = fieldToMatch.multiplicity;
+							}
+
+							// if multiplicity is one, append a null value to de-select
+							if(multi === constants.MULTIPLICITY_ONE) {
+								$scope.value.list.splice(0, 0, { key: null, value: 'combobox.placeholder'});
+							}
+						}
+
+						if (value == undefined && $scope.property.defaults != undefined && $scope.creating) {
+							// set default property value if any
+							$scope.value.text = $scope.property.defaults;
+						}
 					}
+				}
+				else if(this.entity && this.entity.$resolved === false) {
+					resolveWatcher = $scope.$watch('entity.$resolved', function() {
+						if($scope.entity.$resolved !== false) {
+							resolveWatcher();
+							$scope.update(true);
+						}
+					});
 
-					if(init && (this.entity && this.entity.$resolved !== false || $scope.creating)) {
-						// Start watchers
-						// Listen to value updates
-						$scope.$watch('value.text', function(newValue, oldValue) {
-							if($scope.watchersEnabled && newValue !== oldValue) {
+				}
+
+				if(init && (this.entity && this.entity.$resolved !== false || $scope.creating)) {
+					// Start watchers
+					// Listen to value updates
+					$scope.$watch('value.text', function(newValue, oldValue) {
+						if($scope.watchersEnabled && newValue !== oldValue) {
+							$scope.fieldValidation();
+							$timeout(valueWatcher, 50);
+						}
+					});
+					
+					if ($scope.value.entity && $scope.value.entity instanceof Array) {
+						$scope.$watchCollection('value.entity', function(newValue, oldValue) {
+							if(!angular.equals(newValue, oldValue)) {
 								$scope.fieldValidation();
 								$timeout(valueWatcher, 50);
 							}
-						});
-						
-						if ($scope.value.entity && $scope.value.entity instanceof Array) {
-							$scope.$watchCollection('value.entity', function(newValue, oldValue) {
-								if(!angular.equals(newValue, oldValue)) {
-									$scope.fieldValidation();
-									$timeout(valueWatcher, 50);
-								}
-							}, true);
-						}
-						else if($scope.property.type.type === constants.FIELD_COMPLEX) {
-							$scope.$watch('value.entity', function(newValue, oldValue) {
-								if(!angular.equals(newValue, oldValue)) {
-									$scope.fieldValidation();
-									$timeout(valueWatcher, 50);
-								}
-							}, true);
-						}
-
-						// Special treatment for checkboxes on search
-						if($scope.mode === constants.SCOPE_SEARCH && $scope.property.type.type == constants.FIELD_BOOLEAN) {
-							$scope.$watch('value.active', valueWatcher);
-							$scope.$watch('value.inactive', valueWatcher);
-						}
-
-						// Special treatment for dates on search
-						if($scope.mode === constants.SCOPE_SEARCH && $scope.property.type.type == constants.FIELD_DATE) {
-							$scope.$watch('value.date.startDate', valueWatcher);
-							$scope.$watch('value.date.endDate', valueWatcher);
-							$scope.$watch('value.date.comparator', valueWatcher);
-						}
-
-						// Special treatment for numbers on range mode
-						// on search
-						if($scope.mode === constants.SCOPE_SEARCH && $scope.property.type.type == constants.FIELD_NUMBER && $scope.property.searchConf.policy === constants.VALIDATOR_RANGE) {
-							$scope.$watch('value.range.from', valueWatcher);
-							$scope.$watch('value.range.to', valueWatcher);
-							$scope.$watch('value.range.comparator', valueWatcher);
-						}
-
-						// Special treatment for files
-						if($scope.property.type.type == constants.FIELD_FILE) {
-							$scope.$watchCollection('value.files', valueWatcher);
-						}
+						}, true);
 					}
-				// }
+					else if($scope.property.type.type === constants.FIELD_COMPLEX) {
+						$scope.$watch('value.entity', function(newValue, oldValue) {
+							if(!angular.equals(newValue, oldValue)) {
+								$scope.fieldValidation();
+								$timeout(valueWatcher, 50);
+							}
+						}, true);
+					}
+
+					// Special treatment for checkboxes on search
+					if($scope.mode === constants.SCOPE_SEARCH && $scope.property.type.type == constants.FIELD_BOOLEAN) {
+						$scope.$watch('value.active', valueWatcher);
+						$scope.$watch('value.inactive', valueWatcher);
+					}
+
+					// Special treatment for dates on search
+					if($scope.mode === constants.SCOPE_SEARCH && $scope.property.type.type == constants.FIELD_DATE) {
+						$scope.$watch('value.date.startDate', valueWatcher);
+						$scope.$watch('value.date.endDate', valueWatcher);
+						$scope.$watch('value.date.comparator', valueWatcher);
+					}
+
+					// Special treatment for numbers on range mode
+					// on search
+					if($scope.mode === constants.SCOPE_SEARCH && $scope.property.type.type == constants.FIELD_NUMBER && $scope.property.searchConf.policy === constants.VALIDATOR_RANGE) {
+						$scope.$watch('value.range.from', valueWatcher);
+						$scope.$watch('value.range.to', valueWatcher);
+						$scope.$watch('value.range.comparator', valueWatcher);
+					}
+
+					// Special treatment for files
+					if($scope.property.type.type == constants.FIELD_FILE) {
+						$scope.$watchCollection('value.files', valueWatcher);
+					}
+
+					// Notify linked fields
+					$rootScope.$broadcast('field-updated', { field: $scope.property, value: $scope.value });
+				}
 			};
 
 			$scope.reset = function() {
