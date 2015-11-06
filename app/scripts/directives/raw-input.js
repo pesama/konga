@@ -1154,7 +1154,7 @@ angular.module('ui.konga')
 		  		}
 
 		  		var action = $scope.property.linked.via;
-		  		$scope.dispatchFieldAction(action, { source: data.field, value: data.value });
+		  		$scope.dispatchFieldAction(action, { source: data.field, value: data.value, init: !!data.init });
 		  	});
 
 			/*
