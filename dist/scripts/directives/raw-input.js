@@ -429,7 +429,9 @@ angular.module('ui.konga')
 					}
 
 					// Notify linked fields
-					$rootScope.$broadcast('field-updated', { field: $scope.property, value: $scope.value });
+					$timeout(function() {
+						$rootScope.$broadcast('field-updated', { field: $scope.property, value: $scope.value });
+					}, 50);
 				}
 			};
 
