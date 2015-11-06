@@ -520,26 +520,10 @@
 	"buffers":
 	[
 		{
-			"file": "app/views/raw-pick_list-input.html",
+			"file": "app/scripts/directives/raw-input.js",
 			"settings":
 			{
-				"buffer_size": 247,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/list-input.html",
-			"settings":
-			{
-				"buffer_size": 3034,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/styles/table-input.css",
-			"settings":
-			{
-				"buffer_size": 1303,
+				"buffer_size": 50940,
 				"line_ending": "Unix"
 			}
 		}
@@ -698,10 +682,13 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/sm/workspace/konga-ui"
+		"/Users/pelayosanchez/Personal/konga-ui"
 	],
 	"file_history":
 	[
+		"/Users/pelayosanchez/Personal/konga-ui/app/styles/table-input.css",
+		"/Users/pelayosanchez/Personal/konga-ui/app/views/raw-pick_list-input.html",
+		"/Users/pelayosanchez/Personal/konga-ui/app/views/list-input.html",
 		"/Users/sm/workspace/konga-ui/app/views/list-input.html",
 		"/Users/sm/workspace/konga-ui/app/views/raw-input.html",
 		"/Users/pelayosanchez/Personal/konga-ui/app/styles/style.css",
@@ -722,7 +709,6 @@
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/services/metadata.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/loader.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/list-input.js",
-		"/Users/pelayosanchez/Personal/konga-ui/app/views/list-input.html",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/entity-update.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/styles/raw-input.css",
 		"/Users/pelayosanchez/Personal/konga-ui/dist/styles/konga.css",
@@ -827,9 +813,7 @@
 		"/Users/sm/workspace/konga-ui/app/scripts/controllers/entity-search.js",
 		"/Users/sm/workspace/konga-ui/konga-ui.sublime-project",
 		"/Users/sm/workspace/konga-ui/app/scripts/filters/active-inactive.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/filters/map-eds-field.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/filters/quick-search.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/filters/result-params.js"
+		"/Users/sm/workspace/konga-ui/app/scripts/filters/map-eds-field.js"
 	],
 	"find":
 	{
@@ -1108,93 +1092,36 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/views/raw-pick_list-input.html",
+					"file": "app/scripts/directives/raw-input.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 247,
+						"buffer_size": 50940,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4,
-								4
+								15190,
+								15190
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/views/list-input.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3034,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3008,
-								3008
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 730.0,
+						"translation.y": 7867.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/styles/table-input.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1303,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1303,
-								1303
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 560.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1249,6 +1176,10 @@
 		"selected_items":
 		[
 			[
+				"rawin",
+				"app/scripts/directives/raw-input.js"
+			],
+			[
 				"table",
 				"app/styles/table-input.css"
 			],
@@ -1263,10 +1194,6 @@
 			[
 				"listin",
 				"app/views/list-input.html"
-			],
-			[
-				"rawin",
-				"app/views/raw-input.html"
 			],
 			[
 				"style",
@@ -1771,7 +1698,7 @@
 		[
 			[
 				"",
-				"~/workspace/ui.konga-cloud/ui.konga-cloud.sublime-project"
+				"~/Personal/ui.konga-cloud/ui.konga-cloud.sublime-project"
 			],
 			[
 				"ko",
