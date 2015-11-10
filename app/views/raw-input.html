@@ -1,4 +1,4 @@
-<div class="raw-input">
+<div class="raw-input" ng-class="{ empty: config.init }">
 	<div class="row form-group mode-{{ mode }} {{ parentField ? 'derived' : '' }} {{(isExtended) ? 'extended' : '' }} {{displayMode}}">
 		<label class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
 			{{property.label | translate:extra }}

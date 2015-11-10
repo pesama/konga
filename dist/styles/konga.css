@@ -805,14 +805,14 @@ td.checked > .centerText  {
 .tics table tbody tr td.summary input {
 	width: 4em !important;
 }
-input.ng-invalid,
-input.invalid,
-input.ng-invalid:focus,
-input.invalid-min-length,
-input.invalid-max-length,
-input.invalid-date,
-select.ng-invalid,
-div.input-datetimepicker.ng-invalid input {
+.raw-input:not(.empty) input.ng-invalid,
+.raw-input:not(.empty) input.invalid,
+.raw-input:not(.empty) input.ng-invalid:focus,
+.raw-input:not(.empty) input.invalid-min-length,
+.raw-input:not(.empty) input.invalid-max-length,
+.raw-input:not(.empty) input.invalid-date,
+.raw-input:not(.empty) select.ng-invalid,
+.raw-input:not(.empty) div.input-datetimepicker.ng-invalid input {
 	border-color: #e33b3b;
 	outline-color: #e33b3b;
 }
