@@ -917,14 +917,17 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   $templateCache.put('/konga/views/raw-input.html',
     "<div class=\"raw-input\">\n" +
     "\t<div class=\"row form-group mode-{{ mode }} {{ parentField ? 'derived' : '' }} {{(isExtended) ? 'extended' : '' }} {{displayMode}}\">\n" +
-    "\t\t<label class=\"col-xs-12 col-sm-12 col-md-6 col-lg-4\">{{property.label | translate:extra }}</label>\n" +
+    "\t\t<label class=\"col-xs-12 col-sm-12 col-md-6 col-lg-4\">\n" +
+    "\t\t\t{{property.label | translate:extra }}\n" +
+    "\t\t\t<strong class=\"required asterisk\" ng-if=\"validation.required()\">*</strong>\n" +
+    "\t\t</label>\n" +
     "\t\t<div ng-class=\"{ 'derived': !!parentField, 'full-width-component': (['COMPLEX', 'TABLE', 'PICK_LIST'].indexOf(property.fieldType[mode]) !== -1) }\" class=\"col-xs-12 col-sm-12 col-md-6 col-lg-8\">\n" +
     "\t\t\t<div ng-include=\"contentUrl\" ng-class=\"classFormInput\"></div>\n" +
     "\t\t</div>\n" +
     "\t\t<div class=\"col-xs-12 col-sm-12 col-md-8 col-md-offset-6 col-lg-10 col-lg-offset-4\" ng-if=\"property.hint\">\n" +
     "\t\t\t<span class=\"text-muted\">{{ property.hint | translate:extra }}</span>\n" +
     "\t\t</div>\n" +
-    "\t\t<div ng-if=\"globalValidation\" class=\"col-xs-12 col-sm-12 col-md-8 col-md-offset-6 col-lg-10 col-lg-offset-4\">\n" +
+    "\t\t<div ng-if=\"globalValidation\" ng-hide=\"config.init\" class=\"col-xs-12 col-sm-12 col-md-8 col-md-offset-6 col-lg-10 col-lg-offset-4\">\n" +
     "\t\t\t<div class=\"validation-pattern text-danger\" ng-show=\"!validation.valid_pattern()\">\n" +
     "\t\t\t\t<i class=\"glyphicon glyphicon-remove\"></i>\n" +
     "\t\t\t\t{{ 'message.field-validation.pattern' | translate:extra }}\n" +

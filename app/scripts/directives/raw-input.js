@@ -90,6 +90,10 @@ angular.module('ui.konga')
 	      		files: []
 	      	};
 
+	      	var fieldConfig = $scope.config = {
+	      		init: true
+	      	};
+
 	      	// Setup the label
 	      	$scope.fieldLabel = $scope.property.label;
 	      	var configurationSource = [];
@@ -819,6 +823,8 @@ angular.module('ui.konga')
 	  		}
 
 			valueWatcher = function() {
+				fieldConfig.init = false;
+
 				initactive = $scope.value.active;
 				initinactive = $scope.value.inactive;
 
