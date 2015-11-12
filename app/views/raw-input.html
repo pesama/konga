@@ -1,13 +1,16 @@
-<div class="raw-input" ng-hide="config.hidden">
+<div class="raw-input" ng-hide="config.hidden" ng-class="{ empty: config.init }">
 	<div class="row form-group mode-{{ mode }} {{ parentField ? 'derived' : '' }} {{(isExtended) ? 'extended' : '' }} {{displayMode}}">
-		<label class="col-xs-12 col-sm-12 col-md-6 col-lg-4">{{property.label | translate:extra }}</label>
+		<label class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+			{{property.label | translate:extra }}
+			<strong class="required asterisk" ng-if="validation.required()">*</strong>
+		</label>
 		<div ng-class="{ 'derived': !!parentField, 'full-width-component': (['COMPLEX', 'TABLE', 'PICK_LIST'].indexOf(property.fieldType[mode]) !== -1) }" class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
 			<div ng-include="contentUrl" ng-class="classFormInput"></div>
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-6 col-lg-10 col-lg-offset-4" ng-if="property.hint">
 			<span class="text-muted">{{ property.hint | translate:extra }}</span>
 		</div>
-		<div ng-if="globalValidation" class="col-xs-12 col-sm-12 col-md-8 col-md-offset-6 col-lg-10 col-lg-offset-4">
+		<div ng-if="globalValidation" ng-hide="config.init" class="col-xs-12 col-sm-12 col-md-8 col-md-offset-6 col-lg-10 col-lg-offset-4">
 			<div class="validation-pattern text-danger" ng-show="!validation.valid_pattern()">
 				<i class="glyphicon glyphicon-remove"></i>
 				{{ 'message.field-validation.pattern' | translate:extra }}
