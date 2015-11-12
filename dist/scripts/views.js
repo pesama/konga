@@ -915,7 +915,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-input.html',
-    "<div class=\"raw-input\">\n" +
+    "<div class=\"raw-input\" ng-hide=\"config.hidden\">\n" +
     "\t<div class=\"row form-group mode-{{ mode }} {{ parentField ? 'derived' : '' }} {{(isExtended) ? 'extended' : '' }} {{displayMode}}\">\n" +
     "\t\t<label class=\"col-xs-12 col-sm-12 col-md-6 col-lg-4\">{{property.label | translate:extra }}</label>\n" +
     "\t\t<div ng-class=\"{ 'derived': !!parentField, 'full-width-component': (['COMPLEX', 'TABLE', 'PICK_LIST'].indexOf(property.fieldType[mode]) !== -1) }\" class=\"col-xs-12 col-sm-12 col-md-6 col-lg-8\">\n" +

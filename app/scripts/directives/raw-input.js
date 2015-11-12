@@ -72,6 +72,10 @@ angular.module('ui.konga')
 	      		$scope.rootEntity = $scope.entity;
 	      	}
 
+	      	var fieldConfig = $scope.config = {
+	      		hidden: false
+	      	};
+
 	      	var fieldValue = $scope.value = {
 	      		text: '',
 	      		list: [],
