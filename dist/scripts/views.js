@@ -1066,7 +1066,9 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-switch-input.html',
-    "<i class=\"raw-switch-input fa\" ng-class=\"{ 'fa-toggle-on text-success': !!value.text, 'fa-toggle-off text-default': !value.text }\" ng-click=\"value.text = !value.text\"></i>"
+    "<span class=\"raw-switch-input\">\n" +
+    "\t<i fa\" ng-class=\"{ 'fa-toggle-on text-success': !!value.text, 'fa-toggle-off text-default': !value.text }\" ng-click=\"value.text = !value.text\"></i>\n" +
+    "</span>"
   );
 
 
