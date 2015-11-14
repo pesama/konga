@@ -92,28 +92,29 @@
   ],
   "dependencies": {
     "angular": "1.2.16",
-    "json3": "~3.3.1",
-    "es5-shim": "~3.1.0",
-    "bootstrap-sass-official": "~3.2.0",
-    "angular-resource": "1.2.16",
-    "angular-cookies": "1.2.16",
-    "angular-sanitize": "1.2.16",
     "angular-animate": "1.2.16",
-    "angular-touch": "1.2.16",
-    "angular-route": "1.2.16",
-    "ionicons": "~1.5.2",
-    "angular-motion": "~0.3.3",
-    "bootstrap": "~3.2.0",
     "angular-bootstrap": "~0.11.0",
-    "angular-dialog-service": "~5.1.1",
-    "angular-translate-loader-static-files": "~2.2.0",
-    "angular-ui-tree": "~2.1.5",
-    "angular-ui-sortable": "~0.13.0",
     "angular-bootstrap-datetimepicker": "~0.3.7",
-    "angular-strap": "~2.1.4",
+    "angular-bootstrap-slider": "~0.1.17",
+    "angular-cookies": "1.2.16",
+    "angular-dialog-service": "~5.1.1",
     "angular-file-upload": "~1.1.5",
-    "ng-file-upload": "~3.2.4",
-    "angular-bootstrap-slider": "~0.1.17"
+    "angular-motion": "~0.3.3",
+    "angular-resource": "1.2.16",
+    "angular-route": "1.2.16",
+    "angular-sanitize": "1.2.16",
+    "angular-strap": "~2.1.4",
+    "angular-touch": "1.2.16",
+    "angular-translate-loader-static-files": "~2.2.0",
+    "angular-ui-sortable": "~0.13.0",
+    "angular-ui-tree": "~2.1.5",
+    "bootstrap": "~3.2.0",
+    "bootstrap-sass-official": "~3.2.0",
+    "components-font-awesome": "~4.4.0",
+    "es5-shim": "~3.1.0",
+    "ionicons": "~1.5.2",
+    "json3": "~3.3.1",
+    "ng-file-upload": "~3.2.4"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",
@@ -126,4 +127,4 @@
     "angular": "1.2.16",
     "es5-shim": "~3.1.0"
   }
-} 
+}

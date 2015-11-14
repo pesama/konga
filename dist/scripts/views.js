@@ -1065,6 +1065,11 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('/konga/views/raw-switch-input.html',
+    "<i class=\"fa\" ng-class=\"{ 'fa-toggle-on text-success': !!value.text, 'fa-toggle-off text-default': !value.text }\" ng-click=\"value.text = !value.text\"></i>"
+  );
+
+
   $templateCache.put('/konga/views/raw-table-input.html',
     "<div class=\"col-md-12 padding-cero\" ng-class=\"inLineClass.col1\" ng-init=\"hideGlobalValidation()\">\n" +
     "\t<label for=\"{{ fieldId }}\">{{property.fieldLabel |\n" +

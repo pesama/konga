@@ -520,10 +520,10 @@
 	"buffers":
 	[
 		{
-			"file": "app/scripts/directives/raw-input.js",
+			"file": "app/views/raw-boolean-input.html",
 			"settings":
 			{
-				"buffer_size": 50952,
+				"buffer_size": 603,
 				"line_ending": "Unix"
 			}
 		}
@@ -682,15 +682,17 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/pelayosanchez/Personal/konga-ui"
+		"/Users/sm/workspace/konga-ui"
 	],
 	"file_history":
 	[
+		"/Users/sm/workspace/konga-ui/app/views/raw-switch-input.html",
+		"/Users/sm/workspace/konga-ui/app/scripts/directives/raw-input.js",
+		"/Users/sm/workspace/konga-ui/app/views/raw-input.html",
 		"/Users/pelayosanchez/Personal/konga-ui/app/styles/table-input.css",
 		"/Users/pelayosanchez/Personal/konga-ui/app/views/raw-pick_list-input.html",
 		"/Users/pelayosanchez/Personal/konga-ui/app/views/list-input.html",
 		"/Users/sm/workspace/konga-ui/app/views/list-input.html",
-		"/Users/sm/workspace/konga-ui/app/views/raw-input.html",
 		"/Users/pelayosanchez/Personal/konga-ui/app/styles/style.css",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/raw-input.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/views/select-input.html",
@@ -719,7 +721,6 @@
 		"/Users/sm/workspace/konga-ui/app/views/konga-content-plain.html",
 		"/Users/sm/workspace/konga-ui/app/styles/style.css",
 		"/Users/sm/workspace/konga-ui/app/styles/components.css",
-		"/Users/sm/workspace/konga-ui/app/scripts/directives/raw-input.js",
 		"/Users/sm/workspace/konga-ui/app/views/raw-pick_list-input.html",
 		"/Users/sm/workspace/konga-ui/app/views/select-input.html",
 		"/Users/sm/workspace/konga-ui/app/views/raw-select-input.html",
@@ -812,8 +813,7 @@
 		"/Users/sm/workspace/konga-ui/app/scripts/controllers/login.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/controllers/entity-search.js",
 		"/Users/sm/workspace/konga-ui/konga-ui.sublime-project",
-		"/Users/sm/workspace/konga-ui/app/scripts/filters/active-inactive.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/filters/map-eds-field.js"
+		"/Users/sm/workspace/konga-ui/app/scripts/filters/active-inactive.js"
 	],
 	"find":
 	{
@@ -1097,28 +1097,27 @@
 			[
 				{
 					"buffer": 0,
-					"file": "app/scripts/directives/raw-input.js",
+					"file": "app/views/raw-boolean-input.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 50952,
+						"buffer_size": 603,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								15292,
-								15292
+								603,
+								603
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
-						"translation.x": 564.0,
-						"translation.y": 7868.0,
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1176,8 +1175,20 @@
 		"selected_items":
 		[
 			[
+				"raboo",
+				"app/views/raw-boolean-input.html"
+			],
+			[
+				"raswitn",
+				"app/views/raw-switch-input.html"
+			],
+			[
 				"rawin",
 				"app/scripts/directives/raw-input.js"
+			],
+			[
+				"rawinh",
+				"app/views/raw-input.html"
 			],
 			[
 				"table",
@@ -1674,18 +1685,6 @@
 			[
 				"addpretyfi",
 				"ui/app/views/custom/tailoring-add-tailoring-type-tailoring-type-field.html"
-			],
-			[
-				"pretafie",
-				"ui/app/scripts/directives/custom/presupuestor-tailoring-field.js"
-			],
-			[
-				"tatyfiel",
-				"ui/app/views/custom/tailoring-add-tailoring-type-tailoring-type-field.html"
-			],
-			[
-				"tatypu",
-				"ui/app/views/custom/tailoring-type-update.html"
 			]
 		],
 		"width": 0.0
@@ -1698,7 +1697,7 @@
 		[
 			[
 				"",
-				"~/Personal/ui.konga-cloud/ui.konga-cloud.sublime-project"
+				"~/workspace/api.konga-cloud/api.konga-cloud.sublime-project"
 			],
 			[
 				"ko",
