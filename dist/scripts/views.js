@@ -1137,7 +1137,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/result-table.html',
-    "<div ng-include=\"contentUrl\"></div>"
+    "<div ng-include=\"contentUrl\" ng-init=\"init()\"></div>"
   );
 
 

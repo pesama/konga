@@ -544,6 +544,14 @@
 			}
 		},
 		{
+			"file": "app/views/list-input.html",
+			"settings":
+			{
+				"buffer_size": 3097,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "dist/styles/raw-input.css",
 			"settings":
 			{
@@ -1124,7 +1132,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -1152,7 +1160,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -1182,7 +1190,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -1210,11 +1218,40 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
+					"file": "app/views/list-input.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3097,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								286,
+								286
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "dist/styles/raw-input.css",
 					"semi_transient": false,
 					"settings":
@@ -1239,11 +1276,11 @@
 						"translation.y": 2498.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "app/styles/raw-input.css",
 					"semi_transient": false,
 					"settings":
@@ -1268,7 +1305,7 @@
 						"translation.y": 2566.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -1323,6 +1360,10 @@
 		"selected_items":
 		[
 			[
+				"lisin",
+				"app/views/list-input.html"
+			],
+			[
 				"rawin",
 				"app/styles/raw-input.css"
 			],
@@ -1349,10 +1390,6 @@
 			[
 				"table",
 				"app/styles/table-input.css"
-			],
-			[
-				"lisin",
-				"app/views/list-input.html"
 			],
 			[
 				"rawpicklis",
