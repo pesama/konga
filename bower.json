@@ -106,6 +106,7 @@
     "angular-strap": "~2.1.4",
     "angular-touch": "1.2.16",
     "angular-translate-loader-static-files": "~2.2.0",
+    "angular-ui-calendar": "~1.0.1",
     "angular-ui-sortable": "~0.13.0",
     "angular-ui-tree": "~2.1.5",
     "bootstrap": "~3.2.0",

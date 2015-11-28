@@ -11,6 +11,11 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('/konga/views/calendar-input.html',
+    "<div ui-calendar ng-model=\"value.entity\"></div>"
+  );
+
+
   $templateCache.put('/konga/views/cascade-result-table.html',
     "<table class=\"table table-result\">\n" +
     "\t<thead>\n" +
@@ -765,6 +770,11 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('/konga/views/raw-calendar-input.html',
+    "<calendar-input></calendar-input>"
+  );
+
+
   $templateCache.put('/konga/views/raw-checkbox-input.html',
     "<div class=\"checkbox-inline\">\n" +
     "\t<label for=\"{{ fieldId }}-true\"> <input name=\"{{ property.name }}\"type=\"checkbox\" ng-value=\"true\" ng-model=\"value.active\" id=\"{{ fieldId }}-true\"> \n" +
@@ -1453,8 +1463,8 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
     "\t<table width=\"100%\" cellspacing=\"0\" cellpadding=\"1\" border=\"1\">\n" +
     "\t\t<thead>\n" +
     "\t\t\t<tr class=\"categories\">\n" +
-    "\t\t\t\t<th rowspan=\"3\" class=\"text-center\">Composants</th>\n" +
-    "\t\t\t\t<th rowspan=\"3\"class=\"text-center\">Evenements</th>\n" +
+    "\t\t\t\t<th rowspan=\"3\" class=\"text-center\">{{ labels.projects }}</th>\n" +
+    "\t\t\t\t<th rowspan=\"3\"class=\"text-center\">{{ labels.events }}</th>\n" +
     "\t\t\t\t<th colspan=\"32\"class=\"text-center\">{{ structure.monthName | translate }} {{ structure.yearNo }}</th>\n" +
     "\t\t\t</tr>\n" +
     "\t\t\t<tr>\n" +
