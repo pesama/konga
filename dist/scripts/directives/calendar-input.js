@@ -6,7 +6,7 @@
  * @description
  * # calendarInput
  */
-angular.module('uikongaApp')
+angular.module('ui.konga')
   .directive('calendarInput', function () {
     return {
       templateUrl: '/konga/views/calendar-input.html',
