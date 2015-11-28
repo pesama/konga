@@ -12,7 +12,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/calendar-input.html',
-    "<div ui-calendar ng-model=\"value.entity\"></div>"
+    "<div ui-calendar=\"uiConfig.calendar\" ng-model=\"value.entity\"></div>"
   );
 
 

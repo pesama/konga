@@ -13,7 +13,20 @@ angular.module('ui.konga')
       restrict: 'E',
       replace: true,
       link: function postLink(scope, element, attrs) {
-        
+        scope.uiConfif = {
+	      calendar:{
+	        height: 600,
+	        editable: true,
+	        header:{
+	          left: '',
+	          center: 'title',
+	          right: 'today prev,next'
+	        },
+	        dayClick: scope.alertEventOnClick,
+	        eventDrop: scope.alertOnDrop,
+	        eventResize: scope.alertOnResize
+	      }
+	    };
       }
     };
   });
