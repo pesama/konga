@@ -16,6 +16,7 @@
     "dist/scripts/controllers/multi-select.js",
     "dist/scripts/controllers/single-select-custom.js",
     "dist/scripts/controllers/single-select.js",
+    "dist/scripts/directives/calendar-input.js",
     "dist/scripts/directives/file-input.js",
     "dist/scripts/directives/konga-content.js",
     "dist/scripts/directives/konga-select.js",
