@@ -13,7 +13,7 @@ angular.module('ui.konga')
       restrict: 'E',
       replace: true,
       link: function postLink(scope, element, attrs) {
-        scope.uiConfif = {
+        scope.uiConfig = {
 	      calendar:{
 	        height: 600,
 	        editable: true,
