@@ -519,14 +519,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "app/scripts/directives/raw-input.js",
-			"settings":
-			{
-				"buffer_size": 50952,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -686,15 +678,18 @@
 	],
 	"file_history":
 	[
+		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/raw-input.js",
+		"/Users/pelayosanchez/Personal/konga-ui/app/views/raw-input.html",
+		"/Users/pelayosanchez/Personal/konga-ui/app/views/raw-plain-input.html",
+		"/Users/pelayosanchez/Personal/konga-ui/app/styles/validation.css",
+		"/Users/pelayosanchez/Personal/konga-ui/dist/styles/konga.css",
 		"/Users/pelayosanchez/Personal/konga-ui/app/styles/table-input.css",
 		"/Users/pelayosanchez/Personal/konga-ui/app/views/raw-pick_list-input.html",
 		"/Users/pelayosanchez/Personal/konga-ui/app/views/list-input.html",
 		"/Users/sm/workspace/konga-ui/app/views/list-input.html",
 		"/Users/sm/workspace/konga-ui/app/views/raw-input.html",
 		"/Users/pelayosanchez/Personal/konga-ui/app/styles/style.css",
-		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/raw-input.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/views/select-input.html",
-		"/Users/pelayosanchez/Personal/konga-ui/app/views/raw-plain-input.html",
 		"/Users/pelayosanchez/Personal/konga-ui/app/views/raw-link-input.html",
 		"/Users/pelayosanchez/Personal/konga-ui/app/locale/messages_en.json",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/main.js",
@@ -703,7 +698,6 @@
 		"/Users/pelayosanchez/Personal/konga-ui/app/views/app-loader.html",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/app.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/select-input.js",
-		"/Users/pelayosanchez/Personal/konga-ui/app/views/raw-input.html",
 		"/Users/pelayosanchez/Personal/konga-ui/Gruntfile.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/services/metadata-old.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/services/metadata.js",
@@ -711,7 +705,6 @@
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/list-input.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/controllers/entity-update.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/styles/raw-input.css",
-		"/Users/pelayosanchez/Personal/konga-ui/dist/styles/konga.css",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/constants.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/directives/update-form.js",
 		"/Users/pelayosanchez/Personal/konga-ui/app/scripts/filters/update-params.js",
@@ -812,8 +805,7 @@
 		"/Users/sm/workspace/konga-ui/app/scripts/controllers/login.js",
 		"/Users/sm/workspace/konga-ui/app/scripts/controllers/entity-search.js",
 		"/Users/sm/workspace/konga-ui/konga-ui.sublime-project",
-		"/Users/sm/workspace/konga-ui/app/scripts/filters/active-inactive.js",
-		"/Users/sm/workspace/konga-ui/app/scripts/filters/map-eds-field.js"
+		"/Users/sm/workspace/konga-ui/app/scripts/filters/active-inactive.js"
 	],
 	"find":
 	{
@@ -824,6 +816,7 @@
 		"height": 102.0,
 		"where_history":
 		[
+			"/Users/pelayosanchez/Personal/konga-ui/app/styles",
 			"/Users/sm/workspace/konga-ui/app/styles",
 			"/Users/sm/workspace/konga-ui/app",
 			"/Users/sm/workspace/konga-ui/app/styles",
@@ -902,6 +895,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"input.ng-invalid",
 			"$watch(",
 			"$watch",
 			"\n",
@@ -1028,8 +1022,7 @@
 			"finished",
 			".done",
 			"updatePrices",
-			"sortedSteps.",
-			"\\'"
+			"sortedSteps."
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1092,38 +1085,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "app/scripts/directives/raw-input.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 50952,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								15292,
-								15292
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 564.0,
-						"translation.y": 7868.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -1176,8 +1139,16 @@
 		"selected_items":
 		[
 			[
+				"konga",
+				"dist/styles/konga.css"
+			],
+			[
+				"rawplain",
+				"app/views/raw-plain-input.html"
+			],
+			[
 				"rawin",
-				"app/scripts/directives/raw-input.js"
+				"app/views/raw-input.html"
 			],
 			[
 				"table",
@@ -1242,10 +1213,6 @@
 			[
 				"loaderjs",
 				"app/scripts/controllers/loader.js"
-			],
-			[
-				"konga",
-				"dist/styles/konga.css"
 			],
 			[
 				"raw",
@@ -1682,10 +1649,6 @@
 			[
 				"tatyfiel",
 				"ui/app/views/custom/tailoring-add-tailoring-type-tailoring-type-field.html"
-			],
-			[
-				"tatypu",
-				"ui/app/views/custom/tailoring-type-update.html"
 			]
 		],
 		"width": 0.0
