@@ -175,7 +175,8 @@ angular.module('ui.konga', [
   'dialogs.main',
   'config',
   'angularFileUpload',
-  'ui.bootstrap-slider'
+  'ui.bootstrap-slider',
+  'ui.calendar'
 ])
 .config(['$httpProvider',  function($httpProvider) {
     $httpProvider.defaults.useXDomain = true;

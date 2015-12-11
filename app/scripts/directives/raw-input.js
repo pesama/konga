@@ -72,6 +72,11 @@ angular.module('ui.konga')
 	      		$scope.rootEntity = $scope.entity;
 	      	}
 
+	      	var fieldConfig = $scope.config = {
+	      		hidden: false,
+	      		init: true
+	      	};
+
 	      	var fieldValue = $scope.value = {
 	      		text: '',
 	      		list: [],
@@ -88,10 +93,6 @@ angular.module('ui.konga')
 	      		},
 	      		fields: [],
 	      		files: []
-	      	};
-
-	      	var fieldConfig = $scope.config = {
-	      		init: true
 	      	};
 
 	      	// Setup the label

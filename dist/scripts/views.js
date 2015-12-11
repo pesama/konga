@@ -11,6 +11,11 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('/konga/views/calendar-input.html',
+    "<div ui-calendar=\"uiConfig.calendar\" ng-model=\"value.entity\"></div>"
+  );
+
+
   $templateCache.put('/konga/views/cascade-result-table.html',
     "<table class=\"table table-result\">\n" +
     "\t<thead>\n" +
@@ -470,47 +475,50 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
     "\t</div>\n" +
     "\t<div>\n" +
     "\t\t<table class=\"table table-striped\">\n" +
-    "\t\t\t<tr class=\"table-header\">\n" +
-    "\t\t\t\t<!-- <th></th> -->\n" +
-    "\t\t\t\t<th ng-repeat=\"field in fields\">\n" +
-    "\t\t\t\t\t<table-header field=\"field\" showSorting=\"showSorting\" mode=\"update\"></table-header>\n" +
-    "\t\t\t\t</th>\n" +
-    "\t\t\t\t<th ng-show=\"actions && actions.length\">\n" +
-    "\t\t\t\t\t<span>{{ 'field.list-input.actions' | translate }}</span>\n" +
-    "\t\t\t\t</th>\n" +
-    "\t\t\t\t\n" +
-    "\t\t\t</tr>\n" +
-    "\t\t\t<tr ng-hide=\"filteredList.length > 0\">\n" +
-    "\t\t\t\t<td colspan=\"{{ fields.length + 1 }}\" class=\"text-center no-results\">{{'field.searchResults.noresults' | translate }}</td>\n" +
-    "\t\t\t</tr>\n" +
-    "\t\t\t<tr ng-show=\"filteredList.length>0\" ng-repeat=\"entity in filteredList | filter:quickSearchParams.value\">\n" +
-    "\t\t\t\t<!-- <td>\n" +
-    "\t\t\t\t\t<div class=\"checkbox\">\n" +
-    "\t\t\t\t\t  <label>\n" +
-    "\t\t\t\t\t    <input id=\"checkbox.id-list-input\" type=\"checkbox\" ng-model=\"entity.selected\" ng-change=\"pageChanged()\" ng-disabled=\"disabledIds[entity.id]\">\n" +
-    "\t\t\t\t\t  </label>\n" +
-    "\t\t\t\t\t</div>\n" +
-    "\t\t\t\t</td> -->\n" +
-    "\t\t\t\t<td ng-repeat=\"field in fields\">\n" +
-    "\t\t\t\t\t<table-cell entity=\"entity\" field=\"field\"></table-cell>\n" +
-    "\t\t\t\t</td>\n" +
-    "<!-- \t\t\t\t\t<table-cell entity=\"entity\" field=\"field\"></table-cell> -->\n" +
-    "\t\t\t\t<td ng-show=\"actions && actions.length\">\n" +
-    "\t\t\t\t\t<button class=\"btn btn-link no-button-styles\" ng-repeat=\"action in actions\" ng-click=\"dispatchFieldAction(action.name, {entity: entity})\" id=\"{{ fieldId + '-' + action.name }}\">\n" +
-    "\t\t\t\t\t\t<i ng-class=\"action.icon\" ng-show=\"action.icon.length\"></i>\n" +
-    "\t\t\t\t\t\t{{ action.label | translate }}\n" +
-    "\t\t\t\t\t</button>\n" +
-    "\t\t\t\t\t&nbsp;\n" +
-    "\t\t\t\t</td>\n" +
-    "\t\t\t</tr>\n" +
-    "\t\t\t<tr ng-if=\"!disableField(mode, property)\">\n" +
-    "\t\t\t\t<td colspan=\"{{ fields.length + 1 }}\" class=\"text-center\">\n" +
-    "\t\t\t\t\t<button class=\"btn btn-link\" ng-click=\"dispatchFieldAction('add')\" id=\"{{ fieldId }}-add\">\n" +
-    "\t\t\t\t\t\t<i class=\"glyphicon glyphicon-plus\"></i>\n" +
-    "\t\t\t\t\t\t{{ 'message.action.add' | translate }}\n" +
-    "\t\t\t\t\t</button>\n" +
-    "\t\t\t\t</td>\n" +
-    "\t\t\t</tr>\n" +
+    "\t\t\t<thead>\n" +
+    "\t\t\t\t<tr class=\"table-header\">\n" +
+    "\t\t\t\t\t<th ng-repeat=\"field in fields\">\n" +
+    "\t\t\t\t\t\t<table-header field=\"field\" showSorting=\"showSorting\" mode=\"update\"></table-header>\n" +
+    "\t\t\t\t\t</th>\n" +
+    "\t\t\t\t\t<th ng-show=\"actions && actions.length\">\n" +
+    "\t\t\t\t\t\t<span>{{ 'field.list-input.actions' | translate }}</span>\n" +
+    "\t\t\t\t\t</th>\n" +
+    "\t\t\t\t\t\n" +
+    "\t\t\t\t</tr>\n" +
+    "\t\t\t</thead>\n" +
+    "\t\t\t<tbody>\n" +
+    "\t\t\t\t<tr ng-hide=\"filteredList.length > 0\">\n" +
+    "\t\t\t\t\t<td colspan=\"{{ fields.length + 1 }}\" class=\"text-center no-results\">{{'field.searchResults.noresults' | translate }}</td>\n" +
+    "\t\t\t\t</tr>\n" +
+    "\t\t\t\t<tr ng-show=\"filteredList.length>0\" ng-repeat=\"entity in filteredList | filter:quickSearchParams.value\">\n" +
+    "\t\t\t\t\t<!-- <td>\n" +
+    "\t\t\t\t\t\t<div class=\"checkbox\">\n" +
+    "\t\t\t\t\t\t  <label>\n" +
+    "\t\t\t\t\t\t    <input id=\"checkbox.id-list-input\" type=\"checkbox\" ng-model=\"entity.selected\" ng-change=\"pageChanged()\" ng-disabled=\"disabledIds[entity.id]\">\n" +
+    "\t\t\t\t\t\t  </label>\n" +
+    "\t\t\t\t\t\t</div>\n" +
+    "\t\t\t\t\t</td> -->\n" +
+    "\t\t\t\t\t<td ng-repeat=\"field in fields\">\n" +
+    "\t\t\t\t\t\t<table-cell entity=\"entity\" field=\"field\"></table-cell>\n" +
+    "\t\t\t\t\t</td>\n" +
+    "\t<!-- \t\t\t\t\t<table-cell entity=\"entity\" field=\"field\"></table-cell> -->\n" +
+    "\t\t\t\t\t<td ng-show=\"actions && actions.length\">\n" +
+    "\t\t\t\t\t\t<button class=\"btn btn-link no-button-styles\" ng-repeat=\"action in actions\" ng-click=\"dispatchFieldAction(action.name, {entity: entity})\" id=\"{{ fieldId + '-' + action.name }}\">\n" +
+    "\t\t\t\t\t\t\t<i ng-class=\"action.icon\" ng-show=\"action.icon.length\"></i>\n" +
+    "\t\t\t\t\t\t\t{{ action.label | translate }}\n" +
+    "\t\t\t\t\t\t</button>\n" +
+    "\t\t\t\t\t\t&nbsp;\n" +
+    "\t\t\t\t\t</td>\n" +
+    "\t\t\t\t</tr>\n" +
+    "\t\t\t\t<tr ng-if=\"!disableField(mode, property)\">\n" +
+    "\t\t\t\t\t<td colspan=\"{{ fields.length + 1 }}\" class=\"text-center\">\n" +
+    "\t\t\t\t\t\t<button class=\"btn btn-link\" ng-click=\"dispatchFieldAction('add')\" id=\"{{ fieldId }}-add\">\n" +
+    "\t\t\t\t\t\t\t<i class=\"glyphicon glyphicon-plus\"></i>\n" +
+    "\t\t\t\t\t\t\t{{ 'message.action.add' | translate }}\n" +
+    "\t\t\t\t\t\t</button>\n" +
+    "\t\t\t\t\t</td>\n" +
+    "\t\t\t\t</tr>\n" +
+    "\t\t\t</tbody>\n" +
     "\t\t</table>\n" +
     "\t</div>\n" +
     "</div>"
@@ -762,6 +770,11 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('/konga/views/raw-calendar-input.html',
+    "<calendar-input></calendar-input>"
+  );
+
+
   $templateCache.put('/konga/views/raw-checkbox-input.html',
     "<div class=\"checkbox-inline\">\n" +
     "\t<label for=\"{{ fieldId }}-true\"> <input name=\"{{ property.name }}\"type=\"checkbox\" ng-value=\"true\" ng-model=\"value.active\" id=\"{{ fieldId }}-true\"> \n" +
@@ -915,13 +928,13 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-input.html',
-    "<div class=\"raw-input\" ng-class=\"{ empty: config.init }\">\n" +
+    "<div class=\"raw-input\" ng-hide=\"config.hidden\" ng-class=\"{ empty: config.init }\">\n" +
     "\t<div class=\"row form-group mode-{{ mode }} {{ parentField ? 'derived' : '' }} {{(isExtended) ? 'extended' : '' }} {{displayMode}}\">\n" +
     "\t\t<label class=\"col-xs-12 col-sm-12 col-md-6 col-lg-4\">\n" +
     "\t\t\t{{property.label | translate:extra }}\n" +
     "\t\t\t<strong class=\"required asterisk\" ng-if=\"validation.required()\">*</strong>\n" +
     "\t\t</label>\n" +
-    "\t\t<div ng-class=\"{ 'derived': !!parentField, 'full-width-component': (['COMPLEX', 'TABLE', 'PICK_LIST'].indexOf(property.fieldType[mode]) !== -1) }\" class=\"col-xs-12 col-sm-12 col-md-6 col-lg-8\">\n" +
+    "\t\t<div ng-class=\"{ 'derived': !!parentField, 'full-width-component': (['COMPLEX', 'TABLE', 'PICK_LIST', 'CALENDAR'].indexOf(property.fieldType[mode]) !== -1) }\" class=\"col-xs-12 col-sm-12 col-md-6 col-lg-8\">\n" +
     "\t\t\t<div ng-include=\"contentUrl\" ng-class=\"classFormInput\"></div>\n" +
     "\t\t</div>\n" +
     "\t\t<div class=\"col-xs-12 col-sm-12 col-md-8 col-md-offset-6 col-lg-10 col-lg-offset-4\" ng-if=\"property.hint\">\n" +
@@ -1065,6 +1078,13 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('/konga/views/raw-switch-input.html',
+    "<span class=\"raw-switch-input\">\n" +
+    "\t<i class=\"fa\" ng-class=\"{ 'fa-toggle-on text-success': !!value.text, 'fa-toggle-off text-default': !value.text }\" ng-click=\"value.text = !value.text\"></i>\n" +
+    "</span>"
+  );
+
+
   $templateCache.put('/konga/views/raw-table-input.html',
     "<div class=\"col-md-12 padding-cero\" ng-class=\"inLineClass.col1\" ng-init=\"hideGlobalValidation()\">\n" +
     "\t<label for=\"{{ fieldId }}\">{{property.fieldLabel |\n" +
@@ -1127,7 +1147,7 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/result-table.html',
-    "<div ng-include=\"contentUrl\"></div>"
+    "<div ng-include=\"contentUrl\" ng-init=\"init()\"></div>"
   );
 
 
@@ -1443,8 +1463,8 @@ angular.module('ui.konga').run(['$templateCache', function($templateCache) {
     "\t<table width=\"100%\" cellspacing=\"0\" cellpadding=\"1\" border=\"1\">\n" +
     "\t\t<thead>\n" +
     "\t\t\t<tr class=\"categories\">\n" +
-    "\t\t\t\t<th rowspan=\"3\" class=\"text-center\">Composants</th>\n" +
-    "\t\t\t\t<th rowspan=\"3\"class=\"text-center\">Evenements</th>\n" +
+    "\t\t\t\t<th rowspan=\"3\" class=\"text-center\">{{ labels.projects }}</th>\n" +
+    "\t\t\t\t<th rowspan=\"3\"class=\"text-center\">{{ labels.events }}</th>\n" +
     "\t\t\t\t<th colspan=\"32\"class=\"text-center\">{{ structure.monthName | translate }} {{ structure.yearNo }}</th>\n" +
     "\t\t\t</tr>\n" +
     "\t\t\t<tr>\n" +

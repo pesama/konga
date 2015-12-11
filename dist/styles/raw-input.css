@@ -183,3 +183,7 @@ input.hideArrows::-webkit-inner-spin-button {
 .radio-inline {
 	padding-left: 20px !important;
 }
+
+.raw-switch-input {
+    font-size: 1.8em;
+}

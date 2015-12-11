@@ -619,6 +619,10 @@ input.hideArrows::-webkit-inner-spin-button {
 .radio-inline {
 	padding-left: 20px !important;
 }
+
+.raw-switch-input {
+    font-size: 1.8em;
+}
 .table-header.categories + .table-header th {
 	border: 0 !important;
 	font-weight: normal !important;
