@@ -22,6 +22,7 @@ angular.module('ui.konga')
 	          center: 'title',
 	          right: 'today prev,next'
 	        },
+	        events: scope.value.entity,
 	        dayClick: function(date, jsEvent, view, resourceObj) {
 	        	// TODO Do something
 

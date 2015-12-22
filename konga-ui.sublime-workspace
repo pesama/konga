@@ -526,6 +526,14 @@
 				"buffer_size": 996,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "app/scripts/services/configuration-manager.js",
+			"settings":
+			{
+				"buffer_size": 1536,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "",
@@ -1109,8 +1117,8 @@
 						"selection":
 						[
 							[
-								761,
-								761
+								98,
+								98
 							]
 						],
 						"settings":
@@ -1122,6 +1130,36 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/scripts/services/configuration-manager.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1536,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1175,6 +1213,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"confma",
+				"app/scripts/services/configuration-manager.js"
+			],
 			[
 				"calen",
 				"app/scripts/directives/calendar-input.js"
@@ -1518,10 +1560,6 @@
 			[
 				"mapper",
 				"app/scripts/mapper.js"
-			],
-			[
-				"confma",
-				"app/scripts/services/configuration-manager.js"
 			],
 			[
 				"pack",
