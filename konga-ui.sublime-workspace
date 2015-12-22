@@ -523,7 +523,7 @@
 			"file": "app/scripts/directives/calendar-input.js",
 			"settings":
 			{
-				"buffer_size": 996,
+				"buffer_size": 1033,
 				"line_ending": "Unix"
 			}
 		},
@@ -1110,23 +1110,23 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 996,
+						"buffer_size": 1033,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								98,
-								98
+								601,
+								601
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": -0.0,
+						"translation.y": 11.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

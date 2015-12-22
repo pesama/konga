@@ -38,6 +38,16 @@ angular.module('ui.konga')
 	        },
 	        eventResize: function() {
 
+	        },
+	        eventRender: function(event, element, view) {
+	        	// TODO Do something
+
+	        	scope.$emit('calendar-event-render', 
+	        		{ 
+	        			event: event, 
+	        			element: element,
+	        			view: view
+	        		});
 	        }
 	      }
 	    };
