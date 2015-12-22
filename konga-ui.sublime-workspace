@@ -523,7 +523,15 @@
 			"file": "app/scripts/directives/calendar-input.js",
 			"settings":
 			{
-				"buffer_size": 1033,
+				"buffer_size": 1289,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/calendar-input.html",
+			"settings":
+			{
+				"buffer_size": 67,
 				"line_ending": "Unix"
 			}
 		},
@@ -1101,7 +1109,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1110,30 +1118,58 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1033,
+						"buffer_size": 1289,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								601,
-								601
+								1239,
+								1239
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
-						"translation.x": -0.0,
-						"translation.y": 11.0,
+						"translation.x": 0.0,
+						"translation.y": 150.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/views/calendar-input.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 67,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								67,
+								67
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 2,
 					"file": "app/scripts/services/configuration-manager.js",
 					"semi_transient": false,
 					"settings":
@@ -1159,7 +1195,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1213,6 +1249,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"calendart",
+				"app/views/calendar-input.html"
+			],
 			[
 				"confma",
 				"app/scripts/services/configuration-manager.js"
@@ -1720,10 +1760,6 @@
 			[
 				"addpretyfi",
 				"ui/app/views/custom/tailoring-add-tailoring-type-tailoring-type-field.html"
-			],
-			[
-				"pretafie",
-				"ui/app/scripts/directives/custom/presupuestor-tailoring-field.js"
 			]
 		],
 		"width": 0.0
