@@ -22,9 +22,22 @@ angular.module('ui.konga')
 	          center: 'title',
 	          right: 'today prev,next'
 	        },
-	        dayClick: scope.alertEventOnClick,
-	        eventDrop: scope.alertOnDrop,
-	        eventResize: scope.alertOnResize
+	        dayClick: function(date, jsEvent, view, resourceObj) {
+	        	// TODO Do something
+
+	        	scope.$emit('calendar-day-click', 
+	        		{ 
+	        			date: date, 
+	        			jsEvent: jsEvent, 
+	        			view: view, 
+	        			resourceObj: resourceObj 
+	        		});
+	        },
+	        eventDrop: function() {
+	        },
+	        eventResize: function() {
+
+	        }
 	      }
 	    };
       }
