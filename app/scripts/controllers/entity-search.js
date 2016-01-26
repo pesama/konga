@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc controller
- * @name ui.konga.controller:Entity Search
+ * @name ui.konga.controller:EntitySearchCtrl
  * @description
  * Controller used for search ENTITY entities. It's route provides information about what type of entity are we searching for
  * 

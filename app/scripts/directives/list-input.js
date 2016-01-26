@@ -1,8 +1,8 @@
 'use strict';
 
-/**
+/*
  * @ngdoc directive
- * @name ui.konga.directive:List input
+ * @name ui.konga.directive:listInput
  * @description
  * # listInput
  */

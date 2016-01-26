@@ -1,6 +1,6 @@
 'use strict';
 
-/**
+/*
  * @ngdoc directive
  * @name uikongaApp.directive:calendarInput
  * @description
