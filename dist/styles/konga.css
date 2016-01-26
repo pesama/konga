@@ -73,6 +73,9 @@
 .form-group.mode-update {
     width: 100%;
 }
+.filterHide {
+	display: none;
+}
 div.filtermanagement {
 	margin-top: 1em;
 	text-align: center;
