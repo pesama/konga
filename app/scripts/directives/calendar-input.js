@@ -25,8 +25,6 @@ angular.module('ui.konga')
 	        firstDay: 1,
 	        events: scope.value.entity,
 	        dayClick: function(date, jsEvent, view, resourceObj) {
-	        	// TODO Do something
-
 	        	scope.$emit('calendar-day-click', 
 	        		{ 
 	        			date: date, 
@@ -35,14 +33,19 @@ angular.module('ui.konga')
 	        			resourceObj: resourceObj 
 	        		});
 	        },
+	        eventClick: function(date, jsEvent, view) {
+	        	scope.$emit('calendar-event-click', {
+	        		date: date,
+	        		jsEvent: jsEvent,
+	        		view: view
+	        	});
+	        },
 	        eventDrop: function() {
 	        },
 	        eventResize: function() {
 
 	        },
 	        eventRender: function(event, element, view) {
-	        	// TODO Do something
-
 	        	scope.$emit('calendar-event-render', 
 	        		{ 
 	        			event: event, 
