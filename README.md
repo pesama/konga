@@ -47,15 +47,105 @@ For demo purposes we are going to create a basic `TODO` list with Lists and Task
 
 ![alt tag](http://konga.io/wp-content/uploads/2016/01/PriceTables-ERD-New-Page.png)
 
-### Launching
-
-In order to start Konga behaviors, you need to setup an entry point to Konga within your app. Our app will start with a list of TODO Lists, where you could access existing (or create new lists) and attach and manage tasks beneath them.
-
-* Attach TODO Lists _Search & Results_ to your application startup:
+* Configure Grunt task to load metadata: On your `Gruntfile.js` file type this:
 
 ```
-angular.module('myApp').run(['$rootScope', function($rootScope) {
-	$rootScope.openEntitySearch('todo-list');
+ngconstant: {
+  // Options for all targets
+  options: {
+    space: '  ',
+    wrap: '"use strict";\n\n {%= __ngModule %}',
+    name: 'myApp-config',
+    dest: '<%= yeoman.dist %>/scripts/config.js'
+  },
+  // Environment targets
+  development: {
+    constants: {
+      // In case you already use grunt-ngconstant, you simply need to add this line to the 'constants' object
+      metadata: grunt.file.readJSON('app/metadata.json')
+    }
+  }
+},
+```
+
+And attach the task `ngconstant` to Grunt's `serve` task:
+
+```
+grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
+  if (target === 'dist') {
+    return grunt.task.run(['build', 'connect:dist:keepalive']);
+  }
+
+  grunt.task.run([
+    'clean:server',
+    'wiredep',
+    'concurrent:server',
+    'autoprefixer:server',
+    'concat:actions',
+    'ngconstant', // Add your task here
+    'ngtemplates',
+    'connect:livereload',
+    'watch'
+  ]);
+});
+```
+
+* Include the new `configuration` dependency to your app
+
+```
+angular.module('myApp', [
+  ...
+  'ui.konga',
+  'myApp-config',
+  ...
+]);
+```
+
+And reference the `config.js` file on your `index.html` file:
+
+```
+<script src="scripts/config.js"></script>
+```
+
+* Attach metadata loading and Session startup:
+
+```
+angular.module('myApp')
+.run(['Session', function(Session) {
+  Session.data.authToken = '';
+  Session.data.roles = [];
+}])
+.run(['metadata', '$rootScope', 'common', function(metadata, $rootScope, common) {
+  // Save in scope
+  // FIXME Remove
+  $rootScope.metadata = metadata;
+
+  // Store the metadata
+  common.store('metadata', metadata);
+
+  // Init the tools
+  util.init(metadata);
 }]);
 ```
 
+* Finally, engage Konga's `main controller` to your `index.html` file:
+
+```
+<body ng-app="myApp" ng-controller="KongaCtrl">
+...
+</body>
+```
+
+### Launching
+
+In order to start Konga behaviors, you need to setup an entry point to Konga within your app. We are going to add a simple button that will launch or List search once clicked:
+
+* On the first view loaded in your app, include this:
+
+```
+<button ng-click="operations.openEntitySearch('todo-list')" class="btn btn-success">Open TODO List</button>
+```
+
+* From this point you should be able to see a view to manage lists, and beneath it some views to manage their tasks.
+
+TODO Screenshots
