@@ -138,7 +138,7 @@ angular.module('myApp')
 
 ### Launching
 
-In order to start Konga behaviors, you need to setup an entry point to Konga within your app. We are going to add a simple button that will launch or List search once clicked:
+In order to start Konga behaviors, you need to setup an entry point to Konga within your app. We are going to add a simple button that will launch TODO List searching when clicked.
 
 * On the first view loaded in your app, include this:
 
