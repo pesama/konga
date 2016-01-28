@@ -1,11 +1,11 @@
-/**
+/*
  * @ngdoc object
  * @name Events
  * @description
  * Events triggered on Konga's application flow.
  */
 
-/**
+/*
  * @ngdoc object
  * @name Events.locale-change
  * @description

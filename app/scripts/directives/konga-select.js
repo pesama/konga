@@ -1,8 +1,8 @@
 'use strict';
 
-/**
+/*
  * @ngdoc directive
- * @name ui.konga.directive:Konga select
+ * @name ui.konga.directive:kongaSelect
  * @description
  * # kongaSelect
  */

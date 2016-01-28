@@ -1,8 +1,8 @@
 'use strict';
 
-/**
+/*
  * @ngdoc controller
- * @name ui.konga.controller:Multi Select
+ * @name ui.konga.controller:MultiSelectCtrl
  * @description
  * # MultiSelectCtrl
  * Controller of the ui.konga

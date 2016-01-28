@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc controller
- * @name ui.konga.controller:Entity Update
+ * @name ui.konga.controller:EntityUpdateCtrl
  * @description
  * # EntityUpdateCtrl
  * Controller used for update ENTITY entities. It is route provides information about what type of entity we are searching for.

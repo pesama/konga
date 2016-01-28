@@ -1,8 +1,8 @@
 'use strict';
 
-/**
+/*
  * @ngdoc controller
- * @name ui.konga.controller:Single Select
+ * @name ui.konga.controller:SingleSelectCtrl
  * @description
  * # SingleSelectCtrl
  * Controller of the ui.konga

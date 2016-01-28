@@ -1,8 +1,8 @@
 'use strict';
 
-/**
+/*
  * @ngdoc directive
- * @name ui.konga.directive:File input
+ * @name ui.konga.directive:fileInput
  * @description
  * # fileInput
  */

@@ -18,7 +18,7 @@
 
 /**
  * @ngdoc object
- * @name DataTypes
+ * @name Actions
  * @description
  * To define things properly, we created some data types.
  * 

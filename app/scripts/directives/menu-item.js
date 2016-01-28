@@ -1,6 +1,6 @@
 'use strict';
 
-/**
+/*
  * @ngdoc directive
  * @name ui.konga.directive:Menu Item
  * @description 
