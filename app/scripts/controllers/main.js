@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc controller
- * @name ui.konga.controller:MainCtrl
+ * @name ui.konga.controller:KongaCtrl
  * @module ui.konga
  * @description
  * This must be the root controller of the application, and it's suggested to be placed at the `<body>` element. It contains all common {@link konga.operations `operations`}. 
@@ -68,7 +68,7 @@
  * @param {Scaffold} scaffold Used to create new objects for the entities
  */
 angular.module('ui.konga')
-	.controller('MainCtrl', ['$scope', '$location', '$filter', '$rootScope', '$timeout','common', 'scaffold', 'Metadata', 'dialogs', '$translate', 'Session', 'auth', 'User', '$cookieStore', 'actionManager', '$modal', 'permissionManager', 'ENV', 
+	.controller('KongaCtrl', ['$scope', '$location', '$filter', '$rootScope', '$timeout','common', 'scaffold', 'Metadata', 'dialogs', '$translate', 'Session', 'auth', 'User', '$cookieStore', 'actionManager', '$modal', 'permissionManager', 'ENV', 
 		function($scope, $location, $filter, $rootScope, $timeout,common, scaffold, Metadata, dialogs, $translate, Session, auth, User, $cookieStore, actionManager, $modal, permissionManager, ENV) {
 
 			$scope.configConstants = ENV;
