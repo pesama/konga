@@ -68,10 +68,10 @@
  * @param {Scaffold} scaffold Used to create new objects for the entities
  */
 angular.module('ui.konga')
-	.controller('KongaCtrl', ['$scope', '$location', '$filter', '$rootScope', '$timeout','common', 'scaffold', 'Metadata', 'dialogs', '$translate', 'Session', 'auth', 'User', '$cookieStore', 'actionManager', '$modal', 'permissionManager', 'ENV', 
-		function($scope, $location, $filter, $rootScope, $timeout,common, scaffold, Metadata, dialogs, $translate, Session, auth, User, $cookieStore, actionManager, $modal, permissionManager, ENV) {
+	.controller('KongaCtrl', ['$scope', '$location', '$filter', '$rootScope', '$timeout','common', 'scaffold', 'Metadata', 'dialogs', '$translate', 'userData', 'auth', 'User', '$cookieStore', 'actionManager', '$modal', 'permissionManager', 'kongaConfig', 
+		function($scope, $location, $filter, $rootScope, $timeout,common, scaffold, Metadata, dialogs, $translate, Session, auth, User, $cookieStore, actionManager, $modal, permissionManager, kongaConfig) {
 
-			$scope.configConstants = ENV;
+			$scope.configConstants = kongaConfig;
 
 			/**
 			 * @name tabs
@@ -746,6 +746,6 @@ angular.module('ui.konga')
 		  	});
 
 			$scope.showHeader = function() {
-				return !!Session.data.user;
+				return !!userData.user;
 			};
 		}]);

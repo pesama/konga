@@ -79,10 +79,10 @@ angular.module('ui.konga')
 			var yAxisMaxProperty = $filter('filter')(entityFields, { name: yAxisMaxPropName })[0];
 
 			// Assign initial values
-			scope.minX = $filter('mapEdsField')(scope.entity, xAxisMinProperty);
-			scope.minY = $filter('mapEdsField')(scope.entity, yAxisMinProperty);
-			scope.maxX = $filter('mapEdsField')(scope.entity, xAxisMaxProperty);
-			scope.maxY = $filter('mapEdsField')(scope.entity, yAxisMaxProperty);
+			scope.minX = $filter('mapField')(scope.entity, xAxisMinProperty);
+			scope.minY = $filter('mapField')(scope.entity, yAxisMinProperty);
+			scope.maxX = $filter('mapField')(scope.entity, xAxisMaxProperty);
+			scope.maxY = $filter('mapField')(scope.entity, yAxisMaxProperty);
 
 			// Add watchers (only first time)
 			if(first === true) {
@@ -117,8 +117,8 @@ angular.module('ui.konga')
 			var yAxisStepProperty = $filter('filter')(entityFields, { name: yAxisStepPropName })[0];
 
 			// Assign initial values
-			scope.stepX = $filter('mapEdsField')(scope.entity, xAxisStepProperty);
-			scope.stepY = $filter('mapEdsField')(scope.entity, yAxisStepProperty);
+			scope.stepX = $filter('mapField')(scope.entity, xAxisStepProperty);
+			scope.stepY = $filter('mapField')(scope.entity, yAxisStepProperty);
 
 			// Add watchers(only first time)
 			if(first === true) {
@@ -175,7 +175,7 @@ angular.module('ui.konga')
       		// Generate steps
       		var steps = scope.steps = [];
       		// TODO Verify existence
-      		var existingSteps = $filter('mapEdsField')(scope.entity, scope.property);
+      		var existingSteps = $filter('mapField')(scope.entity, scope.property);
       		for(var r = 0; r < rows.length; r++) {
       			for(var c = 0; c < columns.length; c++) {
       				// Does it exist within the entity?

@@ -3,8 +3,8 @@
 	<div class="row">
 		<button class="btn btn-default btn-xs" ng-repeat="item in value.entity" ng-click="removeItem($index)">
 			<i class="glyphicon glyphicon-remove"></i>
-			{{ item | mapEdsField:labelField | shortify:15 }}
-			{{ (item | mapEdsField:labelField).length > 15 ? '...' : '' }}
+			{{ item | mapField:labelField | shortify:15 }}
+			{{ (item | mapField:labelField).length > 15 ? '...' : '' }}
 		</button>
 	</div>
 </div>

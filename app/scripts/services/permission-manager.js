@@ -14,7 +14,7 @@ angular.module('ui.konga')
     function Greeter(Session) {
       this.isAllowed = function (permission) {
       	// Get the user roles
-		var rolesNative = Session.data.roles;
+		var rolesNative = userData.roles;
 
 		// We need to stringify each role, as all come in array-form (as a buffer)
 		var userRoles = [];
@@ -36,7 +36,7 @@ angular.module('ui.konga')
 
     // Method for instantiating
     this.$get = function ($injector) {
-      var session = $injector.get('Session');
+      var session = $injector.get('userData');
       return new Greeter(session);
     };
   });

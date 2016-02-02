@@ -17,7 +17,7 @@ angular.module('ui.konga')
       'save-ok': {
         type: constants.ACTION_TYPE_FUNCTION,
         params: {
-          'function': function(params) {
+          fn: function(params) {
               var entityId = params.id;
               var $rootScope = params.dependencyInjector.get('$rootScope');
               var $scope = params.self;
@@ -44,7 +44,7 @@ angular.module('ui.konga')
       'save-ko': {
         type: constants.ACTION_TYPE_FUNCTION,
         params: {
-          'function': function(params) {
+          fn: function(params) {
             var exceptionManager = params.dependencyInjector.get('exceptionManager');
             exceptionManager.analyzeException(params);
              
@@ -55,7 +55,7 @@ angular.module('ui.konga')
       'delete-ko': {
         type: constants.ACTION_TYPE_FUNCTION,
         params: {
-          'function': function(params) {
+          fn: function(params) {
             var exceptionManager = params.dependencyInjector.get('exceptionManager');
             exceptionManager.analyzeException(params);          
              
@@ -117,6 +117,9 @@ angular.module('ui.konga')
     function Greeter($rootScope, Session, configurationManager, $injector) {
 
       this.dispatch = function(action, parameters) {
+        if(typeof action === 'string') {
+          action = { name: action };
+        }
         var actionDefinitionOriginal = configurationManager.getCustomActions()[action.name];
         if(!actionDefinitionOriginal) {
           actionDefinitionOriginal = actions[action.name];
@@ -140,7 +143,7 @@ angular.module('ui.konga')
         // Verify authorization
         if(actionDefinition.restrict) {
           // Get the user roles
-          var rolesNative = Session.data.roles;
+          var rolesNative = userData.roles;
 
           // We need to stringify each role, as all come in array-form (as a buffer)
           var userRoles = [];
@@ -198,7 +201,7 @@ angular.module('ui.konga')
           break;
         case constants.ACTION_TYPE_FUNCTION:
           var params = actionDefinition.params.parameters;
-          var functionToCall = actionDefinition.params['function'];
+          var functionToCall = actionDefinition.params['fn'];
           functionToCall.call(params.self, params);
           break;
         }
@@ -214,7 +217,7 @@ angular.module('ui.konga')
     // Method for instantiating
     this.$get = function ($injector) {
       var rScope = $injector.get('$rootScope');
-      var session = $injector.get('Session');
+      var session = $injector.get('userData');
       var configurationManager = $injector.get('configurationManager');
       return new Greeter(rScope, session, configurationManager, $injector);
     };

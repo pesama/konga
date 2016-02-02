@@ -111,7 +111,7 @@
  *
  * ### Filters
  *
- * * {@link ui.konga.filter:mapEdsField `map-eds-field`}: Receives an entity and a field metadata definition, and returns the value of such field within the entity. 
+ * * {@link ui.konga.filter:mapField `map-eds-field`}: Receives an entity and a field metadata definition, and returns the value of such field within the entity. 
  * * {@link ui.konga.filter:quickSearch `quick-search`}: Returns the fields within an entity definition configured to be used as <i>quick search</i> fields.
  * * {@link ui.konga.filter:searchParams `search-params`}: Returns all fields from a entity metadata definition configured to be <i>searchable</i>
  * * {@link ui.konga.filter:resultParams `result-params`}: Returns all fields from a entity metadata definition configured to be <i>shown in results</i>

@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc filter
- * @name ui.konga.filter:mapEdsField
+ * @name ui.konga.filter:mapField
  * @function
  * 
  * @description
@@ -12,7 +12,7 @@
  * @param {Object} field Defines the field to manage
  */
 angular.module('ui.konga')
-  .filter('mapEdsField', function () {
+  .filter('mapField', function () {
     return function (entity, field) {
     	if(!entity) {
 			return null;

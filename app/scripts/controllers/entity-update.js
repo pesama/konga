@@ -305,7 +305,7 @@ angular.module('ui.konga')
 	                // Is it related?
 	                if (fieldRelated) {
 	                  var message = {
-	                    value: $filter('mapEdsField')($scope.entity, fieldPath)
+	                    value: $filter('mapField')($scope.entity, fieldPath)
 	                  };
 	                  $scope.$broadcast('update_' + fieldPath, message);
 	                }
@@ -564,7 +564,7 @@ angular.module('ui.konga')
 				}
 
 				// Is there any difference?
-				var oldValue = $filter('mapEdsField')(pageData.original, metadata);
+				var oldValue = $filter('mapField')(pageData.original, metadata);
 				var differs = fieldValue !== oldValue;
 
 			    var index = $scope.changes.indexOf(metadata.name);

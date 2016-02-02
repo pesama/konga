@@ -9,7 +9,7 @@
  * Filter in the ui.konga.
  */
 angular.module('ui.konga')
-  .filter('allowed', ['Session', function (Session) {
+  .filter('allowed', ['userData', function (Session) {
     return function (input, mode) {
     	var ret = [];
     	for(var i = 0; i < input.length; i++) {
@@ -24,7 +24,7 @@ angular.module('ui.konga')
 		  		}
 
 		  		// Verify permissions
-		  		else if(Session.data.roles.indexOf(field.searchable.value) !== -1) {
+		  		else if(userData.roles.indexOf(field.searchable.value) !== -1) {
 		  			ret.push(field);
 		  		}
 		  		break;
@@ -36,7 +36,7 @@ angular.module('ui.konga')
 		  		}
 
 		  		// Verify permissions
-		  		else if(Session.data.roles.indexOf(field.showInResults.value) !== -1) {
+		  		else if(userData.roles.indexOf(field.showInResults.value) !== -1) {
 		  			ret.push(field);
 		  		}
 		  		break;
@@ -48,7 +48,7 @@ angular.module('ui.konga')
 		  		}
 
 		  		// Verify permissions
-		  		else if(Session.data.roles.indexOf(field.showInUpdate.value) !== -1) {
+		  		else if(userData.roles.indexOf(field.showInUpdate.value) !== -1) {
 		  			ret.push(field);
 		  		}
 		  		break;

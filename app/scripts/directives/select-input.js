@@ -44,8 +44,8 @@ angular.module('ui.konga')
       		return localEndpoint.search(query)
             .$promise.then(function(data) {
               return data.map(function(item){
-                var code = $filter('mapEdsField')(item, codeField);
-                var label = $filter('mapEdsField')(item, labelField);
+                var code = $filter('mapField')(item, codeField);
+                var label = $filter('mapField')(item, labelField);
                 var ret = {
                   label: code + ' - ' + label,
                   real: item
@@ -90,7 +90,7 @@ angular.module('ui.konga')
             text = item.id;
 
             // Delete text
-            this.textinput = $filter('mapEdsField')(item, labelField);
+            this.textinput = $filter('mapField')(item, labelField);
           }
 
           // Setup value's text

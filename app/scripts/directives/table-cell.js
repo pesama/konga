@@ -35,7 +35,7 @@ angular.module('ui.konga')
           var mapped = null;
 	      	if($scope.field.derived) {
     				if($scope.field.derivedSource) {
-              fieldEntity = $filter('mapEdsField')($scope.entity, $scope.field.derivedSource);
+              fieldEntity = $filter('mapField')($scope.entity, $scope.field.derivedSource);
               if($scope.field.isSelf) {
                 mapped = fieldEntity;
               }
@@ -43,7 +43,7 @@ angular.module('ui.konga')
 	      	}
 
 	      	if(!mapped) {
-            mapped = $filter('mapEdsField')(fieldEntity, $scope.field);
+            mapped = $filter('mapField')(fieldEntity, $scope.field);
           }
 	      	if($scope.field.type.type === constants.FIELD_COMPLEX) {
             $scope.content = $filter('tableRendererComplex')(mapped, $scope.field);

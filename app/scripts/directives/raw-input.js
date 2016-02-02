@@ -158,7 +158,7 @@ angular.module('ui.konga')
 				if(this.entity && this.entity.$resolved !== false) {
 					var value;
 					if(this.mode === constants.SCOPE_UPDATE) {
-					    value = $filter('mapEdsField')($scope.entity, $scope.property);
+					    value = $filter('mapField')($scope.entity, $scope.property);
 					} else {
 						value = $scope.entity[$scope.property.name];
 					}
@@ -206,7 +206,7 @@ angular.module('ui.konga')
 						if($scope.mode === constants.SCOPE_UPDATE) {
 							var realEntity;
 							if(!$scope.parentField || $scope.parentField.multiplicity === constants.MULTIPLICITY_ONE) {
-								realEntity = $filter('mapEdsField')(complexEntity, $scope.property);
+								realEntity = $filter('mapField')(complexEntity, $scope.property);
 								
 								// TODO Move this elsewhere
 								// JSON Identity verification
@@ -239,7 +239,7 @@ angular.module('ui.konga')
 							else {
 								realEntity = [];
 								for(var i = 0; i < complexEntity.length; i++) {
-									realEntity.push($filter('mapEdsField')(complexEntity[i], $scope.property));
+									realEntity.push($filter('mapField')(complexEntity[i], $scope.property));
 								}
 							}
 
@@ -759,7 +759,6 @@ angular.module('ui.konga')
 					$scope.templating.adjusted = true;
 		  			break;
 		  		case constants.FIELD_PICK_LIST:
-		  		case constants.FIELD_TICS:
 		  		case constants.FIELD_IMAGE:
 		  		case constants.FIELD_TABLE:
 		  			$scope.templating.inputSize = 'col-md-12';

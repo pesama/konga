@@ -8,7 +8,7 @@
  * Factory in the ui.konga.
  */
 angular.module('ui.konga')
-  .factory('standardApi', ['$resource', '$routeParams', '$upload', 'configurationManager', 'ENV', function ($resource, $routeParams, $upload, configurationManager, ENV) {
+  .factory('standardApi', ['$resource', '$routeParams', '$upload', 'configurationManager', 'kongaConfig', function ($resource, $routeParams, $upload, configurationManager, kongaConfig) {
     
     // function readResponseObject(data, parent, paramName) {
     //   for(var param in data) {
@@ -43,7 +43,7 @@ angular.module('ui.konga')
     // }
 
     //var total;
-    var service = $resource(ENV.apiEndpoint + '/:path/:id/:operation/:opId', {}, {
+    var service = $resource(kongaConfig.apiEndpoint + '/:path/:id/:operation/:opId', {}, {
       get: {
         method: 'GET',
         params: {
