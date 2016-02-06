@@ -1,7 +1,7 @@
 {
   "name": "konga",
   "description": "",
-  "version": "0.1.0",
+  "version": "0.12",
   "dependencies": {},
   "devDependencies": {
     "connect-modrewrite": "^0.7.9",
