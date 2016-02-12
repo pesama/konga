@@ -579,13 +579,20 @@ module.exports = function (grunt) {
         //   'docs/app-scripts.js'
         // ],
         html5Mode: false,
-        startPage: '/api',
-        title: 'Konga documentation',
+        startPage: '/home',
         template: 'app/docs/docs.tmpl',
         bestMatch: true,
         analytics: {
           account: 'UA-68065842-1'
         },
+        scripts: [
+          'app/docs/scripts/template-overrides.js'
+        ],
+        styles: [
+          'app/docs/styles/template-overrides.css'
+        ],
+        image: 'http://konga.io/wp-content/uploads/2015/03/konga-logo-white.png',
+        imageLink: 'http://konga.io'
       },
       // api: {
 
@@ -593,16 +600,27 @@ module.exports = function (grunt) {
       // metadata: {
 
       // },
-      api: [
-        'app/docs/inner/**/*.js',
-        'app/scripts/filters/*.js',
-        'app/scripts/directives/*.js',
-        'app/scripts/services/*.js',
-        'app/scripts/controllers/*.js',
-        'app/scripts/app.js',
-        'app/scripts/util.js',
-        'app/scripts/constants.js'
-      ]
+      home: {
+        order: 0,
+        title: 'Home',
+        src: [
+          'app/docs/inner/main.js'
+        ]
+      },
+      api: {
+        order: 0,
+        title: 'API Reference',
+        src: [
+          'app/docs/inner/**/*.js',
+          'app/scripts/filters/*.js',
+          'app/scripts/directives/*.js',
+          'app/scripts/services/*.js',
+          'app/scripts/controllers/*.js',
+          'app/scripts/app.js',
+          'app/scripts/util.js',
+          'app/scripts/constants.js'
+        ]
+      }
     }
   });
 

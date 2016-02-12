@@ -1,0 +1,37 @@
+.navbar-inner {
+    background: #383838;
+}
+
+.navbar .brand {
+    color: #fefefe;
+}
+
+.navbar img {
+    margin: 0.5em;
+}
+
+.nav > li {
+    display: inline-block;
+    padding: 0.5em;
+    color: #dedede;
+}
+
+.nav > li:not(.active):hover {
+	color: #fefefe;
+}
+
+.nav > li:not(.active) i {
+	display: none !important;
+}
+
+.nav > li > a, 
+.nav > li > a:hover {
+	background: transparent;
+	color: inherit;
+}
+
+.nav > li.active {
+    background: #efefef;
+    box-shadow: 0px 0px 5px #222;
+    color: #383838;
+}

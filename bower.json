@@ -5,6 +5,7 @@
     "type": "git",
     "url": "git@github.com:pritok/konga.git"
   },
+  "keywords": ["konga"],
   "main": [
     "dist/scripts/config.js",
     "dist/scripts/app.js",
