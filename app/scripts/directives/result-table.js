@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc directive
- * @name ui.konga.directive:Result table
+ * @name Konga Reference.directive:Result table
  * @scope
  * @restrict E
  * @description
  * Defines a result table that shows the results of a search.
  */
-angular.module('ui.konga')
+angular.module('konga')
   .directive('resultTable', function () {
     return {
       templateUrl: '/konga/views/result-table.html',

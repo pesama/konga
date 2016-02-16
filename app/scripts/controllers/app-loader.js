@@ -7,7 +7,7 @@
  * # AppLoaderCtrl
  * Controller of the uikongaApp
  */
-angular.module('ui.konga')
+angular.module('konga')
   .controller('AppLoaderCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 
   	function ($scope, $routeParams, $location) {
   		var after = $routeParams.after ? decodeURIComponent($routeParams.after) : '/';

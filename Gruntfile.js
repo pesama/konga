@@ -347,6 +347,10 @@ module.exports = function (grunt) {
       app4doc: {
         src: ['app/scripts/**/*.js', 'dist/scripts/config.js', 'dist/scripts/views.js'],
         dest: 'docs/app-scripts.js'
+      },
+      lib: {
+        src: ['dist/scripts/**/*.js'],
+        dest: '.tmp/konga.js'
       }
     },
 
@@ -601,14 +605,18 @@ module.exports = function (grunt) {
 
       // },
       home: {
-        order: 0,
         title: 'Home',
+        src: [
+          'app/docs/inner/home.js'
+        ]
+      },
+      'quick-start': {
+        title: 'Quick start',
         src: [
           'app/docs/inner/main.js'
         ]
       },
       api: {
-        order: 0,
         title: 'API Reference',
         src: [
           'app/docs/inner/**/*.js',
@@ -621,6 +629,22 @@ module.exports = function (grunt) {
           'app/scripts/constants.js'
         ]
       }
+    },
+    replace: {
+      comments: {
+        src: ['.tmp/konga.js'],             // source files array (supports minimatch)
+        dest: 'dist/konga.js',             // destination directory or file
+        replacements: [
+          {
+            from: /(\/\*[\w\'\s\r\n\*]*\*\/)|(\/\/[\w\s\']*)|(\<![\-\-\s\w\>\/]*\>)/g,      // regex replacement ('Fooo' to 'Mooo')
+            to: ''
+          },
+          {
+            from: '\r\n',
+            to: ''
+          }
+        ]
+      }
     }
   });
 
@@ -630,9 +654,10 @@ module.exports = function (grunt) {
 		  'clean:dist',
 		  'ngconstant',
 		  'ngtemplates',
-		  // 'imagemin',
 		  'copy:bower_fonts',
-		  'concat',
+      'concat:util',
+      'concat:css',
+      'concat:app4doc',
 		  'ngdocs',
 		  'wiredep',
 		  'concurrent:server',
@@ -668,8 +693,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'ngtemplates',
-    'wiredep',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
@@ -681,8 +704,7 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'filerev',
-    'usemin',
-    'htmlmin'
+    'usemin'
   ]);
 
   grunt.registerTask('minify-vendor', [
@@ -707,9 +729,12 @@ module.exports = function (grunt) {
     'minify-vendor',
     'copy:deployApp',
     'copy:deploy', 
-    'copy:deployIndex', 
+    'copy:deployIndex',
+    'minify-vendor',
     // 'copy:deployVendor'
-    'doc'
+    'doc',
+    'concat:lib',
+    'replace:comments'
   ]);
 
   grunt.registerTask('doc', [

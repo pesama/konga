@@ -1,6 +1,6 @@
 /**
  * @ngdoc object
- * @name Actions.Modal
+ * @name Action-driven framework.Modal
  * @description
  * Defines the parameters to configure a modal window.
  * It has several parameters:
@@ -33,7 +33,7 @@
 /**
  * @ngdoc object
  * @name template
- * @propertyOf Actions.Modal
+ * @propertyOf Action-driven framework.Modal
  * @description
  * The <b>URL</b> to the template for the modal. Konga's modals inherit Bootstrap's ones, so your template should be a `.modal` container.
  * 
@@ -79,10 +79,10 @@
 /**
  * @ngdoc function
  * @name controller
- * @propertyOf Actions.Modal
+ * @propertyOf Action-driven framework.Modal
  * @description
  * <b>Name</b> of the controller to engage to the modal.
- * You can inject `params` you will receive the {@link Actions.Modal.parameters `parameters`} configured when creating the modal
+ * You can inject `params` you will receive the {@link Action-driven framework.Modal.parameters `parameters`} configured when creating the modal
  * <pre>
 angular.module("yourProjectApp")
   .controller('YourProjectModalCtrl', ['$scope', '...', 'params', 
@@ -98,7 +98,7 @@ angular.module("yourProjectApp")
  /**
  * @ngdoc object
  * @name parameters
- * @propertyOf Actions.Modal
+ * @propertyOf Action-driven framework.Modal
  * @description
  * Parameters to configure the modal.
  * You can put anything here, and it will be available in many places:
@@ -109,7 +109,7 @@ angular.module("yourProjectApp")
  /**
   * @ngdoc function
   * @name okHandler
-  * @methodOf Actions.Modal
+  * @methodOf Action-driven framework.Modal
   * @description
   * This function will be called once the user closes the modal with an affirmative action (this only applies if the modal has an action in which you will call the `$modalInstance.close()` instead of dismissing it).
   * @param {Object} action The action that defined the modal being closed
@@ -119,7 +119,7 @@ angular.module("yourProjectApp")
 /**
   * @ngdoc function
   * @name koHandler
-  * @methodOf Actions.Modal
+  * @methodOf Action-driven framework.Modal
   * @description
   * Callback to be executed when the user dismisses the modal.
   * @param {Object} action The action that defined the modal being closed

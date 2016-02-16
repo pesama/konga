@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc filter
- * @name ui.konga.filter:quickSearch
+ * @name Konga Reference.filter:quickSearch
  * @function
  * @description
  * # quickSearch
  * It receives an metadata , and it returns an array of Objects(i.e quickSearchField)
  * @param {Object} metadata Defines the metadata of entity
  */
-angular.module('ui.konga')
+angular.module('konga')
   .filter('quickSearch', ['$filter', function ($filter) {
     return function (metadata) {
     	var ret = [];

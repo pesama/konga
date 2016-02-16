@@ -2,7 +2,7 @@
 	class="form-control konga-form-search-input konga-form-simple-search-input"
 	id="{{ fieldId }}" placeholder="" ng-model="value.text"
  	ng-disabled="disableField(mode, property)"
-	ng-pattern="validation.pattern()" ng-required="validation.required()" min="{{ validation.minvalue() }}" max="{{ validation.maxvalue() }}" tabindex="{{ (index + 1) * 12 }}">
+	angular.module('konga') ng-required="validation.required()" min="{{ validation.minvalue() }}" max="{{ validation.maxvalue() }}" tabindex="{{ (index + 1) * 12 }}">
 
 <div class="validation">
 	<div class="validation-pattern btn-danger">

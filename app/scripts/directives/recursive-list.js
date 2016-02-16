@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name ui.konga.directive:Recursive list
+ * @name Konga Reference.directive:Recursive list
  * @description
  * # recursiveList
  */
-angular.module('ui.konga')
+angular.module('konga')
   .directive('recursiveList', function () {
     return {
       template: '<div ng-include="contentUrl"></div>',

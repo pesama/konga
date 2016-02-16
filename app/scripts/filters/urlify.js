@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc filter
- * @name ui.konga.filter:urlify
+ * @name Konga Reference.filter:urlify
  * @function
  * @description
  * # urlify
- * Filter in the ui.konga.
+ * Filter in the Konga Reference.
  */
-angular.module('ui.konga')
+angular.module('konga')
   .filter('urlify', function () {
     return function (text) {
 	    var urlRegex = /(https?:\/\/[^\s]+)/g;

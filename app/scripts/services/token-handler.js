@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name ui.konga.tokenHandler
+ * @name Konga Reference.tokenHandler
  * @description
  * # tokenHandler
- * Factory in the ui.konga.
+ * Factory in the Konga Reference.
  */
-angular.module('ui.konga')
+angular.module('konga')
   .factory('TokenHandler', function() {
   var tokenHandler = {};
   var token = "none";

@@ -2,11 +2,11 @@
 
 /*
  * @ngdoc directive
- * @name ui.konga.directive:fileInput
+ * @name Konga Reference.directive:fileInput
  * @description
  * # fileInput
  */
-angular.module('ui.konga')
+angular.module('konga')
   .directive('fileInput', ['$upload', function () {
     return {
       templateUrl: '/konga/views/file-input.html',

@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name ui.konga.configurationManager
+ * @name Konga Reference.configurationManager
  * @description
  * # configurationManager
- * Provider in the ui.konga.
+ * Provider in the Konga Reference.
  */
-angular.module('ui.konga')
+angular.module('konga')
   .provider('configurationManager', function () {
 
     // Private constructor

@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc filter
- * @name ui.konga.filter:translateComplex
+ * @name Konga Reference.filter:translateComplex
  * @function
  * @description
  * # translateComplex
@@ -10,7 +10,7 @@
  *  @param {String} input Defines the name of label of the field
  *  @param {Object=} extra Defines the extra expression object for filter 
  */
-angular.module('ui.konga')
+angular.module('konga')
   .filter('translateComplex', ['$filter', 
   	function ($filter) {
 	    return function (input, extra) {

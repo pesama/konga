@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name ui.konga.directive:Recursive list item
+ * @name Konga Reference.directive:Recursive list item
  * @description
  * # recursiveListItem
  */
-angular.module('ui.konga')
+angular.module('konga')
   .directive('recursiveListItem', function () {
     return {
       templateUrl: '/konga/views/recursive-list-item.html',

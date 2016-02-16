@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc filter
- * @name ui.konga.filter:selectData
+ * @name Konga Reference.filter:selectData
  * @function
  * @description
  * #selectData
@@ -11,7 +11,7 @@
  * @param {Object} entities Defines the an array of entities to manage
  * @param {Object} configuration Defines an object containing added and selected field. 
  */
-angular.module('ui.konga')
+angular.module('konga')
   .filter('selectData', function () {
     return function (metadata, entities, configuration) {
 		var result = [];

@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc filter
- * @name ui.konga.filter:customFilter
+ * @name Konga Reference.filter:customFilter
  * @function
  * @description
  * # customFilter
- * Filter in the ui.konga.
+ * Filter in the Konga Reference.
  */
-angular.module('ui.konga')
+angular.module('konga')
   .filter('customFilter', ['$filter', function ($filter) {
     return function (value, filter) {
       return $filter(filter)(value);

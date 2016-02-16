@@ -2,11 +2,11 @@
 
 /*
  * @ngdoc directive
- * @name ui.konga.directive:listInput
+ * @name Konga Reference.directive:listInput
  * @description
  * # listInput
  */
-angular.module('ui.konga')
+angular.module('konga')
   .directive('listInput', function () {
     return {
   		templateUrl : '/konga/views/list-input.html',

@@ -1,7 +1,7 @@
 {
   "name": "konga",
   "description": "",
-  "version": "0.12",
+  "version": "0.13.0",
   "dependencies": {},
   "devDependencies": {
     "connect-modrewrite": "^0.7.9",
@@ -31,6 +31,7 @@
     "grunt-ngmin": "^0.0.3",
     "grunt-rename": "^0.1.4",
     "grunt-svgmin": "^0.4.0",
+    "grunt-text-replace": "^0.4.0",
     "grunt-usemin": "^2.1.1",
     "grunt-wait-forever": "^0.1.0",
     "grunt-wiredep": "^1.7.0",

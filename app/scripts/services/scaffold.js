@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name ui.konga.Scaffold
+ * @name Konga Reference.Scaffold
  * @description
  * # scaffold
- * Service in the ui.konga.
+ * Service in the Konga Reference.
  */
-angular.module('ui.konga')
+angular.module('konga')
   .service('scaffold', ['$filter', 'common',  
     function scaffold($filter, common) {
 

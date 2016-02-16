@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name ui.konga.directive:Table header
+ * @name Konga Reference.directive:Table header
  * @description
  * # tableHeader
  */
-angular.module('ui.konga')
+angular.module('konga')
   .directive('tableHeader', function () {
     return {
       templateUrl: '/konga/views/table-header.html',

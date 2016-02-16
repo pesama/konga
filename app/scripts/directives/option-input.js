@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name ui.konga.directive:Option input
+ * @name Konga Reference.directive:Option input
  * @description
  * # optionInput
  */
-angular.module('ui.konga')
+angular.module('konga')
   .directive('optionInput', function () {
     return {
       template: '<div></div>',

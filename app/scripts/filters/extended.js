@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc filter
- * @name ui.konga.filter:extended
+ * @name Konga Reference.filter:extended
  * @function
  * @description
  * # extended
@@ -10,7 +10,7 @@
  * @param {Array} metadata Defines the array of fields of metadata
  * @param {String} name Defines the name of checked field
  */
-angular.module('ui.konga')
+angular.module('konga')
   .filter('extended', function () {
     return function (metadata,name) {
       

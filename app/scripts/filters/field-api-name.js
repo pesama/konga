@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc filter
- * @name ui.konga.filter:fieldApiName
+ * @name Konga Reference.filter:fieldApiName
  * @function
  * @description
  * # fieldApiName
- * Filter in the ui.konga.
+ * Filter in the Konga Reference.
  */
-angular.module('ui.konga')
+angular.module('konga')
   .filter('fieldApiName', function () {
     return function (fieldName, source) {
 		var attrs = fieldName.split(' ');

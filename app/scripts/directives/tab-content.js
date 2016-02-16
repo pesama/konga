@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ui.konga')
+angular.module('konga')
   .directive('tabContent', function () {
     var directiveDefinitionObject = {};
 	directiveDefinitionObject.require= '^verticalTabs';

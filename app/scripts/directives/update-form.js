@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name ui.konga.directive:Update form
+ * @name Konga Reference.directive:Update form
  * @description
  * # updateForm
  */
-angular.module('ui.konga')
+angular.module('konga')
   .directive('updateForm', ['$routeParams', 'api', 'common', 'fieldMapper', '$filter', 
   	function ($routeParams, api, common, fieldMapper, $filter) {
 	    return {

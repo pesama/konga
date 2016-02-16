@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc filter
- * @name ui.konga.filter:recursiveFilter
+ * @name Konga Reference.filter:recursiveFilter
  * @function
  * @description
  * # recursiveFilter
- * Filter in the ui.konga.
+ * Filter in the Konga Reference.
  */
-angular.module('ui.konga')
+angular.module('konga')
   .filter('recursiveFilter', ['$filter', function ($filter) {
     return function (input, childrenField) {
       

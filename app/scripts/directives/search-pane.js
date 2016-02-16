@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc directive
- * @name ui.konga.directive:Search Pane
+ * @name Konga Reference.directive:Search Pane
  * @scope
  * @restrict E
  * @description
  * Defines a search panel that controls all inputs of a search form for an entity type. 
  */
-angular.module('ui.konga')
+angular.module('konga')
   .directive('searchPane', function () {
     return {
       templateUrl: '/konga/views/search-pane.html',

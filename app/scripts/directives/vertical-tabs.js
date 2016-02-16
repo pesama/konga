@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ui.konga')
+angular.module('konga')
   .directive('verticalTabs', function () {
   	var directiveDefinitionObject = {};
 	directiveDefinitionObject.restrict = 'E';

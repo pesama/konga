@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc filter
- * @name ui.konga.filter:tableRendererComplex
+ * @name Konga Reference.filter:tableRendererComplex
  * @function
  * @description
  * # tableRendererComplex
@@ -10,7 +10,7 @@
  * @param {Object} metadata Defines the metadata of the entity to manage
  * @param {Object} value Defines the entity of each row
  */
-angular.module('ui.konga')
+angular.module('konga')
   .filter('tableRendererComplex', function () {
     return function (value, metadata) {
       if(metadata.type.type === constants.FIELD_COMPLEX) {

@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc filter
- * @name ui.konga.filter:shortify
+ * @name Konga Reference.filter:shortify
  * @function
  * @description
  * # shortify
@@ -10,7 +10,7 @@
  * @param {String} input Defines  the name of field
  * @param {Number} length Defines the number of extract characters 
  */
-angular.module('ui.konga')
+angular.module('konga')
   .filter('shortify', function () {
     return function (input, length) {
       var ret;

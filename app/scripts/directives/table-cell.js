@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name ui.konga.directive:Table cell
+ * @name Konga Reference.directive:Table cell
  * @description
  * # tableCell
  */
-angular.module('ui.konga')
+angular.module('konga')
   .directive('tableCell', function () {
     return {
       templateUrl: '/konga/views/table-cell.html',

@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc filter
- * @name ui.konga.filter:htmlify
+ * @name Konga Reference.filter:htmlify
  * @function
  * @description
  * # htmlify
- * Filter in the ui.konga.
+ * Filter in the Konga Reference.
  */
-angular.module('ui.konga')
+angular.module('konga')
   .filter('htmlify', ['$filter', function ($filter) {
     return function (text) {
       var parsedText = text;

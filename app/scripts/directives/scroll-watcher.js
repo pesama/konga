@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name ui.konga.directive:Scroll watcher
+ * @name Konga Reference.directive:Scroll watcher
  * @description
  * # scrollWatcher
  */
-angular.module('ui.konga')
+angular.module('konga')
   .directive('scrollWatcher', function () {
     return {
       restrict: 'A',

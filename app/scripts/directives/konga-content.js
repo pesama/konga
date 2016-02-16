@@ -6,7 +6,7 @@
  * @description
  * # kongaContent
  */
-angular.module('ui.konga')
+angular.module('konga')
   .directive('kongaContent', ['$filter', 
   	function ($filter) {
 	    return {

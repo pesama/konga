@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name ui.konga.standardApi
+ * @name Konga Reference.standardApi
  * @description
  * # standardApi
- * Factory in the ui.konga.
+ * Factory in the Konga Reference.
  */
-angular.module('ui.konga')
+angular.module('konga')
   .factory('standardApi', ['$resource', '$routeParams', '$upload', 'configurationManager', 'kongaConfig', function ($resource, $routeParams, $upload, configurationManager, kongaConfig) {
     
     // function readResponseObject(data, parent, paramName) {

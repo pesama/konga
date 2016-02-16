@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name ui.konga.exceptionManager
+ * @name Konga Reference.exceptionManager
  * @description
  * # exceptionManager
- * Service in the ui.konga.
+ * Service in the Konga Reference.
  */
-angular.module('ui.konga')
+angular.module('konga')
   .service('exceptionManager', function exceptionManager() {
 	  this.analyzeException = function(params){
 		  //var entityId = params.id;

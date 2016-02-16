@@ -1,6 +1,6 @@
 /**
  * @ngdoc object
- * @name Actions.Tab
+ * @name Action-driven framework.Tab
  * @description
  * This object defines the configuration of a tab in Konga.
  * 
@@ -19,7 +19,7 @@
 /**
  * @ngdoc object
  * @name id
- * @propertyOf Actions.Tab
+ * @propertyOf Action-driven framework.Tab
  * @type String
  * @description
  * <b>String</b> with a unique name for the tab. This field identifies the tab on the system.
@@ -28,7 +28,7 @@
 /**
  * @ngdoc object
  * @name title
- * @propertyOf Actions.Tab
+ * @propertyOf Action-driven framework.Tab
  * @description
  * <b>String</b> with the title of the tab. If a placeholder is given, the translation will be shown instead.
  */
@@ -36,7 +36,7 @@
 /**
  * @ngdoc object
  * @name href
- * @propertyOf Actions.Tab
+ * @propertyOf Action-driven framework.Tab
  * @description
  * <b>String</b> the link for the tab. This is for the navigation bar, to maintain history
  */
@@ -44,7 +44,7 @@
 /**
  * @ngdoc object
  * @name closable
- * @propertyOf Actions.Tab
+ * @propertyOf Action-driven framework.Tab
  * @description
  * <b>Boolean</b> that indicates whether the tab could be closed.
  */
@@ -52,7 +52,7 @@
 /**
  * @ngdoc object
  * @name type
- * @propertyOf Actions.Tab
+ * @propertyOf Action-driven framework.Tab
  * @description
  * <b>String</b> with a unique name for the tab. This field identifies the tab on the system.
  */

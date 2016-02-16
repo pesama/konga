@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc filter
- * @name ui.konga.filter:locale
+ * @name Konga Reference.filter:locale
  * @function
  * @description
  * # locale
  * It receives an input , and it returns a message which locate in index equal input.
  * @param {Number} input Defines the index of message
  */
-angular.module('ui.konga')
+angular.module('konga')
   .filter('locale', ['common', 
   	function (common) {
 	    return function (input) {

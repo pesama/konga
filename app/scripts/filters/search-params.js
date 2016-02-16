@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc filter
- * @name ui.konga.filter:searchParams
+ * @name Konga Reference.filter:searchParams
  * @function
  * @description
  * # searchParams
@@ -10,7 +10,7 @@
  * @param {Array} fields Defines an array of fields of the entity
  * @param {Object=} metadata Defines the metadata of the entity 
  */
-angular.module('ui.konga')
+angular.module('konga')
   .filter('searchParams', function () {
     return function (fields, metadata) {
       var result = [];

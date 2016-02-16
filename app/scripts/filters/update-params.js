@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc filter
- * @name ui.konga.filter:updateParams
+ * @name Konga Reference.filter:updateParams
  * @function
  * @description
  * # updateParams
@@ -12,7 +12,7 @@
  * @param {Object} the category of the entity
  * 
  */
-angular.module('ui.konga')
+angular.module('konga')
   .filter('updateParams', function () {
     return function (fields, metadata, category) {
       var result = [];

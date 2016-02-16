@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name ui.konga.directive:Price input
+ * @name Konga Reference.directive:Price input
  * @description
  * # priceInput
  */
-angular.module('ui.konga')
+angular.module('konga')
   .directive('priceInput', ['$filter', '$timeout', function ($filter, $timeout) {
     return {
       templateUrl: '/konga/views/price-input.html',

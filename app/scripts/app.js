@@ -8,11 +8,11 @@
  * <img src="http://konga.io/wp-content/uploads/2015/03/konga-logo.png">
  *
  * # konga ui
- * Welcome to `ui.konga` documentation! Hope you like how we arranged everything. Otherwise please let us know!
+ * Welcome to `Konga Reference` documentation! Hope you like how we arranged everything. Otherwise please let us know!
  * Remember that you can go anytime to http://konga.io for more abstract reading.
  *
  * ## What does Konga offer me?
- * konga is an Angular-powered application engine, that relies on metadata definitions for creating a whole application context that defines CRUD forms over your defined entities. It enhances native components and also gives you a full set of rich ui components for data management and other handy stuff.
+ * konga is an Angular-powered application engine, that relies on metadata definitions for creating a whole application context that defines CRUD forms over your defined entities. It enhances native components and also gives you a full set of rich Konga Reference for data management and other handy stuff.
  *
  * ### Metadata management
  * You can use konga to generate the administration pane of your web project automatically, by just defining its entities and their metadata.
@@ -22,19 +22,19 @@
  *
  * ### Customization
  * konga-powered apps are, in essence, Angular-powered apps. Therefore, you can use every angular feature within a konga project. 
- every app starts with your custom <b>HomeCtrl</b>. There you can define where do you want to use konga automation features and where not to. Furthermore, konga gives you customization entry points via its {@link ui.konga.actionManager `action-driven-framework`} everywhere. 
+ every app starts with your custom <b>HomeCtrl</b>. There you can define where do you want to use konga automation features and where not to. Furthermore, konga gives you customization entry points via its {@link Konga Reference.actionManager `action-driven-framework`} everywhere. 
  *
  * ### Step-by-step tutorial
  * TODO
  *
  * ## Installation
  *
- * You can install <b>ui.konga</b> in your existing project via _bower_.
+ * You can install <b>Konga Reference</b> in your existing project via _bower_.
  * ```
- * bower install ui.konga --save
+ * bower install Konga Reference --save
  * ```
  * 
- * Then go to the {@link ui.konga.configuration `Configuring your app`} section to prepare your application to be launched. 
+ * Then go to the {@link Konga Reference.configuration `Configuring your app`} section to prepare your application to be launched. 
  *
  * ### From scratch
  *
@@ -56,8 +56,8 @@
 
  /**
  * @ngdoc overview
- * @name ui.konga
- * @module ui.konga
+ * @name Konga Reference
+ * @module Konga Reference
  * @description
  * # Konga Engine
  * 
@@ -69,76 +69,76 @@
  *
  * ## Components
  * 
- * `ui.konga` contains several components, that build the application and all its parts.
+ * `Konga Reference` contains several components, that build the application and all its parts.
  * 
  * ### Controllers
  * 
- * * {@link ui.konga.controller:EntitySearchCtrl `entity-search`}: This controller builds-up a standard {@link ui.konga.directive:searchPane search pane} with all fields configured in the metadata to be <i>searchable</i>. It also appends a {@link ui.konga.directive:resultTable result table} with the search results (having as columns every one declared to be <i>shown in results</i>).
- * * {@link ui.konga.controller.EntityUpdateCtrl `entity-update`}: This controller builds-up a standard {@link ui.konga.directive:updateForm update form} with all fields configured in the metadata to be <i>shown in update</i>.
+ * * {@link Konga Reference.controller:EntitySearchCtrl `entity-search`}: This controller builds-up a standard {@link Konga Reference.directive:searchPane search pane} with all fields configured in the metadata to be <i>searchable</i>. It also appends a {@link Konga Reference.directive:resultTable result table} with the search results (having as columns every one declared to be <i>shown in results</i>).
+ * * {@link Konga Reference.controller.EntityUpdateCtrl `entity-update`}: This controller builds-up a standard {@link Konga Reference.directive:updateForm update form} with all fields configured in the metadata to be <i>shown in update</i>.
  *
  * #### Component controllers
  *
- * * {@link ui.konga.controller.MultiSelectCtrl multi-select}: Controls all processes for the multi-select UI component. <b>TODO</b> Move to a directive, and `deprecate`.
- * * {@link ui.konga.controller.SingleSelectCtrl single-select}: Controls all processes for the single-select UI component. <b>TODO</b> Move to a directive, and `deprecate`.
+ * * {@link Konga Reference.controller.MultiSelectCtrl multi-select}: Controls all processes for the multi-select UI component. <b>TODO</b> Move to a directive, and `deprecate`.
+ * * {@link Konga Reference.controller.SingleSelectCtrl single-select}: Controls all processes for the single-select UI component. <b>TODO</b> Move to a directive, and `deprecate`.
  *
  *
  * ### Directives
  * 
  * #### Form directives
  * 
- * * {@link ui.konga.directive:searchPane `search-pane`}: Creates a search pane with all the fields configured to be <i>searchable</i>.
- * * {@link ui.konga.directive:resultTable `result-pane`}: Creates a result table with all fields configured to be <i>shown in results</i>.
- * * {@link ui.konga.directive:updateForm `update-form`}: Creates a form with all fields configured to be <i>shown in update</i>.
+ * * {@link Konga Reference.directive:searchPane `search-pane`}: Creates a search pane with all the fields configured to be <i>searchable</i>.
+ * * {@link Konga Reference.directive:resultTable `result-pane`}: Creates a result table with all fields configured to be <i>shown in results</i>.
+ * * {@link Konga Reference.directive:updateForm `update-form`}: Creates a form with all fields configured to be <i>shown in update</i>.
  *
  * #### Component directives
  *
- * * {@link ui.konga.directive:rawInput `raw-input`}: Creates a form field that changes it's appearance depending on the field type.
- * * {@link ui.konga.directive:listInput `list-input`}: Creates a list to render a complex field.
- * * {@link ui.konga.directive:tableHeader `table-header`}: Creates a header for a table column.
- * * {@link ui.konga.directive:tableCell `table-cell`}: Creates a cell for a table.
- * * {@link ui.konga.directive:kongaSelect `konga-select`}: Provides functionality to the `single-select` and `multi-select` components.
+ * * {@link Konga Reference.directive:rawInput `raw-input`}: Creates a form field that changes it's appearance depending on the field type.
+ * * {@link Konga Reference.directive:listInput `list-input`}: Creates a list to render a complex field.
+ * * {@link Konga Reference.directive:tableHeader `table-header`}: Creates a header for a table column.
+ * * {@link Konga Reference.directive:tableCell `table-cell`}: Creates a cell for a table.
+ * * {@link Konga Reference.directive:kongaSelect `konga-select`}: Provides functionality to the `single-select` and `multi-select` components.
  *
  * #### Util directives
  * 
- * * {@link ui.konga.directive:scrollWatcher `scroll-watcher`}: Provides a method for listening to scroll changes on the target UI component.
+ * * {@link Konga Reference.directive:scrollWatcher `scroll-watcher`}: Provides a method for listening to scroll changes on the target UI component.
  *
  * #### Misc directives
  *
- * * {@link ui.konga.directive:menu `menu`}: Renders a menu for the application (i.e. navbar).
- * * {@link ui.konga.directive:menuItem `menu-item`}: Renders a menu item.
- * * {@link ui.konga.directive:formInfo `form-info`}: Creates a component that displays basic data for the entity being shown in update mode.
+ * * {@link Konga Reference.directive:menu `menu`}: Renders a menu for the application (i.e. navbar).
+ * * {@link Konga Reference.directive:menuItem `menu-item`}: Renders a menu item.
+ * * {@link Konga Reference.directive:formInfo `form-info`}: Creates a component that displays basic data for the entity being shown in update mode.
  *
  *
  * ### Filters
  *
- * * {@link ui.konga.filter:mapField `map-eds-field`}: Receives an entity and a field metadata definition, and returns the value of such field within the entity. 
- * * {@link ui.konga.filter:quickSearch `quick-search`}: Returns the fields within an entity definition configured to be used as <i>quick search</i> fields.
- * * {@link ui.konga.filter:searchParams `search-params`}: Returns all fields from a entity metadata definition configured to be <i>searchable</i>
- * * {@link ui.konga.filter:resultParams `result-params`}: Returns all fields from a entity metadata definition configured to be <i>shown in results</i>
- * * {@link ui.konga.filter:updateParams `update-params`}: Returns all fields from a entity metadata definition configured to be <i>shown in updates</i>
- * * {@link ui.konga.filter:selectData `select-data`}: Receives a set of entities, and returns the same list but with only the fields required for a single-select or multi-select.
- * * {@link ui.konga.filter:shortify `shortify`}: Receives an String and a length, and returns a substring of that length.
- * * {@link ui.konga.filter:tableRendererComplex `table-renderer-complex`}: Serializes a complex field to be shown in a table cell.
- * * {@link ui.konga.filter:translateComplex `translate-complex`}: Configures a complex field to be translated using standard `translate` filter. 
+ * * {@link Konga Reference.filter:mapField `map-eds-field`}: Receives an entity and a field metadata definition, and returns the value of such field within the entity. 
+ * * {@link Konga Reference.filter:quickSearch `quick-search`}: Returns the fields within an entity definition configured to be used as <i>quick search</i> fields.
+ * * {@link Konga Reference.filter:searchParams `search-params`}: Returns all fields from a entity metadata definition configured to be <i>searchable</i>
+ * * {@link Konga Reference.filter:resultParams `result-params`}: Returns all fields from a entity metadata definition configured to be <i>shown in results</i>
+ * * {@link Konga Reference.filter:updateParams `update-params`}: Returns all fields from a entity metadata definition configured to be <i>shown in updates</i>
+ * * {@link Konga Reference.filter:selectData `select-data`}: Receives a set of entities, and returns the same list but with only the fields required for a single-select or multi-select.
+ * * {@link Konga Reference.filter:shortify `shortify`}: Receives an String and a length, and returns a substring of that length.
+ * * {@link Konga Reference.filter:tableRendererComplex `table-renderer-complex`}: Serializes a complex field to be shown in a table cell.
+ * * {@link Konga Reference.filter:translateComplex `translate-complex`}: Configures a complex field to be translated using standard `translate` filter. 
  *
  *
  * ### Services
  *
- * * {@link ui.konga.actionManager `action-manager`}: Defines and controls all available actions to dispatch from the application. <b>TODO</b> extract the action definitions elsewhere.
- * * {@link ui.konga.Api `api`}: Connects the UI with the REST services that handle the information.
- * * {@link ui.konga.Common `common`}: Stores stuff that's accessible all across the application.
- * * {@link ui.konga.configurationManager `configuration-manager`}: Handles all configuration for the application (defined via metadata).
- * * {@link ui.konga.fieldMapper `field-mapper`}: Helps mapping a field's value into a given entity. 
- * * {@link ui.konga.metadata `metadata`}: Connects to the metadata REST service to receive all application definition.
- * * {@link ui.konga.permissionManager `permission-manager`}: Handles the permissions for the application.
- * * {@link ui.konga.Scaffold `scaffold`}: Builds-up new entities for creating, and queries for searching.
+ * * {@link Konga Reference.actionManager `action-manager`}: Defines and controls all available actions to dispatch from the application. <b>TODO</b> extract the action definitions elsewhere.
+ * * {@link Konga Reference.Api `api`}: Connects the UI with the REST services that handle the information.
+ * * {@link Konga Reference.Common `common`}: Stores stuff that's accessible all across the application.
+ * * {@link Konga Reference.configurationManager `configuration-manager`}: Handles all configuration for the application (defined via metadata).
+ * * {@link Konga Reference.fieldMapper `field-mapper`}: Helps mapping a field's value into a given entity. 
+ * * {@link Konga Reference.metadata `metadata`}: Connects to the metadata REST service to receive all application definition.
+ * * {@link Konga Reference.permissionManager `permission-manager`}: Handles the permissions for the application.
+ * * {@link Konga Reference.Scaffold `scaffold`}: Builds-up new entities for creating, and queries for searching.
  *
  */
 
 /**
  * @ngdoc overview
- * @name ui.konga
- * @module ui.konga
+ * @name Konga Reference
+ * @module Konga Reference
  * @description
  * #New konga UI
  * # Processes
@@ -160,7 +160,7 @@
  * `/eds/:edsType/:edsId`: Updates an entity. If the `edsId` value is 'new', it creates a new entity.
  * `/login`: Logs in into the application
  */
-angular.module('ui.konga', [
+angular.module('konga', [
   'ngAnimate',
   'ngCookies',
   'ngResource',

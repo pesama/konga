@@ -5,7 +5,7 @@
 	placeholder=""
 	ng-model="value.text"
 	ng-disabled="disableField(mode, property)"
-	ng-pattern="validation.pattern()"
+	angular.module('konga')
 	ng-required="validation.required()"
 	rows="{{ property.validation.maxLength / 100 }}">
 </textarea>

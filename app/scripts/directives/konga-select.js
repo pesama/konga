@@ -2,11 +2,11 @@
 
 /*
  * @ngdoc directive
- * @name ui.konga.directive:kongaSelect
+ * @name Konga Reference.directive:kongaSelect
  * @description
  * # kongaSelect
  */
-angular.module('ui.konga')
+angular.module('konga')
   .directive('kongaSelect', function () {
     return {
       restrict: 'A',

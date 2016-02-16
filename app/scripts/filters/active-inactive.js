@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc filter
- * @name ui.konga.filter:statut
+ * @name Konga Reference.filter:statut
  * @function
  * @description
  * # statut
@@ -10,7 +10,7 @@
  * @param {Array} value Defines the array of fields to filter
  * @param {Object} field Defines the field to manage
  */
-angular.module('ui.konga')
+angular.module('konga')
   .filter('activeInactive', ['configurationManager', function () {
     return function (value,field) {
 		if (value) {

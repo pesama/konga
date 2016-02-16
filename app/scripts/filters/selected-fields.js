@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc filter
- * @name ui.konga.filter:selectedFields
+ * @name Konga Reference.filter:selectedFields
  * @function
  * @description
  * # selectedFields
@@ -12,7 +12,7 @@
  * @param {Array=} apiNames Defines the array of apiName of entities
  * @param {Array=} source Defines the field to manage
  */
-angular.module('ui.konga')
+angular.module('konga')
   .filter('selectedFields', ['$filter', function ($filter) {
     return function (real, names, source) {
     	

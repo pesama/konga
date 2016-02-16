@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name ui.konga.actionManager
+ * @name Konga Reference.actionManager
  * @description
  * # actionManager
- * Provider in the ui.konga.
+ * Provider in the Konga Reference.
  */
-angular.module('ui.konga')
+angular.module('konga')
   .provider('actionManager', function () {
 
     var actions = {

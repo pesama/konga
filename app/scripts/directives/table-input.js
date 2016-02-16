@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name ui.konga.directive:Table input
+ * @name Konga Reference.directive:Table input
  * @description
  * # tableInput
  */
-angular.module('ui.konga')
+angular.module('konga')
   .directive('tableInput', ['$filter', '$timeout', 'scaffold', function ($filter, $timeout, scaffold) {
     return {
       templateUrl: '/konga/views/table-input.html',

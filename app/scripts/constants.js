@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc object
- * @name ui.konga.constants
+ * @name Konga Reference.constants
  * @description
  * Stores common constants used all across the application
  * @property {String} API_HOST Defines where is the api located

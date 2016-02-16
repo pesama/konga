@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc filter
- * @name ui.konga.filter:queryParser
+ * @name Konga Reference.filter:queryParser
  * @function
  * @description
  * # queryParser
- * Filter in the ui.konga.
+ * Filter in the Konga Reference.
  */
-angular.module('ui.konga')
+angular.module('konga')
   .filter('queryParser', function () {
     return function (field, entity, oldQuery) {
 

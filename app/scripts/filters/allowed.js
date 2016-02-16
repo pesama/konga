@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc filter
- * @name ui.konga.filter:allowed
+ * @name Konga Reference.filter:allowed
  * @function
  * @description
  * # allowed
- * Filter in the ui.konga.
+ * Filter in the Konga Reference.
  */
-angular.module('ui.konga')
+angular.module('konga')
   .filter('allowed', ['userData', function (Session) {
     return function (input, mode) {
     	var ret = [];

@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc controller
- * @name ui.konga.controller:KongaCtrl
- * @module ui.konga
+ * @name Konga Reference.controller:KongaCtrl
+ * @module Konga Reference
  * @description
- * This must be the root controller of the application, and it's suggested to be placed at the `<body>` element. It contains all common {@link konga.operations `operations`}. 
+ * This must be the root controller of the application, and it's suggested to be placed at the `<body>` element. It contains all common {@link Standards.Operations `operations`}. 
  *  
  * 
  *
@@ -45,20 +45,20 @@
  * By calling this function, a `/home` tab will be created, and the location will change to the application's home page.
  * 
  * ### openEntitySearch
- * It creates a new tab for <i>entity</i> searching. It <b>must</b> receive an entity definition, like the ones defined within the {@link ui.konga.Metadata metadata} service calls.
+ * It creates a new tab for <i>entity</i> searching. It <b>must</b> receive an entity definition, like the ones defined within the {@link Konga Reference.Metadata metadata} service calls.
  *
  * ### openEntityUpdate
- * When called, it launches a new tab whose purpose is to update an <i>entity</i> It must receive the {@link ui.konga.Metadata metadata} information from the entity, as well as the entity itself.
+ * When called, it launches a new tab whose purpose is to update an <i>entity</i> It must receive the {@link Konga Reference.Metadata metadata} information from the entity, as well as the entity itself.
  *
  * ### openEntityCreate
- * This method does the exactly same operation as the `openEntityUpdate`, but with the purpose of creating a new <i>entity</i>. It only requires to receive the {@link ui.konga.Metadata metadata} information, and a new {@link ui.konga.Scaffold scaffold} object for the received entity type will be created. 
+ * This method does the exactly same operation as the `openEntityUpdate`, but with the purpose of creating a new <i>entity</i>. It only requires to receive the {@link Konga Reference.Metadata metadata} information, and a new {@link Konga Reference.Scaffold scaffold} object for the received entity type will be created. 
  * 
  * # Notifications
  * This controller handles the notifications, that are shown to the user in the form of a <i>bootstrap</i> `alert`. Every controller within the application can use this system, by calling the operation `addAlert` available on the `$rootScope`. It's useful to notify the user when a server-related operation finished, both for success and error response types. Notification system is engaged on any place where the `$rootScope` dependency is included. 
  *
  * 
  * # Loading processes
- * When the data required to use some specific view is not yet received, you can append a loader to the application, that would block every possible interaction with the interface until the loading process ends. For such purpose, you have the possibility of <b>requesting a load</b>, and of <b>freeing it</b> once your data is ready. You can use the operations `requestLoading(code)` and `freeLoading(code)`, where `code` is a unique string that identifies the source who requested the loader. The value of such variable is up to you, but it should be unique in order for the loader to work properly. Both operations are available from the `$rootScope.operations` object. 
+ * When the data required to use some specific view is not yet received, you can append a loader to the application, that would block every possible interaction with the interface until the loading process ends. For such purpose, you have the possibility of <b>requesting a load</b>, and of <b>freeing it</b> once your data is ready. You can use the operations `requestLoading(code)` and `freeLoading(code)`, where `code` is a unique string that identifies the source who requested the loader. The value of such variable is up to you, but it should be unique in order for the loader to work properly. Both operations are available from the `$rootScope.Operations` object. 
  *
  * @param {$scope} $scope Contains the scope variables for the controller
  * @param {$location} $location Controls the location of the app (for changing paths)
@@ -67,7 +67,7 @@
  * @param {Common} common Common methods for storing data 
  * @param {Scaffold} scaffold Used to create new objects for the entities
  */
-angular.module('ui.konga')
+angular.module('konga')
 	.controller('KongaCtrl', ['$scope', '$location', '$filter', '$rootScope', '$timeout','common', 'scaffold', 'Metadata', 'dialogs', '$translate', 'userData', 'auth', 'User', '$cookieStore', 'actionManager', '$modal', 'permissionManager', 'kongaConfig', 
 		function($scope, $location, $filter, $rootScope, $timeout,common, scaffold, Metadata, dialogs, $translate, Session, auth, User, $cookieStore, actionManager, $modal, permissionManager, kongaConfig) {
 
@@ -97,12 +97,12 @@ angular.module('ui.konga')
 			$scope.loadingMessage = null;
 
 			// This is documented on app.js
-		  	$rootScope.operations = $scope.operations = {
+		  	$rootScope.Operations = $scope.Operations = {
 
 		  		/**
 		  		 * @ngdoc method
 		  		 * @name addAlert
-		  		 * @methodOf konga.operations
+		  		 * @methodOf Standards.Operations
 		  		 * @param {String} type The type of alert (e.g. `success`, `error`). It inherites _Bootstrap_'s `bg-...` classes.
 		  		 * @param {String} message The message for the alert
 		  		 * @param {Object=} parameters If the message provided is a placeholder for a locale-provided text, you can give the translator a key-value parameters for the message.
@@ -129,7 +129,7 @@ angular.module('ui.konga')
 		  		/**
 		  		 * @ngdoc method
 		  		 * @name removeAlert
-		  		 * @methodOf konga.operations
+		  		 * @methodOf Standards.Operations
 		  		 * @param {Number} index the position of the alert within the stack.
 		  		 * @description
 		  		 * Removes an alert from the stack, and therefore from the screen. This method is executed automatically after alert timeout's reached
@@ -141,7 +141,7 @@ angular.module('ui.konga')
 		  		/**
 		  		 * @ngdoc method
 		  		 * @name confirm
-		  		 * @methodOf konga.operations
+		  		 * @methodOf Standards.Operations
 		  		 * @param {String} title The title for the confirmation dialog.
 		  		 * @param {String} message The message for the confirm dialog
 		  		 * @param {Function=} okHandler Callback to execute when the user confirms
@@ -171,7 +171,7 @@ angular.module('ui.konga')
 		  		/**
 		  		 * @ngdoc method
 		  		 * @name notify
-		  		 * @methodOf konga.operations
+		  		 * @methodOf Standards.Operations
 		  		 * @param {String} title The title for the confirmation dialog.
 		  		 * @param {String} message The message for the confirm dialog
 		  		 * @param {String=} [type=notify] Type of dialog (inherited from Bootstrap's `bg...` classes)
@@ -201,7 +201,7 @@ angular.module('ui.konga')
 		  		/**
 		  		 * @ngdoc method
 		  		 * @name goHome
-		  		 * @methodOf konga.operations
+		  		 * @methodOf Standards.Operations
 		  		 * @description
 		  		 * Takes the user to the home screen. You must define the `/home/` route with home's content
 		  		 */
@@ -220,7 +220,7 @@ angular.module('ui.konga')
 		  		/**
 		  		 * @ngdoc method
 		  		 * @name goAdmin
-		  		 * @methodOf konga.operations
+		  		 * @methodOf Standards.Operations
 		  		 * @description
 		  		 * If your application has an _admin_ section, use this link to go to that page. You must direct the `/admin/` route to the admin's content.
 		  		 */
@@ -239,7 +239,7 @@ angular.module('ui.konga')
 		  		/**
 		  		 * @ngdoc method
 		  		 * @name openEntitySearch
-		  		 * @methodOf konga.operations
+		  		 * @methodOf Standards.Operations
 		  		 * @param {Entity|String} metadata The metadata of the entity (or it's name) to be searched.
 		  		 * @oaram {Object=} params Parameters to create custom configuration for the pane
 		  		 * @description
@@ -278,13 +278,13 @@ angular.module('ui.konga')
 					}
 
 					// Add the tab
-					$scope.operations.addTab(tab);
+					$scope.Operations.addTab(tab);
 		  		},
 
 		  		/**
 		  		 * @ngdoc method
 		  		 * @name openEntityUpdate
-		  		 * @methodOf konga.operations
+		  		 * @methodOf Standards.Operations
 		  		 * @param {Entity|String} metadata The metadata of the entity (or it's name) to be updated.
 		  		 * @param {Object} entity The entity to be updated
 		  		 * @oaram {Object=} params Parameters to create custom configuration for the pane
@@ -339,13 +339,13 @@ angular.module('ui.konga')
 					}
 
 					// Add the tab
-					$scope.operations.addTab(tab);
+					$scope.Operations.addTab(tab);
 		  		},
 
 		  		/**
 		  		 * @ngdoc method
 		  		 * @name openEntityCreated
-		  		 * @methodOf konga.operations
+		  		 * @methodOf Standards.Operations
 		  		 * @param {Entity} metadata The metadata of the entity to be updated.
 		  		 * @description
 		  		 * Opens an entity-update tab to create a new entity of the metadata given.
@@ -358,20 +358,20 @@ angular.module('ui.konga')
 		  			// Verify permissions
 		  			var permission = entityMetadata.createable;
 		  			if(permissionManager.isAllowed(permission)) {
-		  				$scope.operations.openEntityUpdate(entityMetadata, null, params);
+		  				$scope.Operations.openEntityUpdate(entityMetadata, null, params);
 		  			}
 		  			else {
 		  				var forbidden = {
 		  					name: 'action-forbidden'
 		  				};
-		  				$scope.operations.dispatchAction(forbidden);
+		  				$scope.Operations.dispatchAction(forbidden);
 		  			}
 		  		},
 
 		  		/**
 		  		 * @ngdoc method
 		  		 * @name openModal
-		  		 * @methodOf konga.operations
+		  		 * @methodOf Standards.Operations
 		  		 * @param {Modal} parameters The parameters that define the action. {@link lib.konga.types.Modal `See Modal specification`}
 		  		 * @description
 		  		 * Opens an entity-update tab to update a given entity. The parameters are given in a {@link lib.konga.types.Modal `Modal`} object.
@@ -408,7 +408,7 @@ angular.module('ui.konga')
 		  		/**
 		  		 * @ngdoc method
 		  		 * @name addTab
-		  		 * @methodOf konga.operations
+		  		 * @methodOf Standards.Operations
 		  		 * @param {Tab} tab The tab configuration
 		  		 * @description
 		  		 * Opens a tab with the configured {@link DataTypes.Tab `parameters`}.
@@ -462,13 +462,13 @@ angular.module('ui.konga')
 					// Save the previous tab
 					existingTabs[0].previousTab = tabActive;
 
-					$scope.operations.redirectTo(existingTabs[0]);
+					$scope.Operations.redirectTo(existingTabs[0]);
 				},
 
 				/**
 		  		 * @ngdoc method
 		  		 * @name closeTab
-		  		 * @methodOf konga.operations
+		  		 * @methodOf Standards.Operations
 		  		 * @param {Tab} tab tab to be closed
 		  		 * @param {Boolean=} force whether to force closing (and discard changes - if any)
 		  		 * @description
@@ -490,7 +490,7 @@ angular.module('ui.konga')
 						if ($scope.tabs[i].id === tab.id) {							
 							// Are there new changes?
 							if (tab.hasChanges && !force) {
-								$scope.operations.confirm(
+								$scope.Operations.confirm(
 									"message.discard-changes.title", 
 									"message.discard-changes.message",
 									changesOKHandler,
@@ -515,7 +515,7 @@ angular.module('ui.konga')
 						// On tab close, go to previously opened one
 						if(tab.previousTab && $rootScope.tabs.indexOf(tab.previousTab) !== -1) {
 							$timeout(function() {
-								$scope.operations.redirectTo(tab.previousTab);
+								$scope.Operations.redirectTo(tab.previousTab);
 							}, 500);
 						}
 						
@@ -525,7 +525,7 @@ angular.module('ui.konga')
 				/**
 		  		 * @ngdoc method
 		  		 * @name closeTabById
-		  		 * @methodOf konga.operations
+		  		 * @methodOf Standards.Operations
 		  		 * @param {id} id id of the tab to be closed
 		  		 * @description
 		  		 * Closes the tab that matches an id given. If no tab is found, it doesn't do anything.
@@ -533,7 +533,7 @@ angular.module('ui.konga')
 				closeTabById: function(id) {
 					for(var i=0; i<$rootScope.tabs.length; i++){
 						if ($scope.tabs[i].id === id) {
-							$scope.operations.closeTab($scope.tabs[i], false);
+							$scope.Operations.closeTab($scope.tabs[i], false);
 							break;
 						}
 					}
@@ -542,7 +542,7 @@ angular.module('ui.konga')
 				/**
 		  		 * @ngdoc method
 		  		 * @name closeAllTabs
-		  		 * @methodOf konga.operations
+		  		 * @methodOf Standards.Operations
 		  		 * @param {Boolean=} force whether to force closing (and discard changes - if any)
 		  		 * @description
 		  		 * Closes all opened tabs
@@ -550,14 +550,14 @@ angular.module('ui.konga')
 				closeAllTabs: function(force) {
 					var copyTabs = $rootScope.tabs.slice(0);
 					for(var i=0; i<copyTabs.length; i++){
-						$scope.operations.closeTab(copyTabs[i], force);
+						$scope.Operations.closeTab(copyTabs[i], force);
 					}
 				},
 
 				/**
 		  		 * @ngdoc method
 		  		 * @name redirectTo
-		  		 * @methodOf konga.operations
+		  		 * @methodOf Standards.Operations
 		  		 * @param {Tab} tab tab to be focused
 		  		 * @description
 		  		 * Switches the system into a tab. The tab <b>must be</b> in the `tab stack`.
@@ -579,7 +579,7 @@ angular.module('ui.konga')
 				/**
 		  		 * @ngdoc method
 		  		 * @name requestLoading
-		  		 * @methodOf konga.operations
+		  		 * @methodOf Standards.Operations
 		  		 * @param {String} id Unique id for the loader. It will be identified with this parameter for deletion when freed.
 		  		 * @param {String=} message If defined, appends a message to the loader (useful for heavy loading)
 		  		 * @description
@@ -593,7 +593,7 @@ angular.module('ui.konga')
 				/**
 		  		 * @ngdoc method
 		  		 * @name freeLoading
-		  		 * @methodOf konga.operations
+		  		 * @methodOf Standards.Operations
 		  		 * @param {String} id Unique id for the loader. It must be the same id given when the loader was requested.
 		  		 * @description
 		  		 * Removes a loader from the `loader stack`. When the stack is emptied, the user recovers control of the screen.
@@ -609,7 +609,7 @@ angular.module('ui.konga')
 				/**
 		  		 * @ngdoc method
 		  		 * @name setLoadingMessage
-		  		 * @methodOf konga.operations
+		  		 * @methodOf Standards.Operations
 		  		 * @param {String=} message The message to set into the loading process
 		  		 * @description
 		  		 * During longer loading processes, you can redefine the message being shown via this method. The message will be live-updated, and you could provide the user with more information. This method is useful for uploading progresses.
@@ -621,7 +621,7 @@ angular.module('ui.konga')
 				/**
 		  		 * @ngdoc method
 		  		 * @name changeLocale
-		  		 * @methodOf konga.operations
+		  		 * @methodOf Standards.Operations
 		  		 * @param {String=} locale The language to change to
 		  		 * @description
 		  		 * This mehtod changes the language of the full engine and its running application. It also notifies via a {@link Events.locale-change `locale-change`} event broadcasted to all listening controllers.
@@ -658,7 +658,7 @@ angular.module('ui.konga')
 					};
 
 					// Add the tab
-					$scope.operations.addTab(tab);
+					$scope.Operations.addTab(tab);
 		  		},
 
 		  		/**
@@ -710,7 +710,7 @@ angular.module('ui.konga')
 
 		  		dispatchActionBatch: function(actions, parameters) {
 		  			for(var i = 0; i < actions.length; i++) {
-		  				$scope.operations.dispatchAction(actions[i], parameters);
+		  				$scope.Operations.dispatchAction(actions[i], parameters);
 		  			}
 		  		}
 		  		

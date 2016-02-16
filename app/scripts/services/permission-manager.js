@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name ui.konga.permissionManager
+ * @name Konga Reference.permissionManager
  * @description
  * # permissionManager
- * Provider in the ui.konga.
+ * Provider in the Konga Reference.
  */
-angular.module('ui.konga')
+angular.module('konga')
   .provider('permissionManager', function () {
 
     // Private constructor

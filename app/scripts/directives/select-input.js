@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name ui.konga.directive:Select input
+ * @name Konga Reference.directive:Select input
  * @description
  * # selectInput
  */
-angular.module('ui.konga')
+angular.module('konga')
   .directive('selectInput', ['api', '$filter', function (api, $filter) {
     return {
       templateUrl: '/konga/views/select-input.html',

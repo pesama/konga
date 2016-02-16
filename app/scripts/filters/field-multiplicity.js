@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc filter
- * @name ui.konga.filter:fieldMultiplicity
+ * @name Konga Reference.filter:fieldMultiplicity
  * @function
  * @description
  * # fieldMultiplicity
- * Filter in the ui.konga.
+ * Filter in the Konga Reference.
  */
-angular.module('ui.konga')
+angular.module('konga')
   .filter('fieldMultiplicity', function () {
     return function (field, mode) {
       if(mode === constants.SCOPE_SEARCH) {
