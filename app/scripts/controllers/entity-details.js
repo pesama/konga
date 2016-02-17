@@ -7,7 +7,7 @@
  * # EntityDetailsCtrl
  * Controller of the uikongaApp
  */
-angular.module('konga.ui')
+angular.module('konga')
   .controller('EntityDetailsCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',

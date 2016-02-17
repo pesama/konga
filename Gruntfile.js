@@ -350,7 +350,7 @@ module.exports = function (grunt) {
       },
       lib: {
         src: ['dist/scripts/**/*.js'],
-        dest: '.tmp/konga.js'
+        dest: 'lib/konga.js'
       }
     },
 
@@ -566,7 +566,7 @@ module.exports = function (grunt) {
     },
 
     ngtemplates: {
-      'ui.konga': {
+      'konga': {
         cwd: 'app/',
         src: 'views/**/**.html',
         dest: 'dist/scripts/views.js',
@@ -733,8 +733,8 @@ module.exports = function (grunt) {
     'minify-vendor',
     // 'copy:deployVendor'
     'doc',
-    'concat:lib',
-    'replace:comments'
+    'concat:lib'
+    //'replace:comments'
   ]);
 
   grunt.registerTask('doc', [
