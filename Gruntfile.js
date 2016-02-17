@@ -342,7 +342,7 @@ module.exports = function (grunt) {
       },
       css: {
         src: ['app/styles/*.css', 'app/styles/custom/*.css'],
-        dest: 'dist/styles/konga.css'
+        dest: 'lib/konga.css'
       },
       app4doc: {
         src: ['app/scripts/**/*.js', 'dist/scripts/config.js', 'dist/scripts/views.js'],
@@ -633,7 +633,7 @@ module.exports = function (grunt) {
     replace: {
       comments: {
         src: ['.tmp/konga.js'],             // source files array (supports minimatch)
-        dest: 'dist/konga.js',             // destination directory or file
+        dest: 'lib/konga.js',             // destination directory or file
         replacements: [
           {
             from: /(\/\*[\w\'\s\r\n\*]*\*\/)|(\/\/[\w\s\']*)|(\<![\-\-\s\w\>\/]*\>)/g,      // regex replacement ('Fooo' to 'Mooo')
