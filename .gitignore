@@ -11,3 +11,4 @@ docs
 dist/
 .settings/
 *.sublime-*
+.idea
