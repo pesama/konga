@@ -1,7 +1,7 @@
 {
   "name": "ui.konga",
   "description": "",
-  "version": "0.15.1",
+  "version": "0.16.0",
   "dependencies": {
     "angular": "1.4.x",
     "angular-animate": "1.4.x",
