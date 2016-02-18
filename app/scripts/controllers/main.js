@@ -278,7 +278,7 @@ angular.module('konga')
 					}
 
 					// Add the tab
-					$scope.Operations.addTab(tab);
+					$scope.operations.addTab(tab);
 		  		},
 
 		  		/**
@@ -339,7 +339,7 @@ angular.module('konga')
 					}
 
 					// Add the tab
-					$scope.Operations.addTab(tab);
+					$scope.operations.addTab(tab);
 		  		},
 
 		  		/**
@@ -358,13 +358,13 @@ angular.module('konga')
 		  			// Verify permissions
 		  			var permission = entityMetadata.createable;
 		  			if(permissionManager.isAllowed(permission)) {
-		  				$scope.Operations.openEntityUpdate(entityMetadata, null, params);
+		  				$scope.operations.openEntityUpdate(entityMetadata, null, params);
 		  			}
 		  			else {
 		  				var forbidden = {
 		  					name: 'action-forbidden'
 		  				};
-		  				$scope.Operations.dispatchAction(forbidden);
+		  				$scope.operations.dispatchAction(forbidden);
 		  			}
 		  		},
 
@@ -462,7 +462,7 @@ angular.module('konga')
 					// Save the previous tab
 					existingTabs[0].previousTab = tabActive;
 
-					$scope.Operations.redirectTo(existingTabs[0]);
+					$scope.operations.redirectTo(existingTabs[0]);
 				},
 
 				/**
@@ -490,7 +490,7 @@ angular.module('konga')
 						if ($scope.tabs[i].id === tab.id) {							
 							// Are there new changes?
 							if (tab.hasChanges && !force) {
-								$scope.Operations.confirm(
+								$scope.operations.confirm(
 									"message.discard-changes.title", 
 									"message.discard-changes.message",
 									changesOKHandler,
@@ -515,7 +515,7 @@ angular.module('konga')
 						// On tab close, go to previously opened one
 						if(tab.previousTab && $rootScope.tabs.indexOf(tab.previousTab) !== -1) {
 							$timeout(function() {
-								$scope.Operations.redirectTo(tab.previousTab);
+								$scope.operations.redirectTo(tab.previousTab);
 							}, 500);
 						}
 						
@@ -533,7 +533,7 @@ angular.module('konga')
 				closeTabById: function(id) {
 					for(var i=0; i<$rootScope.tabs.length; i++){
 						if ($scope.tabs[i].id === id) {
-							$scope.Operations.closeTab($scope.tabs[i], false);
+							$scope.operations.closeTab($scope.tabs[i], false);
 							break;
 						}
 					}
@@ -550,7 +550,7 @@ angular.module('konga')
 				closeAllTabs: function(force) {
 					var copyTabs = $rootScope.tabs.slice(0);
 					for(var i=0; i<copyTabs.length; i++){
-						$scope.Operations.closeTab(copyTabs[i], force);
+						$scope.operations.closeTab(copyTabs[i], force);
 					}
 				},
 
@@ -658,7 +658,7 @@ angular.module('konga')
 					};
 
 					// Add the tab
-					$scope.Operations.addTab(tab);
+					$scope.operations.addTab(tab);
 		  		},
 
 		  		/**
@@ -710,7 +710,7 @@ angular.module('konga')
 
 		  		dispatchActionBatch: function(actions, parameters) {
 		  			for(var i = 0; i < actions.length; i++) {
-		  				$scope.Operations.dispatchAction(actions[i], parameters);
+		  				$scope.operations.dispatchAction(actions[i], parameters);
 		  			}
 		  		}
 		  		
