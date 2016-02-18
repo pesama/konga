@@ -11,7 +11,7 @@ angular.module('konga')
   .provider('permissionManager', function () {
 
     // Private constructor
-    function Greeter(Session) {
+    function Greeter(userData) {
       this.isAllowed = function (permission) {
       	// Get the user roles
 		var rolesNative = userData.roles;
@@ -36,7 +36,7 @@ angular.module('konga')
 
     // Method for instantiating
     this.$get = function ($injector) {
-      var session = $injector.get('userData');
-      return new Greeter(session);
+      var userData = $injector.get('userData');
+      return new Greeter(userData);
     };
   });
