@@ -1,13 +1,11 @@
 'use strict';
 
-/*
+/**
  * @ngdoc service
- * @name konga.userData
+ * @name konga.mapper
  * @description
- * # userData
+ * # mapper
  * Value in the konga.
  */
 angular.module('konga')
-  .value('userData', {
-  	roles: []
-  });
+  .value('mapper', {});

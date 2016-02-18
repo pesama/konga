@@ -2,7 +2,7 @@
 
 /*
  * @ngdoc directive
- * @name uikongaApp.directive:calendarInput
+ * @name konga.directive:calendarInput
  * @description
  * # calendarInput
  */

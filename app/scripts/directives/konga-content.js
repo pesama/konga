@@ -2,7 +2,7 @@
 
 /*
  * @ngdoc directive
- * @name uikongaApp.directive:kongaContent
+ * @name konga.directive:kongaContent
  * @description
  * # kongaContent
  */

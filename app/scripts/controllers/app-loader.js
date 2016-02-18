@@ -2,10 +2,10 @@
 
 /*
  * @ngdoc function
- * @name uikongaApp.controller:AppLoaderCtrl
+ * @name konga.controller:AppLoaderCtrl
  * @description
  * # AppLoaderCtrl
- * Controller of the uikongaApp
+ * Controller of the konga
  */
 angular.module('konga')
   .controller('AppLoaderCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 

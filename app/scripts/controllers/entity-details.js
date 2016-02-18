@@ -2,10 +2,10 @@
 
 /*
  * @ngdoc function
- * @name uikongaApp.controller:EntityDetailsCtrl
+ * @name konga.controller:EntityDetailsCtrl
  * @description
  * # EntityDetailsCtrl
- * Controller of the uikongaApp
+ * Controller of the konga
  */
 angular.module('konga')
   .controller('EntityDetailsCtrl', function ($scope) {

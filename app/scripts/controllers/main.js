@@ -744,8 +744,4 @@ angular.module('konga')
 		  			extra.label = $filter('translate')(extra.labelPlaceholder);
 		  		}
 		  	});
-
-			$scope.showHeader = function() {
-				return !!userData.user;
-			};
 		}]);
