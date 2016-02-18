@@ -97,7 +97,7 @@ angular.module('konga')
 			$scope.loadingMessage = null;
 
 			// This is documented on app.js
-		  	$rootScope.Operations = $scope.Operations = {
+		  	$rootScope.operations = $scope.operations = {
 
 		  		/**
 		  		 * @ngdoc method

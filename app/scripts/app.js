@@ -175,7 +175,6 @@ angular.module('konga', [
   'dialogs.controllers',
   'dialogs.services',
   'config',
-  'angularFileUpload',
   'ui.calendar'
 ])
 .config(['$httpProvider',  function($httpProvider) {

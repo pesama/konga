@@ -8,7 +8,7 @@
  * Factory in the Konga Reference.
  */
 angular.module('konga')
-  .factory('standardApi', ['$resource', '$routeParams', '$upload', 'configurationManager', 'kongaConfig', 'util', function ($resource, $routeParams, $upload, configurationManager, kongaConfig, util) {
+  .factory('standardApi', ['$resource', '$routeParams', 'configurationManager', 'kongaConfig', 'util', function ($resource, $routeParams, configurationManager, kongaConfig, util) {
     
     // function readResponseObject(data, parent, paramName) {
     //   for(var param in data) {
@@ -102,18 +102,6 @@ angular.module('konga')
           path: '@path',
           id: '@id'
         }
-      },
-      upload: function (path, data) {
-        var upload = $upload.upload({
-            url: path, 
-            data: {myObj: data},
-            file: data.file[0]
-          }).progress(function(evt) {
-            console.log('progress: ' + parseInt(100.0 * evt.loaded / evt.total) + '% file :'+ evt.config.file.name);
-          }).success(function(data, status, headers, config) {
-            // file is uploaded successfully
-            console.log('file ' + config.file.name + 'is uploaded successfully. Response: ' + data);
-          });
       }
     });
 
