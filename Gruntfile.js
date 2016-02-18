@@ -656,6 +656,7 @@ module.exports = function (grunt) {
 		  'ngtemplates',
 		  'copy:bower_fonts',
       'concat:css',
+      'concat:scss',
       'concat:app4doc',
 		  'ngdocs',
 		  'wiredep',
