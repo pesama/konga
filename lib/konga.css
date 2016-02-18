@@ -265,7 +265,6 @@ div.filtermanagement {
 	height: 100px;
 	margin-left: -50px;
 	margin-top: -50px;
-	background: url('../images/loader.gif') center center no-repeat;
 	background-size: 100% 100%;
 }
 
@@ -357,11 +356,6 @@ white-space: nowrap;
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
 color: #555;
 background-color: #6778AC;}
-
-a.navbar-brand.logoVersion {
-    background: url('../images/logoVersion.png') center top no-repeat;
-    background-size: auto 70%;
-}
 
 span.version {
     position: absolute;
@@ -713,7 +707,6 @@ td.checked > .centerText  {
 	width: 100%;
 	text-align: center;
 	margin-top: 1em;
-	background: url('../images/loader.gif') center center no-repeat;
 	background-size: 20px 20px;
 }
 

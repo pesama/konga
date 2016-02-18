@@ -76,11 +76,6 @@ white-space: nowrap;
 color: #555;
 background-color: #6778AC;}
 
-a.navbar-brand.logoVersion {
-    background: url('../images/logoVersion.png') center top no-repeat;
-    background-size: auto 70%;
-}
-
 span.version {
     position: absolute;
     bottom: 15px;
