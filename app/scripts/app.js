@@ -172,7 +172,8 @@ angular.module('konga', [
   'mgcrea.ngStrap.popover',
   'mgcrea.ngStrap.select',
   'pascalprecht.translate',
-  'dialogs.main',
+  'dialogs.controllers',
+  'dialogs.services',
   'config',
   'angularFileUpload',
   'ui.calendar'
