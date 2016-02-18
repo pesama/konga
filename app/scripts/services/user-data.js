@@ -7,7 +7,7 @@
  * # userData
  * Value in the kongaApp.
  */
-angular.module('kongaApp')
+angular.module('konga')
   .value('userData', {
   	roles: []
   });
