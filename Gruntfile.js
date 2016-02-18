@@ -334,7 +334,7 @@ module.exports = function (grunt) {
           ]
         },
         options: {
-          banner: 'require(\'./konga.vendor\');\r\n',
+          banner: 'require(\'./konga.vendor.js\');\r\n',
           mangle: false,
           screwIE8: true
         }
@@ -358,8 +358,11 @@ module.exports = function (grunt) {
         dest: 'lib/konga.js'        
       },
       lib_vendor: {
+        options: {
+          banner: 'module.exports = "konga.vendor";\r\n'
+        },
         src: ['bower_components/angular-dialog-service/dialogs.min.js'],
-        dest: 'lib/vendor.konga.js'
+        dest: 'lib/konga.vendor.js'
       }
     },
 
