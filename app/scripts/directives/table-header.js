@@ -7,7 +7,7 @@
  * # tableHeader
  */
 angular.module('konga')
-  .directive('tableHeader', function () {
+  .directive('tableHeader', ['util', function (util) {
     return {
       templateUrl: '/konga/views/table-header.html',
       restrict: 'E',
@@ -54,15 +54,15 @@ angular.module('konga')
         var configurationSource = [];
 
         switch($scope.mode) {
-        case constants.SCOPE_RESULTS:
+        case util.constants.SCOPE_RESULTS:
           configurationSource = sourceField.showInResults.configuration;
           break;
-        case constants.SCOPE_UPDATE:
+        case util.constants.SCOPE_UPDATE:
           configurationSource = $scope.field.showInUpdate.configuration;
           break;
         }
 
-        var configuration = $filter('filter')(configurationSource, { key: constants.USE_SHORT_LABEL });
+        var configuration = $filter('filter')(configurationSource, { key: util.constants.USE_SHORT_LABEL });
 
       	if(configuration && configuration.length && configuration[0].value === 'true') {
       		$scope.label = $scope.field.shortLabel;
@@ -106,4 +106,4 @@ angular.module('konga')
       link: function postLink(scope, element, attrs) {
       }
     };
-  });
+  }]);

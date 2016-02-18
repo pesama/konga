@@ -52,10 +52,10 @@ angular.module('konga')
 		function verifyMatchType(matchType, fieldValue, triggerValue) {
 			var matches = false;
 			switch(matchType) {
-	        	case constants.TRIGGER_MATCH_TYPE_EXACT:
+	        	case util.constants.TRIGGER_MATCH_TYPE_EXACT:
 	        		matches = (fieldValue+"") === triggerValue;
 	        		break;
-	        	case constants.TRIGGER_MATCH_TYPE_RANGE:
+	        	case util.constants.TRIGGER_MATCH_TYPE_RANGE:
 	        		matches = fieldValue >= triggerValue;
 	        		break;
 	        	}
@@ -70,10 +70,10 @@ angular.module('konga')
 
         	// TODO Verify trigger type
         	switch(trigger.match) {
-        	case constants.TRIGGER_MATCH_VALUE:
+        	case util.constants.TRIGGER_MATCH_VALUE:
         		matches = verifyMatchType(matchType, value, trigger.value);
         		break;
-        	case constants.TRIGGER_MATCH_LENGTH:
+        	case util.constants.TRIGGER_MATCH_LENGTH:
         		var length = 0;
         		if (value != null) length = value.length;
         		matches = verifyMatchType(matchType, length, trigger.value);
@@ -91,7 +91,7 @@ angular.module('konga')
           		var arrParam = strParam.split('#');
           		var param = null;
           		switch(arrParam[0]) {
-          		case constants.TRIGGER_PARAM_LABEL:
+          		case util.constants.TRIGGER_PARAM_LABEL:
           			param = arrParam[1];
           			break;
           		}
@@ -101,9 +101,9 @@ angular.module('konga')
 
             // Verify trigger type
             switch (trigger.type) {
-            case constants.TRIGGER_TYPE_CONFIRM:
+            case util.constants.TRIGGER_TYPE_CONFIRM:
 				// TODO Change appearance
-            	if(trigger.moment == constants.TRIGGER_MOMENT_IMMEDIATE && trigger.name == 'disable-entity'){
+            	if(trigger.moment == util.constants.TRIGGER_MOMENT_IMMEDIATE && trigger.name == 'disable-entity'){
             		
             		if($scope.creating == undefined || $scope.creating == null || $scope.creating == false) {
 
@@ -124,7 +124,7 @@ angular.module('konga')
             		$rootScope.operations.confirm(params[0], params[1], okHandler, koHandler);
             	}
               break;
-             case constants.TRIGGER_TYPE_ALERT:
+             case util.constants.TRIGGER_TYPE_ALERT:
              	$rootScope.operations.notify(params[0], params[1]);
               break;
             // TODO Other types
@@ -139,7 +139,7 @@ angular.module('konga')
 
 			switch (moment) {
 			// Verify immediate triggers
- 			case constants.TRIGGER_MOMENT_IMMEDIATE:
+ 			case util.constants.TRIGGER_MOMENT_IMMEDIATE:
  				var triggers = $filter('filter')(metadata.triggers, { moment: moment });
 
 		      	for (var i = 0; i < triggers.length; i++) {
@@ -147,7 +147,7 @@ angular.module('konga')
 		        }
  				break;
 
- 			case constants.TRIGGER_MOMENT_COMMIT:
+ 			case util.constants.TRIGGER_MOMENT_COMMIT:
  				angular.forEach(metadata.fields, function(field) {
  					var triggers = $filter('filter')(field.triggers, { moment: moment });
  					var fieldValue = value[field.name];
@@ -175,13 +175,13 @@ angular.module('konga')
       	$scope.formStyle = '';
 
       	switch($scope.metadata.updateStyle) {
-      	case constants.FORM_STYLE_HORIZONTAL:
+      	case util.constants.FORM_STYLE_HORIZONTAL:
       		$scope.formStyle = 'form-horizontal';
       		break;
       	}
 		
 	    // See if the entity is eresable
-	    $scope.deletable = $scope.entityMetadata.deleteable != null && (entityId !== constants.NEW_ENTITY_ID);
+	    $scope.deletable = $scope.entityMetadata.deleteable != null && (entityId !== util.constants.NEW_ENTITY_ID);
 	    $scope.disabledDelete = false;
 	    
 		var allFields = util.getEntityFields($scope.entityMetadata);
@@ -193,7 +193,7 @@ angular.module('konga')
 		// Get configuration for showing buttons
 		$scope.showActions = true;
 		var configuration = $scope.entityMetadata.configuration;
-		var buttonConfiguration = $filter('filter')(configuration, { key: constants.UPDATE_HIDE_BUTTONS }, true)[0];
+		var buttonConfiguration = $filter('filter')(configuration, { key: util.constants.UPDATE_HIDE_BUTTONS }, true)[0];
 		if(buttonConfiguration && buttonConfiguration.value === 'true') {
 			$scope.showActions = false;
 		}
@@ -220,7 +220,7 @@ angular.module('konga')
 			validationData = pageData.validationData = {};
 
 			// Verify if we are creating or updating
-			if (entityId != constants.NEW_ENTITY_ID) {
+			if (entityId != util.constants.NEW_ENTITY_ID) {
 
 			  // Request a loader
 			  $rootScope.operations.requestLoading('update_' + entityId);
@@ -329,7 +329,7 @@ angular.module('konga')
 				  
 				  //Warning if the entity is user and has no related pair ctrOperat-role 
 				  var emptyRoleForSomeCtrOperat = false;
-				  if(entity.hasOwnProperty(constants.USER_ID)){
+				  if(entity.hasOwnProperty(util.constants.USER_ID)){
 					  if(entity.roleCoUser==null || entity.roleCoUser.length==0){
 						  $rootScope.operations.notify('entity.user.warning-no-pair-role-ctr-operat-title', 'entity.user.warning-no-pair-role-ctr-operat');
 					  }else{					  
@@ -344,7 +344,7 @@ angular.module('konga')
 				  }
 				  
 				  //Warning if the entity is role and has no related actions 
-				  if($scope.entityMetadata.name == constants.SOURCE_ROLE){
+				  if($scope.entityMetadata.name == util.constants.SOURCE_ROLE){
 					  if(entity.relActionRoles==null || entity.relActionRoles.length==0){
 						  $rootScope.operations.notify('entity.user.warning-no-actions-role-title', 'entity.user.warning-no-actions-role-message');
 					  }
@@ -408,7 +408,7 @@ angular.module('konga')
 				  		}
 				  		
 				  		//Set refreshSearch = true, when we comeback to search screen, it will run the search again
-						var refreshSearchKey = constants.REFRESH_SEARCH_KEY + entityType;
+						var refreshSearchKey = util.constants.REFRESH_SEARCH_KEY + entityType;
 						common.store(refreshSearchKey,true);
 				  		
 					} 
@@ -438,7 +438,7 @@ angular.module('konga')
 				};
 
 				// Verify commit triggers
-			    verifyTriggers(constants.TRIGGER_MOMENT_COMMIT, $scope.entityMetadata, $scope.entity);
+			    verifyTriggers(util.constants.TRIGGER_MOMENT_COMMIT, $scope.entityMetadata, $scope.entity);
 
 				var entity = $scope.entity;
 
@@ -456,7 +456,7 @@ angular.module('konga')
 				$scope.params.path = metadata.apiPath;
 				
 				 // Verify if the entity is new
-				if(entityId === constants.NEW_ENTITY_ID) {
+				if(entityId === util.constants.NEW_ENTITY_ID) {
 				    // Create eds
 				    entity.$create($scope.params, handlerOK, handlerKO);
 				  } else { 
@@ -500,7 +500,7 @@ angular.module('konga')
 					var path = $scope.entityMetadata.apiPath;
 					localEndpoint.delete({ path: path, id: util.getEntityId($scope.entityMetadata, entity)}, 
 							function success() {
-								$rootScope.operations.addAlert(constants.ALERT_TYPE_SUCCESS, 'message.action-confirmation.delete.success'); 
+								$rootScope.operations.addAlert(util.constants.ALERT_TYPE_SUCCESS, 'message.action-confirmation.delete.success'); 
 								// Remove all page parameters
 								pageData.init = false;
 								$scope.$emit('changes', { pageId: pageData.pageId, hasChanges: false });
@@ -524,12 +524,12 @@ angular.module('konga')
 					var entity = $scope.entity;
 	
 	 			    // Verify if the entity is not new
-				    if (entityId !== constants.NEW_ENTITY_ID) {
+				    if (entityId !== util.constants.NEW_ENTITY_ID) {
 					  $rootScope.operations.confirm('message.delete-entity.title', 'message.delete-entity.message', okDeleteEntity, koDeleteEntity);
 				    }	
 				    
 				    //Set refreshSearch = true, when we comeback to search screen, it will run the search again
-					  var refreshSearchKey = constants.REFRESH_SEARCH_KEY + entityType;
+					  var refreshSearchKey = util.constants.REFRESH_SEARCH_KEY + entityType;
 					  common.store(refreshSearchKey,true);
 	  			} else {
 		  			 var forbidden = {
@@ -543,7 +543,7 @@ angular.module('konga')
 			changeEntityField: function(metadata, result) {
 				// Trigger callbacks
 				function okHandler() {
-					var refreshSearchKey = constants.REFRESH_SEARCH_KEY + entityType;
+					var refreshSearchKey = util.constants.REFRESH_SEARCH_KEY + entityType;
 					common.store(refreshSearchKey,true);
             		$scope.operations.saveEntity();
             	}
@@ -574,7 +574,7 @@ angular.module('konga')
 			      $scope.changes.push(metadata.fieldName);
 
 			      	// Verify immediate triggers
-			   		verifyTriggers(constants.TRIGGER_MOMENT_IMMEDIATE, metadata, fieldValue, okHandler, koHandler);
+			   		verifyTriggers(util.constants.TRIGGER_MOMENT_IMMEDIATE, metadata, fieldValue, okHandler, koHandler);
 			    } else if(!differs && index !== -1) {
 				  // Or not?
 			      $scope.changes.splice(index, 1);
@@ -599,7 +599,7 @@ angular.module('konga')
 			      // Verify if it's a resource (see if field type is 'complex')
 			      var fieldType = metadata.fieldType;
 			      var multiplicity = metadata.multiplicity;
-			      if (fieldType === constants.FIELD_COMPLEX || fieldType == constants.FIELD_LIST) {
+			      if (fieldType === util.constants.FIELD_COMPLEX || fieldType == util.constants.FIELD_LIST) {
 			    	// If multiplicity is one, we create an array only with it
 			      	// Otherwise we use the source array
 			      	var path = result.path;
@@ -614,7 +614,7 @@ angular.module('konga')
 
 				      	// Now let's listen to changes
 				      	for (var i = 0; i < escaped.length; i++) {
-				      		if (multiplicity === constants.MULTIPLICITY_MANY) {
+				      		if (multiplicity === util.constants.MULTIPLICITY_MANY) {
 				      			extraPath += '[' + i + ']';
 				      		}
 				      		waitEntityResolve(escaped[i], path, extraPath);
@@ -723,7 +723,7 @@ angular.module('konga')
 			$rootScope.operations.closeTabById(pageData.pageId);
 		});
 		$scope.$on('createCtrOperat', function() {
-			var refreshSearchKey = constants.REFRESH_SEARCH_KEY + entityType;
+			var refreshSearchKey = util.constants.REFRESH_SEARCH_KEY + entityType;
 			common.store(refreshSearchKey,true);
 			$scope.operations.saveEntity();
 		});

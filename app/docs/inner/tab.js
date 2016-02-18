@@ -11,7 +11,7 @@
 	title : 'Custom tab!', 
 	href : '/custom/tab/1',
 	closable : true,
-	type: constants.TAB_TYPE_UPDATE
+	type: util.constants.TAB_TYPE_UPDATE
 }
 </pre>
  */

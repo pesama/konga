@@ -50,22 +50,22 @@ angular.module('konga')
       	var configurationSource = scope.property.fieldType.configuration[0];
       	
       	// X Axis Property
-      	var xAxisPropertyConfiguration = $filter('filter')(configurationSource, { key: constants.TABLE_CONF_X_AXIS_PROPERTY }, true)[0];
+      	var xAxisPropertyConfiguration = $filter('filter')(configurationSource, { key: util.constants.TABLE_CONF_X_AXIS_PROPERTY }, true)[0];
       	var xAxisPropName = xAxisPropertyConfiguration.value;
       	configuration.xAxisProperty = $filter('filter')(innerEntityTypeFields, { name: xAxisPropName }, true)[0];
 
       	// Y Axis Property
-      	var yAxisPropertyConfiguration = $filter('filter')(configurationSource, { key: constants.TABLE_CONF_Y_AXIS_PROPERTY }, true)[0];
+      	var yAxisPropertyConfiguration = $filter('filter')(configurationSource, { key: util.constants.TABLE_CONF_Y_AXIS_PROPERTY }, true)[0];
       	var yAxisPropName = yAxisPropertyConfiguration.value;
       	configuration.yAxisProperty = $filter('filter')(innerEntityTypeFields, { name: yAxisPropName }, true)[0];
 
       	// Limits
       	function initLimits(first) {
       		// Get conf
-      		var xAxisMinConfiguration = $filter('filter')(configurationSource, { key: constants.TABLE_CONF_X_AXIS_MIN })[0];
-      		var yAxisMinConfiguration = $filter('filter')(configurationSource, { key: constants.TABLE_CONF_Y_AXIS_MIN })[0];
-      		var xAxisMaxConfiguration = $filter('filter')(configurationSource, { key: constants.TABLE_CONF_X_AXIS_MAX })[0];
-      		var yAxisMaxConfiguration = $filter('filter')(configurationSource, { key: constants.TABLE_CONF_Y_AXIS_MAX })[0];
+      		var xAxisMinConfiguration = $filter('filter')(configurationSource, { key: util.constants.TABLE_CONF_X_AXIS_MIN })[0];
+      		var yAxisMinConfiguration = $filter('filter')(configurationSource, { key: util.constants.TABLE_CONF_Y_AXIS_MIN })[0];
+      		var xAxisMaxConfiguration = $filter('filter')(configurationSource, { key: util.constants.TABLE_CONF_X_AXIS_MAX })[0];
+      		var yAxisMaxConfiguration = $filter('filter')(configurationSource, { key: util.constants.TABLE_CONF_Y_AXIS_MAX })[0];
 
       		// Get prop names
       		var xAxisMinPropName = xAxisMinConfiguration.value.replace(/[\{\}]/g, '');
@@ -106,8 +106,8 @@ angular.module('konga')
       	// Steps
       	function initSteps(first) {
       		// Get conf
-      		var xAxisStepConfiguration = $filter('filter')(configurationSource, { key: constants.TABLE_CONF_X_AXIS_STEP })[0];
-      		var yAxisStepConfiguration = $filter('filter')(configurationSource, { key: constants.TABLE_CONF_Y_AXIS_STEP })[0];
+      		var xAxisStepConfiguration = $filter('filter')(configurationSource, { key: util.constants.TABLE_CONF_X_AXIS_STEP })[0];
+      		var yAxisStepConfiguration = $filter('filter')(configurationSource, { key: util.constants.TABLE_CONF_Y_AXIS_STEP })[0];
 
       		// Get prop names
       		var xAxisStepPropName = xAxisStepConfiguration.value.replace(/[\{\}]/g, '');

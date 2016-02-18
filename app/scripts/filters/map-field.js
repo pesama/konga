@@ -12,7 +12,7 @@
  * @param {Object} field Defines the field to manage
  */
 angular.module('konga')
-  .filter('mapField', function () {
+  .filter('mapField', ['util', function (util) {
     return function (entity, field) {
     	if(!entity) {
 			return null;
@@ -39,7 +39,7 @@ angular.module('konga')
 		}
 
 		// Verify if field is complex
-		if(field.type.type === constants.FIELD_COMPLEX) {
+		if(field.type.type === util.constants.FIELD_COMPLEX) {
 			// TODO
 			return entity[field.name];
 		}
@@ -48,4 +48,4 @@ angular.module('konga')
 			return entity[field.name];
 		}
     };
-  });
+  }]);

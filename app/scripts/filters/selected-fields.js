@@ -43,8 +43,8 @@ angular.module('konga')
           // Override field configuration (avoid COMPLEX recursivity)
           // TODO Export this to configuration param
           for(var showConf in fieldToPush.fieldType) {
-            if(fieldToPush.fieldType[showConf] === constants.FIELD_COMPLEX) {
-              fieldToPush.fieldType[showConf] = constants.FIELD_SELECT;
+            if(fieldToPush.fieldType[showConf] === util.constants.FIELD_COMPLEX) {
+              fieldToPush.fieldType[showConf] = util.constants.FIELD_SELECT;
             }
           }
 
@@ -58,13 +58,13 @@ angular.module('konga')
         var nameAttrs = name.split(' ');
 
         // Look if SELF field is included
-        if(nameAttrs[0] === constants.SELF_FIELD) {
+        if(nameAttrs[0] === util.constants.SELF_FIELD) {
           var fieldCopy = angular.copy(source);
 
           // Override field configuration (avoid COMPLEX recursivity)
           // TODO Export this to configuration param
           for(var showConf in fieldCopy.fieldType) {
-            fieldCopy.fieldType[showConf] = constants.FIELD_SELECT;
+            fieldCopy.fieldType[showConf] = util.constants.FIELD_SELECT;
           }
 
           // Setup extra params for rendering
@@ -107,15 +107,15 @@ angular.module('konga')
                   // Override field configuration (avoid COMPLEX recursivity)
                   // TODO Export this to configuration param
                   for(var showConf in fieldToPush.fieldType) {
-                    if(fieldToPush.fieldType[showConf] === constants.FIELD_COMPLEX) {
-                      fieldToPush.fieldType[showConf] = constants.FIELD_SELECT;
+                    if(fieldToPush.fieldType[showConf] === util.constants.FIELD_COMPLEX) {
+                      fieldToPush.fieldType[showConf] = util.constants.FIELD_SELECT;
                     }
                   }
 
                   result.push(fieldToPush);
                 }
                 // Field must be complex, unless it's the last iteration on the path
-                else if(fieldType.type === constants.FIELD_COMPLEX) {
+                else if(fieldType.type === util.constants.FIELD_COMPLEX) {
                   var complexType = fieldType.complexType;
                   var complexMetadata = util.getMetadata(complexType);
 

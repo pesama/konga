@@ -8,7 +8,7 @@
  * When a field is changed in the form, its value is stored into the entity. 
  */
 angular.module('konga')
-  .service('fieldMapper', ['api','common','scaffold', '$filter', function fieldMapper(api, common, scaffold, $filter) {
+  .service('fieldMapper', ['api','common','scaffold', '$filter', 'util', function fieldMapper(api, common, scaffold, $filter, util) {
     this.mapField = function(fieldName, edsType, entity) {
     	// TODO Implement
     };
@@ -22,8 +22,8 @@ angular.module('konga')
 			var fieldType = fieldMetadata.type.type;
 
 			// If the entity is not related, and it's the key, the type is text
-			if(fieldType === constants.FIELD_COMPLEX && fieldMetadata.isKey) {
-				fieldType = constants.FIELD_TEXT;
+			if(fieldType === util.constants.FIELD_COMPLEX && fieldMetadata.isKey) {
+				fieldType = util.constants.FIELD_TEXT;
 			}
 
 			// Escape the value (if needed)
@@ -33,17 +33,17 @@ angular.module('konga')
 			//var extra = {};
 
 			switch(fieldType) {
-			case constants.FIELD_TEXT:
+			case util.constants.FIELD_TEXT:
 				escapedValue = value.text;
 				break;
-			case constants.FIELD_BOOLEAN:
+			case util.constants.FIELD_BOOLEAN:
 				escapedValue = value.text; // It comes casted out-of-the-box :)
 				break;
-			case constants.FIELD_NUMBER:
+			case util.constants.FIELD_NUMBER:
 				// TODO Encapsulate in a try
 				escapedValue = parseFloat((value.text+"").split(',').join('.'));
 				break;
-			case constants.FIELD_COMPLEX:
+			case util.constants.FIELD_COMPLEX:
 				//var ids = value.ids;
 				escapedValue = value.entity;
 				// for(var i = 0; i < ids.length; i++) {
@@ -54,12 +54,12 @@ angular.module('konga')
 				// 	escapedValue.push(localEndpoint.get({id: entityId}));
 				// }
 
-				// if(fieldMetadata.multiplicity === constants.MULTIPLICITY_ONE) {
+				// if(fieldMetadata.multiplicity === util.constants.MULTIPLICITY_ONE) {
 				// 	escapedValue = escapedValue[0];
 				// }
 
 				break;
-			case constants.FIELD_FILE:
+			case util.constants.FIELD_FILE:
 				escapedValue = value.files;
 				break;
 // 			TODO Other cases
@@ -70,7 +70,7 @@ angular.module('konga')
 			}
 
 			//if it has parentField and its parent is type COMPLEX
-			if (parentField && (parentField.type.type === constants.FIELD_COMPLEX)){
+			if (parentField && (parentField.type.type === util.constants.FIELD_COMPLEX)){
 				
 				//Get the metadata of its parent
 				var entityMetadata = common.getMetadata(parentField.type.complexType);
@@ -79,7 +79,7 @@ angular.module('konga')
 				// Get the parent's multiplicity
 				var parentMultiplicity = parentField.multiplicity;
 
-				if(parentMultiplicity === constants.MULTIPLICITY_ONE) {
+				if(parentMultiplicity === util.constants.MULTIPLICITY_ONE) {
 					// Avoid input unrecognized fields
 					// FIXME Find a better way (SM)
 					if(parentEntity[fieldName] !== undefined) {

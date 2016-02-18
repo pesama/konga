@@ -39,21 +39,21 @@ angular.module('konga')
                     if(defaultValue == 'null' || field.isId) {
                         castValue = null;
                     }
-                    else if(multiplicity == constants.MULTIPLICITY_MANY && !(search && field.fieldType.search === constants.FIELD_COMPLEX)) {
+                    else if(multiplicity == util.constants.MULTIPLICITY_MANY && !(search && field.fieldType.search === util.constants.FIELD_COMPLEX)) {
                         castValue = [];
                     }
-                    else if(type !== constants.FIELD_TEXT) {
+                    else if(type !== util.constants.FIELD_TEXT) {
                         switch(type) {
-                        case constants.FIELD_BOOLEAN:
+                        case util.constants.FIELD_BOOLEAN:
                             castValue = defaultValue === 'true';
                             break;
-                        case constants.FIELD_COMPLEX:
+                        case util.constants.FIELD_COMPLEX:
                             // Initialized as null, valorized afterwards
                             castValue = null;
 
                             // Control if field rendering is also complex
                             // TODO Make this recursive (and for updation too)
-                            if(search && field.fieldType.search === constants.FIELD_COMPLEX) {
+                            if(search && field.fieldType.search === util.constants.FIELD_COMPLEX) {
                                 var innerFields = field.searchable.fields;
                                 var apiNames = field.apiName;
                                 if(innerFields.length) {
@@ -72,17 +72,17 @@ angular.module('konga')
                                 }
                             }
                             break;
-                        case constants.FIELD_DATE:
+                        case util.constants.FIELD_DATE:
                             if(search) {
                                 castValue = {
                                     startDate: 0,
                                     endDate: 0,
-                                    comparator: constants.DATE_COMPARATOR_EQUALS
+                                    comparator: util.constants.DATE_COMPARATOR_EQUALS
                                 };
                             }
                             else {
                                 //var strDate = defaultValue;
-                                if(defaultValue == constants.DATE_DEFAULT_NOW) {
+                                if(defaultValue == util.constants.DATE_DEFAULT_NOW) {
                                     castValue = new Date().getTime();
                                 }
                                 else {
@@ -91,10 +91,10 @@ angular.module('konga')
                                 }
                             }
                             break;
-                        case constants.FIELD_NUMBER:
+                        case util.constants.FIELD_NUMBER:
                             castValue = defaultValue ? parseInt(defaultValue) : defaultValue;
                             break;
-                        case constants.FIELD_STRING:
+                        case util.constants.FIELD_STRING:
                         	if(typeof defaultValue !== 'undefined') {
                         		castValue = defaultValue;
                         	}

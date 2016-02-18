@@ -33,7 +33,7 @@ angular.module('konga')
           var nestFields = field.showInResults.fields;
           var selectedFields = $filter('selectedFields')(relatedFields, nestFields, field);
           for(var fi = 0; fi < selectedFields.length; fi++) {
-            if(selectedFields[fi].fieldType.results === constants.FIELD_COMPLEX) {
+            if(selectedFields[fi].fieldType.results === util.constants.FIELD_COMPLEX) {
               divideComplexField(selectedFields[fi]);
             }
             else {
@@ -52,8 +52,8 @@ angular.module('konga')
           
           var formType = $scope.entityMetadata.resultsType;
 
-          if(formType === constants.CUSTOM_FORM) {
-            var configuration = $filter('filter')($scope.entityMetadata.configuration, { key: constants.SEARCH_CUSTOM_VIEW });
+          if(formType === util.constants.CUSTOM_FORM) {
+            var configuration = $filter('filter')($scope.entityMetadata.configuration, { key: util.constants.SEARCH_CUSTOM_VIEW });
             if(!configuration.length) {
               // TODO Show exception
             }
@@ -64,15 +64,15 @@ angular.module('konga')
 
             // Custom behavior for each form type
             switch(formType) {
-            case constants.CATEGORIZED_CASCADE_FORM:
+            case util.constants.CATEGORIZED_CASCADE_FORM:
               // Get the categories used for search
-              var configuration = $filter('filter')($scope.entityMetadata.configuration, { key: constants.RESULTS_USE_CATEGORY }, true);
+              var configuration = $filter('filter')($scope.entityMetadata.configuration, { key: util.constants.RESULTS_USE_CATEGORY }, true);
               $scope.categories = [];
               for(var i = 0; i < configuration.length; i++) {
                 var cat = configuration[i].value;
 
                 // Shall we hide the header?
-                var hideHeaderConf = $filter('filter')($scope.entityMetadata.configuration, { key: constants.HIDE_CATEGORY_HEADER, value: cat }, true);
+                var hideHeaderConf = $filter('filter')($scope.entityMetadata.configuration, { key: util.constants.HIDE_CATEGORY_HEADER, value: cat }, true);
                 var showHeader = true;
                 if(hideHeaderConf.length) {
                   showHeader = false;
@@ -99,7 +99,7 @@ angular.module('konga')
           // Control complex fields
           for(var f = 0; f < filteredFields.length; f++) {
             var field = filteredFields[f];
-            if(field.type.type === constants.FIELD_COMPLEX && field.fieldType.results === constants.FIELD_COMPLEX && field.showInResults.fields.length) {
+            if(field.type.type === util.constants.FIELD_COMPLEX && field.fieldType.results === util.constants.FIELD_COMPLEX && field.showInResults.fields.length) {
               divideComplexField(field);
             }
             else {
@@ -202,7 +202,7 @@ angular.module('konga')
         //   var field = filteredFields[i];
 
         //   // Is it complex?
-        //   if(field.fieldType.results === constants.FIELD_COMPLEX) {
+        //   if(field.fieldType.results === util.constants.FIELD_COMPLEX) {
         //     var complexType = field.type.complexType;
         //     var complexMetadata = util.getMetadata(complexType);
 

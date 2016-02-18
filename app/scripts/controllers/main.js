@@ -211,7 +211,7 @@ angular.module('konga')
 						title: 'message.tabs.home', 
 						href:'/home/', // TODO KONGA_HOME_URI
 						closable: false,
-						type: constants.TAB_TYPE_HOME
+						type: util.constants.TAB_TYPE_HOME
 					};
 
 					this.addTab(homeTab);
@@ -230,7 +230,7 @@ angular.module('konga')
 						title: 'message.tabs.admin', 
 						href:'/admin/', 
 						closable: true,
-						type: constants.TAB_TYPE_HOME
+						type: util.constants.TAB_TYPE_HOME
 					};
 
 					this.addTab(homeTab);
@@ -251,9 +251,9 @@ angular.module('konga')
 		  			}
 
 		  			// Generate the id for the new tab
-		  			var tabId = constants.ENTITY_ID_PREFFIX + 
+		  			var tabId = util.constants.ENTITY_ID_PREFFIX + 
 		  						entityMetadata.name + 
-		  						constants.SEARCH_SUFFIX;
+		  						util.constants.SEARCH_SUFFIX;
 
 		  			var tabTitle = 'message.tabs.entity.search';
 
@@ -268,7 +268,7 @@ angular.module('konga')
 						closable : true,
 						// Entity metadata
 						entityMetadata : entityMetadata,
-						type: constants.TAB_TYPE_SEARCH
+						type: util.constants.TAB_TYPE_SEARCH
 					};
 
 					if(params) {
@@ -306,8 +306,8 @@ angular.module('konga')
 		  			}
 
 		  			// Generate the id for the new tab
-		  			var tabId = constants.ENTITY_ID_PREFFIX + 
-		  					entityMetadata.name + constants.STRING_SEPARATOR + entityId;
+		  			var tabId = util.constants.ENTITY_ID_PREFFIX + 
+		  					entityMetadata.name + util.constants.STRING_SEPARATOR + entityId;
 
 		  			var entityCode = util.getEntityCode(entityMetadata, entity);
 
@@ -329,7 +329,7 @@ angular.module('konga')
 	  						hasChanges : false,
 	  						// Entity metadata
 	  						entityMetadata : entityMetadata,
-							type: constants.TAB_TYPE_UPDATE
+							type: util.constants.TAB_TYPE_UPDATE
 	  				};
 
 	  				if(params) {
@@ -424,7 +424,7 @@ angular.module('konga')
 
 						//Ouverture d’un onglet depuis un formulaire de recherche, 
 						//l’onglet doit s’ouvrir à la suite du formulaire d’ouverture et non en dernier
-						if (newTab.type === constants.TAB_TYPE_UPDATE) {
+						if (newTab.type === util.constants.TAB_TYPE_UPDATE) {
 							var indexActive = $scope.tabs.indexOf(tabActive);
 							$scope.tabs.splice(indexActive + 1, 0, newTab);
 
@@ -627,7 +627,7 @@ angular.module('konga')
 		  		 * This mehtod changes the language of the full engine and its running application. It also notifies via a {@link Events.locale-change `locale-change`} event broadcasted to all listening controllers.
 		  		 */
 				changeLocale: function(newLocale) {
-					$scope.selectedLanguage = constants.LANGUAGE_MESSAGE_PREFFIX + newLocale;
+					$scope.selectedLanguage = util.constants.LANGUAGE_MESSAGE_PREFFIX + newLocale;
 
 					// Get the old locale
 					var oldLocale = $translate.use();

@@ -7,7 +7,7 @@
  * # tableCell
  */
 angular.module('konga')
-  .directive('tableCell', function () {
+  .directive('tableCell', ['util', function (util) {
     return {
       templateUrl: '/konga/views/table-cell.html',
       restrict: 'E',
@@ -45,28 +45,28 @@ angular.module('konga')
 	      	if(!mapped) {
             mapped = $filter('mapField')(fieldEntity, $scope.field);
           }
-	      	if($scope.field.type.type === constants.FIELD_COMPLEX) {
+	      	if($scope.field.type.type === util.constants.FIELD_COMPLEX) {
             $scope.content = $filter('tableRendererComplex')(mapped, $scope.field);
           }
           else {
   	      	// Render depending on the data type
   	      	switch($scope.field.fieldType.results) {
-            case constants.FIELD_DATE:
+            case util.constants.FIELD_DATE:
   	      		$scope.content = mapped !== 0 ? $filter('date')(mapped, 'dd/MM/yyyy') : '';
   	      	  break;
-            case constants.FIELD_DATETIME:
+            case util.constants.FIELD_DATETIME:
                 $scope.content = mapped !== 0 ? $filter('date')(mapped, 'dd/MM/yyyy HH:mm:ss') : '';
               break;
-            case constants.FIELD_BOOLEAN:
+            case util.constants.FIELD_BOOLEAN:
               var content = $filter('activeInactive')(mapped, $scope.field);
               $scope.content = $filter('translate')(content);
               // $scope.contentUrl = views.translated;
               break;
-            case constants.FIELD_PLAIN:
+            case util.constants.FIELD_PLAIN:
               $scope.content = $filter('translate')(mapped);
               // $scope.contentUrl = views.translated;
               break;
-            case constants.FIELD_IMAGE:
+            case util.constants.FIELD_IMAGE:
               $scope.type = 'image';
               $scope.content = mapped;
               $scope.image = {
@@ -89,32 +89,32 @@ angular.module('konga')
 
 
               break;
-            case constants.FIELD_PRICE:
+            case util.constants.FIELD_PRICE:
               var configuration = $scope.field.fieldType.configuration[0];
               var currency = $filter('filter')(configuration, { key: 'CURRENCY' }, true)[0];
               $scope.suffix = currency.value;
               $scope.styles.push('text-right');
               $scope.content = $filter('number')(mapped, 2);
               break;
-            case constants.FIELD_NUMBER:
+            case util.constants.FIELD_NUMBER:
               // Read decimals from config
               $scope.styles.push('text-right');
               $scope.content = mapped;
               break;  
-            case constants.FIELD_CSS:
+            case util.constants.FIELD_CSS:
               $scope.type = 'styling';
               $scope.styles.push('text-center');
               $scope.content = mapped;
               useList = false;
               break;
-            case constants.FIELD_PLAIN_FILTERED:
+            case util.constants.FIELD_PLAIN_FILTERED:
               $scope.type = 'plain-filtered';
               $scope.content = mapped;
 
               // Get the filter 
               // TODO Or die :)
               var configuration = $scope.field.fieldType.configuration[0];
-              var filter = $filter('filter')(configuration, { key: constants.TABLE_CELL_FILTER }, true)[0];
+              var filter = $filter('filter')(configuration, { key: util.constants.TABLE_CELL_FILTER }, true)[0];
               $scope.filter = filter.value;
 
               break;
@@ -165,4 +165,4 @@ angular.module('konga')
         };
       }
     };
-  });
+  }]);

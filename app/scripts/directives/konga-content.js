@@ -18,8 +18,8 @@ angular.module('konga')
 	        function init() {
 	        	var appConfiguration = util.getConfiguration();
 	        
-		        var appLookAndFeel = constants.LOOK_AND_FEEL_PLAIN;
-		        var lookAndFeelConf = $filter('filter')(appConfiguration, { key: constants.CONFIG_LOOK_AND_FEEL }, true)[0];
+		        var appLookAndFeel = util.constants.LOOK_AND_FEEL_PLAIN;
+		        var lookAndFeelConf = $filter('filter')(appConfiguration, { key: util.constants.CONFIG_LOOK_AND_FEEL }, true)[0];
 		        if(lookAndFeelConf) {
 		        	appLookAndFeel = lookAndFeelConf.value;
 		        }

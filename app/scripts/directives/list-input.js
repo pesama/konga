@@ -30,7 +30,7 @@ angular.module('konga')
   			var configuration = $scope.property.fieldType.configuration[0];
 
   			// Pagination
-  			var paginationConfiguration = $filter('filter')(configuration, { key: constants.SHOW_PAGINATION, value: 'false' }, true);
+  			var paginationConfiguration = $filter('filter')(configuration, { key: util.constants.SHOW_PAGINATION, value: 'false' }, true);
 
   			if(paginationConfiguration && paginationConfiguration.length) {
   				$scope.paginate = false;
@@ -71,7 +71,7 @@ angular.module('konga')
 		          var nestFields = field.showInResults.fields;
 		          var selectedFields = $filter('selectedFields')(relatedFields, nestFields);
 		          for(var fi = 0; fi < selectedFields.length; fi++) {
-		            if(selectedFields[fi].fieldType.results === constants.FIELD_COMPLEX) {
+		            if(selectedFields[fi].fieldType.results === util.constants.FIELD_COMPLEX) {
 		              divideComplexField(selectedFields[fi]);
 		            }
 		            else {
@@ -87,7 +87,7 @@ angular.module('konga')
 		        // Control complex fields
 		        for(var f = 0; f < allFields.length; f++) {
 		          var field = allFields[f];
-		          if(field.type.type === constants.FIELD_COMPLEX && field.fieldType.results === constants.FIELD_COMPLEX && field.showInResults.fields.length) {
+		          if(field.type.type === util.constants.FIELD_COMPLEX && field.fieldType.results === util.constants.FIELD_COMPLEX && field.showInResults.fields.length) {
 		            divideComplexField(field);
 		          }
 		          else {
@@ -222,7 +222,7 @@ angular.module('konga')
 				$scope.pageChanged();
 			};
 			
-			if($scope.property.fieldType.update == constants.FIELD_PICK_LIST) {
+			if($scope.property.fieldType.update == util.constants.FIELD_PICK_LIST) {
 				var validation = $scope.property.validation;
 
 				var length = $scope.list ? $scope.list.length : 0;

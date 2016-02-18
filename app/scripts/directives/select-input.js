@@ -16,7 +16,7 @@ angular.module('konga')
         scope.textinput = scope.value.text;
 
         // // Only enabled for update mode
-        // if(scope.mode !== constants.SCOPE_UPDATE) {
+        // if(scope.mode !== util.constants.SCOPE_UPDATE) {
         //   return;
         // }
 
@@ -60,7 +60,7 @@ angular.module('konga')
           var text = '';
           
           // Is it a many to many field?
-          if($filter('fieldMultiplicity')(this.property, this.mode) === constants.MULTIPLICITY_MANY) {
+          if($filter('fieldMultiplicity')(this.property, this.mode) === util.constants.MULTIPLICITY_MANY) {
             if(!this.value.entity || !(this.value.entity instanceof Array)) {
               this.value.entity = [];
             }
@@ -102,7 +102,7 @@ angular.module('konga')
         };
 
         var multiplicity = scope.mode === 'search' ? scope.property.searchConf.multiplicity : scope.property.multiplicity;
-        if(multiplicity === constants.MULTIPLICITY_ONE) {
+        if(multiplicity === util.constants.MULTIPLICITY_ONE) {
           scope.$watch('value.text', function() {
             scope.textinput = scope.value.text;
           });

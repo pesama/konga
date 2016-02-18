@@ -32,7 +32,7 @@ angular.module('konga')
 		      	}
 
 		      	switch($scope.metadata.updateType) {
-			      	case constants.TABBED_FORM:
+			      	case util.constants.TABBED_FORM:
 			      		$scope.templateUrl = '/konga/views/tabbed-update.html';
 			      		//Get the Categories
 			    		$scope.categories = util.getEntityCategories($scope.metadata, 1);
@@ -43,7 +43,7 @@ angular.module('konga')
 			    		};
 		
 			      		break;
-			      	case constants.CUSTOM_TABBED_FORM:
+			      	case util.constants.CUSTOM_TABBED_FORM:
 			      		$scope.templateUrl = '/konga/views/custom_tabbed-update.html';
 
 			      		//Get the Categories
@@ -60,8 +60,8 @@ angular.module('konga')
 			    		};
 
 			      		break;	
-			      	case constants.CUSTOM_FORM:
-			      		var configuration = $filter('filter')($scope.metadata.configuration, { key: constants.UPDATE_CUSTOM_VIEW });
+			      	case util.constants.CUSTOM_FORM:
+			      		var configuration = $filter('filter')($scope.metadata.configuration, { key: util.constants.UPDATE_CUSTOM_VIEW });
 			      		if(!configuration.length) {
 			      			// TODO Show exception
 			      		}

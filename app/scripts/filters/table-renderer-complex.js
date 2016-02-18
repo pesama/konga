@@ -13,7 +13,7 @@
 angular.module('konga')
   .filter('tableRendererComplex', ['util', function (util) {
     return function (value, metadata) {
-      if(metadata.type.type === constants.FIELD_COMPLEX) {
+      if(metadata.type.type === util.constants.FIELD_COMPLEX) {
    	      var complexType = metadata.type.complexType;
 
 	      var metadata = util.getMetadata(complexType);

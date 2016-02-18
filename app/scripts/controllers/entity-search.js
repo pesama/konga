@@ -189,7 +189,7 @@ angular.module('konga')
         }, function(error) {
           var exceptionCode = error.data && error.data.length ? error.data[0].exceptionCode : 'GENERIC_TECHNICAL_ERROR';
           $rootScope.operations.freeLoading('search_' + entityType);
-          $rootScope.operations.addAlert(constants.ALERT_TYPE_ERROR, exceptionCode);
+          $rootScope.operations.addAlert(util.constants.ALERT_TYPE_ERROR, exceptionCode);
         });
       };
 	
@@ -252,10 +252,10 @@ angular.module('konga')
 
             // TODO Other cases
             if(typeof(value) === 'object') {
-              if(field.type.type === constants.FIELD_COMPLEX) {
+              if(field.type.type === util.constants.FIELD_COMPLEX) {
                 var complexMetadata = util.getMetadata(field.type.complexType);
 
-                if(field.fieldType.search === constants.FIELD_COMPLEX) {
+                if(field.fieldType.search === util.constants.FIELD_COMPLEX) {
                   var complexFields = util.getEntityFields(complexMetadata);
                   var nestFields = field.searchable.fields;
 
@@ -272,7 +272,7 @@ angular.module('konga')
               }
 
               // Multiplicity many
-              if(field.searchConf.multiplicity === constants.MULTIPLICITY_MANY) {
+              if(field.searchConf.multiplicity === util.constants.MULTIPLICITY_MANY) {
                 if(!value instanceof Array) {
                   // TODO Launch exception
                 }
@@ -281,7 +281,7 @@ angular.module('konga')
               }
 
               // Search policy RANGE
-              else if(field.searchConf.policy === constants.VALIDATOR_RANGE) {
+              else if(field.searchConf.policy === util.constants.VALIDATOR_RANGE) {
                 // Do nothing. Value = value :D
               }
             }
@@ -299,7 +299,7 @@ angular.module('konga')
         pageData.init = true;
       } else {
     	  //Refresh search after doing create update entity
-          var refreshSearchKey = constants.REFRESH_SEARCH_KEY + entityType;
+          var refreshSearchKey = util.constants.REFRESH_SEARCH_KEY + entityType;
           console.log(common.read(refreshSearchKey));
           if (common.read(refreshSearchKey)) {
         	  $scope.submit($scope.query);
@@ -400,7 +400,7 @@ angular.module('konga')
 	     //  		   function () {
 	     //  			   // Error
 			   //  	  console.error('POST Error');
-			   //  	  $rootScope.operations.addAlert(constants.ALERT_TYPE_ERROR, 'global.operation-incomplete'); 
+			   //  	  $rootScope.operations.addAlert(util.constants.ALERT_TYPE_ERROR, 'global.operation-incomplete'); 
 	     //   });
   		  // });
 

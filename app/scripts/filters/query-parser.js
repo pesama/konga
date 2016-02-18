@@ -9,7 +9,7 @@
  * Filter in the Konga Reference.
  */
 angular.module('konga')
-  .filter('queryParser', function () {
+  .filter('queryParser', ['util', function (util) {
     return function (field, entity, oldQuery) {
 
     	// Generate blank query
@@ -28,7 +28,7 @@ angular.module('konga')
 			var value = fieldQuery[param];
 
 			// Simple parsing
-			if(value.match(constants.QUERY_PARAM_REGEXP)) {
+			if(value.match(util.constants.QUERY_PARAM_REGEXP)) {
 
 				// Remove the brackets
 				var realValue = value.replace(/[{-}]/g, '');
@@ -42,7 +42,7 @@ angular.module('konga')
 			}
 
 			// Complex parsing
-			else if(value.match(constants.QUERY_COMPLEX_PARAM_REGEXP)) {
+			else if(value.match(util.constants.QUERY_COMPLEX_PARAM_REGEXP)) {
 
 				// Remove the brackets
 				var valuePath = value.replace(/[{-}]/g, '').split(/\./);
@@ -71,4 +71,4 @@ angular.module('konga')
 
 		return query;
     };
-  });
+  }]);

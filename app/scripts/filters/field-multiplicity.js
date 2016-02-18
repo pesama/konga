@@ -9,12 +9,12 @@
  * Filter in the Konga Reference.
  */
 angular.module('konga')
-  .filter('fieldMultiplicity', function () {
+  .filter('fieldMultiplicity', ['util', function (util) {
     return function (field, mode) {
-      if(mode === constants.SCOPE_SEARCH) {
+      if(mode === util.constants.SCOPE_SEARCH) {
       	return field.searchConf.multiplicity;
       }
 
       return field.multiplicity;
     };
-  });
+  }]);

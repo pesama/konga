@@ -31,7 +31,7 @@ angular.module('konga')
     //         continue;
     //       }
     //       // Verify JSON identity
-    //       if(current.reason && current.reason === constants.JSON_IDENTITY_INFO) {
+    //       if(current.reason && current.reason === util.constants.JSON_IDENTITY_INFO) {
     //         var metadata = util.getMetadata(current.source);
     //         data[param] = service.get({ path: metadata.apiPath, id: current.id });
     //       }

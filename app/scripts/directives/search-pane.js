@@ -30,8 +30,8 @@ angular.module('konga')
 
           var formType = $scope.entityMetadata.searchType;
 
-          if(formType === constants.CUSTOM_FORM) {
-            var configuration = $filter('filter')($scope.entityMetadata.configuration, { key: constants.SEARCH_CUSTOM_VIEW });
+          if(formType === util.constants.CUSTOM_FORM) {
+            var configuration = $filter('filter')($scope.entityMetadata.configuration, { key: util.constants.SEARCH_CUSTOM_VIEW });
             if(!configuration.length) {
               // TODO Show exception
             }
@@ -42,9 +42,9 @@ angular.module('konga')
 
             // Custom behavior for each form type
             switch(formType) {
-            case constants.CATEGORIZED_CASCADE_FORM:
+            case util.constants.CATEGORIZED_CASCADE_FORM:
               // Get the categories used for search
-              var configuration = $filter('filter')($scope.entityMetadata.configuration, { key: constants.SEARCH_USE_CATEGORY }, true);
+              var configuration = $filter('filter')($scope.entityMetadata.configuration, { key: util.constants.SEARCH_USE_CATEGORY }, true);
               $scope.categories = [];
               for(var i = 0; i < configuration.length; i++) {
                 var cat = configuration[i].value;
@@ -76,7 +76,7 @@ angular.module('konga')
   			  for(var i = 0; i < fields.length; i++) {
   				  var fieldName = fields[i].fieldName;
   	              if($scope.query[fieldName] !== undefined) {
-  	            	  if (fields[i].fieldType === constants.FIELD_COMPLEX 
+  	            	  if (fields[i].fieldType === util.constants.FIELD_COMPLEX 
   	            			  && $scope.query[fieldName] !== null
   	            			  && !(typeof  $scope.query[fieldName] === 'object')) {
   	            		  var codes = $scope.query[fieldName].split(',');
@@ -158,7 +158,7 @@ angular.module('konga')
             }
 
             // Special for checkboxes :)
-            if(property.fieldType.search === constants.FIELD_BOOLEAN) {
+            if(property.fieldType.search === util.constants.FIELD_BOOLEAN) {
               if(value.active == value.inactive) {
                 // None or all, same thing
                 value.text = '';
@@ -169,12 +169,12 @@ angular.module('konga')
               }
             }
 
-            if(property.fieldType.search === constants.FIELD_DATE) {
+            if(property.fieldType.search === util.constants.FIELD_DATE) {
               value.date.startDate = (value.date.startDate == "") ? 0 : value.date.startDate;
               value.date.endDate = (value.date.endDate == "") ? 0 : value.date.endDate;
               value.text = value.date;
             }
-            else if(property.searchConf.policy === constants.VALIDATOR_RANGE && value.range.from !== '') {
+            else if(property.searchConf.policy === util.constants.VALIDATOR_RANGE && value.range.from !== '') {
               value.text = value.range;
             }
 

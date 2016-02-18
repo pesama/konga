@@ -8,7 +8,7 @@
  * Service in the Konga Reference.
  */
 angular.module('konga')
-  .service('exceptionManager', function exceptionManager() {
+  .service('exceptionManager', ['util', function exceptionManager(util) {
 	  this.analyzeException = function(params){
 		  //var entityId = params.id;
 	  	  var $rootScope = params.dependencyInjector.get('$rootScope');
@@ -25,7 +25,7 @@ angular.module('konga')
 	      var involvedFields = "";
 	      
 	      // Verify if the entity is new
-	      //if(entityId !== constants.NEW_ENTITY_ID) { 
+	      //if(entityId !== util.constants.NEW_ENTITY_ID) { 
 
     		  //if(error.data.exceptionCode == 'DATA_INTEGRITY_VIOLATION_SAVE_OR_UPDATE') {
 			  //	 exceptionCode = 'DATA_INTEGRITY_VIOLATION_SAVE_OR_UPDATE';
@@ -72,6 +72,6 @@ angular.module('konga')
     		  }
 
 	      //}
-	      $rootScope.operations.addAlert(constants.ALERT_TYPE_ERROR, exceptionCode, {fields:involvedFields});
+	      $rootScope.operations.addAlert(util.constants.ALERT_TYPE_ERROR, exceptionCode, {fields:involvedFields});
 	  };
-  });
+  }]);

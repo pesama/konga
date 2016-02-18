@@ -8,14 +8,14 @@
  * Provider in the Konga Reference.
  */
 angular.module('konga')
-  .provider('actionManager', function () {
+  .provider('actionManager', ['util', function (util) {
 
     var actions = {
       /*
        * Native actions
        */
       'save-ok': {
-        type: constants.ACTION_TYPE_FUNCTION,
+        type: util.constants.ACTION_TYPE_FUNCTION,
         params: {
           fn: function(params) {
               var entityId = params.id;
@@ -24,10 +24,10 @@ angular.module('konga')
               var data = params.data;
             
               // Verify if the entity is new
-              if(entityId === constants.NEW_ENTITY_ID) {
-                  $rootScope.operations.addAlert(constants.ALERT_TYPE_SUCCESS, 'message.action-confirmation.create.success');
+              if(entityId === util.constants.NEW_ENTITY_ID) {
+                  $rootScope.operations.addAlert(util.constants.ALERT_TYPE_SUCCESS, 'message.action-confirmation.create.success');
               } else {
-                  $rootScope.operations.addAlert(constants.ALERT_TYPE_SUCCESS, 'message.action-confirmation.update.success');
+                  $rootScope.operations.addAlert(util.constants.ALERT_TYPE_SUCCESS, 'message.action-confirmation.update.success');
               }
               
               $rootScope.pageData.original = angular.copy(data);
@@ -42,7 +42,7 @@ angular.module('konga')
       },
 
       'save-ko': {
-        type: constants.ACTION_TYPE_FUNCTION,
+        type: util.constants.ACTION_TYPE_FUNCTION,
         params: {
           fn: function(params) {
             var exceptionManager = params.dependencyInjector.get('exceptionManager');
@@ -53,7 +53,7 @@ angular.module('konga')
       },
       
       'delete-ko': {
-        type: constants.ACTION_TYPE_FUNCTION,
+        type: util.constants.ACTION_TYPE_FUNCTION,
         params: {
           fn: function(params) {
             var exceptionManager = params.dependencyInjector.get('exceptionManager');
@@ -63,31 +63,31 @@ angular.module('konga')
         } 
       },
       'search-entity': {
-        type: constants.ACTION_TYPE_TAB,
+        type: util.constants.ACTION_TYPE_TAB,
         params: {
-          id : constants.ENTITY_ID_PREFFIX + '{entityType}' + constants.SEARCH_SUFFIX,
+          id : util.constants.ENTITY_ID_PREFFIX + '{entityType}' + util.constants.SEARCH_SUFFIX,
           title : 'message.tabs.entity.search',
           href : '/entity/{entityType}/search/',
           closable : true,
           hasChanges : false,
           entityType: '{entityType}',
-          type: constants.TAB_TYPE_SEARCH
+          type: util.constants.TAB_TYPE_SEARCH
         }
       },
       'update-entity': {
-        type: constants.ACTION_TYPE_TAB,
+        type: util.constants.ACTION_TYPE_TAB,
         params: {
-          id : constants.ENTITY_ID_PREFFIX + '{entityType}' + constants.STRING_SEPARATOR + '{id}',
+          id : util.constants.ENTITY_ID_PREFFIX + '{entityType}' + util.constants.STRING_SEPARATOR + '{id}',
           title : 'message.tabs.entity.search',
           href : '/entity/{entityType}/{id}/',
           closable : true,
           hasChanges : false,
           entityType: '{entityType}',
-          type: constants.TAB_TYPE_UPDATE
+          type: util.constants.TAB_TYPE_UPDATE
         }
       },
       'action-form-invalid': {
-        type: constants.ACTION_TYPE_NOTIFY,
+        type: util.constants.ACTION_TYPE_NOTIFY,
         params: {
           type: 'error',
           title: 'message.action.form-invalid.title',
@@ -95,7 +95,7 @@ angular.module('konga')
         }
       },
       'action-forbidden': {
-        type: constants.ACTION_TYPE_NOTIFY,
+        type: util.constants.ACTION_TYPE_NOTIFY,
         params: {
           type: 'error',
           title: 'message.action.forbidden.title',
@@ -103,7 +103,7 @@ angular.module('konga')
         }
       },
       'action-under-development': {
-        type: constants.ACTION_TYPE_NOTIFY,
+        type: util.constants.ACTION_TYPE_NOTIFY,
         params: {
           type: 'notify',
           title: 'message.action.under-development.title',
@@ -178,16 +178,16 @@ angular.module('konga')
         }
 
         switch(actionDefinition.type) {
-        case constants.ACTION_TYPE_MODAL:
+        case util.constants.ACTION_TYPE_MODAL:
           $rootScope.operations.openModal(actionDefinition.params);
           break;
-        case constants.ACTION_TYPE_NOTIFY:
+        case util.constants.ACTION_TYPE_NOTIFY:
           $rootScope.operations.notify(actionDefinition.params.title, actionDefinition.params.message, actionDefinition.params.type, actionDefinition.params);
           break;
-        case constants.ACTION_TYPE_CONFIRM:
+        case util.constants.ACTION_TYPE_CONFIRM:
           $rootScope.operations.confirm(actionDefinition.params.title, actionDefinition.params.message, actionDefinition.params.okHandler, actionDefinition.params.koHandler, actionDefinition.params);
           break;
-        case constants.ACTION_TYPE_TAB:
+        case util.constants.ACTION_TYPE_TAB:
           // Setup params
           for(var encodedParam in parameters) {
             for(var actionParam in actionDefinition.params) {
@@ -199,7 +199,7 @@ angular.module('konga')
           }
           $rootScope.operations.addTab(actionDefinition.params);
           break;
-        case constants.ACTION_TYPE_FUNCTION:
+        case util.constants.ACTION_TYPE_FUNCTION:
           var params = actionDefinition.params.parameters;
           var functionToCall = actionDefinition.params['fn'];
           functionToCall.call(params.self, params);
@@ -221,4 +221,4 @@ angular.module('konga')
       var configurationManager = $injector.get('configurationManager');
       return new Greeter(rScope, session, configurationManager, $injector);
     };
-  });
+  }]);

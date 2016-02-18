@@ -90,12 +90,12 @@ angular.module('konga')
 	      		date: {
 	      			startDate: '',
 	      			endDate: '',
-	      			comparator: constants.DATE_COMPARATOR_EQUALS
+	      			comparator: util.constants.DATE_COMPARATOR_EQUALS
 	      		},
 	      		range: {
 	      			from: '',
 	      			to: '',
-	      			comparator: constants.NUMBER_COMPARATOR_BETWEEN
+	      			comparator: util.constants.NUMBER_COMPARATOR_BETWEEN
 	      		},
 	      		fields: [],
 	      		files: []
@@ -108,16 +108,16 @@ angular.module('konga')
 	      	var sourceField = scope.parentField ? scope.parentField : scope.property;
 
 	        switch(scope.mode) {
-	        case constants.SCOPE_SEARCH:
+	        case util.constants.SCOPE_SEARCH:
 	          configurationSource = sourceField.searchable.configuration;
 	          break;
-	        case constants.SCOPE_UPDATE:
+	        case util.constants.SCOPE_UPDATE:
 	          configurationSource = sourceField.showInUpdate.configuration;
 	          break;
 	        }
 
 	        // Short label
-	        var shortLabelConf = $filter('filter')(configurationSource, { key: constants.USE_SHORT_LABEL });
+	        var shortLabelConf = $filter('filter')(configurationSource, { key: util.constants.USE_SHORT_LABEL });
 
 	      	if(shortLabelConf && shortLabelConf.length && shortLabelConf[0].value === 'true') {
 	      		scope.fieldLabel = scope.property.shortLabel;
@@ -125,7 +125,7 @@ angular.module('konga')
 
 	      	// Read only
 	      	scope.readonly = false;
-  			var readonlyConf = $filter('filter')(configurationSource, { key: constants.READ_ONLY, value: 'true' }, true);
+  			var readonlyConf = $filter('filter')(configurationSource, { key: util.constants.READ_ONLY, value: 'true' }, true);
 
   			if(readonlyConf && readonlyConf.length) {
   				scope.readonly = true;
@@ -163,7 +163,7 @@ angular.module('konga')
 				var value = '';
 				if(this.entity && this.entity.$resolved !== false) {
 					var value;
-					if(this.mode === constants.SCOPE_UPDATE) {
+					if(this.mode === util.constants.SCOPE_UPDATE) {
 					    value = $filter('mapField')(scope.entity, scope.property);
 					} else {
 						value = scope.entity[scope.property.name];
@@ -174,7 +174,7 @@ angular.module('konga')
 						if (parent) {
 							var apiNames = parent.apiName;
 							// TODO Control other modes
-							// var fields = scope.mode === constants.SCOPE_SEARCH ? parent.searchable.fields : parent.showInUpdate.fields;
+							// var fields = scope.mode === util.constants.SCOPE_SEARCH ? parent.searchable.fields : parent.showInUpdate.fields;
 							// var index = fields.indexOf(scope.property.name);
 							// if(scope) {
 								value = scope.entity[scope.property.apiName];
@@ -191,10 +191,10 @@ angular.module('konga')
 						complexEntity = scope.rootEntity;
 					}
 
-					if(scope.property.type.type === constants.FIELD_COMPLEX) {
+					if(scope.property.type.type === util.constants.FIELD_COMPLEX) {
 						complexProperty = scope.property;
 					}
-					else if(scope.parentField && scope.parentField.type.type === constants.FIELD_COMPLEX) {
+					else if(scope.parentField && scope.parentField.type.type === util.constants.FIELD_COMPLEX) {
 						complexProperty = scope.parentField;
 					}
 
@@ -209,20 +209,20 @@ angular.module('konga')
 						this.value.metadata = realMetadata;
 
 						// If updating do some extra stuff
-						if(scope.mode === constants.SCOPE_UPDATE) {
+						if(scope.mode === util.constants.SCOPE_UPDATE) {
 							var realEntity;
-							if(!scope.parentField || scope.parentField.multiplicity === constants.MULTIPLICITY_ONE) {
+							if(!scope.parentField || scope.parentField.multiplicity === util.constants.MULTIPLICITY_ONE) {
 								realEntity = $filter('mapField')(complexEntity, scope.property);
 								
 								// TODO Move this elsewhere
 								// JSON Identity verification
-								var configuration = configurationManager.getConf(constants.JSON_IDENTITY_INFO, 1);
+								var configuration = configurationManager.getConf(util.constants.JSON_IDENTITY_INFO, 1);
 
 								if(configuration.length) {
 									var followJsonIdentity = configuration[0];
 									if(followJsonIdentity.value) {
 										// Get the object type
-										if(scope.property.type.type === constants.FIELD_COMPLEX && realEntity && realEntity.reason === constants.JSON_IDENTITY_INFO) {
+										if(scope.property.type.type === util.constants.FIELD_COMPLEX && realEntity && realEntity.reason === util.constants.JSON_IDENTITY_INFO) {
 											// Get the metadata
 											var metadata = util.getMetadata(scope.property.type.complexType);
 											var apiPath = metadata.apiPath;
@@ -282,7 +282,7 @@ angular.module('konga')
 									var source = scope.parentField;
 									var	configuration = source.showInUpdate.configuration;
 									var listenerName = scope.parentField.owner + '_' + scope.parentField.name;
-									var cascadeConfiguration = $filter('filter')(configuration, { key: constants.CASCADE_UPDATE });
+									var cascadeConfiguration = $filter('filter')(configuration, { key: util.constants.CASCADE_UPDATE });
 									if(cascadeConfiguration.length) {
 										scope.$emit('reset_cascade_' + listenerName, { reset: false, source: scope.property, configuration: cascadeConfiguration, query: scope.value.text });
 									}
@@ -293,10 +293,10 @@ angular.module('konga')
 
 						// If there are some nested fields used, go on
 						var nestFields = null;
-						if(scope.mode === constants.SCOPE_SEARCH && scope.property.searchable.fields && scope.property.searchable.fields.length) {
+						if(scope.mode === util.constants.SCOPE_SEARCH && scope.property.searchable.fields && scope.property.searchable.fields.length) {
 							nestFields = scope.property.searchable.fields;
 						} // for search :)
-						else if(scope.mode === constants.SCOPE_UPDATE && scope.property.showInUpdate.fields.length) { // And for update!
+						else if(scope.mode === util.constants.SCOPE_UPDATE && scope.property.showInUpdate.fields.length) { // And for update!
 							nestFields = scope.property.showInUpdate.fields;
 						}
 
@@ -311,17 +311,17 @@ angular.module('konga')
 								scope.value.fields.push(selectedFields[i]);
 							}								
 						}
-						if(scope.mode === constants.SCOPE_SEARCH) {
+						if(scope.mode === util.constants.SCOPE_SEARCH) {
 							scope.value.text = value;
 						}
 					}
 
 					switch(scope.property.type.type) {
-					case constants.FIELD_COMPLEX:
+					case util.constants.FIELD_COMPLEX:
 						// Nothing to do here
 						break;
-					case constants.FIELD_BOOLEAN:
-						if(scope.mode === constants.SCOPE_SEARCH) {
+					case util.constants.FIELD_BOOLEAN:
+						if(scope.mode === util.constants.SCOPE_SEARCH) {
 							scope.value.text = value;
 							if(scope.value.text === '' || scope.value.text === null) {
 								scope.value.active = true;
@@ -336,19 +336,19 @@ angular.module('konga')
 							scope.value.text = !!value;
 						}
 						break;
-					case constants.FIELD_DATE:
-						if (scope.mode === constants.SCOPE_UPDATE) {
+					case util.constants.FIELD_DATE:
+						if (scope.mode === util.constants.SCOPE_UPDATE) {
 							scope.value.text = value;
-							if (scope.property.fieldType.update == constants.FIELD_DATE) {
+							if (scope.property.fieldType.update == util.constants.FIELD_DATE) {
 								scope.value.text = $filter('date')(value, 'yyyy-MM-dd');
 							} 
 							
-						} else if (scope.mode === constants.SCOPE_SEARCH) {
+						} else if (scope.mode === util.constants.SCOPE_SEARCH) {
 							scope.value.date = value;
 						}
 						break;
 					default:
-						if(scope.property.type.type === constants.FIELD_NUMBER && value!="" && value!=null){
+						if(scope.property.type.type === util.constants.FIELD_NUMBER && value!="" && value!=null){
 							scope.value.text = Number(value);
 						}else{
 							scope.value.text = value;
@@ -357,7 +357,7 @@ angular.module('konga')
 							scope.value.list = angular.copy(scope.property.type.list);
 
 							var multi = null;
-							if(scope.mode === constants.SCOPE_SEARCH) {
+							if(scope.mode === util.constants.SCOPE_SEARCH) {
 								multi = fieldToMatch.searchConf.multiplicity;
 							}
 							else {
@@ -365,7 +365,7 @@ angular.module('konga')
 							}
 
 							// if multiplicity is one, append a null value to de-select
-							if(multi === constants.MULTIPLICITY_ONE) {
+							if(multi === util.constants.MULTIPLICITY_ONE) {
 								scope.value.list.splice(0, 0, { key: null, value: 'combobox.placeholder'});
 							}
 						}
@@ -404,7 +404,7 @@ angular.module('konga')
 							}
 						}, true);
 					}
-					else if(scope.property.type.type === constants.FIELD_COMPLEX) {
+					else if(scope.property.type.type === util.constants.FIELD_COMPLEX) {
 						scope.$watch('value.entity', function(newValue, oldValue) {
 							if(!angular.equals(newValue, oldValue)) {
 								scope.fieldValidation();
@@ -414,13 +414,13 @@ angular.module('konga')
 					}
 
 					// Special treatment for checkboxes on search
-					if(scope.mode === constants.SCOPE_SEARCH && scope.property.type.type == constants.FIELD_BOOLEAN) {
+					if(scope.mode === util.constants.SCOPE_SEARCH && scope.property.type.type == util.constants.FIELD_BOOLEAN) {
 						scope.$watch('value.active', valueWatcher);
 						scope.$watch('value.inactive', valueWatcher);
 					}
 
 					// Special treatment for dates on search
-					if(scope.mode === constants.SCOPE_SEARCH && scope.property.type.type == constants.FIELD_DATE) {
+					if(scope.mode === util.constants.SCOPE_SEARCH && scope.property.type.type == util.constants.FIELD_DATE) {
 						scope.$watch('value.date.startDate', valueWatcher);
 						scope.$watch('value.date.endDate', valueWatcher);
 						scope.$watch('value.date.comparator', valueWatcher);
@@ -428,14 +428,14 @@ angular.module('konga')
 
 					// Special treatment for numbers on range mode
 					// on search
-					if(scope.mode === constants.SCOPE_SEARCH && scope.property.type.type == constants.FIELD_NUMBER && scope.property.searchConf.policy === constants.VALIDATOR_RANGE) {
+					if(scope.mode === util.constants.SCOPE_SEARCH && scope.property.type.type == util.constants.FIELD_NUMBER && scope.property.searchConf.policy === util.constants.VALIDATOR_RANGE) {
 						scope.$watch('value.range.from', valueWatcher);
 						scope.$watch('value.range.to', valueWatcher);
 						scope.$watch('value.range.comparator', valueWatcher);
 					}
 
 					// Special treatment for files
-					if(scope.property.type.type == constants.FIELD_FILE) {
+					if(scope.property.type.type == util.constants.FIELD_FILE) {
 						scope.$watchCollection('value.files', valueWatcher);
 					}
 
@@ -449,28 +449,28 @@ angular.module('konga')
 			scope.reset = function() {
 				// Reset boolean values
 				// TODO Change this by check-boxes
-				if(scope.property.fieldType.search === constants.FIELD_BOOLEAN) {
+				if(scope.property.fieldType.search === util.constants.FIELD_BOOLEAN) {
 					scope.value.active = scope.property.defaults === 'true';
 					scope.value.inactive = scope.property.defaults !== 'true';
 				}
 
-				else if(scope.property.fieldType.search === constants.FIELD_DATE) {
+				else if(scope.property.fieldType.search === util.constants.FIELD_DATE) {
 					// TODO Configuration
-					scope.value.date.comparator = constants.DATE_COMPARATOR_EQUALS;
+					scope.value.date.comparator = util.constants.DATE_COMPARATOR_EQUALS;
 					scope.value.date.startDate = 0;
 					scope.value.date.endDate = 0;
 				}
-				else if(scope.property.searchConf.policy === constants.VALIDATOR_RANGE) {
+				else if(scope.property.searchConf.policy === util.constants.VALIDATOR_RANGE) {
 					// TODO Configuration
-					scope.value.range.comparator = constants.NUMBER_COMPARATOR_BETWEEN;
+					scope.value.range.comparator = util.constants.NUMBER_COMPARATOR_BETWEEN;
 					scope.value.range.from = '';
 					scope.value.range.to = '';
 				}
 
 				// Reset only non-complex fields
-				else if(scope.property.fieldType[scope.mode] !== constants.FIELD_COMPLEX) {
+				else if(scope.property.fieldType[scope.mode] !== util.constants.FIELD_COMPLEX) {
 					scope.value.text = scope.property.defaults == null ? '' : scope.property.defaults;
-					if(scope.property.multiplicity === constants.MULTIPLICITY_MANY) {
+					if(scope.property.multiplicity === util.constants.MULTIPLICITY_MANY) {
 						var length = scope.value.entity.length;
 						scope.value.entity.splice(0, length);
 					}
@@ -497,14 +497,14 @@ angular.module('konga')
 	  			 * If we are in search mode and the field is shown, 
 	  			 * it will NEVER be disabled
 	  			 */
-	  			if(mode === constants.SCOPE_SEARCH) {
+	  			if(mode === util.constants.SCOPE_SEARCH) {
 	  				return false;
 	  			}
 
 	  			// Lookup for complex configuration
 	  			if(scope.property.derived) {
 	  				var configuration = scope.parentField.showInUpdate.configuration;
-	  				var matchingConfiguration = $filter('filter')(configuration, { key: constants.DISABLE_COMPLEX_FIELD, value: scope.property.apiPath }, true);
+	  				var matchingConfiguration = $filter('filter')(configuration, { key: util.constants.DISABLE_COMPLEX_FIELD, value: scope.property.apiPath }, true);
 	  				if(matchingConfiguration.length) {
 	  					return true;
 	  				}
@@ -528,7 +528,7 @@ angular.module('konga')
 	  		 * Condition to display Remove button of a field
 	  		 */
 	  		scope.showRemove = function(field) {
-	  			return scope.value.text !== null && scope.value.text !== '' && (scope.mode === constants.SCOPE_SEARCH || !scope.disableField(scope.mode, scope.property));
+	  			return scope.value.text !== null && scope.value.text !== '' && (scope.mode === util.constants.SCOPE_SEARCH || !scope.disableField(scope.mode, scope.property));
 	  		};
 	  		
 	  		/**
@@ -548,7 +548,7 @@ angular.module('konga')
 
 	  			// TODO Move this elsewhere
 	  			// 'SELECT' field types are disabled on update mode (avoid user writing stuff)
-	  			if(mode === constants.SCOPE_UPDATE && field.fieldType.update === constants.FIELD_SELECT) {
+	  			if(mode === util.constants.SCOPE_UPDATE && field.fieldType.update === util.constants.FIELD_SELECT) {
 	  				if (field.disabledSelect) {
 	  					return true;
 	  				}
@@ -569,7 +569,7 @@ angular.module('konga')
 				scope.value.entity = null;
 				scope.value.date.startDate = '';
 				scope.value.date.endDate = '';
-				scope.value.date.comparator = constants.DATE_COMPARATOR_EQUALS;
+				scope.value.date.comparator = util.constants.DATE_COMPARATOR_EQUALS;
 	  			scope.label = '';
 	  			if (typeof(field.singleSelectCustom) === 'object') {
 	  				 field.singleSelectCustom.deleteField = false;
@@ -581,7 +581,7 @@ angular.module('konga')
 	  			pattern: function() {
 
 	  				// On search mode we don't need validation
-	  				if(scope.mode === constants.SCOPE_SEARCH) {
+	  				if(scope.mode === util.constants.SCOPE_SEARCH) {
 	  					return "/.*/";
 	  				}
                     
@@ -602,7 +602,7 @@ angular.module('konga')
 	  			},
 	  			required: function() {
 	  				// On search mode we don't need validation
-	  				if(scope.mode === constants.SCOPE_SEARCH) {
+	  				if(scope.mode === util.constants.SCOPE_SEARCH) {
 	  					return false;
 	  				}
 
@@ -611,7 +611,7 @@ angular.module('konga')
 
 	  			minlength: function() {
 	  				// On search mode we don't need validation
-	  				if(scope.mode === constants.SCOPE_SEARCH) {
+	  				if(scope.mode === util.constants.SCOPE_SEARCH) {
 	  					return 0;
 	  				}
 
@@ -622,7 +622,7 @@ angular.module('konga')
 
 	  			maxlength: function() {
 	  				// On search mode we don't need validation
-	  				if(scope.mode === constants.SCOPE_SEARCH) {
+	  				if(scope.mode === util.constants.SCOPE_SEARCH) {
 	  					return 524288;
 	  				}
 
@@ -645,16 +645,16 @@ angular.module('konga')
 
 	  			valid_required: function() {
 	  				switch(scope.property.type.type) {
-	  				case constants.FIELD_STRING:
+	  				case util.constants.FIELD_STRING:
 	  					return scope.validation.required() ? scope.value.text && scope.value.text.length > 0 : true;
-	  				case constants.FIELD_COMPLEX:
+	  				case util.constants.FIELD_COMPLEX:
 	  					var relatedMetadata = util.getMetadata(scope.property.type.complexType);
 	  					var idField = util.getEntityId(relatedMetadata, null, true);
 
 	  					// TODO Control multiplicity many
 	  					return scope.validation.required() ? scope.value.entity && scope.value.entity[idField] !== undefined : true;
 	  					break;
-	  				case constants.FIELD_FILE:
+	  				case util.constants.FIELD_FILE:
 	  					return scope.validation.required() ? scope.value.files.length > 0 : true;
 	  					break;
 	  				}
@@ -662,7 +662,7 @@ angular.module('konga')
 	  			},
 
 	  			valid_pattern: function() {
-	  				if(!scope.value.text || scope.property.type.type !== constants.FIELD_STRING) {
+	  				if(!scope.value.text || scope.property.type.type !== util.constants.FIELD_STRING) {
 	  					return true;
 	  				}
 
@@ -684,7 +684,7 @@ angular.module('konga')
 	  			
 	  			valid_forbiddenCharacters: function() {
 	  				// On search mode we don't need validation
-	  				if(scope.mode === constants.SCOPE_SEARCH) {
+	  				if(scope.mode === util.constants.SCOPE_SEARCH) {
 	  					return true;
 	  				}
 
@@ -701,12 +701,12 @@ angular.module('konga')
 	  			},
 	  			valid_minlength: function() {
 	  				// On search mode we don't need validation
-	  				if(scope.mode === constants.SCOPE_SEARCH) {
+	  				if(scope.mode === util.constants.SCOPE_SEARCH) {
 	  					return true;
 	  				}
 
 	  				var minLength = scope.minLength = scope.property.validation.minLength;
-					if (scope.property.type.type === constants.FIELD_COMPLEX) {
+					if (scope.property.type.type === util.constants.FIELD_COMPLEX) {
 						return minLength ? scope.value.entity.length >= minLength : true;
 					}
 	  				return minLength ? scope.value.text.length > minLength : true;
@@ -714,7 +714,7 @@ angular.module('konga')
 
 	  			valid_maxlength: function() {
 	  				// On search mode we don't need validation
-	  				if(scope.mode === constants.SCOPE_SEARCH) {
+	  				if(scope.mode === util.constants.SCOPE_SEARCH) {
 	  					return true;
 	  				}
 
@@ -736,44 +736,44 @@ angular.module('konga')
 	  		};
 	  		
 	  		// TODO Change this!
-	  		scope.classFormInput = ([constants.FIELD_PICK_LIST, constants.FIELD_TABLE].indexOf(scope.property.fieldType[scope.mode]) === -1) ? "form-input-content" : "";
-	  		scope.displayMode = ([constants.FIELD_PICK_LIST, constants.FIELD_TABLE].indexOf(scope.property.fieldType[scope.mode]) === -1) ? "" : "pickListDispBlock padding-cero";
+	  		scope.classFormInput = ([util.constants.FIELD_PICK_LIST, util.constants.FIELD_TABLE].indexOf(scope.property.fieldType[scope.mode]) === -1) ? "form-input-content" : "";
+	  		scope.displayMode = ([util.constants.FIELD_PICK_LIST, util.constants.FIELD_TABLE].indexOf(scope.property.fieldType[scope.mode]) === -1) ? "" : "pickListDispBlock padding-cero";
 
 	  		// Adjust templating size
-	  		if(scope.mode === constants.SCOPE_UPDATE) {
+	  		if(scope.mode === util.constants.SCOPE_UPDATE) {
 	  			// Selects are rendered as medium
 		  		switch(scope.property.fieldType.update) {
-		  		case constants.FIELD_SELECT:
+		  		case util.constants.FIELD_SELECT:
 		  			if(!(!scope.parentField && scope.property.isKey)) {
 		  				scope.templating.inputSize = 'col-md-12';
 		  				scope.templating.fieldSize = 'col-md-8';
 		  				scope.templating.adjusted = true;
 		  			}
 		  			break;
-		  		case constants.FIELD_DATE:
-		  		case constants.FIELD_NUMBER:
-		  		case constants.FIELD_COMBOBOX:
-		  		case constants.FIELD_PRICE:
+		  		case util.constants.FIELD_DATE:
+		  		case util.constants.FIELD_NUMBER:
+		  		case util.constants.FIELD_COMBOBOX:
+		  		case util.constants.FIELD_PRICE:
 		  			scope.templating.inputSize = 'col-md-6';
 		  			scope.templating.fieldSize = 'col-md-4';
 		  			scope.templating.adjusted = true;
 		  			break;
-		  		case constants.FIELD_COMPLEX:
+		  		case util.constants.FIELD_COMPLEX:
 		  			scope.templating.inputSize = '';
 		  			scope.templating.fieldSize = 'col-md-12 no-padding';
 					scope.templating.labelWeight = 'font-bold';
 					scope.templating.adjusted = true;
 		  			break;
-		  		case constants.FIELD_PICK_LIST:
-		  		case constants.FIELD_IMAGE:
-		  		case constants.FIELD_TABLE:
+		  		case util.constants.FIELD_PICK_LIST:
+		  		case util.constants.FIELD_IMAGE:
+		  		case util.constants.FIELD_TABLE:
 		  			scope.templating.inputSize = 'col-md-12';
 		  			scope.templating.fieldSize = 'col-md-12 no-padding';
 					scope.templating.labelWeight = 'font-bold';
 					scope.templating.labelDecoration = 'font-underline';
 					scope.templating.adjusted = true;
 		  			break;
-		  		case constants.FIELD_FILE:
+		  		case util.constants.FIELD_FILE:
 		  			scope.templating.inputSize = 'col-md-12';
 		  			scope.templating.fieldSize = 'col-md-8 no-padding';
 					scope.templating.labelWeight = 'font-bold';
@@ -795,24 +795,24 @@ angular.module('konga')
 	  		}
 
 	  		// TODO Improve search configuration
-	  		else if(scope.mode === constants.SCOPE_SEARCH) {
+	  		else if(scope.mode === util.constants.SCOPE_SEARCH) {
 	  			scope.templating.inputSize = 'col-md-12';
 	  			scope.templating.fieldSize = 'col-md-12';
-	  			if(scope.property.fieldType.search === constants.FIELD_COMPLEX) {
+	  			if(scope.property.fieldType.search === util.constants.FIELD_COMPLEX) {
 					scope.templating.fieldSize = 'col-md-12 no-padding';
 					scope.templating.labelWeight = 'font-bold';
 				}
-				else if(scope.property.fieldType.search === constants.FIELD_DATE ||
-					(scope.property.fieldType.search === constants.FIELD_NUMBER && scope.property.searchConf.policy === constants.VALIDATOR_RANGE)) {
+				else if(scope.property.fieldType.search === util.constants.FIELD_DATE ||
+					(scope.property.fieldType.search === util.constants.FIELD_NUMBER && scope.property.searchConf.policy === util.constants.VALIDATOR_RANGE)) {
 					scope.templating.labelWeight = 'font-bold';
 				}
 	  		}
 
-	  		if(scope.property.fieldType[scope.mode] !== constants.FIELD_COMPLEX) {
+	  		if(scope.property.fieldType[scope.mode] !== util.constants.FIELD_COMPLEX) {
 	  			// Setup the label style
 		      	// By default we append no class, as it's a 'standard' form
 		      	switch(scope.rootMetadata[scope.mode + 'Style']) {
-		      	case constants.FORM_STYLE_HORIZONTAL:
+		      	case util.constants.FORM_STYLE_HORIZONTAL:
 		      		scope.templating.inputSize = 'col-md-12';
 		      		scope.templating.labelStyle = 'col-md-4 control-label';
 		      		scope.templating.validationStyle = 'col-md-offset-4 col-md-8';
@@ -843,7 +843,7 @@ angular.module('konga')
 				// See if we need NOT to copy the value
 				// If the field is a file, NEVER copy
 				var forceNotCopy = false;
-				if([constants.FIELD_FILE, constants.FIELD_TABLE].indexOf(scope.property.type.type) !== -1) {
+				if([util.constants.FIELD_FILE, util.constants.FIELD_TABLE].indexOf(scope.property.type.type) !== -1) {
 					forceNotCopy = true;
 				}
 				var configuration = $filter('filter')(scope.metadata.configuration, { key: 'DONT_CREATE_COPY', value: scope.property.name }, true);
@@ -864,23 +864,23 @@ angular.module('konga')
 					var source = scope.parentField;
 
 					switch(scope.mode) {
-					case constants.SCOPE_SEARCH:
+					case util.constants.SCOPE_SEARCH:
 						configuration = source.searchable.configuration;
 						break;
-					case constants.SCOPE_UPDATE:
+					case util.constants.SCOPE_UPDATE:
 						configuration = source.showInUpdate.configuration;
 						break;
 					}
 
 					var listenerName = scope.parentField.owner + '_' + scope.parentField.name;
 
-					var cascadeConfiguration = $filter('filter')(configuration, { key: constants.CASCADE_UPDATE });
+					var cascadeConfiguration = $filter('filter')(configuration, { key: util.constants.CASCADE_UPDATE });
 					if(cascadeConfiguration.length) {
 						// Reset all fields from upper levels
 						scope.$emit('reset_cascade_' + listenerName, { source: scope.property, configuration: cascadeConfiguration, query: scope.value.text });
 					}
 
-					var propagateConfiguration = $filter('filter')(configuration, { key: constants.PROPAGATE_UPDATE });
+					var propagateConfiguration = $filter('filter')(configuration, { key: util.constants.PROPAGATE_UPDATE });
 					if(propagateConfiguration.length) {
 						// Notify changes to the parent field
 						scope.$emit('complex_update_' + listenerName, { source: scope.property, configuration: propagateConfiguration });
@@ -919,7 +919,7 @@ angular.module('konga')
 					return;
 				}
 
-				if(scope.property.fieldType[scope.mode] === constants.FIELD_COMPLEX) {
+				if(scope.property.fieldType[scope.mode] === util.constants.FIELD_COMPLEX) {
 					var innerFields = scope.value.fields;
 
 					var innerEntity = scope.entity[scope.property.name];
@@ -950,7 +950,7 @@ angular.module('konga')
 				}
 			});
 
-			if(scope.property.fieldType[scope.mode] === constants.FIELD_COMPLEX && !scope.property.isSelf) {
+			if(scope.property.fieldType[scope.mode] === util.constants.FIELD_COMPLEX && !scope.property.isSelf) {
 				scope.$on('complex_update_' + listenerName, function(events, args) {
 					if(!scope.propagateEnabled) {
 						return;
@@ -969,7 +969,7 @@ angular.module('konga')
 					for(var i = 0; i < configuration.length; i++) {
 						var currentConf = configuration[i].value;
 						// Is any cascade applicable?
-						var apiPath = source.isSelf ? constants.SELF_FIELD : source.apiPath;
+						var apiPath = source.isSelf ? util.constants.SELF_FIELD : source.apiPath;
 
 						var index = currentConf.indexOf(apiPath + '->');
 						if(index !== -1) {
@@ -988,7 +988,7 @@ angular.module('konga')
 									var conf = parsedConf[f];
 									var self = false;
 									// Get the field to cascade
-									if(conf === constants.SELF_FIELD) {
+									if(conf === util.constants.SELF_FIELD) {
 										conf = scope.property.name;
 										self = true;
 									}
@@ -1120,7 +1120,7 @@ angular.module('konga')
 								var conf = parsedConf[f];
 								var self = false;
 								// Get the field to cascade
-								if(conf === constants.SELF_FIELD) {
+								if(conf === util.constants.SELF_FIELD) {
 									conf = scope.property.name;
 									self = true;
 								}
@@ -1182,14 +1182,14 @@ angular.module('konga')
 				fieldToMatch = scope.property;
 			}
 
-			if(scope.mode === constants.SCOPE_SEARCH) {
+			if(scope.mode === util.constants.SCOPE_SEARCH) {
 				multiField = fieldToMatch.searchConf.multiplicity;
 			}
 			else {
 				multiField = fieldToMatch.multiplicity;
 			}
 
-			var multi = multiField === constants.MULTIPLICITY_MANY;
+			var multi = multiField === util.constants.MULTIPLICITY_MANY;
 			scope.multiple = multi;
 			
 			var selectTemplate 		= multi ? '/konga/views/multi-select.html' : '/konga/views/single-select.html';
@@ -1250,7 +1250,7 @@ angular.module('konga')
 			    	  		      		date: {
 			    	  		      			startDate: '',
 			    	  		      			endDate: '',
-			    	  		      			comparator: constants.DATE_COMPARATOR_EQUALS
+			    	  		      			comparator: util.constants.DATE_COMPARATOR_EQUALS
 			    	  		      		}
 			    	  			};
 			    	  			scope.label = '';
@@ -1319,7 +1319,7 @@ angular.module('konga')
 
 			  scope.getOptionsList = function() {
 				switch (scope.property.name) {
-					case constants.COMBO_NATURE_TIERS :
+					case util.constants.COMBO_NATURE_TIERS :
 						return [{code:'Fournisseur',label:'Fournisseur'}, {code:'Client',label:'Client'}];
 				}
 			  };
@@ -1356,8 +1356,8 @@ angular.module('konga')
 			 */
 
 			// Booleans on search mode are shown as checkboxes
-			if(scope.mode === constants.SCOPE_SEARCH && fieldType == constants.FIELD_BOOLEAN) {
-				fieldType = constants.FIELD_CHECKBOX; // Change radio to checkbox on search
+			if(scope.mode === util.constants.SCOPE_SEARCH && fieldType == util.constants.FIELD_BOOLEAN) {
+				fieldType = util.constants.FIELD_CHECKBOX; // Change radio to checkbox on search
 
 				var queryValue = scope.entity[scope.property.name];
 
@@ -1367,26 +1367,26 @@ angular.module('konga')
 			}
 
 			// Dates on search mode are displayed as two dates and a comparator (i.e. date-search)
-			if(scope.mode === constants.SCOPE_SEARCH && fieldType === constants.FIELD_DATE) {
-				fieldType = constants.FIELD_DATESEARCH;
+			if(scope.mode === util.constants.SCOPE_SEARCH && fieldType === util.constants.FIELD_DATE) {
+				fieldType = util.constants.FIELD_DATESEARCH;
 			}
 
 			// Text fields with 'maxLength' above 255 are rendered as text areas
-			if(fieldType == constants.FIELD_PLAIN && scope.property.validation.maxLength > 255) {
-				fieldType = constants.FIELD_TEXTAREA;
+			if(fieldType == util.constants.FIELD_PLAIN && scope.property.validation.maxLength > 255) {
+				fieldType = util.constants.FIELD_TEXTAREA;
 			}
 
 			// Non complex fields with inner fields selected are rendered as complex
 			if(scope.value.fields.length) {
-				fieldType = constants.FIELD_COMPLEX;
+				fieldType = util.constants.FIELD_COMPLEX;
 			}
 
 			// Depending on the type of the field display one or other
 			var inputSuffix = '';
-			if(scope.mode === constants.SCOPE_SEARCH) {
+			if(scope.mode === util.constants.SCOPE_SEARCH) {
 				// Is it exact match?
 				var validatorType = scope.property.searchConf.policy
-				if(validatorType === constants.VALIDATOR_RANGE) {
+				if(validatorType === util.constants.VALIDATOR_RANGE) {
 					inputSuffix = '-' + validatorType.toLowerCase();
 				}
 			}
@@ -1400,7 +1400,7 @@ angular.module('konga')
 			scope.fieldValidation = function() {
 				//Date verification
 				
-				if(scope.mode === constants.SCOPE_UPDATE && (scope.property.type.type === constants.FIELD_DATE || scope.property.type.type === constants.FIELD_DATETIME)) {
+				if(scope.mode === util.constants.SCOPE_UPDATE && (scope.property.type.type === util.constants.FIELD_DATE || scope.property.type.type === util.constants.FIELD_DATETIME)) {
 					if(scope.property.validation.validators && scope.property.validation.validators.length > 0){
 												
 						var hasError = false;
@@ -1425,7 +1425,7 @@ angular.module('konga')
 								}
 								if (value != undefined) {
 									var dateRef = value;									
-									if (scope.property.type.type === constants.FIELD_DATE && value.length > 0) {
+									if (scope.property.type.type === util.constants.FIELD_DATE && value.length > 0) {
 										var dateRef = new Date(value).getTime();
 									} 
 									
@@ -1473,7 +1473,7 @@ angular.module('konga')
 				}
 				
 				// TODO Improve this validation mode
-				if(scope.mode === constants.SCOPE_UPDATE && scope.property.type.type === constants.FIELD_STRING) {
+				if(scope.mode === util.constants.SCOPE_UPDATE && scope.property.type.type === util.constants.FIELD_STRING) {
 					var validation = scope.property.validation;
 
 					var value = scope.value.text;
@@ -1521,7 +1521,7 @@ angular.module('konga')
 						});
 					}
 				}
-				if(scope.property.fieldType.update == constants.FIELD_PICK_LIST) {
+				if(scope.property.fieldType.update == util.constants.FIELD_PICK_LIST) {
 					var validation = scope.property.validation;
 
 					var length = scope.entity.situations ? scope.entity.situations.length : 0;

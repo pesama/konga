@@ -13,12 +13,12 @@
  	metadataObject : null,
 
  	getConfiguration: function() {
- 		return util.metadataObject.configuration;
+ 		return this.metadataObject.configuration;
  	},
 
  	getMetadata: function(name) {
- 		for(var i = 0; i < util.metadataObject.entities.length; i++) {
- 			var current = util.metadataObject.entities[i];
+ 		for(var i = 0; i < this.metadataObject.entities.length; i++) {
+ 			var current = this.metadataObject.entities[i];
  			if(current.name === name) {
  				return current;
  			}
@@ -43,7 +43,7 @@
 		// Does it have a superClass?
 		// TODO Follow hierarchy
 		if(entity.superClass) {
-			var superClass = util.getMetadata(entity.superClass);
+			var superClass = this.getMetadata(entity.superClass);
 
 			// Get the entity configuration
 			var entityConfiguration = entity.configuration;
@@ -56,7 +56,7 @@
 				for(var f = 0; f < entityConfiguration.length; f++) {
 					var param = entityConfiguration[f];
 
-					if(param.key === constants.CONFIGURATION_IGNORE_PARENT_FIELD) {
+					if(param.key === this.constants.CONFIGURATION_IGNORE_PARENT_FIELD) {
 						var fieldName = param.value;
 						if(superFields[i].name === fieldName) {
 							ignore = true;
@@ -91,9 +91,9 @@
 	 * @returns {*} The id of the entity
 	 */
 	 getEntityId: function(metadata, entity, fieldName) {
-	 	var id = constants.NEW_ENTITY_ID;
+	 	var id = this.constants.NEW_ENTITY_ID;
 
-	 	var fields = util.getEntityFields(metadata);
+	 	var fields = this.getEntityFields(metadata);
 	 	for(var i = 0; i < fields.length; i++) {
 	 		var field = fields[i];
 
@@ -127,7 +127,7 @@
 	 getEntityCode: function(metadata, entity, fieldName) {
 	 	var code = null;
 
-	 	var fields = util.getEntityFields(metadata);
+	 	var fields = this.getEntityFields(metadata);
 	 	for(var i = 0; i < fields.length; i++) {
 	 		var field = fields[i];
 
@@ -161,7 +161,7 @@
 	 getEntityLabel: function(metadata, entity, fieldName) {
 	 	var label = null;
 
-	 	var fields = util.getEntityFields(metadata);
+	 	var fields = this.getEntityFields(metadata);
 	 	for(var i = 0; i < fields.length; i++) {
 	 		var field = fields[i];
 			// Is it the label?
@@ -210,7 +210,7 @@
 
 	 	var categories = [];
 
-	 	var fields = util.getEntityFields(entity);
+	 	var fields = this.getEntityFields(entity);
 
 	 	for(var i = 0; i < fields.length; i++){
 
@@ -251,7 +251,7 @@
 		if(entity.superClass) {
 
 			// Get the superclass
-			var superClass = util.getMetadata(entity.superClass);
+			var superClass = this.getMetadata(entity.superClass);
 
 			// Concat the fieldsets of the superclass
 			fieldsets = fieldsets.concat(superClass.fieldSets);
@@ -409,7 +409,7 @@
 	 },
 
 	 init: function(metadataObject) {
-	 	util.metadataObject = metadataObject;
+	 	this.metadataObject = metadataObject;
 	 },
 
 	 constants: {
