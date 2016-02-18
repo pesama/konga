@@ -1,6 +1,6 @@
 'use strict';
 
-/**
+/*
  * @ngdoc object
  * @name lib.konga.util
  * @description
@@ -26,7 +26,7 @@
  		return null;
  	},
 
-	/**
+	/*
 	 * @ngdoc method
 	 * @methodOf lib.konga.util
 	 * @name getEntityFields
@@ -79,7 +79,7 @@
 		return fields;
 	},
 
-	/**
+	/*
 	 * @ngdoc method
 	 * @methodOf lib.konga.util
 	 * @name getEntityId
@@ -113,7 +113,7 @@
 		return id;
 	},
 
-	/**
+	/*
 	 * @ngdoc method
 	 * @methodOf lib.konga.util
 	 * @name getEntityCode
@@ -147,7 +147,7 @@
 		return code;
 	},
 
-	/**
+	/*
 	 * @ngdoc method
 	 * @methodOf lib.konga.util
 	 * @name getEntityLabel
@@ -181,7 +181,7 @@
 		return label;
 	},
 	
-	/**
+	/*
 	 * @ngdoc method
 	 * @methodOf lib.konga.util
 	 * @name downloadFile
@@ -197,7 +197,7 @@
 	 	a.click();
 	 },
 
-	/**
+	/*
 	 * @ngdoc method
 	 * @methodOf lib.konga.util
 	 * @name getEntityCategories
@@ -230,7 +230,7 @@
 		return categories;
 	},
 
-	/**
+	/*
 	 * @ngdoc method
 	 * @methodOf lib.konga.util
 	 * @name getEntityFieldSets
@@ -260,7 +260,7 @@
 		return fieldsets;
 	},
 
-	/**
+	/*
 	 * @ngdoc method
 	 * @methodOf lib.konga.util
 	 * @name convertUtf8ToWindow1250

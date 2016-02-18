@@ -1,4 +1,4 @@
-/**
+/*
  * @ngdoc object
  * @name Configuration
  * @description
@@ -6,7 +6,7 @@
  * 
  */
 
-/**
+/*
  * @ngdoc object
  * @name Configuration.Scope
  * @description
@@ -15,7 +15,7 @@
  * <b>You don't need to inject this service.</b>. To simplify from-view-access it's inherited via `$scope` to all controllers in your application.
  */ 
 
-/**
+/*
  * @ngdoc object
  * @name Configuration.Konga-config file
  * @description
@@ -24,7 +24,7 @@
  * <b>You don't need to inject this service.</b>. To simplify from-view-access it's inherited via `$scope` to all controllers in your application.
  */ 
 
-/**
+/*
  * @ngdoc object
  * @name Configuration.Defaults
  * @description
@@ -33,7 +33,7 @@
  * <b>You don't need to inject this service.</b>. To simplify from-view-access it's inherited via `$scope` to all controllers in your application.
  */ 
 
-/**
+/*
  * @ngdoc object
  * @name Configuration.Configuration manager
  * @description

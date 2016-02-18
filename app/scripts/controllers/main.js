@@ -1,6 +1,6 @@
 'use strict';
 
-/**
+/*
  * @ngdoc controller
  * @name Konga Reference.controller:KongaCtrl
  * @module Konga Reference
@@ -68,12 +68,12 @@
  * @param {Scaffold} scaffold Used to create new objects for the entities
  */
 angular.module('konga')
-	.controller('KongaCtrl', ['$scope', '$location', '$filter', '$rootScope', '$timeout','common', 'scaffold', '$translate', 'userData', '$cookieStore', 'actionManager', '$modal', 'permissionManager', 'kongaConfig', 'util', 
-		function($scope, $location, $filter, $rootScope, $timeout,common, scaffold, $translate, userData, $cookieStore, actionManager, $modal, permissionManager, kongaConfig, util) {
+	.controller('KongaCtrl', ['$scope', '$location', '$filter', '$rootScope', '$timeout','common', 'scaffold', '$translate', 'userData', '$cookieStore', 'actionManager', '$modal', 'permissionManager', 'kongaConfig', 'util', 'dialogs',
+		function($scope, $location, $filter, $rootScope, $timeout,common, scaffold, $translate, userData, $cookieStore, actionManager, $modal, permissionManager, kongaConfig, util, dialogs) {
 
 			$scope.configConstants = kongaConfig;
 
-			/**
+			/*
 			 * @name tabs
 			 * @object
 			 * @description
@@ -99,7 +99,7 @@ angular.module('konga')
 			// This is documented on app.js
 		  	$rootScope.operations = $scope.operations = {
 
-		  		/**
+		  		/*
 		  		 * @ngdoc method
 		  		 * @name addAlert
 		  		 * @methodOf Standards.Operations
@@ -126,7 +126,7 @@ angular.module('konga')
 		  	          }, 4000); // TODO KONGA_ALERT_TIMEOUT
 		  		},
 
-		  		/**
+		  		/*
 		  		 * @ngdoc method
 		  		 * @name removeAlert
 		  		 * @methodOf Standards.Operations
@@ -138,7 +138,7 @@ angular.module('konga')
 		  			$scope.alerts.splice(index, 1);
 		  		},
 
-		  		/**
+		  		/*
 		  		 * @ngdoc method
 		  		 * @name confirm
 		  		 * @methodOf Standards.Operations
@@ -168,7 +168,7 @@ angular.module('konga')
 			        });
 		  		},
 		  		
-		  		/**
+		  		/*
 		  		 * @ngdoc method
 		  		 * @name notify
 		  		 * @methodOf Standards.Operations
@@ -198,7 +198,7 @@ angular.module('konga')
 		  			dlg = dialogs[type](localeTitle, localeMessage);
 		  		},
 
-		  		/**
+		  		/*
 		  		 * @ngdoc method
 		  		 * @name goHome
 		  		 * @methodOf Standards.Operations
@@ -217,7 +217,7 @@ angular.module('konga')
 					this.addTab(homeTab);
 		  		},
 
-		  		/**
+		  		/*
 		  		 * @ngdoc method
 		  		 * @name goAdmin
 		  		 * @methodOf Standards.Operations
@@ -236,7 +236,7 @@ angular.module('konga')
 					this.addTab(homeTab);
 		  		},
 
-		  		/**
+		  		/*
 		  		 * @ngdoc method
 		  		 * @name openEntitySearch
 		  		 * @methodOf Standards.Operations
@@ -281,7 +281,7 @@ angular.module('konga')
 					$scope.operations.addTab(tab);
 		  		},
 
-		  		/**
+		  		/*
 		  		 * @ngdoc method
 		  		 * @name openEntityUpdate
 		  		 * @methodOf Standards.Operations
@@ -342,7 +342,7 @@ angular.module('konga')
 					$scope.operations.addTab(tab);
 		  		},
 
-		  		/**
+		  		/*
 		  		 * @ngdoc method
 		  		 * @name openEntityCreated
 		  		 * @methodOf Standards.Operations
@@ -368,7 +368,7 @@ angular.module('konga')
 		  			}
 		  		},
 
-		  		/**
+		  		/*
 		  		 * @ngdoc method
 		  		 * @name openModal
 		  		 * @methodOf Standards.Operations
@@ -405,7 +405,7 @@ angular.module('konga')
 				    });
 		  		},
 
-		  		/**
+		  		/*
 		  		 * @ngdoc method
 		  		 * @name addTab
 		  		 * @methodOf Standards.Operations
@@ -465,7 +465,7 @@ angular.module('konga')
 					$scope.operations.redirectTo(existingTabs[0]);
 				},
 
-				/**
+				/*
 		  		 * @ngdoc method
 		  		 * @name closeTab
 		  		 * @methodOf Standards.Operations
@@ -522,7 +522,7 @@ angular.module('konga')
 					}
 				},
 
-				/**
+				/*
 		  		 * @ngdoc method
 		  		 * @name closeTabById
 		  		 * @methodOf Standards.Operations
@@ -539,7 +539,7 @@ angular.module('konga')
 					}
 				},
 				
-				/**
+				/*
 		  		 * @ngdoc method
 		  		 * @name closeAllTabs
 		  		 * @methodOf Standards.Operations
@@ -554,7 +554,7 @@ angular.module('konga')
 					}
 				},
 
-				/**
+				/*
 		  		 * @ngdoc method
 		  		 * @name redirectTo
 		  		 * @methodOf Standards.Operations
@@ -576,7 +576,7 @@ angular.module('konga')
 					$scope.tabId = tab.id;
 				},
 
-				/**
+				/*
 		  		 * @ngdoc method
 		  		 * @name requestLoading
 		  		 * @methodOf Standards.Operations
@@ -590,7 +590,7 @@ angular.module('konga')
 					$scope.loadingMessage = message;
 				},
 
-				/**
+				/*
 		  		 * @ngdoc method
 		  		 * @name freeLoading
 		  		 * @methodOf Standards.Operations
@@ -606,7 +606,7 @@ angular.module('konga')
 					$scope.loading.splice(index, 1);
 				},
 
-				/**
+				/*
 		  		 * @ngdoc method
 		  		 * @name setLoadingMessage
 		  		 * @methodOf Standards.Operations
@@ -618,7 +618,7 @@ angular.module('konga')
 					$scope.loadingMessage = message;
 				},
 
-				/**
+				/*
 		  		 * @ngdoc method
 		  		 * @name changeLocale
 		  		 * @methodOf Standards.Operations
@@ -661,7 +661,7 @@ angular.module('konga')
 					$scope.operations.addTab(tab);
 		  		},
 
-		  		/**
+		  		/*
 				 * Decodes a String and converts it into an action
 				 * The form of the action String MUST BE:
 				 *  - Action name

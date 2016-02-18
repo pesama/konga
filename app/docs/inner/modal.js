@@ -1,4 +1,4 @@
-/**
+/*
  * @ngdoc object
  * @name Action-driven framework.Modal
  * @description
@@ -30,7 +30,7 @@
  * </pre>
  */
 
-/**
+/*
  * @ngdoc object
  * @name template
  * @propertyOf Action-driven framework.Modal
@@ -76,7 +76,7 @@
  * </pre>
  */
 
-/**
+/*
  * @ngdoc function
  * @name controller
  * @propertyOf Action-driven framework.Modal
@@ -95,7 +95,7 @@ angular.module("yourProjectApp")
  *
  */
 
- /**
+ /*
  * @ngdoc object
  * @name parameters
  * @propertyOf Action-driven framework.Modal
@@ -106,7 +106,7 @@ angular.module("yourProjectApp")
  * * `OK` and `KO` handlers via first argument's `parameters` object
  */
 
- /**
+ /*
   * @ngdoc function
   * @name okHandler
   * @methodOf Action-driven framework.Modal
@@ -116,7 +116,7 @@ angular.module("yourProjectApp")
   * @param {Object} data The data being sent from modal's controller
   */
 
-/**
+/*
   * @ngdoc function
   * @name koHandler
   * @methodOf Action-driven framework.Modal

@@ -1,6 +1,6 @@
 'use strict';
 
-/**
+/*
  * @ngdoc directive
  * @name Konga Reference.directive:Search Pane
  * @scope

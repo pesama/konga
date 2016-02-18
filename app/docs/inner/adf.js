@@ -1,4 +1,4 @@
-/**
+/*
  * @ngdoc object
  * @name Action-driven framework
  * @description
@@ -6,7 +6,7 @@
  * 
  */ 
 
-/**
+/*
  * @ngdoc object
  * @name Action-driven framework.Purpose
  * @description
@@ -15,7 +15,7 @@
  * <b>You don't need to inject this service.</b>. To simplify from-view-access it's inherited via `$scope` to all controllers in your application.
  */ 
 
-/**
+/*
  * @ngdoc object
  * @name Action-driven framework.Action types
  * @description
@@ -24,7 +24,7 @@
  * <b>You don't need to inject this service.</b>. To simplify from-view-access it's inherited via `$scope` to all controllers in your application.
  */ 
 
-/**
+/*
  * @ngdoc object
  * @name Action-driven framework.Entity & field actions
  * @description
@@ -33,7 +33,7 @@
  * <b>You don't need to inject this service.</b>. To simplify from-view-access it's inherited via `$scope` to all controllers in your application.
  */ 
 
-/**
+/*
  * @ngdoc object
  * @name Action-driven framework.Overriding defaults
  * @description
@@ -42,7 +42,7 @@
  * <b>You don't need to inject this service.</b>. To simplify from-view-access it's inherited via `$scope` to all controllers in your application.
  */ 
 
-/**
+/*
  * @ngdoc object
  * @name Action-driven framework.Action Manager
  * @description

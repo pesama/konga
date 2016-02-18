@@ -1,6 +1,6 @@
 'use strict';
 
-/**
+/*
  * @ngdoc service
  * @name Konga Reference.Common
  * @description
@@ -13,7 +13,7 @@ angular.module('konga')
     var storage = {};
     var pageData = {};
 
-    /**
+    /*
      * @ngdoc method
      * @name store
      * @methodOf Konga Reference.Common
@@ -23,7 +23,7 @@ angular.module('konga')
      * @param {Object} value The value to store
      */
     
-    /**
+    /*
      * @ngdoc method
      * @name read
      * @methodOf Konga Reference.Common
@@ -33,7 +33,7 @@ angular.module('konga')
      * @returns {Object} The value from the storage.
      */
     
-    /**
+    /*
      * @ngdoc method
      * @name delete
      * @methodOf Konga Reference.Common
@@ -55,7 +55,7 @@ angular.module('konga')
         delete storage[key];
       };
 
-      /**
+      /*
        * @ngdoc method
        * @name getMetadata
        * @methodOf Konga Reference.Common
@@ -77,7 +77,7 @@ angular.module('konga')
         return null;
       };
 
-      /**
+      /*
        * @ngdoc method
        * @name getPageData
        * @methodOf Konga Reference.Common
@@ -95,7 +95,7 @@ angular.module('konga')
         return ret;
       };
 
-      /**
+      /*
        * @ngdoc method
        * @name deletePageData
        * @methodOf Konga Reference.Common

@@ -2,7 +2,7 @@
 
 /* TODO @deprecate */
 
-/**
+/*
  * @ngdoc service
  * @name Konga Reference.Api
  * @description
@@ -27,7 +27,7 @@ angular.module('konga')
   });
 
 // Document the operations
-/**
+/*
  * @ngdoc method
  * @name get
  * @methodOf Konga Reference.Api
@@ -39,7 +39,7 @@ angular.module('konga')
  * @returns {Object} The `$resource` with that entity
  */
 
- /**
+ /*
  * @ngdoc method
  * @name search
  * @methodOf Konga Reference.Api

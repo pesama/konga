@@ -1,6 +1,6 @@
 'use strict';
 
-/**
+/*
  * @ngdoc filter
  * @name Konga Reference.filter:tableRendererComplex
  * @function

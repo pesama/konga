@@ -1,6 +1,6 @@
 'use strict';
 
-/**
+/*
  * @ngdoc directive
  * @name Konga Reference.directive:Raw input
  * @scope
@@ -482,7 +482,7 @@ angular.module('konga')
 				scope.label = "";
 			};
 
-			/**
+			/*
 	  		 * Determines whether to disable a field based on their properties
 	  		 */
 	  		scope.disableField = function(mode, field) {
@@ -524,14 +524,14 @@ angular.module('konga')
 	  			return bEditable;
 	  		};
 	  		
-	  		/**
+	  		/*
 	  		 * Condition to display Remove button of a field
 	  		 */
 	  		scope.showRemove = function(field) {
 	  			return scope.value.text !== null && scope.value.text !== '' && (scope.mode === util.constants.SCOPE_SEARCH || !scope.disableField(scope.mode, scope.property));
 	  		};
 	  		
-	  		/**
+	  		/*
 	  		 * Determines whether to disable a multi/single select based on their properties
 	  		 */
 	  		scope.disableSelect = function(field) {
@@ -560,7 +560,7 @@ angular.module('konga')
 	  			return false;
 	  		};
 	  		
-	  		/**
+	  		/*
 	  		 * Remove value of a field
 	  		 */
 	  		scope.removeField = function(field) {

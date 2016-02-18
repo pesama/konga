@@ -1,6 +1,6 @@
 'use strict';
 
-/**
+/*
  * @ngdoc controller
  * @name Konga Reference.controller:EntityUpdateCtrl
  * @description
@@ -363,7 +363,7 @@ angular.module('konga')
 		}
 		
 		
-		/**
+		/*
 		* TODO Document
 		*/
 		$scope.operations = {
@@ -425,7 +425,7 @@ angular.module('konga')
 				updateChanges();
 			},
 			
-			/**
+			/*
 			 * TODO Document
 			 */
 			saveEntity: function(handlerOK, handlerKO) {
@@ -584,7 +584,7 @@ angular.module('konga')
 			    return differs;
 			},
 
-			/**
+			/*
 			 * TODO Document
 			 */
 			updateEntityField: function(metadata, value, entity, parentField, parentEntity) {

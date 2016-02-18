@@ -1,6 +1,6 @@
 'use strict';
 
-/**
+/*
  * @ngdoc overview
  * @name index
  * @description
@@ -54,7 +54,7 @@
  * 
  */
 
- /**
+ /*
  * @ngdoc overview
  * @name Konga Reference
  * @module Konga Reference
@@ -135,7 +135,7 @@
  *
  */
 
-/**
+/*
  * @ngdoc overview
  * @name Konga Reference
  * @module Konga Reference
@@ -172,8 +172,7 @@ angular.module('konga', [
   'mgcrea.ngStrap.popover',
   'mgcrea.ngStrap.select',
   'pascalprecht.translate',
-  'dialogs.controllers',
-  'dialogs.services',
+  'dialogs.main',
   'config',
   'ui.calendar'
 ])

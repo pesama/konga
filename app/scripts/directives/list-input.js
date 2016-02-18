@@ -147,7 +147,7 @@ angular.module('konga')
 		  			$scope.paginationData.offset = $scope.paginationData.maxPages;
 		  		}
 		  	};
-		  	/**
+		  	/*
 		  	 * Handle Table pagination
 		  	 * @function pageChanged
 		  	 */	

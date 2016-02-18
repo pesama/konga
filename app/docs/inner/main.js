@@ -1,4 +1,4 @@
-/**
+/*
  * @ngdoc overview
  * @name Standards
  * @description
@@ -7,7 +7,7 @@
  * <b>You don't need to inject this service.</b>. To simplify from-view-access it's inherited via `$scope` to all controllers in your application.
  */ 
 
-/**
+/*
  * @ngdoc object
  * @name Standards.Operations
  * @description
@@ -16,7 +16,7 @@
  * <b>You don't need to inject this service.</b>. To simplify from-view-access it's inherited via `$scope` to all controllers in your application.
  */ 
 
- /**
+ /*
  * @ngdoc object
  * @name Standards.Permissions
  * @description
@@ -25,7 +25,7 @@
  * <b>You don't need to inject this service.</b>. To simplify from-view-access it's inherited via `$scope` to all controllers in your application.
  */ 
 
- /**
+ /*
  * @ngdoc object
  * @name Standards.UI Components
  * @description

@@ -1,6 +1,6 @@
 'use strict';
 
-/**
+/*
  * @ngdoc service
  * @name Konga Reference.standardApi
  * @description

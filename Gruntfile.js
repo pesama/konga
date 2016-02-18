@@ -326,15 +326,20 @@ module.exports = function (grunt) {
     //     }
     //   }
     // },
-    // uglify: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/scripts/scripts.js': [
-    //         '<%= yeoman.dist %>/scripts/scripts.js'
-    //       ]
-    //     }
-    //   }
-    // },
+    uglify: {
+      dist: {
+        files: {
+          'lib/konga.js': [
+            'lib/konga.js'
+          ]
+        },
+        options: {
+          banner: 'require(\'./konga.vendor\');\r\n',
+          mangle: false,
+          screwIE8: true
+        }
+      }
+    },
     concat: {
       css: {
         src: ['app/styles/*.css', 'app/styles/custom/*.css'],
@@ -350,7 +355,11 @@ module.exports = function (grunt) {
       },
       lib: {
         src: ['dist/scripts/**/*.js'],
-        dest: 'lib/konga.js'
+        dest: 'lib/konga.js'        
+      },
+      lib_vendor: {
+        src: ['bower_components/angular-dialog-service/dialogs.min.js'],
+        dest: 'lib/vendor.konga.js'
       }
     },
 
@@ -631,16 +640,12 @@ module.exports = function (grunt) {
       }
     },
     replace: {
-      comments: {
-        src: ['.tmp/konga.js'],             // source files array (supports minimatch)
+      strict: {
+        src: ['lib/konga.js'],             // source files array (supports minimatch)
         dest: 'lib/konga.js',             // destination directory or file
         replacements: [
           {
-            from: /(\/\*[\w\'\s\r\n\*]*\*\/)|(\/\/[\w\s\']*)|(\<![\-\-\s\w\>\/]*\>)/g,      // regex replacement ('Fooo' to 'Mooo')
-            to: ''
-          },
-          {
-            from: '\r\n',
+            from: '\'use strict\';',
             to: ''
           }
         ]
@@ -733,8 +738,10 @@ module.exports = function (grunt) {
     'minify-vendor',
     // 'copy:deployVendor'
     'doc',
-    'concat:lib'
-    //'replace:comments'
+    'concat:lib',
+    'concat:lib_vendor',
+    'replace:strict',
+    'uglify',
   ]);
 
   grunt.registerTask('doc', [

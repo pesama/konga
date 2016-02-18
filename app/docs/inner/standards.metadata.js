@@ -1,4 +1,4 @@
-/**
+/*
  * @ngdoc object
  * @name Standards.Metadata
  * @description

@@ -1,6 +1,6 @@
 'use strict';
 
-/**
+/*
  * @ngdoc directive
  * @name Konga Reference.directive:Update form
  * @description

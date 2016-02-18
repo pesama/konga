@@ -1,6 +1,6 @@
 'use strict';
 
-/**
+/*
  * @ngdoc object
  * @name Konga Reference.constants
  * @description

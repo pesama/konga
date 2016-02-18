@@ -1,6 +1,6 @@
 'use strict';
 
-/**
+/*
  * @ngdoc controller
  * @name Konga Reference.controller:EntitySearchCtrl
  * @description
@@ -407,7 +407,7 @@ angular.module('konga')
 	      
   	 	};
 
-      /**
+      /*
        * Launch a custom action for search scope
        */
       $scope.dispatchSearchAction = function(action) {

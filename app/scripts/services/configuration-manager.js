@@ -1,6 +1,6 @@
 'use strict';
 
-/**
+/*
  * @ngdoc service
  * @name Konga Reference.configurationManager
  * @description
@@ -13,7 +13,7 @@ angular.module('konga')
     // Private constructor
     function ConfigurationManager($rootScope, $filter) {
 
-      /**
+      /*
        * Returns a configuration param following the configuraion priority hierarchy
        * @param param {String} The name of the parameter to read
        * @param [Object] {Object} The object to read the configuration from

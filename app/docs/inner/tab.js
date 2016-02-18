@@ -1,4 +1,4 @@
-/**
+/*
  * @ngdoc object
  * @name Action-driven framework.Tab
  * @description
@@ -16,7 +16,7 @@
 </pre>
  */
 
-/**
+/*
  * @ngdoc object
  * @name id
  * @propertyOf Action-driven framework.Tab
@@ -25,7 +25,7 @@
  * <b>String</b> with a unique name for the tab. This field identifies the tab on the system.
  */
 
-/**
+/*
  * @ngdoc object
  * @name title
  * @propertyOf Action-driven framework.Tab
@@ -33,7 +33,7 @@
  * <b>String</b> with the title of the tab. If a placeholder is given, the translation will be shown instead.
  */
 
-/**
+/*
  * @ngdoc object
  * @name href
  * @propertyOf Action-driven framework.Tab
@@ -41,7 +41,7 @@
  * <b>String</b> the link for the tab. This is for the navigation bar, to maintain history
  */
 
-/**
+/*
  * @ngdoc object
  * @name closable
  * @propertyOf Action-driven framework.Tab
@@ -49,7 +49,7 @@
  * <b>Boolean</b> that indicates whether the tab could be closed.
  */
 
-/**
+/*
  * @ngdoc object
  * @name type
  * @propertyOf Action-driven framework.Tab
