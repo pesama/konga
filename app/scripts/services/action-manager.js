@@ -8,7 +8,7 @@
  * Provider in the Konga Reference.
  */
 angular.module('konga')
-  .provider('actionManager', ['util', function (util) {
+  .provider('actionManager', ['customActions', 'util', function (customActions, util) {
 
     var actions = {
       /*
@@ -114,13 +114,13 @@ angular.module('konga')
     };
 
     // Private constructor
-    function Greeter($rootScope, Session, configurationManager, $injector) {
+    function ActionManager($rootScope, Session, configurationManager, $injector) {
 
       this.dispatch = function(action, parameters) {
         if(typeof action === 'string') {
           action = { name: action };
         }
-        var actionDefinitionOriginal = configurationManager.getCustomActions()[action.name];
+        var actionDefinitionOriginal = customActions[action.name];
         if(!actionDefinitionOriginal) {
           actionDefinitionOriginal = actions[action.name];
         }
@@ -219,6 +219,6 @@ angular.module('konga')
       var rScope = $injector.get('$rootScope');
       var session = $injector.get('userData');
       var configurationManager = $injector.get('configurationManager');
-      return new Greeter(rScope, session, configurationManager, $injector);
+      return new ActionManager(rScope, session, configurationManager, $injector);
     };
   }]);

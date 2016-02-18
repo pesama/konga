@@ -34,11 +34,6 @@ angular.module('konga')
 
         return $filter('filter')(configuration, { key: param });
       };
-
-      this.getCustomActions = function() {
-        // TODO Get this from configuration (read the end of this file)
-        return customActions;
-      };
     }
 
     // Method for instantiating

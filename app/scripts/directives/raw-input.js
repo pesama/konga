@@ -582,7 +582,7 @@ angular.module('konga')
 
 	  				// On search mode we don't need validation
 	  				if(scope.mode === util.constants.SCOPE_SEARCH) {
-	  					return "/.*/";
+	  					return ".*";
 	  				}
                     
 	  				// TODO work only for REGEXP annotation
@@ -593,7 +593,7 @@ angular.module('konga')
 	  				}
 
 	  				//default return
-	  				var regexp = "/.*/";
+	  				var regexp = ".*";
 	  				return regexp;
 	  			},
 	  			
