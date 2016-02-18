@@ -8,7 +8,7 @@
  * Provider in the Konga Reference.
  */
 angular.module('konga')
-  .provider('permissionManager', ['userData', function (userData) {
+  .provider('permissionManager', function () {
 
     // Private constructor
     function Greeter(Session) {
@@ -39,4 +39,4 @@ angular.module('konga')
       var session = $injector.get('userData');
       return new Greeter(session);
     };
-  }]);
+  });
