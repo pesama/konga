@@ -205,5 +205,5 @@ angular.module('konga', [
 
     // Setting up spanish as default
     $translateProvider.preferredLanguage('en');
-    moment.locale('en');
+    //moment.locale('en');
   }]);

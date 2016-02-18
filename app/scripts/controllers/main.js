@@ -634,7 +634,7 @@ angular.module('konga')
 
 					// Change the language
 					$translate.use(newLocale);
-					moment.locale(newLocale);
+					//moment.locale(newLocale);
 
 					$scope.$broadcast('locale-change', { 'old': oldLocale, 'new': newLocale });
 				},
