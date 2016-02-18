@@ -147,12 +147,12 @@ angular.module('konga')
         
         if (query.resetPaging) {
             $scope.resetPaginationData(true);
-            query.resetPaging = false;
+            query.resetPaging = undefined;
         }
         
         if (query.resetSorting) {
         	$scope.fieldsShowInResult = $filter('resultParams')($scope.fieldsShowInResult, $scope.entityMetadata);
-          query.resetSorting = false;
+          query.resetSorting = undefined;
         }
 
         $scope.query = query;

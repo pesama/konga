@@ -7,8 +7,8 @@
  * # updateForm
  */
 angular.module('konga')
-  .directive('updateForm', ['$routeParams', 'api', 'common', 'fieldMapper', '$filter', 'util', 
-  	function ($routeParams, api, common, fieldMapper, $filter, util) {
+  .directive('updateForm', ['$routeParams', 'api', 'common', 'fieldMapper', '$filter', 'util', 'mapper', 
+  	function ($routeParams, api, common, fieldMapper, $filter, util, mapper) {
 	    return {
 			template: '<div ng-include="templateUrl"></div>',
 			restrict: 'E',
