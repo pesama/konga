@@ -12,7 +12,7 @@
  * @param {Object} configuration Defines an object containing added and selected field. 
  */
 angular.module('konga')
-  .filter('selectData', function () {
+  .filter('selectData', ['util', function (util) {
     return function (metadata, entities, configuration) {
 		var result = [];
 
@@ -32,4 +32,4 @@ angular.module('konga')
 
       return result;
     };
-  });
+  }]);

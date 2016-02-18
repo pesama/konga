@@ -8,8 +8,8 @@
  * Service in the Konga Reference.
  */
 angular.module('konga')
-  .service('scaffold', ['$filter', 'common',  
-    function scaffold($filter, common) {
+  .service('scaffold', ['$filter', 'common', 'util', 
+    function scaffold($filter, common, util) {
 
         function generate(fields, entity, search) {
             // Setup the entity

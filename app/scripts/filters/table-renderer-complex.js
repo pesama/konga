@@ -11,7 +11,7 @@
  * @param {Object} value Defines the entity of each row
  */
 angular.module('konga')
-  .filter('tableRendererComplex', function () {
+  .filter('tableRendererComplex', ['util', function (util) {
     return function (value, metadata) {
       if(metadata.type.type === constants.FIELD_COMPLEX) {
    	      var complexType = metadata.type.complexType;

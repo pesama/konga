@@ -10,7 +10,7 @@
  * @param {Object} metadata Defines the metadata of entity
  */
 angular.module('konga')
-  .filter('quickSearch', ['$filter', function ($filter) {
+  .filter('quickSearch', ['$filter', 'util', function ($filter, util) {
     return function (metadata) {
     	var ret = [];
 

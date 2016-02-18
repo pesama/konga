@@ -9,7 +9,7 @@
  * Defines a search panel that controls all inputs of a search form for an entity type. 
  */
 angular.module('konga')
-  .directive('searchPane', function () {
+  .directive('searchPane', ['util', function (util) {
     return {
       templateUrl: '/konga/views/search-pane.html',
       replace: true, 
@@ -221,4 +221,4 @@ angular.module('konga')
         // scope.operations.submit();
       }
     };
-  });
+  }]);

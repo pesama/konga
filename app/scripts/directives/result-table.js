@@ -9,7 +9,7 @@
  * Defines a result table that shows the results of a search.
  */
 angular.module('konga')
-  .directive('resultTable', function () {
+  .directive('resultTable', ['util', function (util) {
     return {
       templateUrl: '/konga/views/result-table.html',
       replace: true, 
@@ -244,4 +244,4 @@ angular.module('konga')
       }
       
     };
-  });
+  }]);

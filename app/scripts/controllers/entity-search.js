@@ -34,8 +34,8 @@
  * @param {Scaffold} scaffold Used to generate new entities
  */
 angular.module('konga')
-  .controller('EntitySearchCtrl', ['$scope', 'api', '$routeParams', 'common', '$rootScope', '$filter', 'scaffold', '$timeout', '$log', 'permissionManager', 
-  	function ($scope, api, $routeParams, common, $rootScope, $filter, scaffold, $timeout, $log, permissionManager) {
+  .controller('EntitySearchCtrl', ['$scope', 'api', '$routeParams', 'common', '$rootScope', '$filter', 'scaffold', '$timeout', '$log', 'permissionManager', 'util', 
+  	function ($scope, api, $routeParams, common, $rootScope, $filter, scaffold, $timeout, $log, permissionManager, util) {
   		
       // Get the local params
       var entityType = $scope.entityType = $routeParams.entityType;

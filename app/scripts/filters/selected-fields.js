@@ -13,7 +13,7 @@
  * @param {Array=} source Defines the field to manage
  */
 angular.module('konga')
-  .filter('selectedFields', ['$filter', function ($filter) {
+  .filter('selectedFields', ['$filter', 'util', function ($filter, util) {
     return function (real, names, source) {
     	
       // If no name is given, return all

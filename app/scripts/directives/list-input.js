@@ -7,7 +7,7 @@
  * # listInput
  */
 angular.module('konga')
-  .directive('listInput', function () {
+  .directive('listInput', ['util', function (util) {
     return {
   		templateUrl : '/konga/views/list-input.html',
   		restrict: 'E',
@@ -285,4 +285,4 @@ angular.module('konga')
 			});
   		}
   	};
-  });
+  }]);

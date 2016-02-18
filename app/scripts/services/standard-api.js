@@ -8,7 +8,7 @@
  * Factory in the Konga Reference.
  */
 angular.module('konga')
-  .factory('standardApi', ['$resource', '$routeParams', '$upload', 'configurationManager', 'kongaConfig', function ($resource, $routeParams, $upload, configurationManager, kongaConfig) {
+  .factory('standardApi', ['$resource', '$routeParams', '$upload', 'configurationManager', 'kongaConfig', 'util', function ($resource, $routeParams, $upload, configurationManager, kongaConfig, util) {
     
     // function readResponseObject(data, parent, paramName) {
     //   for(var param in data) {

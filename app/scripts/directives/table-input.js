@@ -7,7 +7,8 @@
  * # tableInput
  */
 angular.module('konga')
-  .directive('tableInput', ['$filter', '$timeout', 'scaffold', function ($filter, $timeout, scaffold) {
+  .directive('tableInput', ['$filter', '$timeout', 'scaffold', 'util', 
+      function ($filter, $timeout, scaffold, util) {
     return {
       templateUrl: '/konga/views/table-input.html',
       restrict: 'E',

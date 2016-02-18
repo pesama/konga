@@ -7,8 +7,8 @@
  * # kongaContent
  */
 angular.module('konga')
-  .directive('kongaContent', ['$filter', 
-  	function ($filter) {
+  .directive('kongaContent', ['$filter', 'util', 
+  	function ($filter, util) {
 	    return {
 	      templateUrl: '/konga/views/konga-content.html',
 	      restrict: 'E',

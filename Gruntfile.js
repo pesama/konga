@@ -336,13 +336,13 @@ module.exports = function (grunt) {
     //   }
     // },
     concat: {
-      util: {
-        src: ['app/scripts/constants.js', 'app/scripts/mapper.js', 'app/scripts/util.js'],
-        dest: 'dist/scripts/konga-util.js'
-      },
       css: {
         src: ['app/styles/*.css', 'app/styles/custom/*.css'],
         dest: 'lib/konga.css'
+      },
+      scss: {
+        src: ['app/styles/*.css', 'app/styles/custom/*.css'],
+        dest: 'lib/konga.scss'
       },
       app4doc: {
         src: ['app/scripts/**/*.js', 'dist/scripts/config.js', 'dist/scripts/views.js'],
@@ -655,7 +655,6 @@ module.exports = function (grunt) {
 		  'ngconstant',
 		  'ngtemplates',
 		  'copy:bower_fonts',
-      'concat:util',
       'concat:css',
       'concat:app4doc',
 		  'ngdocs',

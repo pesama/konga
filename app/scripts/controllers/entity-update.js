@@ -29,8 +29,8 @@
 
  */
 angular.module('konga')
-.controller('EntityUpdateCtrl', ['$scope', '$routeParams', 'api', 'standardApi', 'common', 'fieldMapper', '$filter', '$rootScope', 'scaffold', '$timeout', 'permissionManager', 
-  	function ($scope, $routeParams, api, standardApi, common, fieldMapper, $filter, $rootScope, scaffold, $timeout, permissionManager) {
+.controller('EntityUpdateCtrl', ['$scope', '$routeParams', 'api', 'standardApi', 'common', 'fieldMapper', '$filter', '$rootScope', 'scaffold', '$timeout', 'permissionManager', 'util', 
+  	function ($scope, $routeParams, api, standardApi, common, fieldMapper, $filter, $rootScope, scaffold, $timeout, permissionManager, util) {
 	  	// Get the local params
 		var entityType = $routeParams.entityType;
 		var entityId	= $routeParams.entityId;

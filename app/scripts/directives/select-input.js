@@ -7,7 +7,7 @@
  * # selectInput
  */
 angular.module('konga')
-  .directive('selectInput', ['api', '$filter', function (api, $filter) {
+  .directive('selectInput', ['api', '$filter', 'util', function (api, $filter, util) {
     return {
       templateUrl: '/konga/views/select-input.html',
       restrict: 'E',
