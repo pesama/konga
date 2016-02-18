@@ -68,8 +68,8 @@
  * @param {Scaffold} scaffold Used to create new objects for the entities
  */
 angular.module('konga')
-	.controller('KongaCtrl', ['$scope', '$location', '$filter', '$rootScope', '$timeout','common', 'scaffold', 'Metadata', 'dialogs', '$translate', 'userData', 'auth', 'User', '$cookieStore', 'actionManager', '$modal', 'permissionManager', 'kongaConfig', 'util', 
-		function($scope, $location, $filter, $rootScope, $timeout,common, scaffold, Metadata, dialogs, $translate, Session, auth, User, $cookieStore, actionManager, $modal, permissionManager, kongaConfig, util) {
+	.controller('KongaCtrl', ['$scope', '$location', '$filter', '$rootScope', '$timeout','common', 'scaffold', 'dialogs', '$translate', 'userData', 'auth', 'User', '$cookieStore', 'actionManager', '$modal', 'permissionManager', 'kongaConfig', 'util', 
+		function($scope, $location, $filter, $rootScope, $timeout,common, scaffold, dialogs, $translate, Session, auth, User, $cookieStore, actionManager, $modal, permissionManager, kongaConfig, util) {
 
 			$scope.configConstants = kongaConfig;
 
