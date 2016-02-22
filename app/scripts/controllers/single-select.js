@@ -8,8 +8,8 @@
  * Controller of the ui.konga
  */
 angular.module('konga')
-  .controller('SingleSelectCtrl', ['$scope', '$filter', '$modalInstance', 'model', 'field', 'parentField', 'common', 'api', 'entity', 'metadata', 'items', '$timeout', '$rootScope', 
-  	function ($scope, $filter, $modalInstance, model, field, parentField, common, api, entity, metadata, items, $timeout, $rootScope) {
+  .controller('SingleSelectCtrl', ['$scope', '$filter', '$modalInstance', 'model', 'field', 'parentField', 'common', 'api', 'entity', 'metadata', 'items', '$timeout', '$rootScope', 'util', 
+  	function ($scope, $filter, $modalInstance, model, field, parentField, common, api, entity, metadata, items, $timeout, $rootScope, util) {
 
   		$scope.id = 'single-select';
 
@@ -95,7 +95,7 @@ angular.module('konga')
 				//var list = [];
 				
 				var entityType = null;
-				if(field.type.type === constants.FIELD_COMPLEX) {
+				if(field.type.type === util.constants.FIELD_COMPLEX) {
 					entityType = field.type.complexType;
 					$scope.field = field;
 				}
