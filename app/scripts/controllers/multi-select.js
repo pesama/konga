@@ -7,7 +7,7 @@
  * # MultiSelectCtrl
  * Controller of the ui.konga
  */
-angular.module('ui.konga')
+angular.module('konga')
   .controller('MultiSelectCtrl', ['$scope', '$filter', '$modalInstance', 'model', 'field', 'parentField', 'common', 'api', 'entity', 'metadata', 'items', '$timeout', '$rootScope', 
   	function ($scope, $filter, $modalInstance, model, field, parentField, common, api, entity, metadata, items, $timeout, $rootScope) {
    
