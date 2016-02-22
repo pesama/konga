@@ -2,7 +2,7 @@
 
 /*
  * @ngdoc filter
- * @name Konga Reference.filter:shortify
+ * @name konga.filter:shortify
  * @function
  * @description
  * # shortify

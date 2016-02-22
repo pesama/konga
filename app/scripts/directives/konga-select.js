@@ -2,7 +2,7 @@
 
 /*
  * @ngdoc directive
- * @name Konga Reference.directive:kongaSelect
+ * @name konga.directive:kongaSelect
  * @description
  * # kongaSelect
  */

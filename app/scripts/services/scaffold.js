@@ -2,10 +2,10 @@
 
 /*
  * @ngdoc service
- * @name Konga Reference.Scaffold
+ * @name konga.Scaffold
  * @description
  * # scaffold
- * Service in the Konga Reference.
+ * Service in the konga.
  */
 angular.module('konga')
   .service('scaffold', ['$filter', 'common', 'util', 

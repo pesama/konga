@@ -2,7 +2,7 @@
 
 /*
  * @ngdoc filter
- * @name Konga Reference.filter:selectedLocale
+ * @name konga.filter:selectedLocale
  * @function
  * @description
  * # selectedLocale

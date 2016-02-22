@@ -2,11 +2,11 @@
 
 /*
  * @ngdoc filter
- * @name Konga Reference.filter:recursiveFilter
+ * @name konga.filter:recursiveFilter
  * @function
  * @description
  * # recursiveFilter
- * Filter in the Konga Reference.
+ * Filter in the konga.
  */
 angular.module('konga')
   .filter('recursiveFilter', ['$filter', function ($filter) {

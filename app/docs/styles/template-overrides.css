@@ -257,3 +257,26 @@ button .muted {
     font-size: 0.8em;
     color: #dedede;
 }
+
+.row.paragraph {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+ul.text-right li {
+    list-style-position: inside;
+}
+
+pre.preview {
+    white-space: nowrap;
+    overflow: auto;
+}
+
+pre {
+    margin-bottom: 2em;
+}
+
+a .muted,
+button .muted {
+    font-size: 80%;   
+}

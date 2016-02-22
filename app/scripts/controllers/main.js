@@ -2,7 +2,7 @@
 
 /*
  * @ngdoc controller
- * @name Konga Reference.controller:KongaCtrl
+ * @name konga.controller:KongaCtrl
  * @module Konga Reference
  * @description
  * This must be the root controller of the application, and it's suggested to be placed at the `<body>` element. It contains all common {@link Standards.Operations `operations`}. 
@@ -45,13 +45,13 @@
  * By calling this function, a `/home` tab will be created, and the location will change to the application's home page.
  * 
  * ### openEntitySearch
- * It creates a new tab for <i>entity</i> searching. It <b>must</b> receive an entity definition, like the ones defined within the {@link Konga Reference.Metadata metadata} service calls.
+ * It creates a new tab for <i>entity</i> searching. It <b>must</b> receive an entity definition, like the ones defined within the {@link konga.Metadata metadata} service calls.
  *
  * ### openEntityUpdate
- * When called, it launches a new tab whose purpose is to update an <i>entity</i> It must receive the {@link Konga Reference.Metadata metadata} information from the entity, as well as the entity itself.
+ * When called, it launches a new tab whose purpose is to update an <i>entity</i> It must receive the {@link konga.Metadata metadata} information from the entity, as well as the entity itself.
  *
  * ### openEntityCreate
- * This method does the exactly same operation as the `openEntityUpdate`, but with the purpose of creating a new <i>entity</i>. It only requires to receive the {@link Konga Reference.Metadata metadata} information, and a new {@link Konga Reference.Scaffold scaffold} object for the received entity type will be created. 
+ * This method does the exactly same operation as the `openEntityUpdate`, but with the purpose of creating a new <i>entity</i>. It only requires to receive the {@link konga.Metadata metadata} information, and a new {@link konga.Scaffold scaffold} object for the received entity type will be created. 
  * 
  * # Notifications
  * This controller handles the notifications, that are shown to the user in the form of a <i>bootstrap</i> `alert`. Every controller within the application can use this system, by calling the operation `addAlert` available on the `$rootScope`. It's useful to notify the user when a server-related operation finished, both for success and error response types. Notification system is engaged on any place where the `$rootScope` dependency is included. 

@@ -2,7 +2,7 @@
 
 /*
  * @ngdoc filter
- * @name Konga Reference.filter:translateComplex
+ * @name konga.filter:translateComplex
  * @function
  * @description
  * # translateComplex

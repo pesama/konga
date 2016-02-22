@@ -2,10 +2,10 @@
 
 /*
  * @ngdoc service
- * @name Konga Reference.tokenHandler
+ * @name konga.tokenHandler
  * @description
  * # tokenHandler
- * Factory in the Konga Reference.
+ * Factory in the konga.
  */
 angular.module('konga')
   .factory('TokenHandler', function() {

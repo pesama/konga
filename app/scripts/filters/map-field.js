@@ -2,7 +2,7 @@
 
 /*
  * @ngdoc filter
- * @name Konga Reference.filter:mapField
+ * @name konga.filter:mapField
  * @function
  * 
  * @description

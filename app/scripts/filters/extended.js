@@ -2,7 +2,7 @@
 
 /*
  * @ngdoc filter
- * @name Konga Reference.filter:extended
+ * @name konga.filter:extended
  * @function
  * @description
  * # extended

@@ -610,37 +610,44 @@ module.exports = function (grunt) {
         image: 'http://konga.io/wp-content/uploads/2015/03/konga-logo-white.png',
         imageLink: 'http://konga.io'
       },
-      // api: {
-
-      // },
-      // metadata: {
-
-      // },
       home: {
         title: 'Home',
         src: [
-          'app/docs/inner/home.js'
+          'app/docs/static/home.js'
         ]
       },
       'quick-start': {
-        title: 'Quick start',
+        title: 'Quick Start',
         src: [
-          'app/docs/inner/main.js'
+          'app/docs/static/quick-start/**/*.js'
         ]
       },
       api: {
         title: 'API Reference',
         src: [
-          'app/docs/inner/**/*.js',
-          'app/scripts/filters/*.js',
-          'app/scripts/directives/*.js',
-          'app/scripts/services/*.js',
-          'app/scripts/controllers/*.js',
-          'app/scripts/app.js',
-          'app/scripts/util.js',
-          'app/scripts/constants.js'
+          'app/docs/static/api-reference/**/*.js',
+          'app/scripts/**/*.js'
         ]
-      }
+      },
+
+      // 'quick-start': {
+      //   title: 'Quick start',
+      //   src: [
+      //     'app/docs/inner/main.js'
+      //   ]
+      // },
+      // api: {
+      //   title: 'API Reference',
+      //   src: [
+      //     'app/docs/inner/**/*.js',
+      //     'app/scripts/filters/*.js',
+      //     'app/scripts/directives/*.js',
+      //     'app/scripts/services/*.js',
+      //     'app/scripts/controllers/*.js',
+      //     'app/scripts/app.js',
+      //     'app/scripts/util.js'
+      //   ]
+      // }
     },
     replace: {
       strict: {

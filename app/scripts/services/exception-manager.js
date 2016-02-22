@@ -2,10 +2,10 @@
 
 /*
  * @ngdoc service
- * @name Konga Reference.exceptionManager
+ * @name konga.exceptionManager
  * @description
  * # exceptionManager
- * Service in the Konga Reference.
+ * Service in the konga.
  */
 angular.module('konga')
   .service('exceptionManager', ['util', function exceptionManager(util) {

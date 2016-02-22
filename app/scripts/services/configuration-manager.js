@@ -2,10 +2,10 @@
 
 /*
  * @ngdoc service
- * @name Konga Reference.configurationManager
+ * @name konga.configurationManager
  * @description
  * # configurationManager
- * Provider in the Konga Reference.
+ * Provider in the konga.
  */
 angular.module('konga')
   .provider('configurationManager', function () {

@@ -2,7 +2,7 @@
 
 /*
  * @ngdoc directive
- * @name Konga Reference.directive:Raw input
+ * @name konga.directive:Raw input
  * @scope
  * @restrict E
  * @description

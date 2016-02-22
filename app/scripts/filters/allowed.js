@@ -2,11 +2,11 @@
 
 /*
  * @ngdoc filter
- * @name Konga Reference.filter:allowed
+ * @name konga.filter:allowed
  * @function
  * @description
  * # allowed
- * Filter in the Konga Reference.
+ * Filter in the konga.
  */
 angular.module('konga')
   .filter('allowed', ['userData', 'util', function (userData, util) {

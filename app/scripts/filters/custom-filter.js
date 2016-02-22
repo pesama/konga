@@ -2,11 +2,11 @@
 
 /*
  * @ngdoc filter
- * @name Konga Reference.filter:customFilter
+ * @name konga.filter:customFilter
  * @function
  * @description
  * # customFilter
- * Filter in the Konga Reference.
+ * Filter in the konga.
  */
 angular.module('konga')
   .filter('customFilter', ['$filter', function ($filter) {

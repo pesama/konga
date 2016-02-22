@@ -2,7 +2,7 @@
 
 /*
  * @ngdoc filter
- * @name Konga Reference.filter:formType
+ * @name konga.filter:formType
  * @function
  * @description
  * # formType

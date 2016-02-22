@@ -2,13 +2,13 @@
 
 /*
  * @ngdoc controller
- * @name Konga Reference.controller:EntityUpdateCtrl
+ * @name konga.controller:EntityUpdateCtrl
  * @description
  * # EntityUpdateCtrl
  * Controller used for update ENTITY entities. It is route provides information about what type of entity we are searching for.
  * 
  *  # Local endpoint
- * Using the {@link Konga Reference.Api api} service, and sending the `entityType` parameter defined above, the service returns the proper endpoint, depending on which type of entity is received. Afterwards all CRUD operations between the UI and the web service will be performed to the appropriate endpoint. 
+ * Using the {@link konga.Api api} service, and sending the `entityType` parameter defined above, the service returns the proper endpoint, depending on which type of entity is received. Afterwards all CRUD operations between the UI and the web service will be performed to the appropriate endpoint. 
  *
  * 
  * # Pagination

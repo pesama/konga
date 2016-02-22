@@ -2,7 +2,7 @@
 
 /*
  * @ngdoc service
- * @name Konga Reference.Common
+ * @name konga.Common
  * @description
  * It contains common tools and methods for storing data, managing tab information, saving page parameters, etcetera.
  */
@@ -16,7 +16,7 @@ angular.module('konga')
     /*
      * @ngdoc method
      * @name store
-     * @methodOf Konga Reference.Common
+     * @methodOf konga.Common
      * @description
      * Stores an object with a given key as identifier
      * @param {String} key the key for the storage
@@ -26,7 +26,7 @@ angular.module('konga')
     /*
      * @ngdoc method
      * @name read
-     * @methodOf Konga Reference.Common
+     * @methodOf konga.Common
      * @description
      * Reads the object identified with the given key
      * @param {String} key the key for the storage
@@ -36,7 +36,7 @@ angular.module('konga')
     /*
      * @ngdoc method
      * @name delete
-     * @methodOf Konga Reference.Common
+     * @methodOf konga.Common
      * @description
      * Deletes the object identified with the given key
      * @param {String} key the key for the storage
@@ -58,7 +58,7 @@ angular.module('konga')
       /*
        * @ngdoc method
        * @name getMetadata
-       * @methodOf Konga Reference.Common
+       * @methodOf konga.Common
        * @description
        * Returns the metadata of the given type, from an also given array of metadata information.
        * @param {Array} metadata The array of metadata information
@@ -80,7 +80,7 @@ angular.module('konga')
       /*
        * @ngdoc method
        * @name getPageData
-       * @methodOf Konga Reference.Common
+       * @methodOf konga.Common
        * @description
        * Returns the page data of the tab with an id given. This page data is used to preserve data upon navigation.
        * @param {String} id The identifier of the tab.
@@ -98,7 +98,7 @@ angular.module('konga')
       /*
        * @ngdoc method
        * @name deletePageData
-       * @methodOf Konga Reference.Common
+       * @methodOf konga.Common
        * @description Removes the page data of a tab, identified with an id given. Used when the tab closes mostly.
        * @param {String} id The identifier of the tab.
        */

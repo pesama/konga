@@ -2,7 +2,7 @@
 
 /*
  * @ngdoc controller
- * @name Konga Reference.controller:EntitySearchCtrl
+ * @name konga.controller:EntitySearchCtrl
  * @description
  * Controller used for search ENTITY entities. It's route provides information about what type of entity are we searching for
  * 
@@ -12,11 +12,11 @@
  *
  *
  * # Local endpoint
- * Using the {@link Konga Reference.Api api} service, and sending the `entityType` parameter defined above, the service returns the proper endpoint, depending on which type of entity is received. Afterwards all CRUD operations between the UI and the web service will be performed to the appropriate endpoint. 
+ * Using the {@link konga.Api api} service, and sending the `entityType` parameter defined above, the service returns the proper endpoint, depending on which type of entity is received. Afterwards all CRUD operations between the UI and the web service will be performed to the appropriate endpoint. 
  *
  * 
  * # Using `pageData`
- * Thanks to the {@link Konga Reference.Common#methods_getPageData `getPageData`} method of the {@link Konga Reference.Common common} storage, this controller can save information about where it was when the tab was changed to one another. Thus, the controller can restore its previous state once we come back to such tab. 
+ * Thanks to the {@link konga.Common#methods_getPageData `getPageData`} method of the {@link konga.Common common} storage, this controller can save information about where it was when the tab was changed to one another. Thus, the controller can restore its previous state once we come back to such tab. 
  *
  *
  * # Pagination

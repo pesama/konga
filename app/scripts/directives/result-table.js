@@ -2,7 +2,7 @@
 
 /*
  * @ngdoc directive
- * @name Konga Reference.directive:Result table
+ * @name konga.directive:Result table
  * @scope
  * @restrict E
  * @description

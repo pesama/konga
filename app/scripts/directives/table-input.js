@@ -2,7 +2,7 @@
 
 /*
  * @ngdoc directive
- * @name Konga Reference.directive:Table input
+ * @name konga.directive:Table input
  * @description
  * # tableInput
  */

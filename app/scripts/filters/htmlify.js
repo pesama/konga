@@ -2,11 +2,11 @@
 
 /*
  * @ngdoc filter
- * @name Konga Reference.filter:htmlify
+ * @name konga.filter:htmlify
  * @function
  * @description
  * # htmlify
- * Filter in the Konga Reference.
+ * Filter in the konga.
  */
 angular.module('konga')
   .filter('htmlify', ['$filter', function ($filter) {

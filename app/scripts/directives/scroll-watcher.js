@@ -2,7 +2,7 @@
 
 /*
  * @ngdoc directive
- * @name Konga Reference.directive:Scroll watcher
+ * @name konga.directive:Scroll watcher
  * @description
  * # scrollWatcher
  */

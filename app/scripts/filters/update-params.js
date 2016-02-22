@@ -2,7 +2,7 @@
 
 /*
  * @ngdoc filter
- * @name Konga Reference.filter:updateParams
+ * @name konga.filter:updateParams
  * @function
  * @description
  * # updateParams

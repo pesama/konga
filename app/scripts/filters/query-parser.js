@@ -2,11 +2,11 @@
 
 /*
  * @ngdoc filter
- * @name Konga Reference.filter:queryParser
+ * @name konga.filter:queryParser
  * @function
  * @description
  * # queryParser
- * Filter in the Konga Reference.
+ * Filter in the konga.
  */
 angular.module('konga')
   .filter('queryParser', ['util', function (util) {

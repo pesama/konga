@@ -2,7 +2,7 @@
 
 /*
  * @ngdoc filter
- * @name Konga Reference.filter:quickSearch
+ * @name konga.filter:quickSearch
  * @function
  * @description
  * # quickSearch

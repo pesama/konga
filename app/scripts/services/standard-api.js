@@ -2,10 +2,10 @@
 
 /*
  * @ngdoc service
- * @name Konga Reference.standardApi
+ * @name konga.standardApi
  * @description
  * # standardApi
- * Factory in the Konga Reference.
+ * Factory in the konga.
  */
 angular.module('konga')
   .factory('standardApi', ['$resource', '$routeParams', 'configurationManager', 'kongaConfig', 'util', function ($resource, $routeParams, configurationManager, kongaConfig, util) {

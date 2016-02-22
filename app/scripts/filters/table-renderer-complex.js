@@ -2,7 +2,7 @@
 
 /*
  * @ngdoc filter
- * @name Konga Reference.filter:tableRendererComplex
+ * @name konga.filter:tableRendererComplex
  * @function
  * @description
  * # tableRendererComplex

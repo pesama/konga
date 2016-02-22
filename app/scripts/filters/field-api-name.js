@@ -2,11 +2,11 @@
 
 /*
  * @ngdoc filter
- * @name Konga Reference.filter:fieldApiName
+ * @name konga.filter:fieldApiName
  * @function
  * @description
  * # fieldApiName
- * Filter in the Konga Reference.
+ * Filter in the konga.
  */
 angular.module('konga')
   .filter('fieldApiName', ['util', function (util) {

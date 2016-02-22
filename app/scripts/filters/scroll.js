@@ -2,7 +2,7 @@
 
 /*
  * @ngdoc filter
- * @name Konga Reference.filter:scroll
+ * @name konga.filter:scroll
  * @function
  * @description
  * # scroll

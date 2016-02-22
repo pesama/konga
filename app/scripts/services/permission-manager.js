@@ -2,10 +2,10 @@
 
 /*
  * @ngdoc service
- * @name Konga Reference.permissionManager
+ * @name konga.permissionManager
  * @description
  * # permissionManager
- * Provider in the Konga Reference.
+ * Provider in the konga.
  */
 angular.module('konga')
   .provider('permissionManager', function () {

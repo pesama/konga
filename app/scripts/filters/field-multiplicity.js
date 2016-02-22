@@ -2,11 +2,11 @@
 
 /*
  * @ngdoc filter
- * @name Konga Reference.filter:fieldMultiplicity
+ * @name konga.filter:fieldMultiplicity
  * @function
  * @description
  * # fieldMultiplicity
- * Filter in the Konga Reference.
+ * Filter in the konga.
  */
 angular.module('konga')
   .filter('fieldMultiplicity', ['util', function (util) {
