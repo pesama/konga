@@ -87,8 +87,22 @@
 			return function(input) {
 				var orders = {
 					// Metadata
-					'Generators': 0,
-					'Permissions': 1,
+					'Application': 0,
+					'Entity': 1,
+					'Field': 2,
+					'Action': 3,
+					'Trigger': 4,
+					'ConfigurationParam': 5,
+					'ShowConfiguration': 6,
+					'FieldType': 7,
+					'DataType': 8,
+					'FieldSet': 9,
+					'SearchConf': 10,
+					'Validation': 11,
+					'Validator': 12,
+
+					'Generators': 100,
+					'Permissions': 200,
 
 					// Standards
 					'Forms': 0,
