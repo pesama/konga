@@ -1,6 +1,6 @@
 /**
  * @ngdoc service
- * @name Customisation.Action-driven framework
+ * @name Customisation.Action-driven
  * @description 
 
  # Action-driven framework

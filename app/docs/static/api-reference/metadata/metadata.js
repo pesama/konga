@@ -27,53 +27,6 @@ This is the full metadata information you can provide within your metadata defin
 * * {@link Metadata.Validation Validations}: Data constraints for the field.
 * * {@link Metadata.Validator Validators}: Custom data integrity options.
 
-
-
-*/
-
-/**
-@ngdoc object
-@name Metadata.Action
-@description
-
-# Action
-
-*/
-
-/**
-@ngdoc object
-@name Metadata.Trigger
-@description
-
-# Trigger
-
-*/
-
-/**
-@ngdoc object
-@name Metadata.ConfigurationParam
-@description
-
-# ConfigurationParam
-
-*/
-
-/**
-@ngdoc object
-@name Metadata.ShowConfiguration
-@description
-
-# ShowConfiguration
-
-*/
-
-/**
-@ngdoc object
-@name Metadata.FieldType
-@description
-
-# FieldType
-
 */
 
 /**

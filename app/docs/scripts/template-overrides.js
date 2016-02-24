@@ -76,7 +76,7 @@
 					'Fields': 'fa-check-square-o',
 					'Configuration': 'fa-cog',
 
-					'Action-driven framework': 'fa-magic',
+					'Action-driven': 'fa-magic',
 					'Custom views': 'fa-eye'
 				}
 
@@ -111,7 +111,7 @@
 
 					// ADF
 					'Custom views': 0,
-					'Action-driven framework': 1,
+					'Action-driven': 1,
 				}
 
 				var sorted = input.sort(function(a, b) {
