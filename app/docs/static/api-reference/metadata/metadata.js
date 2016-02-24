@@ -33,15 +33,6 @@ This is the full metadata information you can provide within your metadata defin
 
 /**
 @ngdoc object
-@name Metadata.Field
-@description
-
-# Field
-
-*/
-
-/**
-@ngdoc object
 @name Metadata.Action
 @description
 
