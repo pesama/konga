@@ -313,6 +313,12 @@ span.label a {
     color: white !important;
 }
 
-span.label.label-success {
+span.label.label-success,
+span.label.label-primary,
+span.label.label-warning {
     font-weight: 300;
+}
+
+.properties .hidden {
+    display: block !important;
 }

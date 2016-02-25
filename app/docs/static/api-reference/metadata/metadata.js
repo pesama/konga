@@ -28,39 +28,3 @@ This is the full metadata information you can provide within your metadata defin
 * * {@link Metadata.Validator Validators}: Custom data integrity options.
 
 */
-
-/**
-@ngdoc object
-@name Metadata.DataType
-@description
-
-# DataType
-
-*/
-
-/**
-@ngdoc object
-@name Metadata.FieldSet
-@description
-
-# FieldSet
-
-*/
-
-/**
-@ngdoc object
-@name Metadata.Validation
-@description
-
-# Validation
-
-*/
-
-/**
-@ngdoc object
-@name Metadata.Validator
-@description
-
-# Validator
-
-*/

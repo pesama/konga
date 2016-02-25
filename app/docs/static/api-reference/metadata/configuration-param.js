@@ -60,6 +60,17 @@ TODO
 
 @ngdoc object
 @propertyOf Metadata.ConfigurationParam
+@name CURRENCY_SOURCE
+@description
+
+TODO
+
+*/
+
+/**
+
+@ngdoc object
+@propertyOf Metadata.ConfigurationParam
 @name DISABLE_COMPLEX_FIELD
 @description
 
@@ -303,6 +314,83 @@ TODO
 @ngdoc object
 @propertyOf Metadata.ConfigurationParam
 @name UPDATE_CUSTOM_VIEW
+@description
+
+TODO
+
+*/
+
+/**
+
+@ngdoc object
+@propertyOf Metadata.ConfigurationParam
+@name QUANTITY_UNIT
+@description
+
+TODO
+
+*/
+
+/**
+
+@ngdoc object
+@propertyOf Metadata.ConfigurationParam
+@name QUANTITY_UNIT_SOURCE
+@description
+
+TODO
+
+*/
+
+/**
+
+@ngdoc object
+@propertyOf Metadata.ConfigurationParam
+@name QUANTITY_DECIMAL
+@description
+
+TODO
+
+*/
+
+/**
+
+@ngdoc object
+@propertyOf Metadata.ConfigurationParam
+@name QUANTITY_DECIMAL_SOURCE
+@description
+
+TODO
+
+*/
+
+/**
+
+@ngdoc object
+@propertyOf Metadata.ConfigurationParam
+@name QUANTITY_UNIT
+@description
+
+TODO
+
+*/
+
+/**
+
+@ngdoc object
+@propertyOf Metadata.ConfigurationParam
+@name QUANTITY_UNIT
+@description
+
+TODO
+
+*/
+
+/**
+
+@ngdoc object
+@propertyOf Metadata.ConfigurationParam
+@name CUSTOM_FIELD_TYPE
 @description
 
 TODO

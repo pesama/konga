@@ -77,7 +77,34 @@
 					'Configuration': 'fa-cog',
 
 					'Action-driven': 'fa-magic',
-					'Custom views': 'fa-eye'
+					'Custom views': 'fa-eye',
+
+					'Application': 'fa-wrench',
+					'Entity': 'fa-wrench',
+					'Field': 'fa-wrench',
+					'Action': 'fa-wrench',
+					'Trigger': 'fa-wrench',
+					'ConfigurationParam': 'fa-wrench',
+					'ShowConfiguration': 'fa-wrench',
+					'FieldType': 'fa-wrench',
+					'DataType': 'fa-wrench',
+					'FieldSet': 'fa-wrench',
+					'SearchConf': 'fa-wrench',
+					'Validation': 'fa-wrench',
+					'Validator': 'fa-wrench',
+
+					'AccessModes': 'fa-tag',
+					'DataTypes': 'fa-tag',
+					'FieldTypes': 'fa-tag',
+					'FormScopes': 'fa-tag',
+					'FormStyles': 'fa-tag',
+					'FormTypes': 'fa-tag',
+					'Multiplicities': 'fa-tag',
+					'TriggerMatches': 'fa-tag',
+					'TriggerMoments': 'fa-tag',
+					'TriggerSources': 'fa-tag',
+					'TriggerTypes': 'fa-tag',
+					'ValidatorTypes': 'fa-tag',
 				}
 
 				return icons[input.name] || '';
@@ -100,6 +127,19 @@
 					'SearchConf': 10,
 					'Validation': 11,
 					'Validator': 12,
+
+					'AccessModes': 50,
+					'DataTypes': 51,
+					'FieldTypes': 52,
+					'FormScopes': 53,
+					'FormStyles': 54,
+					'FormTypes': 55,
+					'Multiplicities': 56,
+					'TriggerMatches': 57,
+					'TriggerMoments': 58,
+					'TriggerSources': 59,
+					'TriggerTypes': 60,
+					'ValidatorTypes': 61,
 
 					'Generators': 100,
 					'Permissions': 200,

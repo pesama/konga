@@ -32,7 +32,7 @@ The entity's field with this flag set to `true` will represent the unique ID of 
 
 
 @param {Boolean} [isKey=false]
-If this property is `true` on a certain field, the entity will be humanly-identifiable using such field. While {@link Metadata.Field.isId isId} represents computer-identification (primary keys), `isKey` is another unique identification, but for human quick-targeting (such as people's IDs, or car's plate numbers). If your entity does not have a value like this, you can annotate the same field with both {@link Metadata.Field.isId isId} and `isKey`.
+If this property is `true` on a certain field, the entity will be humanly-identifiable using such field. While `isId` represents computer-identification (primary keys), `isKey` is another unique identification, but for human quick-targeting (such as people's IDs, or car's plate numbers). If your entity does not have a value like this, you can annotate the same field with both `isId` and `isKey`.
 
 
 @param {Boolean} [isLabel=false]

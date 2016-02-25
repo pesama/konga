@@ -152,13 +152,13 @@
           v1.2.0
         </h1>
 
-        <ul class="nav nav-list" ng-show="pages.length" ng-init="arrayModules=(modules | sortedModules)">
+        <ul class="nav nav-list" ng-show="pages.length">
           <li ng-repeat="page in pages track by page.url" ng-class="navClass(page)" class="api-list-item expand">
             <a href="{{page.url}}" tabindex="2">{{page.shortName}}</a>
           </li>
         </ul>
 
-        <ul class="nav nav-list" ng-repeat="module in arrayModules track by module.url" class="api-list-item" ng-init="arrayServices=(module.services | sortedServices)">
+        <ul class="nav nav-list" ng-repeat="module in (modules | sortedModules) track by module.url" class="api-list-item" ng-init="arrayServices=(module.services | sortedServices)">
           <li class="nav-header module">
             <a class="guide">
               <i class="fa" ng-class="module | moduleIcon"></i>
