@@ -3,6 +3,10 @@
 @name Metadata.Trigger
 @description
 
+A trigger is a custom feature that is linked to a field, and evaluates some property of the field (e.g. its value) in order to decide whether to execute such feature. Triggers are defined via metadata, and sometimes it's behavior is extended using {@link Metadata.Action actions}.
+
+# TODO Usages and examples
+
 @param {String} name
 Name of the trigger. Useful for logging and for having things sorted out.
 

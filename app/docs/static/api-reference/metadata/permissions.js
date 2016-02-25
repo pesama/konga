@@ -48,6 +48,27 @@ entity.searchable = "search-entity";
 
 # Field-level permissions
 
-TODO 
+Furthermore from entities, you can define permissions that will be engaged to field-level operations. The logic behind it is exactly the same:
+
+<div class="text-muted">
+* **Note on field operations:**
+	Field operations have more properties than just the permission String. It also have sub-field declarations, and aditional configuration parameters appendable. Be wise when putting your permission String to the field operation.
+</div>
+
+* * **Searchable.value.**
+* * **ShowInResults.value.**
+* * **ShowInUpdate.value.**
+* * **ShowInDetails.value.**
+* * **Editable.value.**
+
+<pre>
+// Public
+field.searchable = { value: "", ... };
+// Hidden
+field.showInResults = { value: null };
+// Restricted
+field.showInUpdate = { value: "view-update-entity-field", ... };
+field.editable = { value: "edit-entity-field", ... };
+</pre>
 
 */
