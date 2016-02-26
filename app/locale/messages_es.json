@@ -88,6 +88,7 @@
 	"message.pagination.results": "Mostrando  resultados {{ (offset-1) * limit + 1 }} a {{ count < ((offset-1)*limit)+limit ? count : ((offset-1)*limit+limit) }} de {{ count }} ",
 
 	"message.single-select.title": "Elija un elemento",
+	"message.multi-select.title": "Elija sus elementos",
 
 	"combobox.placeholder": "Seleccionar un valor",
 

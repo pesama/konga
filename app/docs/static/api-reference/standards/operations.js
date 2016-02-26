@@ -1,7 +1,7 @@
 /**
  * @ngdoc object
- * @name Standards.Fields
+ * @name Standards.Operations
  * @description 
 
- # Fields
+ 
  */
