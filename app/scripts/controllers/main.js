@@ -136,6 +136,8 @@ angular.module('konga')
 				</div>
 			</div>
 
+			If you want to remove an alert before it's `$timeout` finishes and it removes autommatically, you can use {@link Standards.Operations#method_removeAlert `removeAlert`} method, that will immediately remove it from the stack.
+
 			## Modal dialogs
 
 			Sometimes is useful to ask user for explicit confirmation upon certain action execution. Other times becomes handy to show a notification dialog with some info, warning, exception... Konga includes built-in features for handling these things:
@@ -152,6 +154,27 @@ angular.module('konga')
 
 			* **TODO Example**
 
+			### Loaders
+
+			Your application might rely heavily on one or further data providers - i.e. APIs. When data is loading, normally users are disallowed to perform operations that require such data to be ready. To overcome this, you can use Konga's {@link Standards.Operations#method_requestLoading `requestLoading`} operation, providing it with a unique String identifying what is what you are trying to load. Once the data comes, and the app is again ready to serve it, you can call the {@link Standards.Operations#method_freeLoading `freeLoading`} method, with the same String, and that loader will be released. 
+
+			Konga loading uses a {@link KongaCtrl.loading `loaders`} array, and the two methods menctioned above insert and removes elements into that array. If the `loaders` array has any element, a global loader will appear, blocking the whole screen from users to operate with the application. Once every element is removed from the `loaders` array, the graphical loader will disappear, and the user could resume the usage of the app.
+
+			* **TODO Example**
+
+			When your app is loading everything would be blocked, and the user wouldn't be able to perform any operation. It the estimated loading time is real short, user wouldn't mind about this. But it you are about to perform a heavy data load - or any other operation that would leave the user unable to use the app for a long time - you can append a message to the graphical loader, so the users have some more info about what's going on. This is achieved using the {@link Standards.Operations#method_setLoadingMessage `setLoadingMessage`} method, that receives a String, tries to translate it, and renders the result into the loading view.
+
+			## Modal views
+
+			Sometimes along your app's development, you will find yourself wanting to open a modal for rendering some content. Konga supports native modal opening
+
+			## Tabs
+
+			## Entity management
+
+			## Action dispatching
+
+			## Redirections
 
 			 */
 		  	$rootScope.operations = $scope.operations = {
@@ -436,13 +459,9 @@ angular.module('konga')
 					// Get the active tab
 					var tabActive = $filter('filter')($scope.tabs, { active: true })[0];
 
-					// Verify existance
+					// Verify existence
 					var existingTabs = $filter('filter')($scope.tabs, { id: newTab.id }, true);
-					//newTab['active'] = true;
 					if (!existingTabs.length) {
-
-						//Ouverture d’un onglet depuis un formulaire de recherche, 
-						//l’onglet doit s’ouvrir à la suite du formulaire d’ouverture et non en dernier
 						if (newTab.type === util.constants.TAB_TYPE_UPDATE) {
 							var indexActive = $scope.tabs.indexOf(tabActive);
 							$scope.tabs.splice(indexActive + 1, 0, newTab);
@@ -456,26 +475,10 @@ angular.module('konga')
 							existingTabs.push(newTab);
 						}
 
-						// Setup extra object
-						// var extra = $scope.tabExtra[newTab.id] = {};
-
-						// // Tabs have in extra all parameters for usage
-						// for(var tabParam in newTab) {
-						// 	if(newTab.hasOwnProperty(tabParam)) {
-						// 		extra[tabParam] = newTab[tabParam];
-						// 	}
-						// }
-
 						// Do we need to set-up the metadata?
 						if(!newTab.entityMetadata && newTab.entityType) {
 							newTab.entityMetadata = util.getMetadata(newTab.entityType);
 						}
-
-						// If it's an entity related tab, translate the label
-						// if(newTab.entityMetadata) {
-				  // 			extra.label = $filter('translate')(newTab.entityMetadata.label);
-				  // 			extra.labelPlaceholder = newTab.entityMetadata.label;
-						// }
 					}
 					
 					// Save the previous tab
