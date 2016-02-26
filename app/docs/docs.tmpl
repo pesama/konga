@@ -176,7 +176,7 @@
               controller
             </a>
           </li>
-          <li ng-repeat="page in module.controllers track by page.url" ng-class="navClass(page)" class="api-list-item expand">
+          <li ng-repeat="page in (module.controllers | sortedKonga) track by page.url" ng-class="navClass(page)" class="api-list-item expand">
             <a href="{{page.url}}" tabindex="2">{{page.shortName}}</a>
           </li>
 

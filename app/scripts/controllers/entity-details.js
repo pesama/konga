@@ -9,9 +9,5 @@
  */
 angular.module('konga')
   .controller('EntityDetailsCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    // TODO
   });

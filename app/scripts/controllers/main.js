@@ -1,6 +1,6 @@
 'use strict';
 
-/*
+/**
  * @ngdoc controller
  * @name konga.controller:KongaCtrl
  * @module Konga Reference

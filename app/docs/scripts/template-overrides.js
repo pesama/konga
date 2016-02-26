@@ -105,6 +105,11 @@
 					'TriggerSources': 'fa-tag',
 					'TriggerTypes': 'fa-tag',
 					'ValidatorTypes': 'fa-tag',
+
+					'Apps': 'fa-cube',
+					'Operations': 'fa-wrench',
+					'Tools': 'fa-gamepad',
+					'User': 'fa-user'
 				}
 
 				return icons[input.name] || '';
@@ -145,25 +150,52 @@
 					'Permissions': 200,
 
 					// Standards
-					'Forms': 0,
-					'Fields': 1,
-					'Configuration': 2,
+					'Apps': 0,
+					'Forms': 1,
+					'Fields': 2,
+					
+					'User': 6,
+
+					'Tools': 8,
+					'Operations': 10,
+
+					
+
+					'Configuration': 200,
 
 					// ADF
 					'Custom views': 0,
 					'Action-driven': 1,
+
+
+					// konga controllers
+					'KongaCtrl': 0,
+					'EntitySearchCtrl': 1,
+					'EntityUpdateCtrl': 2,
+					'EntityDetailsCtrl': 3,
 				}
 
 				var sorted = input.sort(function(a, b) {
 					return orders[a.name] - orders[b.name];
 				});
 
-				// for(var i = 0; i < sorted.length; i++) {
-				// 	if(!orders[sorted[i].name]) {
-				// 		sorted.splice(i, 1);
-				// 		i--;
-				// 	}
-				// }
+				return sorted;
+			}	
+		})
+		.filter('sortedKonga', function() {
+			return function(input) {
+				var orders = {
+
+					// konga controllers
+					'KongaCtrl': 0,
+					'EntitySearchCtrl': 1,
+					'EntityUpdateCtrl': 2,
+					'EntityDetailsCtrl': 3,
+				}
+
+				var sorted = input.sort(function(a, b) {
+					return orders[a.shortName] - orders[b.shortName];
+				});
 
 				return sorted;
 			}	

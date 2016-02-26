@@ -315,7 +315,8 @@ span.label a {
 
 span.label.label-success,
 span.label.label-primary,
-span.label.label-warning {
+span.label.label-warning,
+span.label.label-danger {
     font-weight: 300;
 }
 

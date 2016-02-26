@@ -46,7 +46,6 @@ angular.module('konga')
 		 * TODO Document
 		 */
 		$scope.multiselectModal = {
-			title: 'Choix des valeurs', // TODO Externalize
 			contentUrl: '/konga/views/multi-select-modal.html',
 			animation: 'am-fade-and-slide-top',
 			save: function() {

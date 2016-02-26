@@ -41,7 +41,17 @@ TODO
 @name CONFIG_LOOK_AND_FEEL
 @description
 
-TODO
+<span class="label label-success">{@link Metadata.Application Application}
+
+Defines the layout for the application
+
+***Tabbed**
+
+This mode displays a tabbed `navbar` on top of the `<div ng-view></div>` tag, that stores - and accesses - each of the views opened. 
+
+***Plain**
+
+Plain rendering of the view. Here the tabs are not rendered, though still present. You can access via `$rootScope.tabs`. You can leverage the tab {@link Standards.Operations operations} for managing them in plain mode.
 
 */
 
