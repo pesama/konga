@@ -1,8 +1,8 @@
 'use strict';
 
-/*
+/**
  * @ngdoc directive
- * @name konga.directive:Result table
+ * @name konga.directive:resultTable
  * @scope
  * @restrict E
  * @description

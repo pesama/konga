@@ -22,4 +22,18 @@ angular.module('myAwesomeApp')
 
 You can append your role initialisation anywhere you want, but until you don't do this permissions won't be ready, and thus all restricted operations won't be available.
 
+# Custom parameters
+
+{@link konga.userData `userData`} value is essentially a plain `js` object. Therefore you can append any property, method, or any other utility you want or need to handle users properly in your app.
+
+## `access_token`
+
+On private APIs that need OAuth2 authentication for accessing it, `userData` becomes useful to store the token to access it on your request interceptor to inject it into API calls. 
+
+## Basic information
+
+If you are dealing with a private app, that uses user information for anything, `userData` will be handy too. You can simply store the user information you need to use, and it will be available for you anywhere.
+
+
+
  */

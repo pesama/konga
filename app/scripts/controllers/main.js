@@ -96,10 +96,67 @@ angular.module('konga')
 			$scope.loading = [];
 			$scope.loadingMessage = null;
 
-			// This is documented on app.js
+			/**
+			 * @ngdoc object
+			 * @name Standards.Operations
+			 * @description 
+
+			 Konga comes with several built-in operations to easy you perform quick-common tasks - with your app, the metadata, the user...
+
+			 # Graphical aids <span class="label label-success">UI</span>
+
+			 ## Alerts
+
+			 Konga includes quick functionality for launching alerts to the user. An alert adopts the form of a `toastr`, and functionality for dissapearing after a few seconds. 
+
+			 This functionality is triggered using the {@link Standards.Operations#method_addAlert `addAlert`} method.
+
+			 Alerts could be configured for showing different kinds of information. If you want to show an error, you'd like to use the `error` type, while for notifying a successful operation result you'd use `success`. Here you have an example of all types:
+
+			<div class="alert-container row" style="margin-top: 2em;">
+				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center">
+					<alert class="alert bg-success">
+						I'm a <strong>success</strong> alert
+					</alert> 
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center">
+					<alert class="alert bg-primary">
+						I'm an <strong>info</strong> alert
+					</alert> 
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center">
+					<alert class="alert bg-warning">
+						I'm a <strong>warning</strong> alert
+					</alert> 
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center">
+					<alert class="alert bg-danger">
+						I'm an <strong>error</strong> alert
+					</alert> 
+				</div>
+			</div>
+
+			## Modal dialogs
+
+			Sometimes is useful to ask user for explicit confirmation upon certain action execution. Other times becomes handy to show a notification dialog with some info, warning, exception... Konga includes built-in features for handling these things:
+
+			### Notifications
+
+			Notifications are handled by the {@link Standards.Operations#methods_notify `notify`} method. With this method you will launch a modal dialog with some information, and user will only be able to close it and keep doing what he was doing. 
+
+			* **TODO Example**
+
+			### Confirmations
+
+			If you need explicit user confirmation for executing a task, you can leverage {@link Standards.Operations#method_confirm `confirm`} method, and you will have your confirmation shown. Depending on the user's choice on the confirmation, you will have triggered your `okHandler` or your `koHandler`, where you should continue doing the functionalities you were asking confirmation for. 
+
+			* **TODO Example**
+
+
+			 */
 		  	$rootScope.operations = $scope.operations = {
 
-		  		/*
+		  		/**
 		  		 * @ngdoc method
 		  		 * @name addAlert
 		  		 * @methodOf Standards.Operations
@@ -126,7 +183,7 @@ angular.module('konga')
 		  	          }, 4000); // TODO KONGA_ALERT_TIMEOUT
 		  		},
 
-		  		/*
+		  		/**
 		  		 * @ngdoc method
 		  		 * @name removeAlert
 		  		 * @methodOf Standards.Operations
@@ -138,7 +195,7 @@ angular.module('konga')
 		  			$scope.alerts.splice(index, 1);
 		  		},
 
-		  		/*
+		  		/**
 		  		 * @ngdoc method
 		  		 * @name confirm
 		  		 * @methodOf Standards.Operations
@@ -168,7 +225,7 @@ angular.module('konga')
 			        });
 		  		},
 		  		
-		  		/*
+		  		/**
 		  		 * @ngdoc method
 		  		 * @name notify
 		  		 * @methodOf Standards.Operations
@@ -198,45 +255,7 @@ angular.module('konga')
 		  			dlg = dialogs[type](localeTitle, localeMessage);
 		  		},
 
-		  		/*
-		  		 * @ngdoc method
-		  		 * @name goHome
-		  		 * @methodOf Standards.Operations
-		  		 * @description
-		  		 * Takes the user to the home screen. You must define the `/home/` route with home's content
-		  		 */
-		  		goHome: function() {
-		  			var homeTab = {
-						id:'home', 
-						title: 'message.tabs.home', 
-						href:'/home/', // TODO KONGA_HOME_URI
-						closable: false,
-						type: util.constants.TAB_TYPE_HOME
-					};
-
-					this.addTab(homeTab);
-		  		},
-
-		  		/*
-		  		 * @ngdoc method
-		  		 * @name goAdmin
-		  		 * @methodOf Standards.Operations
-		  		 * @description
-		  		 * If your application has an _admin_ section, use this link to go to that page. You must direct the `/admin/` route to the admin's content.
-		  		 */
-		  		goAdmin: function() {
-		  			var homeTab = {
-						id:'admin', 
-						title: 'message.tabs.admin', 
-						href:'/admin/', 
-						closable: true,
-						type: util.constants.TAB_TYPE_HOME
-					};
-
-					this.addTab(homeTab);
-		  		},
-
-		  		/*
+		  		/**
 		  		 * @ngdoc method
 		  		 * @name openEntitySearch
 		  		 * @methodOf Standards.Operations
@@ -281,7 +300,7 @@ angular.module('konga')
 					$scope.operations.addTab(tab);
 		  		},
 
-		  		/*
+		  		/**
 		  		 * @ngdoc method
 		  		 * @name openEntityUpdate
 		  		 * @methodOf Standards.Operations
@@ -342,7 +361,7 @@ angular.module('konga')
 					$scope.operations.addTab(tab);
 		  		},
 
-		  		/*
+		  		/**
 		  		 * @ngdoc method
 		  		 * @name openEntityCreated
 		  		 * @methodOf Standards.Operations
@@ -368,7 +387,7 @@ angular.module('konga')
 		  			}
 		  		},
 
-		  		/*
+		  		/**
 		  		 * @ngdoc method
 		  		 * @name openModal
 		  		 * @methodOf Standards.Operations
@@ -405,7 +424,7 @@ angular.module('konga')
 				    });
 		  		},
 
-		  		/*
+		  		/**
 		  		 * @ngdoc method
 		  		 * @name addTab
 		  		 * @methodOf Standards.Operations
@@ -465,7 +484,7 @@ angular.module('konga')
 					$scope.operations.redirectTo(existingTabs[0]);
 				},
 
-				/*
+				/**
 		  		 * @ngdoc method
 		  		 * @name closeTab
 		  		 * @methodOf Standards.Operations
@@ -522,7 +541,7 @@ angular.module('konga')
 					}
 				},
 
-				/*
+				/**
 		  		 * @ngdoc method
 		  		 * @name closeTabById
 		  		 * @methodOf Standards.Operations
@@ -539,7 +558,7 @@ angular.module('konga')
 					}
 				},
 				
-				/*
+				/**
 		  		 * @ngdoc method
 		  		 * @name closeAllTabs
 		  		 * @methodOf Standards.Operations
@@ -554,7 +573,7 @@ angular.module('konga')
 					}
 				},
 
-				/*
+				/**
 		  		 * @ngdoc method
 		  		 * @name redirectTo
 		  		 * @methodOf Standards.Operations
@@ -576,7 +595,7 @@ angular.module('konga')
 					$scope.tabId = tab.id;
 				},
 
-				/*
+				/**
 		  		 * @ngdoc method
 		  		 * @name requestLoading
 		  		 * @methodOf Standards.Operations
@@ -590,7 +609,7 @@ angular.module('konga')
 					$scope.loadingMessage = message;
 				},
 
-				/*
+				/**
 		  		 * @ngdoc method
 		  		 * @name freeLoading
 		  		 * @methodOf Standards.Operations
@@ -606,7 +625,7 @@ angular.module('konga')
 					$scope.loading.splice(index, 1);
 				},
 
-				/*
+				/**
 		  		 * @ngdoc method
 		  		 * @name setLoadingMessage
 		  		 * @methodOf Standards.Operations
@@ -618,7 +637,7 @@ angular.module('konga')
 					$scope.loadingMessage = message;
 				},
 
-				/*
+				/**
 		  		 * @ngdoc method
 		  		 * @name changeLocale
 		  		 * @methodOf Standards.Operations
@@ -638,71 +657,19 @@ angular.module('konga')
 
 					$scope.$broadcast('locale-change', { 'old': oldLocale, 'new': newLocale });
 				},
-				
-				//TODO : Add function for Search Action
-				action: function() {
-		  			// Generate the id for the new tab
-		  			var tabId = "action";
 
-		  			// TODO Externalize
-		  			var tabTitle = 'message.tabs.action.search';
-		  			//$scope.tabExtra.label = $filter('translate')(entityMetadata.label);
-
-		  			var tab = {
-						id : tabId, 
-						title : tabTitle, 
-						href : '/action/', 
-						closable : true,
-						// Entity metadata
-						//entityMetadata : entityMetadata
-					};
-
-					// Add the tab
-					$scope.operations.addTab(tab);
-		  		},
-
-		  		/*
-				 * Decodes a String and converts it into an action
-				 * The form of the action String MUST BE:
-				 *  - Action name
-				 *  - Entity type
-				 *  - '#' Entity id (Optional)
-				 *
-				 * Parameters are concat using the ':' separator
+				/**
+				 * @ngdoc method
+				 * @methodOf Standards.Operations
+				 * @name dispatchAction
+				 * @description
+				 * Dispatches an action, within the scope the user's at, and attaching to it's execution the given parameters.
+				 * 
+				 * @param {Object} action
+				 It contains the action to execute. It **must be an object**, and include a property called `name`, which must store the name for the action. 
+				 * @param {Object} [parameters=new Object]
+				 Add a set of parameters to the action's execution environment
 				 */
-				decodeAction : function(actionStr, dispatch) {
-					var action = {
-					  name: '',
-					  scope: '',
-					  label: ''
-					};
-					var actionParameters = {};
-
-					var actionParams = actionStr.split(':');
-					if(actionParams.length < 2) {
-					  // TODO Throw exception
-					}
-					action.name = actionParams[0];
-					var entityType = actionParams[1];
-					actionParameters.entityType = entityType;
-
-					// Parse the other params
-					for(var i = 2; i < actionParams.length; i++) {
-					  var currentParam = actionParams[i];
-
-					  // Is it the id?
-					  if(currentParam.indexOf('#') === 0) {
-					    actionParameters.id = currentParam.substring(1);
-					  }
-					}
-
-					if(dispatch) {
-						this.dispatchAction(action, actionParameters);
-					}
-
-					return action;
-				},
-
 		  		dispatchAction: function(action, parameters) {
 		  			if(!parameters) parameters = {}; 
 		  			actionManager.dispatch(action, parameters);

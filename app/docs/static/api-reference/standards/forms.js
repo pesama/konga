@@ -34,7 +34,13 @@ By clicking a row you **will access to the update form** of the item of that row
 
 At the bottom-right corner of the image there's an **add** button, whose action is launching an update form for creating a new entity.
 
-## <span class="text-success"><i class="fa fa-key"></i> Permissions</span>
+## <span class="text-success"><i class="fa fa-code"></i> Elements involved</span>
+
+* * **{@link konga.controller:EntitySearchCtrl `EntitySearchCtrl`}:** This controller handles all search features. It renders a layout where it allocates inner components, and connection to other operations (add, custom actions...).
+* * **{@link konga.directive:searchPane `searchPane`}:** Handles the search-form rendering and operations (filtering, submitting, clearing...). It also controls customisation of the form via the {@Metadata.Entity `Entity` metadata}. 
+* * **{@link konga.directive:resultTable `resultTable`}:** Handles the result table rendered on the right side. It's responsible for all operations performed on it (sorting, paging, row clicks...). It's furthermore in charge of the customisation of the table via the {@link Metadata.FormType form type} given for this method.
+
+## <span class="text-danger"><i class="fa fa-key"></i> Permissions</span>
 
 * * **Searchable:** Only if the user's permissions include the entity's `searchable` permissions the left panel will appear. Fields are also affected to this rule, so only the ones `searchable` will be rendered.
 * * **Editable:** Only if the entity is `editable` the user would be able to click on a line and jump to the update form.
@@ -58,7 +64,12 @@ Update forms receives a single entity, or it's ID, and renders a form with all t
 
 On the image you can see all fields rendered in cascade, along with three buttons on the bottom. These buttons are for **`save`**, **`cancel`**, and **`delete`**.
 
-## <span class="text-success"><i class="fa fa-key"></i> Permissions</span>
+## <span class="text-success"><i class="fa fa-code"></i> Elements involved</span>
+
+* * **{@link konga.controller:EntityUpdateCtrl `EntityUpdateCtrl`}:** This controller handles all edition features. It renders a layout where it allocates all fields, along with the basic operations (save, cancel, delete, custom actions...).
+* * **{@link konga.directive:updateForm `updateForm`}:** Handles the rendering of the form itself. This controls customisation, and basic operations performed onto fields.
+
+## <span class="text-danger"><i class="fa fa-key"></i> Permissions</span>
 
 * * **Show In Update:** Only the fields marked with `showInUpdate` will be rendered on update forms.
 * * **Editable:** Only if the entity is `editable` the user would be able to click on a line and jump to the update form. Same applies for fields, if a field is not `editable`, and it's shown, it will be disabled

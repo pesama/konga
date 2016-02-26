@@ -4,38 +4,76 @@
  * @ngdoc controller
  * @name konga.controller:EntitySearchCtrl
  * @description
- * Controller used for search ENTITY entities. It's route provides information about what type of entity are we searching for
  * 
+ * This controller handles all search operations for konga {@link Standards.Forms `standards`}. It's opened once you request a new search form via {@link Standards.Operations#methods_openEntitySearch `openEntitySearch()`} operation. Once it opens it starts inner `directives` and engages all functionalities.
  *
- * # Route configuration
- * This controller uses the path to get configured. Depending on the entity type it needs to manage, the parameter `entityType` received via the `$routeParams` would have one value or another. This parameter is used thereafter to determine the local endpoint to perform the calls to. 
+ * <img src="http://static.konga.io/konga-entity-search-basic-flow.png" width="40%" class="center">
  *
- *
- * # Local endpoint
- * Using the {@link konga.Api api} service, and sending the `entityType` parameter defined above, the service returns the proper endpoint, depending on which type of entity is received. Afterwards all CRUD operations between the UI and the web service will be performed to the appropriate endpoint. 
- *
- * 
- * # Using `pageData`
- * Thanks to the {@link konga.Common#methods_getPageData `getPageData`} method of the {@link konga.Common common} storage, this controller can save information about where it was when the tab was changed to one another. Thus, the controller can restore its previous state once we come back to such tab. 
+ * The `EntitySearchCtrl` relies on two main directives to render its contents: {@link konga.directive:searchPane `searchPane`} for managing the search form, and {@link konga.directive:resultTable `resultTable`} for rendering the results. Furthermore, it includes access to the {@link konga.controller:EntityUpdateCtrl `EntityUpdateCtrl`} to create new entities, if the metadata for the entity allows creation to user. 
  *
  *
- * # Pagination
- * To avoid retrieving too many results at once, they are paginated so the user could only see the number of results she decides. 
- * <br />
+ * # Search flow
+ *
+ * Once the `EntitySearchCtrl` engages, it passes through several flows depending on the configuration, and on the user interaction with the available actions. Here you have an excerpt of the flows `EntitySearchCtrl` moves through:
+ *
+ * <img src="http://static.konga.io/konga-search-flow.png" width="50%" class="center">
+ *
+ * ## Rendering
+ *
+ * On **rendering** phase, the `EntitySearchCtrl` reads the `metadata` and determines whether the search form is an allowed feature for the entity. If that's the case, it launches the directive `boot`, and stays idle while the directives work, listening for their requests, along with user interactions through them. See how {@link konga.directive:searchPane `searchPane`} and {@link konga.directive:resultTable `resultTable`} boot. 
+ *
+ * ## Input
+ *
+ * This is a {@link konga.directive:searchPane `searchPane`} specific behavior, when users interact with the different fields. See the docs about how the `searchPane` handles {@link konga.directive:searchPane#methods_updateField `field updation`}.
+ *
+ * ## Submit
+ *
+ * This process is triggered by the {@link konga.directive:searchPane `searchPane`} once the user clicks on 'submit'. In this moment the `EntitySearchCtrl` receives a 'submit' action through its {@link konga.controller:EntitySearchCtrl#methods_dispatchSearchAction `dispatchSearchAction()`} method, who determines the action to dispatch. As you would see on the {@link Action-Driven.Native#properties_search `native search action`}, the default procedure for searching is to launch `EntitySearchCtrl` {@link konga.controller:EntitySearchCtrl#methods_submit `submit`} method.
+ *
+ * ## Reset
+ *
+ * This task is executed once the user clicks on the 'clear' button. It's handled internally by the {@link konga.directive:searchPane `searchPane`} through its {@link konga.directive:searchpane#methods_clear `clear`} method. With this process all fields return to their initial state, and a new request is launched to update the results on the {@link konga.directive:resultTable `resultTable`}.
  *
  *
- *
- * @param {$scope} $scope Local scope for the controller
- * @param {Api} api Api connector for REST service connection
- * @param {$routeParams} $routeParams Parameters of the route
- * @param {Common} common Common storage
- * @param {$rootScope} $rootScope Global scope (for receiving propagated data)
- * @param {$filter} $filter Filters for managing data
- * @param {Scaffold} scaffold Used to generate new entities
+ * @param {$scope} $scope
+ * `EntitySearchCtrl`'s `$scope`. It contains all basic attributes and features for searching, and it provides information to the underlying directives. 
+
+ * @param {Object} api 
+ <span class="label type-hint type-hint-object">{@link konga.api `api`}</span>
+ Service for performing the API calls for retrieving the results. By default any entity consumes the {@link konga.standardApi `standardApi`}. However, controllers rely on the {@link konga.api `api`} service, as it allows you to easily define a different API handler for each entity. See the {@link konga.api `api`} documentation for more details.
+
+ * @param {$routeParams} $routeParams 
+ The `EntitySearchCtrl` uses the `$routeParams` to retrieve information about the entities. As you have seen on the {@link Standards.Apps Apps} definition, there are two default `$routes` engaged into any Konga app. That `$routes` contain information about the `:entityName` (the entity metadata's name), used to retrieve the metadata using the {@link Standards.Tools `util`} stystem. 
+
+ * @param {Object} common 
+ <span class="label type-hint type-hint-object">{@link konga.common `common`}</span>
+ The storage is used internally to handle data-saving operations, mainly for tab management - you go out of this tab, come back, and everything is as you left it.
+
+ * @param {$rootScope} $rootScope 
+ Injected to access global {@link Standards.Operations `operations`}.
+
+ * @param {$filter} $filter
+ Used for filtering data - e.g. {@link konga.filter:mapField `field mapping`} and other Angular native filtering.
+
+ * @param {Object} scaffold
+ <span class="label type-hint type-hint-object">{@link konga.scaffold `scaffold`}</span>
+ Used for {@link konga.scaffold `scaffolding`} new queries. 
+
+ * @param {$timeout} $timeout
+ Some inner methods and operations are executed delayed.
+
+ * @param {Object} permissionManager
+ <span class="label type-hint type-hint-object">{@link konga.permissionManager `permissionManager`}</span>
+ Used to determine user permissions on the operations susceptible to be executed on the `search` and `results` functionalities.
+
+ * @param {Object} util
+ <span class="label type-hint type-hint-object">{@link Standards.Tools `util`}</span>
+ Used to handle metadata easier via the {@link Standards.Tools `util`} provided tools. 
+
  */
 angular.module('konga')
-  .controller('EntitySearchCtrl', ['$scope', 'api', '$routeParams', 'common', '$rootScope', '$filter', 'scaffold', '$timeout', '$log', 'permissionManager', 'util', 
-  	function ($scope, api, $routeParams, common, $rootScope, $filter, scaffold, $timeout, $log, permissionManager, util) {
+  .controller('EntitySearchCtrl', ['$scope', 'api', '$routeParams', 'common', '$rootScope', '$filter', 'scaffold', '$timeout', 'permissionManager', 'util', 
+  	function ($scope, api, $routeParams, common, $rootScope, $filter, scaffold, $timeout, permissionManager, util) {
   		
       // Get the local params
       var entityType = $scope.entityType = $routeParams.entityType;
@@ -45,17 +83,25 @@ angular.module('konga')
       
       // Get page data
       var pageData = $rootScope.pageData;
-
-      //var log = $log.getInstance('EntitySearchCtrl', entityType);
       
-      // Initialize the search results
+      /**
+       * @ngdoc object
+       * @propertyOf konga.controller:EntitySearchCtrl
+       * @name searchResults
+       * @description
+       * 
+       * Stores all the search results that come from the api once requested a {@link konga.controller:EntitySearchCtrl#methods_submit `submit`} method.
+       */
       $scope.searchResults = [];
       
-      //Keep the current query for search function when doing the paging,  
-//      if (!$rootScope.currentQuery) {
-//    	  $rootScope.currentQuery = {}; 
-//      }
-      
+      /**
+       * @ngdoc object
+       * @propertyOf konga.controller:EntitySearchCtrl
+       * @name pageItems
+       * @description
+       * 
+       * Stores a subset of the elements contained in {@link konga.controller:EntitySearchCtrl#properties_searchResults `searchResults`} array. .
+       */
       $scope.pageItems = [];
 
       var pageData = $rootScope.pageData;
@@ -71,11 +117,34 @@ angular.module('konga')
         $rootScope.paginationData[entityType].offset = 1;
       }
 
+      /**
+       * @ngdoc object
+       * @propertyOf konga.controller:EntitySearchCtrl
+       * @name paginationCount
+       * @description
+       * 
+       * Stores the current limit setup in the pagination configuration. 
+       */
       $scope.paginationCount = $rootScope.paginationData[entityType].limit + "";
 
-      // Initialize the field metadata
+      /**
+       * @ngdoc object
+       * @propertyOf konga.controller:EntitySearchCtrl
+       * @name entityMetadata
+       * @description
+       * 
+       * Holds the metadata of the entity being managed. It's retrieved via {@link konga.common `common`} -> {@link konga.common#methods_getMetadata `getMetadata`} method.
+       */
       var metadata = $scope.entityMetadata = common.getMetadata(entityType);
 
+      /**
+       * @ngdoc object
+       * @propertyOf konga.controller:EntitySearchCtrl
+       * @name searchResults
+       * @description
+       * 
+       * Stores whether the entity being managed allows creation. It leverages the {@link konga.permissionManager `permissionManager`} -> {@link konga.permissionManager#methods_isAllowed `isAllowed`} method to determine permissions.
+       */
       $scope.isCreateable = metadata.createable !== null && permissionManager.isAllowed(metadata.createable);
 
       // If we have pageData, we setup the controller
@@ -90,8 +159,25 @@ angular.module('konga')
         
       } else {
         pageData.searchResults = $scope.searchResults;
+
+        /**
+         * @ngdoc object
+         * @propertyOf konga.controller:EntitySearchCtrl
+         * @name quickSearchEnabled
+         * @description
+         * 
+         * Stores whether the entity supports `quick searching`.
+         */
         $scope.quickSearchEnabled = pageData.quickSearchEnabled = false;
 
+        /**
+         * @ngdoc object
+         * @propertyOf konga.controller:EntitySearchCtrl
+         * @name query
+         * @description
+         * 
+         * Stores the current query based on the search field's input.
+         */
         $scope.query = pageData.query = scaffold.newQuery($scope.entityMetadata);
 
         // Init the hiddenFilter to showFilter       
@@ -109,32 +195,65 @@ angular.module('konga')
         }
       };
 
+      /**
+       * @ngdoc object
+       * @propertyOf konga.controller:EntitySearchCtrl
+       * @name quickSearch
+       * @description
+       * 
+       * Determines the fields to be rendered in the `quick search` pane. It uses the {@link konga.filter:quickSearch `quickSearch`} filter to get such fields based on metadata for the entity being managed. 
+       */
       var quickSearchFields = $scope.quickSearch = $filter('quickSearch')(metadata);
-
-      // Quick search by eds code
-      // var edsFields = util.getEntityFields($scope.entityMetadata); - jsHint : not used
-      //var codeField = $scope.codeField = util.getEntityCode($scope.entityMetadata, undefined, true);
-      //var labelField = util.getEntityLabel($scope.entityMetadata, undefined, true);
       
-      //Get Fields show in search result
+      /**
+       * @ngdoc object
+       * @propertyOf konga.controller:EntitySearchCtrl
+       * @name fieldsShowInResults
+       * @description
+       * 
+       * Stores all the fields needed to be shown in `results`. The {@link konga.filter:resultParams `resultParams`} filter handles this feature, by selecting all fields with metadata and permissions properly set to show in results. 
+       */
       var allFields = $filter('orderBy')(util.getEntityFields($scope.entityMetadata), '+priority.search');
       $scope.fieldsShowInResult = $filter('resultParams')(allFields, $scope.entityMetadata);
-      
-      // Get product codes
-      $scope.productCodes = common.read('product-codes'); 
 
       // Inherit root operations
       $scope.operations = $rootScope.operations;
       
-      $scope.resetPaginationData = function (onlyPagination) {
+      /**
+       * @ngdoc function
+       * @methodOf konga.controller:EntitySearchCtrl
+       * @name resetPaginationData
+       * @description
+       * 
+       * Resets the pagination data to the default values. This method is used when `resetting`, to setup original paging count, and to move to first page. 
+       * 
+       * @param {Boolean} pagingOnly
+       If set to true, paging count - i.e. `limit` - won't be reset to defaults. 
+       */
+      $scope.resetPaginationData = function (pagingOnly) {
     	  $rootScope.paginationData[entityType].count = 0;
         $rootScope.paginationData[entityType].offset = 1;
 
-        if(!onlyPagination) {
+        if(!pagingOnly) {
           $rootScope.paginationData[entityType].limit = 20;
         }
       };
       
+      /**
+       * @ngdoc function
+       * @methodOf konga.controller:EntitySearchCtrl
+       * @name submit
+       * @description
+       * 
+       * Submits the query to the API and handles data returns, and exception management.
+       *
+       * @param {Object} query
+       <span class="label type-hint type-hint-object">{@link Standards.DataTypes#properties_query Query}</span>
+       * Query to submit to the API
+       * @param {Object} [sorting=null]
+       <span class="label type-hint type-hint-object">{@link Metadata.Field Field}</span>
+       Configures the field to sort by
+       */
       $scope.submit = function(query, sorting) {
         // Request a loader
         $rootScope.operations.requestLoading('search_' + entityType);
@@ -194,12 +313,18 @@ angular.module('konga')
       };
 	
       $scope.submitSorting = function(field, type) {
-    	  // $scope.fieldsShowInResult = sortBy;
-    	  //console.log(sortBy);
-    	  //$scope.resetPaginationData();
     	  $scope.submit($scope.query, { field: field, type: type });
       };
       
+      /**
+       * @ngdoc function
+       * @methodOf konga.controller:EntitySearchCtrl
+       * @name executeQuickSearch
+       * @description
+       * 
+       * Submits the query, along with the values input on the `quick search` section. This method is executed autommatically once a field on the `quick search` hook changes.
+       *
+       */
       $scope.timeout = 1;
       $scope.executeQuickSearch = function() {
     	  $timeout.cancel($scope.timeout);
@@ -307,6 +432,14 @@ angular.module('konga')
           }
       }
 
+      /**
+       * @ngdoc function
+       * @methodOf konga.controller:EntitySearchCtrl
+       * @name toggleFilter
+       * @description
+       * 
+       * Toggles filter visibility
+       */
       $scope.toggleFilter = function() {
         if($scope.entityMetadata.searchable === null) {
           return;
@@ -320,12 +453,28 @@ angular.module('konga')
         }
       };
       
+      /**
+       * @ngdoc function
+       * @methodOf konga.controller:EntitySearchCtrl
+       * @name hideFilter
+       * @description
+       * 
+       * Hides the filters, leaving the result table occupying all the layout.
+       */
       $scope.hideFilter = function() {
         $scope.filterOpened = pageData.filterOpened = false;
         $scope.filterClass = pageData.filterClass = 'filterHide';
         $scope.resultTableWidth = pageData.resultTableWidth = 'widthUp';
       };
 
+      /**
+       * @ngdoc function
+       * @methodOf konga.controller:EntitySearchCtrl
+       * @name hideFilter
+       * @description
+       * 
+       * Hides the filters, leaving the result table occupying all the layout.
+       */
       $scope.showFilter = function() {
         $scope.filterOpened = pageData.filterOpened = true;
         $scope.filterClass = pageData.filterClass = 'filterShow';
@@ -355,60 +504,41 @@ angular.module('konga')
         $scope.currentItems();
       };
       
+      /**
+       * @ngdoc event
+       * @eventOf konga.controller:EntitySearchCtrl
+       * @name entity-search
+       * @description
+       * 
+       * When this event arrives to `EntitySearchCtrl`, it launches a new search for the entity given on the params. This is useful to update results on any custom action you develop.
+       *
+       * To successfully use this feature you **need to send the `entity name` on the `data.type` attribute**. 
+       * 
+       */
       $scope.$on('entity-search', function (conf, data){
     	  if(entityType == data.type) {
     		  $scope.submit();
     	  }
       });
-  	
-  	  $scope.report = function (type) {
-        var queryReport = angular.copy($scope.query);
-        var sendQuery = {};
- 	      rootifyQuery(sendQuery, queryReport);
- 	      sendQuery.path=metadata.apiPath;
-		  delete sendQuery.limit;
-		  delete sendQuery.offset;
-  		  // $rootScope.operations.requestLoading('searchReport_' + type);
-  		  // var searchReport = localEndpoint.search(sendQuery, function() {
-      //   	//searchResults is a var used to stock the ResultItems shown (by page)
 
-      //   	$rootScope.operations.freeLoading('searchReport_' + entityType);
-  	   //    	Reports.generate({typeEntity: entityType, typeReport: type}, searchReport, 
-	    	// 	  function (resp) {
-			   //      // Success
-			   //  	  console.log(resp);
-			   //  	  var timestamp = new Date().getTime();
-			   //  	  var href;
-	    	  
-			   //  	  //Check if the file is pdf file o excel file
-					 //  var extension;
-					 //  if (resp.mimetype.indexOf("pdf") > -1) {
-						// href = 'data:' + resp.mimetype + ';base64, ' + resp.value;
-						// extension = ".pdf";
-					 //  }	else if (resp.mimetype.indexOf("excel") > -1) {
-						// href = 'data:' + resp.mimetype + ';base64, ' + resp.value;
-						// extension = ".xls" ;
-					 //  } else {
-						// var unBase64 = escape(window.atob(resp.value));
-						// var encoded = util.convertUtf8ToWindow1250(unBase64);
-						// var reBase64 = window.btoa(encoded);
-						// href = 'data:' + resp.mimetype + ';base64, ' + reBase64;
-						// extension = ".csv" ;
-					 //  }
-			   //  	  util.downloadFile(href, 'report_' + timestamp + extension);
-	     //  		   }, 
-	     //  		   function () {
-	     //  			   // Error
-			   //  	  console.error('POST Error');
-			   //  	  $rootScope.operations.addAlert(util.constants.ALERT_TYPE_ERROR, 'global.operation-incomplete'); 
-	     //   });
-  		  // });
+      /**
+       * @ngdoc function
+       * @methodOf konga.controller:EntitySearchCtrl
+       * @name dispatchSearchAction
+       * @description
+       * Launches a custom action triggered within the `EntitySearchCtrl`. This action will include the following parameters and values:
+       <pre>
+{
+  query: $scope.query,
+  metadata: $scope.entityMetadata,
+  results: $scope.resultList,
+  self: $scope
+}
+       </pre>
 
-	      
-  	 	};
-
-      /*
-       * Launch a custom action for search scope
+       * @param {Object} action
+       <span class="label type-hint type-hint-object">{@link Metadata.Action Action}</span>
+       Action to be dispatched. This can be an object with a `name` attribute. Konga will find such name in the {@link konga.customActions `customActions`} array
        */
       $scope.dispatchSearchAction = function(action) {
         var queryObj = {};

@@ -40,6 +40,14 @@ angular.module('myAwesomeApp')
 
 # Application configuration
 
+## Built-in routes <span class="label label-primary">Routing</span>
+
+Konga comes with two built-in `$routes` to handle standard operations:
+
+* * <strong>`/entity/:entityName/search`</strong>: Used for search entities of `:entityName`'s type.
+* * <strong>`/entity/:entityName/:entityId`</strong>: Used for updating `:entityName`'s entity identified with `:entityId`. If the `:entityId` attribute is set to the String `new`, then the updation will be a creation, and the system will act accordingly.
+
+
 You can configure several things in your konga application using {@link konga.kongaConfig `kongaConfig` value}:
 
 ## API connection <span class="label label-danger">APIs</span>
