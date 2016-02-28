@@ -5,7 +5,7 @@
 
 <div class="row margin-top-3em">
 	<div class="col-xs-12 text-center">
-		<img src="http://konga.io/wp-content/uploads/2015/03/konga-logo.png" width="600" /> 
+		<img src="/images/konga-logo.png" width="600" /> 
 		<br />
 
 		<h1 class="welcome">Build codeless web apps leveraging metadata</h1>
