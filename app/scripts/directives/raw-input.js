@@ -1,14 +1,69 @@
 'use strict';
 
-/*
+/**
  * @ngdoc directive
- * @name konga.directive:Raw input
+ * @name konga.directive:rawInput
  * @scope
  * @restrict E
  * @description
- * Defines an input that changes its appearance depending on the type the input field has.
  *
+ * This is a directive for rendering a field into a form, using the {@link Metadata.Field field's metadata} defined. The `rawInput` does not have an appeareance itself, instead is `raw`, allowing multiple views - i.e. the specific field types - to use its features, yet keeping a particular appeareance defined within the view itself.
+ *
+ * <img src="http://static.konga.io/raw-input-init.png" width="50%" class="center">
+ *
+ * # Init/Update
+ *
+ * `update` is the process the `rawInput` uses to `map` the entity's field value into the `rawInput` {@link konga.directive:rawInput#properties_value `value`} object. To achieve this the `rawInput` leverages the {@link konga.filter:mapField `mapField`} filter.
+ *
+ * # Rendering
  * 
+ * Once the values are loaded and the configuration interpreted, the `rawInput` proceeds to render your field. Depending on the `fieldType` assigned, the `rawInput` will adopt different appeareances.
+ *
+ * <img src="http://static.konga.io/raw-input-rendering.png" width="60%" class="center">
+ *
+ * ## Complex `fieldTypes`
+ *
+ * When a `fieldType` is marked as {@link Metadata.FieldTypes#properties_COMPLEX `COMPLEX`}, insted of rendering the field itself, a subset of fields is taken from the inner entity, depending on the configuration given to the complex field. When the `rawInput` detects it's dealing with a `COMPLEX` input, it renders a view consisting on more nested `rawInputs`. Then each field is treatedly independently, but using as field - and entity - the inner value corresponding to the parent field.
+ * 
+ *
+ * ## Custom `fieldTypes`
+ *
+ * Sometimes Konga's standard inputs would not be enough for your needs. When this comes along, you'd find handy to create your own custom `fieldTypes` and configure your entity's fields to render using them. See the docs on {@link Customisation.Custom%20views#properties_fields custom fields}.
+ *
+ *
+ * # Value `$watcher`
+ * 
+ * `rawInput` has a built-in feature to detect changes on your fields, and apply field mapping immediately. Yes, this is a native feature of Angular - bi-directional binding on inputs - but it's normally applied to plain inputs. `rawInput`'s  value `$watcher` initialise different `$watchers` depending on {@link Metadata.Field field's metadata}, so you always get notified when the real value needed for the entity is assigned to the `rawInput`. This allows you to render complex inputs who require an inner process to select the items - such as {@link Metadata.FieldTypes#properties_SELECT `select`} or {@link Metadata.FieldTypes#properties_PICK_LIST `pick list`} inputs. The value `$watcher` also handles casting, to give you the format and data type needed for the field.
+ *
+ * <img src="http://static.konga.io/raw-input-watcher.png" width="60%" class="center">
+ *
+ * # Data validation
+ *
+ * `rawInput` also reads the metadata for data validation. When an input changes, it's value is mapped against several validation processes - e.g. required, patterns, lengths, ... - to verify it's data maintains integrity with the requirements. If that's so, field's marked as valid, and hence the form will be submitted - once all fields become valid. On the other hand, if any parameter does not match the needs, the `$validity` object is leveraged to append data irregularities, which are shown to the user via tooltips.
+ *
+ * # Manual operation
+ *
+ * Sometimes you are handling data different than the standards, and native features won't satisfy the characteristics you need. To let you interact manually with the `rawInput`, from your custom code outside, you have several events that you can `$broadcast`, that will be listened by the `rawInput`, and apply manually the operations you want:
+ *
+ * * **'cascade_update'** (w/ `listenerName`) - Triggers a cascade downwards. This is launched on complex fields when a {@link Metadata.ConfigurationParam#properties_CASCADE_UPDATE `cascade`} is defined. It applies queries on inner objects defined on the `cascade` expression.
+ * * **'complex_update'** (w/ `listenerName`) - It's `$broadcasted` (and listened) when a complex `fieldType` changes. Its listener handles the {@link Metadata.ConfigurationParam#properties_PROPAGATE_UPDATE `propagation`}.
+ * * **'field-updated'** - Listened by linked fields, once the source field of its linking changes its value. Its listener executes the linking action on the target field.
+ * * **'force-validation'** - Force the execution of a validation.
+ * * **'locale-change'** - When language changes, the `rawInput` adapts its labels to the new language. While translation is autommatically engaged with the new language, Konga's {@link konga.filter:translateComplex `complex translation`} needs this event to adapt.
+ * * **'manually_change'** (w/ `listenerName`) - If you changed the value of your field and yet the `$watchers` weren't executed, you can manually force a change `$watcher` process. This is never needed on Standard types, but may happen on {@link Customisation.Custom%20views#properties_Fields `custom`}.
+ * * **'reset-form'** - On search mode, when user requests a `reset` the {@link konga.directive:searchPane `searchPane`} broadcasts an 'reset-form' event. This event is listened on underneath `rawInputs` and their values are reset to defaults.
+ * * **'reset'** (w/ `listenerName`) - This does the same as the `reset-form`, but it's targeted to a targeted field.
+ * * **'reset_cascade'** (w/ `listenerName`) - Resets the cascade procedures applied to the affected fields.
+ * * **'setup-cascade'** - Allows you to enable/disable cascades, to avoid infinite loops on certain operations (such as batch updating). On init, cascades are disabled to avoid this issue.
+ * * **'setup-propagation'** - Allows you to enable/disable propagations, to avoid infinite loops on certain operations (such as batch updating). On init, propagations are disabled to avoid this issue.
+ * * **'setup-watchers'** - Allows you to enable/disable value watchers, to avoid erroneous `$digest` loops.
+ * * **'update'** (w/ `listenerName`) - Launch an update process on the field. This is useful if something changed the value of the entity itself, but outside the bounds of the `rawInput`. In this case, you need to notify the `rawInput` to adopt the new value within the rendered field.
+ *
+ * ## <i class="fa fa-tag"></i> **`listenerName`**
+ *
+ * Most of the events you saw above are used along a `listenerName`. This means the event name changes, suffixing it with a value obtained for reading **`field.owner`-`field.name`** from the metadata - e.g. for calling an `update` under a `vehicle` -> `color` field, you should broadcast the event `update_vehicle_color`. With this method the event is completely mono-directional, and no extra process is launch upon its submittal.
+ *
+ *
  * 
  * @param {Object} property Field to modify with the input
  * @param {*} vertical TODO Document
@@ -22,7 +77,7 @@
  * @param {Object=} rootMetadata Defines the root metadata (for complex fields)
  * @param {Function} updateEntity Function to call when the field is updated to update the entity
  * @param {Function} changeEntity Function to call when the field is updated to control changes
- * @param {String} mode Defines the mode of the field (i.e. Search, Update). See {@link kongaTools.Constants constants}
+ * @param {string} mode Defines the mode of the field (i.e. Search, Update). See {@link kongaTools.Constants constants}
  * @param {Boolean} creating Defines whether the field is in creation mode or in update
  * @param {Object} parentField Defines the parent field (for complex fields)
  * @param {Object=} style If set, it overrides the default styling options for the field
@@ -1193,7 +1248,7 @@ angular.module('konga')
 			scope.multiple = multi;
 			
 			var selectTemplate 		= multi ? '/konga/views/multi-select.html' : '/konga/views/single-select.html';
-			var selectController 	= multi ? 'MultiSelectCtrl' : 'SingleSelectCtrl';
+			var selectController 	= multi ? 'MultiSelectController' : 'SingleSelectController';
 			
 			if (typeof(scope.property.singleSelectCustom) === 'object' && scope.property.singleSelectCustom.selectTemplate !== '' && scope.property.singleSelectCustom.selectController !== '') {
 				selectTemplate = scope.property.singleSelectCustom.selectTemplate;

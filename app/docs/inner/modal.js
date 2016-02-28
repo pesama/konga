@@ -1,44 +1,29 @@
-/*
- * @ngdoc object
- * @name Action-driven framework.Modal
- * @description
+/**
+ * @ngdoc object 
+ * @name Standards.Modal
  * Defines the parameters to configure a modal window.
  * It has several parameters:
- * * <b>controller</b>: The controller for the modal.
- * * <b>template</b>: Template URL for the modal.
- * * <b>parameters</b>: An object with `raw` parameters (to be interpreted by your custom code).
- * * <b>okHandler</b>: Handler for closing the modal.
- * * <b>koHandler</b>: Handler for dismissing the modal.
  * ## Example
  * An example Modal object would look like this:
  * <pre>
 {
-  controller: 'MyProjectModalCtrl',
-  template: '/konga/views/my-project-modal-tpl.html',
+  controller: 'MyAwesomeModalController',
+  template: '/views/my-awesome-modal.html',
   parameters: {
     // Custom parameters to use within the controller and the handlers
   },
   okHandler: function(modal, data) {
     // Do something with the data
-    // As you can see you have the modal configuration here too
   },
   koHandler: function(modal, reason) {
     // Treat cancelation
-    // Again, the modal info is here!
   }
 }
  * </pre>
- */
 
-/*
- * @ngdoc object
- * @name template
- * @propertyOf Action-driven framework.Modal
- * @description
- * The <b>URL</b> to the template for the modal. Konga's modals inherit Bootstrap's ones, so your template should be a `.modal` container.
+ * @param {string} template
+ * The <b>URL</b> to the template for the modal. Konga modals are built by `bootstrap's`, so you need to follow the `<modal-content>` structure:
  * 
- * This is an example of a modal:
- * <pre>
 <div class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -73,19 +58,14 @@
     </div>
   </div>
 </div>
- * </pre>
- */
-
-/*
- * @ngdoc function
- * @name controller
- * @propertyOf Action-driven framework.Modal
- * @description
+ * 
+ * 
+ * @param {string=} controller
  * <b>Name</b> of the controller to engage to the modal.
  * You can inject `params` you will receive the {@link Action-driven framework.Modal.parameters `parameters`} configured when creating the modal
  * <pre>
-angular.module("yourProjectApp")
-  .controller('YourProjectModalCtrl', ['$scope', '...', 'params', 
+angular.module("myAwesomeApp")
+  .controller('MyAwesomeModalCtrl', ['$scope', '...', 'params', 
     function($scope, ..., params) {
       ...
       // The 'params' dependency contains the parameters sent to the modal via configuration
@@ -93,35 +73,17 @@ angular.module("yourProjectApp")
   }]);
  * </pre>
  *
- */
 
- /*
- * @ngdoc object
- * @name parameters
- * @propertyOf Action-driven framework.Modal
- * @description
+ * @param {object=} parameters
  * Parameters to configure the modal.
  * You can put anything here, and it will be available in many places:
  * * Modal controller via a `params` dependency injection.
  * * `OK` and `KO` handlers via first argument's `parameters` object
- */
 
- /*
-  * @ngdoc function
-  * @name okHandler
-  * @methodOf Action-driven framework.Modal
-  * @description
+  * @param {function(action, data)} okHandler
   * This function will be called once the user closes the modal with an affirmative action (this only applies if the modal has an action in which you will call the `$modalInstance.close()` instead of dismissing it).
-  * @param {Object} action The action that defined the modal being closed
-  * @param {Object} data The data being sent from modal's controller
-  */
 
-/*
-  * @ngdoc function
-  * @name koHandler
-  * @methodOf Action-driven framework.Modal
-  * @description
+  * @param {function(action, reason)} koHandler
+
   * Callback to be executed when the user dismisses the modal.
-  * @param {Object} action The action that defined the modal being closed
-  * @param {String} reason The reason for which the modal is closing
   */

@@ -1,8 +1,8 @@
 'use strict';
 
-/*
+/**
  * @ngdoc service
- * @name konga.Scaffold
+ * @name konga.scaffold
  * @description
  * # scaffold
  * Service in the konga.

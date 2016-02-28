@@ -323,3 +323,18 @@ span.label.label-danger {
 .properties .hidden {
     display: block !important;
 }
+
+
+.type-hint-function {
+    background: green;
+}
+
+.methods .modal {
+    display: block !important;
+    position: relative;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    right: auto;
+    z-index: auto;
+}

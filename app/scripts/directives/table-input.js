@@ -1,8 +1,8 @@
 'use strict';
 
-/*
+/**
  * @ngdoc directive
- * @name konga.directive:Table input
+ * @name konga.directive:tableInput
  * @description
  * # tableInput
  */

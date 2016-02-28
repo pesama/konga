@@ -16,52 +16,106 @@
             <th>Evidence</th>
             <th>Reason</th>
         </tr>
-        <tr><td colspan="5"><b>app/scripts/controllers/main.js</b></td></tr><tr class="warning">
+        <tr><td colspan="5"><b>app/scripts/controllers/entity-search.js</b></td></tr><tr class="warning">
+    <td class="text-center">W004</td>
+    <td class="text-center">107</td>
+    <td class="text-center">20</td>
+    <td><code>      var pageData &#61; &#36;rootScope.pageData;</code></td>
+    <td>&#39;pageData&#39; is already defined.</td>
+</tr><tr class="warning">
+    <td class="text-center">W109</td>
+    <td class="text-center">128</td>
+    <td class="text-center">80</td>
+    <td><code>      &#36;scope.paginationCount &#61; &#36;rootScope.paginationData&#91;entityType&#93;.limit &#43; &quot;&quot;;</code></td>
+    <td>Strings must use singlequote.</td>
+</tr><tr class="warning">
     <td class="text-center">W116</td>
-    <td class="text-center">264</td>
+    <td class="text-center">288</td>
+    <td class="text-center">24</td>
+    <td><code>          if&#40;&#33;apiName&#41; apiName &#61; sorting.field.name;</code></td>
+    <td>Expected &#39;&#123;&#39; and instead saw &#39;apiName&#39;.</td>
+</tr><tr class="warning">
+    <td class="text-center">W116</td>
+    <td class="text-center">371</td>
+    <td class="text-center">23</td>
+    <td><code>          if&#40;&#33;fields&#41; fields &#61; util.getEntityFields&#40;metadata&#41;;</code></td>
+    <td>Expected &#39;&#123;&#39; and instead saw &#39;fields&#39;.</td>
+</tr><tr class="warning">
+    <td class="text-center">W116</td>
+    <td class="text-center">519</td>
+    <td class="text-center">25</td>
+    <td><code>    	  if&#40;entityType &#61;&#61; data.type&#41; &#123;</code></td>
+    <td>Expected &#39;&#61;&#61;&#61;&#39; and instead saw &#39;&#61;&#61;&#39;.</td>
+</tr><tr class="warning">
+    <td class="text-center">W033</td>
+    <td class="text-center">565</td>
+    <td class="text-center">9</td>
+    <td><code>      &#125;&#41;</code></td>
+    <td>Missing semicolon.</td>
+</tr><tr class="warning">
+    <td class="text-center">W098</td>
+    <td class="text-center">305</td>
+    <td class="text-center">15</td>
+    <td><code>        	var count &#61; &#36;rootScope.paginationData&#91;entityType&#93;.count &#61; &#36;routeParams.count;</code></td>
+    <td>&#39;count&#39; is defined but never used.</td>
+</tr><tr><td colspan="5"><b>app/scripts/controllers/main.js</b></td></tr><tr class="warning">
+    <td class="text-center">W116</td>
+    <td class="text-center">290</td>
     <td class="text-center">23</td>
     <td><code>		  			if&#40;&#33;type&#41; type &#61; &#39;notify&#39;;</code></td>
     <td>Expected &#39;&#123;&#39; and instead saw &#39;type&#39;.</td>
 </tr><tr class="warning">
     <td class="text-center">W109</td>
-    <td class="text-center">516</td>
+    <td class="text-center">542</td>
     <td class="text-center">50</td>
     <td><code>									&quot;message.discard-changes.title&quot;&#44; </code></td>
     <td>Strings must use singlequote.</td>
 </tr><tr class="warning">
     <td class="text-center">W109</td>
-    <td class="text-center">517</td>
+    <td class="text-center">543</td>
     <td class="text-center">52</td>
     <td><code>									&quot;message.discard-changes.message&quot;&#44;</code></td>
     <td>Strings must use singlequote.</td>
 </tr><tr class="warning">
     <td class="text-center">W003</td>
-    <td class="text-center">528</td>
+    <td class="text-center">554</td>
     <td class="text-center">29</td>
     <td><code>					function deleteTab&#40;index&#44; tab&#41; &#123;</code></td>
     <td>&#39;deleteTab&#39; was used before it was defined.</td>
 </tr><tr class="warning">
     <td class="text-center">W116</td>
-    <td class="text-center">677</td>
+    <td class="text-center">703</td>
     <td class="text-center">29</td>
     <td><code>		  			if&#40;&#33;parameters&#41; parameters &#61; &#123;&#125;; </code></td>
     <td>Expected &#39;&#123;&#39; and instead saw &#39;parameters&#39;.</td>
 </tr><tr class="warning">
     <td class="text-center">W098</td>
-    <td class="text-center">200</td>
+    <td class="text-center">226</td>
     <td class="text-center">18</td>
     <td><code>		  			 var newLength &#61; &#36;scope.alerts.push&#40;alert&#41;;</code></td>
     <td>&#39;newLength&#39; is defined but never used.</td>
 </tr><tr class="warning">
     <td class="text-center">W098</td>
-    <td class="text-center">428</td>
+    <td class="text-center">454</td>
     <td class="text-center">17</td>
     <td><code>		  			var currentTab &#61; null;</code></td>
     <td>&#39;currentTab&#39; is defined but never used.</td>
+</tr><tr><td colspan="5"><b>app/scripts/directives/calendar-input.js</b></td></tr><tr class="warning">
+    <td class="text-center">W098</td>
+    <td class="text-center">22</td>
+    <td class="text-center">47</td>
+    <td><code>      link: function postLink&#40;scope&#44; element&#44; attrs&#41; &#123;</code></td>
+    <td>&#39;attrs&#39; is defined but never used.</td>
+</tr><tr class="warning">
+    <td class="text-center">W098</td>
+    <td class="text-center">22</td>
+    <td class="text-center">38</td>
+    <td><code>      link: function postLink&#40;scope&#44; element&#44; attrs&#41; &#123;</code></td>
+    <td>&#39;element&#39; is defined but never used.</td>
 </tr>
     </table>
     <div class="well">
-    Found <span class="label label-default">7</span> failures - <span class="label label-danger">0 errors</span> &amp; <span class="label label-warning">7 warnings</span>
+    Found <span class="label label-default">16</span> failures - <span class="label label-danger">0 errors</span> &amp; <span class="label label-warning">16 warnings</span>
 </div>
 </div>
 

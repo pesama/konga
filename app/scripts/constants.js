@@ -1,26 +1,26 @@
 'use strict';
 
-/*
+/**
  * @ngdoc object
  * @name konga.constants
  * @description
  * Stores common constants used all across the application
- * @property {String} API_HOST Defines where is the api located
- * @property {String} ENTITY_ID_PREFFIX Defines the preffix for ENTITY operations
- * @property {String} SEARCH_SUFFIX Defines the suffix for search purposes
- * @property {String} STRING_SEPARATOR Defines the separator for Strings
- * @property {String} NEW_ENTITY_ID Defines the eds id when creating a new one
- * @property {String} SOURCE_METADATA Defines the entity name of the metadata
- * @property {String} SCOPE_SEARCH Defines the search scope name
- * @property {String} SCOPE_UPDATE Defines the update scope name
- * @property {String} FIELD_BOOLEAN Defines the type name of a boolean field
- * @property {String} FIELD_CHECKBOX Defines the type name of a checkbox field
- * @property {String} FIELD_DATE Defines the type name of a date field
- * @property {String} FIELD_TEXT Defines the type name of a text field
- * @property {String} FIELD_COMPLEX Defines the type name of a complex field
- * @property {String} DATE_DEFAULT_NOW Defines the default value for date objects, to set-up as current date
- * @property {String} MULTIPLICITY_ONE Defines the String to define one-to-one multiplicity
- * @property {String} MULTIPLICITY_MANY Defines the String to define many-to-many multiplicity
+ * @property {string} API_HOST Defines where is the api located
+ * @property {string} ENTITY_ID_PREFFIX Defines the preffix for ENTITY operations
+ * @property {string} SEARCH_SUFFIX Defines the suffix for search purposes
+ * @property {string} STRING_SEPARATOR Defines the separator for Strings
+ * @property {string} NEW_ENTITY_ID Defines the eds id when creating a new one
+ * @property {string} SOURCE_METADATA Defines the entity name of the metadata
+ * @property {string} SCOPE_SEARCH Defines the search scope name
+ * @property {string} SCOPE_UPDATE Defines the update scope name
+ * @property {string} FIELD_BOOLEAN Defines the type name of a boolean field
+ * @property {string} FIELD_CHECKBOX Defines the type name of a checkbox field
+ * @property {string} FIELD_DATE Defines the type name of a date field
+ * @property {string} FIELD_TEXT Defines the type name of a text field
+ * @property {string} FIELD_COMPLEX Defines the type name of a complex field
+ * @property {string} DATE_DEFAULT_NOW Defines the default value for date objects, to set-up as current date
+ * @property {string} MULTIPLICITY_ONE Defines the String to define one-to-one multiplicity
+ * @property {string} MULTIPLICITY_MANY Defines the String to define many-to-many multiplicity
  *
  */
 var constants = {

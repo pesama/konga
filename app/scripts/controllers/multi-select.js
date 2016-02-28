@@ -2,13 +2,13 @@
 
 /*
  * @ngdoc controller
- * @name ui.konga.controller:MultiSelectCtrl
+ * @name konga.controller:MultiSelectController
  * @description
- * # MultiSelectCtrl
+ * # MultiSelectController
  * Controller of the ui.konga
  */
 angular.module('konga')
-  .controller('MultiSelectCtrl', ['$scope', '$filter', '$modalInstance', 'model', 'field', 'parentField', 'common', 'api', 'entity', 'metadata', 'items', '$timeout', '$rootScope', 'util', 
+  .controller('MultiSelectController', ['$scope', '$filter', '$modalInstance', 'model', 'field', 'parentField', 'common', 'api', 'entity', 'metadata', 'items', '$timeout', '$rootScope', 'util', 
   	function ($scope, $filter, $modalInstance, model, field, parentField, common, api, entity, metadata, items, $timeout, $rootScope, util) {
    
    		$scope.id = 'multi-select';

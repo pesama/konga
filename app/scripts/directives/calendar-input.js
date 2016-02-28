@@ -1,10 +1,17 @@
 'use strict';
 
-/*
+/**
  * @ngdoc directive
  * @name konga.directive:calendarInput
+ * @restrict E
  * @description
- * # calendarInput
+ *
+ * Calendar input. It's rendered by the `rawInput` once it founds a field with the {@link Metadata.FieldTypes#properties_CALENDAR `calendar`} `fieldType`.
+ *
+ * # Object structure
+ * 
+ * A {@link Metadata.FieldTypes#properties_CALENDAR `calendar`} type is a rendering mode for any field that represents an array of {@link Standards.Data%20types#properties_Event}
+ * 
  */
 angular.module('konga')
   .directive('calendarInput', function () {

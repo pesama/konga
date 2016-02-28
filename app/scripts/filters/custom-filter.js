@@ -1,6 +1,6 @@
 'use strict';
 
-/*
+/**
  * @ngdoc filter
  * @name konga.filter:customFilter
  * @function

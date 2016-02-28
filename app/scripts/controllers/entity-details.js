@@ -2,12 +2,12 @@
 
 /*
  * @ngdoc function
- * @name konga.controller:EntityDetailsCtrl
+ * @name konga.controller:EntityDetailsController
  * @description
- * # EntityDetailsCtrl
+ * # EntityDetailsController
  * Controller of the konga
  */
 angular.module('konga')
-  .controller('EntityDetailsCtrl', function ($scope) {
+  .controller('EntityDetailsController', function ($scope) {
     // TODO
   });

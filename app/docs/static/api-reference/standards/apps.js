@@ -12,11 +12,11 @@ angular.module('myAwesomeApp', [ ..., 'konga', ... ]);
 This will provide you with a full set of features. Yet, you have to attach the controller. 
 
 <pre>
-<html ng-app="myAwesomeApp" ng-controller="KongaCtrl">
+<html ng-app="myAwesomeApp" ng-controller="KongaController">
   ...
 </html>
 </pre>
-<div class="text-muted">You can engage `KongaCtrl` at any level in your app's `dom`, and Konga will work from there. But as is non intrusive and you can call it when you need it, it's recommended to be placed at the root of the structure (or in the `<body>` tag) </div>
+<div class="text-muted">You can engage `KongaController` at any level in your app's `dom`, and Konga will work from there. But as is non intrusive and you can call it when you need it, it's recommended to be placed at the root of the structure (or in the `<body>` tag) </div>
 
 Then you will have all the operations engaged and your app ready to run with Konga. You need to define and inject though some metadata.
 

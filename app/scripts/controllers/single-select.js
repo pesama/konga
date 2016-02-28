@@ -2,13 +2,13 @@
 
 /*
  * @ngdoc controller
- * @name ui.konga.controller:SingleSelectCtrl
+ * @name konga.controller:SingleSelectController
  * @description
- * # SingleSelectCtrl
+ * # SingleSelectController
  * Controller of the ui.konga
  */
 angular.module('konga')
-  .controller('SingleSelectCtrl', ['$scope', '$filter', '$modalInstance', 'model', 'field', 'parentField', 'common', 'api', 'entity', 'metadata', 'items', '$timeout', '$rootScope', 'util', 
+  .controller('SingleSelectController', ['$scope', '$filter', '$modalInstance', 'model', 'field', 'parentField', 'common', 'api', 'entity', 'metadata', 'items', '$timeout', '$rootScope', 'util', 
   	function ($scope, $filter, $modalInstance, model, field, parentField, common, api, entity, metadata, items, $timeout, $rootScope, util) {
 
   		$scope.id = 'single-select';

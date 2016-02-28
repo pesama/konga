@@ -225,7 +225,7 @@ module.exports = function (grunt) {
     // Automatically inject Bower components into the app
     wiredep: {
       app: {
-        src: ['<%= yeoman.app %>/index.html'],
+        src: ['<%= yeoman.app %>/docs/docs.tmpl'],
         ignorePath:  /\.\.\//,
         fileTypes: {
           html: {
@@ -287,9 +287,9 @@ module.exports = function (grunt) {
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
     useminPrepare: {
-      html: '<%= yeoman.app %>/index.html',
+      html: '<%= yeoman.app %>/docs/docs.tmpl',
       options: {
-        dest: '<%= yeoman.dist %>',
+        dest: 'app/docs/docs.tmpl',
         flow: {
           html: {
             steps: {
@@ -305,7 +305,7 @@ module.exports = function (grunt) {
 
     // Performs rewrites based on filerev and the useminPrepare configuration
     usemin: {
-      html: ['<%= yeoman.dist %>/{,*/}*.html'],
+      html: ['<%= yeoman.app %>/docs/docs.tmpl'],
       // js: ['dist/scripts/{,*/}*.js'],
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css', 'dist/styles/*.css'],
       options: {
@@ -334,7 +334,7 @@ module.exports = function (grunt) {
           ]
         },
         options: {
-          banner: 'require(\'./konga.vendor.js\');\r\n',
+          banner: '/* konga v1.2.0 - Released under MIT license - http://konga.io/ */',
           mangle: false,
           screwIE8: true
         }
@@ -351,7 +351,7 @@ module.exports = function (grunt) {
       },
       app4doc: {
         src: ['app/scripts/**/*.js', 'dist/scripts/config.js', 'dist/scripts/views.js'],
-        dest: 'docs/app-scripts.js'
+        dest: 'app/docs/app-scripts.js'
       },
       lib: {
         src: ['dist/scripts/**/*.js'],
@@ -359,7 +359,7 @@ module.exports = function (grunt) {
       },
       lib_vendor: {
         options: {
-          banner: 'module.exports = "konga.vendor";\r\n'
+          banner: '/* Konga vendor file. Including non npm-managed dependencies */'
         },
         src: ['bower_components/angular-dialog-service/dialogs.min.js'],
         dest: 'lib/konga.vendor.js'
@@ -590,10 +590,6 @@ module.exports = function (grunt) {
 
     ngdocs: {
       options: {
-        // scripts: [
-        //   'docs/vendor.js',
-        //   'docs/app-scripts.js'
-        // ],
         html5Mode: false,
         startPage: '/home',
         template: 'app/docs/docs.tmpl',
@@ -602,10 +598,14 @@ module.exports = function (grunt) {
           account: 'UA-68065842-1'
         },
         scripts: [
-          'app/docs/scripts/template-overrides.js'
+          'app/docs/scripts/template-overrides.js',
+
+          'lib/konga.js',
+          'lib/konga.vendor.js'
         ],
         styles: [
-          'app/docs/styles/template-overrides.css'
+          'app/docs/styles/template-overrides.css',
+
         ],
         image: 'http://konga.io/wp-content/uploads/2015/03/konga-logo-white.png',
         imageLink: 'http://konga.io'
@@ -629,25 +629,6 @@ module.exports = function (grunt) {
           'app/scripts/**/*.js'
         ]
       },
-
-      // 'quick-start': {
-      //   title: 'Quick start',
-      //   src: [
-      //     'app/docs/inner/main.js'
-      //   ]
-      // },
-      // api: {
-      //   title: 'API Reference',
-      //   src: [
-      //     'app/docs/inner/**/*.js',
-      //     'app/scripts/filters/*.js',
-      //     'app/scripts/directives/*.js',
-      //     'app/scripts/services/*.js',
-      //     'app/scripts/controllers/*.js',
-      //     'app/scripts/app.js',
-      //     'app/scripts/util.js'
-      //   ]
-      // }
     },
     replace: {
       strict: {
@@ -675,6 +656,11 @@ module.exports = function (grunt) {
       'concat:app4doc',
 		  'ngdocs',
 		  'wiredep',
+      'useminPrepare',
+      'concat:generated',
+      'uglify:generated',
+      'cssmin:generated',
+      'usemin',
 		  'concurrent:server',
 		  'autoprefixer',
   	]);

@@ -36,7 +36,7 @@ At the bottom-right corner of the image there's an **add** button, whose action 
 
 ## <span class="text-success"><i class="fa fa-code"></i> Elements involved</span>
 
-* * **{@link konga.controller:EntitySearchCtrl `EntitySearchCtrl`}:** This controller handles all search features. It renders a layout where it allocates inner components, and connection to other operations (add, custom actions...).
+* * **{@link konga.controller:EntitySearchController `EntitySearchController`}:** This controller handles all search features. It renders a layout where it allocates inner components, and connection to other operations (add, custom actions...).
 * * **{@link konga.directive:searchPane `searchPane`}:** Handles the search-form rendering and operations (filtering, submitting, clearing...). It also controls customisation of the form via the {@Metadata.Entity `Entity` metadata}. 
 * * **{@link konga.directive:resultTable `resultTable`}:** Handles the result table rendered on the right side. It's responsible for all operations performed on it (sorting, paging, row clicks...). It's furthermore in charge of the customisation of the table via the {@link Metadata.FormType form type} given for this method.
 
@@ -66,7 +66,7 @@ On the image you can see all fields rendered in cascade, along with three button
 
 ## <span class="text-success"><i class="fa fa-code"></i> Elements involved</span>
 
-* * **{@link konga.controller:EntityUpdateCtrl `EntityUpdateCtrl`}:** This controller handles all edition features. It renders a layout where it allocates all fields, along with the basic operations (save, cancel, delete, custom actions...).
+* * **{@link konga.controller:EntityUpdateController `EntityUpdateController`}:** This controller handles all edition features. It renders a layout where it allocates all fields, along with the basic operations (save, cancel, delete, custom actions...).
 * * **{@link konga.directive:updateForm `updateForm`}:** Handles the rendering of the form itself. This controls customisation, and basic operations performed onto fields.
 
 ## <span class="text-danger"><i class="fa fa-key"></i> Permissions</span>
@@ -86,5 +86,43 @@ On the image you can see all fields rendered in cascade, along with three button
 
 TODO
 
+# Chain of responsibility
+
+Once a form is loaded, the responsabilities cascades down so each part have its particular duties
+
+<img src="http://static.konga.io/konga-form-chain-of-responsibility.png" width="60%" class="center">
+
+## Scope manangement
+
+The root responsibility level is assigned to the controllers - i.e. {@link konga.controller:EntitySearchController `EntitySearchController`} and {@link konga.controller:EntityUpdateController `EntityUpdateController`}. They initialise all the required properties to start generating and handling the forms.
+
+<img src="http://static.konga.io/konga-form-chain-controllers.png" width="50%" class="center">	
+
+## Form management
+
+Once controllers have initialise everything, the responsibility chain moves forward to the next level: generating the forms. These tasks are dealt with by the form directives - {@link konga.directive:searchPane `searchPane`}, {@link konga.directive:resultTable `resultTable`} and {@link konga.directive:updateForm `updateForm`}. 
+
+<img src="http://static.konga.io/konga-form-chain-directives.png" width="50%" class="center">
+
+The directives receive the fields to render and the entity configuration, and from there it determines the {@link Metadata.FormTypes form type} to render, and other form {@link Metadata.ConfiguationParam configuration parameters}. Using that information it builds up a view, and initialises all the fields, letting them handle their particularities.
+
+## Field management
+
+Field management features are handled by the {@link konga.directive:rawInput `rawInput`} directive. This directive is a polymorphic input that uses metadata to determine its visual appeareance, and the operations allowed. 
+
+Basically, the {@link konga.directive:rawInput `rawInput`} controls field's parameters - data type, field type, ... - set up in its metadata. With these data it controls the inputs, the mapping, the validations... See the {@link konga.directive:rawInput `rawInput`} docs for full feature list.
+
+## Specific-{@link Metadata.FieldTypes fieldType} management
+
+Some fields are more complex that just plain inputs. The {@link konga.directive:rawInput `rawInput`} controls all common operations, but sometimes an underneath layer is required to handle extra things, and to communicate to {@link konga.directive:rawInput `rawInput`} to notify the results of them. The {@link Metadata.FieldTypes field types} attached to a specific directive are:
+
+* * **{@link konga.directive:calendarInput `calendar`}.**
+* * **{@link konga.directive:calendarInput `file`}.**
+* * **{@link konga.directive:calendarInput `list`}.**
+* * **{@link konga.directive:calendarInput `option`}.**
+* * **{@link konga.directive:calendarInput `price`}.**
+* * **{@link konga.directive:calendarInput `quantity`}.**
+* * **{@link konga.directive:calendarInput `select`}.**
+* * **{@link konga.directive:calendarInput `table`}.**
 
  */

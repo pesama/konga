@@ -1,8 +1,8 @@
 'use strict';
 
-/*
+/**
  * @ngdoc directive
- * @name konga.directive:Option input
+ * @name konga.directive:optionInput
  * @description
  * # optionInput
  */

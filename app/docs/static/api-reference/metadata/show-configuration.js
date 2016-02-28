@@ -18,7 +18,7 @@ To get full understanding about how permissions work with Konga, take a look at 
 If you are working with a `COMPLEX` fieldType, you might want to access not only to the root field, but to its inner fields instead. If that's your case, just fill up the `fields` variable with all the field names to render.
 
 
-@param {String} value 
+@param {string} value 
 Permission for accesing the field. More on {@link Metadata.Permissions permissions}.
 
 @param {Array} fields

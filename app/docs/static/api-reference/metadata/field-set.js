@@ -7,7 +7,7 @@ Field sets define groups of fields, who are normally intended to be bound togeth
 
 # TODO Usages and examples
 
-@param {String} name
+@param {string} name
 Defines the name of the field set. This name must be unique within the {@link Metadata.Entity entity}-defined field sets. Fields that belong to a field set must declare this name (exactly) and it will be bound to the field set on the forms. 
 
 @param {Object} configuration

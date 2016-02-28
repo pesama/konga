@@ -2,35 +2,80 @@
 
 /**
  * @ngdoc controller
- * @name konga.controller:EntityUpdateCtrl
+ * @name konga.controller:EntityUpdateController
  * @description
- * # EntityUpdateCtrl
- * Controller used for update ENTITY entities. It is route provides information about what type of entity we are searching for.
- * 
- *  # Local endpoint
- * Using the {@link konga.Api api} service, and sending the `entityType` parameter defined above, the service returns the proper endpoint, depending on which type of entity is received. Afterwards all CRUD operations between the UI and the web service will be performed to the appropriate endpoint. 
+ * # EntityUpdateController
+
+ * Responsible for handling updating - and creating - operations with entities, for Konga {@link Standards.Forms `standards`}. Same as happens with search, this controller it's normally initialised once user requests an {@link Standards.Operations#methods_openEntityUpdate `openEntityUpdate()`} - for updating an existing entity, or {@link Standards.Operations#methods_openEntityCreate `openEntityCreate()`} to create a new one.
  *
- * 
- * # Pagination
- * To avoid retrieving too many results at once, they are paginated so the user could only see the number of results she decides. 
- * <br />
+ * <img src="http://static.konga.io/konga-entity-update-basic-flow.png" width="40%" class="center">
+ *
+ * The `EntityUpdateController`'s responsibility is just for operation management, whilst the graphical - rendering, validating... - responsibility lays on the {@link konga.directive:updateForm `updateForm`} directive. 
  *
  *
- * @param {$scope} $scope Local scope for the controller
- * @param {Api} api Api connector for REST service connection
- * @param {$routeParams} $routeParams Parameters of the route
- * @param {Common} common Common storage
- * @param {$rootScope} $rootScope Global scope (for receiving propagated data)
- * @param {$filter} $filter Filters for managing data
- * @param {Scaffold} scaffold Used to generate new entities
- * @param {$timeout} $timeout for returning value of registering a timeout function is promise, which will resolved when the timeout is reached and the timeout function is executed.
- * @param {permissionManager} permissionManager Service
- * @param {FieldMapper} filedMapper for managing the connection between the entities and their forms within the UI.
+ * # Updation/Creation flow
+ *
+ * Once the `EntityUpdateController` engages, it passes through several flows depending on the configuration, and on the user interaction with the available actions. Here you have an excerpt of the flows `EntityUpdateController` moves through:
+ *
+ * <img src="http://static.konga.io/konga-update-flow.png" width="50%" class="center">
+ *
+ * ## Rendering
+ *
+ * On **rendering** phase, the `EntityUpdateController` reads the `metadata` and determines whether the user can perform the operation rquested. After that, using the input the controller asks the {@link konga.api `api`} to return the existing entity (for updating) or the {@link konga.scaffold `scaffold`} service to craft a new one. This, along with entity deletion - which in `creation` mode it will never be enabled - is the only feature who makes updation and creation differ. 
+ *
+ * Once the permissions are dealt with, the entity got, and the mode resolved, the `EntityUpdateController` leaves the rendering responsibility to the {@link konga.directive:updateForm `updateForm`}, who continues the process.
+ *
+ * ## Input
+ *
+ * Every time a field's value changes, a process is launched. This process will handle validation, data mapping - to store the field's value within the entity, and any propagation or linking defined on the {@link Metadata.Field field's metadata}. On the {@link konga.directive:rawInput `rawInput`} documentation there's the full guide on how changes are tracked and the validation and mapping processes work.
+ *
+ * ## Submit
+ *
+ * On submit, the {@link Customisation.Action_Driven#properties_save `save`} action is launched. This action basically sends the entity to your API, letting you know the result via a `toastr`. If the operation went right, the view will close, coming back to where you were before.
+ *
+ * @param {$scope} $scope
+ * `EntityUpdateController`'s `$scope`. It contains all basic attributes and features for searching, and it provides information to the underlying directives. 
+
+ * @param {Object} api 
+ <span class="label type-hint type-hint-object">{@link konga.api `api`}</span>
+ Service for performing the API calls for retrieving the results. By default any entity consumes the {@link konga.standardApi `standardApi`}. However, controllers rely on the {@link konga.api `api`} service, as it allows you to easily define a different API handler for each entity. See the {@link konga.api `api`} documentation for more details.
+
+ * @param {$routeParams} $routeParams 
+ The `EntityUpdateController` uses the `$routeParams` to retrieve information about the entities. As you have seen on the {@link Standards.Apps Apps} definition, there are two default `$routes` engaged into any Konga app. That `$routes` contain information about the `:entityName` (the entity metadata's name), used to retrieve the metadata using the {@link Standards.Tools `util`} stystem. 
+
+ * @param {Object} common 
+ <span class="label type-hint type-hint-object">{@link konga.common `common`}</span>
+ The storage is used internally to handle data-saving operations, mainly for tab management - you go out of this tab, come back, and everything is as you left it.
+
+ * @param {$rootScope} $rootScope 
+ Injected to access global {@link Standards.Operations `operations`}.
+
+ * @param {$filter} $filter
+ Used for filtering data - e.g. {@link konga.filter:mapField `field mapping`} and other Angular native filtering.
+
+ * @param {Object} fieldMapper
+ <span class="label type-hint type-hint-object">{@link konga.fieldMapper `fieldMapper`}</span>
+ Used to map input's value into the entity.
+
+ * @param {Object} scaffold
+ <span class="label type-hint type-hint-object">{@link konga.scaffold `scaffold`}</span>
+ Used for {@link konga.scaffold `scaffolding`} new queries. 
+
+ * @param {$timeout} $timeout
+ Some inner methods and operations are executed delayed.
+
+ * @param {Object} permissionManager
+ <span class="label type-hint type-hint-object">{@link konga.permissionManager `permissionManager`}</span>
+ Used to determine user permissions on the operations susceptible to be executed on the `search` and `results` functionalities.
+
+ * @param {Object} util
+ <span class="label type-hint type-hint-object">{@link Standards.Tools `util`}</span>
+ Used to handle metadata easier via the {@link Standards.Tools `util`} provided tools. 
 
  */
 angular.module('konga')
-.controller('EntityUpdateCtrl', ['$scope', '$routeParams', 'api', 'standardApi', 'common', 'fieldMapper', '$filter', '$rootScope', 'scaffold', '$timeout', 'permissionManager', 'util', 
-  	function ($scope, $routeParams, api, standardApi, common, fieldMapper, $filter, $rootScope, scaffold, $timeout, permissionManager, util) {
+.controller('EntityUpdateController', ['$scope', 'api', '$routeParams', 'common', '$rootScope', '$filter', 'fieldMapper', 'scaffold', '$timeout', 'permissionManager', 'util', 
+  	function ($scope, api, $routeParams, common, $rootScope, $filter, fieldMapper, scaffold, $timeout, permissionManager, util) {
 	  	// Get the local params
 		var entityType = $routeParams.entityType;
 		var entityId	= $routeParams.entityId;

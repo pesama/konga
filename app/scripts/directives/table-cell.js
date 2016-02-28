@@ -1,8 +1,8 @@
 'use strict';
 
-/*
+/**
  * @ngdoc directive
- * @name konga.directive:Table cell
+ * @name konga.directive:tableCell
  * @description
  * # tableCell
  */

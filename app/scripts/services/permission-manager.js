@@ -1,6 +1,6 @@
 'use strict';
 
-/*
+/**
  * @ngdoc service
  * @name konga.permissionManager
  * @description

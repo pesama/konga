@@ -5,11 +5,11 @@
 
 
 
-@param {String} appKey
+@param {string} appKey
 App ID for your Konga Application within the cloud. This value identifies uniquely your app within Konga Cloud, and defines your access point to the app. If you plan to publish your app on Konga cloud, you'll need to get an app key on the {@link https://konga.cloud/services/app-key-generator appKey generator}.
 
 
-@param {String} name
+@param {string} name
 Name of your app. 
 
 

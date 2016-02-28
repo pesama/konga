@@ -7,7 +7,7 @@ A trigger is a custom feature that is linked to a field, and evaluates some prop
 
 # TODO Usages and examples
 
-@param {String} name
+@param {string} name
 Name of the trigger. Useful for logging and for having things sorted out.
 
 @param {Object} moment
@@ -33,7 +33,7 @@ How to match the field's value with the triggering value.
 @param {Array} parameters
 List of parameters to be sent to the trigger
 
-@param {String} value
+@param {string} value
 Value to match the field's with.
 
 */

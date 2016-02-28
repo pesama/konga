@@ -2,9 +2,9 @@
 
 /* TODO @deprecate */
 
-/*
+/**
  * @ngdoc service
- * @name konga.Api
+ * @name konga.api
  * @description
  * This factory connects the source to a factory, depending on the type of entity that's being looked for. 
  */
@@ -27,10 +27,10 @@ angular.module('konga')
   });
 
 // Document the operations
-/*
+/**
  * @ngdoc method
  * @name get
- * @methodOf konga.Api
+ * @methodOf konga.api
  * @description
  * Returns an entity identified with the unique id provided
  * @param {*} id The unique id for the entity
@@ -39,10 +39,10 @@ angular.module('konga')
  * @returns {Object} The `$resource` with that entity
  */
 
- /*
+ /**
  * @ngdoc method
  * @name search
- * @methodOf konga.Api
+ * @methodOf konga.api
  * @description
  * Search for entities filtering with the input query
  * @param {Object} query Query to filter with (sent via `GET` parameters, so they must be serializable, and serialized).

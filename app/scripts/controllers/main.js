@@ -2,8 +2,8 @@
 
 /**
  * @ngdoc controller
- * @name konga.controller:KongaCtrl
- * @module Konga Reference
+ * @name konga.controller:KongaController
+ * @module konga
  * @description
  * This must be the root controller of the application, and it's suggested to be placed at the `<body>` element. It contains all common {@link Standards.Operations `operations`}. 
  *  
@@ -68,7 +68,7 @@
  * @param {Scaffold} scaffold Used to create new objects for the entities
  */
 angular.module('konga')
-	.controller('KongaCtrl', ['$scope', '$location', '$filter', '$rootScope', '$timeout','common', 'scaffold', '$translate', 'userData', '$cookieStore', 'actionManager', '$modal', 'permissionManager', 'kongaConfig', 'util', 'dialogs',
+	.controller('KongaController', ['$scope', '$location', '$filter', '$rootScope', '$timeout','common', 'scaffold', '$translate', 'userData', '$cookieStore', 'actionManager', '$modal', 'permissionManager', 'kongaConfig', 'util', 'dialogs',
 		function($scope, $location, $filter, $rootScope, $timeout,common, scaffold, $translate, userData, $cookieStore, actionManager, $modal, permissionManager, kongaConfig, util, dialogs) {
 
 			$scope.configConstants = kongaConfig;
@@ -109,34 +109,34 @@ angular.module('konga')
 
 			 Konga includes quick functionality for launching alerts to the user. An alert adopts the form of a `toastr`, and functionality for dissapearing after a few seconds. 
 
-			 This functionality is triggered using the {@link Standards.Operations#method_addAlert `addAlert`} method.
+			 This functionality is triggered using the {@link Standards.Operations#methods_addAlert `addAlert`} method.
 
 			 Alerts could be configured for showing different kinds of information. If you want to show an error, you'd like to use the `error` type, while for notifying a successful operation result you'd use `success`. Here you have an example of all types:
 
 			<div class="alert-container row" style="margin-top: 2em;">
 				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center">
-					<alert class="alert bg-success">
+					<div class="alert bg-success">
 						I'm a <strong>success</strong> alert
-					</alert> 
+					</div> 
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center">
-					<alert class="alert bg-primary">
+					<div class="alert bg-primary">
 						I'm an <strong>info</strong> alert
-					</alert> 
+					</div> 
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center">
-					<alert class="alert bg-warning">
+					<div class="alert bg-warning">
 						I'm a <strong>warning</strong> alert
-					</alert> 
+					</div> 
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center">
-					<alert class="alert bg-danger">
+					<div class="alert bg-danger">
 						I'm an <strong>error</strong> alert
-					</alert> 
+					</div> 
 				</div>
 			</div>
 
-			If you want to remove an alert before it's `$timeout` finishes and it removes autommatically, you can use {@link Standards.Operations#method_removeAlert `removeAlert`} method, that will immediately remove it from the stack.
+			If you want to remove an alert before it's `$timeout` finishes and it removes autommatically, you can use {@link Standards.Operations#methods_removeAlert `removeAlert`} method, that will immediately remove it from the stack.
 
 			## Modal dialogs
 
@@ -146,33 +146,59 @@ angular.module('konga')
 
 			Notifications are handled by the {@link Standards.Operations#methods_notify `notify`} method. With this method you will launch a modal dialog with some information, and user will only be able to close it and keep doing what he was doing. 
 
-			* **TODO Example**
-
 			### Confirmations
 
-			If you need explicit user confirmation for executing a task, you can leverage {@link Standards.Operations#method_confirm `confirm`} method, and you will have your confirmation shown. Depending on the user's choice on the confirmation, you will have triggered your `okHandler` or your `koHandler`, where you should continue doing the functionalities you were asking confirmation for. 
+			If you need explicit user confirmation for executing a task, you can leverage {@link Standards.Operations#methods_confirm `confirm`} method, and you will have your confirmation shown. Depending on the user's choice on the confirmation, you will have triggered your `okHandler` or your `koHandler`, where you should continue doing the functionalities you were asking confirmation for. 
 
 			* **TODO Example**
 
 			### Loaders
 
-			Your application might rely heavily on one or further data providers - i.e. APIs. When data is loading, normally users are disallowed to perform operations that require such data to be ready. To overcome this, you can use Konga's {@link Standards.Operations#method_requestLoading `requestLoading`} operation, providing it with a unique String identifying what is what you are trying to load. Once the data comes, and the app is again ready to serve it, you can call the {@link Standards.Operations#method_freeLoading `freeLoading`} method, with the same String, and that loader will be released. 
+			Your application might rely heavily on one or further data providers - i.e. APIs. When data is loading, normally users are disallowed to perform operations that require such data to be ready. To overcome this, you can use Konga's {@link Standards.Operations#methods_requestLoading `requestLoading`} operation, providing it with a unique String identifying what is what you are trying to load. Once the data comes, and the app is again ready to serve it, you can call the {@link Standards.Operations#methods_freeLoading `freeLoading`} method, with the same String, and that loader will be released. 
 
-			Konga loading uses a {@link KongaCtrl.loading `loaders`} array, and the two methods menctioned above insert and removes elements into that array. If the `loaders` array has any element, a global loader will appear, blocking the whole screen from users to operate with the application. Once every element is removed from the `loaders` array, the graphical loader will disappear, and the user could resume the usage of the app.
+			Konga loading uses a {@link KongaController.loading `loaders`} array, and the two methods menctioned above insert and removes elements into that array. If the `loaders` array has any element, a global loader will appear, blocking the whole screen from users to operate with the application. Once every element is removed from the `loaders` array, the graphical loader will disappear, and the user could resume the usage of the app.
 
 			* **TODO Example**
 
-			When your app is loading everything would be blocked, and the user wouldn't be able to perform any operation. It the estimated loading time is real short, user wouldn't mind about this. But it you are about to perform a heavy data load - or any other operation that would leave the user unable to use the app for a long time - you can append a message to the graphical loader, so the users have some more info about what's going on. This is achieved using the {@link Standards.Operations#method_setLoadingMessage `setLoadingMessage`} method, that receives a String, tries to translate it, and renders the result into the loading view.
+			When your app is loading everything would be blocked, and the user wouldn't be able to perform any operation. It the estimated loading time is real short, user wouldn't mind about this. But it you are about to perform a heavy data load - or any other operation that would leave the user unable to use the app for a long time - you can append a message to the graphical loader, so the users have some more info about what's going on. This is achieved using the {@link Standards.Operations#methods_setLoadingMessage `setLoadingMessage`} method, that receives a String, tries to translate it, and renders the result into the loading view.
+
+			Konga uses the loaders for all standard operations that require data retrieval.
+
+			# Views <span class="label label-success">UI</span>
 
 			## Modal views
 
-			Sometimes along your app's development, you will find yourself wanting to open a modal for rendering some content. Konga supports native modal opening
+			Sometimes along your app's development, you will find yourself wanting to open a modal for rendering some content. Konga supports native modal opening, using {@link Standards.Operations#methods_openModal `openModal`} method. This method receives a {@link Standards.Data%20types#properties_Modal `Modal`} object definition and renders a modal with the configuration you set up on it.
+
+			* **TODO Example**
+
+			To maintain controlled the `$watcher` count, once a modal opens natively, all `$watchers` enabled on the elements behind the modal are suspended, and resumed back once the modal closes. 
 
 			## Tabs
 
-			## Entity management
+			As we have seen on the {@link Standards.Apps `apps`} page, Konga is in its basis a tab-based engine. 
+
+			Furthermore the standard tabs - created on standard operations {@link Standards.Operations#methods_openEntitySearch `openEntitySearch`} and {@link Standards.Operations#methods_openEntityUpdate `openEntityUpdate`} - you can append custom tabs to your own features, by using {@link Standards.Operations#methods_addTab}. Tabs are stored at {@link konga.controller:KongaController#properties_tabs `tabs`} array, accessible everywhere via `$rootScope`. You can close them using {@link Standards.Operations#methods_closeTab `closeTab`}, {@link Standards.Operations#methods_closeTabById `closeTabById`}, and {@link Standards.Operations#methods_closeAllTabs `closeAllTabs` methods}.
+
+			Structure of a tab is defined on the {@link Standards.Data%20types#properties_Tab `Tab`} specification. 
+
+			* **TODO Example**
+
+			# Standard forms <span class="label label-danger">CORE</span>
+
+			Form generation features let you generate rich forms based on a metadata for an entity. Metadata objects could be easily retrieved using {@link Standards.Tools#methods_getMetadata `util.getMetadata('entityName')`} method. Once we have a metadata object we want a form from, there are three operations you could use:
+
+			* * **{@link Standards.Operations#methods_openEntitySearch `openEntitySearch`}:** Opens a search form.
+			* * **{@link Standards.Operations#methods_openEntityUpdate `openEntityUpdate`}:** Opens an update form.
+			* * **{@link Standards.Operations#methods_openEntityCreate `openEntityCreate`}:** Opens an update form, with a brand new {@link konga.scaffold `scaffolded`} entity.
+
+			These methods generate the {@link Standards.Forms forms}, appends a tab into the system, and redirects the user to it. Except for creating, an API call will be needed, so a loader appends whilst the request is flying. Once it returns, the loader is released and the data rendered, and the user is able to start using the form.
+
+			# Customisation <span class="label label-danger">CORE</span>
 
 			## Action dispatching
+
+			TODO
 
 			## Redirections
 
@@ -183,8 +209,8 @@ angular.module('konga')
 		  		 * @ngdoc method
 		  		 * @name addAlert
 		  		 * @methodOf Standards.Operations
-		  		 * @param {String} type The type of alert (e.g. `success`, `error`). It inherites _Bootstrap_'s `bg-...` classes.
-		  		 * @param {String} message The message for the alert
+		  		 * @param {string} type The type of alert (e.g. `success`, `error`). It inherites _Bootstrap_'s `bg-...` classes.
+		  		 * @param {string} message The message for the alert
 		  		 * @param {Object=} parameters If the message provided is a placeholder for a locale-provided text, you can give the translator a key-value parameters for the message.
 		  		 * @description
 		  		 * Show a toast alert to the user, with a translatable/parametrizeable message.
@@ -222,8 +248,8 @@ angular.module('konga')
 		  		 * @ngdoc method
 		  		 * @name confirm
 		  		 * @methodOf Standards.Operations
-		  		 * @param {String} title The title for the confirmation dialog.
-		  		 * @param {String} message The message for the confirm dialog
+		  		 * @param {string} title The title for the confirmation dialog.
+		  		 * @param {string} message The message for the confirm dialog
 		  		 * @param {Function=} okHandler Callback to execute when the user confirms
 		  		 * @param {Function=} koHandler Callback to execute when the user cancels
 		  		 * @param {Object=} params Parameters for the translation messages and the handlers.
@@ -252,8 +278,8 @@ angular.module('konga')
 		  		 * @ngdoc method
 		  		 * @name notify
 		  		 * @methodOf Standards.Operations
-		  		 * @param {String} title The title for the confirmation dialog.
-		  		 * @param {String} message The message for the confirm dialog
+		  		 * @param {string} title The title for the confirmation dialog.
+		  		 * @param {string} message The message for the confirm dialog
 		  		 * @param {String=} [type=notify] Type of dialog (inherited from Bootstrap's `bg...` classes)
 		  		 * @param {Object=} params Parameters for the translation messages and the handlers.
 		  		 * @description
@@ -602,7 +628,7 @@ angular.module('konga')
 		  		 * @ngdoc method
 		  		 * @name requestLoading
 		  		 * @methodOf Standards.Operations
-		  		 * @param {String} id Unique id for the loader. It will be identified with this parameter for deletion when freed.
+		  		 * @param {string} id Unique id for the loader. It will be identified with this parameter for deletion when freed.
 		  		 * @param {String=} message If defined, appends a message to the loader (useful for heavy loading)
 		  		 * @description
 		  		 * Appends a loader into the `loader stack`. When the stack contains elements, the whole screen is blocked until all loaders are freed.
@@ -616,7 +642,7 @@ angular.module('konga')
 		  		 * @ngdoc method
 		  		 * @name freeLoading
 		  		 * @methodOf Standards.Operations
-		  		 * @param {String} id Unique id for the loader. It must be the same id given when the loader was requested.
+		  		 * @param {string} id Unique id for the loader. It must be the same id given when the loader was requested.
 		  		 * @description
 		  		 * Removes a loader from the `loader stack`. When the stack is emptied, the user recovers control of the screen.
 		  		 */

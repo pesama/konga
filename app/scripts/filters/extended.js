@@ -1,6 +1,6 @@
 'use strict';
 
-/*
+/**
  * @ngdoc filter
  * @name konga.filter:extended
  * @function
@@ -8,7 +8,7 @@
  * # extended
  * It receives an array of fields in metadata and a name of field which are checked, and it returns true/false (i.e. isExtended or not).
  * @param {Array} metadata Defines the array of fields of metadata
- * @param {String} name Defines the name of checked field
+ * @param {string} name Defines the name of checked field
  */
 angular.module('konga')
   .filter('extended', function () {

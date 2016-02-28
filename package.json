@@ -1,7 +1,7 @@
 {
   "name": "ui.konga",
   "description": "",
-  "version": "1.1.8",
+  "version": "1.2.0",
   "dependencies": {
     "angular": "1.4.x",
     "angular-animate": "1.4.x",
@@ -49,8 +49,7 @@
     "grunt-karma": "^0.8.3",
     "grunt-newer": "^0.7.0",
     "grunt-ng-constant": "^1.0.0",
-    "grunt-ngdoc": "^0.1.3",
-    "grunt-ngdocs": "^0.2.2",
+    "grunt-ngdocs": "^0.2.9",
     "grunt-ngmin": "^0.0.3",
     "grunt-rename": "^0.1.4",
     "grunt-svgmin": "^0.4.0",

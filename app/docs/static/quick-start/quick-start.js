@@ -98,9 +98,9 @@ angular.module('kongaQuickStart')
 
   }]);
 </pre>
-<label>Engage `KongaCtrl` into your app's dom:</label>
+<label>Engage `KongaController` into your app's dom:</label>
 <pre>
-<html ng-app="kongaQuickStart" ng-controller="KongaCtrl">
+<html ng-app="kongaQuickStart" ng-controller="KongaController">
   <head> ... </head>
   <body>
     <div ng-view></div>

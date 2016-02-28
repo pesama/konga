@@ -1,8 +1,8 @@
 'use strict';
 
-/*
+/**
  * @ngdoc directive
- * @name konga.directive:Scroll watcher
+ * @name konga.directive:scrollWatcher
  * @description
  * # scrollWatcher
  */

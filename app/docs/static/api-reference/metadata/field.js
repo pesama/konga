@@ -5,17 +5,17 @@
 
 Fields represent each property of the entities. Field configuration includes data typing, rendering and validation options, custom behaviors, automated triggers...
 
-@param {String} name
+@param {string} name
 
 Name of the field. 
 
 
-@param {String} label
+@param {string} label
 
 Label for the field. <span title="Translateable"><i class="fa fa-language"></i></span>
 
 
-@param {String} shortLabel
+@param {string} shortLabel
 
 Short version of the label. <span title="Translateable"><i class="fa fa-language"></i></span>
 
@@ -40,7 +40,7 @@ If this property is `true` on a certain field, the entity will be humanly-identi
 Entity's field with this flag to `true` represents the name of the entity. In a example `Human` entity, the field marked with `isLabel` would be `fullName`.
 
 
-@param {String} multiplicity
+@param {string} multiplicity
 <span class="label type-hint type-hint-object">{@link Metadata.Multiplicities Multiplicities}</span>
 
 Defines the multiplicity of the element.
@@ -48,15 +48,15 @@ Defines the multiplicity of the element.
 
 @param {Array} categories
 
-Categorisation of the field. This is used on certain {@link Metadata.FormModes form modes}, and you can leverage this info anywhere on your custom code.
+Categorisation of the field. This is used on certain {@link Metadata.FormScopes form modes}, and you can leverage this info anywhere on your custom code.
 
 
-@param {String} [fieldSet=null]
+@param {string} [fieldSet=null]
 
 Defines the group this field belongs to. It's set up as a String, but it **must** be the name of a fieldSet defined at {@link Metadata.Entity.fieldSet entity level}. This is used in `TABBED`, and `CUSTOM_TABBED` forms, and you can easily pick all the fields of a fieldSet using a filter (everywhere in your custom code).
 
 
-@param {String} [defaults=null]
+@param {string} [defaults=null]
 
 Default value of the field. It's used on {@link konga.scaffold `scaffoldings`} of entities and queries. It's always set up as a string, and is cast based on the field's {@link Field.type `type`}.
 

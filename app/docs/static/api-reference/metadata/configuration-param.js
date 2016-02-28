@@ -15,10 +15,10 @@ Konga's {@link konga.configurationManager configuration manager} intention is no
 
 An useful usage for this feature would be to define schemas for your entities and fields, that you could easily retrieve and render in your views, giving you full semantic compliance of your objects, and a better understanding of your app to machines. Well, it's just an example.
 
-@param {String} key
+@param {string} key
 Key for the configuration parameter
 
-@param {String} value
+@param {string} value
 Value for the configuration parameter
 
 */

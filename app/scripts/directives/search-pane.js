@@ -6,7 +6,49 @@
  * @scope
  * @restrict E
  * @description
- * Defines a search panel that controls all inputs of a search form for an entity type. 
+ * 
+ * The `searchPane` is in charge of all rendering operations of the search forms, along with the communication with the controller for upper-level tasks, using the info received by lower-level elements - the {@link konga.directive:rawInput `rawInputs`}.
+ *
+ * <img src="http://static.konga.io/search-pane-basic-flow.png" width="80%" class="center">
+
+ # Process
+ * 
+ * The `searchPane` receives the {@link Metadata.Entity metadata}, the query to map values on, at the function to call once it's finished, and launches the form.
+ *
+ ## Get fields and categories
+ *
+ * Leveraging {@link Standards.Tools#methods_getEntityFields `getEntityFields`} and {@link Standards.Tools#methods_getEntityCategories `getEntityCategories`} methods, the `searchPane` gets all fields and categories that will be used in the form.
+ *
+ * All field-dependent responsibilities are handled independently by each field, using {@link konga.directive:rawInput `rawInput`} directives. Hence, the main duty of the `searchPane` is to split form into independent pieces - the fields - and let them work. 
+ *
+ ## Setup view with `formType`
+ * 
+ * Once the fields and categories are fetched, the `formType` assigned for {@link Metadata.FormScopes#properties_SEARCH `search` scope} on the {@link Metadata.Field field's definition} is used to determine which view to render. 
+ *
+ * The selected view will be provided with the fields and categories fetched on earlier stages, so they could fully build the layout the form will have.
+
+ <img src="http://static.konga.io/search-pane-formtype.png" width="50%" class="center">
+ *
+ * There's more detailed documentation about form types, along with examples, on the {@link Metadata.FormTypes `FormType`} documentation.
+ 
+ # Submitting
+ * 
+ * All submit responsibility relies on the {@link konga.controller:EntitySearchController `EntitySearchController`}. All the `searchPane` does on submit is send the query up to the defined `submit` method.
+ *
+ * # Resetting
+ * For resetting, a {@link konga.directive:searchPane#events_reset-form `reset-form`} event will be `$broadcasted`, and every {@link konga.directive:rawInput field} will restore to defaults.
+ *
+ *
+ @param {Object} entityMetadata
+ <span class="label type-hint type-hint-object">{@link Metadata.Entity Entity}</span>
+ The metadata of the entity to create a form to. 
+
+ @param {Object} query
+ The query object to deal with (the search entity).
+
+ @param {function()} submit
+ The submit method. The `searchPane` will call it once the user launches the search.
+
  */
 angular.module('konga')
   .directive('searchPane', ['util', function (util) {
@@ -16,8 +58,7 @@ angular.module('konga')
       restrict: 'E',
       scope: {
       	entityMetadata: '=',
-        query: '=',    	
-        productCodes: '=',
+        query: '=',
         submit: '=onSubmit'
       },
       controller:function($scope, $filter, $modal, $timeout, scaffold) {
@@ -67,62 +108,6 @@ angular.module('konga')
             }
           }
         }
-
-    	  //THis function will open the Save filter
-    	  $scope.openFilterModel = function (property) {
-    		  
-    		  //Correct data for query: all fieldType is complex need to convert to Array
-    		  var fields = util.getEntityFields($scope.entityMetadata);
-  			  for(var i = 0; i < fields.length; i++) {
-  				  var fieldName = fields[i].fieldName;
-  	              if($scope.query[fieldName] !== undefined) {
-  	            	  if (fields[i].fieldType === util.constants.FIELD_COMPLEX 
-  	            			  && $scope.query[fieldName] !== null
-  	            			  && !(typeof  $scope.query[fieldName] === 'object')) {
-  	            		  var codes = $scope.query[fieldName].split(',');
-  	            		  $scope.query[fieldName] = codes;
-  	            	  }
-  	              }
-  			  }
-    		  
-    		  var modalInstance = $modal.open({
-    			  templateUrl: '/konga/views/filter-manager.html',
-    			  controller: 'FilterManagerCtrl',
-    			  resolve: {
-    				  method: function () {
-    					  return property.operation;
-    				  },
-    				  formProperties: function() {
-    					  return $scope.query;
-    				  },
-    				  items: function () {
-    					  return $scope.sourceList;
-    				  },
-    				  model: function() {
-    					  return $scope.value;
-    				  }
-    			  }
-    		  });
-		
-    		  modalInstance.result.then(function (newValue) {
-    			  if (newValue !== null && newValue !== undefined) {
-
-              $scope.resetQuery();
-              
-              setupQuery(newValue, $scope.query);
-
-    				  for(var i = 0; i < $scope.fields.length; i++) {
-    					  var field = $scope.fields[i];
-
-          		  var eventName = 'update_' + field.owner + '_' + field.name;
-          	    $scope.$broadcast(eventName);
-    				  }
-    			  }
-    			  console.log('Save successful');
-    		  }, function () {
-    			  console.log('Operation canceled');
-    		  });
-    	  };
 
         $scope.resetQuery = function() {
           var newQuery = scaffold.newQuery($scope.entityMetadata);
@@ -186,23 +171,7 @@ angular.module('konga')
           },
 
           clear: function() {
-            // return;
-            // var fields = util.getEntityFields(scope.entityMetadata);
-            // for(var i = 0; i < fields.length; i++) {
-            //   var fieldName = fields[i].name;
-            //   var defaults = fields[i].defaults;
-
-            //   // Does the field exist on the query?
-            //   if(scope.query[fieldName] !== undefined) {
-            //     scope.query[fieldName] = defaults;
-            //   }
-            // }
             
-            //Call Search function to get the result with default search criteria
-            // scope.resetQuery();
-
-            // Submit the reset downwards
-            // TODO Do we need to put extra stuff for the reset?
             scope.$broadcast('reset-form');
 
             scope.delayedSubmit();
@@ -216,9 +185,6 @@ angular.module('konga')
         	  scope.submit(scope.query);
           }
         };
-
-        //Init with search
-        // scope.operations.submit();
       }
     };
   }]);

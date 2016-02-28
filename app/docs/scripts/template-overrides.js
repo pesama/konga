@@ -1,7 +1,8 @@
 
 (function() {
 
-	// Assign $rootScope values
+	angular.module('myAwesomeApp', []);
+
 	angular.module('docsApp')
 		.filter('sectionSorter', function() {
 			return function(input) {
@@ -109,7 +110,8 @@
 					'Apps': 'fa-cube',
 					'Operations': 'fa-wrench',
 					'Tools': 'fa-gamepad',
-					'User': 'fa-user'
+					'User': 'fa-user',
+					'Actions': 'fa-code'
 				}
 
 				return icons[input.name] || '';
@@ -153,6 +155,7 @@
 					'Apps': 0,
 					'Forms': 1,
 					'Fields': 2,
+					'Actions': 3,
 					
 					'User': 6,
 
@@ -169,10 +172,10 @@
 
 
 					// konga controllers
-					'KongaCtrl': 0,
-					'EntitySearchCtrl': 1,
-					'EntityUpdateCtrl': 2,
-					'EntityDetailsCtrl': 3,
+					'KongaController': 0,
+					'EntitySearchController': 1,
+					'EntityUpdateController': 2,
+					'EntityDetailsController': 3,
 				}
 
 				var sorted = input.sort(function(a, b) {
@@ -187,17 +190,27 @@
 				var orders = {
 
 					// konga controllers
-					'KongaCtrl': 0,
-					'EntitySearchCtrl': 1,
-					'EntityUpdateCtrl': 2,
-					'EntityDetailsCtrl': 3,
+					'KongaController': 0,
+					'EntitySearchController': 1,
+					'EntityUpdateController': 2,
+					'EntityDetailsController': 3,
+
+					'searchPane': 0,
+					'resultTable': 1,
+					'updateForm': 2
 				}
 
 				var sorted = input.sort(function(a, b) {
 					return orders[a.shortName] - orders[b.shortName];
 				});
 
-				return sorted;
+				for(var i = 0; i < sorted.length; i++) {
+					input[i] = sorted[i];
+				}
+
+				return input;
 			}	
-		})
+		});
 })();
+
+window.require = function() {};

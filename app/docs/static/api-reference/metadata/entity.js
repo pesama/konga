@@ -6,25 +6,25 @@
 All elements within your data model are represented using this object. Entities define data structures for applications with options (rendering, operability, fields...)
 
 
-@param {String} name
+@param {string} name
 
 Name for your entity. This unique name will identify your entity across all your application. All relationships to an entity will be declared using its name. Be wise while defining your entity names.
 
 
-@param {String} superClass
+@param {string} superClass
 
 Entity hierarchy. By defining a `superClass` to one entity (being the value of the superClass the name of the inheritance) Konga will create entities based on the child's model, along with all the inheritance tree entities.
 
 
-@param {String} label
+@param {string} label
 
 Label for your entity. The String you configure here (or the placeholder for translated content) will identify the entity within your app. <span title="Translateable"><i class="fa fa-language"></i></span>
 
 
-@param {String} shortLabel
+@param {string} shortLabel
 
 
-Short version of the {@link Metadata.Entity.Label label}. Just if you need a shorter name to render it somewhere small. <span title="Translateable"><i class="fa fa-language"></i></span>
+Short version of the `label`. Just if you need a shorter name to render it somewhere small. <span title="Translateable"><i class="fa fa-language"></i></span>
 
 
 @param {Object} access
@@ -33,22 +33,22 @@ Short version of the {@link Metadata.Entity.Label label}. Just if you need a sho
 Accessibility of the entity. You can set the entity to be public or hidden (system entities).
 
 
-@param {String} searchable
+@param {string} searchable
 
 Defines the search capabilities for the entity. If the value is null, search will be deactivated. For restricting it to some {@link Metadata.Permissions permission}, put its name here.
 
 
-@param {String} createable
+@param {string} createable
 
 Defines the creation capabilities for the entity. If the value is null, creation will be deactivated. For restricting it to some {@link Metadata.Permissions permission}, put its name here.
 
 
-@param {String} editable
+@param {string} editable
 
 Defines the edition capabilities for the entity. If the value is null, edition will be deactivated. For restricting it to some {@link Metadata.Permissions permission}, put its name here.
 
 
-@param {String} deleteable
+@param {string} deleteable
 
 Defines the deletion capabilities for the entity. If the value is null, deletion will be deactivated. For restricting it to some {@link Metadata.Permissions permission}, put its name here.
 
@@ -106,7 +106,7 @@ Defines the styling of the update form. (How to structure the layout label/field
 Defines the styling of the details pane. (How to structure the layout label/field, and among fields). See the {@link Metadata.FormStyles `FormStyles`} documentation for more details.
 
 
-@param {String} apiPath
+@param {string} apiPath
 
 Defines the path of this entity within the API's endpoint. 
 
@@ -121,7 +121,7 @@ Categorisation for the entity. This is not used by Konga directly, but let's you
 @param {Object} fieldSets
 <span class="label type-hint type-hint-object">{@link Metadata.FieldSet FieldSet}</span>
 
-FieldSets bound fields with similara categorisation together, to be rendered in the same view. This is used on several {@link Metadata.FormModes form modes}.
+FieldSets bound fields with similara categorisation together, to be rendered in the same view. This is used on several {@link Metadata.FormScopes form modes}.
 
 
 @param {Array} configuration

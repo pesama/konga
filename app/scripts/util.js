@@ -31,7 +31,7 @@ angular.module('myAwesomeApp')
   }]);
 </pre>
 
-	 * @param {String} name
+	 * @param {string} name
 	 The name of the entity to get it's metadata.
 	 */
  	getMetadata: function(name) {
@@ -142,7 +142,7 @@ angular.module('myAwesomeApp')
 	 * @param {Object} metadata Entity metadata information
 	 * @param {Object} entity The entity to retrieve the code from
 	 * @param {Boolean} fieldName If true, returns only the name of the field
-	 * @returns {String} The code of the entity
+	 * @returns {string} The code of the entity
 	 */
 	 getEntityCode: function(metadata, entity, fieldName) {
 	 	var code = null;
@@ -176,7 +176,7 @@ angular.module('myAwesomeApp')
 	 * @param {Object} metadata Entity metadata information
 	 * @param {Object} entity The entity to retrieve the label from
 	 * @param {Boolean} fieldName If true, returns only the name of the field
-	 * @returns {String} The label of the entity
+	 * @returns {string} The label of the entity
 	 */
 	 getEntityLabel: function(metadata, entity, fieldName) {
 	 	var label = null;

@@ -1,6 +1,6 @@
 'use strict';
 
-/*
+/**
  * @ngdoc overview
  * @name index
  * @description
@@ -8,11 +8,11 @@
  * <img src="http://konga.io/wp-content/uploads/2015/03/konga-logo.png">
  *
  * # konga ui
- * Welcome to `Konga Reference` documentation! Hope you like how we arranged everything. Otherwise please let us know!
+ * Welcome to `konga` documentation! Hope you like how we arranged everything. Otherwise please let us know!
  * Remember that you can go anytime to http://konga.io for more abstract reading.
  *
  * ## What does Konga offer me?
- * konga is an Angular-powered application engine, that relies on metadata definitions for creating a whole application context that defines CRUD forms over your defined entities. It enhances native components and also gives you a full set of rich Konga Reference for data management and other handy stuff.
+ * konga is an Angular-powered application engine, that relies on metadata definitions for creating a whole application context that defines CRUD forms over your defined entities. It enhances native components and also gives you a full set of rich konga for data management and other handy stuff.
  *
  * ### Metadata management
  * You can use konga to generate the administration pane of your web project automatically, by just defining its entities and their metadata.
@@ -29,9 +29,9 @@
  *
  * ## Installation
  *
- * You can install <b>Konga Reference</b> in your existing project via _bower_.
+ * You can install <b>konga</b> in your existing project via _bower_.
  * ```
- * bower install Konga Reference --save
+ * bower install konga --save
  * ```
  * 
  * Then go to the {@link konga.configuration `Configuring your app`} section to prepare your application to be launched. 
@@ -54,10 +54,10 @@
  * 
  */
 
- /*
+ /**
  * @ngdoc overview
- * @name Konga Reference
- * @module Konga Reference
+ * @name konga
+ * @module konga
  * @description
  * # Konga Engine
  * 
@@ -69,17 +69,17 @@
  *
  * ## Components
  * 
- * `Konga Reference` contains several components, that build the application and all its parts.
+ * `konga` contains several components, that build the application and all its parts.
  * 
  * ### Controllers
  * 
- * * {@link konga.controller:EntitySearchCtrl `entity-search`}: This controller builds-up a standard {@link konga.directive:searchPane search pane} with all fields configured in the metadata to be <i>searchable</i>. It also appends a {@link konga.directive:resultTable result table} with the search results (having as columns every one declared to be <i>shown in results</i>).
- * * {@link konga.controller.EntityUpdateCtrl `entity-update`}: This controller builds-up a standard {@link konga.directive:updateForm update form} with all fields configured in the metadata to be <i>shown in update</i>.
+ * * {@link konga.controller:EntitySearchController `entity-search`}: This controller builds-up a standard {@link konga.directive:searchPane search pane} with all fields configured in the metadata to be <i>searchable</i>. It also appends a {@link konga.directive:resultTable result table} with the search results (having as columns every one declared to be <i>shown in results</i>).
+ * * {@link konga.controller.EntityUpdateController `entity-update`}: This controller builds-up a standard {@link konga.directive:updateForm update form} with all fields configured in the metadata to be <i>shown in update</i>.
  *
  * #### Component controllers
  *
- * * {@link konga.controller.MultiSelectCtrl multi-select}: Controls all processes for the multi-select UI component. <b>TODO</b> Move to a directive, and `deprecate`.
- * * {@link konga.controller.SingleSelectCtrl single-select}: Controls all processes for the single-select UI component. <b>TODO</b> Move to a directive, and `deprecate`.
+ * * {@link konga.controller.MultiSelectController multi-select}: Controls all processes for the multi-select UI component. <b>TODO</b> Move to a directive, and `deprecate`.
+ * * {@link konga.controller.SingleSelectController single-select}: Controls all processes for the single-select UI component. <b>TODO</b> Move to a directive, and `deprecate`.
  *
  *
  * ### Directives
@@ -125,7 +125,7 @@
  * ### Services
  *
  * * {@link konga.actionManager `action-manager`}: Defines and controls all available actions to dispatch from the application. <b>TODO</b> extract the action definitions elsewhere.
- * * {@link konga.Api `api`}: Connects the UI with the REST services that handle the information.
+ * * {@link konga.api `api`}: Connects the UI with the REST services that handle the information.
  * * {@link konga.Common `common`}: Stores stuff that's accessible all across the application.
  * * {@link konga.configurationManager `configuration-manager`}: Handles all configuration for the application (defined via metadata).
  * * {@link konga.fieldMapper `field-mapper`}: Helps mapping a field's value into a given entity. 
@@ -135,10 +135,10 @@
  *
  */
 
-/*
+/**
  * @ngdoc overview
- * @name Konga Reference
- * @module Konga Reference
+ * @name konga
+ * @module konga
  * @description
  * #New konga UI
  * # Processes
@@ -186,11 +186,11 @@ angular.module('konga', [
     $routeProvider
       .when('/entity/:entityType/search/', {
         templateUrl: '/konga/views/entity-search.html',
-        controller: 'EntitySearchCtrl'
+        controller: 'EntitySearchController'
       })
       .when('/entity/:entityType/:entityId/', {
         templateUrl: '/konga/views/entity-update.html',
-        controller: 'EntityUpdateCtrl'
+        controller: 'EntityUpdateController'
       });
   }
 ])

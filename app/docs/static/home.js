@@ -66,7 +66,7 @@
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		<h1>App creation by defining its metadata.</h1>
 		<p>
-			Just define a {@link quick-start.metadata metadata object} with the configuration and elements of your app. Konga will take it from there, and by parsing your metadata will build you a fully-working app, 
+			Just define a {@link Metadata metadata object} with the configuration and elements of your app. Konga will take it from there, and by parsing your metadata will build you a fully-working app, 
 		</p>
 		<ul>
 			<li><strong>Entity and field definitions: </strong> Define all your entities and their fields, including entity inheritance and reference fields.</li>
@@ -83,7 +83,7 @@
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		<h1 class="text-right">Handy operations included.</h1>
 		<p class="text-right">
-			Konga comes with built-in {@link konga.operations `Operations`} to ease you execute common operations. It includes full form-access functions, and methods for rendering a modal, opening a tab, or showing information to users via notifications, confirms, toastrs... And some other {@link konga.operations useful stuff}.
+			Konga comes with built-in {@link api/Standards.Operations `Operations`} to ease you execute common operations. It includes full form-access functions, and methods for rendering a modal, opening a tab, or showing information to users via notifications, confirms, toastrs... And some other {@link api/Standards.Operations useful stuff}.
 		</p>
 
 	</div>

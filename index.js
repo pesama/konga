@@ -4,3 +4,6 @@
 
 require('./lib/konga.js');
 module.exports = "konga";
+
+require('./lib/konga.vendor.js');
+module.exports = "konga.vendor";

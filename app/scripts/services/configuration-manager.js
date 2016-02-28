@@ -1,6 +1,6 @@
 'use strict';
 
-/*
+/**
  * @ngdoc service
  * @name konga.configurationManager
  * @description
@@ -15,10 +15,10 @@ angular.module('konga')
 
       /*
        * Returns a configuration param following the configuraion priority hierarchy
-       * @param param {String} The name of the parameter to read
+       * @param param {string} The name of the parameter to read
        * @param [Object] {Object} The object to read the configuration from
-       * @param [mode] {String} The form mode
-       * @param [order] {String} The order of the priority (SPLIT BY '_')
+       * @param [mode] {string} The form mode
+       * @param [order] {string} The order of the priority (SPLIT BY '_')
        */
       this.getConf = function (param, source, mode, order) {
         // TODO Finish this

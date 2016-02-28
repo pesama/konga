@@ -1,8 +1,8 @@
 'use strict';
 
-/*
+/**
  * @ngdoc directive
- * @name konga.directive:Recursive list
+ * @name konga.directive:recursiveList
  * @description
  * # recursiveList
  */

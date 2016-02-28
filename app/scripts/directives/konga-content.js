@@ -1,6 +1,6 @@
 'use strict';
 
-/*
+/**
  * @ngdoc directive
  * @name konga.directive:kongaContent
  * @description
