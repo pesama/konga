@@ -607,7 +607,7 @@ module.exports = function (grunt) {
           'app/docs/styles/template-overrides.css',
 
         ],
-        image: '/images/konga-logo-white.png',
+        image: 'http://konga.io/images/konga-logo-white.png',
         imageLink: 'http://konga.io/'
       },
       home: {

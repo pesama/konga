@@ -5,7 +5,7 @@
 
 <div class="row margin-top-3em">
 	<div class="col-xs-12 text-center">
-		<img src="/images/konga-logo.png" width="600" /> 
+		<img src="http://konga.io/images/konga-logo.png" width="600" /> 
 	</div>
 </div>
 

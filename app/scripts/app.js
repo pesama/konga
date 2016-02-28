@@ -5,7 +5,7 @@
  * @name index
  * @description
  *
- * <img src="/images/konga-logo.png">
+ * <img src="http://konga.io/images/konga-logo.png">
  *
  * # konga ui
  * Welcome to `konga` documentation! Hope you like how we arranged everything. Otherwise please let us know!
