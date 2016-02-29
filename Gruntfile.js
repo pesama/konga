@@ -590,7 +590,7 @@ module.exports = function (grunt) {
 
     ngdocs: {
       options: {
-        html5Mode: true,
+        html5Mode: false,
         title: 'Konga - The web-form generator',
         startPage: '/home',
         template: 'app/docs/docs.tmpl',
