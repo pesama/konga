@@ -3,12 +3,3 @@
 	id="{{ fieldId }}" placeholder="" ng-model="value.text"
  	ng-disabled="disableField(mode, property)"
 	angular.module('konga') ng-required="validation.required()" min="{{ validation.minvalue() }}" max="{{ validation.maxvalue() }}" tabindex="{{ (index + 1) * 12 }}">
-
-<div class="validation">
-	<div class="validation-pattern btn-danger">
-		{{ 'message.field-validation.pattern' | translate }}
-	</div>
-	<div class="validation-required btn-danger">
-		{{ 'message.field-validation.required' | translate }}
-	</div>
-</div>

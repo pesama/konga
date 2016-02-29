@@ -27,7 +27,7 @@
     "angular-resource": "1.4.x",
     "angular-route": "1.4.x",
     "angular-sanitize": "1.4.x",
-    "angular-strap": "~2.1.4",
+    "angular-strap": "2.x.x",
     "angular-touch": "1.4.x",
     "angular-translate-loader-static-files": "~2.2.0",
     "angular-ui-calendar": "latest",

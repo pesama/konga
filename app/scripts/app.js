@@ -1,59 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name index
- * @description
- *
- * <img src="http://konga.io/images/konga-logo.png">
- *
- * # konga ui
- * Welcome to `konga` documentation! Hope you like how we arranged everything. Otherwise please let us know!
- * Remember that you can go anytime to http://konga.io for more abstract reading.
- *
- * ## What does Konga offer me?
- * konga is an Angular-powered application engine, that relies on metadata definitions for creating a whole application context that defines CRUD forms over your defined entities. It enhances native components and also gives you a full set of rich konga for data management and other handy stuff.
- *
- * ### Metadata management
- * You can use konga to generate the administration pane of your web project automatically, by just defining its entities and their metadata.
- * 
- * Take a look to the {@link DataTypes.Metadata `metadata`}, {@link DataTypes.Entity `entity`} and {@link DataTypes.Field `field`} definitions to see all information you can assign to your entities.
- * For generating your own metadata, go to the {@link http://docs.konga.io/metadata `metadata.konga`} project's documentation.
- *
- * ### Customization
- * konga-powered apps are, in essence, Angular-powered apps. Therefore, you can use every angular feature within a konga project. 
- every app starts with your custom <b>HomeCtrl</b>. There you can define where do you want to use konga automation features and where not to. Furthermore, konga gives you customization entry points via its {@link konga.actionManager `action-driven-framework`} everywhere. 
- *
- * ### Step-by-step tutorial
- * TODO
- *
- * ## Installation
- *
- * You can install <b>konga</b> in your existing project via _bower_.
- * ```
- * bower install konga --save
- * ```
- * 
- * Then go to the {@link konga.configuration `Configuring your app`} section to prepare your application to be launched. 
- *
- * ### From scratch
- *
- * If you want to start a project from scratch, it's easier to use _Yeoman_ and the *generator-konga*:
- * ```
- * npm install -g yo generator-konga
- * yo konga
- * ```
- * 
- * This option will create a full _Angular_ scaffolding (it's based on _generator-angular_) with all custom Konga folders, some sample content, and a bunch of building tools to launch, deploy and publish your brand new Konga app.
- * 
- * If you follow this method, you should be directly able to launch the application by typing `grunt serve`.
- * 
- * ## Building
- * 
- *
- * 
- */
-
  /**
  * @ngdoc overview
  * @name konga

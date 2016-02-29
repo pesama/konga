@@ -4,7 +4,9 @@
  * @ngdoc directive
  * @name konga.directive:fileInput
  * @description
- * # fileInput
+ * 
+ * Renders a field for uploading files.
+ * 
  */
 angular.module('konga')
   .directive('fileInput', ['$upload', function () {

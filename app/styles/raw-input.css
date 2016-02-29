@@ -3,10 +3,6 @@ textarea {
 	width: 100%;
 }
 
-.pull-right {
-	clear: both;
-}
-
 /*Complex types extra data*/
 /*The input renders differently for search and update modes*/
 

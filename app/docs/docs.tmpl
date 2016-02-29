@@ -8,6 +8,16 @@
   <meta name="fragment" content="!">
   <title ng-bind-template="<%= title || 'Doc' %>: {{partialTitle}}">Docs</title>
 
+  <!-- bower:css -->
+  <link rel="stylesheet" href="/../bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css" />
+  <link rel="stylesheet" href="/../bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="/../bower_components/angular-dialog-service/dialogs.min.css" />
+  <link rel="stylesheet" href="/../bower_components/angular-motion/dist/angular-motion.css" />
+  <link rel="stylesheet" href="/../bower_components/fullcalendar/dist/fullcalendar.css" />
+  <link rel="stylesheet" href="/../bower_components/angular-ui-tree/dist/angular-ui-tree.min.css" />
+  <link rel="stylesheet" href="/../bower_components/components-font-awesome/css/font-awesome.css" />
+  <!-- endbower -->
+
   <!-- build:js(.) app/docs/scripts/vendor.js -->
   <!-- bower:js -->
   <script src="/../bower_components/es5-shim/es5-shim.js" type="text/javascript"></script>
@@ -178,7 +188,7 @@
       <div class="menu hidden-xs col-sm-4 col-md-4 col-lg-3 no-padding" ng-if="showMenu">
         <div class="spacer"></div>
 
-        <h1>
+        <h1 ng-if="section.name == 'api'">
           <i class="fa fa-map-signs"></i>
           v1.2.0
         </h1>

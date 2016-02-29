@@ -64,7 +64,7 @@ header .nav > li.active.red {
 }
 
 header .nav > li.active.blue {
-	background: blue;
+	background: #A2D1FD;
 }
 
 .dropdown.search {

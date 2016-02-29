@@ -63,7 +63,33 @@
  *
  * Most of the events you saw above are used along a `listenerName`. This means the event name changes, suffixing it with a value obtained for reading **`field.owner`-`field.name`** from the metadata - e.g. for calling an `update` under a `vehicle` -> `color` field, you should broadcast the event `update_vehicle_color`. With this method the event is completely mono-directional, and no extra process is launch upon its submittal.
  *
+ * # <i class="fa fa-th-large"></i> Component catalog
  *
+ * Here you have the full native `fieldType` catalog. You could build forms codelessly using any of these types. Click on anyone to see its particular details.
+ *
+ <div class="row">
+   <div class="col-xs-12">
+   	Plain inputs
+   </div>
+   <div class="col-xs-4 col-md-3">
+   	Abc
+   </div>
+   <div class="col-xs-4 col-md-3">
+   	123
+   </div>
+   <div class="col-xs-4 col-md-3">
+   	Feb 29
+   </div>
+   <div class="col-xs-12">
+   	Reference inputs
+   </div>
+   <div class="col-xs-12">
+   	Complex inputs
+   </div>
+   <div class="col-xs-12">
+   	Custom inputs
+   </div>
+ </div>
  * 
  * @param {Object} property Field to modify with the input
  * @param {*} vertical TODO Document
@@ -713,7 +739,7 @@ angular.module('konga')
 	  					return scope.validation.required() ? scope.value.files.length > 0 : true;
 	  					break;
 	  				}
-	  				return true;
+	  				return scope.value.text !== null && scope.value.text !== undefined;
 	  			},
 
 	  			valid_pattern: function() {

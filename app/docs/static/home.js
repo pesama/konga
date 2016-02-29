@@ -66,11 +66,11 @@
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		<h1>App creation by defining its metadata.</h1>
 		<p>
-			Just define a {@link Metadata metadata object} with the configuration and elements of your app. Konga will take it from there, and by parsing your metadata will build you a fully-working app, 
+			Just define a {@link api/Metadata metadata object} with the configuration and elements of your app. Konga will take it from there, and by parsing your metadata will build you a fully-working app, 
 		</p>
 		<ul>
 			<li><strong>Entity and field definitions: </strong> Define all your entities and their fields, including entity inheritance and reference fields.</li>
-			<li><strong>Form and field rendering:</strong> Configure how your data is going to show. Choose among existing <a href="http://docs.konga.io/quick-start/ui-components">UI Components</a> or even create your own.</li>
+			<li><strong>Form and field rendering:</strong> Configure how your data is going to show. Choose among existing {@link api/Standards.Forms `UI Components`}</a> or create your own.</li>
 			<li><strong>Data validation:</strong> Mark your required fields, bound their size limits, and define custom pattern validations for your data.</li>
 			<li><strong>Rich search panels:</strong> Configure how each field could be used for searching, and you will have contextual searches, with filtering, sorting, and paging.</li>
 			<li><strong>User permissions: </strong> Control who sees what, and how. Konga manages both entity-level and field-level permissions.</li>
@@ -98,7 +98,7 @@
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		<h1>Customizable in just about everything.</h1>
 		<p>
-			Konga comes with standard behaviors for supplying capabilities to a fully-working CRUD form-based app. But that's never enough. That's why you can enhance Konga functionalities creating {@link quick-start.customActions custom actions} for doing what you want, or even {@link quick-start.overrideDefaults override default} actions to make them do things your style. 
+			Konga comes with standard behaviors for supplying capabilities to a fully-working CRUD form-based app. But that's never enough. That's why you can enhance Konga functionalities creating {@link api/Customisation.Action-driven#properties_customActions custom actions} for doing what you want, or even {@link api/Customisation.Action-driven#properties_overrideDefaults override default} actions to make them do things your style. 
 		</p>
 	</div>
 </div>

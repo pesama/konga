@@ -1,59 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name index
- * @description
- *
- * <img src="http://konga.io/images/konga-logo.png">
- *
- * # konga ui
- * Welcome to `konga` documentation! Hope you like how we arranged everything. Otherwise please let us know!
- * Remember that you can go anytime to http://konga.io for more abstract reading.
- *
- * ## What does Konga offer me?
- * konga is an Angular-powered application engine, that relies on metadata definitions for creating a whole application context that defines CRUD forms over your defined entities. It enhances native components and also gives you a full set of rich konga for data management and other handy stuff.
- *
- * ### Metadata management
- * You can use konga to generate the administration pane of your web project automatically, by just defining its entities and their metadata.
- * 
- * Take a look to the {@link DataTypes.Metadata `metadata`}, {@link DataTypes.Entity `entity`} and {@link DataTypes.Field `field`} definitions to see all information you can assign to your entities.
- * For generating your own metadata, go to the {@link http://docs.konga.io/metadata `metadata.konga`} project's documentation.
- *
- * ### Customization
- * konga-powered apps are, in essence, Angular-powered apps. Therefore, you can use every angular feature within a konga project. 
- every app starts with your custom <b>HomeCtrl</b>. There you can define where do you want to use konga automation features and where not to. Furthermore, konga gives you customization entry points via its {@link konga.actionManager `action-driven-framework`} everywhere. 
- *
- * ### Step-by-step tutorial
- * TODO
- *
- * ## Installation
- *
- * You can install <b>konga</b> in your existing project via _bower_.
- * ```
- * bower install konga --save
- * ```
- * 
- * Then go to the {@link konga.configuration `Configuring your app`} section to prepare your application to be launched. 
- *
- * ### From scratch
- *
- * If you want to start a project from scratch, it's easier to use _Yeoman_ and the *generator-konga*:
- * ```
- * npm install -g yo generator-konga
- * yo konga
- * ```
- * 
- * This option will create a full _Angular_ scaffolding (it's based on _generator-angular_) with all custom Konga folders, some sample content, and a bunch of building tools to launch, deploy and publish your brand new Konga app.
- * 
- * If you follow this method, you should be directly able to launch the application by typing `grunt serve`.
- * 
- * ## Building
- * 
- *
- * 
- */
-
  /**
  * @ngdoc overview
  * @name konga
@@ -3201,11 +3147,21 @@ angular.module('konga')
  * @restrict E
  * @description
  *
- * Calendar input. It's rendered by the `rawInput` once it founds a field with the {@link Metadata.FieldTypes#properties_CALENDAR `calendar`} `fieldType`.
+ * The `calendarInput` is a {@link konga.directive:rawInput `rawInput`} field type that renders a {@link http://fullcalendar.io/ `fullcalendar`} as field's layout, if the {@link Metadata.Field field's} `fieldType` is set to {@link Metadata.FieldTypes#properties_CALENDAR `CALENDAR`}.
  *
- * # Object structure
+ * The calendar field is just a container of objects, that have properties for defining an {@link http://fullcalendar.io/docs/event_data/Event_Object/ `Event Object`}. The calendar takes these properties and renders the events into the ui, giving you full access to your events - and the calendar for including new - through events.
+ *
+ * # <span class="text-success"><i class="fa fa-rocket"></i>Events</span>
+ *
+ * The `calendarInput` communicates with the outside via events. Events are fired on the ui component once an user triggers an action within its bounds. The events the `calendarInput` fires are:
+ *
+ * * **`calendar-day-clicked`:** Fired when the user clicks on a calendar day.
+ * * **`calendar-event-clicked`:** Fired when the user clicks on an existing event.
+ * * **`calendar-event-render`:** Used when an event finishes its `rendering` process.
+ *
+ * All events include a data object that gives enough contextual information about where the event has its origin, letting you fully interact with the calendar creating events on `day click`, or opening modals with an existing event information...
  * 
- * A {@link Metadata.FieldTypes#properties_CALENDAR `calendar`} type is a rendering mode for any field that represents an array of {@link Standards.Data%20types#properties_Event}
+ * TODO Examples
  * 
  */
 angular.module('konga')
@@ -3267,7 +3223,9 @@ angular.module('konga')
  * @ngdoc directive
  * @name konga.directive:fileInput
  * @description
- * # fileInput
+ * 
+ * Renders a field for uploading files.
+ * 
  */
 angular.module('konga')
   .directive('fileInput', ['$upload', function () {
@@ -4011,7 +3969,33 @@ angular.module('konga')
  *
  * Most of the events you saw above are used along a `listenerName`. This means the event name changes, suffixing it with a value obtained for reading **`field.owner`-`field.name`** from the metadata - e.g. for calling an `update` under a `vehicle` -> `color` field, you should broadcast the event `update_vehicle_color`. With this method the event is completely mono-directional, and no extra process is launch upon its submittal.
  *
+ * # <i class="fa fa-th-large"></i> Component catalog
  *
+ * Here you have the full native `fieldType` catalog. You could build forms codelessly using any of these types. Click on anyone to see its particular details.
+ *
+ <div class="row">
+   <div class="col-xs-12">
+   	Plain inputs
+   </div>
+   <div class="col-xs-4 col-md-3">
+   	Abc
+   </div>
+   <div class="col-xs-4 col-md-3">
+   	123
+   </div>
+   <div class="col-xs-4 col-md-3">
+   	Feb 29
+   </div>
+   <div class="col-xs-12">
+   	Reference inputs
+   </div>
+   <div class="col-xs-12">
+   	Complex inputs
+   </div>
+   <div class="col-xs-12">
+   	Custom inputs
+   </div>
+ </div>
  * 
  * @param {Object} property Field to modify with the input
  * @param {*} vertical TODO Document
@@ -4661,7 +4645,7 @@ angular.module('konga')
 	  					return scope.validation.required() ? scope.value.files.length > 0 : true;
 	  					break;
 	  				}
-	  				return true;
+	  				return scope.value.text !== null && scope.value.text !== undefined;
 	  			},
 
 	  			valid_pattern: function() {
@@ -10204,16 +10188,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\tclass=\"form-control konga-form-search-input konga-form-simple-search-input\"\n" +
     "\tid=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\"\n" +
     " \tng-disabled=\"disableField(mode, property)\"\n" +
-    "\tangular.module('konga') ng-required=\"validation.required()\" min=\"{{ validation.minvalue() }}\" max=\"{{ validation.maxvalue() }}\" tabindex=\"{{ (index + 1) * 12 }}\">\n" +
-    "\n" +
-    "<div class=\"validation\">\n" +
-    "\t<div class=\"validation-pattern btn-danger\">\n" +
-    "\t\t{{ 'message.field-validation.pattern' | translate }}\n" +
-    "\t</div>\n" +
-    "\t<div class=\"validation-required btn-danger\">\n" +
-    "\t\t{{ 'message.field-validation.required' | translate }}\n" +
-    "\t</div>\n" +
-    "</div>"
+    "\tangular.module('konga') ng-required=\"validation.required()\" min=\"{{ validation.minvalue() }}\" max=\"{{ validation.maxvalue() }}\" tabindex=\"{{ (index + 1) * 12 }}\">"
   );
 
 

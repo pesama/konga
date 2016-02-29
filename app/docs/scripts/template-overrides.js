@@ -1,15 +1,226 @@
 
 (function() {
 
-	angular.module('myAwesomeApp', []);
+	angular.module('myAwesomeApp', ['konga'])
+	  .run(['$rootScope', 'util', 'common', function($rootScope, util, common) {
+	  	var metadata = {
+	  		name: 'My Awesome app',
+	  		entities: [
+	  			{
+	              name: 'fieldtype-demo',
+	              fields: [
+	              	// Plain
+	              	{
+		                name: 'plain-field',
+		                label: 'Plain field',
+		                type: {
+		                  type: 'STRING'
+		                },
+		                fieldType: {
+		                  update: 'PLAIN'
+		                },
+		                showInUpdate: {
+		                  value: "" // Public for updates
+		                },
+		                validation: {
+		                  required: true
+		                },
+		                editable: {
+		                  value: "" // Editable for everybody
+		                }
+	              	},
+
+	              	// Boolean
+	              	{
+		                name: 'boolean-field',
+		                label: 'Boolean field',
+		                type: {
+		                  type: 'BOOLEAN'
+		                },
+		                fieldType: {
+		                  update: 'BOOLEAN'
+		                },
+		                showInUpdate: {
+		                  value: "" // Public for updates
+		                },
+		                validation: {
+		                  required: true
+		                },
+		                editable: {
+		                  value: "" // Editable for everybody
+		                }
+	              	},
+
+	              	// Number
+	              	{
+		                name: 'number-field',
+		                label: 'Number field',
+		                type: {
+		                  type: 'NUMBER' // Complex data type
+		                },
+		                fieldType: {
+		                  update: 'NUMBER' // Calendar fieldType
+		                },
+		                showInUpdate: {
+		                  value: "" // Public for updates
+		                },
+		                validation: {
+		                  required: true
+		                },
+		                editable: {
+		                  value: "" // Editable for everybody
+		                }
+	              	},
+
+	              	// Calendar
+	              	{
+		                name: 'calendar-field',
+		                label: 'Calendar field',
+		                type: {
+		                  type: 'COMPLEX',
+		                  complexType: 'calendar-event'
+		                },
+		                fieldType: {
+		                  update: 'CALENDAR'
+		                },
+		                showInUpdate: {
+		                  value: "", // Public for updates
+		                  fields: []
+		                },
+		                validation: {
+		                  required: true
+		                },
+		                editable: {
+		                  value: "" // Editable for everybody
+		                },
+		                multiplicity: 'MANY'
+	              	},
+
+	              	// Color
+	              	{
+		                name: 'color-field',
+		                label: 'Color field',
+		                type: {
+		                  type: 'STRING'
+		                },
+		                fieldType: {
+		                  update: 'COLOR'
+		                },
+		                showInUpdate: {
+		                  value: "" // Public for updates
+		                },
+		                validation: {
+		                  required: true
+		                },
+		                editable: {
+		                  value: "" // Editable for everybody
+		                }
+	              	},
+
+	              	// Combobox
+	              	{
+		                name: 'combobox-field',
+		                label: 'Combobox field',
+		                type: {
+		                  type: 'STRING',
+		                  list: [
+			                  {
+			                  	key: 'one',
+			                  	value: 'Option one'
+			                  },
+			                  {
+			                  	key: 'two',
+			                  	value: 'Option two'
+			                  }
+		                  ]
+		                },
+		                fieldType: {
+		                  update: 'COMBOBOX'
+		                },
+		                showInUpdate: {
+		                  value: "" // Public for updates
+		                },
+		                validation: {
+		                  required: true
+		                },
+		                editable: {
+		                  value: "" // Editable for everybody
+		                }
+	              	},
+
+	              	// Date
+	              	{
+		                name: 'date-field',
+		                label: 'Date field',
+		                type: {
+		                  type: 'DATE'
+		                },
+		                fieldType: {
+		                  update: 'DATE'
+		                },
+		                showInUpdate: {
+		                  value: "" // Public for updates
+		                },
+		                validation: {
+		                  required: true
+		                },
+		                editable: {
+		                  value: "" // Editable for everybody
+		                }
+	              	},
+
+	              	// Datetime
+	              	{
+		                name: 'datetime-field',
+		                label: 'Datetime field',
+		                type: {
+		                  type: 'DATE'
+		                },
+		                fieldType: {
+		                  update: 'DATETIME'
+		                },
+		                showInUpdate: {
+		                  value: "" // Public for updates
+		                },
+		                validation: {
+		                  required: true
+		                },
+		                editable: {
+		                  value: "" // Editable for everybody
+		                }
+	              	},
+	              ],
+	              configuration: []
+	            },
+	            {
+	            	name: 'calendar-event',
+	            	fields: [
+	            	 {
+	            	 	name: 'date',
+	            	 	type: { type: 'DATE' }
+	            	 },
+	            	 {
+	            	 	name: 'name',
+	            	 	type: { type: 'STRING' }
+	            	 }
+	            	]
+	            }
+	  		],
+	  		configuration: []
+	  	};
+
+	  	util.init(metadata);
+	  	common.store('metadata', metadata);
+	  	$rootScope.metadata = metadata;
+	  }])
 
 	angular.module('docsApp')
 		.filter('sectionSorter', function() {
 			return function(input) {
-				var order = ['home', 'quick-start', 'api'];
-				var icons = ['fa fa-home', 'fa fa-rocket', 'fa fa-book'];
+				var order = ['home', 'quick-start', 'api', 'tutorials'];
+				var icons = ['fa fa-home', 'fa fa-paper-plane-o', 'fa fa-book', 'fa fa-rocket'];
 				var backgrounds = ['orange', 'green', 'red', 'blue'];
-				var menus = [false, false, true];
+				var menus = [false, false, true, true];
 
 				var ret = [];
 
@@ -36,7 +247,8 @@
 					'Metadata': 'fa-code',
 					'Standards': 'fa-diamond',
 					'Customisation': 'fa-paint-brush',
-					'konga': 'fa-folder-open-o'
+					'konga': 'fa-folder-open-o',
+					'Konga basics': 'fa-folder-open-o'
 				}
 
 				return icons[input.name] || 'fa-folder-open-o';
@@ -49,8 +261,9 @@
 					'Metadata': 0,
 					'Standards': 1,
 					'Customisation': 5,
-					'konga': 6
-					// 'lib.konga': 6
+					'konga': 6,
+					
+					'Konga basics': 0
 				}
 
 				var sorted = input.sort(function(a, b) {

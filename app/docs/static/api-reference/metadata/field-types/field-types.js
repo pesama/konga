@@ -18,43 +18,6 @@ Based on the {@link Metadata.DataTypes Data types} there is also a `default` fie
 /**
  * @ngdoc object
  * @propertyOf Metadata.FieldTypes
- * @name PLAIN
- * @description
-
-Plain text input. These is the classical `<input type="text" ... >`, though with validation and other features engaged.
-
- */
-
-/**
- * @ngdoc object
- * @propertyOf Metadata.FieldTypes
- * @name DATE
- * @description
-
-HTML5 `input[type=date]`. On these field type you can use `range` date validations for search, and `date-specific` {@link Metadata.ValidatorType validator types}.
- */
-
-/**
- * @ngdoc object
- * @propertyOf Metadata.FieldTypes
- * @name DATETIME
- * @description
-
-Date+time. On these field type you can use `range` date validations for search, and `date-specific` {@link Metadata.ValidatorType validator types}. This field uses {@link https://eonasdan.github.io/bootstrap-datetimepicker/ `bootstrap-datetimepicker`} to render the input.
- */
-
-/**
- * @ngdoc object
- * @propertyOf Metadata.FieldTypes
- * @name NUMBER
- * @description
-
-HTML5 `input[type=number]` input. On searches it allows to be {@link Metadata.SearchConf configured} to search in {@link ValidatorType#properties_RANGE `range`} mode.
- */
-
-/**
- * @ngdoc object
- * @propertyOf Metadata.FieldTypes
  * @name QUANTITY
  * @description
 
@@ -118,15 +81,6 @@ Renders a list, for {@link Metadata.Multiplicities#properties_MANY `MANY`} multi
 /**
  * @ngdoc object
  * @propertyOf Metadata.FieldTypes
- * @name BOOLEAN
- * @description
-
-Boolean field types represent the values as radio-buttons for update forms, and as checkboxes on search forms (to allow multiple-select values).
- */
-
-/**
- * @ngdoc object
- * @propertyOf Metadata.FieldTypes
  * @name SWITCH
  * @description
 
@@ -151,17 +105,6 @@ An option is a boolean field rendered as a toggle-able checkbox.
 Complex fields renders configured inner fields instead of the field itself (e.g. if you want to render `Vehicle` properties (such as `brand` and `wheel number`) instead of the `vehicle` itself). You need to declare into the {@link Metadata.Field field}'s `showInUpdate`->`fields` attribute the fields to render. 
  */
 
-
-/**
- * @ngdoc object
- * @propertyOf Metadata.FieldTypes
- * @name COMBOBOX
- * @description
-
-Combo for rendering targeted-options chosen on the {@link Metadata.DataType dataType}'s `list` attribute. It allows both {@link Medatata.Multiplicities#properties_ONE `ONE`} and {@link Medatata.Multiplicities#properties_MANY `MANY`} multiplicities.
- */
-
-
 /**
  * @ngdoc object
  * @propertyOf Metadata.FieldTypes
@@ -169,15 +112,6 @@ Combo for rendering targeted-options chosen on the {@link Metadata.DataType data
  * @description
 
 HTML5's `password` input
- */
-
-/**
- * @ngdoc object
- * @propertyOf Metadata.FieldTypes
- * @name COLOR
- * @description
-
-HTML5 `input[type=color]`. Color picker.
  */
 
 /**
@@ -215,7 +149,6 @@ Image input. It renders an `<img ng-src="...">` with the `source` being the fiel
 
 Custom input. If none of the existing field types suit your needs, you can tag the field as `CUSTOM` and provide a valid {@link konga#viewMapper mapped} value to a view with your custom view. it's done via {@link Metadata.ConfigurationParam#properties_CUSTOM_FIELD_TYPE `CUSTOM_FIELD_TYPE`} property. 
  */
-}
 
 /**
  * @ngdoc object
@@ -225,13 +158,3 @@ Custom input. If none of the existing field types suit your needs, you can tag t
 
 Renders a link to access the value. Field's value must be a valid URL.
  */
-
-/**
- * @ngdoc object
- * @propertyOf Metadata.FieldTypes
- * @name CALENDAR
- * @description
-
-Renders a calendar ({@link http://angular-ui.github.io/ui-calendar/ `ui-calendar`}). The field must have {@link Metadata.Multiplicities#properties_MANY `MANY` mutiplicity}, and its elements must comply with {@link http://fullcalendar.io/ fullcalendar.io}'s `event` specifications.
- */}
-}

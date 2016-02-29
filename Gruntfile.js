@@ -605,6 +605,7 @@ module.exports = function (grunt) {
         ],
         styles: [
           'app/docs/styles/template-overrides.css',
+          'lib/konga.css'
 
         ],
         image: 'http://konga.io/images/konga-logo-white.png',
@@ -620,6 +621,12 @@ module.exports = function (grunt) {
         title: 'Quick Start',
         src: [
           'app/docs/static/quick-start/**/*.js'
+        ]
+      },
+      'tutorials': {
+        title: 'Tutorials',
+        src: [
+          'app/docs/static/tutorials/**/*.js'
         ]
       },
       api: {

@@ -1,7 +1,11 @@
 /**
  * @ngdoc overview
- * @name konga
+ * @name index
  * @description
  *
-# Konga
+ * <img src="http://konga.io/images/konga-logo.png" width="60%" class="center">
+ *
+ *
+ *
+ * 
  */
