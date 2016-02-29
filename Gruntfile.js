@@ -590,7 +590,8 @@ module.exports = function (grunt) {
 
     ngdocs: {
       options: {
-        html5Mode: false,
+        html5Mode: true,
+        title: 'Konga - The web-form generator',
         startPage: '/home',
         template: 'app/docs/docs.tmpl',
         bestMatch: true,
@@ -676,7 +677,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
-      return grunt.task.run(['build', 'connect:dist:keepalive']);
+      return grunt.task.run(['bngld', 'connect:dist:keepalive']);
     }
 
     grunt.task.run([
