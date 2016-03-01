@@ -109,8 +109,8 @@
  * @param {Object=} style If set, it overrides the default styling options for the field
  */
 angular.module('konga')
-  .directive('rawInput', ['$filter', '$modal', '$timeout', 'common', 'api', '$rootScope', 'configurationManager', 'standardApi', 'permissionManager', 'util', 
-  	function($filter, $modal, $timeout, common, api, $rootScope, configurationManager, standardApi, permissionManager, util) {
+  .directive('rawInput', ['$filter', '$modal', '$timeout', 'common', 'api', '$rootScope', 'configurationManager', 'standardApi', 'permissionManager', 'util', 'mapper'
+  	function($filter, $modal, $timeout, common, api, $rootScope, configurationManager, standardApi, permissionManager, util, mapper) {
 	    return {
 	      restrict: 'E',
 	      replace: true,
@@ -356,7 +356,6 @@ angular.module('konga')
 								scope.value.text = '';
 							}
 							
-							//ano 8142
 							$timeout(function(){
 								// Lookup for cascade filters
 								if(scope.property.derived) {
@@ -1472,7 +1471,40 @@ angular.module('konga')
 				}
 			}
 
-			scope.contentUrl = '/konga/views/raw-' + fieldType.toLowerCase() + inputSuffix + '-input.html';
+			var fieldTemplate = null;
+			if(fieldType === util.constants.FIELD_TYPE_CUSTOM) {
+				var configuration = null;
+				switch(scope.mode) {
+				case util.constants.SCOPE_SEARCH:
+					configuration = source.searchable.configuration;
+					break;
+				case util.constants.SCOPE_UPDATE:
+					configuration = source.showInUpdate.configuration;
+					break;
+				}
+
+				var confParams = $filter('filter')(configuration, { key: util.constants.CUSTOM_FIELD_TYPE });
+				if(!confParams || !confParams.length) {
+					// TODO Throw exception
+				}
+
+				var conf = confParams[0].value;
+
+				// Try to map
+				fieldTemplate = mapper[conf];
+				// If no mapping try direct
+				if(!fieldType) {
+					fieldTemplate = conf;
+					if(!fieldTemplate) {
+						// TODO Throw exception
+					}
+				}
+			}
+			else 
+				fieldTemplate = '/konga/views/raw-' + fieldType.toLowerCase() + inputSuffix + '-input.html'
+
+			scope.contentUrl = fieldTemplate;
+
 			scope.datePicker = { opened: false };
 			scope.toggleDatePicker = function(){
 				scope.datePicker.opened = (scope.datePicker.opened)? false:true;

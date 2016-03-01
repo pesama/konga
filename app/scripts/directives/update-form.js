@@ -92,7 +92,13 @@ angular.module('konga')
 			      		if(!configuration.length) {
 			      			// TODO Show exception
 			      		}
-			      		$scope.templateUrl = mapper[configuration[0].value];
+			      		// Try mapped
+			      		var templateUrl = mapper[configuration[0].value];
+			      		if(!templateUrl) templateUrl = configuration[0].value;
+			      		if(!templateUrl) {
+			      			// TODO Throw exception
+			      		}
+			      		$scope.templateUrl = templateUrl;
 			      		
 			      		break;
 		      	}

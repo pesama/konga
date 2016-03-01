@@ -2,8 +2,7 @@
 	"folders":
 	[
 		{
-			"path": ".",
-			"folder_exclude_path": ["bower_components", "dist", "docs"]
+			"path": "."
 		}
 	]
 }

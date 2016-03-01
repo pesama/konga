@@ -38,6 +38,19 @@ TODO
 
 @ngdoc object
 @propertyOf Metadata.ConfigurationParam
+@name CUSTOM_FIELD_TYPE
+@description
+
+TODO
+
+*/
+
+
+
+/**
+
+@ngdoc object
+@propertyOf Metadata.ConfigurationParam
 @name CONFIG_LOOK_AND_FEEL
 @description
 

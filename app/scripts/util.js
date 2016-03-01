@@ -458,7 +458,10 @@ angular.module('myAwesomeApp')
 		CONFIG_LOOK_AND_FEEL 				: 'look-and-feel',
 
 		HIDE_WHEN_CREATING 					: 'hide-when-creation',
-		HIDE_WHEN_UPDATING 					: 'hide-when-updating'
+		HIDE_WHEN_UPDATING 					: 'hide-when-updating',
+
+		'FIELD_TYPE_CUSTOM' 				: 'CUSTOM',
+		'CUSTOM_FIELD_TYPE' 				: 'CUSTOM_FIELD_TYPE'
 	}
 });
 
