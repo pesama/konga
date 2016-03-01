@@ -425,5 +425,3 @@
 			}	
 		});
 })();
-
-window.require = function() {};

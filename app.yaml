@@ -1,0 +1,36 @@
+application: konga-web
+version: v1-1-11
+runtime: php55
+api_version: 1
+
+handlers:
+
+- url: /css
+  static_dir: css
+
+- url: /js
+  static_dir: js
+
+- url: /fonts
+  static_dir: fonts
+
+- url: /font
+  static_dir: font
+
+- url: /images
+  static_dir: images
+
+- url: /lib
+  static_dir: lib
+
+- url: /grunt-scripts
+  static_dir: grunt-scripts
+
+- url: /partials
+  static_dir: partials
+
+- url: /
+  script: index.html
+  login: required
+  secure: always
+  # upload: index.html

@@ -225,7 +225,7 @@ module.exports = function (grunt) {
     // Automatically inject Bower components into the app
     wiredep: {
       app: {
-        src: ['<%= yeoman.app %>/docs/docs.tmpl'],
+        src: ['<%= yeoman.app %>/docs/docs.html'],
         ignorePath:  /\.\.\//,
         fileTypes: {
           html: {
@@ -283,17 +283,14 @@ module.exports = function (grunt) {
       }
     },
 
-    // Reads HTML for usemin blocks to enable smart builds that automatically
-    // concat, minify and revision files. Creates configurations in memory so
-    // additional tasks can operate on them
     useminPrepare: {
-      html: '<%= yeoman.app %>/docs/docs.tmpl',
+      html: '<%= yeoman.app %>/docs/docs.html',
       options: {
-        dest: 'app/docs/docs.tmpl',
+        dest: 'lib',
         flow: {
           html: {
             steps: {
-              js: ['concat', 'uglifyjs'],
+              js: ['concat'],
               // js: ['concat'], //, 'uglifyjs'
               css: ['cssmin']
             },
@@ -305,11 +302,11 @@ module.exports = function (grunt) {
 
     // Performs rewrites based on filerev and the useminPrepare configuration
     usemin: {
-      html: ['<%= yeoman.app %>/docs/docs.tmpl'],
+      html: ['<%= yeoman.app %>/docs/docs.html'],
       // js: ['dist/scripts/{,*/}*.js'],
-      css: ['<%= yeoman.dist %>/styles/{,*/}*.css', 'dist/styles/*.css'],
+      css: ['<%= yeoman.app %>/styles/{,*/}*.css'],
       options: {
-        assetsDirs: ['<%= yeoman.dist %>','<%= yeoman.dist %>/images']
+        assetsDirs: ['<%= yeoman.app %>','<%= yeoman.app %>/images']
       }
     },
 
@@ -331,6 +328,13 @@ module.exports = function (grunt) {
         files: {
           'lib/konga.js': [
             'lib/konga.js'
+
+          ],
+          'lib/vendor.js': [
+            'lib/vendor.js'
+          ],
+          'docs/js/vendor.js': [
+            'docs/js/vendor.js'
           ]
         },
         options: {
@@ -354,7 +358,7 @@ module.exports = function (grunt) {
         dest: 'app/docs/app-scripts.js'
       },
       lib: {
-        src: ['dist/scripts/**/*.js'],
+        src: ['app/scripts/**/*.js', 'dist/scripts/config.js', 'dist/scripts/view.js'],
         dest: 'lib/konga.js'        
       },
       lib_vendor: {
@@ -363,7 +367,82 @@ module.exports = function (grunt) {
         },
         src: ['bower_components/angular-dialog-service/dialogs.min.js'],
         dest: 'lib/konga.vendor.js'
-      }
+      },
+      vendor_css: {
+        dest: 'lib/vendor.css',
+        src: [
+          'bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css',
+          'bower_components/bootstrap/dist/css/bootstrap.css',
+          'bower_components/angular-dialog-service/dialogs.min.css',
+          'bower_components/angular-motion/dist/angular-motion.css',
+          'bower_components/fullcalendar/dist/fullcalendar.css',
+          'bower_components/angular-ui-tree/dist/angular-ui-tree.min.css'
+        ]
+      },
+      vendor_js: {
+        dest: 'lib/vendor.js',
+        src: [
+          'bower_components/es5-shim/es5-shim.js',
+          'bower_components/jquery/dist/jquery.js',
+          'bower_components/angular/angular.js',
+          'bower_components/angular-animate/angular-animate.js',
+          'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+          'bower_components/moment/moment.js',
+          'bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js',
+          'bower_components/angular-cookies/angular-cookies.js',
+          'bower_components/bootstrap/dist/js/bootstrap.js',
+          'bower_components/angular-sanitize/angular-sanitize.js',
+          'bower_components/angular-translate/angular-translate.js',
+          'bower_components/angular-dialog-service/dialogs.min.js',
+          'bower_components/angular-dialog-service/dialogs-default-translations.min.js',
+          'bower_components/angular-file-upload/angular-file-upload.min.js',
+          'bower_components/angular-resource/angular-resource.js',
+          'bower_components/angular-route/angular-route.js',
+          'bower_components/angular-strap/dist/angular-strap.js',
+          'bower_components/angular-strap/dist/angular-strap.tpl.js',
+          'bower_components/angular-touch/angular-touch.js',
+          'bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
+          'bower_components/fullcalendar/dist/fullcalendar.js',
+          'bower_components/angular-ui-calendar/src/calendar.js',
+          'bower_components/jquery-ui/jquery-ui.js',
+          'bower_components/angular-ui-sortable/sortable.js',
+          'bower_components/angular-ui-tree/dist/angular-ui-tree.js',
+          'bower_components/json3/lib/json3.js',
+          'bower_components/ng-file-upload/angular-file-upload.js'
+        ]
+       },
+       vendor_doc: {
+        dest: 'docs/js/vendor.js',
+        src: [
+          'bower_components/es5-shim/es5-shim.js',
+          'bower_components/jquery/dist/jquery.js',
+          'bower_components/angular/angular.js',
+          'bower_components/angular-animate/angular-animate.js',
+          'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+          'bower_components/moment/moment.js',
+          'bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js',
+          'bower_components/angular-cookies/angular-cookies.js',
+          'bower_components/bootstrap/dist/js/bootstrap.js',
+          'bower_components/angular-sanitize/angular-sanitize.js',
+          'bower_components/angular-translate/angular-translate.js',
+          'bower_components/angular-dialog-service/dialogs.min.js',
+          'bower_components/angular-dialog-service/dialogs-default-translations.min.js',
+          'bower_components/angular-file-upload/angular-file-upload.min.js',
+          'bower_components/angular-resource/angular-resource.js',
+          'bower_components/angular-route/angular-route.js',
+          'bower_components/angular-strap/dist/angular-strap.js',
+          'bower_components/angular-strap/dist/angular-strap.tpl.js',
+          'bower_components/angular-touch/angular-touch.js',
+          'bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
+          'bower_components/fullcalendar/dist/fullcalendar.js',
+          'bower_components/angular-ui-calendar/src/calendar.js',
+          'bower_components/jquery-ui/jquery-ui.js',
+          'bower_components/angular-ui-sortable/sortable.js',
+          'bower_components/angular-ui-tree/dist/angular-ui-tree.js',
+          'bower_components/json3/lib/json3.js',
+          'bower_components/ng-file-upload/angular-file-upload.js'
+        ]
+       }
     },
 
     imagemin: {
@@ -593,20 +672,20 @@ module.exports = function (grunt) {
         html5Mode: false,
         title: 'Konga - The web-form generator',
         startPage: '/home',
-        template: 'app/docs/docs.tmpl',
+        template: 'app/docs/docs.html',
         bestMatch: true,
         analytics: {
           account: 'UA-68065842-1'
         },
         scripts: [
-          'app/docs/scripts/template-overrides.js',
-
           'lib/konga.js',
-          'lib/konga.vendor.js'
+
+          'app/docs/scripts/template-overrides.js'
         ],
         styles: [
           'app/docs/styles/template-overrides.css',
-          'lib/konga.css'
+          'lib/konga.css',
+          'lib/vendor.css'
 
         ],
         image: 'http://konga.io/images/konga-logo-white.png',
@@ -662,15 +741,13 @@ module.exports = function (grunt) {
       'concat:css',
       'concat:scss',
       'concat:app4doc',
+      'concat:vendor_css',
+      'concat:vendor_js',
 		  'ngdocs',
 		  'wiredep',
-      'useminPrepare',
-      'concat:generated',
-      'uglify:generated',
-      'cssmin:generated',
-      'usemin',
 		  'concurrent:server',
 		  'autoprefixer',
+      'concat:vendor_doc'
   	]);
   });
 
@@ -735,13 +812,12 @@ module.exports = function (grunt) {
     'clean:deploy',
     'compile:deploy',
     'copy:index',
-    'minify-vendor',
     'copy:deployApp',
     'copy:deploy', 
     'copy:deployIndex',
-    'minify-vendor',
-    // 'copy:deployVendor'
-    'doc',
+    'ngdocs',
+    'concat:vendor_css',
+    'concat:vendor_js',
     'concat:lib',
     'concat:lib_vendor',
     'replace:strict',

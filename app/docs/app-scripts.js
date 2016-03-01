@@ -4015,7 +4015,7 @@ angular.module('konga')
  * @param {Object=} style If set, it overrides the default styling options for the field
  */
 angular.module('konga')
-  .directive('rawInput', ['$filter', '$modal', '$timeout', 'common', 'api', '$rootScope', 'configurationManager', 'standardApi', 'permissionManager', 'util', 'mapper'
+  .directive('rawInput', ['$filter', '$modal', '$timeout', 'common', 'api', '$rootScope', 'configurationManager', 'standardApi', 'permissionManager', 'util', 'mapper', 
   	function($filter, $modal, $timeout, common, api, $rootScope, configurationManager, standardApi, permissionManager, util, mapper) {
 	    return {
 	      restrict: 'E',
