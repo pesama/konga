@@ -42,7 +42,7 @@ yo angular:constant metadata
  *
  * Our constant is created, yet it does not contain the metadata information. Let's copy/paste the `metadata.json` object into our constant:
 
- * **`/app/scripts/services/metadata.js`
+ * **`/app/scripts/services/metadata.js`**
 <pre>
 'use strict';
 
@@ -58,6 +58,69 @@ angular.module('uiApp')
  *
  * **`/app/scripts/app.js`**
 <pre>
+'use strict';
 
+angular
+  .module('uiApp', [
+    'ngAnimate',
+    'ngCookies',
+    'ngResource',
+    'ngRoute',
+    'ngSanitize',
+    'ngTouch',
+    'konga'
+  ])
+  .config(function ($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl',
+        controllerAs: 'main'
+      })
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl',
+        controllerAs: 'about'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  })
+  .run(['metadata', 'util', 'common', '$rootScope', function(metadata, util, common, $rootScope) {
+    common.store('metadata', metadata);
+    util.init(metadata);
+    $rootScope.metadata = metadata;
+  }]);
 </pre>
+ *
+ * These `run` process defined at the end of the file will load the metadata constant, and initialize konga features by injecting the metadata. 
+ *
+ * 
+ * ## Show entities on our view
+ *
+ * Let's modify our `/app/views/main.html` view to render a list of the existing entities within our metadata.
+ *
+ * **`/app/views/main.html`**
+<pre>
+<div class="jumbotron">
+  <h1>Konga Tutorial</h1>
+  
+  <p>
+  Here you have all the entities declared on your metadata:
+  </p>
+  <div class="row">
+    <div class="col-md-4" ng-repeat="entity in metadata.entities">
+      <button class="btn btn-success">{{ entity.name }}</button>
+    </div>
+  </div>
+</div>
+</pre>
+ *
+ * When you launch your application now, you should see a window like this:
+ *
+ * <img src="http://static.konga.io/konga-tutorial-basics-metadatainjection-preview.png" width="50%" class="center">
+ * 
+ * ## Refining your metadata
+ *
+ * Now that we've seen how we could create metadata, inject it into the app, and see how it's read, let's create something `useful` with these metadata. **{@link Basics.3%20-%20Refining%20our%20metadata Go to the next step}**.
  */

@@ -3,7 +3,7 @@
  * @name Basics.1 - Application Basic Metadata
  * @description
  *
- * Metadata generation
+ * # Metadata generation
  *
  * Now that our applications are configured and ready to be launched, is time to define some basic `metadata` for our `ui` to manage. 
 
