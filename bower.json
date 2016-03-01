@@ -7,8 +7,8 @@
   },
   "keywords": ["konga"],
   "main": [
-    "dist/konga.js",
-    "dist/styles/konga.css"
+    "lib/konga.js",
+    "lib/konga.css"
   ],
   "ignore": [
     "app",

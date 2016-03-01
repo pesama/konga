@@ -46,17 +46,11 @@
  * grunt serve
  * ```
  * 
- * Your browser will autommatically open at `http://localhost:9010` with your app working.
+ * Your browser will autommatically open at `http://localhost:9000` with your app working.
  *
  *
  * # Next steps
  *
  * Now that you have your project created, it's time to create the {@link }
  * 
- */
-
- /**
- * @ngdoc overview
- * @name NotThatBasics
- * @description 
  */
