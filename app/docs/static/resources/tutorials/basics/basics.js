@@ -1,6 +1,7 @@
 /**
  * @ngdoc overview
- * @name Basics
+ * @name Tutorials.Basics
+ * @module Basics
  * @description 
  *
  * # Konga basics
@@ -51,6 +52,6 @@
  *
  * # Next steps
  *
- * Now that you have your project created, it's time to create the {@link }
+ * Now that you have your project created, it's time to {@link Basics.Preparation `get started`} with the tutorial.
  * 
  */

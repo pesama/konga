@@ -1,6 +1,7 @@
 /**
  * @ngdoc object
- * @name Basics.0 - Preparation
+ * @propertyOf Tutorials.Basics
+ * @name Preparation
  * @description
  * 
  * # Step 1: Preparation
@@ -56,7 +57,7 @@
  * 
  * ## Next step
  *
- * Now that we have our app running, it's time to define some metadata. **{@link Basics.1%20-%20Application%20Basic%20Metadata Go to the next step}**.
+ * Now that we have our app running, it's time to define some metadata. **{@link Basics.Application_Basic_Metadata Go to the next step}**.
  * 
  * 
  */

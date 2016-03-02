@@ -1,6 +1,7 @@
 /**
  * @ngdoc object
- * @name Basics.3 - Refining our metadata
+ * @propertyOf Tutorials.Basics
+ * @name Refining_metadata
  * @description
  *
  * # Metadata definitions
@@ -236,5 +237,5 @@ angular.module('uiApp')
  *
  * ## Profiling our application
  *
- * Now that metadata generation is done, we are finally able to execute the app and see the forms working. Now it's time to create permissions for the entities and fields, and see how konga engages with your permission management system. **{@link Basics.4%20-%20Dealing%20with%20permissions Go to the next step}**
+ * Now that metadata generation is done, we are finally able to execute the app and see the forms working. Now it's time to create permissions for the entities and fields, and see how konga engages with your permission management system. **{@link Basics.Dealing_with_permissions Go to the next step}**
  */

@@ -217,7 +217,7 @@
 	angular.module('docsApp')
 		.filter('sectionSorter', function() {
 			return function(input) {
-				var order = ['home', 'quick-start', 'api', 'tutorials'];
+				var order = ['home', 'quick-start', 'api', 'resources'];
 				var icons = ['fa fa-home', 'fa fa-paper-plane-o', 'fa fa-book', 'fa fa-rocket'];
 				var backgrounds = ['orange', 'green', 'red', 'blue'];
 				var menus = [false, false, true, true];
@@ -411,6 +411,30 @@
 					'searchPane': 0,
 					'resultTable': 1,
 					'updateForm': 2
+				}
+
+				var sorted = input.sort(function(a, b) {
+					return orders[a.shortName] - orders[b.shortName];
+				});
+
+				for(var i = 0; i < sorted.length; i++) {
+					input[i] = sorted[i];
+				}
+
+				return input;
+			}	
+		})
+		.filter('sortedPages', function() {
+			return function(input) {
+				var orders = {
+
+					// konga controllers
+					'Basics': 0,
+					'Basics.Preparation': 1,
+					'Basics.Application_Basic_Metadata': 2,
+					'Basics.Injecting_metadata': 3,
+					'Refining_metadata': 4,
+					'Basics.Dealing_with_permissions': 5
 				}
 
 				var sorted = input.sort(function(a, b) {

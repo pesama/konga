@@ -1,6 +1,7 @@
 /**
  * @ngdoc object
- * @name Basics.4 - Dealing with permissions
+ * @propertyOf Tutorials.Basics
+ * @name Dealing_with_permissions
  * @description
  *
  * # Permission management

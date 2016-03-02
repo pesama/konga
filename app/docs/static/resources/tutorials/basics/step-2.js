@@ -1,6 +1,7 @@
 /**
  * @ngdoc object
- * @name Basics.2 - Injecting metadata
+ * @propertyOf Tutorials.Basics
+ * @name Injecting_metadata
  * @description
  * 
  * # Metadata injection
@@ -122,5 +123,5 @@ angular
  * 
  * ## Refining your metadata
  *
- * Now that we've seen how we could create metadata, inject it into the app, and see how it's read, let's create something `useful` with these metadata. **{@link Basics.3%20-%20Refining%20our%20metadata Go to the next step}**.
+ * Now that we've seen how we could create metadata, inject it into the app, and see how it's read, let's create something `useful` with these metadata. **{@link Basics.Refining_metadata Go to the next step}**.
  */

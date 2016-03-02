@@ -112,7 +112,7 @@ header .nav > li.active.blue {
 
 @media screen and (min-width: 1200px) {
 	.col-lg-offset-1_5 {
-	    margin-left: 12.5%;
+	    margin-left: 12.5% !important;
 	}
 }
 

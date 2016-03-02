@@ -1,6 +1,7 @@
 /**
  * @ngdoc object
- * @name Basics.1 - Application Basic Metadata
+ * @propertyOf Tutorials.Basics
+ * @name Application_Basic_Metadata
  * @description
  *
  * # Metadata generation
@@ -253,6 +254,6 @@ KongaDefinition definition = new KongaDefinition("Konga Tutorial Basics", "io.ko
  *
  * ## Including our metadata in the UI
  *
- * Now that we have a valid metadata to execute, let's inject it into Konga - i.e. the UI - and see what we got. **{@link Basics.2%20-%20Injecting%20Metadata Go to the next step}**.
+ * Now that we have a valid metadata to execute, let's inject it into Konga - i.e. the UI - and see what we got. **{@link Basics.Injecting_Metadata Go to the next step}**.
  *
  */

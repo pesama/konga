@@ -3,5 +3,5 @@
  * @name index
  * @description
  * 
- * # Tutorials
+ * # Resources
  */
