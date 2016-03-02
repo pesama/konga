@@ -604,6 +604,20 @@ module.exports = function (grunt) {
         expand: true,
         src: 'vendor.js',
         dest: 'docs/'
+      },
+      cloud_deployment: {
+        files: [
+          {
+            src: 'app.yaml',
+            dest: 'docs/'
+          },
+          {
+            expand: true,
+            cwd: 'app',
+            src: '**/images/**',
+            dest: 'docs/'
+          }
+        ]
       }
     },
 
@@ -822,6 +836,7 @@ module.exports = function (grunt) {
     'concat:lib_vendor',
     'replace:strict',
     'uglify',
+    'copy:cloud_deployment'
   ]);
 
   grunt.registerTask('doc', [

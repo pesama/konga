@@ -31,6 +31,4 @@ handlers:
 
 - url: /
   script: index.html
-  login: required
-  secure: always
   # upload: index.html
