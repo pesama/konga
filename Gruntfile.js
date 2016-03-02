@@ -358,7 +358,7 @@ module.exports = function (grunt) {
         dest: 'app/docs/app-scripts.js'
       },
       lib: {
-        src: ['app/scripts/**/*.js', 'dist/scripts/config.js', 'dist/scripts/view.js'],
+        src: ['app/scripts/**/*.js', 'dist/scripts/config.js', 'dist/scripts/views.js'],
         dest: 'lib/konga.js'        
       },
       lib_vendor: {
