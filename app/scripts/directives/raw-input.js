@@ -762,23 +762,6 @@ angular.module('konga')
 	  				return true;
 	  			},
 	  			
-	  			valid_forbiddenCharacters: function() {
-	  				// On search mode we don't need validation
-	  				if(scope.mode === util.constants.SCOPE_SEARCH) {
-	  					return true;
-	  				}
-
-	  				if(scope.property.isId){
-		  				for(var i=0;i<scope.validation.forbiddenCharacters().length;i++){
-		  					var char = scope.validation.forbiddenCharacters()[i];
-		  					if(scope.value.text!=null && scope.value.text.indexOf(char) != -1){
-			  					return false;
-			  				}
-		  				}
-	  				}
-	  				
-	  				return true;
-	  			},
 	  			valid_minlength: function() {
 	  				// On search mode we don't need validation
 	  				if(scope.mode === util.constants.SCOPE_SEARCH) {

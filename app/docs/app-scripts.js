@@ -4637,23 +4637,6 @@ angular.module('konga')
 	  				return true;
 	  			},
 	  			
-	  			valid_forbiddenCharacters: function() {
-	  				// On search mode we don't need validation
-	  				if(scope.mode === util.constants.SCOPE_SEARCH) {
-	  					return true;
-	  				}
-
-	  				if(scope.property.isId){
-		  				for(var i=0;i<scope.validation.forbiddenCharacters().length;i++){
-		  					var char = scope.validation.forbiddenCharacters()[i];
-		  					if(scope.value.text!=null && scope.value.text.indexOf(char) != -1){
-			  					return false;
-			  				}
-		  				}
-	  				}
-	  				
-	  				return true;
-	  			},
 	  			valid_minlength: function() {
 	  				// On search mode we don't need validation
 	  				if(scope.mode === util.constants.SCOPE_SEARCH) {
@@ -10202,10 +10185,6 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t<span class=\"text-muted\">{{ property.hint | translate:extra }}</span>\n" +
     "\t\t</div>\n" +
     "\t\t<div ng-if=\"globalValidation\" ng-hide=\"config.init\" class=\"col-xs-12 col-sm-12 col-md-8 col-md-offset-6 col-lg-10 col-lg-offset-4\">\n" +
-    "\t\t\t<div class=\"validation-forbidden-characters text-danger\" ng-show=\"!validation.valid_forbiddenCharacters()\">\n" +
-    "\t\t\t\t<i class=\"glyphicon glyphicon-remove\"></i>\n" +
-    "\t\t\t\t{{ 'message.field-validation.forbidden-characters' | translate:extra }}\n" +
-    "\t\t\t</div>\n" +
     "\t\t\t<div class=\"validation-required text-danger\" ng-show=\"!validation.valid_required()\" >\n" +
     "\t\t\t\t<i class=\"glyphicon glyphicon-remove\"></i>\n" +
     "\t\t\t\t{{ 'message.field-validation.required' | translate:extra }}\n" +
