@@ -15,7 +15,7 @@
 
 	<div class="row margin-top-3em">
 		<div class="col-xs-12 col-sm-6 text-right">
-			<a class="btn btn-primary" href="https://github.com/pritok/konga/archive/master.zip">
+			<a class="btn btn-primary" href="/#/quick-start">
 				<i class="fa fa-rocket"></i>
 				Quick Start
 			</a>

@@ -3,7 +3,7 @@
  * @name index
  * @description
  *
- * <img src="/images/konga-logo.png" width="60%" class="center">
+ * <img src="/images/konga-logo.png" width="50%">
  *
  * # Konga's API Reference
  *
