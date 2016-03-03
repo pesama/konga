@@ -375,7 +375,7 @@ angular.module('konga')
  * 
  * This controller handles all search operations for konga {@link Standards.Forms `standards`}. It's opened once you request a new search form via {@link Standards.Operations#methods_openEntitySearch `openEntitySearch()`} operation. Once it opens it starts inner `directives` and engages all functionalities.
  *
- * <img src="http://static.konga.io/konga-entity-search-basic-flow.png" width="40%" class="center">
+ * <img src="/static/konga-entity-search-basic-flow.png" width="40%" class="center">
  *
  * The `EntitySearchController` relies on two main directives to render its contents: {@link konga.directive:searchPane `searchPane`} for managing the search form, and {@link konga.directive:resultTable `resultTable`} for rendering the results. Furthermore, it includes access to the {@link konga.controller:EntityUpdateController `EntityUpdateController`} to create new entities, if the metadata for the entity allows creation to user. 
  *
@@ -384,7 +384,7 @@ angular.module('konga')
  *
  * Once the `EntitySearchController` engages, it passes through several flows depending on the configuration, and on the user interaction with the available actions. Here you have an excerpt of the flows `EntitySearchController` moves through:
  *
- * <img src="http://static.konga.io/konga-search-flow.png" width="50%" class="center">
+ * <img src="/static/konga-search-flow.png" width="50%" class="center">
  *
  * ## Rendering
  *
@@ -944,7 +944,7 @@ angular.module('konga')
 
  * Responsible for handling updating - and creating - operations with entities, for Konga {@link Standards.Forms `standards`}. Same as happens with search, this controller it's normally initialised once user requests an {@link Standards.Operations#methods_openEntityUpdate `openEntityUpdate()`} - for updating an existing entity, or {@link Standards.Operations#methods_openEntityCreate `openEntityCreate()`} to create a new one.
  *
- * <img src="http://static.konga.io/konga-entity-update-basic-flow.png" width="40%" class="center">
+ * <img src="/static/konga-entity-update-basic-flow.png" width="40%" class="center">
  *
  * The `EntityUpdateController`'s responsibility is just for operation management, whilst the graphical - rendering, validating... - responsibility lays on the {@link konga.directive:updateForm `updateForm`} directive. 
  *
@@ -953,7 +953,7 @@ angular.module('konga')
  *
  * Once the `EntityUpdateController` engages, it passes through several flows depending on the configuration, and on the user interaction with the available actions. Here you have an excerpt of the flows `EntityUpdateController` moves through:
  *
- * <img src="http://static.konga.io/konga-update-flow.png" width="50%" class="center">
+ * <img src="/static/konga-update-flow.png" width="50%" class="center">
  *
  * ## Rendering
  *
@@ -3915,7 +3915,7 @@ angular.module('konga')
  *
  * This is a directive for rendering a field into a form, using the {@link Metadata.Field field's metadata} defined. The `rawInput` does not have an appeareance itself, instead is `raw`, allowing multiple views - i.e. the specific field types - to use its features, yet keeping a particular appeareance defined within the view itself.
  *
- * <img src="http://static.konga.io/raw-input-init.png" width="50%" class="center">
+ * <img src="/static/raw-input-init.png" width="50%" class="center">
  *
  * # Init/Update
  *
@@ -3925,7 +3925,7 @@ angular.module('konga')
  * 
  * Once the values are loaded and the configuration interpreted, the `rawInput` proceeds to render your field. Depending on the `fieldType` assigned, the `rawInput` will adopt different appeareances.
  *
- * <img src="http://static.konga.io/raw-input-rendering.png" width="60%" class="center">
+ * <img src="/static/raw-input-rendering.png" width="60%" class="center">
  *
  * ## Complex `fieldTypes`
  *
@@ -3941,7 +3941,7 @@ angular.module('konga')
  * 
  * `rawInput` has a built-in feature to detect changes on your fields, and apply field mapping immediately. Yes, this is a native feature of Angular - bi-directional binding on inputs - but it's normally applied to plain inputs. `rawInput`'s  value `$watcher` initialise different `$watchers` depending on {@link Metadata.Field field's metadata}, so you always get notified when the real value needed for the entity is assigned to the `rawInput`. This allows you to render complex inputs who require an inner process to select the items - such as {@link Metadata.FieldTypes#properties_SELECT `select`} or {@link Metadata.FieldTypes#properties_PICK_LIST `pick list`} inputs. The value `$watcher` also handles casting, to give you the format and data type needed for the field.
  *
- * <img src="http://static.konga.io/raw-input-watcher.png" width="60%" class="center">
+ * <img src="/static/raw-input-watcher.png" width="60%" class="center">
  *
  * # Data validation
  *
@@ -5639,7 +5639,7 @@ angular.module('konga')
 
  The `resulTable` is in change of result rendering, into an interactive data table. It generates a column layout using the configuration set up in the {@link Metadata.Field `fields' metadata`}. 
 
- <img src="http://static.konga.io/result-table-init.png" width="50%" class="center">
+ <img src="/static/result-table-init.png" width="50%" class="center">
 
 Fields and categories' metadata are fetched, to determine the column layout to generate. If you configured any field to be rendered as {@link Metadata.FieldTypes#properties_COMPLEX `complex`}, another process is needed, who splits up your root field into all the inner fields you need for your layout. 
 
@@ -5941,7 +5941,7 @@ angular.module('konga')
  * 
  * The `searchPane` is in charge of all rendering operations of the search forms, along with the communication with the controller for upper-level tasks, using the info received by lower-level elements - the {@link konga.directive:rawInput `rawInputs`}.
  *
- * <img src="http://static.konga.io/search-pane-basic-flow.png" width="80%" class="center">
+ * <img src="/static/search-pane-basic-flow.png" width="80%" class="center">
 
  # Process
  * 
@@ -5959,7 +5959,7 @@ angular.module('konga')
  *
  * The selected view will be provided with the fields and categories fetched on earlier stages, so they could fully build the layout the form will have.
 
- <img src="http://static.konga.io/search-pane-formtype.png" width="50%" class="center">
+ <img src="/static/search-pane-formtype.png" width="50%" class="center">
  *
  * There's more detailed documentation about form types, along with examples, on the {@link Metadata.FormTypes `FormType`} documentation.
  
@@ -6809,7 +6809,7 @@ angular.module('konga')
  *
  * Handles rendering and operations of updation/creation forms. It connects to the {@link konga.controller:EntityUpdateController `EntityUpdateController`} through several operations for field mapping, change notifictions, etcetera.
 
-<img src="http://static.konga.io/update-form-basic-flow.png" width="80%" class="center">
+<img src="/static/update-form-basic-flow.png" width="80%" class="center">
 
 The first operation is to receive fields, categories and fieldSets, that are used to render the update layout. These elements are provided to the view determined on the {@link Metadata.Field field's `formType`}.
 
@@ -8522,6 +8522,47 @@ angular.module('konga')
  */
 angular.module('konga')
   .value('kongaConfig', {});
+
+'use strict';
+
+/**
+ * @ngdoc service
+ * @name kongaApp.konga
+ * @description
+ * # konga
+ * Service in the kongaApp.
+ */
+angular.module('kongaApp')
+  .service('konga', ['kongaConfig', 'mapper', 'util', 'common', '$rootScope', 'userData', function (konga, kongaConfig, mapper, util, common, $rootScope, userData) {
+    
+    this.config = function(key, value) {
+      if(value !== undefined) {
+        kongaConfig[key] = value;
+      }
+
+      return kongaConfig[key];
+    };
+
+    this.viewMapper = function(map, view) {
+      if(view !== undefined) {
+        mapper[map] = view;
+      }
+
+      return mapper[map];
+    };
+
+    this.util = util;
+
+    this.storage = common;
+
+    this.init = function(metadata) {
+      $rootScope.metadata = metadata;
+      util.init(metadata);
+      common.store('metadata', metadata);
+    };
+    };
+
+  }]);
 
 'use strict';
 

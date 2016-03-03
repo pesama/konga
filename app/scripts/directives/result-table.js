@@ -9,7 +9,7 @@
 
  The `resulTable` is in change of result rendering, into an interactive data table. It generates a column layout using the configuration set up in the {@link Metadata.Field `fields' metadata`}. 
 
- <img src="http://static.konga.io/result-table-init.png" width="50%" class="center">
+ <img src="/static/result-table-init.png" width="50%" class="center">
 
 Fields and categories' metadata are fetched, to determine the column layout to generate. If you configured any field to be rendered as {@link Metadata.FieldTypes#properties_COMPLEX `complex`}, another process is needed, who splits up your root field into all the inner fields you need for your layout. 
 

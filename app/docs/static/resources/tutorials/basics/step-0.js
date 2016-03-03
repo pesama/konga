@@ -1,7 +1,6 @@
 /**
  * @ngdoc object
- * @propertyOf Tutorials.Basics
- * @name Preparation
+ * @name Konga_101.0_-_Preparation
  * @description
  * 
  * # Step 1: Preparation
@@ -21,7 +20,7 @@
  *
  * Under your project structure you will see many folders. One `metadata` folder, that contains the {@link https://github.com/pritok/konga-metadata `konga-metadata`} project to start creating your models, and the other folders contain a brand new - scaffolded with {@link http://yeoman.io/ `Yeoman`} - Angular application, with `konga` as `bower dependency`. All the code for the app is under `/app`.
  *
- * <img src="http://static.konga.io/konga-tutorial-basics-step1-folders.png" width="30%" class="center">
+ * <img src="/static/konga-tutorial-basics-step1-folders.png" width="30%" class="center">
  *
  * ## Install dependencies
  *
@@ -53,7 +52,7 @@
  *
  * This is the appeareance of your app right now:
  *
- * <img src="http://static.konga.io/konga-tutorial-basics-boilerplate.png" width="40%" class="center">
+ * <img src="/static/konga-tutorial-basics-boilerplate.png" width="40%" class="center">
  * 
  * ## Next step
  *

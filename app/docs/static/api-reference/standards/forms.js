@@ -9,7 +9,7 @@ Forms are the way konga renders entities. There is a form model for each {@link 
 
 {@link Metadata.FormScopes#properties_SEARCH Search} and {@link Metadata.FormScopes#properties_RESULTS Results} scopes are bound together into a same view, providing you direct filtering and result-list rendering in the same layout.
 
-<img src="http://static.konga.io/konga-search-form.png" width="60%" class="center" >
+<img src="/static/konga-search-form.png" width="60%" class="center" >
 
 ## Structure
 
@@ -60,7 +60,7 @@ At the bottom-right corner of the image there's an **add** button, whose action 
 
 Update forms receives a single entity, or it's ID, and renders a form with all the fields marked to be shown in update. Creation is the same as edition, but instead of querying for an element, a new empty entity is created using the {@link konga.scaffold `scaffolding` system}.
 
-<img class="center" src="http://static.konga.io/konga-update-form.png" width="60%">
+<img class="center" src="/static/konga-update-form.png" width="60%">
 
 On the image you can see all fields rendered in cascade, along with three buttons on the bottom. These buttons are for **`save`**, **`cancel`**, and **`delete`**.
 
@@ -90,19 +90,19 @@ TODO
 
 Once a form is loaded, the responsabilities cascades down so each part have its particular duties
 
-<img src="http://static.konga.io/konga-form-chain-of-responsibility.png" width="60%" class="center">
+<img src="/static/konga-form-chain-of-responsibility.png" width="60%" class="center">
 
 ## Scope manangement
 
 The root responsibility level is assigned to the controllers - i.e. {@link konga.controller:EntitySearchController `EntitySearchController`} and {@link konga.controller:EntityUpdateController `EntityUpdateController`}. They initialise all the required properties to start generating and handling the forms.
 
-<img src="http://static.konga.io/konga-form-chain-controllers.png" width="50%" class="center">	
+<img src="/static/konga-form-chain-controllers.png" width="50%" class="center">	
 
 ## Form management
 
 Once controllers have initialise everything, the responsibility chain moves forward to the next level: generating the forms. These tasks are dealt with by the form directives - {@link konga.directive:searchPane `searchPane`}, {@link konga.directive:resultTable `resultTable`} and {@link konga.directive:updateForm `updateForm`}. 
 
-<img src="http://static.konga.io/konga-form-chain-directives.png" width="50%" class="center">
+<img src="/static/konga-form-chain-directives.png" width="50%" class="center">
 
 The directives receive the fields to render and the entity configuration, and from there it determines the {@link Metadata.FormTypes form type} to render, and other form {@link Metadata.ConfiguationParam configuration parameters}. Using that information it builds up a view, and initialises all the fields, letting them handle their particularities.
 

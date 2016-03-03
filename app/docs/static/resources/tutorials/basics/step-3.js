@@ -1,7 +1,6 @@
 /**
  * @ngdoc object
- * @propertyOf Tutorials.Basics
- * @name Refining_metadata
+ * @name Konga_101.3_-_Refining_metadata
  * @description
  *
  * # Metadata definitions

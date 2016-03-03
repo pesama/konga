@@ -108,6 +108,10 @@ module.exports = function (grunt) {
                 '/bower_components',
                 connect.static('./bower_components')
               ),
+              connect().use(
+                '/static',
+                connect.static('./static')
+              ),
               connect.static('./dist'),
               connect().use(
                 '/docs',
@@ -616,6 +620,11 @@ module.exports = function (grunt) {
             cwd: 'app',
             src: '**/images/**',
             dest: 'docs/'
+          },
+          {
+            expand: true,
+            src: 'static/**',
+            dest: 'docs'
           }
         ]
       }
@@ -718,6 +727,7 @@ module.exports = function (grunt) {
         ]
       },
       'resources': {
+        api: true,
         title: 'Resources',
         src: [
           'app/docs/static/resources/**/*.js'

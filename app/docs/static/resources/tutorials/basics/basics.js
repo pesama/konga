@@ -1,7 +1,6 @@
 /**
  * @ngdoc overview
- * @name Tutorials.Basics
- * @module Basics
+ * @name Konga_101
  * @description 
  *
  * # Konga basics
@@ -12,7 +11,7 @@
  *
  * In this tutorial we will cover the creation of a `mini` cloud console. We will craft rich forms and interactions for `Organisations`, `Applications` and `Developers`.
  *
- * <img src="http://static.konga.io/tutorial-basics-datamodel.png" width="40%" class="center">
+ * <img src="/static/tutorial-basics-datamodel.png" width="40%" class="center">
  *
  * * **Organisations:** An organisation represents a company - or any other sort of group association - that wants to build and deploy apps within our cloud.
  *

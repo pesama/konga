@@ -147,7 +147,8 @@ ul.breadcrumb {
 }
 
 .breadcrumb>li+li:before {
-	content: none;
+	content: "" !important;
+    display: none;
 }
 
 .no-padding {
@@ -246,6 +247,7 @@ li.api-list-item i {
 
 h2.welcome {
     font-size: 3em;
+    white-space: nowrap;
 }
 
 div > img {
@@ -348,6 +350,7 @@ body {
 
 footer {
     padding: 3em;
+    padding-bottom: 0;
 }
 
 code {
@@ -357,3 +360,7 @@ code {
 .page-clear {
     clear: both;
 }
+
+/*i.angular {
+    background: b
+}*/

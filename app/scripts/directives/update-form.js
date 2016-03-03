@@ -7,7 +7,7 @@
  *
  * Handles rendering and operations of updation/creation forms. It connects to the {@link konga.controller:EntityUpdateController `EntityUpdateController`} through several operations for field mapping, change notifictions, etcetera.
 
-<img src="http://static.konga.io/update-form-basic-flow.png" width="80%" class="center">
+<img src="/static/update-form-basic-flow.png" width="80%" class="center">
 
 The first operation is to receive fields, categories and fieldSets, that are used to render the update layout. These elements are provided to the view determined on the {@link Metadata.Field field's `formType`}.
 

@@ -7,7 +7,7 @@
  * 
  * This controller handles all search operations for konga {@link Standards.Forms `standards`}. It's opened once you request a new search form via {@link Standards.Operations#methods_openEntitySearch `openEntitySearch()`} operation. Once it opens it starts inner `directives` and engages all functionalities.
  *
- * <img src="http://static.konga.io/konga-entity-search-basic-flow.png" width="40%" class="center">
+ * <img src="/static/konga-entity-search-basic-flow.png" width="40%" class="center">
  *
  * The `EntitySearchController` relies on two main directives to render its contents: {@link konga.directive:searchPane `searchPane`} for managing the search form, and {@link konga.directive:resultTable `resultTable`} for rendering the results. Furthermore, it includes access to the {@link konga.controller:EntityUpdateController `EntityUpdateController`} to create new entities, if the metadata for the entity allows creation to user. 
  *
@@ -16,7 +16,7 @@
  *
  * Once the `EntitySearchController` engages, it passes through several flows depending on the configuration, and on the user interaction with the available actions. Here you have an excerpt of the flows `EntitySearchController` moves through:
  *
- * <img src="http://static.konga.io/konga-search-flow.png" width="50%" class="center">
+ * <img src="/static/konga-search-flow.png" width="50%" class="center">
  *
  * ## Rendering
  *

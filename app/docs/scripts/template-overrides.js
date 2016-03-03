@@ -263,7 +263,9 @@
 					'Customisation': 5,
 					'konga': 6,
 					
-					'Konga basics': 0
+					'Video_tutorials': 100,
+					'Konga_101': 101,
+					'Guides': 200
 				}
 
 				var sorted = input.sort(function(a, b) {
@@ -424,28 +426,9 @@
 				return input;
 			}	
 		})
-		.filter('sortedPages', function() {
+		.filter('underSpaces', function() {
 			return function(input) {
-				var orders = {
-
-					// konga controllers
-					'Basics': 0,
-					'Basics.Preparation': 1,
-					'Basics.Application_Basic_Metadata': 2,
-					'Basics.Injecting_metadata': 3,
-					'Refining_metadata': 4,
-					'Basics.Dealing_with_permissions': 5
-				}
-
-				var sorted = input.sort(function(a, b) {
-					return orders[a.shortName] - orders[b.shortName];
-				});
-
-				for(var i = 0; i < sorted.length; i++) {
-					input[i] = sorted[i];
-				}
-
-				return input;
-			}	
+				return input.replace(/\_/g, ' ');
+			}
 		});
 })();

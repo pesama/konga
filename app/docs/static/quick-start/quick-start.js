@@ -11,7 +11,13 @@
 
 # Quick start
 
-Hi! Welcome to Konga Quick Start. These easy steps will help you setup a working konga environment, either in a new blank app, or in your already created awesome app. Let's get started.
+Hi! Welcome to Konga's Quick Start. On these easy steps, you will see how to create a Konga application, interact with the metadata, and take a walk-through Konga's very basics. 
+
+## Requirements
+
+Konga runs on top of {@link https://angularjs.org `AngularJS`}, so some Angular knowledge will ease you considerably when dealing with this quick start.
+
+The dependency management is handled using {@link https://www.npmjs.com/ `npm`}, so you need to get it installed in order to successfully get a Konga app running. Optionnally, you could also use {@link http://bower.io/ `bower`} to handle _front-end_ dependencies. For building the app, and for launching a development environment, {@link http://gruntjs.com/ `Grunt`} task runner is used. And last, but not least, Konga uses {@link http://yeoman.io/ `yeoman`} to scaffold your apps.
 
 ## Installation
 

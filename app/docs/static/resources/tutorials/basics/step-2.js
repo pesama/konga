@@ -1,7 +1,6 @@
 /**
  * @ngdoc object
- * @propertyOf Tutorials.Basics
- * @name Injecting_metadata
+ * @name Konga_101.2_-_Injecting_metadata
  * @description
  * 
  * # Metadata injection
@@ -119,7 +118,7 @@ angular
  *
  * When you launch your application now, you should see a window like this:
  *
- * <img src="http://static.konga.io/konga-tutorial-basics-metadatainjection-preview.png" width="50%" class="center">
+ * <img src="/static/konga-tutorial-basics-metadatainjection-preview.png" width="50%" class="center">
  * 
  * ## Refining your metadata
  *

@@ -7,8 +7,8 @@
 
 Metadata objects are formal representations of your data model. Konga uses this model to know which entities you need to handle, and building rich, contextual forms for you to do it. Metadata definitions include data structure and validation, data types, field linking and relationships, constraints, configuration parameters, operations allowed and automated tasks. With only a metadata object you can create a fully working app, ready to be launched and tested. {@link http://ltp.konga.io Try it}.
 
-<a href="http://static.konga.io/metadata-diagram.png" target="_blank">
-	<img src="http://static.konga.io/metadata-diagram.png" width="80%" class="center">
+<a href="/static/metadata-diagram.png" target="_blank">
+	<img src="/static/metadata-diagram.png" width="80%" class="center">
 </a>
 
 This is the full metadata information you can provide within your metadata definition. Let's take a look at everything it contains:

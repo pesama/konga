@@ -9,7 +9,7 @@
  * 
  * The `searchPane` is in charge of all rendering operations of the search forms, along with the communication with the controller for upper-level tasks, using the info received by lower-level elements - the {@link konga.directive:rawInput `rawInputs`}.
  *
- * <img src="http://static.konga.io/search-pane-basic-flow.png" width="80%" class="center">
+ * <img src="/static/search-pane-basic-flow.png" width="80%" class="center">
 
  # Process
  * 
@@ -27,7 +27,7 @@
  *
  * The selected view will be provided with the fields and categories fetched on earlier stages, so they could fully build the layout the form will have.
 
- <img src="http://static.konga.io/search-pane-formtype.png" width="50%" class="center">
+ <img src="/static/search-pane-formtype.png" width="50%" class="center">
  *
  * There's more detailed documentation about form types, along with examples, on the {@link Metadata.FormTypes `FormType`} documentation.
  

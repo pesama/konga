@@ -9,7 +9,7 @@
  *
  * This is a directive for rendering a field into a form, using the {@link Metadata.Field field's metadata} defined. The `rawInput` does not have an appeareance itself, instead is `raw`, allowing multiple views - i.e. the specific field types - to use its features, yet keeping a particular appeareance defined within the view itself.
  *
- * <img src="http://static.konga.io/raw-input-init.png" width="50%" class="center">
+ * <img src="/static/raw-input-init.png" width="50%" class="center">
  *
  * # Init/Update
  *
@@ -19,7 +19,7 @@
  * 
  * Once the values are loaded and the configuration interpreted, the `rawInput` proceeds to render your field. Depending on the `fieldType` assigned, the `rawInput` will adopt different appeareances.
  *
- * <img src="http://static.konga.io/raw-input-rendering.png" width="60%" class="center">
+ * <img src="/static/raw-input-rendering.png" width="60%" class="center">
  *
  * ## Complex `fieldTypes`
  *
@@ -35,7 +35,7 @@
  * 
  * `rawInput` has a built-in feature to detect changes on your fields, and apply field mapping immediately. Yes, this is a native feature of Angular - bi-directional binding on inputs - but it's normally applied to plain inputs. `rawInput`'s  value `$watcher` initialise different `$watchers` depending on {@link Metadata.Field field's metadata}, so you always get notified when the real value needed for the entity is assigned to the `rawInput`. This allows you to render complex inputs who require an inner process to select the items - such as {@link Metadata.FieldTypes#properties_SELECT `select`} or {@link Metadata.FieldTypes#properties_PICK_LIST `pick list`} inputs. The value `$watcher` also handles casting, to give you the format and data type needed for the field.
  *
- * <img src="http://static.konga.io/raw-input-watcher.png" width="60%" class="center">
+ * <img src="/static/raw-input-watcher.png" width="60%" class="center">
  *
  * # Data validation
  *

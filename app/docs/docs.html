@@ -9,7 +9,7 @@
   <meta name="fragment" content="!">
   <title ng-bind-template="<%= title || 'Doc' %>: {{partialTitle}}">Docs</title>
 
-  <link rel="shortcut icon" href="http://static.konga.io/konga-favicon.png" /> 
+  <link rel="shortcut icon" href="/static/konga-favicon.png" /> 
 
   <script type="text/javascript">
     // dynamically add base tag as well as css and javascript files.
@@ -158,7 +158,7 @@
         </h1>
 
         <ul class="nav nav-list" ng-show="pages.length">
-          <li ng-repeat="page in (pages | sortedPages) track by page.url" ng-class="navClass(page)" class="api-list-item expand">
+          <li ng-repeat="page in (pages) track by page.url" ng-class="navClass(page)" class="api-list-item expand">
             <a href="{{page.url}}" tabindex="2">{{ page.shortName }}</a>
           </li>
         </ul>
@@ -168,7 +168,7 @@
             <a class="guide">
               <i class="fa" ng-class="module | moduleIcon"></i>
             </a>
-            <a class="code" href="{{module.url}}" title="{{module.name}}">{{module.name}}</a>
+            <a class="code" href="{{module.url}}" title="{{module.name}}">{{ module.name | underSpaces }}</a>
           </li>
 
           <li ng-repeat="page in module.others track by page.url" ng-class="navClass(page)" class="api-list-item expand">
@@ -215,7 +215,7 @@
             <a ng-show="service.provider" class="pull-right" href="{{service.provider.url}}" tabindex="2"><i class="icon-cog"></i></a>
             <a href="{{service.instance ? service.instance.url : service.provider.url}}" tabindex="2">
               <i class="fa" ng-class="service | serviceIcon"></i>
-              {{service.name}}
+              {{ service.name | underSpaces }}
             </a>
           </li>
 

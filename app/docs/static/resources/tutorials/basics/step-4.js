@@ -1,7 +1,6 @@
 /**
  * @ngdoc object
- * @propertyOf Tutorials.Basics
- * @name Dealing_with_permissions
+ * @name Konga_101.4_-_Dealing_with_permissions
  * @description
  *
  * # Permission management

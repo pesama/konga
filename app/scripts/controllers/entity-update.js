@@ -8,7 +8,7 @@
 
  * Responsible for handling updating - and creating - operations with entities, for Konga {@link Standards.Forms `standards`}. Same as happens with search, this controller it's normally initialised once user requests an {@link Standards.Operations#methods_openEntityUpdate `openEntityUpdate()`} - for updating an existing entity, or {@link Standards.Operations#methods_openEntityCreate `openEntityCreate()`} to create a new one.
  *
- * <img src="http://static.konga.io/konga-entity-update-basic-flow.png" width="40%" class="center">
+ * <img src="/static/konga-entity-update-basic-flow.png" width="40%" class="center">
  *
  * The `EntityUpdateController`'s responsibility is just for operation management, whilst the graphical - rendering, validating... - responsibility lays on the {@link konga.directive:updateForm `updateForm`} directive. 
  *
@@ -17,7 +17,7 @@
  *
  * Once the `EntityUpdateController` engages, it passes through several flows depending on the configuration, and on the user interaction with the available actions. Here you have an excerpt of the flows `EntityUpdateController` moves through:
  *
- * <img src="http://static.konga.io/konga-update-flow.png" width="50%" class="center">
+ * <img src="/static/konga-update-flow.png" width="50%" class="center">
  *
  * ## Rendering
  *

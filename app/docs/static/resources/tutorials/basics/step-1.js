@@ -1,7 +1,6 @@
 /**
  * @ngdoc object
- * @propertyOf Tutorials.Basics
- * @name Application_Basic_Metadata
+ * @name Konga_101.1_-_Application_Basic_Metadata
  * @description
  *
  * # Metadata generation
@@ -15,7 +14,7 @@ git checkout -f step-1
  *
  * ## Creating the Metadata classes 
  *
- * <img src="http://static.konga.io/tutorial-basics-datamodel.png" width="40%" class="center">
+ * <img src="/static/tutorial-basics-datamodel.png" width="40%" class="center">
  *
  * Here you have the basic model we will deal with for now. We basically need to create three Java classes - i.e. `Organisations`, `Applications` and `Developers` - and set up some metadata for Konga. Let's run:
  *
