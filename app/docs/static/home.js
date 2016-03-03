@@ -3,35 +3,41 @@
  * @name index
  * @description
 
-<div class="row margin-top-3em">
-	<div class="col-xs-12 text-center">
-		<img src="http://konga.io/images/konga-logo.png" width="600" /> 
-		<br />
+<div class="container-welcome margin-top-3em">
+	<div class="row margin-top-3em">
+		<div class="col-xs-12 text-center">
+			<img src="/images/konga-logo.png" width="50%" /> 
+			<br />
 
-		<h1 class="welcome">Build codeless form-based apps using metadata.</h1>
-	</div>
-</div>
-
-<div class="row paragraph">
-	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 text-center">
-		<a class="btn btn-primary" href="https://github.com/pritok/konga">
-			<i class="fa fa-github"></i>
-			Fork on GitHub
-		</a>
-	</div>
-	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 text-center">
-		<a class="btn btn-success" href="https://github.com/pritok/konga/archive/master.zip">
-			<i class="fa fa-rocket"></i>
-			Quick Start
-		</a>
-	</div>
-	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center">
-		<a class="btn btn-danger" href="/#/api/">
-			<i class="fa fa-book"></i>
-			API Reference
-		</a>
+			<h1 class="welcome">Build codeless form-based apps using metadata.</h1>
+		</div>
 	</div>
 
+	<div class="row margin-top-3em">
+		<div class="col-xs-12 col-sm-6 text-right">
+			<a class="btn btn-primary" href="https://github.com/pritok/konga/archive/master.zip">
+				<i class="fa fa-rocket"></i>
+				Quick Start
+			</a>
+		</div>
+		<div class="col-xs-12 col-sm-6">
+			<a class="btn btn-danger" href="/#/api/">
+				<i class="fa fa-book"></i>
+				API Reference
+			</a>
+		</div>
+	</div>
+
+	<div class="row margin-top-3em">
+		<div class="col-xs-12 text-center">
+			<a class="btn btn-default btn-github" href="https://github.com/pritok/konga">
+				<i class="fa fa-github"></i>
+				Fork on GitHub
+				<br />
+				<div class="muted">v1.2.0</div>
+			</a>
+		</div>
+	</div>
 </div>
 
 <div class="spacer">&nbsp;</div>

@@ -246,7 +246,7 @@ li.api-list-item i {
 }
 
 h2.welcome {
-    font-size: 3em;
+    font-size: 2em;
     white-space: nowrap;
 }
 
@@ -364,3 +364,15 @@ code {
 /*i.angular {
     background: b
 }*/
+
+.btn-success {
+    background: #9DC64F !important;
+}
+
+.btn-github {
+    font-size: 110% !important;
+}
+
+.btn-github i {
+    font-size: 2em !important;
+}

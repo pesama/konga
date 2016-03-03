@@ -214,7 +214,18 @@
 	  	$rootScope.metadata = metadata;
 	  }])
 
+	
+
 	angular.module('docsApp')
+		.controller('MenuController', ['$scope', function($scope) {
+			$scope.showMenu = function() {
+				for(var i = 0; i < $scope.arraySections.length; i++) {
+					if($scope.isActivePath($scope.arraySections[i].url)) {
+						return $scope.arraySections[i].menu;
+					}
+				}
+			}
+		}])
 		.filter('sectionSorter', function() {
 			return function(input) {
 				var order = ['home', 'quick-start', 'api', 'resources'];

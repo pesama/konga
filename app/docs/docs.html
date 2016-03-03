@@ -133,7 +133,7 @@
             </form>
           </div>
           <ul class="nav" ng-init="arraySections=(sections | sectionSorter)">
-            <li ng-repeat="section in arraySections | orderBy:'+order'" ng-class="{active: isActivePath(section.url)}" class="{{ section.background }}" ng-init="$parent.showMenu = isActivePath(section.url) ? section.menu : $parent.showMenu">
+            <li ng-repeat="section in arraySections | orderBy:'+order'" ng-class="{active: isActivePath(section.url)}" class="{{ section.background }}">
               <a ng-href="{{ section.url }}" ng-click="$parent.showMenu=section.menu">
                 <i class="{{ section.icon }}"></i> {{ section.name }}
               </a>
@@ -148,11 +148,11 @@
   <div role="main" class="wrapper">
     <div class="row clear-navbar"></div>
 
-    <div class="row">
-      <div class="menu hidden-xs col-sm-4 col-md-4 col-lg-3 no-padding" ng-if="showMenu">
+    <div class="row" ng-controller="MenuController">
+      <div class="menu hidden-xs col-sm-4 col-md-4 col-lg-3 no-padding" ng-if="showMenu()">
         <div class="spacer"></div>
 
-        <h1 ng-if="section.url == '/api'">
+        <h1 ng-if="!1">
           <i class="fa fa-map-signs"></i>
           v1.2.0
         </h1>
@@ -236,7 +236,7 @@
 
         </ul>
       </div>
-      <div class="col-xs-12 col-sm-8 col-md-10 col-lg-9" ng-class="{ 'col-sm-offset-2 col-md-offset-1 col-lg-offset-1_5': !showMenu, '': showMenu }">
+      <div class="col-xs-12 col-sm-8 col-md-10 col-lg-9" ng-class="{ 'col-sm-offset-2 col-md-offset-1 col-lg-offset-1_5': !showMenu(), '': showMenu() }">
 
         <ul class="breadcrumb" ng-if="showMenu">
           <li ng-repeat="crumb in breadcrumb">

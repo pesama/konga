@@ -117,6 +117,10 @@ module.exports = function (grunt) {
                 '/docs',
                 connect.static('./docs')
               ),
+              connect().use(
+                '/images',
+                connect.static('./app/images')
+              ),
               connect.static(appConfig.app),
               function (req, res, next) {
                 // res.setHeader('Access-Control-Allow-Credentials', true);
@@ -712,7 +716,7 @@ module.exports = function (grunt) {
 
         ],
         image: 'http://konga.io/images/konga-logo-white.png',
-        imageLink: 'http://konga.io/'
+        imageLink: '/'
       },
       home: {
         title: 'Home',

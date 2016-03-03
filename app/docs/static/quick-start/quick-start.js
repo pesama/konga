@@ -2,152 +2,167 @@
  * @ngdoc overview
  * @name index
  * @description 
-
-<div class="row margin-top-3em">
-	<div class="col-xs-12 text-center">
-		<img src="http://konga.io/images/konga-logo.png" width="600" /> 
-	</div>
-</div>
-
-# Quick start
-
-Hi! Welcome to Konga's Quick Start. On these easy steps, you will see how to create a Konga application, interact with the metadata, and take a walk-through Konga's very basics. 
-
-## Requirements
-
-Konga runs on top of {@link https://angularjs.org `AngularJS`}, so some Angular knowledge will ease you considerably when dealing with this quick start.
-
-The dependency management is handled using {@link https://www.npmjs.com/ `npm`}, so you need to get it installed in order to successfully get a Konga app running. Optionnally, you could also use {@link http://bower.io/ `bower`} to handle _front-end_ dependencies. For building the app, and for launching a development environment, {@link http://gruntjs.com/ `Grunt`} task runner is used. And last, but not least, Konga uses {@link http://yeoman.io/ `yeoman`} to scaffold your apps.
-
-## Installation
-
-### From scratch
-
-For installing Konga from scratch with a brand new app, you can leverage {@link generators.yeoman Konga's Yeoman Generator}, that will build a fully working webapp with all konga features ready.
-
-Install `yo`, `generator-konga`:
-```
-npm install -g yo generator-konga
-```
-
-Then run Konga's generator on your workspace path:
-```
-yo konga konga-quick-start
-```
-
-See the {@link generators.yeoman Generator documentation} for all the details and features it includes.
-
-If you created an app using this method, you have all below steps done. Just launch your app with:
-```
+ *
+ *<div class="row margin-top-3em">
+ *	<div class="col-xs-12 text-center">
+ *		<img src="/images/konga-logo.png" width="50%" /> 
+ *	</div>
+ *</div>
+ *
+ * # Quick start
+ *
+ * Hi! Welcome to Konga's Quick Start. On these easy steps, you will see how to create a Konga application, interact with the metadata, and take a walk-through Konga's very basics. 
+ *
+ * ## The very first app
+ *
+ * We will build our very first app using Konga. The purpose of the app will be to manage a fake API - i.e. {@link http://jsonplaceholder.typicode.com/ `http://jsonplaceholder.typicode.com/`}, using some of the entities it offers:
+ *
+ * <img src="/static/quickstart-model-initial.png" width="50%" class="center">
+ *
+ * ## Download the project
+ *
+ * <a class="btn btn-primary" href="https://github.com/pritok/konga-quickstart/archive/master.zip" target="_blank">
+ * 	<i class="fa fa-download"></i> Download as zip
+ * </a>
+ * <a class="btn btn-success" href="https://github.com/pritok/konga-quickstart/archive/master.zip" target="_blank">
+ * 	<i class="fa fa-github"></i> Fork on GitHub
+ * </a>
+ * 
+ * <i class="fa fa-github"></i> Clone on Github
+ * ```
+git clone https://github.com/pritok/konga-quickstart
+ * ``` 
+ *
+ * ## Installing dependencies
+ *
+ * <span class="text-warning"><i class="fa fa-warning"></i> You need to get **{@link https://npmjs.org/ `npm`}**, {@link http://gruntjs.com `grunt`} and **{@link http://bower.io/ `bower`}** installed to launch this application.</span>
+ *
+ * We need to install dependencies before launching our application. Open a terminal and go to the project's root, and run this:
+ * 
+ * ```
+npm install
+bower install
+ * ```
+ *
+ * ## Running the app
+ *
+ * Once you have your dependencies installed, on a terminal at the root of the project, type:
+ *
+ * ```
 grunt serve
-```
-
-And see what you've got at `http://localhost:9010/`. When you are ready to move forward with in-depth konga readings, you can take the {@link quick-start.tutorial tutorial}.
-
-### Existing app
-
-Konga is both published in both `bower` (i.e. `konga`) and `npm` (i.e. `ui.konga`) registries. Using npm you can do the following:
-
-```
-npm install ui.konga --save
-```
-
-Then import konga in your app:
-```
-import konga from "ui.konga";
-```
-
-And include the konga stylesheet, placed under `lib/konga.[css|scss]`.
-
-Bower installation uses a Grunt configuration (Gulp version comming) to inject everything required, and other handy stuff (create and manage `metadata`, customize the app in the command line, ...). All of these features interact directly with Yeoman's Generator. {@link generators.yeoman Read the docs} for more details.
-
-
-## Metadata
-
-Konga relies on metadata objects to execute most part of its features. Hence, you need to provide Konga with a metadata object defining your app. We have provide you with a test metadata object to follow this quick start right away. However, if you want to define directly a meaningful metadata object for your real purpose, go ahead and pick up your favorite {@link generators generator}. Then you can come back here and keep on following the quick start.
-
-Sample metadata object:
-<pre class="preview">
-{"name":"Konga Live-Testing platform","entities":[{"classFor":"io.konga.ltp.metadata.models.Partner","name":"partner","superClass":null,"label":"entity.partner","shortLabel":null,"access":"RESTRICTED","stereotypes":[],"searchable":"","createable":"","editable":"","deleteable":"","searchType":"CASCADE","searchStyle":"STANDARD","resultsType":"CASCADE","resultsStyle":"STANDARD","detailsType":"CASCADE","detailsStyle":"STANDARD","updateType":"TABBED","updateStyle":"HORIZONTAL","template":"","apiName":null,"apiPath":"partners","categories":[],"security":{"permissions":null,"roles":null},"fields":[{"name":"id","label":"field.partner.id","shortLabel":null,"type":{"type":"NUMBER","complexType":null,"filter":null,"query":null,"list":null,"from":null},"access":"PUBLIC","isId":true,"isKey":true,"isLabel":false,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":null,"fields":null,"configuration":null},"editable":{"value":null,"fields":null,"configuration":null},"showInResults":{"value":null,"fields":null,"configuration":null},"showInUpdate":{"value":null,"fields":null,"configuration":null},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":[],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"PLAIN","configuration":null},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":false,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"partner","sortable":true},{"name":"imageUrl","label":"field.partner.image-url","shortLabel":" ","type":{"type":"STRING","complexType":null,"filter":null,"query":null,"list":null,"from":null},"access":"PUBLIC","isId":false,"isKey":false,"isLabel":false,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":null,"fields":null,"configuration":null},"editable":{"value":"","fields":[],"configuration":null},"showInResults":{"value":"","fields":[],"configuration":[{"key":"USE_SHORT_LABEL","value":"true"}]},"showInUpdate":{"value":"","fields":[],"configuration":[]},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":["category.partner.general"],"apiName":null,"fieldType":{"search":"PLAIN","results":"IMAGE","details":"PLAIN","update":"PLAIN","configuration":[]},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":false,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"partner","sortable":false},{"name":"name","label":"field.partner.name","shortLabel":null,"type":{"type":"STRING","complexType":null,"filter":null,"query":null,"list":null,"from":null},"access":"PUBLIC","isId":false,"isKey":false,"isLabel":true,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":"","fields":[],"configuration":[]},"editable":{"value":"","fields":[],"configuration":null},"showInResults":{"value":"","fields":[],"configuration":[]},"showInUpdate":{"value":"","fields":[],"configuration":[]},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":["category.partner.general"],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"PLAIN","configuration":null},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":true,"security":{"permissions":null,"roles":null},"validation":{"required":true,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"partner","sortable":true},{"name":"emailDomain","label":"field.partner.email-domain","shortLabel":null,"type":{"type":"STRING","complexType":null,"filter":null,"query":null,"list":null,"from":null},"access":"PUBLIC","isId":false,"isKey":false,"isLabel":false,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":"","fields":[],"configuration":[]},"editable":{"value":"","fields":[],"configuration":null},"showInResults":{"value":"","fields":[],"configuration":[]},"showInUpdate":{"value":"","fields":[],"configuration":[]},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":["category.partner.general"],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"PLAIN","configuration":null},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":true,"security":{"permissions":null,"roles":null},"validation":{"required":true,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"partner","sortable":true},{"name":"developers","label":"field.partner.developers","shortLabel":null,"type":{"type":"COMPLEX","complexType":"developer","filter":"","query":[],"list":[],"from":null},"access":"PUBLIC","isId":false,"isKey":false,"isLabel":false,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":null,"fields":null,"configuration":null},"editable":{"value":"","fields":[],"configuration":null},"showInResults":{"value":null,"fields":null,"configuration":null},"showInUpdate":{"value":"","fields":["name","email"],"configuration":[]},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":["category.partner.developers"],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"PICK_LIST","configuration":[]},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":false,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"partner","sortable":true},{"name":"applications","label":"field.partner.applications","shortLabel":null,"type":{"type":"COMPLEX","complexType":"application","filter":"","query":{"partner":"{id}"},"list":[],"from":null},"access":"PUBLIC","isId":false,"isKey":false,"isLabel":false,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":null,"fields":null,"configuration":null},"editable":{"value":"","fields":[],"configuration":null},"showInResults":{"value":null,"fields":null,"configuration":null},"showInUpdate":{"value":"","fields":["name","access","owner"],"configuration":[]},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":["category.partner.applications"],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"PICK_LIST","configuration":[]},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":false,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"partner","sortable":true}],"fieldSets":[],"actions":[],"overrideDefaults":[],"configuration":[],"favoriteable":false,"resultClick":[]},{"classFor":"io.konga.ltp.metadata.models.Developer","name":"developer","superClass":null,"label":"entity.developer","shortLabel":null,"access":"RESTRICTED","stereotypes":[],"searchable":"","createable":"","editable":"","deleteable":"","searchType":"CASCADE","searchStyle":"STANDARD","resultsType":"CASCADE","resultsStyle":"STANDARD","detailsType":"CASCADE","detailsStyle":"STANDARD","updateType":"TABBED","updateStyle":"HORIZONTAL","template":"","apiName":null,"apiPath":"developers","categories":[],"security":{"permissions":null,"roles":null},"fields":[{"name":"id","label":"field.developer.id","shortLabel":null,"type":{"type":"NUMBER","complexType":null,"filter":null,"query":null,"list":null,"from":null},"access":"PUBLIC","isId":true,"isKey":true,"isLabel":false,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":null,"fields":null,"configuration":null},"editable":{"value":null,"fields":null,"configuration":null},"showInResults":{"value":null,"fields":null,"configuration":null},"showInUpdate":{"value":null,"fields":null,"configuration":null},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":["category.developer.general"],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"PLAIN","configuration":null},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":false,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"developer","sortable":true},{"name":"name","label":"field.developer.name","shortLabel":null,"type":{"type":"STRING","complexType":null,"filter":null,"query":null,"list":null,"from":null},"access":"PUBLIC","isId":false,"isKey":false,"isLabel":true,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":"","fields":[],"configuration":[]},"editable":{"value":"","fields":[],"configuration":null},"showInResults":{"value":"","fields":[],"configuration":[]},"showInUpdate":{"value":"","fields":[],"configuration":[]},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":["category.developer.general"],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"PLAIN","configuration":null},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":true,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"developer","sortable":true},{"name":"email","label":"field.developer.email","shortLabel":null,"type":{"type":"STRING","complexType":null,"filter":null,"query":null,"list":null,"from":null},"access":"PUBLIC","isId":false,"isKey":false,"isLabel":true,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":"","fields":[],"configuration":[]},"editable":{"value":"","fields":[],"configuration":null},"showInResults":{"value":"","fields":[],"configuration":[]},"showInUpdate":{"value":"","fields":[],"configuration":[]},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":["category.developer.general"],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"PLAIN","configuration":null},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":true,"security":{"permissions":null,"roles":null},"validation":{"required":true,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"developer","sortable":true},{"name":"partner","label":"field.developer.partner","shortLabel":null,"type":{"type":"COMPLEX","complexType":"partner","filter":"","query":[],"list":[],"from":null},"access":"PUBLIC","isId":false,"isKey":false,"isLabel":true,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":"","fields":[],"configuration":[]},"editable":{"value":"","fields":[],"configuration":null},"showInResults":{"value":"","fields":[],"configuration":[]},"showInUpdate":{"value":"","fields":[],"configuration":[]},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":["category.developer.general"],"apiName":null,"fieldType":{"search":"SELECT","results":"PLAIN","details":"PLAIN","update":"SELECT","configuration":[]},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":true,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"developer","sortable":true},{"name":"applications","label":"field.developer.applications","shortLabel":null,"type":{"type":"COMPLEX","complexType":"application","filter":"","query":{"owner":"{id}"},"list":[],"from":null},"access":"PUBLIC","isId":false,"isKey":false,"isLabel":false,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":null,"fields":null,"configuration":null},"editable":{"value":"","fields":[],"configuration":null},"showInResults":{"value":null,"fields":null,"configuration":null},"showInUpdate":{"value":"","fields":["name","access"],"configuration":[]},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":["category.developer.applications"],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"PICK_LIST","configuration":[]},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":false,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"developer","sortable":true}],"fieldSets":[],"actions":[],"overrideDefaults":[],"configuration":[],"favoriteable":false,"resultClick":[]},{"classFor":"io.konga.ltp.metadata.models.Application","name":"application","superClass":null,"label":"entity.application","shortLabel":null,"access":"RESTRICTED","stereotypes":[],"searchable":"","createable":"","editable":"","deleteable":"","searchType":"CASCADE","searchStyle":"STANDARD","resultsType":"CASCADE","resultsStyle":"STANDARD","detailsType":"CASCADE","detailsStyle":"STANDARD","updateType":"CUSTOM","updateStyle":"HORIZONTAL","template":"","apiName":null,"apiPath":"ltp-applications","categories":[],"security":{"permissions":null,"roles":null},"fields":[{"name":"id","label":"field.application.id","shortLabel":null,"type":{"type":"NUMBER","complexType":null,"filter":null,"query":null,"list":null,"from":null},"access":"PUBLIC","isId":true,"isKey":true,"isLabel":false,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":null,"fields":null,"configuration":null},"editable":{"value":null,"fields":null,"configuration":null},"showInResults":{"value":null,"fields":null,"configuration":null},"showInUpdate":{"value":null,"fields":null,"configuration":null},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":[],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"PLAIN","configuration":null},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":false,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"application","sortable":true},{"name":"name","label":"field.application.name","shortLabel":null,"type":{"type":"STRING","complexType":null,"filter":null,"query":null,"list":null,"from":null},"access":"PUBLIC","isId":false,"isKey":false,"isLabel":true,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":"","fields":[],"configuration":[]},"editable":{"value":"","fields":[],"configuration":null},"showInResults":{"value":"","fields":[],"configuration":[]},"showInUpdate":{"value":"","fields":[],"configuration":[]},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":[],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"PLAIN","configuration":null},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":true,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"application","sortable":true},{"name":"owner","label":"field.application.owner","shortLabel":null,"type":{"type":"COMPLEX","complexType":"developer","filter":"","query":[],"list":[],"from":null},"access":"PUBLIC","isId":false,"isKey":false,"isLabel":false,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":null,"fields":null,"configuration":null},"editable":{"value":null,"fields":null,"configuration":null},"showInResults":{"value":null,"fields":null,"configuration":null},"showInUpdate":{"value":"","fields":[],"configuration":[]},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":[],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"SELECT","configuration":[]},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":false,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"application","sortable":true},{"name":"icon","label":"field.application.icon","shortLabel":null,"type":{"type":"STRING","complexType":null,"filter":null,"query":null,"list":null,"from":null},"access":"PUBLIC","isId":false,"isKey":false,"isLabel":false,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":null,"fields":null,"configuration":null},"editable":{"value":"","fields":[],"configuration":null},"showInResults":{"value":null,"fields":null,"configuration":null},"showInUpdate":{"value":"","fields":[],"configuration":[]},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":[],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"PLAIN","configuration":null},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":false,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"application","sortable":true},{"name":"access","label":"field.application.access","shortLabel":null,"type":{"type":"STRING","complexType":"","filter":"","query":[],"list":[{"key":"public","value":"field.application.access.public"},{"key":"partner","value":"field.application.access.partner"},{"key":"private","value":"field.application.access.private"}],"from":null},"access":"PUBLIC","isId":false,"isKey":false,"isLabel":false,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":"","fields":[],"configuration":[]},"editable":{"value":"","fields":[],"configuration":null},"showInResults":{"value":"","fields":[],"configuration":[]},"showInUpdate":{"value":"","fields":[],"configuration":[]},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":[],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"COMBOBOX","configuration":[]},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":true,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"application","sortable":true},{"name":"metadata","label":"field.application.metadata","shortLabel":null,"type":{"type":"STRING","complexType":null,"filter":null,"query":null,"list":null,"from":null},"access":"PUBLIC","isId":false,"isKey":false,"isLabel":false,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":null,"fields":null,"configuration":null},"editable":{"value":"","fields":[],"configuration":null},"showInResults":{"value":null,"fields":null,"configuration":null},"showInUpdate":{"value":"","fields":[],"configuration":[]},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":[],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"PLAIN","configuration":null},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":true,"minLength":null,"maxLength":10000000,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"application","sortable":true}],"fieldSets":[],"actions":[],"overrideDefaults":[],"configuration":[{"key":"UPDATE_CUSTOM_VIEW","value":"APPLICATION_UPDATE_FORM"}],"favoriteable":false,"resultClick":[]}],"configuration":[]}
+ * ```
+ *
+ * A browser will open and you will see the app running at `http://localhost:9000`.
+ *
+ *
+ * # The code
+ *
+ * The project you downloaded it's basically a {@link https://github.com/yeoman/generator-angular#readme `angular-generator`} project, scaffolded with {@link http://yeoman.io/ `Yeoman`}. We've added some things to the project, and removed others, to get a Konga app running with the model shown above.
+ *
+ * ## No controllers
+ * 
+ * As you've sure seen, there's no controllers folder within your project. Your app runs fully on {@link api/Standards Konga standards}, so you don't need any specific code for handling these forms.
+ *
+ * The resposibility for rendering and managing the forms you see on your app, are the {@link api/konga.controller:EntitySearchController `EntitySearchController`} and the {@link api/konga.controller:EntityUpdateController `EntityUpdateController`}, for searching and updating, respectively. There's also a main controlled - called {@link api/konga.controller:KongaController `KongaController`}, which is engaged on your `app/index.html` file:
+ * 
+ * <i class="fa fa-file-code-o"></i> `app/index.html`
+<pre >
+<body ng-app="kongaQuickStartApp" ng-controller="KongaController">
 </pre>
-
-This metadata contains definitions of three entities: `Partner`, `Developer` and `Application`. Partners hire Developers to create Apps. It's the very same metadata used for our {@link http://ltp.konga.io/ Live-testing Platform}.
-
-Place this copied text (or your custom metadata object) in a `metadata.json` object, in your `/app/resources/` (or equivalent) folder.
-
-## Configuring your app
-
-There's little configuration needed for injecting Konga into your app. Yet there's some. There are three things you need to do:
-
-<label>Require `konga` in your app' module declaration.</label>
+ * 
+ * This controller gives the app full access to Konga's {@link api/Standards.Operations `operations`}, for building forms based on your metadata.
+ *
+ * ## Metadata
+ *
+ * On your project there's a folder called **`metadata`**, who contains all the data model for your app. It's a Java project, that leverages the **{@link api/Metadata.Generators `konga-metadata`}** generator for Java. This generator converts the metadata definitions given in the `POJO` models into a **`json`** object, understandeable by the `ui`. 
+ *
+ * For easing metadata injection, **there's a constant at `app/scripts/services/metadata.js`**, who contains the `json` object extracted from the Java generator:
+ *
+ * <i class="fa fa-file-code-o"></i> `app/scripts/services/metadata.js`
 <pre>
-angular.module('kongaQuickStart', [..., 'konga', ...]);
+angular.module('kongaQuickStartApp')
+  .constant('metadata', {"id":null,"name":"Konga Quick Start", ...
 </pre>
-<label>Inject metadata and initial config on startup:</label>
+ *
+ * ## App initialisation
+ *
+ * When your application loads, there's a method who takes the metadata from the `metadata` constant, injecting it into Konga, initialising the form-generation features:
+ *
+ * <i class="fa fa-file-code-o"></i> `app/scripts/app.js`
 <pre>
-angular.module('kongaQuickStart')
-  .run(['$rootScope', 'common', 'util', '$http', function($rootScope, common, util, $http) {
-    $http.get('/resources/metadata.json').then(
-      function(response) {
-        var metadata = response.data;
+.run(['konga', 'metadata', function(konga, metadata) {
 
-        // Store metadata in common storage
-        common.store('metadata', metadata);
+    // Configure API endpoint
+    // Using demo REST API by JsonPlaceholder
+    konga.config('apiEndpoint', 'http://jsonplaceholder.typicode.com');
 
-        // Setup the $rootScope
-        $rootScope.metadata = metadata;
+    // Load the grid view mapping 
+    konga.viewMapper('GRID_RESULTS_VIEW', 'views/grid-results.html');
 
-        // And init the tools
-        util.init(metadata);
-      }
-    )
+    // And the GOOGLE_MAPS_FIELDTYPE
+    konga.viewMapper('GOOGLE_MAPS_FIELDTYPE', 'views/raw-google-maps-input.html');
 
+    // Inject metadata
+    konga.init(metadata);
   }]);
 </pre>
-<label>Engage `KongaController` into your app's dom:</label>
+ *
+ * ## Menu
+ *
+ * On the top of your app there's a menu, who shows accesses for `TODO Items`, `Photos` and `Users`. These links launch search forms for each of the three entities, once you clicked on them. 
+ *
+ * <i class="fa fa-file-code-o"></i> `app/index.html`
 <pre>
-<html ng-app="kongaQuickStart" ng-controller="KongaController">
-  <head> ... </head>
-  <body>
-    <div ng-view></div>
-  </body>
-</html>
+<ul class="nav navbar-nav">
+  <li ng-repeat="entity in metadata.entities | filter:{ access: 'PUBLIC' }"><a ng-click="operations.openEntitySearch(entity)">{{ entity.label }}</a></li>
+  <li><a ng-href="#/">Contact</a></li>
+</ul>
 </pre>
-<span class="text-muted">
-You can inject konga into your dom anywhere you want. Konga will work with the dom's structure beneath the element you placed the main controller.
-</span>
-
-Now you can see how search forms, result tables, and creation/updation forms are automatically built. Just create a button anywhere:
+ * 
+ * This basically iterates through every entity defined in the metadata, whose access has been set to {@link api/Metadata.AccessModes#properties_PUBLIC `PUBLIC`}. If you remove that filter, three more entities will appear on the menu - i.e. `Geo`, `Address` and `Company`. These are inner entities used for `Users`, but we don't want them to be accessible from the menu. Hence, they're tagged as {@link api/konga.AccessModes#properties_HIDDEN `HIDDEN`}. 
+ *
+ * 
+ * ## Custom stuff
+ *
+ * Konga standards build result tables for rendering results. This is neat for data handling, but when we are dealing with pictures, maybe a `grid` would be better. Thus, the {@link api/Metadata.FormType `formType`} value for {@link api/Metadata.FormScopes#properties_RESULTS `RESULTS`} scope has been set to {@link api/Metadata.FormTypes#properties_CUSTOM `CUSTOM`}, and we have provided a view mapped at `views/grid-results.html`.
+ *
+ * <i class="fa fa-code"></i> `metadata/Photo.java`
 <pre>
-<!-- Entity search -->
-<button class="btn btn-success" ng-click="operations.openEntitySearch('partner')">
-
-<!-- Entity update -->
-<button class="btn btn-success" ng-click="operations.openEntityUpdate('developer')">
-
-<!-- Entity create -->
-<button class="btn btn-success" ng-click="operations.openEntityCreate('application')">
+@ Entity("photo")
+@ Label("Photo")
+@ Searchable
+@ Editable
+@ Deleteable
+@ FormType(results=FormTypes.CUSTOM)
+@ ApiPath("photos")
+@ Configuration(
+	@ Raw(key="RESULTS_CUSTOM_VIEW", value="GRID_RESULTS_VIEW")
+)
+public class Photo {
+	...
 </pre>
-
-And forms will be rendered. If you launch your application with your favorite dev server, you'll see how forms are rendered as you select the operation to launch.
-
-<strong>That's it for the Quick Start.</strong> I hope here you have at least an abstract understanding of what Konga does. There are more readings which will give you more concrete information about every piece of Konga, and will help you leverage all of Konga features to save your efforts developing apps.
-
-<div class="row">
-	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center">
-		<a class="btn btn-danger" href="#/quick-start/tutorial">
-			<i class="fa fa-book"></i>
-			API Reference
-		</a>
-	</div>
-	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center">
-		<a class="btn btn-success" href="#/quick-start/tutorial">
-			<i class="fa fa-magic"></i>
-			Take the tutorial
-		</a>
-	</div>
-</div>
-
-
-</span>
+ * 
+ *
+ * ## Move forward
+ *
+ * The Quick Start ends here. We've seen how to get these metadata configured, for handling `Users`, `Photos` and `TODO Lists`. However, there are still many things to do to get this app completed. It would be nice to have it done, though... :)
+ *
+ *
+ * # Move even forward
+ *
+ * Now that we've finished this introduction to Konga, you can take the {@link resources/Konga_101 `Konga 101`} tutorial. You can also take the {@link resources/QuickStart_Extended `QuickStart extended`} tutorial to finish this app with some awesome features and customisation.
+ * 
+ * <div class="row">
+ *	<div class="col-xs-12 col-md-6 text-right">
+ * 		<a class="btn btn-danger" ng-href="#/api">
+ * 			<i class="fa fa-book"></i> API Reference
+ * 		</a>
+ *	</div>
+ *	<div class="col-xs-12 col-md-6 text-left">
+ * 		<a class="btn btn-primary" ng-href="#/resources">
+ * 			<i class="fa fa-rocket"></i> Resources
+ * 		</a>
+ *	</div>
+ * </div>
+ *
  */
