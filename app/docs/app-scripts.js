@@ -5665,7 +5665,7 @@ Function to call when a row is clicked, if no {@link Customisation.Action-driven
 Function to call when sorting field or mode changes
  */
 angular.module('konga')
-  .directive('resultTable', ['util', function (util) {
+  .directive('resultTable', ['util', 'mapper', function (util, mapper) {
     return {
       templateUrl: '/konga/views/result-table.html',
       replace: true, 
@@ -5710,7 +5710,14 @@ angular.module('konga')
             if(!configuration.length) {
               // TODO Show exception
             }
-            $scope.contentUrl = mapper[configuration[0].value];
+            var contentUrl = mapper[configuration[0].value];
+            if(!contentUrl) {
+              contentUrl = configuration[0].value;
+              if(!contentUrl) {
+                // TODO Throw exception
+              }
+            }
+            $scope.contentUrl = contentUrl;
           }
           else {
             $scope.contentUrl = '/konga/views/' + formType.toLowerCase() + '-result-table.html';
