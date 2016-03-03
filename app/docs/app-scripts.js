@@ -5706,7 +5706,7 @@ angular.module('konga')
           var formType = $scope.entityMetadata.resultsType;
 
           if(formType === util.constants.CUSTOM_FORM) {
-            var configuration = $filter('filter')($scope.entityMetadata.configuration, { key: util.constants.SEARCH_CUSTOM_VIEW });
+            var configuration = $filter('filter')($scope.entityMetadata.configuration, { key: util.constants.RESULTS_CUSTOM_VIEW });
             if(!configuration.length) {
               // TODO Show exception
             }
@@ -9380,6 +9380,7 @@ angular.module('myAwesomeApp')
 
 		UPDATE_CUSTOM_VIEW 					: 'UPDATE_CUSTOM_VIEW',
 		SEARCH_CUSTOM_VIEW 					: 'SEARCH_CUSTOM_VIEW',
+		RESULTS_CUSTOM_VIEW 				: 'RESULTS_CUSTOM_VIEW',
 
 		UPDATE_HIDE_BUTTONS 				: 'UPDATE_HIDE_BUTTONS',
 
