@@ -8533,7 +8533,7 @@ angular.module('konga')
  * Service in the kongaApp.
  */
 angular.module('konga')
-  .service('konga', ['kongaConfig', 'mapper', 'util', 'common', '$rootScope', 'userData', function (konga, kongaConfig, mapper, util, common, $rootScope, userData) {
+  .service('konga', ['kongaConfig', 'mapper', 'util', 'common', '$rootScope', 'userData', function (kongaConfig, mapper, util, common, $rootScope, userData) {
     
     this.config = function(key, value) {
       if(value !== undefined) {
