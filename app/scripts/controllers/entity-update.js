@@ -356,41 +356,10 @@ angular.module('konga')
 			var isAllowed = false;
 			// Verify permissions
   			if(permissionManager.isAllowed(permission)) {
-  				  isAllowed = true;  
-  				
-				  // TODO Verify commit triggers
-				  var entity = $scope.entity;
-				  
-				  //Warning if the entity is user and has no related pair ctrOperat-role 
-				  var emptyRoleForSomeCtrOperat = false;
-				  if(entity.hasOwnProperty(util.constants.USER_ID)){
-					  if(entity.roleCoUser==null || entity.roleCoUser.length==0){
-						  $rootScope.operations.notify('entity.user.warning-no-pair-role-ctr-operat-title', 'entity.user.warning-no-pair-role-ctr-operat');
-					  }else{					  
-						  for(var i=0;i<entity.roleCoUser.length;i++){
-							  //If some ctrOperat has no role => ERROR
-							  if(entity.roleCoUser[i].role==null || entity.roleCoUser[i].role.length==0){ 
-								  emptyRoleForSomeCtrOperat = true;
-								  break;
-							  }
-						  }
-					  }
-				  }
-				  
-				  //Warning if the entity is role and has no related actions 
-				  if($scope.entityMetadata.name == util.constants.SOURCE_ROLE){
-					  if(entity.relActionRoles==null || entity.relActionRoles.length==0){
-						  $rootScope.operations.notify('entity.user.warning-no-actions-role-title', 'entity.user.warning-no-actions-role-message');
-					  }
-				  }
-				  
-				  if(emptyRoleForSomeCtrOperat){
-					  $rootScope.operations.notify('entity.user.warning-no-role-ctr-operat-title', 'entity.user.warning-no-role-ctr-operat','error');
-					  isAllowed = false;
-				  }
+  				  isAllowed = true;
   			}
   			
-  			if(!isAllowed && !emptyRoleForSomeCtrOperat){ //ano 7918
+  			if(!isAllowed) {
   				$rootScope.operations.dispatchAction({ name: 'action-forbidden'}, {});
   			}
   			return isAllowed;
