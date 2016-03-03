@@ -7,7 +7,7 @@
  * # konga
  * Service in the kongaApp.
  */
-angular.module('kongaApp')
+angular.module('konga')
   .service('konga', ['kongaConfig', 'mapper', 'util', 'common', '$rootScope', 'userData', function (konga, kongaConfig, mapper, util, common, $rootScope, userData) {
     
     this.config = function(key, value) {
