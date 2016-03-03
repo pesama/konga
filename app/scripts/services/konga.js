@@ -35,6 +35,4 @@ angular.module('kongaApp')
       util.init(metadata);
       common.store('metadata', metadata);
     };
-    };
-
   }]);
