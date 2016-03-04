@@ -3350,7 +3350,7 @@ angular.module('konga')
  * # listInput
  */
 angular.module('konga')
-  .directive('listInput', ['util', function (util) {
+  .directive('listInput', ['util', '$filter', function (util, $filter) {
     return {
   		templateUrl : '/konga/views/list-input.html',
   		restrict: 'E',
@@ -3366,47 +3366,47 @@ angular.module('konga')
   			disabledIds : '=',
   			dispatchFieldAction : '='
   		},
-  		controller: function ($scope, $filter) {
-  			$scope.paginate = true;
+  		link : function (scope) {
+  			scope.paginate = true;
 
   			// Read configuration
-  			var configuration = $scope.property.fieldType.configuration[0];
+  			var configuration = scope.property.fieldType.configuration[0];
 
   			// Pagination
   			var paginationConfiguration = $filter('filter')(configuration, { key: util.constants.SHOW_PAGINATION, value: 'false' }, true);
 
   			if(paginationConfiguration && paginationConfiguration.length) {
-  				$scope.paginate = false;
+  				scope.paginate = false;
   			}
 
-  			$scope.filteredList = $scope.list;
+  			scope.filteredList = scope.list;
 
   			function filterList() {
 				// Is there any filter configured?
-				if ($scope.property) {
-					var filter = $scope.property.type.filter;
+				if (scope.property) {
+					var filter = scope.property.type.filter;
 
-					var newList = $scope.list;
+					var newList = scope.list;
 					if(filter && filter.length) {
-						newList = $filter(filter)($scope.list);
+						newList = $filter(filter)(scope.list);
 					}
-					$scope.filteredList = newList;
+					scope.filteredList = newList;
 				}
   			}
 
-  			var listenerName = $scope.property.owner + '_' + $scope.property.name;
- 			$scope.$on('updateFilter_'+listenerName, function() {
+  			var listenerName = scope.property.owner + '_' + scope.property.name;
+ 			scope.$on('updateFilter_'+listenerName, function() {
 	         	filterList();
 	        });
 
-  			$scope.$watchCollection('originalFields', function(newFields){
+  			scope.$watchCollection('originalFields', function(newFields){
   				
-	  			$scope.originalFields = newFields;
+	  			scope.originalFields = newFields;
 	  			// Generate fields
-		        // var allFields = $filter('orderBy')($scope.originalFields, '+priority.results');
+		        // var allFields = $filter('orderBy')(scope.originalFields, '+priority.results');
 		        var allFields = newFields;
 		        
-		        $scope.fields = [];
+		        scope.fields = [];
 		
 		        function divideComplexField(field) {
 		          var relatedMetadata = util.getMetadata(field.type.complexType);
@@ -3422,7 +3422,7 @@ angular.module('konga')
 		              selectedFields[fi].derivedPath.splice(0, 0, field);
 
 		              // Push the field
-		              $scope.fields.push(selectedFields[fi]);
+		              scope.fields.push(selectedFields[fi]);
 		            }
 		          }
 		        }
@@ -3434,35 +3434,35 @@ angular.module('konga')
 		            divideComplexField(field);
 		          }
 		          else {
-		            $scope.fields.push(field);
+		            scope.fields.push(field);
 		          }
         		}
   			});
   			
-  			$scope.selectAllItmsData = false;
-  			$scope.selectedData = false;
-  			$scope.paginationData = {
+  			scope.selectAllItmsData = false;
+  			scope.selectedData = false;
+  			scope.paginationData = {
 	  			currentItems : 0,
 	  			totalItems : 0,
-	  			limit : $scope.paginate ? 10 : 1000, // TODO Change this
+	  			limit : scope.paginate ? 10 : 1000, // TODO Change this
 	  			offset : 1,
 	  			maxPages : 1
   			};
 
-  			$scope.selected = [];
+  			scope.selected = [];
 
-  			$scope.selectedIds = {};
+  			scope.selectedIds = {};
   			// Set up the quick search
-			$scope.quickSearchParams = {
+			scope.quickSearchParams = {
 				value: '',
 				param:{}
 			};
 
-  			$scope.getTotalItems = function () {
-  				var totalItems = $scope.paginationData.count = ($scope.list)? $scope.list.length:0;
+  			scope.getTotalItems = function () {
+  				var totalItems = scope.paginationData.count = (scope.list)? scope.list.length:0;
 		  		var count = 0;
-		  		if ($scope.selectedData) {
-		  			angular.forEach($scope.list, function (item) {
+		  		if (scope.selectedData) {
+		  			angular.forEach(scope.list, function (item) {
 		  				if (item.selected) {
 		  					count++;
 		  				}
@@ -3472,73 +3472,73 @@ angular.module('konga')
 		  		return totalItems;
   			};
   			
-  			$scope.currentItems = function() {
-  				var totalItems = $scope.getTotalItems();
+  			scope.currentItems = function() {
+  				var totalItems = scope.getTotalItems();
 		    	if (totalItems>0) {
-		    		var items = $scope.paginationData.offset * $scope.paginationData.limit;
-		    		$scope.paginationData.currentItems = (items > totalItems)? totalItems : items;
+		    		var items = scope.paginationData.offset * scope.paginationData.limit;
+		    		scope.paginationData.currentItems = (items > totalItems)? totalItems : items;
 		    	} else {
-		    		$scope.paginationData.currentItems =  0;
+		    		scope.paginationData.currentItems =  0;
 		    	}   
 		  	};
 		  	  
 		  	  
-		  	$scope.maxPages = function () {
-		  		var totalItems = $scope.getTotalItems();
-		  		$scope.paginationData.maxPages = Math.ceil(totalItems/$scope.paginationData.limit);
-		  		if ($scope.paginationData.maxPages < $scope.paginationData.offset && $scope.paginationData.maxPages > 0) {
-		  			$scope.paginationData.offset = $scope.paginationData.maxPages;
+		  	scope.maxPages = function () {
+		  		var totalItems = scope.getTotalItems();
+		  		scope.paginationData.maxPages = Math.ceil(totalItems/scope.paginationData.limit);
+		  		if (scope.paginationData.maxPages < scope.paginationData.offset && scope.paginationData.maxPages > 0) {
+		  			scope.paginationData.offset = scope.paginationData.maxPages;
 		  		}
 		  	};
 		  	/*
 		  	 * Handle Table pagination
 		  	 * @function pageChanged
 		  	 */	
-		  	$scope.pageChanged = function(orientation) {
+		  	scope.pageChanged = function(orientation) {
 		  		switch (orientation) {
 		  			case 'first':
-		  				$scope.paginationData.offset = 1;
+		  				scope.paginationData.offset = 1;
 		  				break;
 		  			case 'previous':
-		  				$scope.paginationData.offset = ($scope.paginationData.offset-1 > 1)? $scope.paginationData.offset-1: 1;
+		  				scope.paginationData.offset = (scope.paginationData.offset-1 > 1)? scope.paginationData.offset-1: 1;
 		  				break;
 		  			case 'next':
-		  				$scope.paginationData.offset = ($scope.paginationData.offset+1 < $scope.paginationData.maxPages)? $scope.paginationData.offset+1: $scope.paginationData.maxPages;
+		  				scope.paginationData.offset = (scope.paginationData.offset+1 < scope.paginationData.maxPages)? scope.paginationData.offset+1: scope.paginationData.maxPages;
 		  				break;
 		  			case 'last':
-		  				$scope.paginationData.offset = $scope.paginationData.maxPages;
+		  				scope.paginationData.offset = scope.paginationData.maxPages;
 		  				break;
 		  		}
 		  		if (!orientation || typeof orientation == 'undefined') {
-		  			$scope.maxPages();
+		  			scope.maxPages();
 		  		}   
 		  	   
-		  	    $scope.currentItems();
+		  	    scope.currentItems();
 		  	};
 
-		  	$scope.selectAllHandler = function () {
-				var length = ($scope.list)? $scope.list.length:0;
+		  	scope.selectAllHandler = function () {
+				var length = (scope.list)? scope.list.length:0;
 				for (var i = 0; i < length; i++) {
-					if ((typeof $scope.disabledIds !== 'undefined' && !$scope.disabledIds[$scope.list[i].id]) 
-							|| (typeof $scope.disabledIds === 'undefined')) {
-						$scope.list[i].selected = $scope.selectAllItmsData;
+					if ((typeof scope.disabledIds !== 'undefined' && !scope.disabledIds[scope.list[i].id]) 
+							|| (typeof scope.disabledIds === 'undefined')) {
+						scope.list[i].selected = scope.selectAllItmsData;
 					}
 				}
-				$scope.pageChanged();
+				scope.pageChanged();
 			};
-			$scope.onDisplaySelectedItems = function() {
-				$scope.paginationData.offset = 1;
-				$scope.pageChanged();
-			};
-
-			$scope.onSelectListEds = function () {
-				$scope.pageChanged();
-				$scope.filteredList = $scope.list;
+			scope.onDisplaySelectedItems = function() {
+				scope.paginationData.offset = 1;
+				scope.pageChanged();
 			};
 
-			$scope.quickSearchHandler = function () {
+			scope.onSelectListEds = function () {
+				scope.pageChanged();
+				scope.filteredList = scope.list;
+			};
+
+			scope.quickSearchHandler = function () {
 				var result = {};
-				angular.forEach($scope.quickSearchParams.param, function (item, key) {
+				angular.forEach(scope.quickSearchParams.param, function (item, key) {
 					if (key.indexOf('.')>0) {
 						var keyList = key.split('.');
 						result[keyList[0]] = {};
@@ -3560,43 +3560,43 @@ angular.module('konga')
 						result[key]=item;
 					}
 				});
-				$scope.quickSearchParams.value =	result;
-				$scope.paginationData.offset = 1;
-				$scope.pageChanged();
+				scope.quickSearchParams.value =	result;
+				scope.paginationData.offset = 1;
+				scope.pageChanged();
 			};
 			
-			if($scope.property.fieldType.update == util.constants.FIELD_PICK_LIST) {
-				var validation = $scope.property.validation;
+			if(scope.property.fieldType.update == util.constants.FIELD_PICK_LIST) {
+				var validation = scope.property.validation;
 
-				var length = $scope.list ? $scope.list.length : 0;
+				var length = scope.list ? scope.list.length : 0;
 				
 				if(validation.minLength && length < validation.minLength) {
 //					realInput.addClass('invalid-min-length');
-					$scope.$emit('form-invalid', {
-						field: $scope.property.name,
-						owner: $scope.property.owner,
+					scope.$emit('form-invalid', {
+						field: scope.property.name,
+						owner: scope.property.owner,
 						validation: 'min-length',
 						valid: false
 					});
 				}
 			}
-  			$scope.validate = function () {
-  				var dataFilter = $filter('filter')($scope.list, { selected: true }, transclude);
+  			scope.validate = function () {
+  				var dataFilter = $filter('filter')(scope.list, { selected: true }, transclude);
   		// 		var listIds = [];
   		// 		for (var i = 0; i < dataFilter.length; i++) {
 				// 	listIds[dataFilter[i].id]=true;
 				// };
-  		// 		$scope.selectedIds[$scope.edsType] = listIds;
-  				$scope.setSelectedElements($scope.edsType, dataFilter);
+  		// 		scope.selectedIds[scope.edsType] = listIds;
+  				scope.setSelectedElements(scope.edsType, dataFilter);
   			};
 
-  			$scope.cancel = function () {
-  				$scope.selectAllItmsData = false;
-  				$scope.selectAllHandler();
+  			scope.cancel = function () {
+  				scope.selectAllItmsData = false;
+  				scope.selectAllHandler();
   			};
   			
-  			/*$scope.dispatchFieldAction = function(action, entitySelected) {
-		  		var actions = $scope.actions;
+  			/*scope.dispatchFieldAction = function(action, entitySelected) {
+		  		var actions = scope.actions;
 		  		var matchingActions = null;
 		  		if(actions.length) {
 		  			matchingActions = $filter('filter')(actions, { name: action.name });
@@ -3604,21 +3604,20 @@ angular.module('konga')
 
 		  		// Custom actions
 		  		if(matchingActions && matchingActions.length) {
-		  			$rootScope.operations.dispatchActionBatch(matchingActions, { id: util.getEntityId($scope.metadata, $scope.entity), entityType: $scope.metadata.name, self: $scope, item: $scope.entity, field: $scope.property, entitySelected : entitySelected});
+		  			$rootScope.operations.dispatchActionBatch(matchingActions, { id: util.getEntityId(scope.metadata, scope.entity), entityType: scope.metadata.name, self: $scope, item: scope.entity, field: scope.property, entitySelected : entitySelected});
 		  		}
 			};*/
 
 			var watchers = null;
-	        $scope.$on('suspend', function() {
-	          watchers = $scope.$$watchers;
-	          $scope.$$watchers = [];
+	        scope.$on('suspend', function() {
+	          watchers = scope.$$watchers;
+	          scope.$$watchers = [];
 	        });
 
-	        $scope.$on('resume', function() {
-	          $scope.$$watchers = watchers;
+	        scope.$on('resume', function() {
+	          scope.$$watchers = watchers;
 	        });
-  		},
-  		link : function (scope) {
+
 			scope.$watchCollection('selectAllItmsData', scope.selectAllHandler);
 			scope.$watchCollection('selectedData', scope.onDisplaySelectedItems);
 			scope.$watchCollection('list', scope.onSelectListEds);
@@ -3767,19 +3766,19 @@ angular.module('konga')
  * # quantityInput
  */
 angular.module('konga')
-  .directive('quantityInput', function () {
+  .directive('quantityInput', ['$filter', function ($filter) {
     return {
       templateUrl: 'views/quantity-input.html',
       restrict: 'E',
-      controller: function($scope, $filter) {
-      	// Setup default unit
-      	$scope.unit = 'u.';
-        $scope.decimal = 0;
-        $scope.step = 1;
+      link: function postLink(scope, element, attrs) {
+        // Setup default unit
+        scope.unit = 'u.';
+        scope.decimal = 0;
+        scope.step = 1;
 
         function init(first) {
           // Find configuration parameters
-          var configuration = $scope.property.fieldType.configuration[0];
+          var configuration = scope.property.fieldType.configuration[0];
           
           // Unit
           var configurationUnit = $filter('filter')(configuration, { key: 'QUANTITY_UNIT' }, true)[0];
@@ -3795,26 +3794,26 @@ angular.module('konga')
             var source = configurationUnitSource ? configurationUnitSource.value : null;
             switch(source) {
             case 'translate':
-              $scope.unit = $filter('translate')(unit);
+              scope.unit = $filter('translate')(unit);
               break;
             case 'entity':
               var unitSplit = unit.split('.');
-              var source = $scope.entity;
+              var source = scope.entity;
               for(var i = 0; i < unitSplit.length && source; i++) {
                 source = source[unitSplit[i]];
               }
 
               if(first) {
                 // Setup watcher
-                $scope.$watch('entity.' + unit, function() {
+                scope.$watch('entity.' + unit, function() {
                   init();
                 });
               }
 
-              $scope.unit = source;
+              scope.unit = source;
               break;
             default: 
-              $scope.unit = unit;
+              scope.unit = unit;
               break;
             }
           }
@@ -3825,53 +3824,49 @@ angular.module('konga')
             var source = configurationDecimalSource ? configurationDecimalSource.value : null;
             switch(source) {
             case 'plain':
-              $scope.decimal = parseInt(decimal);
+              scope.decimal = parseInt(decimal);
               break;
             case 'entity':
               var decimalSplit = decimal.split('.');
-              var source = $scope.entity;
+              var source = scope.entity;
               for(var i = 0; i < decimalSplit.length && source; i++) {
                 source = source[decimalSplit[i]];
               }
 
               if(first) {
                 // Setup watcher
-                $scope.$watch('entity.' + decimal, function() {
+                scope.$watch('entity.' + decimal, function() {
                   init();
                 });
               }
 
-              $scope.decimal = source;
+              scope.decimal = source;
               break;
             default: 
-              $scope.decimal = decimal;
+              scope.decimal = decimal;
               break;
             }
           }
 
           // Configure step
-          for(var i = 0; i < $scope.decimal; i++) {
-            $scope.step /= 10;
+          for(var i = 0; i < scope.decimal; i++) {
+            scope.step /= 10;
           }
         }
 
-        if($scope.entity.$resolved !== false) {
+        if(scope.entity.$resolved !== false) {
           init(true);
         }
         else {
-          $scope.$watch('entity.$resolved', function() {
-            if($scope.entity.$resolved) {
+          scope.$watch('entity.$resolved', function() {
+            if(scope.entity.$resolved) {
               init(true);
             }
           })
         }
-
-      },
-      link: function postLink(scope, element, attrs) {
-        
       }
     };
-  });
+  }]);
 
 'use strict';
 
@@ -5615,50 +5610,54 @@ Function to call when a row is clicked, if no {@link Customisation.Action-driven
 
 @param {function()} submitSorting
 Function to call when sorting field or mode changes
- */
+*/
 angular.module('konga')
-  .directive('resultTable', ['util', 'mapper', function (util, mapper) {
+.directive('resultTable', ['util', 'mapper', '$filter', '$rootScope', 'permissionManager', 
+  function (util, mapper, $field, $rootScope, permissionManager) {
     return {
       templateUrl: '/konga/views/result-table.html',
       replace: true, 
       restrict: 'E',
       scope: {
-      	entityMetadata: '=',
-      	entities: '=',
-        updateEntity: '=onUpdate',
-        submitSorting: '=onSorting'
-      },
-      controller : function ($scope, $filter, $rootScope, permissionManager) {
-        $scope.fields = [];
-        $scope.categories = [];
+       entityMetadata: '=',
+       entities: '=',
+       updateEntity: '=onUpdate',
+       submitSorting: '=onSorting'
+     },
+     controller : function ($scope, $filter, $rootScope, permissionManager) {
+      
+     },
+     link: function postLink(scope, element, attrs) {
+      scope.fields = [];
+      scope.categories = [];
 
-        function divideComplexField(field) {
-          var relatedMetadata = util.getMetadata(field.type.complexType);
-          var relatedFields = util.getEntityFields(relatedMetadata);
-          var nestFields = field.showInResults.fields;
-          var selectedFields = $filter('selectedFields')(relatedFields, nestFields, field);
-          for(var fi = 0; fi < selectedFields.length; fi++) {
-            if(selectedFields[fi].fieldType.results === util.constants.FIELD_COMPLEX) {
-              divideComplexField(selectedFields[fi]);
-            }
-            else {
+      function divideComplexField(field) {
+        var relatedMetadata = util.getMetadata(field.type.complexType);
+        var relatedFields = util.getEntityFields(relatedMetadata);
+        var nestFields = field.showInResults.fields;
+        var selectedFields = $filter('selectedFields')(relatedFields, nestFields, field);
+        for(var fi = 0; fi < selectedFields.length; fi++) {
+          if(selectedFields[fi].fieldType.results === util.constants.FIELD_COMPLEX) {
+            divideComplexField(selectedFields[fi]);
+          }
+          else {
               // Append the source
               selectedFields[fi].derivedPath.splice(0, 0, field);
               selectedFields[fi].derivedSource = field;
 
               // Push the field
-              $scope.fields.push(selectedFields[fi]);
+              scope.fields.push(selectedFields[fi]);
             }
           }
         }
 
-        $scope.init = function() {
-          $scope.categories = util.getEntityCategories($scope.entityMetadata, 1);
+        scope.init = function() {
+          scope.categories = util.getEntityCategories(scope.entityMetadata, 1);
           
-          var formType = $scope.entityMetadata.resultsType;
+          var formType = scope.entityMetadata.resultsType;
 
           if(formType === util.constants.CUSTOM_FORM) {
-            var configuration = $filter('filter')($scope.entityMetadata.configuration, { key: util.constants.RESULTS_CUSTOM_VIEW });
+            var configuration = $filter('filter')(scope.entityMetadata.configuration, { key: util.constants.RESULTS_CUSTOM_VIEW });
             if(!configuration.length) {
               // TODO Show exception
             }
@@ -5669,22 +5668,22 @@ angular.module('konga')
                 // TODO Throw exception
               }
             }
-            $scope.contentUrl = contentUrl;
+            scope.contentUrl = contentUrl;
           }
           else {
-            $scope.contentUrl = '/konga/views/' + formType.toLowerCase() + '-result-table.html';
+            scope.contentUrl = '/konga/views/' + formType.toLowerCase() + '-result-table.html';
 
             // Custom behavior for each form type
             switch(formType) {
-            case util.constants.CATEGORIZED_CASCADE_FORM:
+              case util.constants.CATEGORIZED_CASCADE_FORM:
               // Get the categories used for search
-              var configuration = $filter('filter')($scope.entityMetadata.configuration, { key: util.constants.RESULTS_USE_CATEGORY }, true);
-              $scope.categories = [];
+              var configuration = $filter('filter')(scope.entityMetadata.configuration, { key: util.constants.RESULTS_USE_CATEGORY }, true);
+              scope.categories = [];
               for(var i = 0; i < configuration.length; i++) {
                 var cat = configuration[i].value;
 
                 // Shall we hide the header?
-                var hideHeaderConf = $filter('filter')($scope.entityMetadata.configuration, { key: util.constants.HIDE_CATEGORY_HEADER, value: cat }, true);
+                var hideHeaderConf = $filter('filter')(scope.entityMetadata.configuration, { key: util.constants.HIDE_CATEGORY_HEADER, value: cat }, true);
                 var showHeader = true;
                 if(hideHeaderConf.length) {
                   showHeader = false;
@@ -5696,17 +5695,17 @@ angular.module('konga')
                   showHeader: showHeader
                 };
 
-                $scope.categories.push(category);
+                scope.categories.push(category);
               }
               break;
-            default:
+              default:
               // Nothing to do
             }
           }
 
           // Generate fields
-          var allFields = $filter('orderBy')(util.getEntityFields($scope.entityMetadata), '+priority.results');
-          var filteredFields = $filter('resultParams')(allFields, $scope.entityMetadata);
+          var allFields = $filter('orderBy')(util.getEntityFields(scope.entityMetadata), '+priority.results');
+          var filteredFields = $filter('resultParams')(allFields, scope.entityMetadata);
 
           // Control complex fields
           for(var f = 0; f < filteredFields.length; f++) {
@@ -5715,61 +5714,61 @@ angular.module('konga')
               divideComplexField(field);
             }
             else {
-              $scope.fields.push(field);
+              scope.fields.push(field);
             }
           }
 
           // Organize the categorized fields
-          $scope.categoryFields = {};
-          $scope.sortedFieldsByCategory = [];
-          for(var i = 0; i < $scope.categories.length; i++) {
-            var category = $scope.categories[i].name;
+          scope.categoryFields = {};
+          scope.sortedFieldsByCategory = [];
+          for(var i = 0; i < scope.categories.length; i++) {
+            var category = scope.categories[i].name;
 
-            var matchingFields = $filter('filter')($scope.fields, { categories: category }, true);
+            var matchingFields = $filter('filter')(scope.fields, { categories: category }, true);
 
-            $scope.sortedFieldsByCategory = $scope.sortedFieldsByCategory.concat(matchingFields);
+            scope.sortedFieldsByCategory = scope.sortedFieldsByCategory.concat(matchingFields);
 
-            $scope.categoryFields[category] = matchingFields;
+            scope.categoryFields[category] = matchingFields;
           }
 
           // Setup editable
-          var isEditable = $scope.entityMetadata.editable !== null;
+          var isEditable = scope.entityMetadata.editable !== null;
           var isAllowed = null;
           if(isEditable) {
-            isAllowed = permissionManager.isAllowed($scope.entityMetadata.editable);
+            isAllowed = permissionManager.isAllowed(scope.entityMetadata.editable);
           }
           var bEditable = !isEditable || !isAllowed;
-          $scope.isEditable = !bEditable;
+          scope.isEditable = !bEditable;
         };
 
-        var	entityLabel = $filter('translate')($scope.entityMetadata.entityLabel);
+        var entityLabel = $filter('translate')(scope.entityMetadata.entityLabel);
 
-      	$scope.extra = {
-      		label: entityLabel,
-      		labelPlaceholder: $scope.entityMetadata.entityLabel
-   
-      	};
+        scope.extra = {
+          label: entityLabel,
+          labelPlaceholder: scope.entityMetadata.entityLabel
+          
+        };
 
-        $scope.resultClick = function(metadata, entity, index) {
-        	
+        scope.resultClick = function(metadata, entity, index) {
+          
           // Look for custom actions
-  	  	  var actions = metadata.overrideDefaults;
-  	  	  var matchingActions = null;
-  	  	  if(actions.length) {
-  	  		  matchingActions = $filter('filter')(actions, { overrides: 'result-click' });
-  	  	  }
-        	
-	  	    // Dispatch 'em all (in batch)
-      	  if (matchingActions && matchingActions.length) {
-      		  $rootScope.operations.dispatchActionBatch(matchingActions, { id: util.getEntityId(metadata, entity), entityType: metadata.name, self: $scope, item: entity, index: index });
-      	  }
+          var actions = metadata.overrideDefaults;
+          var matchingActions = null;
+          if(actions.length) {
+            matchingActions = $filter('filter')(actions, { overrides: 'result-click' });
+          }
+          
+          // Dispatch 'em all (in batch)
+          if (matchingActions && matchingActions.length) {
+            $rootScope.operations.dispatchActionBatch(matchingActions, { id: util.getEntityId(metadata, entity), entityType: metadata.name, self: $scope, item: entity, index: index });
+          }
           // Is it editable?
-          else if($scope.isEditable) {
-        	  $scope.updateEntity(metadata, entity);
+          else if(scope.isEditable) {
+            scope.updateEntity(metadata, entity);
           }
         };
         
-        $scope.showSorting = function(sorting, isDESC) {
+        scope.showSorting = function(sorting, isDESC) {
           if (sorting !== '') {
             if (isDESC) {
               if (sorting === 'asc') {
@@ -5785,22 +5784,22 @@ angular.module('konga')
           }
         };
         
-        $scope.sorting = function(field, type) {
+        scope.sorting = function(field, type) {
 
           // Reset sorting
-          // for (var i = 0; i < $scope.fields.length; i++) {
-          //     $scope.fields[i].sorting = '';
+          // for (var i = 0; i < scope.fields.length; i++) {
+          //     scope.fields[i].sorting = '';
           // }
 
           // Apply sorting
           // field.sorting = type;
           
           //Call search function
-          $scope.submitSorting(field, type);
-          $scope.$broadcast('sorting', { field: field, type: type });
+          scope.submitSorting(field, type);
+          scope.$broadcast('sorting', { field: field, type: type });
         };
 
-        // var resultFields = $scope.fields = [];
+        // var resultFields = scope.fields = [];
         // for(var i = 0; i < filteredFields.length; i++) {
         //   var field = filteredFields[i];
 
@@ -5831,19 +5830,14 @@ angular.module('konga')
         // }
 
         var watchers = null;
-        $scope.$on('suspend', function() {
-          watchers = $scope.$$watchers;
-          $scope.$$watchers = [];
+        scope.$on('suspend', function() {
+          watchers = scope.$$watchers;
+          scope.$$watchers = [];
         });
 
-        $scope.$on('resume', function() {
-          $scope.$$watchers = watchers;
+        scope.$on('resume', function() {
+          scope.$$watchers = watchers;
         });        
-      },
-      link: function postLink(scope, element, attrs) {
-
-        // scope.$watchCollection('filterCode', scope.filerData)
-        
       }
       
     };
@@ -5942,143 +5936,143 @@ angular.module('konga')
 
  */
 angular.module('konga')
-  .directive('searchPane', ['util', function (util) {
-    return {
-      templateUrl: '/konga/views/search-pane.html',
-      replace: true, 
-      restrict: 'E',
-      scope: {
-      	entityMetadata: '=',
-        query: '=',
-        submit: '=onSubmit'
-      },
-      controller:function($scope, $filter, $modal, $timeout, scaffold) {
-        $scope.fields = [];
-        $scope.categories = [];
+  .directive('searchPane', ['util', '$filter', '$modal', '$timeout', 'scaffold',  
+    function (util, $filter, $modal, $timeout, scaffold) {
+      return {
+        templateUrl: '/konga/views/search-pane.html',
+        replace: true, 
+        restrict: 'E',
+        scope: {
+        	entityMetadata: '=',
+          query: '=',
+          submit: '=onSubmit'
+        },
+        link: function postLink(scope) {
+          scope.fields = [];
+          scope.categories = [];
 
-        $scope.init = function() {
-          $scope.fields = util.getEntityFields($scope.entityMetadata);
-          $scope.categories = util.getEntityCategories($scope.entityMetadata, 1);
+          scope.init = function() {
+            scope.fields = util.getEntityFields(scope.entityMetadata);
+            scope.categories = util.getEntityCategories(scope.entityMetadata, 1);
 
-          var formType = $scope.entityMetadata.searchType;
+            var formType = scope.entityMetadata.searchType;
 
-          if(formType === util.constants.CUSTOM_FORM) {
-            var configuration = $filter('filter')($scope.entityMetadata.configuration, { key: util.constants.SEARCH_CUSTOM_VIEW });
-            if(!configuration.length) {
-              // TODO Show exception
-            }
-            $scope.contentUrl = mapper[configuration[0].value];
-          }
-          else {
-            $scope.contentUrl = '/konga/views/' + formType.toLowerCase() + '-search-pane.html';
-
-            // Custom behavior for each form type
-            switch(formType) {
-            case util.constants.CATEGORIZED_CASCADE_FORM:
-              // Get the categories used for search
-              var configuration = $filter('filter')($scope.entityMetadata.configuration, { key: util.constants.SEARCH_USE_CATEGORY }, true);
-              $scope.categories = [];
-              for(var i = 0; i < configuration.length; i++) {
-                var cat = configuration[i].value;
-                $scope.categories.push(cat);
+            if(formType === util.constants.CUSTOM_FORM) {
+              var configuration = $filter('filter')(scope.entityMetadata.configuration, { key: util.constants.SEARCH_CUSTOM_VIEW });
+              if(!configuration.length) {
+                // TODO Show exception
               }
-              break;
-            default:
-              // Nothing to do
-            }
-          }
-        };
-
-        function setupQuery(obj, query) {
-          for(var i in obj) {
-            if(typeof obj[i] === 'object') {
-              setupQuery(obj[i], query[i]);
+              scope.contentUrl = mapper[configuration[0].value];
             }
             else {
-              query[i] = obj[i];
+              scope.contentUrl = '/konga/views/' + formType.toLowerCase() + '-search-pane.html';
+
+              // Custom behavior for each form type
+              switch(formType) {
+              case util.constants.CATEGORIZED_CASCADE_FORM:
+                // Get the categories used for search
+                var configuration = $filter('filter')(scope.entityMetadata.configuration, { key: util.constants.SEARCH_USE_CATEGORY }, true);
+                scope.categories = [];
+                for(var i = 0; i < configuration.length; i++) {
+                  var cat = configuration[i].value;
+                  scope.categories.push(cat);
+                }
+                break;
+              default:
+                // Nothing to do
+              }
             }
-          }
-        }
+          };
 
-        $scope.resetQuery = function() {
-          var newQuery = scaffold.newQuery($scope.entityMetadata);
-          for(var param in $scope.query) {
-            $scope.query[param] = newQuery[param];
-          }
-        };
-
-        $scope.delayedSubmit = function() {
-          $timeout(function() {
-            $scope.operations.submit();
-          }, 100);
-        };
-
-        var watchers = null;
-        $scope.$on('suspend', function() {
-          watchers = $scope.$$watchers;
-          $scope.$$watchers = [];
-        });
-
-        $scope.$on('resume', function() {
-          $scope.$$watchers = watchers;
-        });
-  	  },
-      link: function postLink(scope) {
-        scope.operations = {
-          updateField: function(property, value, query, parent) {
-            var fieldName = property.name;
-
-            // Is there an api name present?
-            if(parent) {
-              fieldName = property.apiName;
-            }
-
-            // Special for checkboxes :)
-            if(property.fieldType.search === util.constants.FIELD_BOOLEAN) {
-              if(value.active == value.inactive) {
-                // None or all, same thing
-                value.text = '';
+          function setupQuery(obj, query) {
+            for(var i in obj) {
+              if(typeof obj[i] === 'object') {
+                setupQuery(obj[i], query[i]);
               }
               else {
-                // If active, then its true. If not, means inactive is true, ergo, its false=active
-                value.text = value.active;
+                query[i] = obj[i];
               }
             }
-
-            if(property.fieldType.search === util.constants.FIELD_DATE) {
-              value.date.startDate = (value.date.startDate == "") ? 0 : value.date.startDate;
-              value.date.endDate = (value.date.endDate == "") ? 0 : value.date.endDate;
-              value.text = value.date;
-            }
-            else if(property.searchConf.policy === util.constants.VALIDATOR_RANGE && value.range.from !== '') {
-              value.text = value.range;
-            }
-
-            var ret = value.text;
-            // if(ret && typeof ret === 'object') ret = ret.join(',');
-            // Update the query
-            query[fieldName] = ret;
-            return ret;
-          },
-
-          clear: function() {
-            
-            scope.$broadcast('reset-form');
-
-            scope.delayedSubmit();
-          },
-
-
-
-          submit: function() {
-        	  scope.query.resetPaging = true;
-        	  scope.query.resetSorting = true;
-        	  scope.submit(scope.query);
           }
-        };
-      }
-    };
-  }]);
+
+          scope.resetQuery = function() {
+            var newQuery = scaffold.newQuery(scope.entityMetadata);
+            for(var param in scope.query) {
+              scope.query[param] = newQuery[param];
+            }
+          };
+
+          scope.delayedSubmit = function() {
+            $timeout(function() {
+              scope.operations.submit();
+            }, 100);
+          };
+
+          var watchers = null;
+          scope.$on('suspend', function() {
+            watchers = scope.$$watchers;
+            scope.$$watchers = [];
+          });
+
+          scope.$on('resume', function() {
+            scope.$$watchers = watchers;
+          });
+
+          scope.operations = {
+            updateField: function(property, value, query, parent) {
+              var fieldName = property.name;
+
+              // Is there an api name present?
+              if(parent) {
+                fieldName = property.apiName;
+              }
+
+              // Special for checkboxes :)
+              if(property.fieldType.search === util.constants.FIELD_BOOLEAN) {
+                if(value.active == value.inactive) {
+                  // None or all, same thing
+                  value.text = '';
+                }
+                else {
+                  // If active, then its true. If not, means inactive is true, ergo, its false=active
+                  value.text = value.active;
+                }
+              }
+
+              if(property.fieldType.search === util.constants.FIELD_DATE) {
+                value.date.startDate = (value.date.startDate == "") ? 0 : value.date.startDate;
+                value.date.endDate = (value.date.endDate == "") ? 0 : value.date.endDate;
+                value.text = value.date;
+              }
+              else if(property.searchConf.policy === util.constants.VALIDATOR_RANGE && value.range.from !== '') {
+                value.text = value.range;
+              }
+
+              var ret = value.text;
+              // if(ret && typeof ret === 'object') ret = ret.join(',');
+              // Update the query
+              query[fieldName] = ret;
+              return ret;
+            },
+
+            clear: function() {
+              
+              scope.$broadcast('reset-form');
+
+              scope.delayedSubmit();
+            },
+
+
+
+            submit: function() {
+          	  scope.query.resetPaging = true;
+          	  scope.query.resetSorting = true;
+          	  scope.submit(scope.query);
+            }
+          };
+        }
+      };
+    }]);
 
 'use strict';
 
@@ -6197,20 +6191,20 @@ angular.module('konga')
 
 angular.module('konga')
   .directive('tabContent', function () {
-    var directiveDefinitionObject = {};
-	directiveDefinitionObject.require= '^verticalTabs';
-	directiveDefinitionObject.restrict= 'E';
-	directiveDefinitionObject.transclude= true;
-	directiveDefinitionObject.replace = true;
-	directiveDefinitionObject.scope= {
-		title: '@',
-		id: '=tabId'
-	};
-	directiveDefinitionObject.link= function(scope, element, attrs, tabsCtrl){
+    return {
+		require: '^verticalTabs',
+		restrict: 'E',
+		transclude: true,
+		replace: true,
+		scope: {
+			title: '@',
+			id: '=tabId'
+		},
+		link: function(scope, element, attrs, tabsCtrl) {
 			tabsCtrl.addTabContent(scope);
+		},
+		templateUrl: '/konga/views/vertical-tabs-element.tp.html'
 	};
-	directiveDefinitionObject.templateUrl = '/konga/views/vertical-tabs-element.tp.html';
-	return directiveDefinitionObject;
   });
 
 'use strict';
@@ -6222,7 +6216,7 @@ angular.module('konga')
  * # tableCell
  */
 angular.module('konga')
-  .directive('tableCell', ['util', function (util) {
+  .directive('tableCell', ['util', '$filter', function (util, $filter) {
     return {
       templateUrl: '/konga/views/table-cell.html',
       restrict: 'E',
@@ -6231,148 +6225,148 @@ angular.module('konga')
       	entity: '=',
       	field: '='
       },
-      controller: function($scope, $filter) {
-      	$scope.content = '';
-        $scope.type = 'text';
-        $scope.styles = [];
-        $scope.preffix = '';
-        $scope.suffix = '';
+      link: function postLink(scope, element) {
+        scope.content = '';
+        scope.type = 'text';
+        scope.styles = [];
+        scope.preffix = '';
+        scope.suffix = '';
 
         var useList = true;
 
         //var fieldWatcher;
         var entityWatcher;
 
-      	function setupValue() {
-	      	var fieldEntity = $scope.entity;
+        function setupValue() {
+          var fieldEntity = scope.entity;
 
-	      	// Lookup for complex fields
+          // Lookup for complex fields
           var mapped = null;
-	      	if($scope.field.derived) {
-    				if($scope.field.derivedSource) {
-              fieldEntity = $filter('mapField')($scope.entity, $scope.field.derivedSource);
-              if($scope.field.isSelf) {
+          if(scope.field.derived) {
+            if(scope.field.derivedSource) {
+              fieldEntity = $filter('mapField')(scope.entity, scope.field.derivedSource);
+              if(scope.field.isSelf) {
                 mapped = fieldEntity;
               }
             }
-	      	}
-
-	      	if(!mapped) {
-            mapped = $filter('mapField')(fieldEntity, $scope.field);
           }
-	      	if($scope.field.type.type === util.constants.FIELD_COMPLEX) {
-            $scope.content = $filter('tableRendererComplex')(mapped, $scope.field);
+
+          if(!mapped) {
+            mapped = $filter('mapField')(fieldEntity, scope.field);
+          }
+          if(scope.field.type.type === util.constants.FIELD_COMPLEX) {
+            scope.content = $filter('tableRendererComplex')(mapped, scope.field);
           }
           else {
-  	      	// Render depending on the data type
-  	      	switch($scope.field.fieldType.results) {
+            // Render depending on the data type
+            switch(scope.field.fieldType.results) {
             case util.constants.FIELD_DATE:
-  	      		$scope.content = mapped !== 0 ? $filter('date')(mapped, 'dd/MM/yyyy') : '';
-  	      	  break;
+              scope.content = mapped !== 0 ? $filter('date')(mapped, 'dd/MM/yyyy') : '';
+              break;
             case util.constants.FIELD_DATETIME:
-                $scope.content = mapped !== 0 ? $filter('date')(mapped, 'dd/MM/yyyy HH:mm:ss') : '';
+                scope.content = mapped !== 0 ? $filter('date')(mapped, 'dd/MM/yyyy HH:mm:ss') : '';
               break;
             case util.constants.FIELD_BOOLEAN:
-              var content = $filter('activeInactive')(mapped, $scope.field);
-              $scope.content = $filter('translate')(content);
-              // $scope.contentUrl = views.translated;
+              var content = $filter('activeInactive')(mapped, scope.field);
+              scope.content = $filter('translate')(content);
+              // scope.contentUrl = views.translated;
               break;
             case util.constants.FIELD_PLAIN:
-              $scope.content = $filter('translate')(mapped);
-              // $scope.contentUrl = views.translated;
+              scope.content = $filter('translate')(mapped);
+              // scope.contentUrl = views.translated;
               break;
             case util.constants.FIELD_IMAGE:
-              $scope.type = 'image';
-              $scope.content = mapped;
-              $scope.image = {
+              scope.type = 'image';
+              scope.content = mapped;
+              scope.image = {
                 width: 30,
                 height: 30,
               };
 
               // Read configuration
-              var conf = $scope.field.fieldType.configuration[0];
+              var conf = scope.field.fieldType.configuration[0];
               var width = $filter('filter')(conf, { key: 'IMAGE_WIDTH' }, true)[0];
               var height = $filter('filter')(conf, { key: 'IMAGE_HEIGHT' }, true)[0];
 
               if(width) {
-                $scope.image.width = width.value;
+                scope.image.width = width.value;
               }
 
               if(height) {
-                $scope.image.height = height.value;
+                scope.image.height = height.value;
               }
 
 
               break;
             case util.constants.FIELD_PRICE:
-              var configuration = $scope.field.fieldType.configuration[0];
+              var configuration = scope.field.fieldType.configuration[0];
               var currency = $filter('filter')(configuration, { key: 'CURRENCY' }, true)[0];
-              $scope.suffix = currency.value;
-              $scope.styles.push('text-right');
-              $scope.content = $filter('number')(mapped, 2);
+              scope.suffix = currency.value;
+              scope.styles.push('text-right');
+              scope.content = $filter('number')(mapped, 2);
               break;
             case util.constants.FIELD_NUMBER:
               // Read decimals from config
-              $scope.styles.push('text-right');
-              $scope.content = mapped;
+              scope.styles.push('text-right');
+              scope.content = mapped;
               break;  
             case util.constants.FIELD_CSS:
-              $scope.type = 'styling';
-              $scope.styles.push('text-center');
-              $scope.content = mapped;
+              scope.type = 'styling';
+              scope.styles.push('text-center');
+              scope.content = mapped;
               useList = false;
               break;
             case util.constants.FIELD_PLAIN_FILTERED:
-              $scope.type = 'plain-filtered';
-              $scope.content = mapped;
+              scope.type = 'plain-filtered';
+              scope.content = mapped;
 
               // Get the filter 
               // TODO Or die :)
-              var configuration = $scope.field.fieldType.configuration[0];
+              var configuration = scope.field.fieldType.configuration[0];
               var filter = $filter('filter')(configuration, { key: util.constants.TABLE_CELL_FILTER }, true)[0];
-              $scope.filter = filter.value;
+              scope.filter = filter.value;
 
               break;
-    	  		default:
-    	  			// Plain text
-    	  			$scope.content = mapped;
-  	      	}
-          }
-
-          if($scope.field.type.list && useList) {
-            var list = $scope.field.type.list;
-            
-            var listMatch = $filter('filter')(list, { key: ($scope.content+"") }, true);
-            if(listMatch.length) {
-              var item = listMatch[0];
-              var content = item.value;
-              $scope.content = $filter('translate')(content);
+            default:
+              // Plain text
+              scope.content = mapped;
             }
           }
 
-          if($scope.content === null || $scope.content === undefined) {
-            $scope.content = '';
+          if(scope.field.type.list && useList) {
+            var list = scope.field.type.list;
+            
+            var listMatch = $filter('filter')(list, { key: (scope.content+"") }, true);
+            if(listMatch.length) {
+              var item = listMatch[0];
+              var content = item.value;
+              scope.content = $filter('translate')(content);
+            }
           }
-      	}
 
-      	entityWatcher = $scope.$watch('entity', function() {
-      		setupValue();
-          $scope.updateContent();
+          if(scope.content === null || scope.content === undefined) {
+            scope.content = '';
+          }
+        }
+
+        entityWatcher = scope.$watch('entity', function() {
+          setupValue();
+          scope.updateContent();
           entityWatcher();
           // fieldWatcher();
-      	}, true);
+        }, true);
 
         var watchers = null;
-        $scope.$on('suspend', function() {
-          watchers = $scope.$$watchers;
-          $scope.$$watchers = [];
+        scope.$on('suspend', function() {
+          watchers = scope.$$watchers;
+          scope.$$watchers = [];
         });
 
-        $scope.$on('resume', function() {
-          $scope.$$watchers = watchers;
+        scope.$on('resume', function() {
+          scope.$$watchers = watchers;
         });
-      },
-      link: function postLink(scope, element) {
+
+
         var elt = angular.element(element);
 
         scope.updateContent = function() {
@@ -6391,7 +6385,7 @@ angular.module('konga')
  * # tableHeader
  */
 angular.module('konga')
-  .directive('tableHeader', ['util', function (util) {
+  .directive('tableHeader', ['util', '$filter', '$rootScope', function (util, $filter, $rootScope) {
     return {
       templateUrl: '/konga/views/table-header.html',
       restrict: 'E',
@@ -6402,58 +6396,58 @@ angular.module('konga')
       	showSorting: '=',
         mode: '@'
       },
-      controller: function($scope, $filter, $rootScope) {
-      	$scope.label = $scope.field.label;
-      	$scope.owner = '';
-      	var sourceField = $scope.field;
-        $scope.sort = null;
-        $scope.styles = [];
+      link: function postLink(scope, element, attrs) {
+        scope.label = scope.field.label;
+        scope.owner = '';
+        var sourceField = scope.field;
+        scope.sort = null;
+        scope.styles = [];
 
-        if(['CSS', 'NUMBER', 'PRICE'].indexOf($scope.field.fieldType.results) !== -1) {
-          $scope.styles.push('text-center');
+        if(['CSS', 'NUMBER', 'PRICE'].indexOf(scope.field.fieldType.results) !== -1) {
+          scope.styles.push('text-center');
         }
-      	
-      	if($scope.field.owner){
-      		for(var i = 0; i < $rootScope.metadata.entities.length; i++){
-      			if($scope.field.owner == $rootScope.metadata.entities[i].name){
-      				if($rootScope.metadata.entities[i].label != null){
-      					$scope.owner = $filter('translate')($rootScope.metadata.entities[i].label);
-      				}else{
-      					$scope.owner = $scope.field.owner;
-      				}
-      				break;
-      			}
-      		}
-      	}
-
-        if($scope.field.derived) {
-        	// Get the original field to know it's configuration
-        	sourceField = $scope.field.derivedPath[0];
+        
+        if(scope.field.owner){
+          for(var i = 0; i < $rootScope.metadata.entities.length; i++){
+            if(scope.field.owner == $rootScope.metadata.entities[i].name){
+              if($rootScope.metadata.entities[i].label != null){
+                scope.owner = $filter('translate')($rootScope.metadata.entities[i].label);
+              }else{
+                scope.owner = scope.field.owner;
+              }
+              break;
+            }
+          }
         }
 
-        if(!$scope.field.derived && $scope.field.isKey) {
-          $scope.sort = 'asc';
+        if(scope.field.derived) {
+          // Get the original field to know it's configuration
+          sourceField = scope.field.derivedPath[0];
+        }
+
+        if(!scope.field.derived && scope.field.isKey) {
+          scope.sort = 'asc';
         }
 
         var configurationSource = [];
 
-        switch($scope.mode) {
+        switch(scope.mode) {
         case util.constants.SCOPE_RESULTS:
           configurationSource = sourceField.showInResults.configuration;
           break;
         case util.constants.SCOPE_UPDATE:
-          configurationSource = $scope.field.showInUpdate.configuration;
+          configurationSource = scope.field.showInUpdate.configuration;
           break;
         }
 
         var configuration = $filter('filter')(configurationSource, { key: util.constants.USE_SHORT_LABEL });
 
-      	if(configuration && configuration.length && configuration[0].value === 'true') {
-      		$scope.label = $scope.field.shortLabel;
-      	}
+        if(configuration && configuration.length && configuration[0].value === 'true') {
+          scope.label = scope.field.shortLabel;
+        }
 
-        $scope.sorting = function(type) {
-          // if($scope.field.derived) {
+        scope.sorting = function(type) {
+          // if(scope.field.derived) {
           //   var action = {
           //     name: 'action-under-development'
           //   };
@@ -6461,33 +6455,31 @@ angular.module('konga')
           //   $rootScope.operations.dispatchAction(action, {});
           // }
           // else {
-            $scope.selectSortingField($scope.field, type);
+            scope.selectSortingField(scope.field, type);
           // }
         };
 
         var watchers = null;
-        $scope.$on('suspend', function() {
-          watchers = $scope.$$watchers;
-          $scope.$$watchers = [];
+        scope.$on('suspend', function() {
+          watchers = scope.$$watchers;
+          scope.$$watchers = [];
         });
 
-        $scope.$on('resume', function() {
-          $scope.$$watchers = watchers;
+        scope.$on('resume', function() {
+          scope.$$watchers = watchers;
         });
 
-        $scope.$on('sorting', function(evt, args) {
+        scope.$on('sorting', function(evt, args) {
           var field = args.field;
           var type = args.type;
 
-          if(field === $scope.field) {
-            $scope.sort = type;
+          if(field === scope.field) {
+            scope.sort = type;
           }
           else {
-            $scope.sort = null;
+            scope.sort = null;
           }
         });
-      },
-      link: function postLink(scope, element, attrs) {
       }
     };
   }]);
@@ -6811,33 +6803,28 @@ angular.module('konga')
 		      	onChange: '=',
 		      	fields: '=?'
 	      	},
-	      	controller: function ($scope) {
-		      	// Depending on the form type, the form will be rendered differently
-		      	$scope.templateUrl = '/konga/views/cascade-update.html';
+	    	link: function postLink(scope, element, attrs) {
+	        	// Depending on the form type, the form will be rendered differently
+		      	scope.templateUrl = '/konga/views/cascade-update.html';
 
-		      	if(!$scope.fields) {
-		      		$scope.fields = util.getEntityFields($scope.metadata);
+		      	if(!scope.fields) {
+		      		scope.fields = util.getEntityFields(scope.metadata);
 		      	}
 
-		      	switch($scope.metadata.updateType) {
+		      	switch(scope.metadata.updateType) {
 			      	case util.constants.TABBED_FORM:
-			      		$scope.templateUrl = '/konga/views/tabbed-update.html';
+			      		scope.templateUrl = '/konga/views/tabbed-update.html';
 			      		//Get the Categories
-			    		$scope.categories = util.getEntityCategories($scope.metadata, 1);
-		
-			    		$scope.matchCategory = function(index, category) {
-			    			var field = $scope.fields[index];
-			    			return field.categories.indexOf(category) !== -1;
-			    		};
+			    		scope.fieldsets = util.getEntityFieldSets(scope.metadata);
 		
 			      		break;
 			      	case util.constants.CUSTOM_TABBED_FORM:
-			      		$scope.templateUrl = '/konga/views/custom_tabbed-update.html';
+			      		scope.templateUrl = '/konga/views/custom_tabbed-update.html';
 
 			      		//Get the Categories
-			    		$scope.fieldsets = util.getEntityFieldSets($scope.metadata);
+			    		scope.fieldsets = util.getEntityFieldSets(scope.metadata);
 
-			    		$scope.getView = function(name) {
+			    		scope.getView = function(name) {
 			    			var view = mapper[name];
 
 			    			if(!view) {
@@ -6849,7 +6836,7 @@ angular.module('konga')
 
 			      		break;	
 			      	case util.constants.CUSTOM_FORM:
-			      		var configuration = $filter('filter')($scope.metadata.configuration, { key: util.constants.UPDATE_CUSTOM_VIEW });
+			      		var configuration = $filter('filter')(scope.metadata.configuration, { key: util.constants.UPDATE_CUSTOM_VIEW });
 			      		if(!configuration.length) {
 			      			// TODO Show exception
 			      		}
@@ -6859,20 +6846,15 @@ angular.module('konga')
 			      		if(!templateUrl) {
 			      			// TODO Throw exception
 			      		}
-			      		$scope.templateUrl = templateUrl;
+			      		scope.templateUrl = templateUrl;
 			      		
 			      		break;
 		      	}
-		      	$scope.$on('changeTab', function(events, args){
+		      	scope.$on('changeTab', function(events, args){
 
-		    		$scope.$broadcast('tabChangeCustomTabbed', {tab: args.tab} );
+		    		scope.$broadcast('tabChangeCustomTabbed', {tab: args.tab} );
 
-		    	}); 
-
-
-			},
-	    	link: function postLink(scope, element, attrs) {
-	        	//element.text('this is the updateForm directive');
+		    	});
 	   		}
 	    };
 	  }]);
@@ -6880,44 +6862,41 @@ angular.module('konga')
 'use strict';
 
 angular.module('konga')
-  .directive('verticalTabs', function () {
-  	var directiveDefinitionObject = {};
-	directiveDefinitionObject.restrict = 'E';
-	directiveDefinitionObject.transclude= true;
-	directiveDefinitionObject.replace = true;
-	directiveDefinitionObject.scope= {};
-	
-	directiveDefinitionObject.controller= function($scope, $rootScope){
-		var tabContentList = $scope.tabContentList = [];
-		
-		$scope.select = function(tabContent){
-			angular.forEach(tabContentList, function(tabContent){
-				tabContent.selected = false;
-				tabContent.active = '';
-			});
-			tabContent.selected = true;
-			tabContent.active = 'active';
-			$rootScope.pageData.currentTab = tabContent.title;
-			$scope.$emit('changeTab', {tab: tabContent} );
-		};
-		
-		this.addTabContent = function(tabContent){
-			if(tabContentList.length === 0 && !$rootScope.pageData.currentTab){
-				$scope.select(tabContent);
-			}
-			if($rootScope.pageData.currentTab){
-				if(tabContent.title === $rootScope.pageData.currentTab){
-					$scope.select(tabContent);
+  .directive('verticalTabs', ['$rootScope', function ($rootScope) {
+  	return {
+		restrict: 'E',
+		transclude: true,
+		replace: true,
+		scope: true,
+		link: function postLink(scope, element, attrs) {
+			var tabContentList = scope.tabContentList = [];
+			
+			scope.select = function(tabContent){
+				angular.forEach(tabContentList, function(tabContent){
+					tabContent.selected = false;
+					tabContent.active = '';
+				});
+				tabContent.selected = true;
+				tabContent.active = 'active';
+				$rootScope.pageData.currentTab = tabContent.title;
+				scope.$emit('changeTab', {tab: tabContent} );
+			};
+			
+			this.addTabContent = function(tabContent){
+				if(tabContentList.length === 0 && !$rootScope.pageData.currentTab){
+					scope.select(tabContent);
 				}
-			}
-			tabContentList.push(tabContent);
-		};
-	};
-	
-	directiveDefinitionObject.templateUrl = '/konga/views/verticaltab.tp.html';
-	
-	return directiveDefinitionObject;
-  });
+				if($rootScope.pageData.currentTab){
+					if(tabContent.title === $rootScope.pageData.currentTab){
+						scope.select(tabContent);
+					}
+				}
+				tabContentList.push(tabContent);
+			};
+		},
+		templateUrl: '/konga/views/verticaltab.tp.html'
+	}
+  }]);
 'use strict';
 
 /**
@@ -7815,10 +7794,9 @@ angular.module('konga')
       'save-ok': {
         type: util.constants.ACTION_TYPE_FUNCTION,
         params: {
-          fn: function(params) {
+          fn: ['$rootScope', 'params', function($rootScope, params) {
               var entityId = params.id;
-              var $rootScope = params.dependencyInjector.get('$rootScope');
-              var $scope = params.self;
+              var $scope = this;
               var data = params.data;
             
               // Verify if the entity is new
@@ -7835,29 +7813,25 @@ angular.module('konga')
   
               // Request a tab closing and a tab opening in update mode
               $rootScope.operations.closeTabById($rootScope.pageData.pageId);
-          }
+          }]
         }
       },
 
       'save-ko': {
         type: util.constants.ACTION_TYPE_FUNCTION,
         params: {
-          fn: function(params) {
-            var exceptionManager = params.dependencyInjector.get('exceptionManager');
+          fn: ['exceptionManager', 'params', function(exceptionManager, params) {
             exceptionManager.analyzeException(params);
-             
-          }
+          }]
         } 
       },
       
       'delete-ko': {
         type: util.constants.ACTION_TYPE_FUNCTION,
         params: {
-          fn: function(params) {
-            var exceptionManager = params.dependencyInjector.get('exceptionManager');
-            exceptionManager.analyzeException(params);          
-             
-          }
+          fn: ['exceptionManager', 'params', function(exceptionManager, params) {
+            exceptionManager.analyzeException(params);
+          }]
         } 
       },
       'search-entity': {
@@ -8000,7 +7974,38 @@ angular.module('konga')
         case util.constants.ACTION_TYPE_FUNCTION:
           var params = actionDefinition.params.parameters;
           var functionToCall = actionDefinition.params['fn'];
-          functionToCall.call(params.self, params);
+          if(typeof functionToCall === 'function') {
+            functionToCall.call(params.self, params);
+          }
+          else if(functionToCall instanceof Array) {
+            var fnParams = functionToCall;
+            var fn = fnParams.splice(fnParams.length-1, 1)[0];
+            if(typeof fn !== 'function') {
+              // TODO Throw exception
+            }
+
+            // Get dependencies
+            var deps = [];
+            for(var i = 0; i < fnParams.length; i++) {
+              var depName = fnParams[i];
+              if(depName === 'params') {
+                deps.push(params);
+                continue;
+              }
+
+              try {
+                var dep = params.dependencyInjector.get(depName);
+                deps.push(dep);
+              } catch(e) {
+                // TODO Launch exception (dep injection exception)
+              }
+            }
+
+            functionToCall.apply(params.self, deps);
+          }
+          else {
+            // TODO Throw exception
+          }
           break;
         }
       };
@@ -10533,12 +10538,12 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('/konga/views/tabbed-update.html',
     "<vertical-tabs>\n" +
-    "\t<tab-content ng-repeat=\"cat in categories\" title=\"{{cat | translate}}\" is-show=\"(fields | updateParams:metadata | filter: {category: cat}).length\">\n" +
+    "\t<tab-content ng-repeat=\"fs in fieldsets\" title=\"{{fs | translate}}\" is-show=\"(fields | updateParams:metadata | filter: {category: cat}).length\">\n" +
     "\t\t<raw-input \n" +
     "\t\t\tproperty=\"field\"\n" +
     "\t\t\tvertical=\"true\"\n" +
     "\t\t\tsource-list=\"productCodes[field.name]\"\n" +
-    "\t\t\tng-repeat=\"field in fields | updateParams:metadata:cat | orderBy:'+priority.update' | allowed:'update'\" \n" +
+    "\t\t\tng-repeat=\"field in fields | updateParams:metadata:fs | orderBy:'+priority.update' | allowed:'update'\" \n" +
     "\t\t\tentity=\"entity\" \n" +
     "\t\t\ton-update=\"onUpdate\"\n" +
     "\t\t\ton-change=\"onChange\"\n" +

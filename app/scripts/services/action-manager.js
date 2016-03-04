@@ -17,10 +17,9 @@ angular.module('konga')
       'save-ok': {
         type: util.constants.ACTION_TYPE_FUNCTION,
         params: {
-          fn: function(params) {
+          fn: ['$rootScope', 'params', function($rootScope, params) {
               var entityId = params.id;
-              var $rootScope = params.dependencyInjector.get('$rootScope');
-              var $scope = params.self;
+              var $scope = this;
               var data = params.data;
             
               // Verify if the entity is new
@@ -37,29 +36,25 @@ angular.module('konga')
   
               // Request a tab closing and a tab opening in update mode
               $rootScope.operations.closeTabById($rootScope.pageData.pageId);
-          }
+          }]
         }
       },
 
       'save-ko': {
         type: util.constants.ACTION_TYPE_FUNCTION,
         params: {
-          fn: function(params) {
-            var exceptionManager = params.dependencyInjector.get('exceptionManager');
+          fn: ['exceptionManager', 'params', function(exceptionManager, params) {
             exceptionManager.analyzeException(params);
-             
-          }
+          }]
         } 
       },
       
       'delete-ko': {
         type: util.constants.ACTION_TYPE_FUNCTION,
         params: {
-          fn: function(params) {
-            var exceptionManager = params.dependencyInjector.get('exceptionManager');
-            exceptionManager.analyzeException(params);          
-             
-          }
+          fn: ['exceptionManager', 'params', function(exceptionManager, params) {
+            exceptionManager.analyzeException(params);
+          }]
         } 
       },
       'search-entity': {
@@ -202,7 +197,38 @@ angular.module('konga')
         case util.constants.ACTION_TYPE_FUNCTION:
           var params = actionDefinition.params.parameters;
           var functionToCall = actionDefinition.params['fn'];
-          functionToCall.call(params.self, params);
+          if(typeof functionToCall === 'function') {
+            functionToCall.call(params.self, params);
+          }
+          else if(functionToCall instanceof Array) {
+            var fnParams = functionToCall;
+            var fn = fnParams.splice(fnParams.length-1, 1)[0];
+            if(typeof fn !== 'function') {
+              // TODO Throw exception
+            }
+
+            // Get dependencies
+            var deps = [];
+            for(var i = 0; i < fnParams.length; i++) {
+              var depName = fnParams[i];
+              if(depName === 'params') {
+                deps.push(params);
+                continue;
+              }
+
+              try {
+                var dep = params.dependencyInjector.get(depName);
+                deps.push(dep);
+              } catch(e) {
+                // TODO Launch exception (dep injection exception)
+              }
+            }
+
+            functionToCall.apply(params.self, deps);
+          }
+          else {
+            // TODO Throw exception
+          }
           break;
         }
       };

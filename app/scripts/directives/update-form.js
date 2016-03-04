@@ -50,33 +50,28 @@ angular.module('konga')
 		      	onChange: '=',
 		      	fields: '=?'
 	      	},
-	      	controller: function ($scope) {
-		      	// Depending on the form type, the form will be rendered differently
-		      	$scope.templateUrl = '/konga/views/cascade-update.html';
+	    	link: function postLink(scope, element, attrs) {
+	        	// Depending on the form type, the form will be rendered differently
+		      	scope.templateUrl = '/konga/views/cascade-update.html';
 
-		      	if(!$scope.fields) {
-		      		$scope.fields = util.getEntityFields($scope.metadata);
+		      	if(!scope.fields) {
+		      		scope.fields = util.getEntityFields(scope.metadata);
 		      	}
 
-		      	switch($scope.metadata.updateType) {
+		      	switch(scope.metadata.updateType) {
 			      	case util.constants.TABBED_FORM:
-			      		$scope.templateUrl = '/konga/views/tabbed-update.html';
+			      		scope.templateUrl = '/konga/views/tabbed-update.html';
 			      		//Get the Categories
-			    		$scope.categories = util.getEntityCategories($scope.metadata, 1);
-		
-			    		$scope.matchCategory = function(index, category) {
-			    			var field = $scope.fields[index];
-			    			return field.categories.indexOf(category) !== -1;
-			    		};
+			    		scope.fieldsets = util.getEntityFieldSets(scope.metadata);
 		
 			      		break;
 			      	case util.constants.CUSTOM_TABBED_FORM:
-			      		$scope.templateUrl = '/konga/views/custom_tabbed-update.html';
+			      		scope.templateUrl = '/konga/views/custom_tabbed-update.html';
 
 			      		//Get the Categories
-			    		$scope.fieldsets = util.getEntityFieldSets($scope.metadata);
+			    		scope.fieldsets = util.getEntityFieldSets(scope.metadata);
 
-			    		$scope.getView = function(name) {
+			    		scope.getView = function(name) {
 			    			var view = mapper[name];
 
 			    			if(!view) {
@@ -88,7 +83,7 @@ angular.module('konga')
 
 			      		break;	
 			      	case util.constants.CUSTOM_FORM:
-			      		var configuration = $filter('filter')($scope.metadata.configuration, { key: util.constants.UPDATE_CUSTOM_VIEW });
+			      		var configuration = $filter('filter')(scope.metadata.configuration, { key: util.constants.UPDATE_CUSTOM_VIEW });
 			      		if(!configuration.length) {
 			      			// TODO Show exception
 			      		}
@@ -98,20 +93,15 @@ angular.module('konga')
 			      		if(!templateUrl) {
 			      			// TODO Throw exception
 			      		}
-			      		$scope.templateUrl = templateUrl;
+			      		scope.templateUrl = templateUrl;
 			      		
 			      		break;
 		      	}
-		      	$scope.$on('changeTab', function(events, args){
+		      	scope.$on('changeTab', function(events, args){
 
-		    		$scope.$broadcast('tabChangeCustomTabbed', {tab: args.tab} );
+		    		scope.$broadcast('tabChangeCustomTabbed', {tab: args.tab} );
 
-		    	}); 
-
-
-			},
-	    	link: function postLink(scope, element, attrs) {
-	        	//element.text('this is the updateForm directive');
+		    	});
 	   		}
 	    };
 	  }]);
