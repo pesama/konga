@@ -19,7 +19,7 @@
     "angular": "~1",
     "angular-animate": "~1",
     "angular-bootstrap": "*",
-    "angular-bootstrap-datetimepicker": "*",
+    "angular-bootstrap-datetimepicker": "~0",
     "angular-cookies": "~1",
     "angular-dialog-service": "*",
     "angular-file-upload": "*",
