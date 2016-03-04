@@ -8486,10 +8486,10 @@ angular.module('konga')
 
 /**
  * @ngdoc service
- * @name kongaApp.konga
+ * @name konga.konga
  * @description
  * # konga
- * Service in the kongaApp.
+ * Service in the konga.
  */
 angular.module('konga')
   .service('konga', ['kongaConfig', 'mapper', 'util', 'common', '$rootScope', 'userData', function (kongaConfig, mapper, util, common, $rootScope, userData) {
