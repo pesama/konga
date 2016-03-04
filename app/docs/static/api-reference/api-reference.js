@@ -42,7 +42,7 @@
  * 	* {@link Metadata.Multiplicities `Multiplicities`}: Define the possible multiplicities - quantity of items per input - for a field. 
  * 	* {@link Metadata.TriggerMatches `TriggerMatches`}: Define the possible trigger configurations for the value to verify matches.
  * 	* {@link Metadata.TriggerMoments `TriggerMoments`}: Contains all possible `moments` where a field verify its triggers.
- * 	* {@link Metadata.ValidatorTypes `ValidatorTypes`}: 
+ * 	* {@link Metadata.ValidatorTypes `ValidatorTypes`}: Includes the possible validation modes for the data within your fields.
  *
  *
  * * **{@link Metadata.Generators <i class="fa fa-terminal"></i> Generators }:** Documents the available methods for generating your metadata.
@@ -55,5 +55,9 @@
  * * **<i class="fa fa-paint-brush"></i> Modeling:** Define how your metadata is interpreted to build your {@link Standards.Apps `Apps`} and {@link Standards.Forms `Forms`}. It includes examples on every available {@link Metadata.FormScopes `form scope`}, and links to related inner elements.
  * * **<i class="fa fa-user"></i> Users:** Define how your user management integrates into Konga, and the features you can leverage using this system. 
  * * **<i class="fa fa-gamepad"></i> Tools:** Documents the set of tools Konga uses to manage your metadata, and the macros you can use to save time while developing.
- * * **<i class="fa fa-wrench"></i> Operations:** 
+ * * **<i class="fa fa-wrench"></i> Operations:** Documents all built-in operations for managing your application and its interactions.
+ *
+ *
+ * 
+ * 
  */

@@ -1,6 +1,6 @@
 /**
  * @ngdoc service
- * @name Customisation.Custom views
+ * @name Customisation.Custom_views
  * @description 
 
  # Custom views
