@@ -33,8 +33,16 @@
  *
  * * **<i class="fa fa-tag"></i> Enumerations:** Enumerations contain the set of allowed parameters for the properties bound to them. Here you have all existing enumerations.
  *
- * 
- *
+ * 	* {@link Metadata.AccessModes `AccessModes`}: Define the possible visibility options for an entity within your app. 
+ * 	* {@link Metadata.DataTypes `DataTypes`}: Contains the existing _data-types_ Konga can manage natively.
+ * 	* {@link Metadata.FieldTypes `FieldTypes`}: Define the possible rendering appeareances fields can have.
+ * 	* {@link Metadata.FormScopes `FormScopes`}: Define the existing `scopes` Konga has for building the different kinds of forms.
+ * 	* {@link Metadata.FormStyles `FormStyles`}: Configuration options for the field layout within a form.
+ * 	* {@link Metadata.FormTypes `FormTypes`}: Contains all possible form rendering configurations for your forms.
+ * 	* {@link Metadata.Multiplicities `Multiplicities`}: Define the possible multiplicities - quantity of items per input - for a field. 
+ * 	* {@link Metadata.TriggerMatches `TriggerMatches`}: Define the possible trigger configurations for the value to verify matches.
+ * 	* {@link Metadata.TriggerMoments `TriggerMoments`}: Contains all possible `moments` where a field verify its triggers.
+ * 	* {@link Metadata.ValidatorTypes `ValidatorTypes`}: 
  *
  *
  * * **{@link Metadata.Generators <i class="fa fa-terminal"></i> Generators }:** Documents the available methods for generating your metadata.
