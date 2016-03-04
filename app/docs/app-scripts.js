@@ -5613,7 +5613,7 @@ Function to call when sorting field or mode changes
 */
 angular.module('konga')
 .directive('resultTable', ['util', 'mapper', '$filter', '$rootScope', 'permissionManager', 
-  function (util, mapper, $field, $rootScope, permissionManager) {
+  function (util, mapper, $filter, $rootScope, permissionManager) {
     return {
       templateUrl: '/konga/views/result-table.html',
       replace: true, 
