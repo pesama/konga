@@ -411,7 +411,7 @@
 				return sorted;
 			}	
 		})
-		.filter('sortedKonga', function() {
+		.filter('sortedControllers', function() {
 			return function(input) {
 				var orders = {
 
@@ -424,6 +424,27 @@
 					'searchPane': 0,
 					'resultTable': 1,
 					'updateForm': 2
+				}
+
+				var sorted = input.sort(function(a, b) {
+					return orders[a.shortName] - orders[b.shortName];
+				});
+
+				for(var i = 0; i < sorted.length; i++) {
+					input[i] = sorted[i];
+				}
+
+				return input;
+			}	
+		})
+		.filter('sortedDirectives', function() {
+			return function(input) {
+				var orders = {
+
+					'searchPane': 0,
+					'resultTable': 1,
+					'updateForm': 2,
+					'rawInput': 3
 				}
 
 				var sorted = input.sort(function(a, b) {

@@ -57,7 +57,24 @@
  * * **<i class="fa fa-gamepad"></i> Tools:** Documents the set of tools Konga uses to manage your metadata, and the macros you can use to save time while developing.
  * * **<i class="fa fa-wrench"></i> Operations:** Documents all built-in operations for managing your application and its interactions.
  *
+ * # TODO Customisation
  *
+ *
+ * ## konga
+ *
+ * This module documents directly Konga's code. It's then the real 'API reference'. Each part of this module technically explains all procedures under its hood, and it's tightly relatated to one or more definitions of the other modules - that include both technical and business literature.
+ *
+ * ### Controllers
+ * 
+ * * **{@link konga.controller:KongaController `KongaController`}:** This is the main controller of Konga, and gives your application access to all Konga's features and operations.
+ * * **{@link konga.controller:EntitySearchController `EntitySearchController`}:** Engaged on {@link Metadata.FormScopes#properties_SEARCH `search`} and {@link Metadata.FormScopes#properties_RESULTS `results`} form scopes, it controls all required tasks and behaviors to allow full functioning of {@link konga.directive:searchPane `search panes`} and {@link konga.directive:resultTable `result tables`}.
+ * * **{@link konga.controller:EntityUpdateController `EntityUpdateController`}:** Used on {@link Metadata.FormScopes#properties_UPDATE `updates`}, it's responsible for building the update form, controlling all operations engaged within the form and its fields, and all the tasks involved with them.
+ *
+ * 
+ * ### Directives
+ *
+ * 
+ * 
  * 
  * 
  */
