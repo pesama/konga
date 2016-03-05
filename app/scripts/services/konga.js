@@ -13,7 +13,7 @@ angular.module('konga')
     
       var apiResolutions = {};
 
-      function Konga(common, $rootScope, userData, api) {
+      function Konga(common, $rootScope, userData) {
         this.api = function(entity, API) {
           if(API !== undefined) {
             apiResolutions[entity] = API;
@@ -72,8 +72,8 @@ angular.module('konga')
         mapper[map] = view;
       };
 
-      this.$get = ['common', '$rootScope', 'userData', 'api', 
-        function(common, $rootScope, userData, api) {
+      this.$get = ['common', '$rootScope', 'userData', 
+        function(common, $rootScope, userData) {
           return new Konga();
         }];
   }]);
