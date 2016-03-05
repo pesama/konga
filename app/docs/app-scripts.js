@@ -6870,10 +6870,10 @@ angular.module('konga')
 		transclude: true,
 		replace: true,
 		scope: true,
-		link: function postLink(scope, element, attrs) {
-			var tabContentList = scope.tabContentList = [];
+		controller: function($scope) {
+			var tabContentList = $scope.tabContentList = [];
 			
-			scope.select = function(tabContent){
+			$scope.select = function(tabContent){
 				angular.forEach(tabContentList, function(tabContent){
 					tabContent.selected = false;
 					tabContent.active = '';
@@ -6881,20 +6881,22 @@ angular.module('konga')
 				tabContent.selected = true;
 				tabContent.active = 'active';
 				$rootScope.pageData.currentTab = tabContent.title;
-				scope.$emit('changeTab', {tab: tabContent} );
+				$scope.$emit('changeTab', {tab: tabContent} );
 			};
 			
 			this.addTabContent = function(tabContent){
 				if(tabContentList.length === 0 && !$rootScope.pageData.currentTab){
-					scope.select(tabContent);
+					$scope.select(tabContent);
 				}
 				if($rootScope.pageData.currentTab){
 					if(tabContent.title === $rootScope.pageData.currentTab){
-						scope.select(tabContent);
+						$scope.select(tabContent);
 					}
 				}
 				tabContentList.push(tabContent);
 			};
+		},
+		link: function postLink(scope, element, attrs) {
 		},
 		templateUrl: '/konga/views/verticaltab.tp.html'
 	}
