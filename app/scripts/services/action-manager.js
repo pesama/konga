@@ -224,7 +224,7 @@ angular.module('konga')
               }
             }
 
-            functionToCall.apply(params.self, deps);
+            fn.apply(params.self, deps);
           }
           else {
             // TODO Throw exception

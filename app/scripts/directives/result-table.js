@@ -35,12 +35,8 @@ Function to call when a row is clicked, if no {@link Customisation.Action-driven
 Function to call when sorting field or mode changes
  */
 angular.module('konga')
-<<<<<<< HEAD
 .directive('resultTable', ['util', 'mapper', '$filter', '$rootScope', 'permissionManager', 
   function (util, mapper, $filter, $rootScope, permissionManager) {
-=======
-  .directive('resultTable', ['util', 'mapper', function (util, mapper) {
->>>>>>> parent of c68fb71... Removed directive controllers, included angular-alike dependency injection for actions
     return {
       templateUrl: '/konga/views/result-table.html',
       replace: true, 
