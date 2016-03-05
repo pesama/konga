@@ -13,12 +13,12 @@ angular.module('konga')
 
     // Public API here
     return {
+      resolutions: {},
       getLocalEndpoint : function (source) {
-        var endpoint = null;
-        switch(source) {
-        default:
-            endpoint = standardApi;
-
+        var endpoint = this.resolutions[source];
+        
+        if(!endpoint) {
+          endpoint = standardApi;
         }
         
         return endpoint;

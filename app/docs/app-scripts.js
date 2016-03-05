@@ -8044,12 +8044,12 @@ angular.module('konga')
 
     // Public API here
     return {
+      resolutions: {},
       getLocalEndpoint : function (source) {
-        var endpoint = null;
-        switch(source) {
-        default:
-            endpoint = standardApi;
-
+        var endpoint = this.resolutions[source];
+        
+        if(!endpoint) {
+          endpoint = standardApi;
         }
         
         return endpoint;
@@ -8499,8 +8499,16 @@ angular.module('konga')
  * Service in the konga.
  */
 angular.module('konga')
-  .service('konga', ['kongaConfig', 'mapper', 'util', 'common', '$rootScope', 'userData', function (kongaConfig, mapper, util, common, $rootScope, userData) {
+  .service('konga', ['kongaConfig', 'mapper', 'util', 'common', '$rootScope', 'userData', 'api', function (kongaConfig, mapper, util, common, $rootScope, userData, api) {
     
+    this.api = function(entity, API) {
+      if(API !== undefined) {
+        api.resolutions[entity] = API;
+      }
+
+      return api.resolutions[entity];
+    };
+
     this.config = function(key, value) {
       if(value !== undefined) {
         kongaConfig[key] = value;
