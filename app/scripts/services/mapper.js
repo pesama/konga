@@ -8,4 +8,4 @@
  * Value in the konga.
  */
 angular.module('konga')
-  .value('mapper', {});
+  .constant('mapper', {});

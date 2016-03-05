@@ -9,13 +9,12 @@
  * This factory connects the source to a factory, depending on the type of entity that's being looked for. 
  */
 angular.module('konga')
-  .factory('api', function (standardApi) {
+  .factory('api', ['konga', 'standardApi', function (konga, standardApi) {
 
     // Public API here
     return {
-      resolutions: {},
       getLocalEndpoint : function (source) {
-        var endpoint = this.resolutions[source];
+        var endpoint = konga.api(source);
         
         if(!endpoint) {
           endpoint = standardApi;
@@ -24,7 +23,7 @@ angular.module('konga')
         return endpoint;
       }
     };
-  });
+  }]);
 
 // Document the operations
 /**

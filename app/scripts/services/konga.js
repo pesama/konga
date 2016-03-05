@@ -8,39 +8,72 @@
  * Service in the konga.
  */
 angular.module('konga')
-  .service('konga', ['kongaConfig', 'mapper', 'util', 'common', '$rootScope', 'userData', 'api', function (kongaConfig, mapper, util, common, $rootScope, userData, api) {
+  .provider('konga', ['kongaConfig', 'mapper', 'util', 
+    function KongaProvider(kongaConfig, mapper, util) {
     
-    this.api = function(entity, API) {
-      if(API !== undefined) {
-        api.resolutions[entity] = API;
+      var apiResolutions = {};
+
+      function Konga(common, $rootScope, userData, api) {
+        this.api = function(entity, API) {
+          if(API !== undefined) {
+            apiResolutions[entity] = API;
+          }
+
+          return apiResolutions[entity];
+        };
+
+        this.config = function(key, value) {
+          if(value !== undefined) {
+            kongaConfig[key] = value;
+          }
+
+          return kongaConfig[key];
+        };
+
+        this.viewMapper = function(map, view) {
+          if(view !== undefined) {
+            mapper[map] = view;
+          }
+
+          return mapper[map];
+        };
+
+        this.util = util;
+
+        this.storage = common;
+
+        this.init = function(metadata) {
+          $rootScope.metadata = metadata;
+          util.init(metadata);
+          common.store('metadata', metadata);
+        };
       }
 
-      return api.resolutions[entity];
-    };
+      this.api = function(entity, API) {
+        if(!entity || !API) {
+          // TODO Throw exception
+        }
 
-    this.config = function(key, value) {
-      if(value !== undefined) {
+        apiResolutions[entity] = API;
+      };
+
+      this.config = function(key, value) {
+        if(!key || !value) {
+          // TODO Throw exception
+        }
+
         kongaConfig[key] = value;
-      }
+      };
 
-      return kongaConfig[key];
-    };
-
-    this.viewMapper = function(map, view) {
-      if(view !== undefined) {
+      this.viewMapper = function(map, view) {
+        if(!map || !view) {
+          // TODO THrow exception
+        }
         mapper[map] = view;
-      }
+      };
 
-      return mapper[map];
-    };
-
-    this.util = util;
-
-    this.storage = common;
-
-    this.init = function(metadata) {
-      $rootScope.metadata = metadata;
-      util.init(metadata);
-      common.store('metadata', metadata);
-    };
+      this.$get = ['common', '$rootScope', 'userData', 'api', 
+        function(common, $rootScope, userData, api) {
+          return new Konga();
+        }];
   }]);
