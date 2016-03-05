@@ -74,6 +74,6 @@ angular.module('konga')
 
       this.$get = ['common', '$rootScope', 'userData', 
         function(common, $rootScope, userData) {
-          return new Konga();
+          return new Konga(common, $rootScope, userData);
         }];
   }]);
