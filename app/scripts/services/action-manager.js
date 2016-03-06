@@ -14,6 +14,16 @@ angular.module('konga')
       /*
        * Native actions
        */
+      'search': {
+        type: util.constants.ACTION_TYPE_FUNCTION,
+        params: {
+          fn: function(params) {
+            this.query.resetPaging = true;
+            this.query.resetSorting = true;
+            this.submit(this.query);
+          }
+        }
+      },
       'save-ok': {
         type: util.constants.ACTION_TYPE_FUNCTION,
         params: {

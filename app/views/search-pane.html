@@ -15,21 +15,6 @@
 					</button>
 				</div>
 			</div>
-			<div class="col-md-12 form-group mode-search" ng-if="entityMetadata.favoriteable">
-				<label class="font-bold">
-					<i class="glyphicon glyphicon-star"></i>
-					{{ 'message.favorite-filter.title' | translate }}
-				</label>
-				<div class="col-md-12 nowrap">
-					<button id="openFilterModelPost.id" class="btn btn-link" ng-click="openFilterModel({ dataType: 'filtermgt', operation: 'post'})">
-						<i class="glyphicon glyphicon-floppy-save"></i>
-						{{'message.favorite-filter.save-filter' | translate}}
-					</button>
-					<button id="openFilterModelGet.id" class="btn btn-link" ng-click="openFilterModel({ dataType: 'filtermgt', operation: 'get'})">
-						<i class="glyphicon glyphicon-floppy-open"></i>
-						{{'message.favorite-filter.load-filter' | translate}}
-					</button>
-			</div>
 		</form>
 	</div>
 </div>

@@ -51,140 +51,149 @@
 
  */
 angular.module('konga')
-  .directive('searchPane', ['util', function (util) {
-    return {
-      templateUrl: '/konga/views/search-pane.html',
-      replace: true, 
-      restrict: 'E',
-      scope: {
-      	entityMetadata: '=',
-        query: '=',
-        submit: '=onSubmit'
-      },
-      controller:function($scope, $filter, $modal, $timeout, scaffold) {
-        $scope.fields = [];
-        $scope.categories = [];
+  .directive('searchPane', ['util', '$filter', '$modal', '$timeout', 'scaffold', 
+    function (util, $filter, $modal, $timeout, scaffold) {
+      return {
+        templateUrl: '/konga/views/search-pane.html',
+        replace: true, 
+        restrict: 'E',
+        scope: {
+        	entityMetadata: '=',
+          query: '=',
+          submit: '=onSubmit',
+          dispatch: '=onDispatch'
+        },
+        controller: function($scope) {
+          $scope.fields = [];
+          $scope.categories = [];
 
-        $scope.init = function() {
-          $scope.fields = util.getEntityFields($scope.entityMetadata);
-          $scope.categories = util.getEntityCategories($scope.entityMetadata, 1);
+          $scope.init = function() {
+            $scope.fields = util.getEntityFields($scope.entityMetadata);
+            $scope.categories = util.getEntityCategories($scope.entityMetadata, 1);
 
-          var formType = $scope.entityMetadata.searchType;
+            var formType = $scope.entityMetadata.searchType;
 
-          if(formType === util.constants.CUSTOM_FORM) {
-            var configuration = $filter('filter')($scope.entityMetadata.configuration, { key: util.constants.SEARCH_CUSTOM_VIEW });
-            if(!configuration.length) {
-              // TODO Show exception
-            }
-            $scope.contentUrl = mapper[configuration[0].value];
-          }
-          else {
-            $scope.contentUrl = '/konga/views/' + formType.toLowerCase() + '-search-pane.html';
-
-            // Custom behavior for each form type
-            switch(formType) {
-            case util.constants.CATEGORIZED_CASCADE_FORM:
-              // Get the categories used for search
-              var configuration = $filter('filter')($scope.entityMetadata.configuration, { key: util.constants.SEARCH_USE_CATEGORY }, true);
-              $scope.categories = [];
-              for(var i = 0; i < configuration.length; i++) {
-                var cat = configuration[i].value;
-                $scope.categories.push(cat);
+            if(formType === util.constants.CUSTOM_FORM) {
+              var configuration = $filter('filter')($scope.entityMetadata.configuration, { key: util.constants.SEARCH_CUSTOM_VIEW });
+              if(!configuration.length) {
+                // TODO Show exception
               }
-              break;
-            default:
-              // Nothing to do
-            }
-          }
-        };
-
-        function setupQuery(obj, query) {
-          for(var i in obj) {
-            if(typeof obj[i] === 'object') {
-              setupQuery(obj[i], query[i]);
+              $scope.contentUrl = mapper[configuration[0].value];
             }
             else {
-              query[i] = obj[i];
+              $scope.contentUrl = '/konga/views/' + formType.toLowerCase() + '-search-pane.html';
+
+              // Custom behavior for each form type
+              switch(formType) {
+              case util.constants.CATEGORIZED_CASCADE_FORM:
+                // Get the categories used for search
+                var configuration = $filter('filter')($scope.entityMetadata.configuration, { key: util.constants.SEARCH_USE_CATEGORY }, true);
+                $scope.categories = [];
+                for(var i = 0; i < configuration.length; i++) {
+                  var cat = configuration[i].value;
+                  $scope.categories.push(cat);
+                }
+                break;
+              default:
+                // Nothing to do
+              }
             }
-          }
-        }
+          };
 
-        $scope.resetQuery = function() {
-          var newQuery = scaffold.newQuery($scope.entityMetadata);
-          for(var param in $scope.query) {
-            $scope.query[param] = newQuery[param];
-          }
-        };
-
-        $scope.delayedSubmit = function() {
-          $timeout(function() {
-            $scope.operations.submit();
-          }, 100);
-        };
-
-        var watchers = null;
-        $scope.$on('suspend', function() {
-          watchers = $scope.$$watchers;
-          $scope.$$watchers = [];
-        });
-
-        $scope.$on('resume', function() {
-          $scope.$$watchers = watchers;
-        });
-  	  },
-      link: function postLink(scope) {
-        scope.operations = {
-          updateField: function(property, value, query, parent) {
-            var fieldName = property.name;
-
-            // Is there an api name present?
-            if(parent) {
-              fieldName = property.apiName;
-            }
-
-            // Special for checkboxes :)
-            if(property.fieldType.search === util.constants.FIELD_BOOLEAN) {
-              if(value.active == value.inactive) {
-                // None or all, same thing
-                value.text = '';
+          function setupQuery(obj, query) {
+            for(var i in obj) {
+              if(typeof obj[i] === 'object') {
+                setupQuery(obj[i], query[i]);
               }
               else {
-                // If active, then its true. If not, means inactive is true, ergo, its false=active
-                value.text = value.active;
+                query[i] = obj[i];
               }
             }
-
-            if(property.fieldType.search === util.constants.FIELD_DATE) {
-              value.date.startDate = (value.date.startDate == "") ? 0 : value.date.startDate;
-              value.date.endDate = (value.date.endDate == "") ? 0 : value.date.endDate;
-              value.text = value.date;
-            }
-            else if(property.searchConf.policy === util.constants.VALIDATOR_RANGE && value.range.from !== '') {
-              value.text = value.range;
-            }
-
-            var ret = value.text;
-            // if(ret && typeof ret === 'object') ret = ret.join(',');
-            // Update the query
-            query[fieldName] = ret;
-            return ret;
-          },
-
-          clear: function() {
-            
-            scope.$broadcast('reset-form');
-
-            scope.delayedSubmit();
-          },
-
-
-
-          submit: function() {
-        	  scope.query.resetPaging = true;
-        	  scope.query.resetSorting = true;
-        	  scope.submit(scope.query);
           }
-        };
-      }
-    };
-  }]);
+
+          $scope.resetQuery = function() {
+            var newQuery = scaffold.newQuery($scope.entityMetadata);
+            for(var param in $scope.query) {
+              $scope.query[param] = newQuery[param];
+            }
+          };
+
+          $scope.delayedSubmit = function() {
+            $timeout(function() {
+              $scope.operations.submit();
+            }, 100);
+          };
+
+          var watchers = null;
+          $scope.$on('suspend', function() {
+            watchers = $scope.$$watchers;
+            $scope.$$watchers = [];
+          });
+
+          $scope.$on('resume', function() {
+            $scope.$$watchers = watchers;
+          });
+    	  },
+        link: function postLink(scope) {
+          scope.operations = {
+            updateField: function(property, value, query, parent) {
+              var fieldName = property.name;
+
+              // Is there an api name present?
+              if(parent) {
+                fieldName = property.apiName;
+              }
+
+              // Special for checkboxes :)
+              if(property.fieldType.search === util.constants.FIELD_BOOLEAN) {
+                if(value.active == value.inactive) {
+                  // None or all, same thing
+                  value.text = '';
+                }
+                else {
+                  // If active, then its true. If not, means inactive is true, ergo, its false=active
+                  value.text = value.active;
+                }
+              }
+
+              if(property.fieldType.search === util.constants.FIELD_DATE) {
+                value.date.startDate = (value.date.startDate == "") ? 0 : value.date.startDate;
+                value.date.endDate = (value.date.endDate == "") ? 0 : value.date.endDate;
+                value.text = value.date;
+              }
+              else if(property.searchConf.policy === util.constants.VALIDATOR_RANGE && value.range.from !== '') {
+                value.text = value.range;
+              }
+
+              var ret = value.text;
+              // if(ret && typeof ret === 'object') ret = ret.join(',');
+              // Update the query
+              query[fieldName] = ret;
+              return ret;
+            },
+
+            clear: function() {
+              
+              scope.$broadcast('reset-form');
+
+              scope.delayedSubmit();
+            },
+
+
+
+            submit: function() {
+              // Verify search action
+              var matchingActions = $filter('filter')(scope.entityMetadata.overrideDefaults, { overrides: 'search' }, true);
+              if (matchingActions && matchingActions.length) {
+                for(var i = 0; i < matchingActions.length; i++) {
+                  scope.dispatch(matchingActions[i]);
+                }
+              }
+              else {
+                scope.dispatch({ name: 'search'});
+              }
+            }
+          };
+        }
+      };
+    }]);
