@@ -8321,10 +8321,10 @@ angular.module('konga')
  * @name konga.customActions
  * @description
  * # customActions
- * Value in the konga.
+ * Constant in the konga.
  */
 angular.module('konga')
-  .value('customActions', {});
+  .constant('customActions', {});
 
 'use strict';
 
@@ -8567,8 +8567,8 @@ angular.module('konga')
  * Service in the konga.
  */
 angular.module('konga')
-  .provider('konga', ['kongaConfig', 'mapper', 'util', 
-    function KongaProvider(kongaConfig, mapper, util) {
+  .provider('konga', ['kongaConfig', 'mapper', 'util', 'customActions', 
+    function KongaProvider(kongaConfig, mapper, util, customActions) {
     
       var apiResolutions = {};
 
@@ -8579,6 +8579,14 @@ angular.module('konga')
           }
 
           return apiResolutions[entity];
+        };
+
+        this.action = function(name, action) {
+          if(action !== undefined) {
+            customActions[name] = action;
+          }
+
+          return customActions[name];
         };
 
         this.config = function(key, value) {
@@ -8614,6 +8622,14 @@ angular.module('konga')
         }
 
         apiResolutions[entity] = API;
+      };
+
+      this.action = function(name, action) {
+        if(action !== undefined) {
+          customActions[name] = action;
+        }
+
+        return customActions[name];
       };
 
       this.config = function(key, value) {

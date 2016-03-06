@@ -5,7 +5,7 @@
  * @name konga.customActions
  * @description
  * # customActions
- * Value in the konga.
+ * Constant in the konga.
  */
 angular.module('konga')
-  .value('customActions', {});
+  .constant('customActions', {});
