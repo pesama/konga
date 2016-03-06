@@ -715,7 +715,16 @@ angular.module('konga')
               }
             }
 
-        	  $scope.submit(quickSearchQuery);
+            // Verify search action
+            var matchingActions = $filter('filter')(scope.entityMetadata.overrideDefaults, { overrides: 'quick-search' }, true);
+            if (matchingActions && matchingActions.length) {
+              for(var i = 0; i < matchingActions.length; i++) {
+                scope.dispatchSearchAction(matchingActions[i], { query: quickSearchQuery });
+              }
+            }
+            else {
+              scope.dispatchSearchAction({ name: 'quick-search'}, { query: quickSearchQuery });
+            }
         	  
 		      }, 1000);
       };
@@ -909,7 +918,7 @@ angular.module('konga')
        Action to be dispatched. This can be an object with a `name` attribute. Konga will find such name in the {@link konga.customActions `customActions`} array
 
        */
-      $scope.dispatchSearchAction = function(action) {
+      $scope.dispatchSearchAction = function(action, actionParams) {
         var queryObj = {};
 
         rootifyQuery(queryObj, $scope.query);
@@ -922,6 +931,12 @@ angular.module('konga')
           results: $scope.searchResults,
           self: $scope
         };
+
+        if(actionParams) {
+          for(var item in actionParams) {
+            parameters[item] = actionParams[item];
+          }
+        }
 
         $scope.operations.dispatchAction(action, parameters);
       };
@@ -5782,18 +5797,16 @@ angular.module('konga')
         };
         
         $scope.sorting = function(field, type) {
-
-          // Reset sorting
-          // for (var i = 0; i < $scope.fields.length; i++) {
-          //     $scope.fields[i].sorting = '';
-          // }
-
-          // Apply sorting
-          // field.sorting = type;
-          
-          //Call search function
-          $scope.submitSorting(field, type);
-          $scope.$broadcast('sorting', { field: field, type: type });
+          // Verify search action
+          var matchingActions = $filter('filter')(scope.entityMetadata.overrideDefaults, { overrides: 'sort' }, true);
+          if (matchingActions && matchingActions.length) {
+            for(var i = 0; i < matchingActions.length; i++) {
+              scope.dispatch(matchingActions[i], { data: { field: field, type: type } });
+            }
+          }
+          else {
+            scope.dispatch({ name: 'sort'}, { data: { field: field, type: type } });
+          }
         };
 
         // var resultFields = $scope.fields = [];
@@ -6060,10 +6073,16 @@ angular.module('konga')
             },
 
             clear: function() {
-              
-              scope.$broadcast('reset-form');
-
-              scope.delayedSubmit();
+              // Verify search action
+              var matchingActions = $filter('filter')(scope.entityMetadata.overrideDefaults, { overrides: 'clear' }, true);
+              if (matchingActions && matchingActions.length) {
+                for(var i = 0; i < matchingActions.length; i++) {
+                  scope.dispatch(matchingActions[i]);
+                }
+              }
+              else {
+                scope.dispatch({ name: 'clear'});
+              }
             },
 
 
@@ -7811,6 +7830,35 @@ angular.module('konga')
             this.query.resetPaging = true;
             this.query.resetSorting = true;
             this.submit(this.query);
+          }
+        }
+      },
+      'clear': {
+        type: util.constants.ACTION_TYPE_FUNCTION,
+        params: {
+          fn: function(params) {
+            this.$broadcast('reset-form');
+            this.delayedSubmit();
+          }
+        }
+      },
+      'quick-search': {
+        type: util.constants.ACTION_TYPE_FUNCTION,
+        params: {
+          fn: function(params) {
+            this.submit(quickSearchQuery);
+          }
+        }
+      },
+      'sort': {
+        type: util.constants.ACTION_TYPE_FUNCTION,
+        params: {
+          fn: function(params) {
+            var field = params.data.field;
+            var type = params.data.type;
+
+            this.submitSorting(field, type);
+            this.$broadcast('sorting', { field: field, type: type });
           }
         }
       },
@@ -9568,8 +9616,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t<div class=\"col-md-3 search-panel\" ng-class=\"filterClass\">\n" +
     "\t\t\t<search-pane \n" +
     "\t\t\t\t\tentity-metadata=\"entityMetadata\"\n" +
-    "\t\t\t\t\tquery=\"query\" \n" +
-    "\t\t\t\t\tproduct-codes=\"productCodes\" \n" +
+    "\t\t\t\t\tquery=\"query\"  \n" +
     "\t\t\t\t\ton-submit=\"submit\"\n" +
     "\t\t\t\t\ton-dispatch=\"dispatchSearchAction\">\n" +
     "\t\t\t</search-pane>\n" +

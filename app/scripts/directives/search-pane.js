@@ -173,10 +173,16 @@ angular.module('konga')
             },
 
             clear: function() {
-              
-              scope.$broadcast('reset-form');
-
-              scope.delayedSubmit();
+              // Verify search action
+              var matchingActions = $filter('filter')(scope.entityMetadata.overrideDefaults, { overrides: 'clear' }, true);
+              if (matchingActions && matchingActions.length) {
+                for(var i = 0; i < matchingActions.length; i++) {
+                  scope.dispatch(matchingActions[i]);
+                }
+              }
+              else {
+                scope.dispatch({ name: 'clear'});
+              }
             },
 
 

@@ -24,6 +24,35 @@ angular.module('konga')
           }
         }
       },
+      'clear': {
+        type: util.constants.ACTION_TYPE_FUNCTION,
+        params: {
+          fn: function(params) {
+            this.$broadcast('reset-form');
+            this.delayedSubmit();
+          }
+        }
+      },
+      'quick-search': {
+        type: util.constants.ACTION_TYPE_FUNCTION,
+        params: {
+          fn: function(params) {
+            this.submit(quickSearchQuery);
+          }
+        }
+      },
+      'sort': {
+        type: util.constants.ACTION_TYPE_FUNCTION,
+        params: {
+          fn: function(params) {
+            var field = params.data.field;
+            var type = params.data.type;
+
+            this.submitSorting(field, type);
+            this.$broadcast('sorting', { field: field, type: type });
+          }
+        }
+      },
       'save-ok': {
         type: util.constants.ACTION_TYPE_FUNCTION,
         params: {

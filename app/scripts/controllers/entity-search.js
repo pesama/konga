@@ -347,7 +347,16 @@ angular.module('konga')
               }
             }
 
-        	  $scope.submit(quickSearchQuery);
+            // Verify search action
+            var matchingActions = $filter('filter')(scope.entityMetadata.overrideDefaults, { overrides: 'quick-search' }, true);
+            if (matchingActions && matchingActions.length) {
+              for(var i = 0; i < matchingActions.length; i++) {
+                scope.dispatchSearchAction(matchingActions[i], { query: quickSearchQuery });
+              }
+            }
+            else {
+              scope.dispatchSearchAction({ name: 'quick-search'}, { query: quickSearchQuery });
+            }
         	  
 		      }, 1000);
       };
@@ -541,7 +550,7 @@ angular.module('konga')
        Action to be dispatched. This can be an object with a `name` attribute. Konga will find such name in the {@link konga.customActions `customActions`} array
 
        */
-      $scope.dispatchSearchAction = function(action) {
+      $scope.dispatchSearchAction = function(action, actionParams) {
         var queryObj = {};
 
         rootifyQuery(queryObj, $scope.query);
@@ -554,6 +563,12 @@ angular.module('konga')
           results: $scope.searchResults,
           self: $scope
         };
+
+        if(actionParams) {
+          for(var item in actionParams) {
+            parameters[item] = actionParams[item];
+          }
+        }
 
         $scope.operations.dispatchAction(action, parameters);
       };

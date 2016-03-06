@@ -205,18 +205,16 @@ angular.module('konga')
         };
         
         $scope.sorting = function(field, type) {
-
-          // Reset sorting
-          // for (var i = 0; i < $scope.fields.length; i++) {
-          //     $scope.fields[i].sorting = '';
-          // }
-
-          // Apply sorting
-          // field.sorting = type;
-          
-          //Call search function
-          $scope.submitSorting(field, type);
-          $scope.$broadcast('sorting', { field: field, type: type });
+          // Verify search action
+          var matchingActions = $filter('filter')(scope.entityMetadata.overrideDefaults, { overrides: 'sort' }, true);
+          if (matchingActions && matchingActions.length) {
+            for(var i = 0; i < matchingActions.length; i++) {
+              scope.dispatch(matchingActions[i], { data: { field: field, type: type } });
+            }
+          }
+          else {
+            scope.dispatch({ name: 'sort'}, { data: { field: field, type: type } });
+          }
         };
 
         // var resultFields = $scope.fields = [];
