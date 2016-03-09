@@ -4,7 +4,7 @@
 			property="field"
 			vertical="true"
 			source-list="productCodes[field.name]"
-			ng-repeat="field in fields | updateParams:metadata:fs | orderBy:'+priority.update' | allowed:'update'" 
+			ng-repeat="field in fields | filter:{ fieldSet: fs.name } | updateParams:metadata | orderBy:'+priority.update' | allowed:'update'" 
 			entity="entity" 
 			on-update="onUpdate"
 			on-change="onChange"

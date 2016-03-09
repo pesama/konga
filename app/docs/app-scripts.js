@@ -10676,7 +10676,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\tproperty=\"field\"\n" +
     "\t\t\tvertical=\"true\"\n" +
     "\t\t\tsource-list=\"productCodes[field.name]\"\n" +
-    "\t\t\tng-repeat=\"field in fields | updateParams:metadata:fs | orderBy:'+priority.update' | allowed:'update'\" \n" +
+    "\t\t\tng-repeat=\"field in fields | filter:{ fieldSet: fs.name } | updateParams:metadata | orderBy:'+priority.update' | allowed:'update'\" \n" +
     "\t\t\tentity=\"entity\" \n" +
     "\t\t\ton-update=\"onUpdate\"\n" +
     "\t\t\ton-change=\"onChange\"\n" +
