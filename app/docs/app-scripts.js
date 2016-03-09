@@ -9708,7 +9708,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t<div class=\"row chantier-btn-list\">\n" +
     "\t\t\t\t<div class=\"actions pull-right\">\n" +
     "\t\t\t\t\t<button class=\"btn btn-primary\" ng-click=\"operations.openEntityCreate(entityMetadata)\" ng-show=\"isCreateable\" id=\"create-entity\">\n" +
-    "\t\t\t\t\t\t<i class=\"icon ion-plus\"></i>\n" +
+    "\t\t\t\t\t\t<i class=\"icon fa fa-plus\"></i>\n" +
     "\t\t\t\t\t\t{{ 'message.action.add' | translate }}\n" +
     "\t\t\t\t\t</button>\n" +
     "\t\t\t\t\t<button class=\"btn btn-default\" ng-repeat=\"action in entityMetadata.actions\" ng-model=\"action\" ng-click=\"dispatchSearchAction(action)\" ng-show=\"action.scope==='SEARCH' || action.scope==='RESULTS'\" id=\"search-action-dispatcher-{{ action.name }}\">\n" +
@@ -10018,20 +10018,20 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t<div class=\"col-md-2 multi-select-modal-body-item center\">\n" +
     "\t\t<div class=\"add-remove-btn\">\n" +
     "\t\t\t<button id=\"add-multi-select.id\" type=\"button\" class=\"btn btn-default\" ng-click=\"operations.add()\">\n" +
-    "\t\t\t\t<i class=\"icon ion-chevron-right\"></i>\n" +
+    "\t\t\t\t<i class=\"icon fa fa-chevron-right\"></i>\n" +
     "\t\t\t</button>\n" +
     "\t\t\t<button id=\"remove-multi-select.id\" type=\"button\" class=\"btn btn-default\" ng-click=\"operations.remove()\">\n" +
-    "\t\t\t\t<i class=\"icon ion-chevron-left\"></i>\n" +
+    "\t\t\t\t<i class=\"icon fa fa-chevron-left\"></i>\n" +
     "\t\t\t</button>\n" +
     "\t\t</div>\n" +
     "\t\t<div class=\"add-remove-btn\">\n" +
     "\t\t\t<button id=\"addAll-button.id\" type=\"button\" class=\"btn btn-default bulk-option\" ng-click=\"operations.addAll()\">\n" +
-    "\t\t\t\t<i class=\"icon icon-add-remove-all ion-chevron-right\"></i><i\n" +
-    "\t\t\t\t\tclass=\"icon icon-add-remove-all ion-chevron-right\"></i>\n" +
+    "\t\t\t\t<i class=\"icon icon-add-remove-all fa fa-chevron-right\"></i><i\n" +
+    "\t\t\t\t\tclass=\"icon icon-add-remove-all fa fa-chevron-right\"></i>\n" +
     "\t\t\t</button>\n" +
     "\t\t\t<button id=\"removeAll-button.id\" type=\"button\" class=\"btn btn-default bulk-option\" ng-click=\"operations.removeAll()\">\n" +
-    "\t\t\t\t<i class=\"icon icon-add-remove-all ion-chevron-left\"></i><i\n" +
-    "\t\t\t\t\tclass=\"icon icon-add-remove-all ion-chevron-left\"></i>\n" +
+    "\t\t\t\t<i class=\"icon icon-add-remove-all fa fa-chevron-left\"></i><i\n" +
+    "\t\t\t\t\tclass=\"icon icon-add-remove-all fa fa-chevron-left\"></i>\n" +
     "\t\t\t</button>\n" +
     "\t\t</div>\n" +
     "\t</div>\n" +
@@ -10218,7 +10218,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "<!-- <div class=\"col-md-2 padding-cero\">\n" +
     "\t<button id=\"toggleDatePicker.id\" type=\"button\" class=\"btn btn-default\"\n" +
     "\t\tng-click=\"toggleDatePicker()\">\n" +
-    "\t\t<i class=\"icon ion-ios7-calendar-outline\"></i>\n" +
+    "\t\t<i class=\"icon fa fa-ios7-calendar-outline\"></i>\n" +
     "\t</button>\n" +
     "</div> -->\n" +
     "<!-- <datepicker ng-model=\"value.text\" show-weeks=\"true\"\n" +
