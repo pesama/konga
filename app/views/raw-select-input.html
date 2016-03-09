@@ -1,5 +1,5 @@
 <select-input></select-input>
-<div class="col-md-12" ng-if="mode === 'search'">
+<div class="col-md-12" ng-if="mode === 'search' && property.searchConf.multiplicity === 'MANY' ">
 	<div class="row">
 		<button class="btn btn-default btn-xs" ng-repeat="item in value.entity" ng-click="removeItem($index)">
 			<i class="glyphicon glyphicon-remove"></i>

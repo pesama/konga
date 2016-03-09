@@ -3648,6 +3648,35 @@ angular.module('konga')
 
 /**
  * @ngdoc directive
+ * @name konga.directive:numberInput
+ * @description
+ * # numberInput
+ */
+angular.module('konga')
+  .directive('numberInput', ['configurationManager', 
+  	function (configurationManager) {
+	    return {
+	      templateUrl: '/konga/views/number-input.html',
+	      restrict: 'E',
+	      link: function postLink(scope, element, attrs) {
+	        
+	        // Get step
+	        var stepConf = configurationManager.get(util.constants.NUMBER_CONF_STEP);
+	        if(stepConf === undefined) {
+	        	stepConf = 1;
+	        }
+
+	        scope.stepConf = stepConf;
+
+
+	      }
+	    };
+	  }]);
+
+'use strict';
+
+/**
+ * @ngdoc directive
  * @name konga.directive:optionInput
  * @description
  * # optionInput
@@ -8751,7 +8780,14 @@ angular.module('konga')
                     else if(type !== util.constants.FIELD_TEXT) {
                         switch(type) {
                         case util.constants.FIELD_BOOLEAN:
-                            castValue = defaultValue === 'true';
+                            if(search) {
+                                if(defaultValue === 'true') castValue = true;
+                                else if(defaultValue === 'false') castValue = false;
+                                else castValue = null;
+                            }
+                            else {
+                                castValue = defaultValue === 'true';
+                            }
                             break;
                         case util.constants.FIELD_COMPLEX:
                             // Initialized as null, valorized afterwards
@@ -9475,7 +9511,8 @@ angular.module('myAwesomeApp')
 		'CUSTOM_FIELD_TYPE' 				: 'CUSTOM_FIELD_TYPE',
 
 		'SHOW_HINT_SEARCH' 					: 'SHOW_HINT_SEARCH',
-		'SHOW_HINT_UPDATE' 					: 'SHOW_HINT_UPDATE'
+		'SHOW_HINT_UPDATE' 					: 'SHOW_HINT_UPDATE',
+		'NUMBER_CONF_STEP' 					: 'NUMBER_CONF_STEP'
 	}
 });
 
@@ -9523,7 +9560,12 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t</td>\n" +
     "\t\t</tr>\n" +
     "\t\t<tr ng-hide=\"entities.length > 0\">\n" +
-    "\t\t\t<td colspan=\"{{ fields.length }}\" class=\"align-center\">{{'field.searchResults.noresults' | translate }}</td>\n" +
+    "\t\t\t<td colspan=\"{{ fields.length }}\" class=\"text-center\">{{'field.searchResults.noresults' | translate }}</td>\n" +
+    "\t\t</tr>\n" +
+    "\t\t<tr ng-if=\"entities.$resolved === false\">\n" +
+    "\t\t\t<td colspan=\"{{ fields.length }}\" class=\"text-center\">\n" +
+    "\t\t\t\t<i class=\"fa fa-circle-o-notch fa-spin\"></i>\n" +
+    "\t\t\t</td>\n" +
     "\t\t</tr>\n" +
     "\t</tbody>\n" +
     "</table>"
@@ -9586,7 +9628,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t</td>\n" +
     "\t\t</tr>\n" +
     "\t\t<tr ng-hide=\"entities.length > 0\">\n" +
-    "\t\t\t<td colspan=\"{{ fields.length }}\" class=\"align-center\">{{'field.searchResults.noresults' | translate }}</td>\n" +
+    "\t\t\t<td colspan=\"{{ fields.length }}\" class=\"text-center\">{{'field.searchResults.noresults' | translate }}</td>\n" +
     "\t\t</tr>\n" +
     "\t</tbody>\n" +
     "</table>"
@@ -10072,6 +10114,15 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('/konga/views/number-input.html',
+    "<input name=\"{{ property.name }}\"type=\"number\"\n" +
+    "\tclass=\"form-control konga-form-search-input konga-form-simple-search-input\"\n" +
+    "\tid=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\"\n" +
+    " \tng-disabled=\"disableField(mode, property)\"\n" +
+    "\tangular.module('konga') ng-required=\"validation.required()\" min=\"{{ validation.minvalue() }}\" max=\"{{ validation.maxvalue() }}\" tabindex=\"{{ (index + 1) * 12 }}\" step=\"{{ stepConf }}\">"
+  );
+
+
   $templateCache.put('/konga/views/option-input.html',
     "<p>This is the option-input view.</p>\n"
   );
@@ -10318,11 +10369,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-number-input.html',
-    "<input name=\"{{ property.name }}\"type=\"number\"\n" +
-    "\tclass=\"form-control konga-form-search-input konga-form-simple-search-input\"\n" +
-    "\tid=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\"\n" +
-    " \tng-disabled=\"disableField(mode, property)\"\n" +
-    "\tangular.module('konga') ng-required=\"validation.required()\" min=\"{{ validation.minvalue() }}\" max=\"{{ validation.maxvalue() }}\" tabindex=\"{{ (index + 1) * 12 }}\">"
+    "<number-input></number-input>"
   );
 
 
@@ -10396,7 +10443,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('/konga/views/raw-select-input.html',
     "<select-input></select-input>\n" +
-    "<div class=\"col-md-12\" ng-if=\"mode === 'search'\">\n" +
+    "<div class=\"col-md-12\" ng-if=\"mode === 'search' && property.searchConf.multiplicity === 'MANY' \">\n" +
     "\t<div class=\"row\">\n" +
     "\t\t<button class=\"btn btn-default btn-xs\" ng-repeat=\"item in value.entity\" ng-click=\"removeItem($index)\">\n" +
     "\t\t\t<i class=\"glyphicon glyphicon-remove\"></i>\n" +

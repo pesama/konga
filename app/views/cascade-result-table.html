@@ -15,7 +15,12 @@
 			</td>
 		</tr>
 		<tr ng-hide="entities.length > 0">
-			<td colspan="{{ fields.length }}" class="align-center">{{'field.searchResults.noresults' | translate }}</td>
+			<td colspan="{{ fields.length }}" class="text-center">{{'field.searchResults.noresults' | translate }}</td>
+		</tr>
+		<tr ng-if="entities.$resolved === false">
+			<td colspan="{{ fields.length }}" class="text-center">
+				<i class="fa fa-circle-o-notch fa-spin"></i>
+			</td>
 		</tr>
 	</tbody>
 </table>

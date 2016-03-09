@@ -25,3 +25,19 @@
 .select-input > .col-md-6:nth-child(1) {
 	padding-left: 0px;
 }
+
+.multi-select-modal-body-item.center {
+    margin-top: 100px;
+}
+
+.multi-select-modal-body-item.center button {
+    display: block;
+    width: 3em;
+    margin: auto;
+    margin-top: 1em;
+}
+
+.multi-select-modal-body-item {
+    height: 400px;
+    overflow: auto;
+}

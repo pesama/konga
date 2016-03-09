@@ -83,3 +83,11 @@ td.checked > .centerText  {
 .table-header .sorting .sorting-desc {
 	
 }
+
+.table-result tr.editable td {
+    cursor: pointer;
+}
+
+.table-result tr:not(.editable) td {
+    cursor: not-allowed;
+}

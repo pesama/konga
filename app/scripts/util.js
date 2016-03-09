@@ -465,7 +465,8 @@ angular.module('myAwesomeApp')
 		'CUSTOM_FIELD_TYPE' 				: 'CUSTOM_FIELD_TYPE',
 
 		'SHOW_HINT_SEARCH' 					: 'SHOW_HINT_SEARCH',
-		'SHOW_HINT_UPDATE' 					: 'SHOW_HINT_UPDATE'
+		'SHOW_HINT_UPDATE' 					: 'SHOW_HINT_UPDATE',
+		'NUMBER_CONF_STEP' 					: 'NUMBER_CONF_STEP'
 	}
 });
 
