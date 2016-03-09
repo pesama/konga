@@ -704,6 +704,9 @@ angular.module('konga')
 	  			},
 
 	  			valid_required: function() {
+	  				// No things required on type search
+	  				if(scope.mode === util.constants.SCOPE_SEARCH) return true;
+
 	  				switch(scope.property.type.type) {
 	  				case util.constants.FIELD_STRING:
 	  					return scope.validation.required() ? scope.value.text && scope.value.text.length > 0 : true;

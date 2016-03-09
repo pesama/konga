@@ -4618,6 +4618,9 @@ angular.module('konga')
 	  			},
 
 	  			valid_required: function() {
+	  				// No things required on type search
+	  				if(scope.mode === util.constants.SCOPE_SEARCH) return true;
+
 	  				switch(scope.property.type.type) {
 	  				case util.constants.FIELD_STRING:
 	  					return scope.validation.required() ? scope.value.text && scope.value.text.length > 0 : true;
@@ -9559,7 +9562,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t<table-cell entity=\"entity\" field=\"field\"></table-cell>\n" +
     "\t\t\t</td>\n" +
     "\t\t</tr>\n" +
-    "\t\t<tr ng-hide=\"entities.length > 0\">\n" +
+    "\t\t<tr ng-hide=\"entities.length > 0\" ng-if=\"entities.$resolved !== false\">\n" +
     "\t\t\t<td colspan=\"{{ fields.length }}\" class=\"text-center\">{{'field.searchResults.noresults' | translate }}</td>\n" +
     "\t\t</tr>\n" +
     "\t\t<tr ng-if=\"entities.$resolved === false\">\n" +
@@ -9627,8 +9630,13 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t<table-cell entity=\"entity\" field=\"field\"></table-cell>\n" +
     "\t\t\t</td>\n" +
     "\t\t</tr>\n" +
-    "\t\t<tr ng-hide=\"entities.length > 0\">\n" +
+    "\t\t<tr ng-hide=\"entities.length > 0\" ng-if=\"entities.$resolved !== false\">\n" +
     "\t\t\t<td colspan=\"{{ fields.length }}\" class=\"text-center\">{{'field.searchResults.noresults' | translate }}</td>\n" +
+    "\t\t</tr>\n" +
+    "\t\t<tr ng-if=\"entities.$resolved === false\">\n" +
+    "\t\t\t<td colspan=\"{{ fields.length }}\" class=\"text-center\">\n" +
+    "\t\t\t\t<i class=\"fa fa-circle-o-notch fa-spin\"></i>\n" +
+    "\t\t\t</td>\n" +
     "\t\t</tr>\n" +
     "\t</tbody>\n" +
     "</table>"

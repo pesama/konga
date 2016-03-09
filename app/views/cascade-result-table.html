@@ -14,7 +14,7 @@
 				<table-cell entity="entity" field="field"></table-cell>
 			</td>
 		</tr>
-		<tr ng-hide="entities.length > 0">
+		<tr ng-hide="entities.length > 0" ng-if="entities.$resolved !== false">
 			<td colspan="{{ fields.length }}" class="text-center">{{'field.searchResults.noresults' | translate }}</td>
 		</tr>
 		<tr ng-if="entities.$resolved === false">
