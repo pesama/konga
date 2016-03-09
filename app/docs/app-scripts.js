@@ -10671,7 +10671,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('/konga/views/tabbed-update.html',
     "<vertical-tabs>\n" +
-    "\t<tab-content ng-repeat=\"fs in fieldsets\" title=\"{{fs.name | translate}}\" is-show=\"(fields | updateParams:metadata | filter: {category: cat}).length\">\n" +
+    "\t<tab-content ng-repeat=\"fs in fieldsets\" title=\"{{fs.name | translate}}\" is-show=\"true\">\n" +
     "\t\t<raw-input \n" +
     "\t\t\tproperty=\"field\"\n" +
     "\t\t\tvertical=\"true\"\n" +

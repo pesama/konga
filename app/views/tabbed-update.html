@@ -1,5 +1,5 @@
 <vertical-tabs>
-	<tab-content ng-repeat="fs in fieldsets" title="{{fs.name | translate}}" is-show="(fields | updateParams:metadata | filter: {category: cat}).length">
+	<tab-content ng-repeat="fs in fieldsets" title="{{fs.name | translate}}" is-show="true">
 		<raw-input 
 			property="field"
 			vertical="true"
