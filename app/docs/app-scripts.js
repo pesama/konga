@@ -10694,7 +10694,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "<div class=\"table-cell\" ng-class=\"styles\">\n" +
     "\t<span class=\"table-cell-content\" ng-show=\"type === 'text'\"></span>\n" +
     "\t<img ng-src=\"{{ content }}\" ng-if=\"type === 'image'\" width=\"{{ image.width }}\" height=\"{{ image.height }}\">\n" +
-    "\t<div class=\"{{ content }}\" ng-if=\"type === 'styling'\"></div>\n" +
+    "\t<div class=\"{{ field.name }} {{ content }}\" ng-if=\"type === 'styling'\"></div>\n" +
     "\t<div class=\"{{}}\" ng-if=\"type === 'plain-filtered'\">\n" +
     "\t\t{{ content | customFilter:filter }}\n" +
     "\t</div>\n" +
