@@ -161,7 +161,8 @@ angular.module('konga')
 
 	      	var fieldConfig = scope.config = {
 	      		hidden: false,
-	      		init: true
+	      		init: true,
+	      		showHint: true
 	      	};
 
 	      	var fieldValue = scope.value = {
@@ -202,6 +203,13 @@ angular.module('konga')
 
 	      	if(shortLabelConf && shortLabelConf.length && shortLabelConf[0].value === 'true') {
 	      		scope.fieldLabel = scope.property.shortLabel;
+	      	}
+
+	      	// Show hint
+	      	var hintKey = scope.mode === util.constants.SCOPE_SEARCH ? util.constants.SHOW_HINT_SEARCH : util.constants.SHOW_HINT_UPDATE;
+	      	var hintConf = configurationManager.get(hintKey, scope.property);
+	      	if(hintConf !== undefined) {
+	      		fieldConfig.showHint = hintConf;
 	      	}
 
 	      	// Read only
@@ -294,34 +302,6 @@ angular.module('konga')
 							var realEntity;
 							if(!scope.parentField || scope.parentField.multiplicity === util.constants.MULTIPLICITY_ONE) {
 								realEntity = $filter('mapField')(complexEntity, scope.property);
-								
-								// TODO Move this elsewhere
-								// JSON Identity verification
-								var configuration = configurationManager.getConf(util.constants.JSON_IDENTITY_INFO, 1);
-
-								if(configuration.length) {
-									var followJsonIdentity = configuration[0];
-									if(followJsonIdentity.value) {
-										// Get the object type
-										if(scope.property.type.type === util.constants.FIELD_COMPLEX && realEntity && realEntity.reason === util.constants.JSON_IDENTITY_INFO) {
-											// Get the metadata
-											var metadata = util.getMetadata(scope.property.type.complexType);
-											var apiPath = metadata.apiPath;
-											var entityId = realEntity.id;
-											realEntity = standardApi.get({ path: apiPath, id: entityId }, 
-												function(data) {
-													// Set the real value in the entity
-													scope.value.entity = data;
-													var sendValue = angular.copy(scope.value);
-													var result = scope.updateEntity(scope.property, sendValue, scope.entity);
-													scope.update(true);
-												}, function(error) {
-
-												});
-											return;
-										}
-									}
-								}
 							}
 							else {
 								realEntity = [];

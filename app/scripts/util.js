@@ -462,7 +462,10 @@ angular.module('myAwesomeApp')
 		HIDE_WHEN_UPDATING 					: 'hide-when-updating',
 
 		'FIELD_TYPE_CUSTOM' 				: 'CUSTOM',
-		'CUSTOM_FIELD_TYPE' 				: 'CUSTOM_FIELD_TYPE'
+		'CUSTOM_FIELD_TYPE' 				: 'CUSTOM_FIELD_TYPE',
+
+		'SHOW_HINT_SEARCH' 					: 'SHOW_HINT_SEARCH',
+		'SHOW_HINT_UPDATE' 					: 'SHOW_HINT_UPDATE'
 	}
 });
 

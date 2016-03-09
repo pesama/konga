@@ -4046,7 +4046,8 @@ angular.module('konga')
 
 	      	var fieldConfig = scope.config = {
 	      		hidden: false,
-	      		init: true
+	      		init: true,
+	      		showHint: true
 	      	};
 
 	      	var fieldValue = scope.value = {
@@ -4087,6 +4088,13 @@ angular.module('konga')
 
 	      	if(shortLabelConf && shortLabelConf.length && shortLabelConf[0].value === 'true') {
 	      		scope.fieldLabel = scope.property.shortLabel;
+	      	}
+
+	      	// Show hint
+	      	var hintKey = scope.mode === util.constants.SCOPE_SEARCH ? util.constants.SHOW_HINT_SEARCH : util.constants.SHOW_HINT_UPDATE;
+	      	var hintConf = configurationManager.get(hintKey, scope.property);
+	      	if(hintConf !== undefined) {
+	      		fieldConfig.showHint = hintConf;
 	      	}
 
 	      	// Read only
@@ -4179,34 +4187,6 @@ angular.module('konga')
 							var realEntity;
 							if(!scope.parentField || scope.parentField.multiplicity === util.constants.MULTIPLICITY_ONE) {
 								realEntity = $filter('mapField')(complexEntity, scope.property);
-								
-								// TODO Move this elsewhere
-								// JSON Identity verification
-								var configuration = configurationManager.getConf(util.constants.JSON_IDENTITY_INFO, 1);
-
-								if(configuration.length) {
-									var followJsonIdentity = configuration[0];
-									if(followJsonIdentity.value) {
-										// Get the object type
-										if(scope.property.type.type === util.constants.FIELD_COMPLEX && realEntity && realEntity.reason === util.constants.JSON_IDENTITY_INFO) {
-											// Get the metadata
-											var metadata = util.getMetadata(scope.property.type.complexType);
-											var apiPath = metadata.apiPath;
-											var entityId = realEntity.id;
-											realEntity = standardApi.get({ path: apiPath, id: entityId }, 
-												function(data) {
-													// Set the real value in the entity
-													scope.value.entity = data;
-													var sendValue = angular.copy(scope.value);
-													var result = scope.updateEntity(scope.property, sendValue, scope.entity);
-													scope.update(true);
-												}, function(error) {
-
-												});
-											return;
-										}
-									}
-								}
 							}
 							else {
 								realEntity = [];
@@ -8279,7 +8259,7 @@ angular.module('konga')
  * Provider in the konga.
  */
 angular.module('konga')
-  .provider('configurationManager', function () {
+  .provider('configurationManager', ['util', function (util) {
 
     // Private constructor
     function ConfigurationManager($rootScope, $filter) {
@@ -8291,19 +8271,35 @@ angular.module('konga')
        * @param [mode] {string} The form mode
        * @param [order] {string} The order of the priority (SPLIT BY '_')
        */
-      this.getConf = function (param, source, mode, order) {
+      this.get = function (param, source, mode, order) {
         // TODO Finish this
+        var configuration = null;
+
         if(source) {
-          var configuration = source.configuration;
+          configuration = source.configuration;
           if(mode) {
-            // configuration = $filter('filter')(source.configuration, {  })
+            configuration = $filter('filter')(source.configuration, { key: param });
+            if(configuration.length) {
+              return configuration[0].value;
+            }
+
+            // Go up a level (if we are on fields)
+            if(source.owner) {
+              var entityMetadata = util.getMetadata(source.owner);
+              var entityConfiguration = entityMetadata.configuration;
+              configuration = configuration = $filter('filter')(entityConfiguration, { key: param });
+              if(configuration.length) {
+                return configuration[0].value;
+              }
+            }
           }
         }
 
         // General metadata configuration
-        var configuration = $rootScope.metadata.configuration;
+        var rootConfiguration = $rootScope.metadata.configuration;
+        configuration = $filter('filter')(rootConfiguration, { key: param });
 
-        return $filter('filter')(configuration, { key: param });
+        return configuration && configuration.length ? configuration[0].value : undefined;
       };
     }
 
@@ -8313,7 +8309,7 @@ angular.module('konga')
       var filter = $injector.get('$filter');
       return new ConfigurationManager(rScope, filter);
     };
-  });
+  }]);
 'use strict';
 
 /**
@@ -9476,7 +9472,10 @@ angular.module('myAwesomeApp')
 		HIDE_WHEN_UPDATING 					: 'hide-when-updating',
 
 		'FIELD_TYPE_CUSTOM' 				: 'CUSTOM',
-		'CUSTOM_FIELD_TYPE' 				: 'CUSTOM_FIELD_TYPE'
+		'CUSTOM_FIELD_TYPE' 				: 'CUSTOM_FIELD_TYPE',
+
+		'SHOW_HINT_SEARCH' 					: 'SHOW_HINT_SEARCH',
+		'SHOW_HINT_UPDATE' 					: 'SHOW_HINT_UPDATE'
 	}
 });
 
@@ -10280,7 +10279,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t<div ng-class=\"{ 'derived': !!parentField, 'full-width-component': (['COMPLEX', 'TABLE', 'PICK_LIST', 'CALENDAR'].indexOf(property.fieldType[mode]) !== -1) }\" class=\"col-xs-12 col-sm-12 col-md-6 col-lg-8\">\n" +
     "\t\t\t<div ng-include=\"contentUrl\" ng-class=\"classFormInput\"></div>\n" +
     "\t\t</div>\n" +
-    "\t\t<div class=\"col-xs-12 col-sm-12 col-md-8 col-md-offset-6 col-lg-10 col-lg-offset-4\" ng-if=\"property.hint\">\n" +
+    "\t\t<div class=\"col-xs-12 col-sm-12 col-md-8 col-md-offset-6 col-lg-10 col-lg-offset-4\" ng-if=\"property.hint && config.showHint\">\n" +
     "\t\t\t<span class=\"text-muted\">{{ property.hint | translate:extra }}</span>\n" +
     "\t\t</div>\n" +
     "\t\t<div ng-if=\"globalValidation\" ng-hide=\"config.init\" class=\"col-xs-12 col-sm-12 col-md-8 col-md-offset-6 col-lg-10 col-lg-offset-4\">\n" +
