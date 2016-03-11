@@ -114,7 +114,7 @@ angular.module('konga')
 
               break;
             case util.constants.FIELD_CUSTOM:
-              var customConf = configurationManager.get(util.constants.RESULTS_CUSTOM_FIELD_TYPE, scope.field);
+              var customConf = configurationManager.get(util.constants.CUSTOM_FIELD_TYPE, scope.field);
               if(!customConf) {
                 // TODO Throw exception
               }

@@ -6365,7 +6365,7 @@ angular.module('konga')
 
               break;
             case util.constants.FIELD_CUSTOM:
-              var customConf = configurationManager.get(util.constants.RESULTS_CUSTOM_FIELD_TYPE, scope.field);
+              var customConf = configurationManager.get(util.constants.CUSTOM_FIELD_TYPE, scope.field);
               if(!customConf) {
                 // TODO Throw exception
               }
@@ -9549,7 +9549,6 @@ angular.module('myAwesomeApp')
 
 		'FIELD_TYPE_CUSTOM' 				: 'CUSTOM',
 		'CUSTOM_FIELD_TYPE' 				: 'CUSTOM_FIELD_TYPE',
-		'RESULTS_CUSTOM_FIELD_TYPE' 		: 'RESULTS_CUSTOM_FIELD_TYPE',
 
 		'SHOW_HINT_SEARCH' 					: 'SHOW_HINT_SEARCH',
 		'SHOW_HINT_UPDATE' 					: 'SHOW_HINT_UPDATE',
