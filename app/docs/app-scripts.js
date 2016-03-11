@@ -8322,11 +8322,26 @@ angular.module('konga')
       this.get = function (param, source, mode, order) {
         // TODO Finish this
         var configuration = null;
+        var confSource = null;
 
         if(source) {
-          configuration = source.configuration;
+          confSource = source.configuration;
+          
           if(mode) {
-            configuration = $filter('filter')(source.configuration, { key: param });
+
+            switch(mode) {
+            case util.constants.SCOPE_SEARCH:
+              confSource = source.searchable ? source.searchable.configuration : [];
+              break;
+            case util.constants.SCOPE_RESULTS:
+              confSource = source.showInResults ? source.showInResults.configuration : [];
+              break;
+            case util.constants.SCOPE_UPDATE:
+              confSource = source.showInUpdate ? source.showInUpdate.configuration : [];
+              break;
+            }
+
+            configuration = $filter('filter')(confSource, { key: param });
             if(configuration.length) {
               return configuration[0].value;
             }
@@ -8335,7 +8350,7 @@ angular.module('konga')
             if(source.owner) {
               var entityMetadata = util.getMetadata(source.owner);
               var entityConfiguration = entityMetadata.configuration;
-              configuration = configuration = $filter('filter')(entityConfiguration, { key: param });
+              configuration = $filter('filter')(entityConfiguration, { key: param });
               if(configuration.length) {
                 return configuration[0].value;
               }
@@ -8347,7 +8362,11 @@ angular.module('konga')
         var rootConfiguration = $rootScope.metadata.configuration;
         configuration = $filter('filter')(rootConfiguration, { key: param });
 
-        return configuration && configuration.length ? configuration[0].value : undefined;
+        if(configuration && configuration.length) {
+          return configuration[0].value;
+        }
+
+        // TODO Throw exception
       };
     }
 
