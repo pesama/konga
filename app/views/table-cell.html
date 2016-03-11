@@ -5,7 +5,7 @@
 	<div ng-if="type === 'plain-filtered'">
 		{{ content | customFilter:filter }}
 	</div>
-	<div class="custom-type" ng-if="custom">
+	<div class="custom-type" ng-if="type === 'custom'">
 		<div ng-include="custom"></div>
 	</div>
 </div>

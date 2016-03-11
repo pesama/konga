@@ -6365,6 +6365,7 @@ angular.module('konga')
 
               break;
             case util.constants.FIELD_CUSTOM:
+              scope.type = 'custom';
               scope.content = mapped;
               var customConf = configurationManager.get(util.constants.CUSTOM_FIELD_TYPE, scope.field, util.constants.SCOPE_RESULTS);
               if(!customConf) {
@@ -10736,7 +10737,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t<div ng-if=\"type === 'plain-filtered'\">\n" +
     "\t\t{{ content | customFilter:filter }}\n" +
     "\t</div>\n" +
-    "\t<div class=\"custom-type\" ng-if=\"custom\">\n" +
+    "\t<div class=\"custom-type\" ng-if=\"type === 'custom'\">\n" +
     "\t\t<div ng-include=\"custom\"></div>\n" +
     "\t</div>\n" +
     "</div>"
