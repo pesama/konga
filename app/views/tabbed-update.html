@@ -1,10 +1,10 @@
 <vertical-tabs>
-	<tab-content ng-repeat="fs in fieldsets" title="{{fs.name | translate}}" is-show="(fields | updateParams:metadata | filter: {category: cat}).length">
+	<tab-content ng-repeat="fs in fieldsets" title="{{fs.name | translate}}" is-show="true">
 		<raw-input 
 			property="field"
 			vertical="true"
 			source-list="productCodes[field.name]"
-			ng-repeat="field in fields | updateParams:metadata:fs | orderBy:'+priority.update' | allowed:'update'" 
+			ng-repeat="field in fields | filter:{ fieldSet: fs.name } | updateParams:metadata | orderBy:'+priority.update' | allowed:'update'" 
 			entity="entity" 
 			on-update="onUpdate"
 			on-change="onChange"

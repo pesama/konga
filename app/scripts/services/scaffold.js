@@ -45,7 +45,14 @@ angular.module('konga')
                     else if(type !== util.constants.FIELD_TEXT) {
                         switch(type) {
                         case util.constants.FIELD_BOOLEAN:
-                            castValue = defaultValue === 'true';
+                            if(search) {
+                                if(defaultValue === 'true') castValue = true;
+                                else if(defaultValue === 'false') castValue = false;
+                                else castValue = null;
+                            }
+                            else {
+                                castValue = defaultValue === 'true';
+                            }
                             break;
                         case util.constants.FIELD_COMPLEX:
                             // Initialized as null, valorized afterwards

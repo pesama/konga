@@ -7,48 +7,47 @@
  * # tableCell
  */
 angular.module('konga')
-  .directive('tableCell', ['util', '$filter', function (util, $filter) {
-    return {
-      templateUrl: '/konga/views/table-cell.html',
-      restrict: 'E',
-      replace: true,
-      scope: {
-      	entity: '=',
-      	field: '='
-      },
-      link: function postLink(scope, element) {
-        scope.content = '';
-        scope.type = 'text';
-        scope.styles = [];
-        scope.preffix = '';
-        scope.suffix = '';
+  .directive('tableCell', ['util', '$filter', 'configurationManager', 'mapper',
+    function (util, $filter, configurationManager, mapper) {
+      return {
+        templateUrl: '/konga/views/table-cell.html',
+        restrict: 'E',
+        replace: true,
+        scope: {
+        	entity: '=',
+        	field: '='
+        },
+        link: function postLink(scope, element) {
+          scope.content = '';
+          scope.type = 'text';
+          scope.styles = [];
+          scope.preffix = '';
+          scope.suffix = '';
+          scope.custom = null;
 
-        var useList = true;
+          var useList = true;
 
-        //var fieldWatcher;
-        var entityWatcher;
+          //var fieldWatcher;
+          var entityWatcher;
 
-        function setupValue() {
-          var fieldEntity = scope.entity;
+          function setupValue() {
+            var fieldEntity = scope.entity;
 
-          // Lookup for complex fields
-          var mapped = null;
-          if(scope.field.derived) {
-            if(scope.field.derivedSource) {
-              fieldEntity = $filter('mapField')(scope.entity, scope.field.derivedSource);
-              if(scope.field.isSelf) {
-                mapped = fieldEntity;
+            // Lookup for complex fields
+            var mapped = null;
+            if(scope.field.derived) {
+              if(scope.field.derivedSource) {
+                fieldEntity = $filter('mapField')(scope.entity, scope.field.derivedSource);
+                if(scope.field.isSelf) {
+                  mapped = fieldEntity;
+                }
               }
             }
-          }
 
-          if(!mapped) {
-            mapped = $filter('mapField')(fieldEntity, scope.field);
-          }
-          if(scope.field.type.type === util.constants.FIELD_COMPLEX) {
-            scope.content = $filter('tableRendererComplex')(mapped, scope.field);
-          }
-          else {
+            if(!mapped) {
+              mapped = $filter('mapField')(fieldEntity, scope.field);
+            }
+          
             // Render depending on the data type
             switch(scope.field.fieldType.results) {
             case util.constants.FIELD_DATE:
@@ -60,10 +59,6 @@ angular.module('konga')
             case util.constants.FIELD_BOOLEAN:
               var content = $filter('activeInactive')(mapped, scope.field);
               scope.content = $filter('translate')(content);
-              // scope.contentUrl = views.translated;
-              break;
-            case util.constants.FIELD_PLAIN:
-              scope.content = $filter('translate')(mapped);
               // scope.contentUrl = views.translated;
               break;
             case util.constants.FIELD_IMAGE:
@@ -118,51 +113,74 @@ angular.module('konga')
               scope.filter = filter.value;
 
               break;
-            default:
-              // Plain text
+            case util.constants.FIELD_CUSTOM:
+              scope.type = 'custom';
               scope.content = mapped;
+              var customConf = configurationManager.get(util.constants.CUSTOM_FIELD_TYPE, scope.field, util.constants.SCOPE_RESULTS);
+              if(!customConf) {
+                // TODO Throw exception
+              }
+
+              // Try to get mapped view
+              scope.custom = mapper[customConf];
+              if(!scope.custom) {
+                scope.custom = customConf;
+              }
+
+              break;
+            case util.constants.FIELD_PLAIN:
+            default:
+              if(scope.field.type.type === util.constants.FIELD_COMPLEX) {
+                scope.content = $filter('tableRendererComplex')(mapped, scope.field);
+              }
+              else {
+                try {
+                  scope.content = $filter('translate')(mapped);
+                } catch(e) {
+                  scope.content = mapped;
+                }
+              }
+            }
+
+            if(scope.field.type.list && useList) {
+              var list = scope.field.type.list;
+              
+              var listMatch = $filter('filter')(list, { key: (scope.content+"") }, true);
+              if(listMatch.length) {
+                var item = listMatch[0];
+                var content = item.value;
+                scope.content = $filter('translate')(content);
+              }
+            }
+
+            if(scope.content === null || scope.content === undefined) {
+              scope.content = '';
             }
           }
 
-          if(scope.field.type.list && useList) {
-            var list = scope.field.type.list;
-            
-            var listMatch = $filter('filter')(list, { key: (scope.content+"") }, true);
-            if(listMatch.length) {
-              var item = listMatch[0];
-              var content = item.value;
-              scope.content = $filter('translate')(content);
-            }
-          }
+          entityWatcher = scope.$watch('entity', function() {
+            setupValue();
+            scope.updateContent();
+            entityWatcher();
+            // fieldWatcher();
+          }, true);
 
-          if(scope.content === null || scope.content === undefined) {
-            scope.content = '';
-          }
+          var watchers = null;
+          scope.$on('suspend', function() {
+            watchers = scope.$$watchers;
+            scope.$$watchers = [];
+          });
+
+          scope.$on('resume', function() {
+            scope.$$watchers = watchers;
+          });
+
+
+          var elt = angular.element(element);
+
+          scope.updateContent = function() {
+            element.children('.table-cell-content').text(scope.preffix + ' ' + scope.content + ' ' + scope.suffix);
+          };
         }
-
-        entityWatcher = scope.$watch('entity', function() {
-          setupValue();
-          scope.updateContent();
-          entityWatcher();
-          // fieldWatcher();
-        }, true);
-
-        var watchers = null;
-        scope.$on('suspend', function() {
-          watchers = scope.$$watchers;
-          scope.$$watchers = [];
-        });
-
-        scope.$on('resume', function() {
-          scope.$$watchers = watchers;
-        });
-
-
-        var elt = angular.element(element);
-
-        scope.updateContent = function() {
-          element.children('.table-cell-content').text(scope.preffix + ' ' + scope.content + ' ' + scope.suffix);
-        };
-      }
-    };
-  }]);
+      };
+    }]);

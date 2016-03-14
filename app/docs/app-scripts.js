@@ -3649,6 +3649,35 @@ angular.module('konga')
 
 /**
  * @ngdoc directive
+ * @name konga.directive:numberInput
+ * @description
+ * # numberInput
+ */
+angular.module('konga')
+  .directive('numberInput', ['configurationManager', 
+  	function (configurationManager) {
+	    return {
+	      templateUrl: '/konga/views/number-input.html',
+	      restrict: 'E',
+	      link: function postLink(scope, element, attrs) {
+	        
+	        // Get step
+	        var stepConf = configurationManager.get(util.constants.NUMBER_CONF_STEP);
+	        if(stepConf === undefined) {
+	        	stepConf = 1;
+	        }
+
+	        scope.stepConf = stepConf;
+
+
+	      }
+	    };
+	  }]);
+
+'use strict';
+
+/**
+ * @ngdoc directive
  * @name konga.directive:optionInput
  * @description
  * # optionInput
@@ -4047,7 +4076,8 @@ angular.module('konga')
 
 	      	var fieldConfig = scope.config = {
 	      		hidden: false,
-	      		init: true
+	      		init: true,
+	      		showHint: true
 	      	};
 
 	      	var fieldValue = scope.value = {
@@ -4088,6 +4118,13 @@ angular.module('konga')
 
 	      	if(shortLabelConf && shortLabelConf.length && shortLabelConf[0].value === 'true') {
 	      		scope.fieldLabel = scope.property.shortLabel;
+	      	}
+
+	      	// Show hint
+	      	var hintKey = scope.mode === util.constants.SCOPE_SEARCH ? util.constants.SHOW_HINT_SEARCH : util.constants.SHOW_HINT_UPDATE;
+	      	var hintConf = configurationManager.get(hintKey, scope.property);
+	      	if(hintConf !== undefined) {
+	      		fieldConfig.showHint = hintConf;
 	      	}
 
 	      	// Read only
@@ -4180,34 +4217,6 @@ angular.module('konga')
 							var realEntity;
 							if(!scope.parentField || scope.parentField.multiplicity === util.constants.MULTIPLICITY_ONE) {
 								realEntity = $filter('mapField')(complexEntity, scope.property);
-								
-								// TODO Move this elsewhere
-								// JSON Identity verification
-								var configuration = configurationManager.getConf(util.constants.JSON_IDENTITY_INFO, 1);
-
-								if(configuration.length) {
-									var followJsonIdentity = configuration[0];
-									if(followJsonIdentity.value) {
-										// Get the object type
-										if(scope.property.type.type === util.constants.FIELD_COMPLEX && realEntity && realEntity.reason === util.constants.JSON_IDENTITY_INFO) {
-											// Get the metadata
-											var metadata = util.getMetadata(scope.property.type.complexType);
-											var apiPath = metadata.apiPath;
-											var entityId = realEntity.id;
-											realEntity = standardApi.get({ path: apiPath, id: entityId }, 
-												function(data) {
-													// Set the real value in the entity
-													scope.value.entity = data;
-													var sendValue = angular.copy(scope.value);
-													var result = scope.updateEntity(scope.property, sendValue, scope.entity);
-													scope.update(true);
-												}, function(error) {
-
-												});
-											return;
-										}
-									}
-								}
 							}
 							else {
 								realEntity = [];
@@ -4610,6 +4619,9 @@ angular.module('konga')
 	  			},
 
 	  			valid_required: function() {
+	  				// No things required on type search
+	  				if(scope.mode === util.constants.SCOPE_SEARCH) return true;
+
 	  				switch(scope.property.type.type) {
 	  				case util.constants.FIELD_STRING:
 	  					return scope.validation.required() ? scope.value.text && scope.value.text.length > 0 : true;
@@ -6247,48 +6259,47 @@ angular.module('konga')
  * # tableCell
  */
 angular.module('konga')
-  .directive('tableCell', ['util', '$filter', function (util, $filter) {
-    return {
-      templateUrl: '/konga/views/table-cell.html',
-      restrict: 'E',
-      replace: true,
-      scope: {
-      	entity: '=',
-      	field: '='
-      },
-      link: function postLink(scope, element) {
-        scope.content = '';
-        scope.type = 'text';
-        scope.styles = [];
-        scope.preffix = '';
-        scope.suffix = '';
+  .directive('tableCell', ['util', '$filter', 'configurationManager', 'mapper',
+    function (util, $filter, configurationManager, mapper) {
+      return {
+        templateUrl: '/konga/views/table-cell.html',
+        restrict: 'E',
+        replace: true,
+        scope: {
+        	entity: '=',
+        	field: '='
+        },
+        link: function postLink(scope, element) {
+          scope.content = '';
+          scope.type = 'text';
+          scope.styles = [];
+          scope.preffix = '';
+          scope.suffix = '';
+          scope.custom = null;
 
-        var useList = true;
+          var useList = true;
 
-        //var fieldWatcher;
-        var entityWatcher;
+          //var fieldWatcher;
+          var entityWatcher;
 
-        function setupValue() {
-          var fieldEntity = scope.entity;
+          function setupValue() {
+            var fieldEntity = scope.entity;
 
-          // Lookup for complex fields
-          var mapped = null;
-          if(scope.field.derived) {
-            if(scope.field.derivedSource) {
-              fieldEntity = $filter('mapField')(scope.entity, scope.field.derivedSource);
-              if(scope.field.isSelf) {
-                mapped = fieldEntity;
+            // Lookup for complex fields
+            var mapped = null;
+            if(scope.field.derived) {
+              if(scope.field.derivedSource) {
+                fieldEntity = $filter('mapField')(scope.entity, scope.field.derivedSource);
+                if(scope.field.isSelf) {
+                  mapped = fieldEntity;
+                }
               }
             }
-          }
 
-          if(!mapped) {
-            mapped = $filter('mapField')(fieldEntity, scope.field);
-          }
-          if(scope.field.type.type === util.constants.FIELD_COMPLEX) {
-            scope.content = $filter('tableRendererComplex')(mapped, scope.field);
-          }
-          else {
+            if(!mapped) {
+              mapped = $filter('mapField')(fieldEntity, scope.field);
+            }
+          
             // Render depending on the data type
             switch(scope.field.fieldType.results) {
             case util.constants.FIELD_DATE:
@@ -6300,10 +6311,6 @@ angular.module('konga')
             case util.constants.FIELD_BOOLEAN:
               var content = $filter('activeInactive')(mapped, scope.field);
               scope.content = $filter('translate')(content);
-              // scope.contentUrl = views.translated;
-              break;
-            case util.constants.FIELD_PLAIN:
-              scope.content = $filter('translate')(mapped);
               // scope.contentUrl = views.translated;
               break;
             case util.constants.FIELD_IMAGE:
@@ -6358,54 +6365,77 @@ angular.module('konga')
               scope.filter = filter.value;
 
               break;
-            default:
-              // Plain text
+            case util.constants.FIELD_CUSTOM:
+              scope.type = 'custom';
               scope.content = mapped;
+              var customConf = configurationManager.get(util.constants.CUSTOM_FIELD_TYPE, scope.field, util.constants.SCOPE_RESULTS);
+              if(!customConf) {
+                // TODO Throw exception
+              }
+
+              // Try to get mapped view
+              scope.custom = mapper[customConf];
+              if(!scope.custom) {
+                scope.custom = customConf;
+              }
+
+              break;
+            case util.constants.FIELD_PLAIN:
+            default:
+              if(scope.field.type.type === util.constants.FIELD_COMPLEX) {
+                scope.content = $filter('tableRendererComplex')(mapped, scope.field);
+              }
+              else {
+                try {
+                  scope.content = $filter('translate')(mapped);
+                } catch(e) {
+                  scope.content = mapped;
+                }
+              }
+            }
+
+            if(scope.field.type.list && useList) {
+              var list = scope.field.type.list;
+              
+              var listMatch = $filter('filter')(list, { key: (scope.content+"") }, true);
+              if(listMatch.length) {
+                var item = listMatch[0];
+                var content = item.value;
+                scope.content = $filter('translate')(content);
+              }
+            }
+
+            if(scope.content === null || scope.content === undefined) {
+              scope.content = '';
             }
           }
 
-          if(scope.field.type.list && useList) {
-            var list = scope.field.type.list;
-            
-            var listMatch = $filter('filter')(list, { key: (scope.content+"") }, true);
-            if(listMatch.length) {
-              var item = listMatch[0];
-              var content = item.value;
-              scope.content = $filter('translate')(content);
-            }
-          }
+          entityWatcher = scope.$watch('entity', function() {
+            setupValue();
+            scope.updateContent();
+            entityWatcher();
+            // fieldWatcher();
+          }, true);
 
-          if(scope.content === null || scope.content === undefined) {
-            scope.content = '';
-          }
+          var watchers = null;
+          scope.$on('suspend', function() {
+            watchers = scope.$$watchers;
+            scope.$$watchers = [];
+          });
+
+          scope.$on('resume', function() {
+            scope.$$watchers = watchers;
+          });
+
+
+          var elt = angular.element(element);
+
+          scope.updateContent = function() {
+            element.children('.table-cell-content').text(scope.preffix + ' ' + scope.content + ' ' + scope.suffix);
+          };
         }
-
-        entityWatcher = scope.$watch('entity', function() {
-          setupValue();
-          scope.updateContent();
-          entityWatcher();
-          // fieldWatcher();
-        }, true);
-
-        var watchers = null;
-        scope.$on('suspend', function() {
-          watchers = scope.$$watchers;
-          scope.$$watchers = [];
-        });
-
-        scope.$on('resume', function() {
-          scope.$$watchers = watchers;
-        });
-
-
-        var elt = angular.element(element);
-
-        scope.updateContent = function() {
-          element.children('.table-cell-content').text(scope.preffix + ' ' + scope.content + ' ' + scope.suffix);
-        };
-      }
-    };
-  }]);
+      };
+    }]);
 
 'use strict';
 
@@ -8280,7 +8310,7 @@ angular.module('konga')
  * Provider in the konga.
  */
 angular.module('konga')
-  .provider('configurationManager', function () {
+  .provider('configurationManager', ['util', function (util) {
 
     // Private constructor
     function ConfigurationManager($rootScope, $filter) {
@@ -8292,19 +8322,54 @@ angular.module('konga')
        * @param [mode] {string} The form mode
        * @param [order] {string} The order of the priority (SPLIT BY '_')
        */
-      this.getConf = function (param, source, mode, order) {
+      this.get = function (param, source, mode, order) {
         // TODO Finish this
+        var configuration = null;
+        var confSource = null;
+
         if(source) {
-          var configuration = source.configuration;
+          confSource = source.configuration;
+          
           if(mode) {
-            // configuration = $filter('filter')(source.configuration, {  })
+
+            switch(mode) {
+            case util.constants.SCOPE_SEARCH:
+              confSource = source.searchable ? source.searchable.configuration : [];
+              break;
+            case util.constants.SCOPE_RESULTS:
+              confSource = source.showInResults ? source.showInResults.configuration : [];
+              break;
+            case util.constants.SCOPE_UPDATE:
+              confSource = source.showInUpdate ? source.showInUpdate.configuration : [];
+              break;
+            }
+
+            configuration = $filter('filter')(confSource, { key: param });
+            if(configuration.length) {
+              return configuration[0].value;
+            }
+
+            // Go up a level (if we are on fields)
+            if(source.owner) {
+              var entityMetadata = util.getMetadata(source.owner);
+              var entityConfiguration = entityMetadata.configuration;
+              configuration = $filter('filter')(entityConfiguration, { key: param });
+              if(configuration.length) {
+                return configuration[0].value;
+              }
+            }
           }
         }
 
         // General metadata configuration
-        var configuration = $rootScope.metadata.configuration;
+        var rootConfiguration = $rootScope.metadata.configuration;
+        configuration = $filter('filter')(rootConfiguration, { key: param });
 
-        return $filter('filter')(configuration, { key: param });
+        if(configuration && configuration.length) {
+          return configuration[0].value;
+        }
+
+        // TODO Throw exception
       };
     }
 
@@ -8314,7 +8379,7 @@ angular.module('konga')
       var filter = $injector.get('$filter');
       return new ConfigurationManager(rScope, filter);
     };
-  });
+  }]);
 'use strict';
 
 /**
@@ -8615,6 +8680,8 @@ angular.module('konga')
           $rootScope.metadata = metadata;
           util.init(metadata);
           common.store('metadata', metadata);
+
+          $rootScope.$broadcast('metadata-ready', { metadata: metadata });
         };
       }
 
@@ -8757,7 +8824,14 @@ angular.module('konga')
                     else if(type !== util.constants.FIELD_TEXT) {
                         switch(type) {
                         case util.constants.FIELD_BOOLEAN:
-                            castValue = defaultValue === 'true';
+                            if(search) {
+                                if(defaultValue === 'true') castValue = true;
+                                else if(defaultValue === 'false') castValue = false;
+                                else castValue = null;
+                            }
+                            else {
+                                castValue = defaultValue === 'true';
+                            }
                             break;
                         case util.constants.FIELD_COMPLEX:
                             // Initialized as null, valorized afterwards
@@ -9478,7 +9552,11 @@ angular.module('myAwesomeApp')
 		HIDE_WHEN_UPDATING 					: 'hide-when-updating',
 
 		'FIELD_TYPE_CUSTOM' 				: 'CUSTOM',
-		'CUSTOM_FIELD_TYPE' 				: 'CUSTOM_FIELD_TYPE'
+		'CUSTOM_FIELD_TYPE' 				: 'CUSTOM_FIELD_TYPE',
+
+		'SHOW_HINT_SEARCH' 					: 'SHOW_HINT_SEARCH',
+		'SHOW_HINT_UPDATE' 					: 'SHOW_HINT_UPDATE',
+		'NUMBER_CONF_STEP' 					: 'NUMBER_CONF_STEP'
 	}
 });
 
@@ -9525,8 +9603,13 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t<table-cell entity=\"entity\" field=\"field\"></table-cell>\n" +
     "\t\t\t</td>\n" +
     "\t\t</tr>\n" +
-    "\t\t<tr ng-hide=\"entities.length > 0\">\n" +
-    "\t\t\t<td colspan=\"{{ fields.length }}\" class=\"align-center\">{{'field.searchResults.noresults' | translate }}</td>\n" +
+    "\t\t<tr ng-hide=\"entities.length > 0\" ng-if=\"entities.$resolved !== false\">\n" +
+    "\t\t\t<td colspan=\"{{ fields.length }}\" class=\"text-center\">{{'field.searchResults.noresults' | translate }}</td>\n" +
+    "\t\t</tr>\n" +
+    "\t\t<tr ng-if=\"entities.$resolved === false\">\n" +
+    "\t\t\t<td colspan=\"{{ fields.length }}\" class=\"text-center\">\n" +
+    "\t\t\t\t<i class=\"fa fa-circle-o-notch fa-spin\"></i>\n" +
+    "\t\t\t</td>\n" +
     "\t\t</tr>\n" +
     "\t</tbody>\n" +
     "</table>"
@@ -9588,8 +9671,13 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t<table-cell entity=\"entity\" field=\"field\"></table-cell>\n" +
     "\t\t\t</td>\n" +
     "\t\t</tr>\n" +
-    "\t\t<tr ng-hide=\"entities.length > 0\">\n" +
-    "\t\t\t<td colspan=\"{{ fields.length }}\" class=\"align-center\">{{'field.searchResults.noresults' | translate }}</td>\n" +
+    "\t\t<tr ng-hide=\"entities.length > 0\" ng-if=\"entities.$resolved !== false\">\n" +
+    "\t\t\t<td colspan=\"{{ fields.length }}\" class=\"text-center\">{{'field.searchResults.noresults' | translate }}</td>\n" +
+    "\t\t</tr>\n" +
+    "\t\t<tr ng-if=\"entities.$resolved === false\">\n" +
+    "\t\t\t<td colspan=\"{{ fields.length }}\" class=\"text-center\">\n" +
+    "\t\t\t\t<i class=\"fa fa-circle-o-notch fa-spin\"></i>\n" +
+    "\t\t\t</td>\n" +
     "\t\t</tr>\n" +
     "\t</tbody>\n" +
     "</table>"
@@ -9711,7 +9799,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t<div class=\"row chantier-btn-list\">\n" +
     "\t\t\t\t<div class=\"actions pull-right\">\n" +
     "\t\t\t\t\t<button class=\"btn btn-primary\" ng-click=\"operations.openEntityCreate(entityMetadata)\" ng-show=\"isCreateable\" id=\"create-entity\">\n" +
-    "\t\t\t\t\t\t<i class=\"icon ion-plus\"></i>\n" +
+    "\t\t\t\t\t\t<i class=\"icon fa fa-plus\"></i>\n" +
     "\t\t\t\t\t\t{{ 'message.action.add' | translate }}\n" +
     "\t\t\t\t\t</button>\n" +
     "\t\t\t\t\t<button class=\"btn btn-default\" ng-repeat=\"action in entityMetadata.actions\" ng-model=\"action\" ng-click=\"dispatchSearchAction(action)\" ng-show=\"action.scope==='SEARCH' || action.scope==='RESULTS'\" id=\"search-action-dispatcher-{{ action.name }}\">\n" +
@@ -10021,20 +10109,20 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t<div class=\"col-md-2 multi-select-modal-body-item center\">\n" +
     "\t\t<div class=\"add-remove-btn\">\n" +
     "\t\t\t<button id=\"add-multi-select.id\" type=\"button\" class=\"btn btn-default\" ng-click=\"operations.add()\">\n" +
-    "\t\t\t\t<i class=\"icon ion-chevron-right\"></i>\n" +
+    "\t\t\t\t<i class=\"icon fa fa-chevron-right\"></i>\n" +
     "\t\t\t</button>\n" +
     "\t\t\t<button id=\"remove-multi-select.id\" type=\"button\" class=\"btn btn-default\" ng-click=\"operations.remove()\">\n" +
-    "\t\t\t\t<i class=\"icon ion-chevron-left\"></i>\n" +
+    "\t\t\t\t<i class=\"icon fa fa-chevron-left\"></i>\n" +
     "\t\t\t</button>\n" +
     "\t\t</div>\n" +
     "\t\t<div class=\"add-remove-btn\">\n" +
     "\t\t\t<button id=\"addAll-button.id\" type=\"button\" class=\"btn btn-default bulk-option\" ng-click=\"operations.addAll()\">\n" +
-    "\t\t\t\t<i class=\"icon icon-add-remove-all ion-chevron-right\"></i><i\n" +
-    "\t\t\t\t\tclass=\"icon icon-add-remove-all ion-chevron-right\"></i>\n" +
+    "\t\t\t\t<i class=\"icon icon-add-remove-all fa fa-chevron-right\"></i><i\n" +
+    "\t\t\t\t\tclass=\"icon icon-add-remove-all fa fa-chevron-right\"></i>\n" +
     "\t\t\t</button>\n" +
     "\t\t\t<button id=\"removeAll-button.id\" type=\"button\" class=\"btn btn-default bulk-option\" ng-click=\"operations.removeAll()\">\n" +
-    "\t\t\t\t<i class=\"icon icon-add-remove-all ion-chevron-left\"></i><i\n" +
-    "\t\t\t\t\tclass=\"icon icon-add-remove-all ion-chevron-left\"></i>\n" +
+    "\t\t\t\t<i class=\"icon icon-add-remove-all fa fa-chevron-left\"></i><i\n" +
+    "\t\t\t\t\tclass=\"icon icon-add-remove-all fa fa-chevron-left\"></i>\n" +
     "\t\t\t</button>\n" +
     "\t\t</div>\n" +
     "\t</div>\n" +
@@ -10072,6 +10160,15 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "<div class=\"view-container\">\n" +
     "\t<div ng-view></div>\n" +
     "</div>"
+  );
+
+
+  $templateCache.put('/konga/views/number-input.html',
+    "<input name=\"{{ property.name }}\"type=\"number\"\n" +
+    "\tclass=\"form-control konga-form-search-input konga-form-simple-search-input\"\n" +
+    "\tid=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\"\n" +
+    " \tng-disabled=\"disableField(mode, property)\"\n" +
+    "\tangular.module('konga') ng-required=\"validation.required()\" min=\"{{ validation.minvalue() }}\" max=\"{{ validation.maxvalue() }}\" tabindex=\"{{ (index + 1) * 12 }}\" step=\"{{ stepConf }}\">"
   );
 
 
@@ -10221,7 +10318,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "<!-- <div class=\"col-md-2 padding-cero\">\n" +
     "\t<button id=\"toggleDatePicker.id\" type=\"button\" class=\"btn btn-default\"\n" +
     "\t\tng-click=\"toggleDatePicker()\">\n" +
-    "\t\t<i class=\"icon ion-ios7-calendar-outline\"></i>\n" +
+    "\t\t<i class=\"icon fa fa-ios7-calendar-outline\"></i>\n" +
     "\t</button>\n" +
     "</div> -->\n" +
     "<!-- <datepicker ng-model=\"value.text\" show-weeks=\"true\"\n" +
@@ -10282,7 +10379,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t<div ng-class=\"{ 'derived': !!parentField, 'full-width-component': (['COMPLEX', 'TABLE', 'PICK_LIST', 'CALENDAR'].indexOf(property.fieldType[mode]) !== -1) }\" class=\"col-xs-12 col-sm-12 col-md-6 col-lg-8\">\n" +
     "\t\t\t<div ng-include=\"contentUrl\" ng-class=\"classFormInput\"></div>\n" +
     "\t\t</div>\n" +
-    "\t\t<div class=\"col-xs-12 col-sm-12 col-md-8 col-md-offset-6 col-lg-10 col-lg-offset-4\" ng-if=\"property.hint\">\n" +
+    "\t\t<div class=\"col-xs-12 col-sm-12 col-md-8 col-md-offset-6 col-lg-10 col-lg-offset-4\" ng-if=\"property.hint && config.showHint\">\n" +
     "\t\t\t<span class=\"text-muted\">{{ property.hint | translate:extra }}</span>\n" +
     "\t\t</div>\n" +
     "\t\t<div ng-if=\"globalValidation\" ng-hide=\"config.init\" class=\"col-xs-12 col-sm-12 col-md-8 col-md-offset-6 col-lg-10 col-lg-offset-4\">\n" +
@@ -10321,11 +10418,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-number-input.html',
-    "<input name=\"{{ property.name }}\"type=\"number\"\n" +
-    "\tclass=\"form-control konga-form-search-input konga-form-simple-search-input\"\n" +
-    "\tid=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\"\n" +
-    " \tng-disabled=\"disableField(mode, property)\"\n" +
-    "\tangular.module('konga') ng-required=\"validation.required()\" min=\"{{ validation.minvalue() }}\" max=\"{{ validation.maxvalue() }}\" tabindex=\"{{ (index + 1) * 12 }}\">"
+    "<number-input></number-input>"
   );
 
 
@@ -10399,7 +10492,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('/konga/views/raw-select-input.html',
     "<select-input></select-input>\n" +
-    "<div class=\"col-md-12\" ng-if=\"mode === 'search'\">\n" +
+    "<div class=\"col-md-12\" ng-if=\"mode === 'search' && property.searchConf.multiplicity === 'MANY' \">\n" +
     "\t<div class=\"row\">\n" +
     "\t\t<button class=\"btn btn-default btn-xs\" ng-repeat=\"item in value.entity\" ng-click=\"removeItem($index)\">\n" +
     "\t\t\t<i class=\"glyphicon glyphicon-remove\"></i>\n" +
@@ -10619,12 +10712,12 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('/konga/views/tabbed-update.html',
     "<vertical-tabs>\n" +
-    "\t<tab-content ng-repeat=\"fs in fieldsets\" title=\"{{fs.name | translate}}\" is-show=\"(fields | updateParams:metadata | filter: {category: cat}).length\">\n" +
+    "\t<tab-content ng-repeat=\"fs in fieldsets\" title=\"{{fs.name | translate}}\" is-show=\"true\">\n" +
     "\t\t<raw-input \n" +
     "\t\t\tproperty=\"field\"\n" +
     "\t\t\tvertical=\"true\"\n" +
     "\t\t\tsource-list=\"productCodes[field.name]\"\n" +
-    "\t\t\tng-repeat=\"field in fields | updateParams:metadata:fs | orderBy:'+priority.update' | allowed:'update'\" \n" +
+    "\t\t\tng-repeat=\"field in fields | filter:{ fieldSet: fs.name } | updateParams:metadata | orderBy:'+priority.update' | allowed:'update'\" \n" +
     "\t\t\tentity=\"entity\" \n" +
     "\t\t\ton-update=\"onUpdate\"\n" +
     "\t\t\ton-change=\"onChange\"\n" +
@@ -10642,9 +10735,12 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "<div class=\"table-cell\" ng-class=\"styles\">\n" +
     "\t<span class=\"table-cell-content\" ng-show=\"type === 'text'\"></span>\n" +
     "\t<img ng-src=\"{{ content }}\" ng-if=\"type === 'image'\" width=\"{{ image.width }}\" height=\"{{ image.height }}\">\n" +
-    "\t<div class=\"{{ content }}\" ng-if=\"type === 'styling'\"></div>\n" +
-    "\t<div class=\"{{}}\" ng-if=\"type === 'plain-filtered'\">\n" +
+    "\t<div class=\"{{ field.name }} {{ content }}\" ng-if=\"type === 'styling'\"></div>\n" +
+    "\t<div ng-if=\"type === 'plain-filtered'\">\n" +
     "\t\t{{ content | customFilter:filter }}\n" +
+    "\t</div>\n" +
+    "\t<div class=\"custom-type\" ng-if=\"type === 'custom'\">\n" +
+    "\t\t<div ng-include=\"custom\"></div>\n" +
     "\t</div>\n" +
     "</div>"
   );

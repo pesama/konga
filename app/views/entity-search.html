@@ -80,7 +80,7 @@
 			<div class="row chantier-btn-list">
 				<div class="actions pull-right">
 					<button class="btn btn-primary" ng-click="operations.openEntityCreate(entityMetadata)" ng-show="isCreateable" id="create-entity">
-						<i class="icon ion-plus"></i>
+						<i class="icon fa fa-plus"></i>
 						{{ 'message.action.add' | translate }}
 					</button>
 					<button class="btn btn-default" ng-repeat="action in entityMetadata.actions" ng-model="action" ng-click="dispatchSearchAction(action)" ng-show="action.scope==='SEARCH' || action.scope==='RESULTS'" id="search-action-dispatcher-{{ action.name }}">

@@ -421,6 +421,22 @@ span.deploy-time {
 .select-input > .col-md-6:nth-child(1) {
 	padding-left: 0px;
 }
+
+.multi-select-modal-body-item.center {
+    margin-top: 100px;
+}
+
+.multi-select-modal-body-item.center button {
+    display: block;
+    width: 3em;
+    margin: auto;
+    margin-top: 1em;
+}
+
+.multi-select-modal-body-item {
+    height: 400px;
+    overflow: auto;
+}
 /*Text area definition*/
 textarea {
 	width: 100%;
@@ -690,6 +706,14 @@ td.checked > .centerText  {
 
 .table-header .sorting .sorting-desc {
 	
+}
+
+.table-result tr.editable td {
+    cursor: pointer;
+}
+
+.table-result tr:not(.editable) td {
+    cursor: not-allowed;
 }
 .single-select {
 	
