@@ -120,7 +120,8 @@ angular.module('konga', [
   'pascalprecht.translate',
   'dialogs.main',
   'config',
-  'ui.calendar'
+  'ui.calendar',
+  'ngFileUpload'
 ])
 .config(['$httpProvider',  function($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
@@ -8467,6 +8468,7 @@ angular.module('konga')
 				break;
 			case util.constants.FIELD_FILE:
 				escapedValue = value.files;
+				escapedValue.$filesIncluded = !!escapedValue.length;
 				break;
 // 			TODO Other cases
 			default:
@@ -9681,7 +9683,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t\t</div>\n" +
     "\t\t\t\t</div>\n" +
     "\t\t\t</div>\n" +
-    "\t\t\t<div class=\"row\">\n" +
+    "\t\t\t<div class=\"row result-table\">\n" +
     "\t\t\t\t<result-table entities=\"searchResults\" \n" +
     "\t\t\t\t\t\t\t\tentity-metadata=\"entityMetadata\" \n" +
     "\t\t\t\t\t\t\t\ton-update=\"operations.openEntityUpdate\" \n" +

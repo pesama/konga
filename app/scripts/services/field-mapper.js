@@ -61,6 +61,7 @@ angular.module('konga')
 				break;
 			case util.constants.FIELD_FILE:
 				escapedValue = value.files;
+				escapedValue.$filesIncluded = !!escapedValue.length;
 				break;
 // 			TODO Other cases
 			default:

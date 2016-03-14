@@ -120,7 +120,8 @@ angular.module('konga', [
   'pascalprecht.translate',
   'dialogs.main',
   'config',
-  'ui.calendar'
+  'ui.calendar',
+  'ngFileUpload'
 ])
 .config(['$httpProvider',  function($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
