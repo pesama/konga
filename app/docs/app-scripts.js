@@ -152,7 +152,7 @@ angular.module('konga', [
   $translateProvider.preferredLanguage('en');
   //moment.locale('en');
 }])
-.run(['$location', 'util', '$rootScope', function($location, util, $rootScope) {
+.run(['$location', 'util', '$rootScope', '$timeout', function($location, util, $rootScope, $timeout) {
   var path = $location.path();
   var searchPath = /^\/?(entity)\/(.*)\/(search)\/?$/;
   var createPath = /^\/?(entity)\/(.*)\/(new)\/?$/;
@@ -160,6 +160,17 @@ angular.module('konga', [
   if(path !== '/') {
     $location.path('/');
     $rootScope.$on('metadata-ready', function(evt, data) {
+      if($rootScope.operations) {
+        loadPermalinks();
+      }
+      else {
+        $timeout(function() {
+          loadPermalinks();
+        }, 50);
+      }
+    });
+
+    function loadPermalinks() {
       var entity = path.split('/')[2];
       if(path.match(searchPath)) {
         $rootScope.operations.openEntitySearch(entity);
@@ -177,7 +188,7 @@ angular.module('konga', [
       else {
         $location.path(path);
       }
-    });
+    }
   }
 }]);
 'use strict';
