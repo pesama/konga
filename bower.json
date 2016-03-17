@@ -5,7 +5,9 @@
     "type": "git",
     "url": "git@github.com:pritok/konga.git"
   },
-  "keywords": ["konga"],
+  "keywords": [
+    "konga"
+  ],
   "main": [
     "lib/konga.js",
     "lib/konga.css"
@@ -39,7 +41,6 @@
     "fullcalendar": "~2.4.0",
     "json3": "~3.3.1",
     "ng-file-upload": "~3.2.4"
-
   },
   "devDependencies": {
     "angular-mocks": "~1",
