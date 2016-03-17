@@ -55,7 +55,7 @@ angular.module('konga')
           util.init(metadata);
           common.store('metadata', metadata);
 
-          $rootScope.$broadcast('metadata-ready', { metadata: metadata });
+          $rootScope.$emit('metadata-ready', { metadata: metadata });
         };
       }
 

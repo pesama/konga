@@ -143,15 +143,54 @@ angular.module('konga', [
 ])
 .config(['$translateProvider', 'i18n', function($translateProvider, i18n) {
 
-    for(var lang in i18n) {
-      $translateProvider.translations(lang, i18n[lang]);
-    }
-    
+  for(var lang in i18n) {
+    $translateProvider.translations(lang, i18n[lang]);
+  }
+  
 
-    // Setting up spanish as default
-    $translateProvider.preferredLanguage('en');
-    //moment.locale('en');
-  }]);
+  // Setting up spanish as default
+  $translateProvider.preferredLanguage('en');
+  //moment.locale('en');
+}])
+.run(['$location', 'util', '$rootScope', '$timeout', function($location, util, $rootScope, $timeout) {
+  var path = $location.path();
+  var searchPath = /^\/?(entity)\/(.*)\/(search)\/?$/;
+  var createPath = /^\/?(entity)\/(.*)\/(new)\/?$/;
+  var updatePath = /^\/?(entity)\/(.*)\/(.*)\/?$/;
+  if(path !== '/') {
+    $location.path('/');
+    $rootScope.$on('metadata-ready', function(evt, data) {
+      if($rootScope.operations) {
+        loadPermalinks();
+      }
+      else {
+        $timeout(function() {
+          loadPermalinks();
+        }, 50);
+      }
+    });
+
+    function loadPermalinks() {
+      var entity = path.split('/')[2];
+      if(path.match(searchPath)) {
+        $rootScope.operations.openEntitySearch(entity);
+      }
+      else if(path.match(createPath)) {
+        $rootScope.operations.openEntityCreate(entity);
+      }
+      else if(path.match(updatePath)) {
+        var metadata = util.getMetadata(entity);
+        var idField = util.getEntityId(metadata, null, true);
+        var obj = {};
+        obj[idField] = path.split('/')[3];
+        $rootScope.operations.openEntityCreate(entity, obj);
+      }
+      else {
+        $location.path(path);
+      }
+    }
+  }
+}]);
 'use strict';
 
 /**
@@ -8681,7 +8720,7 @@ angular.module('konga')
           util.init(metadata);
           common.store('metadata', metadata);
 
-          $rootScope.$broadcast('metadata-ready', { metadata: metadata });
+          $rootScope.$emit('metadata-ready', { metadata: metadata });
         };
       }
 
