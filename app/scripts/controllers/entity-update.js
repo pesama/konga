@@ -306,12 +306,7 @@ angular.module('konga')
 		}
 
 		function waitEntityResolve(escaped, path, extraPath) {
-			// Verify if it's resolved
-	        // if(escaped.$resolved !== false) {
-	        //   // TODO Propagate
-	        // }
-	        // else {
-	          var resolveWatcher = $scope.$watch('entity.' + path + extraPath + '.$resolved', function() {
+	        var resolveWatcher = $scope.$watch('entity.' + path + extraPath + '.$resolved', function() {
 	            if(escaped.$resolved) {
 	              
 	              /*
@@ -347,8 +342,7 @@ angular.module('konga')
 
 	              resolveWatcher();
 	            }
-	          });
-	        // }
+	        });
 		}
 
 		
@@ -370,7 +364,8 @@ angular.module('konga')
 		* TODO Document
 		*/
 		$scope.operations = {
-				
+			
+
 			dispatchEntityAction: function(name) {
 
 				// Disable the validate button
@@ -477,17 +472,6 @@ angular.module('konga')
 			  // Close the page
 			  $rootScope.operations.closeTabById(pageData.pageId);
 			},
-			
-//			confirmCtrOperat : function () {
-//				function okSaveEntity() {
-//					$scope.operations.saveEntity();
-//				}
-//				function koSaveEntity() {
-//				}
-//			
-//				 $rootScope.operations.confirm('message.entiteDeletable.deleting.title', 'message.entiteDeletable.deleting.message', okSaveEntity, koSaveEntity);
-//			},
-			
 
 			deleteEntity: function() {		
 				
@@ -587,8 +571,31 @@ angular.module('konga')
 			    return differs;
 			},
 
-			/*
-			 * TODO Document
+			/**
+			 * @ngdoc function
+			 * @methodOf konga.controller:EntityUpdateController
+			 * @name operations.updateEntityField
+			 * @description
+			 *
+			 * Performs updates on the entity being managed once the system detects changes on a field. While this is not needed for plain fields - as the {@link https://docs.angularjs.org/api/ng/directive/ngModel `ngModel`} directive does the trick - it's a cool feature for complex fields, as - by leveraging the {@link konga.fieldMapper `fieldMapper`} - the metadata is used to determine data types, and the entities modified accordingly.
+			 *
+			 * @param {Object} metadata
+			 * <span class="label type-hint type-hint-object">{@link Metadata.Field `Field`}</span>
+			 * The entity being managed by the form.
+			 *
+			 * @param {Object} value
+			 * The `value` object managed by the {@link konga.directive:rawInput `rawInput`} directive.
+			 *
+			 * @param {Object} entity
+			 * Your entity. This is the place where the field's value will be set.
+			 *
+			 * @param {Object=} parentField
+			 * <span class="label type-hint type-hint-object">{@link Metadata.Field `Field`}</span>
+			 * If you are dealing with a complex field - and the change origin was on an inner field - this parameter will contain the `root` field - i.e. the `complex` one.
+			 *
+			 * @param {Object=} parentEntity
+			 * If you are dealing with a complex field - and the change origin was on an inner field - contains the `root` entity.
+			 * 
 			 */
 			updateEntityField: function(metadata, value, entity, parentField, parentEntity) {
 			  // Persist the changes on the entity
