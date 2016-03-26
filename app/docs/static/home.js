@@ -62,7 +62,7 @@
 
 <div class="row">
 	<div class="col-xs-12 text-center">
-		<youtube id="hAaS-cFiG8A" width="640" height="360"></youtube>
+		<iframe width="420" height="315" src="http://www.youtube.com/embed/hAaS-cFiG8A?autoplay=0"></iframe>
 	</div>
 </div>
 

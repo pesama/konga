@@ -706,7 +706,6 @@ module.exports = function (grunt) {
         },
         scripts: [
           'lib/konga.js',
-
           'app/docs/scripts/template-overrides.js'
         ],
         styles: [

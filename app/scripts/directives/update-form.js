@@ -3,6 +3,7 @@
 /**
  * @ngdoc directive
  * @name konga.directive:updateForm
+ * @restrict E
  * @description
  *
  * Handles rendering and operations of updation/creation forms. It connects to the {@link konga.controller:EntityUpdateController `EntityUpdateController`} through several operations for field mapping, change notifictions, etcetera.
@@ -27,7 +28,7 @@ Whether the mode is `creation`.
 Optionally, include a set of fields instead of retrieving all from the entity (default when this value is not set).
 
 @param {function()} onUpdate
-Define the behavior for field-update procedures - when an input's value changes.
+Define the behavior for field-update procedures - when an input's value changes. This function signature shall be similar to the default {@link konga.controller:EntityUpdateController#methods_updateEntityField `updateEntityField`} method, present on the {@link konga.controller:EntityUpdateController `EntityUpdateController`}. 
 
 @param {function()=} onChange
 Optional change tracker to know whether the field has changed
