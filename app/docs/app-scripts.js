@@ -3422,6 +3422,8 @@ angular.module('konga')
   			dispatchFieldAction : '='
   		},
   		link : function (scope) {
+  			scope.disableField = scope.$parent.disableField;
+
   			scope.paginate = true;
 
   			// Read configuration
@@ -10014,7 +10016,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t\t\t&nbsp;\n" +
     "\t\t\t\t\t</td>\n" +
     "\t\t\t\t</tr>\n" +
-    "\t\t\t\t<tr ng-if=\"!disableField(mode, property)\">\n" +
+    "\t\t\t\t<tr ng-hide=\"disableField(mode, property)\">\n" +
     "\t\t\t\t\t<td colspan=\"{{ fields.length + 1 }}\" class=\"text-center\">\n" +
     "\t\t\t\t\t\t<button class=\"btn btn-link\" ng-click=\"dispatchFieldAction('add')\" id=\"{{ fieldId }}-add\">\n" +
     "\t\t\t\t\t\t\t<i class=\"glyphicon glyphicon-plus\"></i>\n" +
@@ -10507,7 +10509,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-plain-input.html',
-    "<input name=\"{{ property.name }}\" type=\"text\" class=\"form-control konga-form-search-input\" id=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" angular.module('konga') ng-required=\"validation.required()\" maxlength=\"{{ validation.maxlength() }}\" tabindex=\"{{ (index + 1) * 12 }}\" ng-pattern=\"validation.pattern()\">"
+    "<input name=\"{{ property.name }}\" type=\"text\" class=\"form-control konga-form-search-input\" id=\"{{ fieldId }}\" placeholder=\"\" ng-model=\"value.text\" ng-disabled=\"disableField(mode, property)\" ng-required=\"validation.required()\" maxlength=\"{{ validation.maxlength() }}\" tabindex=\"{{ (index + 1) * 12 }}\" ng-pattern=\"validation.pattern()\">"
   );
 
 

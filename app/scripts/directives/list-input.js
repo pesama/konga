@@ -24,6 +24,8 @@ angular.module('konga')
   			dispatchFieldAction : '='
   		},
   		link : function (scope) {
+  			scope.disableField = scope.$parent.disableField;
+
   			scope.paginate = true;
 
   			// Read configuration
