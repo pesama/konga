@@ -2177,10 +2177,6 @@ angular.module('konga')
 		  		 * Opens an entity-update tab to update a given entity. The parameters are given in a {@link lib.konga.types.Modal `Modal`} object.
 		  		 */
 		  		openModal: function(action) {
-		  			var config = action.parameters.config || {
-		  				size: 'md'
-		  			};
-
 		  			$rootScope.$broadcast('suspend', {});
 
 		  			var currentTab = null;
@@ -2188,7 +2184,7 @@ angular.module('konga')
 		  			var modalInstance = $modal.open({
 				      templateUrl: action.template,
 				      controller: action.controller,
-				      size: config.size,
+				      size: action.size || 'md',
 				      resolve:{
 				  		params: function(){
 				  			return action.parameters;
