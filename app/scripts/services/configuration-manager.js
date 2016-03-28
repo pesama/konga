@@ -10,6 +10,14 @@
 angular.module('konga')
   .provider('configurationManager', ['util', function (util) {
 
+    function parse(source) {
+      if(source === 'true') return true;
+      if(source === 'false') return false;
+      if(!isNan(parseFloat(source))) return parseFloat(source);
+
+      return source;
+    }
+
     // Private constructor
     function ConfigurationManager($rootScope, $filter) {
 
@@ -44,7 +52,7 @@ angular.module('konga')
 
             configuration = $filter('filter')(confSource, { key: param });
             if(configuration.length) {
-              return configuration[0].value;
+              return parse(configuration[0].value);
             }
 
             // Go up a level (if we are on fields)
@@ -53,7 +61,7 @@ angular.module('konga')
               var entityConfiguration = entityMetadata.configuration;
               configuration = $filter('filter')(entityConfiguration, { key: param });
               if(configuration.length) {
-                return configuration[0].value;
+                return parse(configuration[0].value);
               }
             }
           }
@@ -64,12 +72,12 @@ angular.module('konga')
 
             configuration = $filter('filter')(confSource, { key: param });
             if(configuration.length) {
-              return configuration[0].value;
+              return parse(configuration[0].value);
             }
             else {
               configuration = $filter('filter')($rootScope.metadata.configuration, { key: param });
               if(configuration.length) {
-                return configuration[0].value;
+                return parse(configuration[0].value);
               } 
             }
 
