@@ -480,9 +480,9 @@ angular.module('konga')
 
  */
 angular.module('konga')
-  .controller('EntitySearchController', ['$scope', 'api', '$routeParams', 'common', '$rootScope', '$filter', 'scaffold', '$timeout', 'permissionManager', 'util', 
-  	function ($scope, api, $routeParams, common, $rootScope, $filter, scaffold, $timeout, permissionManager, util) {
-  		
+  .controller('EntitySearchController', ['$scope', 'api', '$routeParams', 'common', '$rootScope', '$filter', 'scaffold', '$timeout', 'permissionManager', 'util', 'configurationManager', 
+  	function ($scope, api, $routeParams, common, $rootScope, $filter, scaffold, $timeout, permissionManager, util, configurationManager) {
+
       // Get the local params
       var entityType = $scope.entityType = $routeParams.entityType;
 
@@ -544,6 +544,20 @@ angular.module('konga')
        * Holds the metadata of the entity being managed. It's retrieved via {@link konga.common `common`} -> {@link konga.common#methods_getMetadata `getMetadata`} method.
        */
       var metadata = $scope.entityMetadata = common.getMetadata(entityType);
+
+      $scope.config = {
+        paging: true,
+        quicksearch: true,
+        buttons: true
+      };
+
+      var _paging = configurationManager.get(util.constants.RESULTS_SHOW_PAGING);
+      var _quicksearch = configurationManager.get(util.constants.RESULTS_SHOW_QUICK_SEARCH);
+      var _buttons = configurationManager.get(util.constants.SEARCH_SHOW_BUTTONS);
+
+      if(_paging !== undefined) $scope.config.paging = _paging;
+      if(_quicksearch !== undefined) $scope.config.quicksearch = _quicksearch;
+      if(_buttons !== undefined) $scope.config.buttons = _buttons;
 
       /**
        * @ngdoc object
@@ -8404,6 +8418,24 @@ angular.module('konga')
               }
             }
           }
+          else {
+            if(!confSource) {
+              // TODO Throw exception
+            }
+
+            configuration = $filter('filter')(confSource, { key: param });
+            if(configuration.length) {
+              return configuration[0].value;
+            }
+            else {
+              configuration = $filter('filter')($rootScope.metadata.configuration, { key: param });
+              if(configuration.length) {
+                return configuration[0].value;
+              } 
+            }
+
+          }
+          return undefined;
         }
 
         // General metadata configuration
@@ -9601,7 +9633,11 @@ angular.module('myAwesomeApp')
 
 		'SHOW_HINT_SEARCH' 					: 'SHOW_HINT_SEARCH',
 		'SHOW_HINT_UPDATE' 					: 'SHOW_HINT_UPDATE',
-		'NUMBER_CONF_STEP' 					: 'NUMBER_CONF_STEP'
+		'NUMBER_CONF_STEP' 					: 'NUMBER_CONF_STEP',
+
+		'RESULTS_SHOW_PAGING' 				: 'RESULTS_SHOW_PAGING',
+		'RESULTS_SHOW_QUICK_SEARCH' 		: 'RESULTS_SHOW_QUICK_SEARCH',
+		'SEARCH_SHOW_BUTTONS' 				: 'SEARCH_SHOW_BUTTONS'
 	}
 });
 
@@ -9776,7 +9812,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t<!-- ng-show=\"hideSearchSpiner\"> -->\n" +
     "\t\t\t<div class=\"row\">\n" +
     "\t\t\t\t<div class=\"col-md-12\">\n" +
-    "\t\t\t\t\t<div class=\"col-md-3 quickSearchBox\" ng-show=\"paginationData[entityType].count > 0 || quickSearchEnabled\">\n" +
+    "\t\t\t\t\t<div class=\"col-md-3 quickSearchBox\" ng-show=\"paginationData[entityType].count > 0 || quickSearchEnabled\" ng-if=\"config.quicksearch\">\n" +
     "\t\t\t\t\t\t<div class=\"form-inline\">\n" +
     "\t\t\t\t\t\t\t<div class=\"form-group\" ng-repeat=\"quickSearchField in quickSearch\">\n" +
     "\t\t\t\t\t\t\t\t<div class=\"input-group margin-bottom\">\n" +
@@ -9790,7 +9826,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t<div class=\"col-md-3 form-inline numItemsBox\" ng-show=\"paginationData[entityType].count > 0\">\n" +
+    "\t\t\t\t\t<div class=\"col-md-3 form-inline numItemsBox\" ng-show=\"paginationData[entityType].count > 0\" ng-if=\"config.paging\">\n" +
     "\t\t\t\t\t\t<div class=\"form-group\">\n" +
     "\t\t\t\t\t\t\t<label class=\"control-label font-normal\">\n" +
     "\t\t\t\t\t\t\t\t{{ 'message.pagination.results-per-page' | translate }}\n" +
@@ -9803,7 +9839,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t\t\t\t</select>\n" +
     "\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t<div class=\"col-md-6 text-right\" ng-show=\"paginationData[entityType].count > 0\">\n" +
+    "\t\t\t\t\t<div class=\"col-md-6 text-right\" ng-show=\"paginationData[entityType].count > 0\"  ng-if=\"config.paging\">\n" +
     "\t\t\t\t\t\t<div class=\"form-inline\">\n" +
     "\t\t\t\t\t\t\t<div class=\"form-group\">\n" +
     "\t\t\t\t\t\t\t\t{{ 'message.pagination.results' | translate:paginationData[entityType] }}\n" +
@@ -9826,7 +9862,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t\t\t\t\ton-sorting=\"submitSorting\">\n" +
     "\t\t\t\t</result-table>\n" +
     "\t\t\t</div>\n" +
-    "\t\t\t<div class=\"row\">\n" +
+    "\t\t\t<div class=\"row\" ng-if=\"config.paging\">\n" +
     "\t\t\t\t<div class=\"col-md-12\">\n" +
     "\t\t\t\t\t<div class=\"col-md-6 text-right col-md-offset-6\" ng-show=\"paginationData[entityType].count > 0\">\n" +
     "\t\t\t\t\t\t<div class=\"form-inline\">\n" +
@@ -9841,7 +9877,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t\t</div>\n" +
     "\t\t\t\t</div>\n" +
     "\t\t\t</div>\n" +
-    "\t\t\t<div class=\"row chantier-btn-list\">\n" +
+    "\t\t\t<div class=\"row\" ng-if=\"config.buttons\">\n" +
     "\t\t\t\t<div class=\"actions pull-right\">\n" +
     "\t\t\t\t\t<button class=\"btn btn-primary\" ng-click=\"operations.openEntityCreate(entityMetadata)\" ng-show=\"isCreateable\" id=\"create-entity\">\n" +
     "\t\t\t\t\t\t<i class=\"icon fa fa-plus\"></i>\n" +

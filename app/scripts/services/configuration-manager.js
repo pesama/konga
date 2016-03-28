@@ -57,6 +57,24 @@ angular.module('konga')
               }
             }
           }
+          else {
+            if(!confSource) {
+              // TODO Throw exception
+            }
+
+            configuration = $filter('filter')(confSource, { key: param });
+            if(configuration.length) {
+              return configuration[0].value;
+            }
+            else {
+              configuration = $filter('filter')($rootScope.metadata.configuration, { key: param });
+              if(configuration.length) {
+                return configuration[0].value;
+              } 
+            }
+
+          }
+          return undefined;
         }
 
         // General metadata configuration

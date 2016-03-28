@@ -72,9 +72,9 @@
 
  */
 angular.module('konga')
-  .controller('EntitySearchController', ['$scope', 'api', '$routeParams', 'common', '$rootScope', '$filter', 'scaffold', '$timeout', 'permissionManager', 'util', 
-  	function ($scope, api, $routeParams, common, $rootScope, $filter, scaffold, $timeout, permissionManager, util) {
-  		
+  .controller('EntitySearchController', ['$scope', 'api', '$routeParams', 'common', '$rootScope', '$filter', 'scaffold', '$timeout', 'permissionManager', 'util', 'configurationManager', 
+  	function ($scope, api, $routeParams, common, $rootScope, $filter, scaffold, $timeout, permissionManager, util, configurationManager) {
+
       // Get the local params
       var entityType = $scope.entityType = $routeParams.entityType;
 
@@ -136,6 +136,20 @@ angular.module('konga')
        * Holds the metadata of the entity being managed. It's retrieved via {@link konga.common `common`} -> {@link konga.common#methods_getMetadata `getMetadata`} method.
        */
       var metadata = $scope.entityMetadata = common.getMetadata(entityType);
+
+      $scope.config = {
+        paging: true,
+        quicksearch: true,
+        buttons: true
+      };
+
+      var _paging = configurationManager.get(util.constants.RESULTS_SHOW_PAGING);
+      var _quicksearch = configurationManager.get(util.constants.RESULTS_SHOW_QUICK_SEARCH);
+      var _buttons = configurationManager.get(util.constants.SEARCH_SHOW_BUTTONS);
+
+      if(_paging !== undefined) $scope.config.paging = _paging;
+      if(_quicksearch !== undefined) $scope.config.quicksearch = _quicksearch;
+      if(_buttons !== undefined) $scope.config.buttons = _buttons;
 
       /**
        * @ngdoc object
