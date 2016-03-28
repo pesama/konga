@@ -551,9 +551,9 @@ angular.module('konga')
         buttons: true
       };
 
-      var _paging = configurationManager.get(util.constants.RESULTS_SHOW_PAGING);
-      var _quicksearch = configurationManager.get(util.constants.RESULTS_SHOW_QUICK_SEARCH);
-      var _buttons = configurationManager.get(util.constants.SEARCH_SHOW_BUTTONS);
+      var _paging = configurationManager.get(util.constants.RESULTS_SHOW_PAGING, $scope.entityMetadata);
+      var _quicksearch = configurationManager.get(util.constants.RESULTS_SHOW_QUICK_SEARCH, $scope.entityMetadata);
+      var _buttons = configurationManager.get(util.constants.SEARCH_SHOW_BUTTONS, $scope.entityMetadata);
 
       if(_paging !== undefined) $scope.config.paging = _paging;
       if(_quicksearch !== undefined) $scope.config.quicksearch = _quicksearch;
