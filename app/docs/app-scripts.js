@@ -8428,7 +8428,7 @@ angular.module('konga')
           }
           else {
             if(!confSource) {
-              // TODO Throw exception
+              return undefined;
             }
 
             configuration = $filter('filter')(confSource, { key: param });
