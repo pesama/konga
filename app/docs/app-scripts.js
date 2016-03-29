@@ -2491,7 +2491,7 @@ angular.module('konga')
 		  			return;
 		  		}
 		        for(var i=0; i<$rootScope.tabs.length; i++){
-					if ($scope.tabs[i].href === next) {
+					if ($scope.tabs[i].href === $location.path()) {
 						$scope.operations.redirectTo($scope.tabs[i]);
 						break;
 					}
