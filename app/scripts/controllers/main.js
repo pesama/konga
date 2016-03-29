@@ -736,4 +736,19 @@ angular.module('konga')
 		  			extra.label = $filter('translate')(extra.labelPlaceholder);
 		  		}
 		  	});
+
+		  	// Listen to path changes (for history)
+		  	$rootScope.$on('$locationChangeSuccess', function() {
+		        $rootScope.actualLocation = $location.path();
+		    });
+
+		  	$rootScope.$watch(function () {return $location.path()}, function (newLocation, oldLocation) {
+		  		if($rootScope.actualLocation !== newLocation) return;
+		        for(var i=0; i<$rootScope.tabs.length; i++){
+					if ($scope.tabs[i].href === newLocation) {
+						$scope.operations.redirectTo($scope.tabs[i]);
+						break;
+					}
+				}
+		    });
 		}]);
