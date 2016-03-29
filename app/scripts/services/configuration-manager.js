@@ -13,7 +13,7 @@ angular.module('konga')
     function parse(source) {
       if(source === 'true') return true;
       if(source === 'false') return false;
-      if(!isNan(parseFloat(source))) return parseFloat(source);
+      if(!isNaN(parseFloat(source))) return parseFloat(source);
 
       return source;
     }

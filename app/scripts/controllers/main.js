@@ -739,13 +739,13 @@ angular.module('konga')
 		  	});
 
 		  	// Listen to path changes (for history)
-		  	$rootScope.$watch(function () {return $location.path()}, function (newLocation, oldLocation) {
+		  	$rootScope.$on('$locationChangeStart', function (event, next, current) {
 		  		if($rootScope.operationTriggered) {
 		  			$rootScope.operationTriggered = false;
 		  			return;
 		  		}
 		        for(var i=0; i<$rootScope.tabs.length; i++){
-					if ($scope.tabs[i].href === newLocation) {
+					if ($scope.tabs[i].href === next) {
 						$scope.operations.redirectTo($scope.tabs[i]);
 						break;
 					}
