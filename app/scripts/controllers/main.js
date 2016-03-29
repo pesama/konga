@@ -478,6 +478,7 @@ angular.module('konga')
 		  		 * Opens a tab with the configured {@link DataTypes.Tab `parameters`}.
 		  		 */
 				addTab : function(newTab) {
+					$rootScope.operationTriggered = true;
 					// Get the active tab
 					var tabActive = $filter('filter')($scope.tabs, { active: true })[0];
 
@@ -738,12 +739,11 @@ angular.module('konga')
 		  	});
 
 		  	// Listen to path changes (for history)
-		  	$rootScope.$on('$locationChangeSuccess', function() {
-		        $rootScope.actualLocation = $location.path();
-		    });
-
 		  	$rootScope.$watch(function () {return $location.path()}, function (newLocation, oldLocation) {
-		  		if($rootScope.actualLocation !== newLocation) return;
+		  		if($rootScope.operationTriggered) {
+		  			$rootScope.operationTriggered = false;
+		  			return;
+		  		}
 		        for(var i=0; i<$rootScope.tabs.length; i++){
 					if ($scope.tabs[i].href === newLocation) {
 						$scope.operations.redirectTo($scope.tabs[i]);
