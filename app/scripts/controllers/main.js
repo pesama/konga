@@ -737,18 +737,4 @@ angular.module('konga')
 		  			extra.label = $filter('translate')(extra.labelPlaceholder);
 		  		}
 		  	});
-
-		  	// Listen to path changes (for history)
-		  	$rootScope.$on('$locationChangeStart', function (event, next, current) {
-		  		if($rootScope.operationTriggered) {
-		  			$rootScope.operationTriggered = false;
-		  			return;
-		  		}
-		        for(var i=0; i<$rootScope.tabs.length; i++){
-					if ($scope.tabs[i].href === $location.path()) {
-						$scope.operations.redirectTo($scope.tabs[i]);
-						break;
-					}
-				}
-		    });
 		}]);

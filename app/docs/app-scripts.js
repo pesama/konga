@@ -154,6 +154,7 @@ angular.module('konga', [
 }])
 .run(['$location', 'util', '$rootScope', '$timeout', function($location, util, $rootScope, $timeout) {
   var path = $location.path();
+  var init = false;
   var searchPath = /^\/?(entity)\/(.*)\/(search)\/?$/;
   var createPath = /^\/?(entity)\/(.*)\/(new)\/?$/;
   var updatePath = /^\/?(entity)\/(.*)\/(.*)\/?$/;
@@ -170,6 +171,27 @@ angular.module('konga', [
       }
     });
 
+    // Listen to path changes (for history)
+    $rootScope.$on('$locationChangeStart', function (event, next, current) {
+      if($rootScope.operationTriggered) {
+        $rootScope.operationTriggered = false;
+        return;
+      }
+      var ok = false;
+      for(var i=0; i<$rootScope.tabs.length; i++){
+        if ($rootScope.tabs[i].href === $location.path()) {
+          ok = true;
+          $rootScope.operations.redirectTo($rootScope.tabs[i]);
+          break;
+        }
+
+        if(!ok && init) {
+          path = $location.path();
+          loadPermalinks();
+        }
+      }
+    });
+
     function loadPermalinks() {
       var entity = path.split('/')[2];
       if(path.match(searchPath)) {
@@ -183,11 +205,13 @@ angular.module('konga', [
         var idField = util.getEntityId(metadata, null, true);
         var obj = {};
         obj[idField] = path.split('/')[3];
-        $rootScope.operations.openEntityCreate(entity, obj);
+        $rootScope.operations.openEntityUpdate(entity, obj);
       }
       else {
         $location.path(path);
       }
+
+      init = true;
     }
   }
 }]);
@@ -2483,20 +2507,6 @@ angular.module('konga')
 		  			extra.label = $filter('translate')(extra.labelPlaceholder);
 		  		}
 		  	});
-
-		  	// Listen to path changes (for history)
-		  	$rootScope.$on('$locationChangeStart', function (event, next, current) {
-		  		if($rootScope.operationTriggered) {
-		  			$rootScope.operationTriggered = false;
-		  			return;
-		  		}
-		        for(var i=0; i<$rootScope.tabs.length; i++){
-					if ($scope.tabs[i].href === $location.path()) {
-						$scope.operations.redirectTo($scope.tabs[i]);
-						break;
-					}
-				}
-		    });
 		}]);
 'use strict';
 
