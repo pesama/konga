@@ -152,7 +152,7 @@ angular.module('konga', [
   $translateProvider.preferredLanguage('en');
   //moment.locale('en');
 }])
-.run(['$location', 'util', '$rootScope', '$timeout', function($location, util, $rootScope, $timeout) {
+.run(['$location', 'util', '$rootScope', '$timeout', 'customActions', function($location, util, $rootScope, $timeout, customActions) {
   var path = $location.path();
   var init = false;
   var searchPath = /^\/?(entity)\/(.*)\/(search)\/?$/;
@@ -208,7 +208,24 @@ angular.module('konga', [
         $rootScope.operations.openEntityUpdate(entity, obj);
       }
       else {
-        $location.path(path);
+        // Is there any custom action with that href?
+        var actionDispatched = false;
+        for(var actionName in customActions) {
+          var action = customActions[actionName];
+          if(action.type === util.constants.ACTION_TYPE_TAB) {
+            var href = action.params ? action.params.href : null;
+
+            if(href === path) {
+              actionDispatched = true;
+              $rootScope.operations.dispatchAction({ name: actionName });
+              break;
+            }
+          }
+        }
+
+        if(!actionDispatched) {
+          $location.path(path);
+        }
       }
 
       init = true;
