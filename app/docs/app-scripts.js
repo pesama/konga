@@ -177,6 +177,7 @@ angular.module('konga', [
         $rootScope.operationTriggered = false;
         return;
       }
+      $rootScope.operationTriggered = false;
       var ok = false;
       for(var i=0; i<$rootScope.tabs.length; i++){
         if ($rootScope.tabs[i].href === $location.path()) {
