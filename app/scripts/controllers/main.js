@@ -478,7 +478,11 @@ angular.module('konga')
 		  		 * Opens a tab with the configured {@link DataTypes.Tab `parameters`}.
 		  		 */
 				addTab : function(newTab) {
-					$rootScope.operationTriggered = true;
+					var autoLoad = $rootScope.autoload;
+					$rootScope.autoload = false;
+					if(!autoLoad) {
+						$rootScope.operationTriggered = true;
+					}
 					// Get the active tab
 					var tabActive = $filter('filter')($scope.tabs, { active: true })[0];
 

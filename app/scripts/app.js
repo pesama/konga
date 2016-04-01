@@ -173,11 +173,14 @@ angular.module('konga', [
 
     // Listen to path changes (for history)
     $rootScope.$on('$locationChangeStart', function (event, next, current) {
-      if($rootScope.operationTriggered) {
-        $rootScope.operationTriggered = false;
+      var opTriggered = $rootScope.operationTriggered;
+      $rootScope.operationTriggered = false;
+      if(opTriggered) {
         return;
       }
-      $rootScope.operationTriggered = false;
+
+      $rootScope.autoload = true;
+
       var ok = false;
       for(var i=0; i<$rootScope.tabs.length; i++){
         if ($rootScope.tabs[i].href === $location.path()) {
