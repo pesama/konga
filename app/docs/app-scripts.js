@@ -196,6 +196,12 @@ angular.module('konga', [
       }
     });
 
+    // Disable flags on finish
+    $rootScope.$on('$locationChangeSuccess', function (event, next, current) {
+      $rootScope.operationTriggered = false;
+      $rootScope.autoload = false;
+    });
+
     function loadPermalinks() {
       var entity = path.split('/')[2];
       if(path.match(searchPath)) {
