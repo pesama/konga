@@ -24,6 +24,7 @@ angular.module('konga')
           scope.preffix = '';
           scope.suffix = '';
           scope.custom = null;
+          scope.title = "";
 
           var useList = true;
 
@@ -101,6 +102,15 @@ angular.module('konga')
               scope.styles.push('text-center');
               scope.content = mapped;
               useList = false;
+
+              // Get title
+              // TODO Allow custom
+              var listMatch = $filter('filter')(list, { key: (scope.content+"") }, true);
+              if(listMatch.length) {
+                var item = listMatch[0];
+                var content = item.value;
+                scope.title = $filter('translate')(content);
+              }
               break;
             case util.constants.FIELD_PLAIN_FILTERED:
               scope.type = 'plain-filtered';

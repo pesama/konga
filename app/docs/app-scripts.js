@@ -6390,6 +6390,7 @@ angular.module('konga')
           scope.preffix = '';
           scope.suffix = '';
           scope.custom = null;
+          scope.title = "";
 
           var useList = true;
 
@@ -6467,6 +6468,15 @@ angular.module('konga')
               scope.styles.push('text-center');
               scope.content = mapped;
               useList = false;
+
+              // Get title
+              // TODO Allow custom
+              var listMatch = $filter('filter')(list, { key: (scope.content+"") }, true);
+              if(listMatch.length) {
+                var item = listMatch[0];
+                var content = item.value;
+                scope.title = $filter('translate')(content);
+              }
               break;
             case util.constants.FIELD_PLAIN_FILTERED:
               scope.type = 'plain-filtered';
@@ -10877,7 +10887,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/table-cell.html',
-    "<div class=\"table-cell\" ng-class=\"styles\">\n" +
+    "<div class=\"table-cell\" ng-class=\"styles\" title=\"{{ title }}\">\n" +
     "\t<span class=\"table-cell-content\" ng-show=\"type === 'text'\"></span>\n" +
     "\t<img ng-src=\"{{ content }}\" ng-if=\"type === 'image'\" width=\"{{ image.width }}\" height=\"{{ image.height }}\">\n" +
     "\t<div class=\"{{ field.name }} {{ content }}\" ng-if=\"type === 'styling'\"></div>\n" +

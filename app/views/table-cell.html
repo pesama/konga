@@ -1,4 +1,4 @@
-<div class="table-cell" ng-class="styles">
+<div class="table-cell" ng-class="styles" title="{{ title }}">
 	<span class="table-cell-content" ng-show="type === 'text'"></span>
 	<img ng-src="{{ content }}" ng-if="type === 'image'" width="{{ image.width }}" height="{{ image.height }}">
 	<div class="{{ field.name }} {{ content }}" ng-if="type === 'styling'"></div>
