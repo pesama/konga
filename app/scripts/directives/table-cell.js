@@ -105,6 +105,7 @@ angular.module('konga')
 
               // Get title
               // TODO Allow custom
+              var list = scope.field.type.list;
               var listMatch = $filter('filter')(list, { key: (scope.content+"") }, true);
               if(listMatch.length) {
                 var item = listMatch[0];
