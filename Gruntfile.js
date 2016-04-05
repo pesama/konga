@@ -729,9 +729,9 @@ module.exports = function (grunt) {
           'app/docs/static/quick-start/**/*.js'
         ]
       },
-      'resources': {
+      'learning-series': {
         api: true,
-        title: 'Resources',
+        title: 'Learning Series',
         src: [
           'app/docs/static/resources/**/*.js'
         ]

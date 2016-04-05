@@ -3,7 +3,10 @@
  * @name Video_tutorials
  * @description
  * 
- * # Tutorials
+ * # Konga video tutorials
+ *
+ *
+ *
  */
 
 /**

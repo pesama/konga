@@ -228,9 +228,9 @@
 		}])
 		.filter('sectionSorter', function() {
 			return function(input) {
-				var order = ['home', 'quick-start', 'api', 'resources'];
-				var icons = ['fa fa-home', 'fa fa-paper-plane-o', 'fa fa-book', 'fa fa-rocket'];
-				var backgrounds = ['orange', 'green', 'red', 'blue'];
+				var order = ['home', 'quick-start', 'learning-series', 'api'];
+				var icons = ['fa fa-home', 'fa fa-paper-plane-o', 'fa fa-rocket', 'fa fa-book'];
+				var backgrounds = ['orange', 'green', 'blue', 'red'];
 				var menus = [false, false, true, true];
 
 				var ret = [];
