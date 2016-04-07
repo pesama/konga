@@ -31,11 +31,13 @@ angular.module('konga')
   			// Read configuration
   			var configuration = scope.property.fieldType.configuration[0];
 
-  			// Pagination
-  			var paginationConfiguration = $filter('filter')(configuration, { key: util.constants.SHOW_PAGINATION, value: 'false' }, true);
+  			if(configuration) {
+	  			// Pagination
+	  			var paginationConfiguration = $filter('filter')(configuration, { key: util.constants.SHOW_PAGINATION, value: 'false' }, true);
 
-  			if(paginationConfiguration && paginationConfiguration.length) {
-  				scope.paginate = false;
+	  			if(paginationConfiguration && paginationConfiguration.length) {
+	  				scope.paginate = false;
+	  			}
   			}
 
   			scope.filteredList = scope.list;
