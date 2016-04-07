@@ -3713,32 +3713,18 @@ angular.module('konga')
 				}
 			}
   			scope.validate = function () {
-  				var dataFilter = $filter('filter')(scope.list, { selected: true }, transclude);
-  		// 		var listIds = [];
-  		// 		for (var i = 0; i < dataFilter.length; i++) {
-				// 	listIds[dataFilter[i].id]=true;
-				// };
-  		// 		scope.selectedIds[scope.edsType] = listIds;
-  				scope.setSelectedElements(scope.edsType, dataFilter);
+
+  				// FIXING Not array filters
+  				if(scope.list instanceof Array) {
+	  				var dataFilter = $filter('filter')(scope.list, { selected: true }, transclude);
+	  				scope.setSelectedElements(scope.edsType, dataFilter);
+  				}
   			};
 
   			scope.cancel = function () {
   				scope.selectAllItmsData = false;
   				scope.selectAllHandler();
   			};
-  			
-  			/*scope.dispatchFieldAction = function(action, entitySelected) {
-		  		var actions = scope.actions;
-		  		var matchingActions = null;
-		  		if(actions.length) {
-		  			matchingActions = $filter('filter')(actions, { name: action.name });
-		  		}
-
-		  		// Custom actions
-		  		if(matchingActions && matchingActions.length) {
-		  			$rootScope.operations.dispatchActionBatch(matchingActions, { id: util.getEntityId(scope.metadata, scope.entity), entityType: scope.metadata.name, self: $scope, item: scope.entity, field: scope.property, entitySelected : entitySelected});
-		  		}
-			};*/
 
 			var watchers = null;
 	        scope.$on('suspend', function() {
