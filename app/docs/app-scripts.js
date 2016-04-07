@@ -4185,7 +4185,7 @@ angular.module('konga')
 	      	var fieldValue = scope.value = {
 	      		text: '',
 	      		list: [],
-	      		entity: {},
+	      		entity: scope.property.multiplicity === util.constants.MULTIPLICITY_MANY ? [] : {},
 	      		date: {
 	      			startDate: '',
 	      			endDate: '',
