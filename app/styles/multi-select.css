@@ -41,3 +41,9 @@
     height: 400px;
     overflow: auto;
 }
+
+.multiselect-list {
+    max-height: 300px;
+    overflow: auto;
+    margin-bottom: 0px !important; 
+}
