@@ -4,6 +4,11 @@
 	height: auto;
 }
 
+.multi-select .filter {
+	float: right;
+	margin-top: -0.3em;
+}
+
 .multi-select .clear {
 	display: block;
 	clear: both;
