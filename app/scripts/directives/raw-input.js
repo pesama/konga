@@ -413,26 +413,27 @@ angular.module('konga')
 						}else{
 							scope.value.text = value;
 						}
-						if(scope.property.type.list) {
-							scope.value.list = angular.copy(scope.property.type.list);
-
-							var multi = null;
-							if(scope.mode === util.constants.SCOPE_SEARCH) {
-								multi = fieldToMatch.searchConf.multiplicity;
-							}
-							else {
-								multi = fieldToMatch.multiplicity;
-							}
-
-							// if multiplicity is one, append a null value to de-select
-							if(multi === util.constants.MULTIPLICITY_ONE) {
-								scope.value.list.splice(0, 0, { key: null, value: 'combobox.placeholder'});
-							}
-						}
 
 						if (value == undefined && scope.property.defaults != undefined && scope.creating) {
 							// set default property value if any
 							scope.value.text = scope.property.defaults;
+						}
+					}
+
+					if(scope.property.type.list) {
+						scope.value.list = angular.copy(scope.property.type.list);
+
+						var multi = null;
+						if(scope.mode === util.constants.SCOPE_SEARCH) {
+							multi = fieldToMatch.searchConf.multiplicity;
+						}
+						else {
+							multi = fieldToMatch.multiplicity;
+						}
+
+						// if multiplicity is one, append a null value to de-select
+						if(multi === util.constants.MULTIPLICITY_ONE) {
+							scope.value.list.splice(0, 0, { key: null, value: 'combobox.placeholder'});
 						}
 					}
 				}

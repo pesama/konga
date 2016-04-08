@@ -447,6 +447,10 @@ span.deploy-time {
 .multiselect-list {
     margin-bottom: 0px !important; 
 }
+
+.multiselect-list .list-group-item {
+	border-radius: 0 !important;
+}
 /*Text area definition*/
 textarea {
 	width: 100%;

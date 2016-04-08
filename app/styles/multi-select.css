@@ -51,3 +51,7 @@
 .multiselect-list {
     margin-bottom: 0px !important; 
 }
+
+.multiselect-list .list-group-item {
+	border-radius: 0 !important;
+}

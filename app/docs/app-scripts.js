@@ -4433,26 +4433,27 @@ angular.module('konga')
 						}else{
 							scope.value.text = value;
 						}
-						if(scope.property.type.list) {
-							scope.value.list = angular.copy(scope.property.type.list);
-
-							var multi = null;
-							if(scope.mode === util.constants.SCOPE_SEARCH) {
-								multi = fieldToMatch.searchConf.multiplicity;
-							}
-							else {
-								multi = fieldToMatch.multiplicity;
-							}
-
-							// if multiplicity is one, append a null value to de-select
-							if(multi === util.constants.MULTIPLICITY_ONE) {
-								scope.value.list.splice(0, 0, { key: null, value: 'combobox.placeholder'});
-							}
-						}
 
 						if (value == undefined && scope.property.defaults != undefined && scope.creating) {
 							// set default property value if any
 							scope.value.text = scope.property.defaults;
+						}
+					}
+
+					if(scope.property.type.list) {
+						scope.value.list = angular.copy(scope.property.type.list);
+
+						var multi = null;
+						if(scope.mode === util.constants.SCOPE_SEARCH) {
+							multi = fieldToMatch.searchConf.multiplicity;
+						}
+						else {
+							multi = fieldToMatch.multiplicity;
+						}
+
+						// if multiplicity is one, append a null value to de-select
+						if(multi === util.constants.MULTIPLICITY_ONE) {
+							scope.value.list.splice(0, 0, { key: null, value: 'combobox.placeholder'});
 						}
 					}
 				}
@@ -10251,7 +10252,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t</h5>\n" +
     "\t\t\t</a>\n" +
     "\t\t\t<div class=\"loading-data text-center\" ng-if=\"loading\">\n" +
-    "\t\t\t\t<i class=\"fa fa-toggle-o-notch fa-spin\"></i>\n" +
+    "\t\t\t\t<i class=\"fa fa-circle-o-notch fa-spin\"></i>\n" +
     "\t\t\t</div>\n" +
     "\t\t</div>\n" +
     "\t</div>\n" +
@@ -10816,7 +10817,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t</h5>\n" +
     "\t\t</a>\n" +
     "\t\t<div class=\"loading-data text-center\" ng-if=\"loading\">\n" +
-    "\t\t\t<i class=\"fa fa-toggle-o-notch fa-spin\"></i>\n" +
+    "\t\t\t<i class=\"fa fa-circle-o-notch fa-spin\"></i>\n" +
     "\t\t</div>\n" +
     "\t\t<div class=\"no-results\" ng-show=\"!loading && !sourceList.length\">{{ 'field.searchResults.noresults' | translate }}</div>\n" +
     "\t</div>\n" +
