@@ -10807,7 +10807,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t<!-- Title -->\n" +
     "\t\t<h4 class=\"modal-title\">{{ 'message.single-select.title' | translate }}</h4>\n" +
     "\t</div>\n" +
-    "\t<div class=\"multiselect-list list-group\" scroll-watcher>\n" +
+    "\t<div class=\"multiselect-list list-group single-select-body-item\" scroll-watcher>\n" +
     "\t\t<a class=\"list-group-item\"\n" +
     "\t\t\tng-repeat=\"item in sourceList | filter:filter.value | orderBy: key\"\n" +
     "\t\t\tng-click=\"operations.toggle(item)\"\n" +

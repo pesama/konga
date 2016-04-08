@@ -23,3 +23,9 @@
 	text-align: center;
 	margin-top: 1em;
 }
+
+.single-select-body-item {
+	height: 300px;
+    overflow: auto;
+    padding: 0;
+}
