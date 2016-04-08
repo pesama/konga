@@ -24,21 +24,23 @@
 	    <!-- Title -->
 		<h4 class="modal-title">{{ 'message.multi-select.title' | translate }}</h4>
   	</div>
-	<div class="col-md-5 multi-select-modal-body-item">
+	<div class="col-md-12 multi-select-modal-body-item">
 		<div class="multiselect-list list-group" scroll-watcher>
 			<a class="list-group-item"
 				ng-repeat="item in sourceList | filter:filter.value | filter: {added: false} | orderBy: '+key'"
 				ng-click="operations.toggle(item, !item.selected)"
-				ng-dblclick="operations.toggle(item, true);operations.add()"
 				ng-class="{selected: item.selected}">
+				<!-- ng-dblclick="operations.toggle(item, true, true)" -->
 				<h5>
 					{{ item.key }} <small>{{ item.value | translate }}</small>
 				</h5>
 			</a>
-			<div class="loading-data" ng-if="loading">&nbsp;</div>
+			<div class="loading-data text-center" ng-if="loading">
+				<i class="fa fa-toggle-o-notch fa-spin"></i>
+			</div>
 		</div>
 	</div>
-	<div class="col-md-2 multi-select-modal-body-item center">
+	<!-- <div class="col-md-2 multi-select-modal-body-item center">
 		<div class="add-remove-btn">
 			<button id="add-multi-select.id" type="button" class="btn btn-default" ng-click="operations.add()">
 				<i class="icon fa fa-chevron-right"></i>
@@ -70,7 +72,7 @@
 				</h5>
 			</a>
 		</div>
-	</div>
+	</div> -->
 	<div class="clear">&nbsp;</div>
 	<div class="modal-footer">
 		<!-- Close button -->

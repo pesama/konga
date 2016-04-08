@@ -35,7 +35,9 @@
 				{{ item.key }} <small>{{ item.value }}</small>
 			</h5>
 		</a>
-		<div class="loading-data" ng-if="loading">&nbsp;</div>
+		<div class="loading-data text-center" ng-if="loading">
+			<i class="fa fa-toggle-o-notch fa-spin"></i>
+		</div>
 		<div class="no-results" ng-show="!loading && !sourceList.length">{{ 'field.searchResults.noresults' | translate }}</div>
 	</div>
 	<div class="modal-footer">

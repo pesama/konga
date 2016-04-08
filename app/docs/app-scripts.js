@@ -2674,6 +2674,7 @@ angular.module('konga')
 					selected = !item.selected;
 				} 
 				item.selected = selected;
+				item.added = selected;
 			},
 
 			add : function() {
@@ -10236,21 +10237,23 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t    <!-- Title -->\n" +
     "\t\t<h4 class=\"modal-title\">{{ 'message.multi-select.title' | translate }}</h4>\n" +
     "  \t</div>\n" +
-    "\t<div class=\"col-md-5 multi-select-modal-body-item\">\n" +
+    "\t<div class=\"col-md-12 multi-select-modal-body-item\">\n" +
     "\t\t<div class=\"multiselect-list list-group\" scroll-watcher>\n" +
     "\t\t\t<a class=\"list-group-item\"\n" +
     "\t\t\t\tng-repeat=\"item in sourceList | filter:filter.value | filter: {added: false} | orderBy: '+key'\"\n" +
     "\t\t\t\tng-click=\"operations.toggle(item, !item.selected)\"\n" +
-    "\t\t\t\tng-dblclick=\"operations.toggle(item, true);operations.add()\"\n" +
     "\t\t\t\tng-class=\"{selected: item.selected}\">\n" +
+    "\t\t\t\t<!-- ng-dblclick=\"operations.toggle(item, true, true)\" -->\n" +
     "\t\t\t\t<h5>\n" +
     "\t\t\t\t\t{{ item.key }} <small>{{ item.value | translate }}</small>\n" +
     "\t\t\t\t</h5>\n" +
     "\t\t\t</a>\n" +
-    "\t\t\t<div class=\"loading-data\" ng-if=\"loading\">&nbsp;</div>\n" +
+    "\t\t\t<div class=\"loading-data text-center\" ng-if=\"loading\">\n" +
+    "\t\t\t\t<i class=\"fa fa-toggle-o-notch fa-spin\"></i>\n" +
+    "\t\t\t</div>\n" +
     "\t\t</div>\n" +
     "\t</div>\n" +
-    "\t<div class=\"col-md-2 multi-select-modal-body-item center\">\n" +
+    "\t<!-- <div class=\"col-md-2 multi-select-modal-body-item center\">\n" +
     "\t\t<div class=\"add-remove-btn\">\n" +
     "\t\t\t<button id=\"add-multi-select.id\" type=\"button\" class=\"btn btn-default\" ng-click=\"operations.add()\">\n" +
     "\t\t\t\t<i class=\"icon fa fa-chevron-right\"></i>\n" +
@@ -10282,7 +10285,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t</h5>\n" +
     "\t\t\t</a>\n" +
     "\t\t</div>\n" +
-    "\t</div>\n" +
+    "\t</div> -->\n" +
     "\t<div class=\"clear\">&nbsp;</div>\n" +
     "\t<div class=\"modal-footer\">\n" +
     "\t\t<!-- Close button -->\n" +
@@ -10810,7 +10813,9 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t{{ item.key }} <small>{{ item.value }}</small>\n" +
     "\t\t\t</h5>\n" +
     "\t\t</a>\n" +
-    "\t\t<div class=\"loading-data\" ng-if=\"loading\">&nbsp;</div>\n" +
+    "\t\t<div class=\"loading-data text-center\" ng-if=\"loading\">\n" +
+    "\t\t\t<i class=\"fa fa-toggle-o-notch fa-spin\"></i>\n" +
+    "\t\t</div>\n" +
     "\t\t<div class=\"no-results\" ng-show=\"!loading && !sourceList.length\">{{ 'field.searchResults.noresults' | translate }}</div>\n" +
     "\t</div>\n" +
     "\t<div class=\"modal-footer\">\n" +

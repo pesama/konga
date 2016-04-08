@@ -38,12 +38,10 @@
 }
 
 .multi-select-modal-body-item {
-    height: 400px;
+    height: 300px;
     overflow: auto;
 }
 
 .multiselect-list {
-    max-height: 300px;
-    overflow: auto;
     margin-bottom: 0px !important; 
 }
