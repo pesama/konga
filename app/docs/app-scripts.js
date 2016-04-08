@@ -10240,7 +10240,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t<div class=\"col-md-12 multi-select-modal-body-item\">\n" +
     "\t\t<div class=\"multiselect-list list-group\" scroll-watcher>\n" +
     "\t\t\t<a class=\"list-group-item\"\n" +
-    "\t\t\t\tng-repeat=\"item in sourceList | filter:filter.value | filter: {added: false} | orderBy: '+key'\"\n" +
+    "\t\t\t\tng-repeat=\"item in sourceList | filter:filter.value | orderBy: '+key'\"\n" +
     "\t\t\t\tng-click=\"operations.toggle(item, !item.selected)\"\n" +
     "\t\t\t\tng-class=\"{selected: item.selected}\">\n" +
     "\t\t\t\t<!-- ng-dblclick=\"operations.toggle(item, true, true)\" -->\n" +
