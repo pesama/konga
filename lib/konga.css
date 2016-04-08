@@ -441,6 +441,7 @@ span.deploy-time {
 .multi-select-modal-body-item {
     height: 300px;
     overflow: auto;
+    padding: 0;
 }
 
 .multiselect-list {

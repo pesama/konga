@@ -134,6 +134,8 @@ angular.module('konga')
 				} 
 				item.selected = selected;
 				item.added = selected;
+
+				updateValue();
 			},
 
 			add : function() {
