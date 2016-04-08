@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('konga')
-  .directive('verticalTabs', ['$rootScope', function ($rootScope) {
+  .directive('verticalTabs', [function () {
   	return {
 		restrict: 'E',
 		transclude: true,
@@ -17,19 +17,14 @@ angular.module('konga')
 				});
 				tabContent.selected = true;
 				tabContent.active = 'active';
-				$rootScope.pageData.currentTab = tabContent.title;
 				$scope.$emit('changeTab', {tab: tabContent} );
 			};
 			
 			this.addTabContent = function(tabContent){
-				if(tabContentList.length === 0 && (!$rootScope.pageData || $rootScope.pageData.currentTab)){
+				if(tabContentList.length === 0){
 					$scope.select(tabContent);
 				}
-				if($rootScope.pageData && $rootScope.pageData.currentTab){
-					if(tabContent.title === $rootScope.pageData.currentTab){
-						$scope.select(tabContent);
-					}
-				}
+
 				tabContentList.push(tabContent);
 			};
 		},
