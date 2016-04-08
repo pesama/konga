@@ -22,10 +22,10 @@ angular.module('konga')
 			};
 			
 			this.addTabContent = function(tabContent){
-				if(tabContentList.length === 0 && !$rootScope.pageData.currentTab){
+				if(tabContentList.length === 0 && (!$rootScope.pageData || $rootScope.pageData.currentTab)){
 					$scope.select(tabContent);
 				}
-				if($rootScope.pageData.currentTab){
+				if($rootScope.pageData && $rootScope.pageData.currentTab){
 					if(tabContent.title === $rootScope.pageData.currentTab){
 						$scope.select(tabContent);
 					}

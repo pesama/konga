@@ -6980,7 +6980,7 @@ angular.module('konga')
 		      	onUpdate: '=',
 		      	creating: '=',
 		      	onChange: '=',
-		      	fields: '=?'
+		      	fields: '=?',
 	      	},
 	    	link: function postLink(scope, element, attrs) {
 	        	// Depending on the form type, the form will be rendered differently
@@ -7062,10 +7062,10 @@ angular.module('konga')
 			};
 			
 			this.addTabContent = function(tabContent){
-				if(tabContentList.length === 0 && !$rootScope.pageData.currentTab){
+				if(tabContentList.length === 0 && (!$rootScope.pageData || $rootScope.pageData.currentTab)){
 					$scope.select(tabContent);
 				}
-				if($rootScope.pageData.currentTab){
+				if($rootScope.pageData && $rootScope.pageData.currentTab){
 					if(tabContent.title === $rootScope.pageData.currentTab){
 						$scope.select(tabContent);
 					}
@@ -9906,7 +9906,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t\t\t\t</select>\n" +
     "\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t<div class=\"col-md-6 text-right\" ng-show=\"paginationData[entityType].count > 0\"  ng-if=\"config.paging\">\n" +
+    "\t\t\t\t\t<div class=\"col-md-9 text-right\" ng-show=\"paginationData[entityType].count > 0\"  ng-if=\"config.paging\">\n" +
     "\t\t\t\t\t\t<div class=\"form-inline\">\n" +
     "\t\t\t\t\t\t\t<div class=\"form-group\">\n" +
     "\t\t\t\t\t\t\t\t{{ 'message.pagination.results' | translate:paginationData[entityType] }}\n" +
