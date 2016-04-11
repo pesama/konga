@@ -12,7 +12,7 @@
 			<!-- ng-show="hideSearchSpiner"> -->
 			<div class="row">
 				<div class="col-md-12">
-					<div class="col-md-3 quickSearchBox" ng-show="paginationData[entityType].count > 0 || quickSearchEnabled" ng-if="config.quicksearch">
+					<div class="col-md-3 quickSearchBox" ng-show="paginationData.count > 0 || quickSearchEnabled" ng-if="config.quicksearch">
 						<div class="form-inline">
 							<div class="form-group" ng-repeat="quickSearchField in quickSearch">
 								<div class="input-group margin-bottom">
@@ -26,7 +26,7 @@
 							</div>
 						</div>
 					</div>
-					<!-- <div class="col-md-3 form-inline numItemsBox" ng-show="paginationData[entityType].count > 0" ng-if="config.paging">
+					<!-- <div class="col-md-3 form-inline numItemsBox" ng-show="paginationData.count > 0" ng-if="config.paging">
 						<div class="form-group">
 							<label class="control-label font-normal">
 								{{ 'message.pagination.results-per-page' | translate }}
@@ -38,13 +38,13 @@
 							</select>
 						</div>
 					</div> -->
-					<div class="col-md-12 text-right" ng-show="paginationData[entityType].count > 0"  ng-if="config.paging">
+					<div class="col-md-12 text-right" ng-show="paginationData.count > 0"  ng-if="config.paging">
 						<div class="form-inline">
 							<div class="form-group">
-								{{ 'message.pagination.results' | translate:paginationData[entityType] }}
+								{{ 'message.pagination.results' | translate:paginationData }}
 							</div>
 							<div class="form-group">
-								<pagination boundary-links="true" total-items="paginationData[entityType].count" items-per-page="paginationData[entityType].limit" max-size="4" rotate="false" ng-model="paginationData[entityType].offset" ng-change="paginationSubmit()" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+								<pagination boundary-links="true" total-items="paginationData.count" items-per-page="paginationData.limit" max-size="4" rotate="false" ng-model="paginationData.offset" ng-change="paginationSubmit()" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
 								</pagination>	
 							</div>
 						</div>
@@ -55,7 +55,7 @@
 				<result-table entities="searchResults" 
 								entity-metadata="entityMetadata" 
 								on-update="operations.openEntityUpdate" 
-								pagination-data="paginationData[entityType]"
+								pagination-data="paginationData"
 								pagination-update="paginationUpdate"
 								filter-code="quickSearchParams.value[codeField]"
 								on-sorting="submitSorting">
@@ -63,13 +63,13 @@
 			</div>
 			<div class="row" ng-if="config.paging">
 				<div class="col-md-12">
-					<div class="col-md-6 text-right col-md-offset-6" ng-show="paginationData[entityType].count > 0">
+					<div class="col-md-6 text-right col-md-offset-6" ng-show="paginationData.count > 0">
 						<div class="form-inline">
 							<div class="form-group">
-								{{ 'message.pagination.results' | translate:paginationData[entityType] }}
+								{{ 'message.pagination.results' | translate:paginationData }}
 							</div>
 							<div class="form-group">
-								<pagination boundary-links="true" total-items="paginationData[entityType].count" items-per-page="paginationData[entityType].limit" max-size="4" rotate="false" ng-model="paginationData[entityType].offset" ng-change="paginationSubmit()" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+								<pagination boundary-links="true" total-items="paginationData.count" items-per-page="paginationData.limit" max-size="4" rotate="false" ng-model="paginationData.offset" ng-change="paginationSubmit()" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
 								</pagination>	
 							</div>
 						</div>

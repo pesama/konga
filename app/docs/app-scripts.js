@@ -564,28 +564,6 @@ angular.module('konga')
       $scope.pageItems = [];
 
       var pageData = $rootScope.pageData;
-      
-      // TODO Remove this
-      if (!$rootScope.paginationData) {
-        $rootScope.paginationData = {};
-      }
-
-      if (!$rootScope.paginationData[entityType]) {
-        $rootScope.paginationData[entityType] = {};
-        $rootScope.paginationData[entityType].count = 0;
-        $rootScope.paginationData[entityType].limit = 20;
-        $rootScope.paginationData[entityType].offset = 1;
-      }
-
-      /**
-       * @ngdoc object
-       * @propertyOf konga.controller:EntitySearchController
-       * @name paginationCount
-       * @description
-       * 
-       * Stores the current limit setup in the pagination configuration. 
-       */
-      $scope.paginationCount = $rootScope.paginationData[entityType].limit + "";
 
       /**
        * @ngdoc object
@@ -630,9 +608,17 @@ angular.module('konga')
         $scope.filterClass = pageData.filterClass;
         $scope.resultTableWidth = pageData.resultTableWidth;
         $scope.quickSearchEnabled = pageData.quickSearchEnabled;
+        $scope.paginationData = pageData.paginationData;
         
       } else {
         pageData.searchResults = $scope.searchResults;
+
+        if (!$scope.paginationData) {
+          $scope.paginationData = {};
+          $scope.paginationData.count = 0;
+          $scope.paginationData.limit = 20;
+          $scope.paginationData.offset = 1;
+        }
 
         /**
          * @ngdoc object
@@ -705,11 +691,11 @@ angular.module('konga')
        If set to true, paging count - i.e. `limit` - won't be reset to defaults. 
        */
       $scope.resetPaginationData = function (pagingOnly) {
-    	  $rootScope.paginationData[entityType].count = 0;
-        $rootScope.paginationData[entityType].offset = 1;
+    	  $scope.paginationData.count = 0;
+        $scope.paginationData.offset = 1;
 
         if(!pagingOnly) {
-          $rootScope.paginationData[entityType].limit = 20;
+          $scope.paginationData.limit = 20;
         }
       };
       
@@ -732,20 +718,10 @@ angular.module('konga')
         // Request a loader
         $rootScope.operations.requestLoading('search_' + entityType);
 
-        var paging = $rootScope.paginationData;
+        var paging = $scope.paginationData;
         
         if (query === undefined) {
         	query = angular.copy($scope.query);
-        }
-        
-        if (query.resetPaging) {
-            $scope.resetPaginationData(true);
-            query.resetPaging = undefined;
-        }
-        
-        if (query.resetSorting) {
-        	$scope.fieldsShowInResult = $filter('resultParams')($scope.fieldsShowInResult, $scope.entityMetadata);
-          query.resetSorting = undefined;
         }
 
         $scope.query = query;
@@ -776,7 +752,7 @@ angular.module('konga')
 
         pageData.searchResults = $scope.searchResults = localEndpoint.search(sendQuery, function() {
         	//searchResults is a var used to stock the ResultItems shown (by page)
-        	var count = $rootScope.paginationData[entityType].count = $routeParams.count;
+        	var count = $scope.paginationData.count = $routeParams.count;
         	$scope.currentItems();
           $rootScope.operations.freeLoading('search_' + entityType);
         }, function(error) {
@@ -965,25 +941,22 @@ angular.module('konga')
       };
 
       $scope.currentItems = function() {
-    		if ($rootScope.paginationData[entityType].count > 0) {
-    			  var items = $rootScope.paginationData[entityType].offset * $rootScope.paginationData[entityType].limit;
-    			  $rootScope.paginationData[entityType].currentItems = (items > $rootScope.paginationData[entityType].count)? $rootScope.paginationData[entityType].count : items;
-    			  $rootScope.paginationData[entityType].startingItem =  (($rootScope.paginationData[entityType].offset - 1)*$rootScope.paginationData[entityType].limit)+1; // Starts in 1
-    			  var endingItem = $rootScope.paginationData[entityType].startingItem +  parseInt($rootScope.paginationData[entityType].limit)-1;
-    			  $rootScope.paginationData[entityType].endingItem = (endingItem > $rootScope.paginationData[entityType].count)?$rootScope.paginationData[entityType].count:endingItem;
+    		if ($scope.paginationData.count > 0) {
+    			  var items = $scope.paginationData.offset * $scope.paginationData.limit;
+    			  $scope.paginationData.currentItems = (items > $scope.paginationData.count)? $scope.paginationData.count : items;
+    			  $scope.paginationData.startingItem =  (($scope.paginationData.offset - 1)*$scope.paginationData.limit)+1; // Starts in 1
+    			  var endingItem = $scope.paginationData.startingItem +  parseInt($scope.paginationData.limit)-1;
+    			  $scope.paginationData.endingItem = (endingItem > $scope.paginationData.count)?$scope.paginationData.count:endingItem;
     		} else {
-    			$rootScope.paginationData[entityType].currentItems = 0;
+    			$scope.paginationData.currentItems = 0;
     		}   
   	  };
 
   	  $scope.paginationSubmit = function() {
-        $scope.paginationData[entityType].limit = parseInt($scope.paginationCount);
     		$scope.submit($scope.oldQuery);
-  		//  $scope.submit($rootScope.currentQuery[entityType]);
   	  };
   	  
       $scope.paginationUpdate = function() {
-        //$rootScope.paginationData[entityType].count = $routeParams.total;
         $scope.currentItems();
       };
       
@@ -5993,8 +5966,8 @@ angular.module('konga')
       link: function postLink(scope, element) {
       	angular.element(element).bind('scroll', function() {
 
-      		var height = element[0].scrollHeight - element.height();
-      		var scroll = element.scrollTop();
+      		var height = element[0].scrollHeight - element[0].offsetHeight;
+      		var scroll = element[0].scrollTop;
 
       		var msg = {
       			absolute: scroll,
@@ -6007,11 +5980,11 @@ angular.module('konga')
 
       	scope.$on('set-scroll', function(event, data) {
       		if(data.relative) {
-      			var height = element[0].scrollHeight - element.height();
+      			var height = element[0].scrollHeight - element[0].offsetHeight;
 
       			var newScroll = height * data.relative;
 
-      			element.scrollTop(newScroll);
+      			element[0].scrollTop = newScroll;
       		}
       	});
       }
@@ -7972,8 +7945,6 @@ angular.module('konga')
         type: util.constants.ACTION_TYPE_FUNCTION,
         params: {
           fn: function(params) {
-            this.query.resetPaging = true;
-            this.query.resetSorting = true;
             this.submit(this.query);
           }
         }
@@ -9875,7 +9846,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t<!-- ng-show=\"hideSearchSpiner\"> -->\n" +
     "\t\t\t<div class=\"row\">\n" +
     "\t\t\t\t<div class=\"col-md-12\">\n" +
-    "\t\t\t\t\t<div class=\"col-md-3 quickSearchBox\" ng-show=\"paginationData[entityType].count > 0 || quickSearchEnabled\" ng-if=\"config.quicksearch\">\n" +
+    "\t\t\t\t\t<div class=\"col-md-3 quickSearchBox\" ng-show=\"paginationData.count > 0 || quickSearchEnabled\" ng-if=\"config.quicksearch\">\n" +
     "\t\t\t\t\t\t<div class=\"form-inline\">\n" +
     "\t\t\t\t\t\t\t<div class=\"form-group\" ng-repeat=\"quickSearchField in quickSearch\">\n" +
     "\t\t\t\t\t\t\t\t<div class=\"input-group margin-bottom\">\n" +
@@ -9889,7 +9860,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t<!-- <div class=\"col-md-3 form-inline numItemsBox\" ng-show=\"paginationData[entityType].count > 0\" ng-if=\"config.paging\">\n" +
+    "\t\t\t\t\t<!-- <div class=\"col-md-3 form-inline numItemsBox\" ng-show=\"paginationData.count > 0\" ng-if=\"config.paging\">\n" +
     "\t\t\t\t\t\t<div class=\"form-group\">\n" +
     "\t\t\t\t\t\t\t<label class=\"control-label font-normal\">\n" +
     "\t\t\t\t\t\t\t\t{{ 'message.pagination.results-per-page' | translate }}\n" +
@@ -9901,13 +9872,13 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t\t\t\t</select>\n" +
     "\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t</div> -->\n" +
-    "\t\t\t\t\t<div class=\"col-md-12 text-right\" ng-show=\"paginationData[entityType].count > 0\"  ng-if=\"config.paging\">\n" +
+    "\t\t\t\t\t<div class=\"col-md-12 text-right\" ng-show=\"paginationData.count > 0\"  ng-if=\"config.paging\">\n" +
     "\t\t\t\t\t\t<div class=\"form-inline\">\n" +
     "\t\t\t\t\t\t\t<div class=\"form-group\">\n" +
-    "\t\t\t\t\t\t\t\t{{ 'message.pagination.results' | translate:paginationData[entityType] }}\n" +
+    "\t\t\t\t\t\t\t\t{{ 'message.pagination.results' | translate:paginationData }}\n" +
     "\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t<div class=\"form-group\">\n" +
-    "\t\t\t\t\t\t\t\t<pagination boundary-links=\"true\" total-items=\"paginationData[entityType].count\" items-per-page=\"paginationData[entityType].limit\" max-size=\"4\" rotate=\"false\" ng-model=\"paginationData[entityType].offset\" ng-change=\"paginationSubmit()\" class=\"pagination-sm\" previous-text=\"&lsaquo;\" next-text=\"&rsaquo;\" first-text=\"&laquo;\" last-text=\"&raquo;\">\n" +
+    "\t\t\t\t\t\t\t\t<pagination boundary-links=\"true\" total-items=\"paginationData.count\" items-per-page=\"paginationData.limit\" max-size=\"4\" rotate=\"false\" ng-model=\"paginationData.offset\" ng-change=\"paginationSubmit()\" class=\"pagination-sm\" previous-text=\"&lsaquo;\" next-text=\"&rsaquo;\" first-text=\"&laquo;\" last-text=\"&raquo;\">\n" +
     "\t\t\t\t\t\t\t\t</pagination>\t\n" +
     "\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t</div>\n" +
@@ -9918,7 +9889,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t<result-table entities=\"searchResults\" \n" +
     "\t\t\t\t\t\t\t\tentity-metadata=\"entityMetadata\" \n" +
     "\t\t\t\t\t\t\t\ton-update=\"operations.openEntityUpdate\" \n" +
-    "\t\t\t\t\t\t\t\tpagination-data=\"paginationData[entityType]\"\n" +
+    "\t\t\t\t\t\t\t\tpagination-data=\"paginationData\"\n" +
     "\t\t\t\t\t\t\t\tpagination-update=\"paginationUpdate\"\n" +
     "\t\t\t\t\t\t\t\tfilter-code=\"quickSearchParams.value[codeField]\"\n" +
     "\t\t\t\t\t\t\t\ton-sorting=\"submitSorting\">\n" +
@@ -9926,13 +9897,13 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t</div>\n" +
     "\t\t\t<div class=\"row\" ng-if=\"config.paging\">\n" +
     "\t\t\t\t<div class=\"col-md-12\">\n" +
-    "\t\t\t\t\t<div class=\"col-md-6 text-right col-md-offset-6\" ng-show=\"paginationData[entityType].count > 0\">\n" +
+    "\t\t\t\t\t<div class=\"col-md-6 text-right col-md-offset-6\" ng-show=\"paginationData.count > 0\">\n" +
     "\t\t\t\t\t\t<div class=\"form-inline\">\n" +
     "\t\t\t\t\t\t\t<div class=\"form-group\">\n" +
-    "\t\t\t\t\t\t\t\t{{ 'message.pagination.results' | translate:paginationData[entityType] }}\n" +
+    "\t\t\t\t\t\t\t\t{{ 'message.pagination.results' | translate:paginationData }}\n" +
     "\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t<div class=\"form-group\">\n" +
-    "\t\t\t\t\t\t\t\t<pagination boundary-links=\"true\" total-items=\"paginationData[entityType].count\" items-per-page=\"paginationData[entityType].limit\" max-size=\"4\" rotate=\"false\" ng-model=\"paginationData[entityType].offset\" ng-change=\"paginationSubmit()\" class=\"pagination-sm\" previous-text=\"&lsaquo;\" next-text=\"&rsaquo;\" first-text=\"&laquo;\" last-text=\"&raquo;\">\n" +
+    "\t\t\t\t\t\t\t\t<pagination boundary-links=\"true\" total-items=\"paginationData.count\" items-per-page=\"paginationData.limit\" max-size=\"4\" rotate=\"false\" ng-model=\"paginationData.offset\" ng-change=\"paginationSubmit()\" class=\"pagination-sm\" previous-text=\"&lsaquo;\" next-text=\"&rsaquo;\" first-text=\"&laquo;\" last-text=\"&raquo;\">\n" +
     "\t\t\t\t\t\t\t\t</pagination>\t\n" +
     "\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t</div>\n" +

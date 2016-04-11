@@ -13,8 +13,8 @@ angular.module('konga')
       link: function postLink(scope, element) {
       	angular.element(element).bind('scroll', function() {
 
-      		var height = element[0].scrollHeight - element.height();
-      		var scroll = element.scrollTop();
+      		var height = element[0].scrollHeight - element[0].offsetHeight;
+      		var scroll = element[0].scrollTop;
 
       		var msg = {
       			absolute: scroll,
@@ -27,11 +27,11 @@ angular.module('konga')
 
       	scope.$on('set-scroll', function(event, data) {
       		if(data.relative) {
-      			var height = element[0].scrollHeight - element.height();
+      			var height = element[0].scrollHeight - element[0].offsetHeight;
 
       			var newScroll = height * data.relative;
 
-      			element.scrollTop(newScroll);
+      			element[0].scrollTop = newScroll;
       		}
       	});
       }

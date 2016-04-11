@@ -105,28 +105,6 @@ angular.module('konga')
       $scope.pageItems = [];
 
       var pageData = $rootScope.pageData;
-      
-      // TODO Remove this
-      if (!$rootScope.paginationData) {
-        $rootScope.paginationData = {};
-      }
-
-      if (!$rootScope.paginationData[entityType]) {
-        $rootScope.paginationData[entityType] = {};
-        $rootScope.paginationData[entityType].count = 0;
-        $rootScope.paginationData[entityType].limit = 20;
-        $rootScope.paginationData[entityType].offset = 1;
-      }
-
-      /**
-       * @ngdoc object
-       * @propertyOf konga.controller:EntitySearchController
-       * @name paginationCount
-       * @description
-       * 
-       * Stores the current limit setup in the pagination configuration. 
-       */
-      $scope.paginationCount = $rootScope.paginationData[entityType].limit + "";
 
       /**
        * @ngdoc object
@@ -171,9 +149,17 @@ angular.module('konga')
         $scope.filterClass = pageData.filterClass;
         $scope.resultTableWidth = pageData.resultTableWidth;
         $scope.quickSearchEnabled = pageData.quickSearchEnabled;
+        $scope.paginationData = pageData.paginationData;
         
       } else {
         pageData.searchResults = $scope.searchResults;
+
+        if (!$scope.paginationData) {
+          $scope.paginationData = {};
+          $scope.paginationData.count = 0;
+          $scope.paginationData.limit = 20;
+          $scope.paginationData.offset = 1;
+        }
 
         /**
          * @ngdoc object
@@ -246,11 +232,11 @@ angular.module('konga')
        If set to true, paging count - i.e. `limit` - won't be reset to defaults. 
        */
       $scope.resetPaginationData = function (pagingOnly) {
-    	  $rootScope.paginationData[entityType].count = 0;
-        $rootScope.paginationData[entityType].offset = 1;
+    	  $scope.paginationData.count = 0;
+        $scope.paginationData.offset = 1;
 
         if(!pagingOnly) {
-          $rootScope.paginationData[entityType].limit = 20;
+          $scope.paginationData.limit = 20;
         }
       };
       
@@ -273,20 +259,10 @@ angular.module('konga')
         // Request a loader
         $rootScope.operations.requestLoading('search_' + entityType);
 
-        var paging = $rootScope.paginationData;
+        var paging = $scope.paginationData;
         
         if (query === undefined) {
         	query = angular.copy($scope.query);
-        }
-        
-        if (query.resetPaging) {
-            $scope.resetPaginationData(true);
-            query.resetPaging = undefined;
-        }
-        
-        if (query.resetSorting) {
-        	$scope.fieldsShowInResult = $filter('resultParams')($scope.fieldsShowInResult, $scope.entityMetadata);
-          query.resetSorting = undefined;
         }
 
         $scope.query = query;
@@ -317,7 +293,7 @@ angular.module('konga')
 
         pageData.searchResults = $scope.searchResults = localEndpoint.search(sendQuery, function() {
         	//searchResults is a var used to stock the ResultItems shown (by page)
-        	var count = $rootScope.paginationData[entityType].count = $routeParams.count;
+        	var count = $scope.paginationData.count = $routeParams.count;
         	$scope.currentItems();
           $rootScope.operations.freeLoading('search_' + entityType);
         }, function(error) {
@@ -506,25 +482,22 @@ angular.module('konga')
       };
 
       $scope.currentItems = function() {
-    		if ($rootScope.paginationData[entityType].count > 0) {
-    			  var items = $rootScope.paginationData[entityType].offset * $rootScope.paginationData[entityType].limit;
-    			  $rootScope.paginationData[entityType].currentItems = (items > $rootScope.paginationData[entityType].count)? $rootScope.paginationData[entityType].count : items;
-    			  $rootScope.paginationData[entityType].startingItem =  (($rootScope.paginationData[entityType].offset - 1)*$rootScope.paginationData[entityType].limit)+1; // Starts in 1
-    			  var endingItem = $rootScope.paginationData[entityType].startingItem +  parseInt($rootScope.paginationData[entityType].limit)-1;
-    			  $rootScope.paginationData[entityType].endingItem = (endingItem > $rootScope.paginationData[entityType].count)?$rootScope.paginationData[entityType].count:endingItem;
+    		if ($scope.paginationData.count > 0) {
+    			  var items = $scope.paginationData.offset * $scope.paginationData.limit;
+    			  $scope.paginationData.currentItems = (items > $scope.paginationData.count)? $scope.paginationData.count : items;
+    			  $scope.paginationData.startingItem =  (($scope.paginationData.offset - 1)*$scope.paginationData.limit)+1; // Starts in 1
+    			  var endingItem = $scope.paginationData.startingItem +  parseInt($scope.paginationData.limit)-1;
+    			  $scope.paginationData.endingItem = (endingItem > $scope.paginationData.count)?$scope.paginationData.count:endingItem;
     		} else {
-    			$rootScope.paginationData[entityType].currentItems = 0;
+    			$scope.paginationData.currentItems = 0;
     		}   
   	  };
 
   	  $scope.paginationSubmit = function() {
-        $scope.paginationData[entityType].limit = parseInt($scope.paginationCount);
     		$scope.submit($scope.oldQuery);
-  		//  $scope.submit($rootScope.currentQuery[entityType]);
   	  };
   	  
       $scope.paginationUpdate = function() {
-        //$rootScope.paginationData[entityType].count = $routeParams.total;
         $scope.currentItems();
       };
       
