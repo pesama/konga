@@ -9867,19 +9867,19 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t<!-- <div class=\"col-md-3 form-inline numItemsBox\" ng-show=\"paginationData.count > 0\" ng-if=\"config.paging\">\n" +
+    "\t\t\t\t\t<div class=\"col-md-3 form-inline numItemsBox\" ng-show=\"paginationData.count > 0\" ng-if=\"config.paging\">\n" +
     "\t\t\t\t\t\t<div class=\"form-group\">\n" +
     "\t\t\t\t\t\t\t<label class=\"control-label font-normal\">\n" +
     "\t\t\t\t\t\t\t\t{{ 'message.pagination.results-per-page' | translate }}\n" +
     "\t\t\t\t\t\t\t</label>\n" +
-    "\t\t\t\t\t\t\t<select class=\"form-control\" ng-model=\"paginationCount\" ng-change=\"paginationSubmit()\">\n" +
+    "\t\t\t\t\t\t\t<select class=\"form-control\" ng-model=\"paginationData.limit\" ng-change=\"paginationSubmit()\">\n" +
     "\t\t\t\t\t\t\t\t<option value=\"20\">20</option>\n" +
     "\t\t\t\t\t\t\t\t<option value=\"50\">50</option>\n" +
     "\t\t\t\t\t\t\t\t<option value=\"100\">100</option>\n" +
     "\t\t\t\t\t\t\t</select>\n" +
     "\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t</div> -->\n" +
-    "\t\t\t\t\t<div class=\"col-md-12 text-right\" ng-show=\"paginationData.count > 0\"  ng-if=\"config.paging\">\n" +
+    "\t\t\t\t\t</div>\n" +
+    "\t\t\t\t\t<div class=\"col-md-9 text-right\" ng-show=\"paginationData.count > 0\"  ng-if=\"config.paging\">\n" +
     "\t\t\t\t\t\t<div class=\"form-inline\">\n" +
     "\t\t\t\t\t\t\t<div class=\"form-group\">\n" +
     "\t\t\t\t\t\t\t\t{{ 'message.pagination.results' | translate:paginationData }}\n" +
