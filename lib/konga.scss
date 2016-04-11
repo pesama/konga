@@ -557,7 +557,7 @@ div.complex-input button.btn.btn-link-remove {
 }
 
 .input-group-addon {
-	padding: 0px;
+	padding: 0px !important;
 }
 
 .input-group-addon .btn {
@@ -907,7 +907,7 @@ div.input-group *.invalid-date ~ div.validation > div.validation-invalid-date {
 */
 .tabbable {
     clear: both;
-    width: 100%;
+    /*width: 100%;*/
 }
 
 .tabbable .padding-cero {

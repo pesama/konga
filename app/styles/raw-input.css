@@ -104,7 +104,7 @@ div.complex-input button.btn.btn-link-remove {
 }
 
 .input-group-addon {
-	padding: 0px;
+	padding: 0px !important;
 }
 
 .input-group-addon .btn {
