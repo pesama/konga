@@ -727,8 +727,8 @@ angular.module('konga')
         $scope.query = query;
         
         //Set paging
-        query.limit = paging[entityType].limit;
-        query.offset = (paging[entityType].offset - 1) * paging[entityType].limit;
+        query.limit = paging.limit;
+        query.offset = (paging.offset - 1) * paging.limit;
         
         //Set sorting
             
@@ -740,8 +740,6 @@ angular.module('konga')
           query.sortBy = apiName;
           query.sortAs = sorting.type;
         }
-        
-        console.log(query);
 
         var sendQuery = $scope.oldQuery = {};
         rootifyQuery(sendQuery, query);
@@ -764,6 +762,11 @@ angular.module('konga')
 	
       $scope.submitSorting = function(field, type) {
     	  $scope.submit($scope.query, { field: field, type: type });
+      };
+
+      $scope.resetPagingAndSorting = function() {
+        $scope.resetPaginationData(true);
+        $scope.fieldsShowInResult = $filter('resultParams')($scope.fieldsShowInResult, $scope.entityMetadata);
       };
       
       /**
@@ -6054,7 +6057,8 @@ angular.module('konga')
         	entityMetadata: '=',
           query: '=',
           submit: '=onSubmit',
-          dispatch: '=onDispatch'
+          dispatch: '=onDispatch',
+          reset: '=onReset?'
         },
         controller: function($scope) {
           $scope.fields = [];
@@ -6181,6 +6185,9 @@ angular.module('konga')
 
 
             submit: function() {
+
+              scope.reset();
+
               // Verify search action
               var matchingActions = $filter('filter')(scope.entityMetadata.overrideDefaults, { overrides: 'search' }, true);
               if (matchingActions && matchingActions.length) {
@@ -9839,7 +9846,8 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t\tentity-metadata=\"entityMetadata\"\n" +
     "\t\t\t\t\tquery=\"query\"  \n" +
     "\t\t\t\t\ton-submit=\"submit\"\n" +
-    "\t\t\t\t\ton-dispatch=\"dispatchSearchAction\">\n" +
+    "\t\t\t\t\ton-dispatch=\"dispatchSearchAction\"\n" +
+    "\t\t\t\t\ton-reset=\"resetPagingAndSorting\">\n" +
     "\t\t\t</search-pane>\n" +
     "\t\t</div>\n" +
     "\t\t<div ng-class=\"{ 'col-md-9': !!filterOpened, 'col-md-12': !filterOpened }\">\n" +

@@ -61,7 +61,8 @@ angular.module('konga')
         	entityMetadata: '=',
           query: '=',
           submit: '=onSubmit',
-          dispatch: '=onDispatch'
+          dispatch: '=onDispatch',
+          reset: '=onReset?'
         },
         controller: function($scope) {
           $scope.fields = [];
@@ -188,6 +189,9 @@ angular.module('konga')
 
 
             submit: function() {
+
+              scope.reset();
+
               // Verify search action
               var matchingActions = $filter('filter')(scope.entityMetadata.overrideDefaults, { overrides: 'search' }, true);
               if (matchingActions && matchingActions.length) {

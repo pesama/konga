@@ -268,8 +268,8 @@ angular.module('konga')
         $scope.query = query;
         
         //Set paging
-        query.limit = paging[entityType].limit;
-        query.offset = (paging[entityType].offset - 1) * paging[entityType].limit;
+        query.limit = paging.limit;
+        query.offset = (paging.offset - 1) * paging.limit;
         
         //Set sorting
             
@@ -281,8 +281,6 @@ angular.module('konga')
           query.sortBy = apiName;
           query.sortAs = sorting.type;
         }
-        
-        console.log(query);
 
         var sendQuery = $scope.oldQuery = {};
         rootifyQuery(sendQuery, query);
@@ -305,6 +303,11 @@ angular.module('konga')
 	
       $scope.submitSorting = function(field, type) {
     	  $scope.submit($scope.query, { field: field, type: type });
+      };
+
+      $scope.resetPagingAndSorting = function() {
+        $scope.resetPaginationData(true);
+        $scope.fieldsShowInResult = $filter('resultParams')($scope.fieldsShowInResult, $scope.entityMetadata);
       };
       
       /**

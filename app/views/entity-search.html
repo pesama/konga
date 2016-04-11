@@ -5,7 +5,8 @@
 					entity-metadata="entityMetadata"
 					query="query"  
 					on-submit="submit"
-					on-dispatch="dispatchSearchAction">
+					on-dispatch="dispatchSearchAction"
+					on-reset="resetPagingAndSorting">
 			</search-pane>
 		</div>
 		<div ng-class="{ 'col-md-9': !!filterOpened, 'col-md-12': !filterOpened }">
