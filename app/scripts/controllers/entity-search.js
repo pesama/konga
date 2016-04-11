@@ -106,6 +106,7 @@ angular.module('konga')
 
       var pageData = $rootScope.pageData;
       
+      // TODO Remove this
       if (!$rootScope.paginationData) {
         $rootScope.paginationData = {};
       }

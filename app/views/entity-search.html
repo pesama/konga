@@ -26,19 +26,18 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 form-inline numItemsBox" ng-show="paginationData[entityType].count > 0" ng-if="config.paging">
+					<!-- <div class="col-md-3 form-inline numItemsBox" ng-show="paginationData[entityType].count > 0" ng-if="config.paging">
 						<div class="form-group">
 							<label class="control-label font-normal">
 								{{ 'message.pagination.results-per-page' | translate }}
 							</label>
 							<select class="form-control" ng-model="paginationCount" ng-change="paginationSubmit()">
-								<!-- <option>10</option> -->
 								<option value="20">20</option>
 								<option value="50">50</option>
 								<option value="100">100</option>
 							</select>
 						</div>
-					</div>
+					</div> -->
 					<div class="col-md-9 text-right" ng-show="paginationData[entityType].count > 0"  ng-if="config.paging">
 						<div class="form-inline">
 							<div class="form-group">
