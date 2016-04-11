@@ -10524,8 +10524,8 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t<div ng-class=\"{ 'derived': !!parentField, 'full-width-component': (['COMPLEX', 'TABLE', 'PICK_LIST', 'CALENDAR'].indexOf(property.fieldType[mode]) !== -1) }\" class=\"col-xs-12 col-sm-12 col-md-6 col-lg-8\">\n" +
     "\t\t\t<div ng-include=\"contentUrl\" ng-class=\"classFormInput\"></div>\n" +
     "\t\t</div>\n" +
-    "\t\t<div class=\"col-xs-12 col-sm-12 col-md-8 col-md-offset-6 col-lg-10 col-lg-offset-4\" ng-if=\"property.hint && config.showHint\">\n" +
-    "\t\t\t<span class=\"text-muted\">{{ property.hint | translate:extra }}</span>\n" +
+    "\t\t<div class=\"col-xs-12 col-sm-12 col-md-6 col-md-offset-6 col-lg-8 col-lg-offset-4 raw-input-hint\" ng-if=\"property.hint && config.showHint\">\n" +
+    "\t\t\t<span class=\"text-muted\" ng-bind-html=\"property.hint | translate:extra\"></span>\n" +
     "\t\t</div>\n" +
     "\t\t<div ng-if=\"globalValidation\" ng-hide=\"config.init\" class=\"col-xs-12 col-sm-12 col-md-8 col-md-offset-6 col-lg-10 col-lg-offset-4\">\n" +
     "\t\t\t<div class=\"validation-required text-danger\" ng-show=\"!validation.valid_required()\" >\n" +
