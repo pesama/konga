@@ -6058,7 +6058,7 @@ angular.module('konga')
           query: '=',
           submit: '=onSubmit',
           dispatch: '=onDispatch',
-          reset: '=onReset?'
+          reset: '=?onReset'
         },
         controller: function($scope) {
           $scope.fields = [];
