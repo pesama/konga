@@ -613,12 +613,11 @@ angular.module('konga')
       } else {
         pageData.searchResults = $scope.searchResults;
 
-        if (!$scope.paginationData) {
-          $scope.paginationData = {};
-          $scope.paginationData.count = 0;
-          $scope.paginationData.limit = 20;
-          $scope.paginationData.offset = 1;
-        }
+        $scope.paginationData = pageData.paginationData = {
+          count: 0,
+          limit: 20,
+          offset: 1
+        };
 
         /**
          * @ngdoc object
