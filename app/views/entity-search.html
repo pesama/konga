@@ -79,11 +79,11 @@
 			</div>
 			<div class="row" ng-if="config.buttons">
 				<div class="actions pull-right">
-					<button class="btn btn-primary" ng-click="operations.openEntityCreate(entityMetadata)" ng-show="isCreateable" id="create-entity">
+					<button type="button" class="btn btn-primary" ng-click="operations.openEntityCreate(entityMetadata)" ng-show="isCreateable" id="create-entity">
 						<i class="icon fa fa-plus"></i>
 						{{ 'message.action.add' | translate }}
 					</button>
-					<button class="btn btn-default" ng-repeat="action in entityMetadata.actions" ng-model="action" ng-click="dispatchSearchAction(action)" ng-show="action.scope==='SEARCH' || action.scope==='RESULTS'" id="search-action-dispatcher-{{ action.name }}">
+					<button type="button" class="btn btn-default" ng-repeat="action in entityMetadata.actions" ng-model="action" ng-click="dispatchSearchAction(action)" ng-show="action.scope==='SEARCH' || action.scope==='RESULTS'" id="search-action-dispatcher-{{ action.name }}">
 						<i ng-class="action.icon" ng-show="action.icon.length"></i>
 						{{ action.label | translate }}
 					</button>

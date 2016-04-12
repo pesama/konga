@@ -54,7 +54,7 @@
 					</td>
 	<!-- 					<table-cell entity="entity" field="field"></table-cell> -->
 					<td ng-show="actions && actions.length">
-						<button class="btn btn-link no-button-styles" ng-repeat="action in actions" ng-click="dispatchFieldAction(action.name, {entity: entity})" id="{{ fieldId + '-' + action.name }}">
+						<button type="button" class="btn btn-link no-button-styles" ng-repeat="action in actions" ng-click="dispatchFieldAction(action.name, {entity: entity})" id="{{ fieldId + '-' + action.name }}">
 							<i ng-class="action.icon" ng-show="action.icon.length"></i>
 							{{ action.label | translate }}
 						</button>
@@ -63,7 +63,7 @@
 				</tr>
 				<tr ng-hide="disableField(mode, property)">
 					<td colspan="{{ fields.length + 1 }}" class="text-center">
-						<button class="btn btn-link" ng-click="dispatchFieldAction('add')" id="{{ fieldId }}-add">
+						<button type="button" class="btn btn-link" ng-click="dispatchFieldAction('add')" id="{{ fieldId }}-add">
 							<i class="glyphicon glyphicon-plus"></i>
 							{{ 'message.action.add' | translate }}
 						</button>

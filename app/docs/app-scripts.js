@@ -9919,11 +9919,11 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t</div>\n" +
     "\t\t\t<div class=\"row\" ng-if=\"config.buttons\">\n" +
     "\t\t\t\t<div class=\"actions pull-right\">\n" +
-    "\t\t\t\t\t<button class=\"btn btn-primary\" ng-click=\"operations.openEntityCreate(entityMetadata)\" ng-show=\"isCreateable\" id=\"create-entity\">\n" +
+    "\t\t\t\t\t<button type=\"button\" class=\"btn btn-primary\" ng-click=\"operations.openEntityCreate(entityMetadata)\" ng-show=\"isCreateable\" id=\"create-entity\">\n" +
     "\t\t\t\t\t\t<i class=\"icon fa fa-plus\"></i>\n" +
     "\t\t\t\t\t\t{{ 'message.action.add' | translate }}\n" +
     "\t\t\t\t\t</button>\n" +
-    "\t\t\t\t\t<button class=\"btn btn-default\" ng-repeat=\"action in entityMetadata.actions\" ng-model=\"action\" ng-click=\"dispatchSearchAction(action)\" ng-show=\"action.scope==='SEARCH' || action.scope==='RESULTS'\" id=\"search-action-dispatcher-{{ action.name }}\">\n" +
+    "\t\t\t\t\t<button type=\"button\" class=\"btn btn-default\" ng-repeat=\"action in entityMetadata.actions\" ng-model=\"action\" ng-click=\"dispatchSearchAction(action)\" ng-show=\"action.scope==='SEARCH' || action.scope==='RESULTS'\" id=\"search-action-dispatcher-{{ action.name }}\">\n" +
     "\t\t\t\t\t\t<i ng-class=\"action.icon\" ng-show=\"action.icon.length\"></i>\n" +
     "\t\t\t\t\t\t{{ action.label | translate }}\n" +
     "\t\t\t\t\t</button>\n" +
@@ -9949,18 +9949,18 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t<form ng-class=\"formStyle\" role=\"form\" name=\"entityUpdate\" novalidate>\n" +
     "\t\t\t<update-form entity=\"entity\" changes=\"changes\" metadata=\"entityMetadata\" params=\"params\" on-change=\"operations.changeEntityField\" on-update=\"operations.updateEntityField\" creating=\"creating\"></update-form>\n" +
     "\t\t\t<div class=\"pull-right update-btn-group\" ng-if=\"showActions\">\n" +
-    "\t\t\t\t<button class=\"btn btn-default\" ng-repeat=\"action in entityMetadata.actions\" ng-model=\"action\" ng-click=\"operations.dispatchAction(action)\" ng-show=\"action.scope==='UPDATE'\" ng-disabled=\"action.scope!=='UPDATE'\" id=\"update-action-dispatcher-{{ action.name }}\">\n" +
+    "\t\t\t\t<button type=\"button\" class=\"btn btn-default\" ng-repeat=\"action in entityMetadata.actions\" ng-model=\"action\" ng-click=\"operations.dispatchAction(action)\" ng-show=\"action.scope==='UPDATE'\" ng-disabled=\"action.scope!=='UPDATE'\" id=\"update-action-dispatcher-{{ action.name }}\">\n" +
     "\t\t\t\t\t\t\t{{ action.label | translate }}\n" +
     "\t\t\t\t</button>\n" +
     "\t\t\t\t<button type=\"submit\" class=\"btn btn-success\" ng-click=\"operations.dispatchEntityAction('save', params)\" ng-disabled=\"entityUpdate.$invalid || !changes.length || invalid || (entityMetadata.name==='Materiel' && !entity.validCtrOperat && entity.id != null) || customDisableValider || alreadyValidated\" id=\"save-entity\">\t\n" +
     "\t\t\t\t\t<i class=\"glyphicon glyphicon-ok\"></i>\n" +
     "\t\t\t\t\t{{ 'message.action.validate' | translate }}\n" +
     "\t\t\t\t</button>\n" +
-    "\t\t\t\t<button class=\"btn btn-default\" ng-click=\"operations.cancelUpdate()\" id=\"cancel-update\">\n" +
+    "\t\t\t\t<button type=\"button\" class=\"btn btn-default\" ng-click=\"operations.cancelUpdate()\" id=\"cancel-update\">\n" +
     "\t\t\t\t\t<i class=\"glyphicon glyphicon-remove\"></i>\n" +
     "\t\t\t\t\t{{ 'message.action.cancel' | translate }}\n" +
     "\t\t\t\t</button>\n" +
-    "\t\t\t\t<button class=\"btn btn-danger\" ng-click=\"operations.deleteEntity()\" ng-hide=\"deletable == false\" id=\"delete-entity\" ng-disabled=\"disabledDelete\">\n" +
+    "\t\t\t\t<button type=\"button\" class=\"btn btn-danger\" ng-click=\"operations.deleteEntity()\" ng-hide=\"deletable == false\" id=\"delete-entity\" ng-disabled=\"disabledDelete\">\n" +
     "\t\t\t\t\t<i class=\"glyphicon glyphicon-trash\"></i>\n" +
     "\t\t\t\t\t{{ 'message.action.delete' | translate }}\n" +
     "\t\t\t\t</button>\n" +
@@ -9973,7 +9973,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('/konga/views/file-input.html',
     "<div class=\"col-md-12 file-input\">\n" +
-    "\t<button multiple=\"{{ property.multiplicity === 'MANY' }}\" ng-file-select ng-model=\"value.files\">\n" +
+    "\t<button type=\"button\" multiple=\"{{ property.multiplicity === 'MANY' }}\" ng-file-select ng-model=\"value.files\">\n" +
     "\t<i class=\"glyphicon glyphicon-open\"></i>\n" +
     "\t{{ 'field.file-input.upload' | translate }}\n" +
     "</button>\n" +
@@ -10089,7 +10089,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t\t</td>\n" +
     "\t<!-- \t\t\t\t\t<table-cell entity=\"entity\" field=\"field\"></table-cell> -->\n" +
     "\t\t\t\t\t<td ng-show=\"actions && actions.length\">\n" +
-    "\t\t\t\t\t\t<button class=\"btn btn-link no-button-styles\" ng-repeat=\"action in actions\" ng-click=\"dispatchFieldAction(action.name, {entity: entity})\" id=\"{{ fieldId + '-' + action.name }}\">\n" +
+    "\t\t\t\t\t\t<button type=\"button\" class=\"btn btn-link no-button-styles\" ng-repeat=\"action in actions\" ng-click=\"dispatchFieldAction(action.name, {entity: entity})\" id=\"{{ fieldId + '-' + action.name }}\">\n" +
     "\t\t\t\t\t\t\t<i ng-class=\"action.icon\" ng-show=\"action.icon.length\"></i>\n" +
     "\t\t\t\t\t\t\t{{ action.label | translate }}\n" +
     "\t\t\t\t\t\t</button>\n" +
@@ -10098,7 +10098,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "\t\t\t\t</tr>\n" +
     "\t\t\t\t<tr ng-hide=\"disableField(mode, property)\">\n" +
     "\t\t\t\t\t<td colspan=\"{{ fields.length + 1 }}\" class=\"text-center\">\n" +
-    "\t\t\t\t\t\t<button class=\"btn btn-link\" ng-click=\"dispatchFieldAction('add')\" id=\"{{ fieldId }}-add\">\n" +
+    "\t\t\t\t\t\t<button type=\"button\" class=\"btn btn-link\" ng-click=\"dispatchFieldAction('add')\" id=\"{{ fieldId }}-add\">\n" +
     "\t\t\t\t\t\t\t<i class=\"glyphicon glyphicon-plus\"></i>\n" +
     "\t\t\t\t\t\t\t{{ 'message.action.add' | translate }}\n" +
     "\t\t\t\t\t\t</button>\n" +
@@ -10517,7 +10517,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/konga/views/raw-link-input.html',
-    "<button class=\"btn btn-link\" ng-click=\"dispatchFieldAction('open-link')\" ng-init=\"hideGlobalValidation()\">\n" +
+    "<button type=\"button\" class=\"btn btn-link\" ng-click=\"dispatchFieldAction('open-link')\" ng-init=\"hideGlobalValidation()\">\n" +
     "\t<i class=\"glyphicon glyphicon-plus\" ng-if=\"creating\"></i>\n" +
     "\t<i class=\"glyphicon glyphicon-pencil\" ng-if=\"!creating\"></i>\n" +
     "\t<span>{{ 'field.link.text' | translate }}</span>\n" +
@@ -10534,7 +10534,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "</div>\n" +
     "<div class=\"row\">\n" +
     "\t<div class=\"col-md-12\">\n" +
-    "\t\t<button class=\"btn btn-default\" ng-click=\"openMultiSelect()\" id=\"{{ fieldId }}-add\">{{'message.action.add' | translate}}</button>\n" +
+    "\t\t<button type=\"button\" class=\"btn btn-default\" ng-click=\"openMultiSelect()\" id=\"{{ fieldId }}-add\">{{'message.action.add' | translate}}</button>\n" +
     "\t</div>\n" +
     "</div>"
   );
@@ -10617,7 +10617,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "<select-input></select-input>\n" +
     "<div class=\"col-md-12\" ng-if=\"mode === 'search' && property.searchConf.multiplicity === 'MANY' \">\n" +
     "\t<div class=\"row\">\n" +
-    "\t\t<button class=\"btn btn-default btn-xs\" ng-repeat=\"item in value.entity\" ng-click=\"removeItem($index)\">\n" +
+    "\t\t<button type=\"button\" class=\"btn btn-default btn-xs\" ng-repeat=\"item in value.entity\" ng-click=\"removeItem($index)\">\n" +
     "\t\t\t<i class=\"glyphicon glyphicon-remove\"></i>\n" +
     "\t\t\t{{ item | mapField:labelField | shortify:15 }}\n" +
     "\t\t\t{{ (item | mapField:labelField).length > 15 ? '...' : '' }}\n" +

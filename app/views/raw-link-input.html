@@ -1,4 +1,4 @@
-<button class="btn btn-link" ng-click="dispatchFieldAction('open-link')" ng-init="hideGlobalValidation()">
+<button type="button" class="btn btn-link" ng-click="dispatchFieldAction('open-link')" ng-init="hideGlobalValidation()">
 	<i class="glyphicon glyphicon-plus" ng-if="creating"></i>
 	<i class="glyphicon glyphicon-pencil" ng-if="!creating"></i>
 	<span>{{ 'field.link.text' | translate }}</span>
