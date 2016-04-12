@@ -1443,10 +1443,10 @@ angular.module('konga')
 				var configuration = null;
 				switch(scope.mode) {
 				case util.constants.SCOPE_SEARCH:
-					configuration = source.searchable.configuration;
+					configuration = scope.property.searchable.configuration;
 					break;
 				case util.constants.SCOPE_UPDATE:
-					configuration = source.showInUpdate.configuration;
+					configuration = scope.property.showInUpdate.configuration;
 					break;
 				}
 
