@@ -4420,15 +4420,18 @@ angular.module('konga')
 						scope.value.list = angular.copy(scope.property.type.list);
 
 						var multi = null;
+						var fieldType = null;
 						if(scope.mode === util.constants.SCOPE_SEARCH) {
 							multi = fieldToMatch.searchConf.multiplicity;
+							fieldType = fieldToMatch.fieldType.search;
 						}
 						else {
 							multi = fieldToMatch.multiplicity;
+							fieldType = fieldToMatch.fieldType.update;
 						}
 
 						// if multiplicity is one, append a null value to de-select
-						if(multi === util.constants.MULTIPLICITY_ONE) {
+						if(fieldType === util.constants.FIELD_COMBOBOX && multi === util.constants.MULTIPLICITY_ONE) {
 							scope.value.list.splice(0, 0, { key: null, value: 'combobox.placeholder'});
 						}
 					}
