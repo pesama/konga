@@ -4131,11 +4131,6 @@ angular.module('konga')
 
 	      },
 	      link: function(scope, element, attrs) {
-
-	      	/*
-	      	 * Old controller
-	      	 */
-
 	      	var resolveWatcher = null, valueWatcher = null;
 	      	var init = undefined, initCheck = false, initactive = true, initinactive = false;
 	      	
@@ -4215,6 +4210,11 @@ angular.module('konga')
   			if(readonlyConf && readonlyConf.length) {
   				scope.readonly = true;
   			}
+
+  			// Custom template
+  			scope.config.customTemplate = null;
+  			var customTemplate = configurationManager.get(util.constants.CUSTOM_FIELD_TEMPLATE, scope.property, scope.mode);
+  			if(customTemplate) scope.config.customTemplate = customTemplate;
 
 	      	// Trying to fix object duplicates
 	      	function getList() {
@@ -9680,7 +9680,9 @@ angular.module('myAwesomeApp')
 
 		'RESULTS_SHOW_PAGING' 				: 'RESULTS_SHOW_PAGING',
 		'RESULTS_SHOW_QUICK_SEARCH' 		: 'RESULTS_SHOW_QUICK_SEARCH',
-		'SEARCH_SHOW_BUTTONS' 				: 'SEARCH_SHOW_BUTTONS'
+		'SEARCH_SHOW_BUTTONS' 				: 'SEARCH_SHOW_BUTTONS',
+
+		'CUSTOM_FIELD_TEMPLATE' 			: 'CUSTOM_FIELD_TEMPLATE'
 	}
 });
 
@@ -10497,7 +10499,8 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('/konga/views/raw-input.html',
     "<div class=\"raw-input\" ng-hide=\"config.hidden\" ng-class=\"{ empty: config.init }\">\n" +
-    "\t<div class=\"row form-group mode-{{ mode }} {{ parentField ? 'derived' : '' }} {{(isExtended) ? 'extended' : '' }} {{displayMode}}\">\n" +
+    "\t<div ng-include=\"config.customTemplate\" ng-if=\"!!config.customTemplate\"></div>\n" +
+    "\t<div class=\"row form-group mode-{{ mode }} {{ parentField ? 'derived' : '' }} {{(isExtended) ? 'extended' : '' }} {{displayMode}}\" ng-if=\"!config.customTemplate\">\n" +
     "\t\t<label class=\"col-xs-12 col-sm-12 col-md-6 col-lg-4\">\n" +
     "\t\t\t{{property.label | translate:extra }}\n" +
     "\t\t\t<strong class=\"required asterisk\" ng-if=\"validation.required()\">*</strong>\n" +

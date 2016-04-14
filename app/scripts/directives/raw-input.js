@@ -135,11 +135,6 @@ angular.module('konga')
 
 	      },
 	      link: function(scope, element, attrs) {
-
-	      	/*
-	      	 * Old controller
-	      	 */
-
 	      	var resolveWatcher = null, valueWatcher = null;
 	      	var init = undefined, initCheck = false, initactive = true, initinactive = false;
 	      	
@@ -219,6 +214,11 @@ angular.module('konga')
   			if(readonlyConf && readonlyConf.length) {
   				scope.readonly = true;
   			}
+
+  			// Custom template
+  			scope.config.customTemplate = null;
+  			var customTemplate = configurationManager.get(util.constants.CUSTOM_FIELD_TEMPLATE, scope.property, scope.mode);
+  			if(customTemplate) scope.config.customTemplate = customTemplate;
 
 	      	// Trying to fix object duplicates
 	      	function getList() {
