@@ -8447,7 +8447,7 @@ angular.module('konga')
             }
 
             configuration = $filter('filter')(confSource, { key: param });
-            if(configuration.length) {
+            if(configuration && configuration.length) {
               return parse(configuration[0].value);
             }
 
@@ -8456,7 +8456,7 @@ angular.module('konga')
               var entityMetadata = util.getMetadata(source.owner);
               var entityConfiguration = entityMetadata.configuration;
               configuration = $filter('filter')(entityConfiguration, { key: param });
-              if(configuration.length) {
+              if(configuration && configuration.length) {
                 return parse(configuration[0].value);
               }
             }
@@ -8467,12 +8467,12 @@ angular.module('konga')
             }
 
             configuration = $filter('filter')(confSource, { key: param });
-            if(configuration.length) {
+            if(configurationc && configuration.length) {
               return parse(configuration[0].value);
             }
             else {
               configuration = $filter('filter')($rootScope.metadata.configuration, { key: param });
-              if(configuration.length) {
+              if(configuration && configuration.length) {
                 return parse(configuration[0].value);
               } 
             }
