@@ -3735,8 +3735,8 @@ angular.module('konga')
  * # numberInput
  */
 angular.module('konga')
-  .directive('numberInput', ['configurationManager', 
-  	function (configurationManager) {
+  .directive('numberInput', ['util', 'configurationManager', 
+  	function (util, configurationManager) {
 	    return {
 	      templateUrl: '/konga/views/number-input.html',
 	      restrict: 'E',
