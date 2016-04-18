@@ -1,5 +1,6 @@
 <div class="raw-input" ng-hide="config.hidden" ng-class="{ empty: config.init }">
-	<div class="row form-group mode-{{ mode }} {{ parentField ? 'derived' : '' }} {{(isExtended) ? 'extended' : '' }} {{displayMode}}">
+	<div ng-include="config.customTemplate" ng-if="!!config.customTemplate"></div>
+	<div class="row form-group mode-{{ mode }} {{ parentField ? 'derived' : '' }} {{(isExtended) ? 'extended' : '' }} {{displayMode}}" ng-if="!config.customTemplate">
 		<label class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
 			{{property.label | translate:extra }}
 			<strong class="required asterisk" ng-if="validation.required()">*</strong>
