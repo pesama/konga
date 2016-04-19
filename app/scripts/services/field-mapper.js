@@ -4,15 +4,23 @@
  * @ngdoc service
  * @name konga.fieldMapper
  * @description
- * This service helps managing the connection between the entities and their forms within the UI. 
- * When a field is changed in the form, its value is stored into the entity. 
+ * 
+ * Used for setting values in entity fields.
+ *
+ * # Mapping vs. unmapping
+ *
+ * Within this documentation, you will see contents about both mapping and unmapping. **Mapping** is the process to get a value out from a field, while **unmapping** is setting the value on it.
+ *
+ * # Unmapping process
+ *
+ * The unmapping process starts usually when a user performs changes on an input's value. Native forms contain automatic behaviors for handling data changes, calling this unmapping process beneath them. However, if you deal with custom forms, you will need to define your own handlers for data changes, for manually triggering the unmapping process.
+ * 
+ * ## 
+ * 
+ *  
  */
 angular.module('konga')
   .service('fieldMapper', ['api','common','scaffold', '$filter', 'util', function fieldMapper(api, common, scaffold, $filter, util) {
-    this.mapField = function(fieldName, edsType, entity) {
-    	// TODO Implement
-    };
-
     this.unmapField = function(fieldMetadata, edsType, entity, value, parentField, parentEntity) {
 		try {
 			// Get the name of the field
