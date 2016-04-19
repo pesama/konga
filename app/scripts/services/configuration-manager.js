@@ -71,7 +71,7 @@ angular.module('konga')
             }
 
             configuration = $filter('filter')(confSource, { key: param });
-            if(configurationc && configuration.length) {
+            if(configuration && configuration.length) {
               return parse(configuration[0].value);
             }
             else {
