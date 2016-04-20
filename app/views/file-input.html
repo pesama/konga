@@ -1,8 +1,6 @@
 <div class="col-md-12 file-input">
-	<button type="button" multiple="{{ property.multiplicity === 'MANY' }}" ng-file-select ng-model="value.files">
-	<i class="glyphicon glyphicon-open"></i>
-	{{ 'field.file-input.upload' | translate }}
-</button>
-
-<!-- TODO Include more stuff -->
+		<button type="button" ngf-multiple="{{ property.multiplicity === 'MANY' }}" ngf-select="selectFiles" ngf-drop="dropFiles(" class="btn btn-default" ng-if="!fileConfig.drop">
+			<i class="fa fa-cloud-upload"></i>
+			{{ 'field.file-input.upload' | translate }}
+		</button>
 </div>
