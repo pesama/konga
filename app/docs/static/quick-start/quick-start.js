@@ -3,16 +3,53 @@
  * @name index
  * @description 
  *
- *<div class="row margin-top-3em">
- *	<div class="col-xs-12 text-center">
- *		<img src="/images/konga-logo.png" width="50%" /> 
- *	</div>
- *</div>
  *
- * # Quick start
+ * <div style="margin-top: 3em;margin-left: 1em;" class="pull-right">
+ *    <iframe width="420" height="315" src="http://www.youtube.com/embed/ZJ5EaWzPAQ0?autoplay=0"></iframe>
+ * </div>
  *
- * Hi! Welcome to Konga's Quick Start. On these easy steps, you will see how to create a Konga application, interact with the metadata, and take a walk-through Konga's very basics. 
+ * # What is Konga?
  *
+ * Konga is an application engine, whose purpose is to improve development experience when dealing with form-based apps, by reducing required times and efforts drammatically - <b>up to 80%</b>. It does so by introducing a new concept into our classical development tasks: <b>Metadata modeling</b>.
+ *
+ * <div class="text-center">
+ *  <img src="/static/konga-bottom-first.png" width="300">
+ * </div>
+ *
+ * <div style="clear:both"></div>
+ * 
+ * ## Metadata modeling
+ *
+ * <div style="margin-left: 1em;" class="pull-right">
+ *    <iframe width="420" height="315" src="http://www.youtube.com/embed/TEFZLjadqAw?autoplay=0"></iframe>
+ * </div>
+ *
+ * <b>Metadata modeling</b> helps you define your elements, and convert them into an object, interpreted by Konga to generate your app. So instead of creating the forms manually for each entity, you would just define the metadata, and let Konga do the rest.
+ *
+ *
+ * The <b>metadata object</b> definitions cover all contextual information about the data of your app - e.g. <b>identification</b>, <b>data typing</b> or <b>validation</b>. Definitions are applied to these elements:
+ *
+ * * **Application:** Is the root of your app, and you can provide it with a name, and certain configuration.
+ * * **Entities:** Define the elements of your app - e.g. Car, Person, ... - and can configure <b>identification</b>, <b>allowed operations</b> - CRUD -  and <b>appearance</b>.
+ * * **Fields:** Describe the properties of any <b>entity</b>, and can control <b>identification</b>, <b>data typing</b>, <b>appearance</b> and <b>operations</b>.
+ *
+ * <div class="text-center" style="clear:both">
+ *  <img src="/static/konga-bottom-second.png" width="500">
+ * </div> 
+ *
+ * 
+ * ## Konga UI
+ *
+ * Konga UI is an AngularJS library, that includes a set of standards that will help you create a fully-working UI to manage some data with very little coding. It contains the required features to read the metadata, and generate <b>search & results</b> and <b>update</b> forms automatically. All views and behaviors can be overriden easily, to configure the application anywhere you want.
+ *
+ * 
+ *
+ * * **
+ *
+ *
+
+ */
+ /*
  * ## The very first app
  *
  * We will build our very first app using Konga. The purpose of the app will be to manage a fake API - i.e. {@link http://jsonplaceholder.typicode.com/ `http://jsonplaceholder.typicode.com/`}, using some of the entities it offers:

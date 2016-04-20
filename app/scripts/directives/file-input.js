@@ -73,7 +73,9 @@ angular.module('konga')
 
         scope.dropFiles = function(files, event) {
 
-        }
+        };
+
+        
       }
     };
   }]);

@@ -1,3 +1,17 @@
+* {
+    font-weight: 200;
+    color: #787878;
+}
+
+h1, h2, h3, h4, h5, h6, strong, b {
+    color: #666;
+    font-weight: 400 !important;
+}
+
+ul li strong {
+    text-decoration: underline;
+}
+
 header ul.nav {
 	display: inline-block;
 }

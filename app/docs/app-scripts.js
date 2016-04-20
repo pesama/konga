@@ -3304,15 +3304,73 @@ angular.module('konga')
  * 
  */
 angular.module('konga')
-  .directive('fileInput', ['$upload', function () {
+  .directive('fileInput', ['Upload', 'configurationManager', function (Upload, configurationManager) {
     return {
       templateUrl: '/konga/views/file-input.html',
       restrict: 'E',
       replace: true,
       link: function postLink(scope, element, attrs) {
-        scope.fileSelected = function(files, event) {
+        
+        // Determine submit method
+        // IMMEDIATE OR COMMIT
+
+        scope.fileConfig = {
+          method: 'COMMIT',
+          path: null,
+          accept: '*',
+          drop: '',
+          select: '',
+          maxSize: '256M',
+          icon: 'fa fa-cloud-upload'
+        };
+
+        // Get configuration
+        var config_method = configurationManager.get('FILE_INPUT_METHOD', scope.property);
+        var config_path = configurationManager.get('FILE_INPUT_PATH', scope.property);
+        var config_accept = configurationManager.get('FILE_INPUT_ACCEPT', scope.property);
+        var config_drop = configurationManager.get('FILE_INPUT_DROP', scope.property);
+        var config_select = configurationManager.get('FILE_INPUT_SELECT', scope.property);
+        var config_maxSize = configurationManager.get('FILE_INPUT_MAXSIZE', scope.property);
+        var config_icon = configurationManager.get('FILE_INPUT_ICON', scope.property);
+
+        if(config_method) {
+          scope.fileConfig[method] = config_method;
+        }
+
+        if(config_path) {
+          scope.fileConfig[path] = config_path;
+        }
+
+        if(config_accept) {
+          scope.fileConfig[accept] = config_accept;
+        }
+
+        if(config_drop) {
+          scope.fileConfig[drop] = config_drop;
+        }
+
+        if(config_select) {
+          scope.fileConfig[select] = config_select;
+        }
+
+        if(config_maxSize) {
+          scope.fileConfig[maxSize] = config_maxSize;
+        }
+
+        if(config_icon) {
+          scope.fileConfig[icon] = config_icon;
+        }        
+
+        // Select files
+        scope.selectFiles = function(files, event) {
           scope.value.files = files;
         };
+
+        scope.dropFiles = function(files, event) {
+
+        };
+
+        
       }
     };
   }]);
@@ -7289,9 +7347,47 @@ angular.module('konga')
  * @ngdoc filter
  * @name konga.filter:mapField
  * @function
- * 
  * @description
- * It receives an entity and the defined path for the field to map, and it returns the value located in that path for such entity.
+ * 
+ * This filter helps you getting the value of a field name specified.
+ *
+ * # Basic filtering
+ * 
+ * ```
+ * entity: {
+ *   id: 2,
+ *   name: 'test'	
+ * },
+ * field: 'name'
+ * 
+ * <span>{{ entity | mapField:field }}</span>
+ *
+ * Result: 'test'
+ * ```
+ *
+ * This filter allows you to get the value of a field within an instance of an entity. It's used all across native forms for rendering the values of the fields.
+ *
+ * # Complex rendering
+ * 
+ * ```
+ * entity: {
+ *   id: 2,
+ *   name: 'test',
+ *   owner: {
+ *     firstName: 'John',
+ *     lastName: 'Doe'
+ *   }
+ * },
+ * field: 'owner.firstName'
+ * 
+ * <span>{{ entity | mapField:field }}</span>
+ *
+ * Result: 'John'
+ * ```
+ * 
+ * # Field unmapping
+ *
+ * This filter is made for **reading** values out from fields. You have a tool designed for the opposite purpose - i.e. {@link konga.fieldMapper `fieldMapper`}.
  * 
  * @param {Object} entity Defines the entity to manage
  * @param {Object} field Defines the field to manage
@@ -7323,15 +7419,7 @@ angular.module('konga')
 			return current;
 		}
 
-		// Verify if field is complex
-		if(field.type.type === util.constants.FIELD_COMPLEX) {
-			// TODO
-			return entity[field.name];
-		}
-		else {
-
-			return entity[field.name];
-		}
+		return entity[field.name];
     };
   }]);
 
@@ -8596,15 +8684,23 @@ angular.module('konga')
  * @ngdoc service
  * @name konga.fieldMapper
  * @description
- * This service helps managing the connection between the entities and their forms within the UI. 
- * When a field is changed in the form, its value is stored into the entity. 
+ * 
+ * Used for setting values in entity fields.
+ *
+ * # Mapping vs. unmapping
+ *
+ * Within this documentation, you will see contents about both mapping and unmapping. **Mapping** is the process to get a value out from a field, while **unmapping** is setting the value on it.
+ *
+ * # Unmapping process
+ *
+ * The unmapping process starts usually when a user performs changes on an input's value. Native forms contain automatic behaviors for handling data changes, calling this unmapping process beneath them. However, if you deal with custom forms, you will need to define your own handlers for data changes, for manually triggering the unmapping process.
+ * 
+ * ## 
+ * 
+ *  
  */
 angular.module('konga')
   .service('fieldMapper', ['api','common','scaffold', '$filter', 'util', function fieldMapper(api, common, scaffold, $filter, util) {
-    this.mapField = function(fieldName, edsType, entity) {
-    	// TODO Implement
-    };
-
     this.unmapField = function(fieldMetadata, edsType, entity, value, parentField, parentEntity) {
 		try {
 			// Get the name of the field
@@ -9682,7 +9778,12 @@ angular.module('myAwesomeApp')
 		'RESULTS_SHOW_QUICK_SEARCH' 		: 'RESULTS_SHOW_QUICK_SEARCH',
 		'SEARCH_SHOW_BUTTONS' 				: 'SEARCH_SHOW_BUTTONS',
 
-		'CUSTOM_FIELD_TEMPLATE' 			: 'CUSTOM_FIELD_TEMPLATE'
+		'CUSTOM_FIELD_TEMPLATE' 			: 'CUSTOM_FIELD_TEMPLATE',
+		'FILE_INPUT_ACCEPT' 				: 'FILE_INPUT_ACCEPT',
+		'FILE_INPUT_DROP' 					: 'FILE_INPUT_DROP',
+		'FILE_INPUT_SELECT' 				: 'FILE_INPUT_SELECT',
+		'FILE_INPUT_MAXSIZE' 				: 'FILE_INPUT_MAXSIZE',
+		'FILE_INPUT_ICON' 					: 'FILE_INPUT_ICON'
 	}
 });
 
@@ -9978,12 +10079,10 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('/konga/views/file-input.html',
     "<div class=\"col-md-12 file-input\">\n" +
-    "\t<button type=\"button\" multiple=\"{{ property.multiplicity === 'MANY' }}\" ng-file-select ng-model=\"value.files\">\n" +
-    "\t<i class=\"glyphicon glyphicon-open\"></i>\n" +
-    "\t{{ 'field.file-input.upload' | translate }}\n" +
-    "</button>\n" +
-    "\n" +
-    "<!-- TODO Include more stuff -->\n" +
+    "\t\t<button type=\"button\" ngf-multiple=\"{{ property.multiplicity === 'MANY' }}\" ngf-select=\"selectFiles\" ngf-drop=\"dropFiles(\" class=\"btn btn-default\" ng-if=\"!fileConfig.drop\">\n" +
+    "\t\t\t<i class=\"fa fa-cloud-upload\"></i>\n" +
+    "\t\t\t{{ 'field.file-input.upload' | translate }}\n" +
+    "\t\t</button>\n" +
     "</div>"
   );
 
