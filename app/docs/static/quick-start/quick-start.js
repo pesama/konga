@@ -24,23 +24,25 @@
  *    <iframe width="420" height="315" src="http://www.youtube.com/embed/TEFZLjadqAw?autoplay=0"></iframe>
  * </div>
  *
- * <b>Metadata modeling</b> helps you define your elements, and convert them into an object, interpreted by Konga to generate your app. So instead of creating the forms manually for each entity, you would just define the metadata, and let Konga do the rest.
+ * <b>Metadata modeling</b> helps you define your elements, and convert them into an object, interpreted by the UI to generate your app. So instead of creating the forms manually for each entity, you would just define the metadata, and let Konga do the rest.
  *
  *
  * The <b>metadata object</b> definitions cover all contextual information about the data of your app - e.g. <b>identification</b>, <b>data typing</b> or <b>validation</b>. Definitions are applied to these elements:
  *
- * * **Application:** Is the root of your app, and you can provide it with a name, and certain configuration.
- * * **Entities:** Define the elements of your app - e.g. Car, Person, ... - and can configure <b>identification</b>, <b>allowed operations</b> - CRUD -  and <b>appearance</b>.
- * * **Fields:** Describe the properties of any <b>entity</b>, and can control <b>identification</b>, <b>data typing</b>, <b>appearance</b> and <b>operations</b>.
+ * * **{@link api/Metadata.Application Application}:** Is the root of your app, and you can provide it with a name, and certain configuration.
+ * * **{@link api/Metadata.Entity Entities}:** Define the elements of your app - e.g. Car, Person, ... - and can configure <b>identification</b>, <b>allowed operations</b> - CRUD -  and <b>appearance</b>.
+ * * **{@link api/Metadata.Field Fields}:** Describe the properties of any <b>entity</b>, and can control <b>identification</b>, <b>data typing</b>, <b>appearance</b>, <b>validation</b> and <b>operations</b>.
+ *
+ * The metadata is stored in a JSON object, which is the input for the UI to start working with Konga. To simplify metadata definitions, we've provided you with some {@link api/Metadata.Generators generators} that let you write metadata in an easier way, and get it transformed to JSON.
  *
  * <div class="text-center" style="clear:both">
  *  <img src="/static/konga-bottom-second.png" width="500">
- * </div> 
+ * </div>
  *
  * 
  * ## Konga UI
  *
- * Konga UI is an AngularJS library, that includes a set of standards that will help you create a fully-working UI to manage some data with very little coding. It contains the required features to read the metadata, and generate <b>search & results</b> and <b>update</b> forms automatically. All views and behaviors can be overriden easily, to configure the application anywhere you want.
+ * Konga UI is an AngularJS library, that includes a set of standards that will help you create a fully-working UI to manage your data with very little coding. It contains all required features to read the metadata, and generate <b>search & results</b> and <b>update</b> forms automatically. 
  *
  * 
  *
