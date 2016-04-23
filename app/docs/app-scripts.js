@@ -6893,7 +6893,8 @@ angular.module('konga')
 		      	creating: '=',
 		      	onChange: '=?',
 		      	fields: '=?',
-		      	pageData: '=?storage'
+		      	pageData: '=?storage',
+		      	changes: '=?'
 	      	},
 	    	link: function postLink(scope, element, attrs) {
 	        	// Depending on the form type, the form will be rendered differently
@@ -10054,7 +10055,7 @@ angular.module('konga').run(['$templateCache', function($templateCache) {
     "<div class=\"wall\">\n" +
     "\t<div class=\"panel-body\">\n" +
     "\t\t<form ng-class=\"formStyle\" role=\"form\" name=\"entityUpdate\" novalidate>\n" +
-    "\t\t\t<update-form entity=\"entity\" changes=\"changes\" metadata=\"entityMetadata\" params=\"params\" creating=\"creating\" storage=\"pageData\"></update-form>\n" +
+    "\t\t\t<update-form entity=\"entity\" changes=\"changes\" metadata=\"entityMetadata\" params=\"params\" creating=\"creating\" storage=\"pageData\" changes=\"changes\"></update-form>\n" +
     "\t\t\t<div class=\"pull-right update-btn-group\" ng-if=\"showActions\">\n" +
     "\t\t\t\t<button type=\"button\" class=\"btn btn-default\" ng-repeat=\"action in entityMetadata.actions\" ng-model=\"action\" ng-click=\"operations.dispatchAction(action)\" ng-show=\"action.scope==='UPDATE'\" ng-disabled=\"action.scope!=='UPDATE'\" id=\"update-action-dispatcher-{{ action.name }}\">\n" +
     "\t\t\t\t\t\t\t{{ action.label | translate }}\n" +

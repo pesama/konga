@@ -50,7 +50,8 @@ angular.module('konga')
 		      	creating: '=',
 		      	onChange: '=?',
 		      	fields: '=?',
-		      	pageData: '=?storage'
+		      	pageData: '=?storage',
+		      	changes: '=?'
 	      	},
 	    	link: function postLink(scope, element, attrs) {
 	        	// Depending on the form type, the form will be rendered differently
