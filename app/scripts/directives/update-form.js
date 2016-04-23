@@ -102,13 +102,13 @@ angular.module('konga')
 		      	function updateChanges() {
 					// See if there are changes
 					var hasChanges = false;
-					if ($scope.changes.length > 0) {
+					if (scope.changes.length > 0) {
 					  // Emit the changes notification
 					  hasChanges = true;
 					}
 
-					$scope.$emit('changes', { pageId: pageData.pageId, hasChanges: hasChanges });
-					$scope.$emit('changesCtrOperat', { type: scope.metadata.name, hasChanges : hasChanges });
+					scope.$emit('changes', { pageId: pageData.pageId, hasChanges: hasChanges });
+					scope.$emit('changesCtrOperat', { type: scope.metadata.name, hasChanges : hasChanges });
 				}
 
 		      	scope.changeEntityField = function(metadata, result) {
@@ -116,7 +116,7 @@ angular.module('konga')
 					function okHandler() {
 						var refreshSearchKey = util.constants.REFRESH_SEARCH_KEY + scope.metadata.name;
 						common.store(refreshSearchKey,true);
-	            		$scope.operations.saveEntity();
+	            		scope.operations.saveEntity();
 	            	}
 
 	            	function koHandler() {
@@ -124,13 +124,13 @@ angular.module('konga')
 		                var undoValue = angular.copy(result);
 		                undoValue.text = oldValue;
 
-		                $scope.operations.updateEntityField(metadata, undoValue, $scope.entity);
+		                scope.operations.updateEntityField(metadata, undoValue, scope.entity);
 
-		                $scope.$broadcast('update_' + metadata.owner + '_' + metadata.name, {/* TODO Add something here */});
+		                scope.$broadcast('update_' + metadata.owner + '_' + metadata.name, {/* TODO Add something here */});
 	            	}
 
 					var fieldValue = result.text;
-					if ($scope.entity.$resolved === false) {
+					if (scope.entity.$resolved === false) {
 						return;
 					}
 
@@ -138,17 +138,17 @@ angular.module('konga')
 					var oldValue = $filter('mapField')(pageData.original, metadata);
 					var differs = fieldValue !== oldValue;
 
-				    var index = $scope.changes.indexOf(metadata.name);
+				    var index = scope.changes.indexOf(metadata.name);
 
 				    // Has changes?
 				    if (differs && index === -1) {
-				      $scope.changes.push(metadata.fieldName);
+				      scope.changes.push(metadata.fieldName);
 
 				      	// Verify immediate triggers
 				   		verifyTriggers(util.constants.TRIGGER_MOMENT_IMMEDIATE, metadata, fieldValue, okHandler, koHandler);
 				    } else if(!differs && index !== -1) {
 					  // Or not?
-				      $scope.changes.splice(index, 1);
+				      scope.changes.splice(index, 1);
 				    }
 				    updateChanges();
 				    
@@ -203,7 +203,7 @@ angular.module('konga')
 					      	// If no item is selected, we update the field as-is
 					      	if (!escaped.length) {
 					      		var eventName = 'update_' + metadata.owner + '_' + metadata.name;
-					      		$scope.$broadcast(eventName, {/* TODO Add something here */});
+					      		scope.$broadcast(eventName, {/* TODO Add something here */});
 					      	}
 
 					      	// Now let's listen to changes
