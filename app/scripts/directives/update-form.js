@@ -99,10 +99,22 @@ angular.module('konga')
 			      		break;
 		      	}
 
+		      	function updateChanges() {
+					// See if there are changes
+					var hasChanges = false;
+					if ($scope.changes.length > 0) {
+					  // Emit the changes notification
+					  hasChanges = true;
+					}
+
+					$scope.$emit('changes', { pageId: pageData.pageId, hasChanges: hasChanges });
+					$scope.$emit('changesCtrOperat', { type: scope.metadata.name, hasChanges : hasChanges });
+				}
+
 		      	scope.changeEntityField = function(metadata, result) {
 					// Trigger callbacks
 					function okHandler() {
-						var refreshSearchKey = util.constants.REFRESH_SEARCH_KEY + entityType;
+						var refreshSearchKey = util.constants.REFRESH_SEARCH_KEY + scope.metadata.name;
 						common.store(refreshSearchKey,true);
 	            		$scope.operations.saveEntity();
 	            	}
@@ -171,7 +183,7 @@ angular.module('konga')
 				 */
 				scope.updateEntityField =  function(metadata, value, entity, parentField, parentEntity) {
 				  // Persist the changes on the entity
-				  var result = fieldMapper.unmapField(metadata, entityType, entity, value, parentField, parentEntity);
+				  var result = fieldMapper.unmapField(metadata, scope.metadata.name, entity, value, parentField, parentEntity);
 				  
 				  if (result) {
 				    // Get the escaped value

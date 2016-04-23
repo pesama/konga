@@ -82,18 +82,6 @@ angular.module('konga')
 
 		$scope.alreadyValidated = false;
 
-		function updateChanges() {
-			// See if there are changes
-			var hasChanges = false;
-			if ($scope.changes.length > 0) {
-			  // Emit the changes notification
-			  hasChanges = true;
-			}
-
-			$scope.$emit('changes', { pageId: pageData.pageId, hasChanges: hasChanges });
-			$scope.$emit('changesCtrOperat', { type: entityType, hasChanges : hasChanges });
-		}
-
 		function verifyMatchType(matchType, fieldValue, triggerValue) {
 			var matches = false;
 			switch(matchType) {
@@ -418,21 +406,16 @@ angular.module('konga')
 				}
 			},	
 				
-			
-			updateChanges: function() {
-				updateChanges();
-			},
-			
 			/*
 			 * TODO Document
 			 */
 			saveEntity: function(handlerOK, handlerKO) {
 				var actionParams =  {
-		  					id: entityId, 
-		  					entityType: entityType, 
-		  					self: $scope, 
-		  					item: $scope.entity,
-		  					params: $scope.params
+  					id: entityId, 
+  					entityType: entityType, 
+  					self: $scope, 
+  					item: $scope.entity,
+  					params: $scope.params
 				};
 
 				// Verify commit triggers
