@@ -1,7 +1,7 @@
 <div class="wall">
 	<div class="panel-body">
 		<form ng-class="formStyle" role="form" name="entityUpdate" novalidate>
-			<update-form entity="entity" changes="changes" metadata="entityMetadata" params="params" creating="creating"></update-form>
+			<update-form entity="entity" changes="changes" metadata="entityMetadata" params="params" creating="creating" storage="pageData"></update-form>
 			<div class="pull-right update-btn-group" ng-if="showActions">
 				<button type="button" class="btn btn-default" ng-repeat="action in entityMetadata.actions" ng-model="action" ng-click="operations.dispatchAction(action)" ng-show="action.scope==='UPDATE'" ng-disabled="action.scope!=='UPDATE'" id="update-action-dispatcher-{{ action.name }}">
 							{{ action.label | translate }}

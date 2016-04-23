@@ -50,10 +50,13 @@ angular.module('konga')
 		      	creating: '=',
 		      	onChange: '=?',
 		      	fields: '=?',
+		      	pageData: '=?storage'
 	      	},
 	    	link: function postLink(scope, element, attrs) {
 	        	// Depending on the form type, the form will be rendered differently
 		      	scope.templateUrl = '/konga/views/cascade-update.html';
+
+		      	var pageData = scope.pageData || {};
 
 		      	if(!scope.fields) {
 		      		scope.fields = util.getEntityFields(scope.metadata);

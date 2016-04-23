@@ -231,7 +231,7 @@ angular.module('konga')
 			$scope.showActions = false;
 		}
 
-		var pageData = $rootScope.pageData;
+		var pageData = $scope.pageData = $rootScope.pageData;
 		
 		var validationData = null;
 
