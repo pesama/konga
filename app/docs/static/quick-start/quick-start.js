@@ -36,7 +36,7 @@
  * The metadata is stored in a JSON object, which is the input for the UI to start working with Konga. To simplify metadata definitions, we've provided you with some {@link api/Metadata.Generators generators} that let you write metadata in an easier way, and get it transformed to JSON.
  *
  * <div class="text-center" style="clear:both">
- *  <img src="/static/konga-bottom-second.png" width="500">
+ *  <img src="/static/konga-bottom-second.png" width="300">
  * </div>
  *
  * 
