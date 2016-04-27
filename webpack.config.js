@@ -24,7 +24,7 @@ module.exports = function makeWebpackConfig( options ) {
     var config = {
         devtool : PRO ? 'eval' : 'source-map',
         entry : {
-            app : './app/index.js'
+            app : './index.js'
         },
         // eslint : {
         //     configFile : './test/.eslintrc'
