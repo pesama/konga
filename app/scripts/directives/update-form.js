@@ -109,10 +109,10 @@ angular.module('konga')
 								// TODO Change appearance
 								if(trigger.moment == util.constants.TRIGGER_MOMENT_IMMEDIATE && trigger.name == 'disable-entity'){
 
-									if($scope.creating == undefined || $scope.creating == null || $scope.creating == false) {
+									if(scope.creating == undefined || scope.creating == null || scope.creating == false) {
 
 										// Is the form valid?
-										if($scope.entityUpdate.$invalid || $scope.invalid) {
+										if(scope.entityUpdate.$invalid || scope.invalid) {
 											var actionDefinition = {
 												name: 'action-form-invalid'
 											};
