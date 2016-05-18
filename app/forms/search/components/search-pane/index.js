@@ -9,7 +9,7 @@ import cascadeView      from './search-pane.cascade.template.html';
 import categorizedView  from './search-pane.categorized_cascade.template.html';
 
 angular.module(moduleName)
-    .directive('searchPane', Component)
+    .directive('searchPane', Component.getInstance)
     .run(['$templateCache', function($templateCache) {
         $templateCache.put('/konga/views/search-pane.html', mainView);
         $templateCache.put('/konga/views/cascade-search-pane.html', cascadeView);

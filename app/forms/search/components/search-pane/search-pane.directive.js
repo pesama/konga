@@ -48,6 +48,7 @@
  The submit method. The `searchPane` will call it once the user launches the search.
 
  */
+import SearchPaneComponentController from './search-pane.controller';
 
 class SearchPaneComponent {
     constructor(util, $filter, $modal, $timeout, scaffold) {
@@ -62,6 +63,8 @@ class SearchPaneComponent {
             reset: '=?onReset'
         };
 
+        this.controller = SearchPaneComponentController;
+
         this.util = util;
         this.$filter = $filter;
         this.$modal = $modal;
@@ -70,6 +73,12 @@ class SearchPaneComponent {
     }
 
     link(scope) {
+        const util = this.util;
+        const $filter = this.$filter;
+        const $modal = this.$modal;
+        const $timeout = this.$timeout;
+        const scaffold = this.scaffold;
+
         scope.operations = {
             updateField: function (property, value, query, parent) {
                 var fieldName = property.name;
@@ -138,7 +147,12 @@ class SearchPaneComponent {
             }
         };
     }
+
+    static getInstance(util, $filter, $modal, $timeout, scaffold) {
+        SearchPaneComponent.instance = new SearchPaneComponent(util, $filter, $modal, $timeout, scaffold);
+        return SearchPaneComponent.instance;
+    }
 }
 
-SearchPaneComponent.$inject = ['util', '$filter', '$modal', '$timeout', 'scaffold'];
+SearchPaneComponent.getInstance.$inject = ['util', '$filter', '$modal', '$timeout', 'scaffold'];
 export default SearchPaneComponent;

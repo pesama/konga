@@ -2,7 +2,7 @@
  * Created by pelayosanchez on 27/04/16.
  */
 
-class SearchPaneController {
+class SearchPaneComponentController {
     constructor($scope) {
         $scope.fields = [];
         $scope.categories = [];
@@ -76,5 +76,5 @@ class SearchPaneController {
     }
 }
 
-SearchPaneController.$inject = ['$scope'];
-export default SearchPaneController;
+SearchPaneComponentController.$inject = ['$scope'];
+export default SearchPaneComponentController;
