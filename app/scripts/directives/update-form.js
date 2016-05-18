@@ -43,7 +43,7 @@ angular.module('konga')
 			replace: true,
 			scope: {
 		      	entity: '=',
-		      	changes: '=',
+		      	changes: '=?',
 		      	metadata: '=',
 		      	params: '=',
 		      	onUpdate: '=?',
@@ -51,9 +51,119 @@ angular.module('konga')
 		      	onChange: '=?',
 		      	fields: '=?',
 		      	pageData: '=?storage',
-		      	changes: '=?'
 	      	},
 	    	link: function postLink(scope, element, attrs) {
+				function verifyMatchType(matchType, fieldValue, triggerValue) {
+					var matches = false;
+					switch(matchType) {
+						case util.constants.TRIGGER_MATCH_TYPE_EXACT:
+							matches = (fieldValue+"") === triggerValue;
+							break;
+						case util.constants.TRIGGER_MATCH_TYPE_RANGE:
+							matches = fieldValue >= triggerValue;
+							break;
+					}
+					//TODO others type match
+
+					return matches;
+				}
+
+				function verifyTrigger(trigger, value, okHandler, koHandler) {
+					var matchType = trigger.matchType;
+					var matches = false;
+
+					// TODO Verify trigger type
+					switch(trigger.match) {
+						case util.constants.TRIGGER_MATCH_VALUE:
+							matches = verifyMatchType(matchType, value, trigger.value);
+							break;
+						case util.constants.TRIGGER_MATCH_LENGTH:
+							var length = 0;
+							if (value != null) length = value.length;
+							matches = verifyMatchType(matchType, length, trigger.value);
+							break;
+					}
+
+					// Does the trigger criteria match?
+					if (matches) {
+						// TODO Verify 'changed' flag
+
+						// Convert parameters
+						var params = [];
+						for(var f = 0; f < trigger.parameters.length; f++) {
+							var strParam = trigger.parameters[f];
+							var arrParam = strParam.split('#');
+							var param = null;
+							switch(arrParam[0]) {
+								case util.constants.TRIGGER_PARAM_LABEL:
+									param = arrParam[1];
+									break;
+							}
+
+							params.push(param);
+						}
+
+						// Verify trigger type
+						switch (trigger.type) {
+							case util.constants.TRIGGER_TYPE_CONFIRM:
+								// TODO Change appearance
+								if(trigger.moment == util.constants.TRIGGER_MOMENT_IMMEDIATE && trigger.name == 'disable-entity'){
+
+									if($scope.creating == undefined || $scope.creating == null || $scope.creating == false) {
+
+										// Is the form valid?
+										if($scope.entityUpdate.$invalid || $scope.invalid) {
+											var actionDefinition = {
+												name: 'action-form-invalid'
+											};
+
+											$rootScope.operations.dispatchAction(actionDefinition);
+											return;
+										}
+
+										$rootScope.operations.confirm(params[0], params[1], okHandler, koHandler);
+									}
+								}
+								else{
+									$rootScope.operations.confirm(params[0], params[1], okHandler, koHandler);
+								}
+								break;
+							case util.constants.TRIGGER_TYPE_ALERT:
+								$rootScope.operations.notify(params[0], params[1]);
+								break;
+							// TODO Other types
+							default:
+								break;
+						}
+					}
+				}
+
+				function verifyTriggers(moment, metadata, value, okHandler, koHandler) {
+					// TODO Verify scope
+
+					switch (moment) {
+						// Verify immediate triggers
+						case util.constants.TRIGGER_MOMENT_IMMEDIATE:
+							var triggers = $filter('filter')(metadata.triggers, { moment: moment });
+
+							for (var i = 0; i < triggers.length; i++) {
+								verifyTrigger(triggers[i], value, okHandler, koHandler);
+							}
+							break;
+
+						case util.constants.TRIGGER_MOMENT_COMMIT:
+							angular.forEach(metadata.fields, function(field) {
+								var triggers = $filter('filter')(field.triggers, { moment: moment });
+								var fieldValue = value[field.name];
+
+								for (var i = 0; i < triggers.length; i++) {
+									verifyTrigger(triggers[i], fieldValue);
+								}
+							});
+							break;
+					}
+				}
+
 	        	// Depending on the form type, the form will be rendered differently
 		      	scope.templateUrl = '/konga/views/cascade-update.html';
 
@@ -112,7 +222,6 @@ angular.module('konga')
 					}
 
 					scope.$emit('changes', { pageId: pageData.pageId, hasChanges: hasChanges });
-					scope.$emit('changesCtrOperat', { type: scope.metadata.name, hasChanges : hasChanges });
 				}
 
 		      	scope.changeEntityField = function(metadata, result) {
