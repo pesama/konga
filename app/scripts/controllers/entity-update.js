@@ -81,12 +81,12 @@ angular.module('konga')
 		function updateChanges() {
 			// See if there are changes
 			var hasChanges = false;
-			if (scope.changes.length > 0) {
+			if ($scope.changes.length > 0) {
 				// Emit the changes notification
 				hasChanges = true;
 			}
 
-			scope.$emit('changes', { pageId: pageData.pageId, hasChanges: hasChanges });
+			$scope.$emit('changes', { pageId: pageData.pageId, hasChanges: hasChanges });
 		}
 
 
