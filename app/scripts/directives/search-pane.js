@@ -136,12 +136,6 @@ angular.module('konga')
           });
     	  },
         link: function postLink(scope) {
-          scope.delayedSubmit = function() {
-            $timeout(function() {
-              scope.operations.submit();
-            }, 100);
-          };
-
           scope.operations = {
             updateField: function(property, value, query, parent) {
               var fieldName = property.name;
@@ -188,7 +182,7 @@ angular.module('konga')
                 }
               }
               else {
-                scope.dispatch({ name: 'clear'});
+                scope.dispatch({ name: 'clear'}, { self: scope });
               }
             },
 
