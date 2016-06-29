@@ -45,5 +45,12 @@
     "angular-mocks": "~1",
     "angular-scenario": "~1"
   },
-  "appPath": "app"
+  "appPath": "app",
+  "resolutions": {
+    "angular": "~1",
+    "fullcalendar": "~2.4.0",
+    "es5-shim": "~3.1.0",
+    "bootstrap": "~3.2.0",
+    "angular-translate": "~2.2.0"
+  }
 }
