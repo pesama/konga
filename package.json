@@ -1,7 +1,7 @@
 {
   "name": "ui.konga",
   "description": "",
-  "version": "1.1.97",
+  "version": "1.2.0",
   "dependencies": {
     "angular": "1.4.x",
     "angular-animate": "1.4.x",
@@ -59,8 +59,8 @@
     "grunt-usemin": "^2.1.1",
     "grunt-wait-forever": "^0.1.0",
     "grunt-wiredep": "^1.7.0",
-    "imagemin-jpegtran": "^0.1.0",
-    "imagemin-pngquant": "^0.1.3",
+    "imagemin-jpegtran": "*",
+    "imagemin-pngquant": "*",
     "inherits": "^2.0.1",
     "jshint-html-reporter": "^0.2.2",
     "jshint-stylish": "^0.2.0",
