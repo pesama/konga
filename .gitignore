@@ -12,3 +12,5 @@ dist/
 .settings/
 *.sublime-*
 .idea
+
+npm-debug.log
