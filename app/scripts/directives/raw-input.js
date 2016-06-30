@@ -513,7 +513,6 @@ angular.module('konga')
 			scope.reset = function() {
 				// Reset boolean values
 				if(scope.property.fieldType.search === util.constants.FIELD_BOOLEAN) {
-					scope.value.text = value;
 					if(scope.value.text === '' || scope.value.text === null) {
 						scope.value.active = true;
 						scope.value.inactive = true;
