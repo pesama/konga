@@ -512,10 +512,16 @@ angular.module('konga')
 
 			scope.reset = function() {
 				// Reset boolean values
-				// TODO Change this by check-boxes
 				if(scope.property.fieldType.search === util.constants.FIELD_BOOLEAN) {
-					scope.value.active = scope.property.defaults === 'true';
-					scope.value.inactive = scope.property.defaults !== 'true';
+					scope.value.text = value;
+					if(scope.value.text === '' || scope.value.text === null) {
+						scope.value.active = true;
+						scope.value.inactive = true;
+					}
+					else {
+						scope.value.active = !!scope.value.text;
+						scope.value.inactive = !scope.value.text;
+					}
 				}
 
 				else if(scope.property.fieldType.search === util.constants.FIELD_DATE) {
