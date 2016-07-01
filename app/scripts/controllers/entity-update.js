@@ -411,6 +411,10 @@ angular.module('konga')
 		  			$rootScope.operations.dispatchAction(forbidden);
 	  			}	  
 			},
+
+			updateChanges: function() {
+				updateChanges();
+			}
 		};
 
 		$scope.$on('entity-deletable', function(conf, data) {
