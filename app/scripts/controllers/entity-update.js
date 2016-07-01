@@ -329,22 +329,32 @@ angular.module('konga')
 				function handlerDefaultOK(data) {
 					actionParams.data = data;
 					$rootScope.operations.dispatchAction({name: 'save-ok'}, actionParams);
+					$rootScope.operations.freeLoading('save-entity');
 				}
 				function handlerDefaultKO(error) {
 					actionParams.error = error;
 					$rootScope.operations.dispatchAction({name: 'save-ko'}, actionParams);
+					$rootScope.operations.freeLoading('save-entity');
 				}
-				if (!handlerOK) handlerOK = handlerDefaultOK;
-				if (!handlerKO) handlerKO = handlerDefaultKO;
+
+				// Only append the loader if the handlers haven't been overriden.
+				if(!handlerOK && !handlerKO) {
+					$rootScope.operations.freeLoading('save-entity');
+				}
+
+				if (!handlerOK) {
+					handlerOK = handlerDefaultOK;
+				}
+				if (!handlerKO) {
+					handlerKO = handlerDefaultKO;
+				}
 
 				$scope.params.path = metadata.apiPath;
 				
 				 // Verify if the entity is new
 				if(entityId === util.constants.NEW_ENTITY_ID) {
-				    // Create eds
 				    entity.$create($scope.params, handlerOK, handlerKO);
-				  } else { 
-				    // Save eds
+				  } else {
 					entity.$save($scope.params, handlerOK, handlerKO);
 				  }
 
