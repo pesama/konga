@@ -358,9 +358,9 @@ angular.module('konga')
 				
 				 // Verify if the entity is new
 				if(entityId === util.constants.NEW_ENTITY_ID) {
-				    entity.$create($scope.params, handlerOK, handlerKO);
+				    entity.$create($scope.params, realHandlerOK, realHandlerKO);
 				  } else {
-					entity.$save($scope.params, handlerOK, handlerKO);
+					entity.$save($scope.params, realHandlerOK, realHandlerKO);
 				  }
 
 			},
