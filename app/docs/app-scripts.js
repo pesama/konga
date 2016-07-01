@@ -1361,18 +1361,13 @@ angular.module('konga')
 				function handlerDefaultOK(data) {
 					actionParams.data = data;
 					$rootScope.operations.dispatchAction({name: 'save-ok'}, actionParams);
-					$rootScope.operations.freeLoading('save-entity');
 				}
 				function handlerDefaultKO(error) {
 					actionParams.error = error;
 					$rootScope.operations.dispatchAction({name: 'save-ko'}, actionParams);
-					$rootScope.operations.freeLoading('save-entity');
 				}
 
-				// Only append the loader if the handlers haven't been overriden.
-				if(!handlerOK && !handlerKO) {
-					$rootScope.operations.freeLoading('save-entity');
-				}
+				$rootScope.operations.freeLoading('save-entity');
 
 				if (!handlerOK) {
 					handlerOK = handlerDefaultOK;
@@ -1382,6 +1377,16 @@ angular.module('konga')
 				}
 
 				$scope.params.path = metadata.apiPath;
+
+				var realHandlerOK = function(data) {
+					$rootScope.operations.freeLoading('save-entity');
+					handlerOK(data);
+				};
+
+				var realHandlerKO = function(error) {
+					$rootScope.operations.freeLoading('save-entity');
+					handlerKO(error);
+				};
 				
 				 // Verify if the entity is new
 				if(entityId === util.constants.NEW_ENTITY_ID) {
@@ -1473,7 +1478,7 @@ angular.module('konga')
 			  // Are we updating?
 			  if (entityType !== 'new') {
 			    // we charge from REST because we have it cached
-			    $scope.entity = pageData.entity = localEndpoint.get({id: entityType});
+			    $scope.entity = pageData.entity = localEndpoint.get({ id: entityType, path: metadata.apiPath });
 			  }
 			}
 		});
@@ -1548,14 +1553,6 @@ angular.module('konga')
 			    }
 			}
 			controlValidation();
-		});
-		$scope.$on('closeCtrOperat', function() {
-			$rootScope.operations.closeTabById(pageData.pageId);
-		});
-		$scope.$on('createCtrOperat', function() {
-			var refreshSearchKey = util.constants.REFRESH_SEARCH_KEY + entityType;
-			common.store(refreshSearchKey,true);
-			$scope.operations.saveEntity();
 		});
   }]);
 
