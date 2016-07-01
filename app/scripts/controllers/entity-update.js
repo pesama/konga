@@ -335,7 +335,7 @@ angular.module('konga')
 					$rootScope.operations.dispatchAction({name: 'save-ko'}, actionParams);
 				}
 
-				$rootScope.operations.freeLoading('save-entity');
+				$rootScope.operations.requestLoading('save-entity');
 
 				if (!handlerOK) {
 					handlerOK = handlerDefaultOK;
@@ -446,7 +446,7 @@ angular.module('konga')
 			  // Are we updating?
 			  if (entityType !== 'new') {
 			    // we charge from REST because we have it cached
-			    $scope.entity = pageData.entity = localEndpoint.get({ id: entityType, path: metadata.apiPath });
+			    $scope.entity = pageData.entity = localEndpoint.get({ id: entityId, path: metadata.apiPath });
 			  }
 			}
 		});
