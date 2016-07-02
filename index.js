@@ -2,8 +2,8 @@
  * Created by pelayosanchez on 17/02/16.
  */
 
-require('./lib/konga.vendor.js');
+require('./konga.vendor.js');
 module.exports = "konga.vendor";
 
-require('./lib/konga.js');
+require('./konga.js');
 module.exports = "konga";

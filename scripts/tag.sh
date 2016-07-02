@@ -68,6 +68,7 @@ git clone "https://$GH_TOKEN@github.com/pritok/konga.git" builds
 cd builds && git checkout builds
 cp ../package.json ./
 cp ../bower.json ./
+cp ../index.js ./
 git add .
 git commit -am "Including dependency descriptors for build ${rev}"
 git push origin builds
