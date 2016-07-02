@@ -46,26 +46,28 @@ export version_change
 
 if [[ ${version_change} == 1 ]]
 then
-
-  mkdir -p builds
-  cd builds
   git remote add upstream "https://$GH_TOKEN@github.com/pritok/konga.git"
   git fetch upstream
-  git checkout builds
-  git pull upstream builds
-
-  cp ../package.json ./
-  cp ../bower.json ./
 
   package="package.json"
   bower="bower.json"
-  sed -i "s/\"version\": \"{version}\"/\"version\": \"$new_version\"/g" "$package"
-  sed -i "s/\"version\": \"{version}\"/\"version\": \"${new_version}\"/g" "$bower"
+  sed -i "s/\"version\": \"${last_tag}\"/\"version\": \"$new_version\"/g" "$package"
+  sed -i "s/\"version\": \"${last_tag}\"/\"version\": \"${new_version}\"/g" "$bower"
   git config user.name "SNAP BOT"
   git config user.email "snapbot@smarla.com"
 
-  git commit -am "[${change_type}] updated to version ${new_version}"
+  git commit -am "[${change_type}] updated to version ${new_version} [ci skip]"
 
   git tag ${new_version}
-  git push --tags upstream HEAD:builds
+  git push --tags upstream HEAD:master
 fi
+
+mkdir -p builds
+cd builds
+git checkout builds
+git pull upstream builds
+cp ../package.json ./
+cp ../bower.json ./
+git add .
+git commit -am "Including dependency descriptors for build ${rev}"
+git push upstream HEAD:builds
