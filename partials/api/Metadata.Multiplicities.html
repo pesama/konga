@@ -1,0 +1,24 @@
+<h1><code ng:non-bindable="">Multiplicities</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Metadata</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="metadata-multiplicities-page"><p>Multiplicities define how many elements could be inside a field. Of course your API will know how many elements each field can have, and will act accordingly... But Konga doesn&#39;t. By defining the multiplicity to a field Konga will be able to act differently depending on it, on some of the services and tools it provides you for handling data:</p>
+<ul>
+<li><strong><a href="#/api/konga.scaffold"><code>Scaffolding</code></a>:</strong> Scaffolding reads multiplicities to know whether to create a plain field or an Array instead.</li>
+<li><strong><a href="#/api/konga.fieldMapper"><code>Field mapping</code></a>:</strong> Field mappers act depending on the multiplicity, to decide how to map input&#39;s value into fields&#39;.</li>
+</ul>
+</div></div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_many">MANY</h3>
+<div class="many"><div class="many-page"><p>0..* elements within your field. </p>
+</div></div>
+</li>
+<li><h3 id="properties_one">ONE</h3>
+<div class="one"><div class="one-page"><p>0..1 elements per field. </p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

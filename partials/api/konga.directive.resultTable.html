@@ -1,0 +1,31 @@
+<h1><code ng:non-bindable="">resultTable</code>
+<div><span class="hint">directive in module <code ng:non-bindable="">konga</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="konga-directive-page konga-directive-resulttable-page"><p>The <code>resulTable</code> is in change of result rendering, into an interactive data table. It generates a column layout using the configuration set up in the <a href="#/api/Metadata.Field"><code>fields&#39; metadata</code></a>. </p>
+<p><img src="/static/result-table-init.png" width="50%" class="center"></p>
+<p>Fields and categories&#39; metadata are fetched, to determine the column layout to generate. If you configured any field to be rendered as <a href="#/api/Metadata.FieldTypes#properties_complex"><code>complex</code></a>, another process is needed, who splits up your root field into all the inner fields you need for your layout. </p>
+<h3 id="description_form-type">Form Type</h3>
+<p>You can customize the appeareance of your table, by setting up the property <code>formType</code> of the <a href="#/api/Metadata.Field">field&#39;s metadata</a>, for <a href="#/api/Metadata.FormScopes#properties_results"><code>results</code></a> form scope. There are built-in views to render category headers on top of the fields.</p>
+<h3 id="description_sorting">Sorting</h3>
+<p>If <a href="#/api/Metadata.Field">field&#39;s metadata</a> configures the field as <code>sortable</code>, a dropdown/caret will show on table header to allow user to launch sorting. The <code>resultTable</code> calls the <code>submitSorting</code> method of the <a href="#/api/konga.controller:EntitySearchController"><code>EntitySearchController</code></a> with the sorting field and mode, and the controller handles it from there. </p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as element:<pre class="prettyprint linenums">&lt;result-table
+       metadata="{Object}"
+       entities="{Array}"
+       update-entity="{function()}"
+       submit-sorting="{function()}"&gt;
+&lt;/result-table&gt;</pre>
+<h3 id="usage_directive-info">Directive info</h3>
+<div class="directive-info"><ul><li>This directive creates new scope.</li>
+</ul>
+</div>
+<h4 id="usage_directive-info_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>metadata</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="konga-directive-page konga-directive-resulttable-page"><p>Defines the metadata of the entity whose results are being rendered.</p>
+</div></td></tr><tr><td>entities</td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="konga-directive-page konga-directive-resulttable-page"><p>The results themselves</p>
+</div></td></tr><tr><td>updateEntity</td><td><a href="" class="label type-hint type-hint-function">function()</a></td><td><div class="konga-directive-page konga-directive-resulttable-page"><p>Function to call when a row is clicked, if no <a href="#/api/Customisation.Action-driven#properties_result-click">custom action</a> has been defined for that purpose and the entity&#39;s metadata is defined as <code>editable</code>.</p>
+</div></td></tr><tr><td>submitSorting</td><td><a href="" class="label type-hint type-hint-function">function()</a></td><td><div class="konga-directive-page konga-directive-resulttable-page"><p>Function to call when sorting field or mode changes</p>
+</div></td></tr></tbody></table></div>
+</div>

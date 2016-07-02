@@ -1,0 +1,18 @@
+<h1><code ng:non-bindable="">Validation</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Metadata</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="metadata-validation-page"><p>Defines the data validation options for a field. When a field is rendered into a validateable form (i.e. <code>update</code>), and each time users input data into the field, the validation processes verify the data respects the integrity constraints set up here. There are several standard validation options (such as <code>required</code>, <code>min</code> and <code>max</code> lenghts...), and an option to append any custom validation you need for any particular field (pattern validation, function validation, dates...).</p>
+<h3 id="description_todo-usages-and-examples">TODO Usages and examples</h3>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">Validation(required, minLength, maxLength, validators);</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>required</td><td><a href="" class="label type-hint type-hint-boolean">Boolean</a></td><td><div class="metadata-validation-page"><p>Defines whether the field is required for the entity to be valid. This validates when the input is not empty.</p>
+</div></td></tr><tr><td>minLength</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="metadata-validation-page"><p>Defines the minimum length for the input to be valid. On String inputs, this value verifies the string length, while on numbers it verifies the number itself. On arrays, it validates the lenght of the array.</p>
+</div></td></tr><tr><td>maxLength</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="metadata-validation-page"><p>Defines the maximum length for the input to be valid. On String inputs, this value verifies the string length, while on numbers it verifies the number itself. On arrays, it validates the lenght of the array.</p>
+</div></td></tr><tr><td>validators</td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="metadata-validation-page"><p><span class="label type-hint type-hint-object"><a href="#/api/Metadata.Validator">Validator</a></span>
+Array of custom validators to append to the field. In order for a field to be valid, it must comply with all the standard parameters menctioned above, as well as with all custom validators defined here.</p>
+</div></td></tr></tbody></table></div>
+</div>

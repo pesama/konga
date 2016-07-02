@@ -1,0 +1,22 @@
+<h1><code ng:non-bindable="">ShowConfiguration</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Metadata</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="metadata-showconfiguration-page"><p>Defines visual properties for an element. Every <a href="#/api/Metadata.Field">field</a> is configured with several show configurations, for each <a href="#/api/Metadata.FormScopes">form scope</a> and operations.</p>
+<h3 id="description_permissions">Permissions</h3>
+<p>One thing a Show Configuration sets up is the permissions for accessing the featured being configured. A permission is a unique String, and for using that particular behavior, you will need to have that String within your <a href="#/api/konga.userData"><code>userData</code></a>.roles array. </p>
+<p>If the property is set to null, no one will be able to access the feature. If set to an empty chain (i.e. &quot;&quot;), the feature will be public.</p>
+<p>To get full understanding about how permissions work with Konga, take a look at the {Metadata.Permissions permissions} documentation.</p>
+<h3 id="description_inner-fields">Inner fields</h3>
+<p>If you are working with a <code>COMPLEX</code> fieldType, you might want to access not only to the root field, but to its inner fields instead. If that&#39;s your case, just fill up the <code>fields</code> variable with all the field names to render.</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">new ShowConfiguration(value, fields, configuration);</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>value</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="metadata-showconfiguration-page"><p>Permission for accesing the field. More on <a href="#/api/Metadata.Permissions">permissions</a>.</p>
+</div></td></tr><tr><td>fields</td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="metadata-showconfiguration-page"><p>Inner field names to render instead of the root entity itself.</p>
+</div></td></tr><tr><td>configuration</td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="metadata-showconfiguration-page"><p><span class="label type-hint type-hint-object"><a href="#/api/Metadata.ConfigurationParam">ConfigurationParam</a></span>
+Aditional configuration parameters</p>
+</div></td></tr></tbody></table></div>
+</div>

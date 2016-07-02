@@ -1,0 +1,57 @@
+<h1><code ng:non-bindable="">KongaController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">konga</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="konga-controller-page konga-controller-kongacontroller-page"><p>This must be the root controller of the application, and it&#39;s suggested to be placed at the <code>&lt;body&gt;</code> element. It contains all common <a href="#/api/Standards.Operations"><code>operations</code></a>. </p>
+<h3 id="description_tab-management">Tab management</h3>
+<p>The application uses tabs to locate their content, and separate it from other sections with different content. All functionalities of this tab management are located within this controller. </p>
+<h4 id="description_tab-management_adding-a-tab">Adding a tab</h4>
+<p>You can add a new tab by including a new <i>tab definition</i> object inside the tab stack, which lays under the <code>$scope</code>. This stack is propagated to the <code>$rootScope</code> to allow other controllers to access such information.
+A <i>tab definition</i> must be a plain JS object, with the following structure:</p>
+<pre><code>{
+// Id of the tab
+id: tabId, 
+
+// Title for the tab
+title: tabTitle, 
+
+// Link of the tab (i.e. the route)
+href:&#39;/entity/&#39; + entityMetadata.name + &#39;/search&#39;, 
+
+// Whether the tab could be closed
+closable: true,
+
+// Entity metadata
+entityMetadata : entityMetadata
+}
+</code></pre><p>The example above is the exact tab object that&#39;s used to launch an <b>ENTITY search</b> form, with a given <i>metadata</i>. Within the <code>entityMetadata</code> parameter is located the definition of the entity, which may be required elsewhere.</p>
+<h4 id="description_tab-management_remove-tabs">Remove tabs</h4>
+<p>Tabs are configured so they could be closed directly by the user via a small &2718; located on the tab&#39;s header. This is only possible if the tab has its <code>closable</code> flag set to <code>true</code>.
+Internally, tab closing is just a matter of removing its definition from the stack. <code>Angular</code> and <code>ui.bootstrap</code> will handle its removal from the view.</p>
+<h4 id="description_tab-management_predefined-methods">Predefined methods</h4>
+<p>There are several methods within this controller that provide tab management for the existing tabs that the application use. This eases the development as the methods generate the tab object automatically, and the tab is brought to front when created. All such methods are part of an object called <code>operations</code>, that belongs to the local <code>$scope</code> and it&#39;s furthermore propagated through the <code>$rootScope</code> to be accessible by the other controllers. </p>
+<h5 id="description_tab-management_predefined-methods_gohome">goHome</h5>
+<p>By calling this function, a <code>/home</code> tab will be created, and the location will change to the application&#39;s home page.</p>
+<h5 id="description_tab-management_predefined-methods_openentitysearch">openEntitySearch</h5>
+<p>It creates a new tab for <i>entity</i> searching. It <b>must</b> receive an entity definition, like the ones defined within the <a href="#/api/konga.Metadata">metadata</a> service calls.</p>
+<h5 id="description_tab-management_predefined-methods_openentityupdate">openEntityUpdate</h5>
+<p>When called, it launches a new tab whose purpose is to update an <i>entity</i> It must receive the <a href="#/api/konga.Metadata">metadata</a> information from the entity, as well as the entity itself.</p>
+<h5 id="description_tab-management_predefined-methods_openentitycreate">openEntityCreate</h5>
+<p>This method does the exactly same operation as the <code>openEntityUpdate</code>, but with the purpose of creating a new <i>entity</i>. It only requires to receive the <a href="#/api/konga.Metadata">metadata</a> information, and a new <a href="#/api/konga.Scaffold">scaffold</a> object for the received entity type will be created. </p>
+<h3 id="description_notifications">Notifications</h3>
+<p>This controller handles the notifications, that are shown to the user in the form of a <i>bootstrap</i> <code>alert</code>. Every controller within the application can use this system, by calling the operation <code>addAlert</code> available on the <code>$rootScope</code>. It&#39;s useful to notify the user when a server-related operation finished, both for success and error response types. Notification system is engaged on any place where the <code>$rootScope</code> dependency is included. </p>
+<h3 id="description_loading-processes">Loading processes</h3>
+<p>When the data required to use some specific view is not yet received, you can append a loader to the application, that would block every possible interaction with the interface until the loading process ends. For such purpose, you have the possibility of <b>requesting a load</b>, and of <b>freeing it</b> once your data is ready. You can use the operations <code>requestLoading(code)</code> and <code>freeLoading(code)</code>, where <code>code</code> is a unique string that identifies the source who requested the loader. The value of such variable is up to you, but it should be unique in order for the loader to work properly. Both operations are available from the <code>$rootScope.Operations</code> object. </p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">KongaController($scope, $location, $filter, $rootScope, common, scaffold);</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>$scope</td><td><a href="" class="label type-hint type-hint-object">$scope</a></td><td><div class="konga-controller-page konga-controller-kongacontroller-page"><p>Contains the scope variables for the controller</p>
+</div></td></tr><tr><td>$location</td><td><a href="" class="label type-hint type-hint-object">$location</a></td><td><div class="konga-controller-page konga-controller-kongacontroller-page"><p>Controls the location of the app (for changing paths)</p>
+</div></td></tr><tr><td>$filter</td><td><a href="" class="label type-hint type-hint-object">$filter</a></td><td><div class="konga-controller-page konga-controller-kongacontroller-page"><p>Uses filters to manage data</p>
+</div></td></tr><tr><td>$rootScope</td><td><a href="" class="label type-hint type-hint-object">$rootScope</a></td><td><div class="konga-controller-page konga-controller-kongacontroller-page"><p>Propagates functionality to other levels</p>
+</div></td></tr><tr><td>common</td><td><a href="" class="label type-hint type-hint-common">Common</a></td><td><div class="konga-controller-page konga-controller-kongacontroller-page"><p>Common methods for storing data</p>
+</div></td></tr><tr><td>scaffold</td><td><a href="" class="label type-hint type-hint-scaffold">Scaffold</a></td><td><div class="konga-controller-page konga-controller-kongacontroller-page"><p>Used to create new objects for the entities</p>
+</div></td></tr></tbody></table></div>
+</div>

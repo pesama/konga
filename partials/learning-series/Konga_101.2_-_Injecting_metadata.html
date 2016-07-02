@@ -1,0 +1,99 @@
+<h1><code ng:non-bindable="">2_-_Injecting_metadata</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Konga_101</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="konga-101-2-injecting-metadata-page"><h3 id="description_metadata-injection">Metadata injection</h3>
+<p>On <strong><a href="#/learning-series/Basics.1%20-%20Application%20Basic%20Metadata">the previous step</a></strong> we have generated a basic metadata object, with three entities - though yet without any field. We will now inject that metadata object into our <code>ui</code> application and see how Konga is recognizing our metadata.</p>
+<p>If you want to download the source of this step directly, do this at your project&#39;s root:</p>
+<pre><code>git checkout -f step-2
+</code></pre><h4 id="description_metadata-injection_create-the-constant">Create the constant</h4>
+<p>We won&#39;t cover any injection method on this tutorial. Instead, we will paste the full <code>json</code> content of the <code>metadata.json</code> file generated on the previous step into an angular constant, and we will work from there. </p>
+<p>On your <code>app/scripts/services/</code> folder, create a file called <code>metadata.js</code>:
+<pre class="prettyprint linenums">
+'use strict';
+
+angular.module('uiApp')
+  .constant('metadata', 42);
+
+</pre>
+<p>And reference the new <code>script</code> into the <code>index.html</code> using this tag:
+<pre class="prettyprint linenums">
+&lt;script src="scripts/services/metadata.js"&gt;&lt;/script&gt;
+</pre>
+<p>If you are familiar with <a href="http://yeoman.io">Yeoman</a> and its <a href="https://github.com/yeoman/generator-angular#readme"><code>Angular generator</code></a>, you can do these two steps at once by typing:</p>
+<pre><code>yo angular:constant metadata
+</code></pre><p>At your project&#39;s root.</p>
+<h4 id="description_metadata-injection_injecting-the-metadata">Injecting the metadata</h4>
+<p>Our constant is created, yet it does not contain the metadata information. Let&#39;s copy/paste the <code>metadata.json</code> object into our constant:</p>
+<p><strong><code>/app/scripts/services/metadata.js</code></strong>
+<pre class="prettyprint linenums">
+'use strict';
+
+angular.module('uiApp')
+  .constant('metadata', {"id":null,"name":"Konga Tutorial Basics","appKey":null,"entities":[{"classFor":"io.konga.tutorial.model.Developer","name":"developer","superClass":null,"label":null,"shortLabel":null,"access":"PUBLIC","stereotypes":[],"searchable":null,"createable":null,"editable":null,"deleteable":null,"searchType":"CASCADE","searchStyle":null,"resultsType":"CASCADE","resultsStyle":null,"detailsType":"CASCADE","detailsStyle":null,"updateType":"CASCADE","updateStyle":null,"template":null,"apiName":null,"apiPath":null,"categories":[],"security":{"permissions":null,"roles":null},"fields":[],"fieldSets":[],"actions":[],"overrideDefaults":[],"configuration":[],"favoriteable":false,"resultClick":[]},{"classFor":"io.konga.tutorial.model.Organisation","name":"organisation","superClass":null,"label":null,"shortLabel":null,"access":"PUBLIC","stereotypes":[],"searchable":null,"createable":null,"editable":null,"deleteable":null,"searchType":"CASCADE","searchStyle":null,"resultsType":"CASCADE","resultsStyle":null,"detailsType":"CASCADE","detailsStyle":null,"updateType":"CASCADE","updateStyle":null,"template":null,"apiName":null,"apiPath":null,"categories":[],"security":{"permissions":null,"roles":null},"fields":[],"fieldSets":[],"actions":[],"overrideDefaults":[],"configuration":[],"favoriteable":false,"resultClick":[]},{"classFor":"io.konga.tutorial.model.Application","name":"application","superClass":null,"label":null,"shortLabel":null,"access":"PUBLIC","stereotypes":[],"searchable":null,"createable":null,"editable":null,"deleteable":null,"searchType":"CASCADE","searchStyle":null,"resultsType":"CASCADE","resultsStyle":null,"detailsType":"CASCADE","detailsStyle":null,"updateType":"CASCADE","updateStyle":null,"template":null,"apiName":null,"apiPath":null,"categories":[],"security":{"permissions":null,"roles":null},"fields":[],"fieldSets":[],"actions":[],"overrideDefaults":[],"configuration":[],"favoriteable":false,"resultClick":[]}],"configuration":[]});
+</pre>
+<p>Our metadata will be already on the <code>metadata</code> constant. Now it&#39;s time to inject it:</p>
+<h4 id="description_metadata-injection_injecting-metadata-on-our-app">Injecting metadata on our app</h4>
+<p>Our application - as any Angular app - goes through a <code>run</code> phase before being ready. There we will proceed with metadata injection. Append these lines on your <code>/app/scripts/app.js</code> file. </p>
+<p><strong><code>/app/scripts/app.js</code></strong>
+<pre class="prettyprint linenums">
+'use strict';
+
+angular
+  .module('uiApp', [
+    'ngAnimate',
+    'ngCookies',
+    'ngResource',
+    'ngRoute',
+    'ngSanitize',
+    'ngTouch',
+    'konga'
+  ])
+  .config(function ($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl',
+        controllerAs: 'main'
+      })
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl',
+        controllerAs: 'about'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  })
+  .run(['metadata', 'util', 'common', '$rootScope', function(metadata, util, common, $rootScope) {
+    common.store('metadata', metadata);
+    util.init(metadata);
+    $rootScope.metadata = metadata;
+  }]);
+</pre>
+<p>These <code>run</code> process defined at the end of the file will load the metadata constant, and initialize konga features by injecting the metadata. </p>
+<h4 id="description_metadata-injection_show-entities-on-our-view">Show entities on our view</h4>
+<p>Let&#39;s modify our <code>/app/views/main.html</code> view to render a list of the existing entities within our metadata.</p>
+<p><strong><code>/app/views/main.html</code></strong>
+<pre class="prettyprint linenums">
+&lt;div class="jumbotron"&gt;
+  &lt;h1&gt;Konga Tutorial&lt;/h1&gt;
+  
+  &lt;p&gt;
+  Here you have all the entities declared on your metadata:
+  &lt;/p&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-md-4" ng-repeat="entity in metadata.entities"&gt;
+      &lt;button class="btn btn-success"&gt;{{ entity.name }}&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<p>When you launch your application now, you should see a window like this:</p>
+<p><img src="/static/konga-tutorial-basics-metadatainjection-preview.png" width="50%" class="center"></p>
+<h4 id="description_metadata-injection_refining-your-metadata">Refining your metadata</h4>
+<p>Now that we&#39;ve seen how we could create metadata, inject it into the app, and see how it&#39;s read, let&#39;s create something <code>useful</code> with these metadata. <strong><a href="#/learning-series/Basics.Refining_metadata">Go to the next step</a></strong>.</p>
+</div></div>
+</div>

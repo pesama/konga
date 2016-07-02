@@ -1,0 +1,22 @@
+<h1><code ng:non-bindable="">selectedFields</code>
+<div><span class="hint">filter in module <code ng:non-bindable="">konga</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="konga-filter-page konga-filter-selectedfields-page"><h3 id="description_selectedfields">selectedFields</h3>
+<p>It receives parameters such as real, name, apiNames(if any), source, and it returns an array of  fields in nested fields for rendering purpose.</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage"><h3 id="usage_in-html-template-binding">In HTML Template Binding</h3>
+<div class="in-html-template-binding"><code ng:non-bindable=""><span>{{</span> selectedFields_expression | selectedFields:names[:apiNames][:source] <span>}}</span></code>
+</div>
+<h3 id="usage_in-javascript">In JavaScript</h3>
+<div class="in-javascript"><code ng:non-bindable="">$filter('selectedFields')(real, names[, apiNames][, source])</code>
+</div>
+<h4 id="usage_in-javascript_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>real</td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="konga-filter-page konga-filter-selectedfields-page"><p>Defines the array fields of entity to manage</p>
+</div></td></tr><tr><td>names</td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="konga-filter-page konga-filter-selectedfields-page"><p>Defines the array of field name</p>
+</div></td></tr><tr><td>apiNames <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="konga-filter-page konga-filter-selectedfields-page"><p>Defines the array of apiName of entities</p>
+</div></td></tr><tr><td>source <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="konga-filter-page konga-filter-selectedfields-page"><p>Defines the field to manage</p>
+</div></td></tr></tbody></table></div>
+</div>

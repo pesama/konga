@@ -1,0 +1,46 @@
+<h1><code ng:non-bindable="">FormTypes</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Metadata</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="metadata-formtypes-page"><p>Form types define how to render the form fields layout. </p>
+<h3 id="description_todo-usages-and-examples">TODO Usages and examples</h3>
+</div></div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_cascade">CASCADE</h3>
+<div class="cascade"><div class="cascade-page"><p>Render the fields in a cascade - i.e. one after another. </p>
+</div></div>
+</li>
+<li><h3 id="properties_categorized_cascade">CATEGORIZED_CASCADE</h3>
+<div class="categorized_cascade"><div class="categorized-cascade-page"><p>Render the form as a field-cascade, but grouping the fields by &#39;category&#39;, and labeling each category. Depending on the <a href="#/api/Metadata.FormScopes">form scope</a>, some configuration parameters are needed:</p>
+<ul>
+<li><strong><a href="#/api/Metadata.ConfigurationParam#properties_search_use_category"><code>SEARCH_USE_CATEGORY</code></a>:</strong> <span class="label label-warning">SEARCH</span> Define the categories to use on search (one or more).</li>
+<li><strong><a href="#/api/Metadata.ConfigurationParam#properties_results_use_category"><code>RESULTS_USE_CATEGORY</code></a>:</strong> <span class="label label-success">RESULTS</span> Define the categories to use on results (one or more).</li>
+<li><strong><a href="#/api/Metadata.ConfigurationParam#properties_hide_category_header"><code>HIDE_CATEGORY_HEADER</code></a>:</strong> <span class="label label-success">RESULTS</span> If this parameter is associated with a rendered category, its header will be hidden. </li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_custom">CUSTOM</h3>
+<div class="custom"><div class="custom-page"><p>When standard form types don&#39;t fit your needs, you can declare the form to have a <code>CUSTOM</code> view, attaching any view you want to the form&#39;s behavior. For using this you need to provide a <a href="#/api/Metadata.ConfigurationParam">ConfigurationParam</a> depending on the <a href="#/api/Metadata.FormScopes">form scope</a>:</p>
+<ul>
+<li><strong><a href="#/api/Metadata.ConfigurationParam#properties_search_custom_view"><code>SEARCH_CUSTOM_VIEW</code></a>:</strong> <span class="label label-warning">SEARCH</span> Custom view for search (value must be a valid <a href="#/api/konga#viewmapper">mapped</a> view).</li>
+<li><strong><a href="#/api/Metadata.ConfigurationParam#properties_update_custom_view"><code>UPDATE_CUSTOM_VIEW</code></a>:</strong> <span class="label label-primary">UPDATE</span> Custom view for updates (value must be a valid <a href="#/api/konga#viewmapper">mapped</a> view).</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_custom_tabbed">CUSTOM_TABBED</h3>
+<div class="custom_tabbed"><div class="custom-tabbed-page"><p>The same as the <a href="#/api/Metadata.FormTypes#properties_tabbed"><code>TABBED</code></a> type, but each tab is rendered using a custom view. You need to define the <code>fieldSet</code> <code>view</code> param to a valid <a href="#/api/konga#viewmapper">mapped</a> view for this to work. </p>
+</div></div>
+</li>
+<li><h3 id="properties_stepped">STEPPED</h3>
+<div class="stepped"><div class="stepped-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_tabbed">TABBED</h3>
+<div class="tabbed"><div class="tabbed-page"><p>Render the form as separated tabs, using the entity&#39;s <code>fieldSets</code>.</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

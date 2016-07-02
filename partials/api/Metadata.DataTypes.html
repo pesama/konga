@@ -1,0 +1,37 @@
+<h1><code ng:non-bindable="">DataTypes</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Metadata</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="metadata-datatypes-page"><p>Data types define the typology of the field and its value. Depending on the data type chosen for a field, there would be different operations applied, <a href="#/api/Metadata.Validation">validation</a> rules, <a href="#/api/konga.scaffold">scaffolding</a> and <a href="#/api/konga.fieldMapper">field mapping</a> processes, etcetera.</p>
+<h3 id="description_todo-usages-and-examples">TODO Usages and examples</h3>
+</div></div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_boolean">BOOLEAN</h3>
+<div class="boolean"><div class="boolean-page"><p>Defines a boolean (yes|no) field. There are a couple of <a href="#/api/Metadata.FieldTypes">field types</a> related to this data type. With <a href="#/api/Metadata.FieldTypes#properties_boolean"><code>BOOLEAN</code></a> field type you will have a <code>checkbox</code> rendered input on search forms, that will allow you to search (true|false|both) values. There&#39;s also a cool <a href="#/api/Metadata.FieldTypes#properties_switch"><code>switch</code></a> input to simulate an on/off button instead of boring <code>radio buttons</code>.</p>
+</div></div>
+</li>
+<li><h3 id="properties_complex">COMPLEX</h3>
+<div class="complex"><div class="complex-page"><p>Complex data types reference an inner entity. This is useful to render and interact with relationships, as Konga will have full comprehension of the values for the field. For using this data type you will need to define also the <code>complexType</code> this element refers to. And you have also handy tools for filtering, querying, selecting data sources... See the <a href="#/api/Metadata.DataType">data type</a> documentation for all the possible features.</p>
+</div></div>
+</li>
+<li><h3 id="properties_date">DATE</h3>
+<div class="date"><div class="date-page"><p>Date types. This field allows values from <code>timestamps</code> to formal-date-strings (i.e. &#39;yyyy-mm-dd&#39;). This data type could be rendered as a <a href="#/api/Metadata.FieldTypes#properties_date"><code>date</code></a> or a <a href="#/api/Metadata.FieldTypes#properties_datetime"><code>date&amp;time</code></a> field, depending on whether you need time accuracy or just day-based dates.</p>
+</div></div>
+</li>
+<li><h3 id="properties_file">FILE</h3>
+<div class="file"><div class="file-page"><p>This data type represents a physical file that travels through Konga forms. Fields annotated with this type are usually Strings that links to the file location, although you can use <code>base64</code>-encoded files, or any other flavor you&#39;d like. </p>
+</div></div>
+</li>
+<li><h3 id="properties_number">NUMBER</h3>
+<div class="number"><div class="number-page"><p>Defines a numeric field. Numbers allow Integers, Doubles, Longs... Any numeric input. If you use this data type along with <a href="#/api/Metadata.FieldTypes#properties_number"><code>NUMBER</code></a> field type, it will easily allow you to manage numbers, and their integrity, configure <a href="#/api/Metadata.ValidatorTypes#properties_range"><code>range</code></a> <a href="#/api/Metadata.SearchConf">search configuration</a>, etcetera.</p>
+</div></div>
+</li>
+<li><h3 id="properties_string">STRING</h3>
+<div class="string"><div class="string-page"><p>Defines a plain String input. Using this data type along with some <a href="#/api/Metadata.Validation">validation rules</a>, and using <a href="#/api/Metadata.ValidatorType#properties_regexp"><code>REGEXP</code></a> <a href="#/api/Metadata.Validator">validators</a>,  you can easily configure the String field as a valid <code>email</code> address - or any other formal-syntax String.</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

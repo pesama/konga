@@ -1,0 +1,78 @@
+<h1><code ng:non-bindable="">Tools</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Standards</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="standards-tools-page"><p>Konga comes with a set of built-in tools to access quick metadata-parsing features, along with other handy things needed to manage metadata and other common features. This tools are allocated in a service called <a href="#/api/konga.util"><code>util</code></a>. However, you can find here all the tools included, how to use them...</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_getentitycategories">getEntityCategories(entity)</h3>
+<div class="getentitycategories"><div class="getentitycategories-page"><p>Returns all Categories for an entity </p>
+</div><h5 id="methods_getentitycategories_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>entity</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getentitycategories-page"><p>Entity metadata information</p>
+</div></td></tr></tbody></table><h5 id="methods_getentitycategories_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="getentitycategories-page"><p>All Categories for that entity type</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getentitycode">getEntityCode(metadata, entity, fieldName)</h3>
+<div class="getentitycode"><div class="getentitycode-page"><p>Returns the code of an entity, or &#39;new&#39; if the entity is not provided or the code does not exist</p>
+</div><h5 id="methods_getentitycode_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>metadata</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getentitycode-page"><p>Entity metadata information</p>
+</div></td></tr><tr><td>entity</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getentitycode-page"><p>The entity to retrieve the code from</p>
+</div></td></tr><tr><td>fieldName</td><td><a href="" class="label type-hint type-hint-boolean">Boolean</a></td><td><div class="getentitycode-page"><p>If true, returns only the name of the field</p>
+</div></td></tr></tbody></table><h5 id="methods_getentitycode_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getentitycode-page"><p>The code of the entity</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getentityfieldsets">getEntityFieldSets(entity)</h3>
+<div class="getentityfieldsets"><div class="getentityfieldsets-page"><p>Returns all Field sets for an entity </p>
+</div><h5 id="methods_getentityfieldsets_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>entity</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getentityfieldsets-page"><p>Entity metadata information</p>
+</div></td></tr></tbody></table><h5 id="methods_getentityfieldsets_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="getentityfieldsets-page"><p>All Field sets for that entity type</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getentityfields">getEntityFields(entity)</h3>
+<div class="getentityfields"><div class="getentityfields-page"><p>Returns all the fields of the <a href="#/api/Metadata.Entity"><code>entity metadata</code></a> you give as input. This moves bottom-up through all hierarchy of entities, fetching all the fields from upper-level entities too. </p>
+</div><h5 id="methods_getentityfields_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>entity</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getentityfields-page"><p><span class="label type-hint type-hint-object"><a href="#/api/Metadata.Entity">Entity</a></span>
+The name of the entity to get it&#39;s metadata.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getentityid">getEntityId(metadata, entity, fieldName)</h3>
+<div class="getentityid"><div class="getentityid-page"><p>Returns the ID of an entity, or &#39;new&#39; if the entity is not provided or the id does not exist</p>
+</div><h5 id="methods_getentityid_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>metadata</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getentityid-page"><p>Entity metadata information</p>
+</div></td></tr><tr><td>entity</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getentityid-page"><p>The entity to retrieve the id from</p>
+</div></td></tr><tr><td>fieldName</td><td><a href="" class="label type-hint type-hint-boolean">Boolean</a></td><td><div class="getentityid-page"><p>If true, returns only the name of the field</p>
+</div></td></tr></tbody></table><h5 id="methods_getentityid_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="getentityid-page"><p>The id of the entity</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getentitylabel">getEntityLabel(metadata, entity, fieldName)</h3>
+<div class="getentitylabel"><div class="getentitylabel-page"><p>Returns the label of an entity, or &#39;new&#39; if the entity is not provided or the label does not exist</p>
+</div><h5 id="methods_getentitylabel_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>metadata</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getentitylabel-page"><p>Entity metadata information</p>
+</div></td></tr><tr><td>entity</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getentitylabel-page"><p>The entity to retrieve the label from</p>
+</div></td></tr><tr><td>fieldName</td><td><a href="" class="label type-hint type-hint-boolean">Boolean</a></td><td><div class="getentitylabel-page"><p>If true, returns only the name of the field</p>
+</div></td></tr></tbody></table><h5 id="methods_getentitylabel_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getentitylabel-page"><p>The label of the entity</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getmetadata">getMetadata(name)</h3>
+<div class="getmetadata"><div class="getmetadata-page"><p>This method will give you the metadata definition of the entity named with the param <code>name</code> provided.</p>
+<pre class="prettyprint linenums">
+angular.module('myAwesomeApp')
+  .something(['util', function(util) {
+    // Here you got your metadata
+    var metadata = util.getMetadata('demo-entity');
+  }]);
+</pre>
+</div><h5 id="methods_getmetadata_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>name</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getmetadata-page"><p>The name of the entity to get it&#39;s metadata.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_init">init(metadata)</h3>
+<div class="init"><div class="init-page"><p>Initialises the tools. It needs to receive the metadata (see how we used this method on the <a href="#/api/Standards.Apps">Standards.Apps</a>).</p>
+</div><h5 id="methods_init_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>metadata</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="init-page"><p>The metadata object to store within the tools</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_metadataobject">metadataObject</h3>
+<div class="metadataobject"><div class="metadataobject-page"><p>Stores the metadata object. This metadata object is stored in the <a href="#/api/Standards.Tools#methods_init"><code>init</code></a> method call, once you have your metadata to initialise Konga</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

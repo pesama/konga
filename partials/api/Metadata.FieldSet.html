@@ -1,0 +1,16 @@
+<h1><code ng:non-bindable="">FieldSet</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Metadata</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="metadata-fieldset-page"><p>Field sets define groups of fields, who are normally intended to be bound together into a view. Field sets are defined at <a href="#/api/Metadata.Entity">entity-level</a>, and thereafter its <a href="#/api/Metadata.Field">fields</a> could reference the field set they belong to by declaring its name.</p>
+<h3 id="description_todo-usages-and-examples">TODO Usages and examples</h3>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">FieldSet(name, configuration);</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>name</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="metadata-fieldset-page"><p>Defines the name of the field set. This name must be unique within the <a href="#/api/Metadata.Entity">entity</a>-defined field sets. Fields that belong to a field set must declare this name (exactly) and it will be bound to the field set on the forms. </p>
+</div></td></tr><tr><td>configuration</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="metadata-fieldset-page"><p><span class="label type-hint type-hint-object"><a href="#/api/Metadata.ConfigurationParam">ConfigurationParam</a></span>
+Configuration for the field set. There is only one standard param, whose <code>key</code> must be &#39;view&#39;, and the value a valid <a href="#/api/konga.viewMapper">mapped</a> view for a custom form. This parameter is used when the <a href="#/api/Metadata.FormType">form type</a> is set to <code>CUSTOM_TABBED</code>.</p>
+</div></td></tr></tbody></table></div>
+</div>

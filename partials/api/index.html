@@ -1,0 +1,66 @@
+<h1><code ng:non-bindable=""></code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><div class="index-page"><p><img src="/images/konga-logo.png" width="50%"></p>
+<h2 id="kongas-api-reference">Konga&#39;s API Reference</h2>
+<p>Welcome to Konga&#39;s API Reference. Here you got all the documentation, about everything Konga does and gives you. Here you can see a brief introduction about what you can find in each section.</p>
+<h3 id="kongas-api-reference_metadata">Metadata</h3>
+<p>This section defines everything <code>konga-metadata</code> contains, and what each property and parameter means, and does:</p>
+<ul>
+<li><p><strong><i class="fa fa-wrench"></i> Definitions:</strong> Definitions contain individual or grouped properties to configure your metadata. Some of these properties are interpreted by the <code>ui</code> giving a more meaningful context to the forms and the interactions engaged with them. Here you got a set of all <code>konga-metadata</code> definitions:</p>
+<ul>
+<li><a href="#/api/Metadata.Application"><code>Application</code></a>: Defines your app globally, and the <code>root</code> level configuration.</li>
+<li><a href="#/api/Metadata.Entity"><code>Entity</code></a>: Contains the metadata for each entity your app needs to manage.</li>
+<li><a href="#/api/Metadata.Field"><code>Field</code></a>: Includes the definition of each field, with all the required parameters.</li>
+<li><a href="#/api/Metadata.Action"><code>Action</code></a>: Defines each customisation <em>entry-point</em> within your metadata.</li>
+<li><a href="#/api/Metadata.Trigger"><code>Trigger</code></a>: Configure automated actions to be executed every time a field changes.</li>
+<li><a href="#/api/Metadata.ConfigurationParam"><code>ConfigurationParam</code></a>: Define the configuration parameters for your metadata items.</li>
+<li><a href="#/api/Metadata.ShowConfiguration"><code>ShowConfiguration</code></a>: Configure the rendering configuration for a field within a <a href="#/api/Metadata.FormScopes"><code>form scope</code></a>.</li>
+<li><a href="#/api/Metadata.FieldType"><code>FieldType</code></a>: Define the rendering appeareance for a field within a <a href="#/api/Metadata.FormScopes"><code>form scope</code></a>.</li>
+<li><a href="#/api/Metadata.DataType"><code>DataType</code></a>: Configure the typology of a field - i.e. data type, allowed values, filtering, querying...</li>
+<li><a href="#/api/Metadata.FieldSet"><code>FieldSet</code></a>: Setup groups among your fields within entities, mostly for category/group-based <a href="#/api/Metadata.FormTypes"><code>form types</code></a>.</li>
+<li><a href="#/api/Metadata.Validation"><code>Validation</code></a>: Define the required validation options for your fields.</li>
+<li><a href="#/api/Metadata.Validator"><code>Validator</code></a>: Define custom validators to be appended to your <a href="#/api/Metadata.Validation">validation</a> configuration.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong><i class="fa fa-tag"></i> Enumerations:</strong> Enumerations contain the set of allowed parameters for the properties bound to them. Here you have all existing enumerations.</p>
+<ul>
+<li><a href="#/api/Metadata.AccessModes"><code>AccessModes</code></a>: Define the possible visibility options for an entity within your app. </li>
+<li><a href="#/api/Metadata.DataTypes"><code>DataTypes</code></a>: Contains the existing <em>data-types</em> Konga can manage natively.</li>
+<li><a href="#/api/Metadata.FieldTypes"><code>FieldTypes</code></a>: Define the possible rendering appeareances fields can have.</li>
+<li><a href="#/api/Metadata.FormScopes"><code>FormScopes</code></a>: Define the existing <code>scopes</code> Konga has for building the different kinds of forms.</li>
+<li><a href="#/api/Metadata.FormStyles"><code>FormStyles</code></a>: Configuration options for the field layout within a form.</li>
+<li><a href="#/api/Metadata.FormTypes"><code>FormTypes</code></a>: Contains all possible form rendering configurations for your forms.</li>
+<li><a href="#/api/Metadata.Multiplicities"><code>Multiplicities</code></a>: Define the possible multiplicities - quantity of items per input - for a field. </li>
+<li><a href="#/api/Metadata.TriggerMatches"><code>TriggerMatches</code></a>: Define the possible trigger configurations for the value to verify matches.</li>
+<li><a href="#/api/Metadata.TriggerMoments"><code>TriggerMoments</code></a>: Contains all possible <code>moments</code> where a field verify its triggers.</li>
+<li><a href="#/api/Metadata.ValidatorTypes"><code>ValidatorTypes</code></a>: Includes the possible validation modes for the data within your fields.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong><a href="#/api/Metadata.Generators"><i class="fa fa-terminal"></i> Generators</a>:</strong> Documents the available methods for generating your metadata.</li>
+<li><strong><a href="#/api/Metadata.Permissions"><i class="fa fa-key"></i> Permissions</a>:</strong> Learn here how to engage your Konga app with a rich permission system to restrict access at both entity and field levels.</li>
+</ul>
+<h3 id="kongas-api-reference_standards">Standards</h3>
+<p>Documentation on standard features. <a href="#/api/Standards">Standard features</a> are enough for building a full-working app, connected to an API. These are the main standard features:</p>
+<ul>
+<li><strong><i class="fa fa-paint-brush"></i> Modeling:</strong> Define how your metadata is interpreted to build your <a href="#/api/Standards.Apps"><code>Apps</code></a> and <a href="#/api/Standards.Forms"><code>Forms</code></a>. It includes examples on every available <a href="#/api/Metadata.FormScopes"><code>form scope</code></a>, and links to related inner elements.</li>
+<li><strong><i class="fa fa-user"></i> Users:</strong> Define how your user management integrates into Konga, and the features you can leverage using this system. </li>
+<li><strong><i class="fa fa-gamepad"></i> Tools:</strong> Documents the set of tools Konga uses to manage your metadata, and the macros you can use to save time while developing.</li>
+<li><strong><i class="fa fa-wrench"></i> Operations:</strong> Documents all built-in operations for managing your application and its interactions.</li>
+</ul>
+<h2 id="todo-customisation">TODO Customisation</h2>
+<h3 id="todo-customisation_konga">konga</h3>
+<p>This module documents directly Konga&#39;s code. It&#39;s then the real &#39;API reference&#39;. Each part of this module technically explains all procedures under its hood, and it&#39;s tightly relatated to one or more definitions of the other modules - that include both technical and business literature.</p>
+<h4 id="todo-customisation_konga_controllers">Controllers</h4>
+<ul>
+<li><strong><a href="#/api/konga.controller:KongaController"><code>KongaController</code></a>:</strong> This is the main controller of Konga, and gives your application access to all Konga&#39;s features and operations.</li>
+<li><strong><a href="#/api/konga.controller:EntitySearchController"><code>EntitySearchController</code></a>:</strong> Engaged on <a href="#/api/Metadata.FormScopes#properties_search"><code>search</code></a> and <a href="#/api/Metadata.FormScopes#properties_results"><code>results</code></a> form scopes, it controls all required tasks and behaviors to allow full functioning of <a href="#/api/konga.directive:searchPane"><code>search panes</code></a> and <a href="#/api/konga.directive:resultTable"><code>result tables</code></a>.</li>
+<li><strong><a href="#/api/konga.controller:EntityUpdateController"><code>EntityUpdateController</code></a>:</strong> Used on <a href="#/api/Metadata.FormScopes#properties_update"><code>updates</code></a>, it&#39;s responsible for building the update form, controlling all operations engaged within the form and its fields, and all the tasks involved with them.</li>
+</ul>
+<h4 id="todo-customisation_konga_directives">Directives</h4>
+</div></div>

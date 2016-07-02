@@ -1,0 +1,33 @@
+<h1><code ng:non-bindable=""></code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><div class="konga-101-page"><h2 id="konga-basics">Konga basics</h2>
+<p><code>Konga basics</code> tutorial is the first tutorial of Konga learning series. It&#39;s main purpose is get you up and running with Konga. </p>
+<h2 id="the-cloud-console">The <code>mini</code> cloud console</h2>
+<p>In this tutorial we will cover the creation of a <code>mini</code> cloud console. We will craft rich forms and interactions for <code>Organisations</code>, <code>Applications</code> and <code>Developers</code>.</p>
+<p><img src="/static/tutorial-basics-datamodel.png" width="40%" class="center"></p>
+<ul>
+<li><p><strong>Organisations:</strong> An organisation represents a company - or any other sort of group association - that wants to build and deploy apps within our cloud.</p>
+</li>
+<li><p><strong>Applications:</strong> An application is a project that runs in our cloud, always owned by one organisation.</p>
+</li>
+<li><p><strong>Developers:</strong> Developers are the guys responsible for bringing to life the organisation ideas, converting them into apps and deploying them within our cloud.</p>
+</li>
+</ul>
+<h3 id="the-cloud-console_relationships">Relationships</h3>
+<p><code>Organisations</code> have direct access to the <code>Applications</code> deployed and the <code>Developers</code> who deployed them. <code>Developers</code> own the applications they created, and the <code>Applications</code> store a property with all the <code>Developers</code> who worked on it.</p>
+<h2 id="create-the-projects">Create the projects</h2>
+<p>We need to create the project to generate the metadata for this system. We will use <a href="https://github.com/pritok/konga-metadata"><code>konga-metadata</code></a> generator for Java to generate the metadata from our data model. And we need the project with the <code>ui</code>.</p>
+<p>You can download both projects altogether using the <a href="https://github.com/pritok/konga-tutorial-basics.git"><code>tutorial repository</code></a>. </p>
+<p><strong>Clone with git:</strong></p>
+<pre><code>git clone https://github.com/pritok/konga-tutorial-basics.git
+</code></pre><p>This will create a <code>konga-tutorial-basics</code> folder, with the full functionality covered by this tutorial. It&#39;s everything ready to work once you installed dependencies:</p>
+<pre><code>npm install
+bower install
+</code></pre><p>Then you can launch the app by typing:</p>
+<pre><code>grunt serve
+</code></pre><p>Your browser will autommatically open at <code>http://localhost:9000</code> with your app working.</p>
+<h2 id="next-steps">Next steps</h2>
+<p>Now that you have your project created, it&#39;s time to <a href="#/learning-series/Basics.Preparation"><code>get started</code></a> with the tutorial.</p>
+</div></div>

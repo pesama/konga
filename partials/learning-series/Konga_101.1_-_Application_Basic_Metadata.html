@@ -1,0 +1,229 @@
+<h1><code ng:non-bindable="">1_-_Application_Basic_Metadata</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Konga_101</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="konga-101-1-application-basic-metadata-page"><h3 id="description_metadata-generation">Metadata generation</h3>
+<p>Now that our applications are configured and ready to be launched, is time to define some basic <code>metadata</code> for our <code>ui</code> to manage. </p>
+<p>If you want to download the source of this step directly, do this at your project&#39;s root:</p>
+<pre><code>git checkout -f step-1
+</code></pre><h4 id="description_metadata-generation_creating-the-metadata-classes">Creating the Metadata classes</h4>
+<p><img src="/static/tutorial-basics-datamodel.png" width="40%" class="center"></p>
+<p>Here you have the basic model we will deal with for now. We basically need to create three Java classes - i.e. <code>Organisations</code>, <code>Applications</code> and <code>Developers</code> - and set up some metadata for Konga. Let&#39;s run:</p>
+<p><strong>Create</strong> the classes <code>Organisation.java</code>, <code>Application.java</code> and <code>Developer.java</code> under the <strong><code>io.konga.tutorial.model</code></strong> package:</p>
+<p><strong><code>Organisation.java</code></strong>
+<pre class="prettyprint linenums">
+package io.konga.tutorial.model;
+
+@ Entity("organisation")
+public class Organisation {
+
+	private Integer id;
+	
+	private String name;
+	
+	private String country;
+}
+</pre>
+<p><strong><code>Application.java</code></strong>
+<pre class="prettyprint linenums">
+package io.konga.tutorial.model;
+
+@ Entity("application")
+public class Application {
+
+	private Integer id;
+	
+	private String code;
+	
+	private String name;
+}
+</pre>
+<p><strong><code>Developer.java</code></strong>
+<pre class="prettyprint linenums">
+package io.konga.tutorial.model;
+
+@ Entity("developer")
+public class Developer {
+
+	private Integer id;
+	
+	private String name;
+	
+	private String email;
+}
+</pre>
+<p>As we won&#39;t deal with the Java application directly - and we will use Java annotations to generate the model instead - we don&#39;t need any getters nor setters. At least for now.</p>
+<h4 id="description_metadata-generation_creating-the-generator">Creating the generator</h4>
+<p>Konga generator for Java is a class that reads the metadata for the model - i.e. a <code>model package</code> given. The generator handles all the process, starting by reading all <code>@Entity</code> annotations defined on the model package.</p>
+<p><strong>Create</strong> a file called <code>CloudGenerator.java</code> on your <strong><code>io.konga.tutorial.generator</code></strong> package:</p>
+<p><strong><code>CloudGenerator.java</code></strong>
+<pre class="prettyprint linenums">
+package io.konga.tutorial.generator;
+
+import java.io.FileWriter;
+
+import io.konga.metadata.definition.KongaDefinition;
+import io.konga.metadata.definition.KongaMetadata;
+import io.konga.metadata.generator.KongaGenerator;
+
+public class CloudGenerator {
+
+	public CloudGenerator() throws Exception {
+		KongaDefinition definition = new KongaDefinition("Konga Tutorial Basics", 
+				"io.konga.tutorial.model");
+		
+		KongaMetadata metadata = KongaGenerator.readPackage(definition);
+		
+		System.out.println("parsing");
+		
+		String metadataJson = metadata.toJson();
+		
+		FileWriter fw = new FileWriter("../metadata.json");
+		fw.write(metadataJson);
+		fw.close();
+		
+		System.out.println("ready");
+	}
+
+	public static void main(String[] args) {
+		try {
+			new CloudGenerator();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}
+
+</pre>
+<p>The Konga generator leverages a <code>KongaDefinition</code> object, that receives the name of your app, and the model package to look for annotated entities:</p>
+<pre><code>KongaDefinition definition = new KongaDefinition(&quot;Konga Tutorial Basics&quot;, &quot;io.konga.tutorial.model&quot;);
+</code></pre><p>Once your definition is set, you can use static method <code>readPackage</code> of the <code>KongaGenerator</code> class, that will read all your metadata and return you a <code>KongaMetadata</code> object. Beneath that object there are is all the configuration for your app, read from the annotated classes. </p>
+<p>As we will generate our metadata <code>on-demand</code>, we&#39;ve provided our <code>CloudGenerator</code> class with a built-in <code>main</code> method. Go ahead and execute the app. </p>
+<h4 id="description_metadata-generation_the-metadata">The metadata</h4>
+<p>Once your app finishes - you should see a <code>parsing</code> message, followed by a <code>ready</code> message through the console - you will have your <code>json</code> metadata object generated under your project&#39;s root (outside the <code>metadata</code> object). Let&#39;s see what it contains:</p>
+<pre class="prettyprint linenums">
+{
+    "id": null,
+    "name": "Konga Tutorial Basics",
+    "appKey": null,
+    "entities": [
+        {
+            "classFor": "io.konga.tutorial.model.Developer",
+            "name": "developer",
+            "superClass": null,
+            "label": null,
+            "shortLabel": null,
+            "access": "PUBLIC",
+            "stereotypes": [],
+            "searchable": null,
+            "createable": null,
+            "editable": null,
+            "deleteable": null,
+            "searchType": "CASCADE",
+            "searchStyle": null,
+            "resultsType": "CASCADE",
+            "resultsStyle": null,
+            "detailsType": "CASCADE",
+            "detailsStyle": null,
+            "updateType": "CASCADE",
+            "updateStyle": null,
+            "template": null,
+            "apiName": null,
+            "apiPath": null,
+            "categories": [],
+            "security": {
+                "permissions": null,
+                "roles": null
+            },
+            "fields": [],
+            "fieldSets": [],
+            "actions": [],
+            "overrideDefaults": [],
+            "configuration": [],
+            "favoriteable": false,
+            "resultClick": []
+        },
+        {
+            "classFor": "io.konga.tutorial.model.Organisation",
+            "name": "organisation",
+            "superClass": null,
+            "label": null,
+            "shortLabel": null,
+            "access": "PUBLIC",
+            "stereotypes": [],
+            "searchable": null,
+            "createable": null,
+            "editable": null,
+            "deleteable": null,
+            "searchType": "CASCADE",
+            "searchStyle": null,
+            "resultsType": "CASCADE",
+            "resultsStyle": null,
+            "detailsType": "CASCADE",
+            "detailsStyle": null,
+            "updateType": "CASCADE",
+            "updateStyle": null,
+            "template": null,
+            "apiName": null,
+            "apiPath": null,
+            "categories": [],
+            "security": {
+                "permissions": null,
+                "roles": null
+            },
+            "fields": [],
+            "fieldSets": [],
+            "actions": [],
+            "overrideDefaults": [],
+            "configuration": [],
+            "favoriteable": false,
+            "resultClick": []
+        },
+        {
+            "classFor": "io.konga.tutorial.model.Application",
+            "name": "application",
+            "superClass": null,
+            "label": null,
+            "shortLabel": null,
+            "access": "PUBLIC",
+            "stereotypes": [],
+            "searchable": null,
+            "createable": null,
+            "editable": null,
+            "deleteable": null,
+            "searchType": "CASCADE",
+            "searchStyle": null,
+            "resultsType": "CASCADE",
+            "resultsStyle": null,
+            "detailsType": "CASCADE",
+            "detailsStyle": null,
+            "updateType": "CASCADE",
+            "updateStyle": null,
+            "template": null,
+            "apiName": null,
+            "apiPath": null,
+            "categories": [],
+            "security": {
+                "permissions": null,
+                "roles": null
+            },
+            "fields": [],
+            "fieldSets": [],
+            "actions": [],
+            "overrideDefaults": [],
+            "configuration": [],
+            "favoriteable": false,
+            "resultClick": []
+        }
+    ],
+    "configuration": []
+}
+</pre>
+<p>A bit big, right? These metadata contains the basic information for your entities, using all default values - as we only specified a &quot;<code>name</code>&quot; for our entities, but nothing else. </p>
+<h4 id="description_metadata-generation_including-our-metadata-in-the-ui">Including our metadata in the UI</h4>
+<p>Now that we have a valid metadata to execute, let&#39;s inject it into Konga - i.e. the UI - and see what we got. <strong><a href="#/learning-series/Basics.Injecting_Metadata">Go to the next step</a></strong>.</p>
+</div></div>
+</div>

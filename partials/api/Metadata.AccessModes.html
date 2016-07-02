@@ -1,0 +1,33 @@
+<h1><code ng:non-bindable="">AccessModes</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Metadata</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="metadata-accessmodes-page"><p>This enumeration defines how a entity is configured talking about visibility. When you create your data model, there would be some user-accessible entities (final entities, connected to APIs, etcetera), while others wouldn&#39;t be shown, and they will only provide functionality to the <code>public</code> ones (i.e. <code>system</code> entities - abstracts, hidden relationships...).</p>
+<p>This field is not used into Konga directly. Instead, this information is given to you for easing menu creation, and any other batch entity-access functionality you want to develop for users to access the entities you want to show them.</p>
+<h3 id="description_filtering-entities">Filtering <code>PUBLIC</code> entities</h3>
+<p>If you want to create a menu which shows entities to users, you can easily leverage this property to remove the <code>HIDDEN</code> entities from the list:</p>
+<pre class="prettyprint linenums">
+&lt;ul class="nav" role="navbar"&gt;
+	&lt;li ng-repeat="entity in metadata.entities | filter:{ access: 'PUBLIC' }"&gt;
+		&lt;a ng-click="operations.openEntitySearch(entity)"&gt;
+			{{ entity.label | translate }}
+		&lt;/a&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+<h3 id="description_todo-other-examples">TODO Other examples</h3>
+</div></div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_hidden">HIDDEN</h3>
+<div class="hidden"><div class="hidden-page"><p>Defines the entity as hidden. These entities are <code>system</code> entities that final users don&#39;t need to know about. Marking them as HIDDEN will allow you quick-targeting, and to easily exclude them from menus and other batch entity rendering processes. </p>
+</div></div>
+</li>
+<li><h3 id="properties_public">PUBLIC</h3>
+<div class="public"><div class="public-page"><p>Defines the entity as public. Public entities are intended to be the entities users consume directly, and they usually allow basic operations with an API connection (and/or any custom actions).</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

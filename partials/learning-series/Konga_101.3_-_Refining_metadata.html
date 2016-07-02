@@ -1,0 +1,213 @@
+<h1><code ng:non-bindable="">3_-_Refining_metadata</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Konga_101</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="konga-101-3-refining-metadata-page"><h3 id="description_metadata-definitions">Metadata definitions</h3>
+<p>We have already seen how to easily create metadata objects using <code>konga-metadata</code> generator for Java, along with the built-in Java annotations. While this is cool, it doesn&#39;t actually serve any need. At least just yet. Let&#39;s enrich a bit more our metadata, defining all fields and operations within our three main entities. </p>
+<p>If you want to download the source of this step directly, do this at your project&#39;s root:</p>
+<pre><code>git checkout -f step-3
+</code></pre><h4 id="description_metadata-definitions_literature">Literature</h4>
+<p>To build the metadata easier, let&#39;s first define what we want to achieve. </p>
+<ul>
+<li>We want Konga to know about our <code>primary keys</code>, but we don&#39;t want any of them shown to users, ever. </li>
+<li>We want to search all three entities, by any field - but the ID.</li>
+<li>We want every field on results - but the ID.</li>
+<li>We want to see and be able to edit any field on updation - but the ID.</li>
+<li>We want to be able to delete <code>Applications</code> and <code>Developers</code>, but organisations are never removed.</li>
+<li>All visible fields are required. </li>
+</ul>
+<p>With these simple premises, let&#39;s define our metadata:</p>
+<p><strong><code>Organisation.java</code></strong>
+<pre class="prettyprint linenums">
+package io.konga.tutorial.model;
+
+import io.konga.metadata.annotations.Createable;
+import io.konga.metadata.annotations.Editable;
+import io.konga.metadata.annotations.Entity;
+import io.konga.metadata.annotations.EntityId;
+import io.konga.metadata.annotations.EntityKey;
+import io.konga.metadata.annotations.Field;
+import io.konga.metadata.annotations.Label;
+import io.konga.metadata.annotations.Required;
+import io.konga.metadata.annotations.Searchable;
+import io.konga.metadata.annotations.ShowInResults;
+import io.konga.metadata.annotations.ShowInUpdate;
+
+@ Entity("organisation")
+@ Label("Organisation")
+@ Createable
+@ Searchable
+@ Editable
+public class Organisation {
+
+	@ Field
+	@ EntityId
+	private Integer id;
+	
+	@ Field
+	@ Label("Org name")
+	@ EntityKey
+	@ Searchable
+	@ ShowInResults
+	@ ShowInUpdate
+	@ Required
+	@ Editable
+	private String name;
+	
+	@ Field
+	@ Label("Country ID")
+	@ EntityKey
+	@ Searchable
+	@ ShowInResults
+	@ ShowInUpdate
+	@ Required
+	@ Editable
+	private String country;
+}
+
+</pre>
+<p><strong><code>Application.java</code></strong>
+<pre class="prettyprint linenums">
+package io.konga.tutorial.model;
+
+import io.konga.metadata.annotations.Createable;
+import io.konga.metadata.annotations.Deleteable;
+import io.konga.metadata.annotations.Editable;
+import io.konga.metadata.annotations.Entity;
+import io.konga.metadata.annotations.EntityId;
+import io.konga.metadata.annotations.EntityKey;
+import io.konga.metadata.annotations.Field;
+import io.konga.metadata.annotations.Label;
+import io.konga.metadata.annotations.Required;
+import io.konga.metadata.annotations.Searchable;
+import io.konga.metadata.annotations.ShowInResults;
+import io.konga.metadata.annotations.ShowInUpdate;
+
+@ Entity("application")
+@ Label("Application")
+@ Createable
+@ Searchable
+@ Editable
+@ Deleteable
+public class Application {
+
+	@ Field
+	@ EntityId
+	private Integer id;
+	
+	@ Field
+	@ Label("App key")
+	@ EntityKey
+	@ Searchable
+	@ ShowInResults
+	@ ShowInUpdate
+	@ Required
+	@ Editable
+	private String code;
+	
+	@ Field
+	@ Label("App name")
+	@ EntityKey
+	@ Searchable
+	@ ShowInResults
+	@ ShowInUpdate
+	@ Required
+	@ Editable
+	private String name;
+}
+
+</pre>
+<p><strong><code>Developer.java</code></strong>
+<pre class="prettyprint linenums">
+package io.konga.tutorial.model;
+
+import io.konga.metadata.annotations.Createable;
+import io.konga.metadata.annotations.Deleteable;
+import io.konga.metadata.annotations.Editable;
+import io.konga.metadata.annotations.Entity;
+import io.konga.metadata.annotations.EntityId;
+import io.konga.metadata.annotations.EntityKey;
+import io.konga.metadata.annotations.Field;
+import io.konga.metadata.annotations.Label;
+import io.konga.metadata.annotations.Required;
+import io.konga.metadata.annotations.Searchable;
+import io.konga.metadata.annotations.ShowInResults;
+import io.konga.metadata.annotations.ShowInUpdate;
+
+@ Entity("developer")
+@ Label("Developer")
+@ Createable
+@ Searchable
+@ Editable
+@ Deleteable
+public class Developer {
+
+	@ Field
+	@ EntityId
+	private Integer id;
+	
+	@ Field
+	@ Label("Developer name")
+	@ EntityKey
+	@ Searchable
+	@ ShowInResults
+	@ ShowInUpdate
+	@ Required
+	@ Editable
+	private String name;
+	
+	@ Field
+	@ Label("Developer email")
+	@ EntityKey
+	@ Searchable
+	@ ShowInResults
+	@ ShowInUpdate
+	@ Required
+	@ Editable
+	private String email;
+}
+
+</pre>
+<p>These files, while still contain basic metadata, are far more defined than before, including the basic configuration for the fields. The information now provided is enough for Konga to build the forms, and show you the basics of its functioning.</p>
+<h4 id="description_metadata-definitions_metadata-generation-and-injection">Metadata generation and injection</h4>
+<p>Just as we did before, launch the metadata application, to generate a new <code>metadata.json</code> file. Then, go again to the <code>/app/scripts/services/metadata.js</code> file and paste the new <code>json</code> contents where the old were:</p>
+<p><strong><code>/app/scripts/services/metadata.js</code></strong>
+<pre class="prettyprint linenums">
+'use strict';
+
+angular.module('uiApp')
+  .constant('metadata', {"id":null,"name":"Konga Tutorial Basics","appKey":null,"entities":[{"classFor":"io.konga.tutorial.model.Developer","name":"developer","superClass":null,"label":"Developer","shortLabel":null,"access":"PUBLIC","stereotypes":[],"searchable":"","createable":"","editable":"","deleteable":"","searchType":"CASCADE","searchStyle":null,"resultsType":"CASCADE","resultsStyle":null,"detailsType":"CASCADE","detailsStyle":null,"updateType":"CASCADE","updateStyle":null,"template":null,"apiName":null,"apiPath":null,"categories":[],"security":{"permissions":null,"roles":null},"fields":[{"name":"id","label":null,"shortLabel":null,"hint":null,"type":{"type":"NUMBER","complexType":null,"filter":null,"query":null,"list":null,"from":null},"access":"PUBLIC","isId":true,"isKey":false,"isLabel":false,"linked":null,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":null,"fields":null,"configuration":null},"editable":{"value":null,"fields":null,"configuration":null},"showInResults":{"value":null,"fields":null,"configuration":null},"showInUpdate":{"value":null,"fields":null,"configuration":null},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":[],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"PLAIN","configuration":null},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":null,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"developer","sortable":true},{"name":"name","label":"Developer name","shortLabel":null,"hint":null,"type":{"type":"STRING","complexType":null,"filter":null,"query":null,"list":null,"from":null},"access":"PUBLIC","isId":false,"isKey":true,"isLabel":false,"linked":null,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":"","fields":[],"configuration":[]},"editable":{"value":"","fields":[],"configuration":null},"showInResults":{"value":"","fields":[],"configuration":[]},"showInUpdate":{"value":"","fields":[],"configuration":[]},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":[],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"PLAIN","configuration":null},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":true,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"developer","sortable":true},{"name":"email","label":"Developer email","shortLabel":null,"hint":null,"type":{"type":"STRING","complexType":null,"filter":null,"query":null,"list":null,"from":null},"access":"PUBLIC","isId":false,"isKey":true,"isLabel":false,"linked":null,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":"","fields":[],"configuration":[]},"editable":{"value":"","fields":[],"configuration":null},"showInResults":{"value":"","fields":[],"configuration":[]},"showInUpdate":{"value":"","fields":[],"configuration":[]},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":[],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"PLAIN","configuration":null},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":true,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"developer","sortable":true}],"fieldSets":[],"actions":[],"overrideDefaults":[],"configuration":[],"favoriteable":false,"resultClick":[]},{"classFor":"io.konga.tutorial.model.Organisation","name":"organisation","superClass":null,"label":"Organisation","shortLabel":null,"access":"PUBLIC","stereotypes":[],"searchable":"","createable":"","editable":"","deleteable":null,"searchType":"CASCADE","searchStyle":null,"resultsType":"CASCADE","resultsStyle":null,"detailsType":"CASCADE","detailsStyle":null,"updateType":"CASCADE","updateStyle":null,"template":null,"apiName":null,"apiPath":null,"categories":[],"security":{"permissions":null,"roles":null},"fields":[{"name":"id","label":null,"shortLabel":null,"hint":null,"type":{"type":"NUMBER","complexType":null,"filter":null,"query":null,"list":null,"from":null},"access":"PUBLIC","isId":true,"isKey":false,"isLabel":false,"linked":null,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":null,"fields":null,"configuration":null},"editable":{"value":null,"fields":null,"configuration":null},"showInResults":{"value":null,"fields":null,"configuration":null},"showInUpdate":{"value":null,"fields":null,"configuration":null},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":[],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"PLAIN","configuration":null},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":null,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"organisation","sortable":true},{"name":"name","label":"Org name","shortLabel":null,"hint":null,"type":{"type":"STRING","complexType":null,"filter":null,"query":null,"list":null,"from":null},"access":"PUBLIC","isId":false,"isKey":true,"isLabel":false,"linked":null,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":"","fields":[],"configuration":[]},"editable":{"value":"","fields":[],"configuration":null},"showInResults":{"value":"","fields":[],"configuration":[]},"showInUpdate":{"value":"","fields":[],"configuration":[]},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":[],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"PLAIN","configuration":null},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":true,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"organisation","sortable":true},{"name":"country","label":"Country ID","shortLabel":null,"hint":null,"type":{"type":"STRING","complexType":null,"filter":null,"query":null,"list":null,"from":null},"access":"PUBLIC","isId":false,"isKey":true,"isLabel":false,"linked":null,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":"","fields":[],"configuration":[]},"editable":{"value":"","fields":[],"configuration":null},"showInResults":{"value":"","fields":[],"configuration":[]},"showInUpdate":{"value":"","fields":[],"configuration":[]},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":[],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"PLAIN","configuration":null},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":true,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"organisation","sortable":true}],"fieldSets":[],"actions":[],"overrideDefaults":[],"configuration":[],"favoriteable":false,"resultClick":[]},{"classFor":"io.konga.tutorial.model.Application","name":"application","superClass":null,"label":"Application","shortLabel":null,"access":"PUBLIC","stereotypes":[],"searchable":"","createable":"","editable":"","deleteable":"","searchType":"CASCADE","searchStyle":null,"resultsType":"CASCADE","resultsStyle":null,"detailsType":"CASCADE","detailsStyle":null,"updateType":"CASCADE","updateStyle":null,"template":null,"apiName":null,"apiPath":null,"categories":[],"security":{"permissions":null,"roles":null},"fields":[{"name":"id","label":null,"shortLabel":null,"hint":null,"type":{"type":"NUMBER","complexType":null,"filter":null,"query":null,"list":null,"from":null},"access":"PUBLIC","isId":true,"isKey":false,"isLabel":false,"linked":null,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":null,"fields":null,"configuration":null},"editable":{"value":null,"fields":null,"configuration":null},"showInResults":{"value":null,"fields":null,"configuration":null},"showInUpdate":{"value":null,"fields":null,"configuration":null},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":[],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"PLAIN","configuration":null},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":null,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"application","sortable":true},{"name":"code","label":"App key","shortLabel":null,"hint":null,"type":{"type":"STRING","complexType":null,"filter":null,"query":null,"list":null,"from":null},"access":"PUBLIC","isId":false,"isKey":true,"isLabel":false,"linked":null,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":"","fields":[],"configuration":[]},"editable":{"value":"","fields":[],"configuration":null},"showInResults":{"value":"","fields":[],"configuration":[]},"showInUpdate":{"value":"","fields":[],"configuration":[]},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":[],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"PLAIN","configuration":null},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":true,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"application","sortable":true},{"name":"name","label":"App name","shortLabel":null,"hint":null,"type":{"type":"STRING","complexType":null,"filter":null,"query":null,"list":null,"from":null},"access":"PUBLIC","isId":false,"isKey":true,"isLabel":false,"linked":null,"isParent":false,"quickSearch":{"value":null,"fields":null,"configuration":null},"searchable":{"value":"","fields":[],"configuration":[]},"editable":{"value":"","fields":[],"configuration":null},"showInResults":{"value":"","fields":[],"configuration":[]},"showInUpdate":{"value":"","fields":[],"configuration":[]},"showInDetails":{"value":null,"fields":null,"configuration":null},"multiplicity":"ONE","categories":[],"apiName":null,"fieldType":{"search":"PLAIN","results":"PLAIN","details":"PLAIN","update":"PLAIN","configuration":null},"defaults":null,"searchConf":{"policy":"EXACT_MATCH","multiplicity":"ONE","fields":[]},"unique":false,"security":{"permissions":null,"roles":null},"validation":{"required":true,"minLength":null,"maxLength":null,"validators":null},"triggers":[],"priority":{"results":1000,"search":1000,"update":1000,"details":1000},"fieldSet":null,"actions":[],"overrideDefaults":[],"owner":"application","sortable":true}],"fieldSets":[],"actions":[],"overrideDefaults":[],"configuration":[],"favoriteable":false,"resultClick":[]}],"configuration":[]});
+</pre>
+<p><strong>Wow.</strong> The file is now <strong>huge!</strong>. But don&#39;t worry, that means we are now able to do some more things.</p>
+<h4 id="description_metadata-definitions_reference-on-the-ui-app">Reference <code>KongaController</code> on the UI App</h4>
+<p>Konga operations rely on a global controller - i.e. <a href="#/api/konga.controller:KongaController"><code>KongaController</code></a>, that contains all basic operations konga is able to launch. To use it, you need to engage it into your app. Go to your <code>index.html</code> file and engage <code>KongaController</code> under the <code>&lt;body&gt;</code> tag:</p>
+<p><strong><code>/index.html</code></strong>
+<pre class="prettyprint linenums">
+&lt;body ng-app="uiApp" ng-controller="KongaController"&gt;
+</pre>
+<h4 id="description_metadata-definitions_modify-our-view">Modify our <code>main</code> view</h4>
+<p>To open konga forms, you need to leverage the existing <a href="#/api/Standards.Operations"><code>Operations</code></a>. We will open now a <code>search</code> form by clicking the button:</p>
+<p><strong><code>/app/views/main.html</code></strong>
+<pre class="prettyprint linenums">
+&lt;div class="jumbotron"&gt;
+  &lt;h1&gt;Konga Tutorial&lt;/h1&gt;
+  
+  &lt;p&gt;
+  Here you have all the entities declared on your metadata:
+  &lt;/p&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-md-4" ng-repeat="entity in metadata.entities"&gt;
+      &lt;button class="btn btn-success" ng-click="operations.openEntitySearch(entity)"&gt;{{ entity.name }}&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<p>As you can see we&#39;ve just appended a <code>ng-click</code> directive to our buttons, to get the <a href="#/api/Standards.Operations#methods_openentitysearch"><code>openEntitySearch(entity)</code></a> operation launched on click. </p>
+<h4 id="description_metadata-definitions_trying-our-app">Trying our app</h4>
+<p>If you launch your app using <code>grunt serve</code>, and click on the <code>developer</code> button once it opens, you should see the <code>Developer</code> search form rendered, with all interactions engaged. It&#39;s true styling is not the best. But we&#39;ll work on that!</p>
+<h4 id="description_metadata-definitions_profiling-our-application">Profiling our application</h4>
+<p>Now that metadata generation is done, we are finally able to execute the app and see the forms working. Now it&#39;s time to create permissions for the entities and fields, and see how konga engages with your permission management system. <strong><a href="#/learning-series/Basics.Dealing_with_permissions">Go to the next step</a></strong></p>
+</div></div>
+</div>

@@ -1,0 +1,22 @@
+<h1><code ng:non-bindable="">DataType</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Metadata</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="metadata-datatype-page"><p>Defines the typology of the fields. By giving this information to Konga, it will be able to render your fields properly, and engage all available operations any field of each type must have.</p>
+<h3 id="description_todo-usages-and-demos">TODO Usages and demos</h3>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">DataType(type, complexType, filter, query, list, from);</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>type</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="metadata-datatype-page"><p><span class="label type-hint type-hint-object"><a href="#/api/Metadata.DataTypes">DataTypes</a></span>
+This is the real type of the field. You can put here a &#39;plain-type&#39; value (e.g. <code>STRING</code>, <code>NUMBER</code>, ...) or declare a field as a reference to another (a relationship) by setting this value to <code>COMPLEX</code>.</p>
+</div></td></tr><tr><td>complexType</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="metadata-datatype-page"><p>If your field is declared as <code>COMPLEX</code> you must declare the name of the entity it references to. Just put the name of the entity here.</p>
+</div></td></tr><tr><td>filter</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="metadata-datatype-page"><p>Some times you are retrieving a field&#39;s value, but you want to render it in a different way (apply some mask to a String, filter an array...). This property lets you define the name of an Angular filter, that will be applied to your field to render its value. </p>
+</div></td></tr><tr><td>query</td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="metadata-datatype-page"><p><span class="label type-hint type-hint-object"><a href="#/api/Metadata.ConfigurationParam">ConfigurationParam</a></span>
+If your field is <code>COMPLEX</code>, sometimes you don&#39;t want users to be able to select any entity, but to apply a query to the element search instead. Using this property you can append as many parameters as you want to your query, via <a href="#/api/Metadata.ConfigurationParam">configuration parameters</a>. Values appended to this can be plain values (e.g. you want to show all the <code>Vehicles</code> whose type is <code>Car</code>), or apply an expression referencing any other field in your entity or its relationships (e.g. you allow selecting all <code>Vehicles</code> with a partial <code>{plate}</code>). These values are automatically parsed once launched the queries, using the parameters set in that moment to the entity and its fields. It uses a tool called <a href="#/api/konga.filter:queryParser">query-parser</a>. In the docs you will find all the details about it.</p>
+</div></td></tr><tr><td>list</td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="metadata-datatype-page"><p><span class="label type-hint type-hint-object"><a href="#/api/Metadata.ConfigurationParam">ConfigurationParam</a></span>
+Even if your field has a <code>plain</code> type, you might want to restrict the authorized values it can allocate. This is achieved using this property, who defines a set of <code>key</code>/<code>value</code> possibilities for your fields. This is useful for <code>combo boxes</code> or other constriained-input <a href="#/api/Metadata.FieldTypes">field types</a>.</p>
+</div></td></tr><tr><td>from</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="metadata-datatype-page"><p>If your field is <code>COMPLEX</code> this field allows you to override the <code>query</code> function to retrieve the possible elements to assign. Just put here an <a href="#/api/Metadata.Action">action</a> name, and once user tries to select an item for the field the action will be dispatched instead of the API queried.</p>
+</div></td></tr></tbody></table></div>
+</div>

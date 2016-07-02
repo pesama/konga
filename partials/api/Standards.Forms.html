@@ -1,0 +1,94 @@
+<h1><code ng:non-bindable="">Forms</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Standards</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="standards-forms-page"><p>Forms are the way konga renders entities. There is a form model for each <a href="#/api/Metadata.FormScopes">form scope</a>. Depending on the form scope, some features will be able, others may not, and some other might behave differently. Here you got all the form scope views defined.</p>
+<h3 id="description_search-&amp;-results">Search &amp; Results</h3>
+<p><a href="#/api/Metadata.FormScopes#properties_search">Search</a> and <a href="#/api/Metadata.FormScopes#properties_results">Results</a> scopes are bound together into a same view, providing you direct filtering and result-list rendering in the same layout.</p>
+<p><img src="/static/konga-search-form.png" width="60%" class="center" ></p>
+<h4 id="description_search-&amp;-results_structure">Structure</h4>
+<p>On the left side of the screen is located the <code>search</code> pane. This will render <strong><a href="#/api/Standards.Fields">fields</a></strong> for each of the <strong><code>searchable</code></strong> elements, along with a <strong>button for submitting</strong> a query, and another to <strong>clear</strong> the fields. </p>
+<p>At the right side is the result table. As you can see, on top of it there&#39;s a field for Quick search (see the <a href="#/api/Metadata.Field">Field</a> documentation for more details about quick searches), and options for paging the results (<strong>results per page</strong> and page selection).</p>
+<p>The <a href="#/api/konga.standardApi"><code>standardApi</code></a> relies on a specific returning-object structure to understand results, and to activate paging and quick-searching. This object must be returned by the service on every <code>SEARCH</code> request:</p>
+<pre class="prettyprint linenums">
+{
+  "data": [], 
+  "count": N
+}
+</pre>
+<p>Where data represents the array object with the results, and count the total items found for your query. If your data has not this structure and you want to use <code>offset-based</code> paging, you can create an Angular <code>$interceptor</code> for <code>SEARCH</code> responses to apply the format before finishing the process. This system uses <code>offset</code> and <code>limit</code> fields for paging.</p>
+<p><strong>Row columns</strong> show the <strong><code>showInResults</code></strong> fields, and by default it includes a built-in sorting functions - sending <code>sortBy</code> and <code>sortAs</code> attributes to the standard API. You can disable sorting by setting the <code>sortable</code> attribute of the <a href="#/api/Metadata.Field">field</a> to <code>false</code>.</p>
+<p>By clicking a row you <strong>will access to the update form</strong> of the item of that row.</p>
+<p>At the bottom-right corner of the image there&#39;s an <strong>add</strong> button, whose action is launching an update form for creating a new entity.</p>
+<h4 id="description_search-&amp;-results"><span class="text-success"><i class="fa fa-code"></i> Elements involved</span></h4>
+<ul>
+<li><strong><a href="#/api/konga.controller:EntitySearchController"><code>EntitySearchController</code></a>:</strong> This controller handles all search features. It renders a layout where it allocates inner components, and connection to other operations (add, custom actions...).</li>
+<li><strong><a href="#/api/konga.directive:searchPane"><code>searchPane</code></a>:</strong> Handles the search-form rendering and operations (filtering, submitting, clearing...). It also controls customisation of the form via the {@Metadata.Entity <code>Entity</code> metadata}. </li>
+<li><strong><a href="#/api/konga.directive:resultTable"><code>resultTable</code></a>:</strong> Handles the result table rendered on the right side. It&#39;s responsible for all operations performed on it (sorting, paging, row clicks...). It&#39;s furthermore in charge of the customisation of the table via the <a href="#/api/Metadata.FormType">form type</a> given for this method.</li>
+</ul>
+<h4 id="description_search-&amp;-results"><span class="text-danger"><i class="fa fa-key"></i> Permissions</span></h4>
+<ul>
+<li><strong>Searchable:</strong> Only if the user&#39;s permissions include the entity&#39;s <code>searchable</code> permissions the left panel will appear. Fields are also affected to this rule, so only the ones <code>searchable</code> will be rendered.</li>
+<li><strong>Editable:</strong> Only if the entity is <code>editable</code> the user would be able to click on a line and jump to the update form.</li>
+<li><strong>Createable:</strong> Only if your permissions apply to those defined on entity&#39;s <code>createable</code>, the <code>add</code> button will appear, and the creation form rendered when requested.</li>
+<li><strong>Show in results:</strong> The fields configured to be shown in results will be the only columns rendered on the table.</li>
+</ul>
+<h4 id="description_search-&amp;-results"><span class="text-warning"><i class="fa fa-magic"></i> Actions</span></h4>
+<ul>
+<li><strong><code>search</code>:</strong> Dispatched once user clicks on the &#39;search&#39; button.</li>
+<li><strong><code>clear</code>:</strong> Dispatched once user clicks on the &#39;clear&#39; button.</li>
+<li><strong><code>result-click</code>:</strong> Dispatched once user clicks on a result row.</li>
+<li><strong><code>add</code>:</strong> Dispatched once user clicks on the &#39;add&#39; button.</li>
+</ul>
+<h3 id="description_update">Update</h3>
+<p>Update forms receives a single entity, or it&#39;s ID, and renders a form with all the fields marked to be shown in update. Creation is the same as edition, but instead of querying for an element, a new empty entity is created using the <a href="#/api/konga.scaffold"><code>scaffolding</code> system</a>.</p>
+<p><img class="center" src="/static/konga-update-form.png" width="60%"></p>
+<p>On the image you can see all fields rendered in cascade, along with three buttons on the bottom. These buttons are for <strong><code>save</code></strong>, <strong><code>cancel</code></strong>, and <strong><code>delete</code></strong>.</p>
+<h4 id="description_update"><span class="text-success"><i class="fa fa-code"></i> Elements involved</span></h4>
+<ul>
+<li><strong><a href="#/api/konga.controller:EntityUpdateController"><code>EntityUpdateController</code></a>:</strong> This controller handles all edition features. It renders a layout where it allocates all fields, along with the basic operations (save, cancel, delete, custom actions...).</li>
+<li><strong><a href="#/api/konga.directive:updateForm"><code>updateForm</code></a>:</strong> Handles the rendering of the form itself. This controls customisation, and basic operations performed onto fields.</li>
+</ul>
+<h4 id="description_update"><span class="text-danger"><i class="fa fa-key"></i> Permissions</span></h4>
+<ul>
+<li><strong>Show In Update:</strong> Only the fields marked with <code>showInUpdate</code> will be rendered on update forms.</li>
+<li><strong>Editable:</strong> Only if the entity is <code>editable</code> the user would be able to click on a line and jump to the update form. Same applies for fields, if a field is not <code>editable</code>, and it&#39;s shown, it will be disabled</li>
+<li><strong>Deleteable:</strong> Only if your permissions apply to those defined on entity&#39;s <code>deleteable</code>, the <code>delete</code> button will appear, and the deletion will be executed when requested.</li>
+</ul>
+<h4 id="description_update"><span class="text-warning"><i class="fa fa-magic"></i> Actions</span></h4>
+<ul>
+<li><strong><code>save</code>:</strong> Dispatched once user clicks on the &#39;save&#39; button.</li>
+<li><strong><code>cancel</code>:</strong> Dispatched once user clicks on the &#39;cancel&#39; button.</li>
+<li><strong><code>delete</code>:</strong> Dispatched once user clicks on the &#39;delete&#39; button.</li>
+</ul>
+<h3 id="description_details">Details</h3>
+<p>TODO</p>
+<h3 id="description_chain-of-responsibility">Chain of responsibility</h3>
+<p>Once a form is loaded, the responsabilities cascades down so each part have its particular duties</p>
+<p><img src="/static/konga-form-chain-of-responsibility.png" width="60%" class="center"></p>
+<h4 id="description_chain-of-responsibility_scope-manangement">Scope manangement</h4>
+<p>The root responsibility level is assigned to the controllers - i.e. <a href="#/api/konga.controller:EntitySearchController"><code>EntitySearchController</code></a> and <a href="#/api/konga.controller:EntityUpdateController"><code>EntityUpdateController</code></a>. They initialise all the required properties to start generating and handling the forms.</p>
+<p><img src="/static/konga-form-chain-controllers.png" width="50%" class="center">    </p>
+<h4 id="description_chain-of-responsibility_form-management">Form management</h4>
+<p>Once controllers have initialise everything, the responsibility chain moves forward to the next level: generating the forms. These tasks are dealt with by the form directives - <a href="#/api/konga.directive:searchPane"><code>searchPane</code></a>, <a href="#/api/konga.directive:resultTable"><code>resultTable</code></a> and <a href="#/api/konga.directive:updateForm"><code>updateForm</code></a>. </p>
+<p><img src="/static/konga-form-chain-directives.png" width="50%" class="center"></p>
+<p>The directives receive the fields to render and the entity configuration, and from there it determines the <a href="#/api/Metadata.FormTypes">form type</a> to render, and other form <a href="#/api/Metadata.ConfiguationParam">configuration parameters</a>. Using that information it builds up a view, and initialises all the fields, letting them handle their particularities.</p>
+<h4 id="description_chain-of-responsibility_field-management">Field management</h4>
+<p>Field management features are handled by the <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a> directive. This directive is a polymorphic input that uses metadata to determine its visual appeareance, and the operations allowed. </p>
+<p>Basically, the <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a> controls field&#39;s parameters - data type, field type, ... - set up in its metadata. With these data it controls the inputs, the mapping, the validations... See the <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a> docs for full feature list.</p>
+<h4 id="description_chain-of-responsibility_specific--management">Specific-<a href="#/api/Metadata.FieldTypes">fieldType</a> management</h4>
+<p>Some fields are more complex that just plain inputs. The <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a> controls all common operations, but sometimes an underneath layer is required to handle extra things, and to communicate to <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a> to notify the results of them. The <a href="#/api/Metadata.FieldTypes">field types</a> attached to a specific directive are:</p>
+<ul>
+<li><strong><a href="#/api/konga.directive:calendarInput"><code>calendar</code></a>.</strong></li>
+<li><strong><a href="#/api/konga.directive:calendarInput"><code>file</code></a>.</strong></li>
+<li><strong><a href="#/api/konga.directive:calendarInput"><code>list</code></a>.</strong></li>
+<li><strong><a href="#/api/konga.directive:calendarInput"><code>option</code></a>.</strong></li>
+<li><strong><a href="#/api/konga.directive:calendarInput"><code>price</code></a>.</strong></li>
+<li><strong><a href="#/api/konga.directive:calendarInput"><code>quantity</code></a>.</strong></li>
+<li><strong><a href="#/api/konga.directive:calendarInput"><code>select</code></a>.</strong></li>
+<li><strong><a href="#/api/konga.directive:calendarInput"><code>table</code></a>.</strong></li>
+</ul>
+</div></div>
+</div>

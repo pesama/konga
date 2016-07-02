@@ -1,0 +1,166 @@
+<h1><code ng:non-bindable="">Actions</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Standards</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="standards-actions-page"><p>Konga describes a few built-in data types to let you use them on your data models to enrich Konga&#39;s operability. Data types are just plain <code>JS</code> objects with a set of particular properties, which are used to deal with <a href="#/api/Standards"><code>standard</code></a> and <a href="#/api/Customisation"><code>custom</code></a> features.</p>
+<p>The <a href="#/api/Customisation.Action%20driven"><code>action-driven</code> framework</a> uses the <a href="#/api/Standards.Data%20types#methods_tab"><code>Tab</code></a>, <a href="#/api/Standards.Data%20types#methods_modal"><code>Modal</code></a> and <a href="#/api/Standards.Data%20types#methods_function"><code>Function</code></a> to define actions that execute code on certain moments of your apps lifecycle, both natively and custom.</p>
+<h3 id="description_parameters">Parameters</h3>
+<p>Every action launched within Konga includes contextual information about the action caller - e.g. entities, fields, ... - along with the elements being managed at the time.</p>
+<p> <pre class="prettyprint linenums">
+{
+  self: $scope,
+  item: Resource,
+  entityType: string,
+  parameters: {
+	dependencyInjector: $injector,
+	actionManager: actionManager
+  }
+}
+ </pre>
+<ul>
+<li><strong><code>self</code>:</strong> Includes the scope of the element that dispatched the action.</li>
+<li><strong><code>item</code>:</strong> Includes the entity being managed on the element that dispatched the action.</li>
+<li><strong><code>entityType</code>:</strong> <a href="#/api/Metadata.Entity"><code>Entity</code></a> name.</li>
+<li><strong><code>parameters.dependencyInjector</code>:</strong> Reference to Angular&#39;s <code>$injector</code>, for loading any needed dependency.</li>
+<li><strong><code>parameters.actionManager</code>:</strong> Direct access to the <a href="#/api/konga.actionManager"><code>actionManager</code></a>, to dispatch actions quickly if your action needs it.</li>
+</ul>
+<h3 id="description_scope-based-parameters">Scope-based parameters</h3>
+<p>Depending on the <a href="#/api/Metadata.FormScope"><code>form scope</code></a> the app was at the moment of the action execution, several more parameters would be appended to the <code>params</code> object:</p>
+<h4 id="description_scope-based-parameters_results">Results</h4>
+<p>On results, a click on the <a href="#/api/konga.directive:resultTable"><code>resultTable</code></a> row will trigger a <code>result-click</code> action, that will include an <strong><code>index</code></strong> element with the index of the element within the table, and a parameter <strong><code>id</code></strong> with the <a href="#/api/Standards.Tools#methods_getentityid">id</a> of the entity selected.</p>
+<h4 id="description_scope-based-parameters_update">Update</h4>
+<p>Update forms include also the <strong><code>id</code></strong> attribute identifying the entity being managed (and included in the object into the <code>item</code> property.). </p>
+<h3 id="description_field-actions">Field actions</h3>
+<p>Certain <code>fieldTypes</code> allow the rendering of actions within their templates, that dispatch field-level actions once interacted with. The <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a> appends to the action parameters the <strong><code>field</code></strong> being managed, along with another data object, named <strong><code>data</code></strong>.</p>
+<p>The data attribute contains the parameters given to the action dispatching method. Native field-level action&#39;s params are:</p>
+<pre class="prettyprint linenums">
+{
+  ...
+  data: {
+    entity: entity
+  }
+}
+</pre>
+<p>This is the inner entity the user&#39;s clicked on, within the field - i.e. fields with multiplicity <a href="#/api/Metadata.Multiplicities#properties_many"><code>many</code></a>. Your custom actions dispatched on your <code>fieldTypes</code> could include any property, that will be injected to the action into its <code>data</code> attribute.</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_function">Function(fn)</h3>
+<div class="function"><div class="function-page"><p>Function actions describe a piece of code wrapped into a <code>function</code>, that gets executed when the action is dispatched.</p>
+<p>This actions do not involve any graphical intervention on the screen - as <a href="#/api/Standards.Actions#methods_tab"><code>tab</code></a> and <a href="#/api/Standards.Actions#methods_modal"><code>modal</code></a> do, so this action type is ideal for internal processes. As you can leverage the <code>dependencyInjector</code> trough action parameters, you can inject anything you need to operate within your action.</p>
+<p> <pre class="prettyprint linenums">
+ {
+  fn: function(params) {
+    // Include here your custom code
+    var $rootScope = params.dependencyInjector.get('$rootScope');
+    $rootScope.operations.addAlert('I\'m a cool action');
+  }
+ }
+ </pre>
+</div><h5 id="methods_function_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>fn</td><td><a href="" class="label type-hint type-hint-function">function()</a></td><td><div class="function-page"><p>The action to execute. The action will receive a <strong><code>params</code></strong> attribute, and the scope - <strong><code>this</code></strong> - will be set to the <code>$scope</code> of the dispatcher of the field.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_modal">Modal(template, controller, parameters, okHandler, koHandler)</h3>
+<div class="modal"><div class="modal-page"><p>Defines the parameters to configure a modal window.
+It has several parameters:</p>
+<h5 id="methods_modal_example">Example</h5>
+<p>An example Modal object would look like this:
+<pre class="prettyprint linenums">
+{
+  controller: 'MyAwesomeModalController',
+  template: '/views/my-awesome-modal.html',
+  parameters: {
+    // Custom parameters to use within the controller and the handlers
+  },
+  okHandler: function(modal, data) {
+    // Do something with the data
+  },
+  koHandler: function(modal, reason) {
+    // Treat cancelation
+  }
+}
+</pre>
+</div><h5 id="methods_modal_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>template</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="modal-page"><p>The <b>URL</b> to the template for the modal. Konga modals are built by <code>bootstrap&#39;s</code>, so you need to follow the <code>&lt;modal-content&gt;</code> structure:</p>
+<pre class="prettyprint linenums">
+&lt;div class="modal-content"&gt;
+  &lt;div class="modal-header" ng-show="modal.title"&gt;
+    &lt;button id="modal-tpl-closeX" 
+            type="button" 
+            class="close" 
+            ng-click="close()"&gt;
+      &times;
+    &lt;/button&gt;
+    &lt;h4 class="modal-title" ng-bind="modal.title"&gt;&lt;/h4&gt;
+  &lt;/div&gt;
+
+  &lt;div class="modal-body"&gt;
+    &lt;div ng-include="modal.contentUrl"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="modal-footer"&gt;
+    &lt;button type="button" 
+            class="btn btn-default" 
+            id="modal-save" 
+            ng-click="save()"&gt;
+      {{ 'message.action.validate' | translate }}
+    &lt;/button&gt;
+    &lt;button type="button" 
+            class="btn btn-default" 
+            id="modal-cancel" 
+            ng-click="close()"&gt;
+      {{ 'message.action.cancel' | translate }}
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+</div></td></tr><tr><td>controller <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="modal-page"><p><b>Name</b> of the controller to engage to the modal.
+You can inject <code>params</code> you will receive the <a href="#/api/Action-driven">framework.Modal.parameters <code>parameters</code></a> configured when creating the modal
+<pre class="prettyprint linenums">
+angular.module("myAwesomeApp")
+  .controller('MyAwesomeModalController', ['$scope', '...', 'params', 
+    function($scope, ..., params) {
+      ...
+      // params include
+      // all action params
+      ...
+  }]);
+</pre>
+</div></td></tr><tr><td>parameters <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="modal-page"><p>Parameters to configure the modal.
+You can put anything here, and it will be available in many places:</p>
+<ul>
+<li>Modal controller via a <code>params</code> dependency injection.</li>
+<li><code>OK</code> and <code>KO</code> handlers via first argument&#39;s <code>parameters</code> object</li>
+</ul>
+</div></td></tr><tr><td>okHandler</td><td><a href="" class="label type-hint type-hint-function">function()</a></td><td><div class="modal-page"><p>This function will be called once the user closes the modal with an affirmative action (this only applies if the modal has an action in which you will call the <code>$modalInstance.close()</code> instead of dismissing it).</p>
+</div></td></tr><tr><td>koHandler</td><td><a href="" class="label type-hint type-hint-function">function()</a></td><td><div class="modal-page"><p>Callback to be executed when the user dismisses the modal.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_tab">Tab(id, title, href, closable, type)</h3>
+<div class="tab"><div class="tab-page"><p>This object defines the configuration of a tab in Konga.</p>
+<p>An example of a tab definition would be:
+<pre class="prettyprint linenums">
+{
+	id : 'my-custom-tab', 
+	title : 'Custom tab!', 
+	href : '/custom/tab/1',
+	closable : true,
+	type: util.constants.TAB_TYPE_UPDATE
+}
+</pre>
+</div><h5 id="methods_tab_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>id</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="tab-page"><p>Unique <code>id</code> for the tab. When a tab tries to open, this parameter is verified for existence in the <a href="#/api/konga.controller:KongaController#properties_tabs"><code>tab stack</code></a>, and if there is anyone with it, it&#39;s brought to front instead of reopening.</p>
+<h4 id="methods_tab_reserved-names">Reserved names</h4>
+<p>Konga standards open tabs for entity searching and updating. The tabs opened for these purposes will have standard ids, which you should never override unless you are completely aware of what you are doing:</p>
+<ul>
+<li><strong><code>entity_</code> + <em>entityName</em> + <code>_search</code>:</strong> Search tab for <code>entityName</code> entities.</li>
+<li><strong><code>entity_</code> + <em>entityName</em> + <code>_update_</code> + <em>entityId</em>:</strong> Update tab for the <code>entityName</code> entity identified with <code>entityId</code> id. For <code>creating</code> mode, the <code>entityId</code> value will be &#39;<code>new</code>&#39;.</li>
+</ul>
+</div></td></tr><tr><td>title <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="tab-page"><p>Title for the tab. The title - its translation - is used to render in the tab header present on <code>tabbed</code> <a href="#/api/Metadata.ConfigurationParam#properties_look_and_feel"><code>look&amp;feel</code></a>. On other modes you can use this value in your custom code.</p>
+</div></td></tr><tr><td>href</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="tab-page"><p>Route for the tab. This value is used to map the app location with the opened tabs, to allow users to go back and forth, and to access tabs via links.</p>
+</div></td></tr><tr><td>closable <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="tab-page"><p>Defines whether the tab would by closed by user. This is used on <code>tabbed</code> <a href="#/api/Metadata.ConfigurationParam#properties_look_and_feel"><code>look&amp;feel</code></a>, rendering a <code>close</code> icon o the tab header.</p>
+</div></td></tr><tr><td>type <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="tab-page"><p>Define the typology of the tab. Actually is a css class, that is applied to an <code>&lt;i&gt;</code> element before tab&#39;s title, for apps using <code>tabbed</code> <a href="#/api/Metadata.ConfigurationParam#properties_look_and_feel"><code>look&amp;feel</code></a>.</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+</div>

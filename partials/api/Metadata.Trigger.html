@@ -1,0 +1,26 @@
+<h1><code ng:non-bindable="">Trigger</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Metadata</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="metadata-trigger-page"><p>A trigger is a custom feature that is linked to a field, and evaluates some property of the field (e.g. its value) in order to decide whether to execute such feature. Triggers are defined via metadata, and sometimes it&#39;s behavior is extended using <a href="#/api/Metadata.Action">actions</a>.</p>
+<h3 id="description_todo-usages-and-examples">TODO Usages and examples</h3>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">new Trigger(name, moment, match, scope, type, matchType, parameters, value);</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>name</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="metadata-trigger-page"><p>Name of the trigger. Useful for logging and for having things sorted out.</p>
+</div></td></tr><tr><td>moment</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="metadata-trigger-page"><p><span class="label type-hint type-hint-object"><a href="#/api/Metadata.TriggerMoments">TriggerMoment</a></span>
+Defines when to execute your trigger (immediately or upon commit).</p>
+</div></td></tr><tr><td>match</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="metadata-trigger-page"><p><span class="label type-hint type-hint-object"><a href="#/api/Metadata.TriggetMatches">TriggetMatch</a></span>
+Defines which parameter of the field to validate (e.g. its value, its length...).</p>
+</div></td></tr><tr><td>scope</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="metadata-trigger-page"><p><span class="label type-hint type-hint-object"><a href="#/api/Metadata.FormScopes">FormScope</a></span>
+Configures the form scope to engage the trigger to.</p>
+</div></td></tr><tr><td>type</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="metadata-trigger-page"><p><span class="label type-hint type-hint-object"><a href="#/api/Metadata.TriggerTypes">TriggerType</a></span>
+Defines the action type to execute.</p>
+</div></td></tr><tr><td>matchType</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="metadata-trigger-page"><p><span class="label type-hint type-hint-object"><a href="#/api/Metadata.ValidatorTypes">ValidatorType</a></span>
+How to match the field&#39;s value with the triggering value.</p>
+</div></td></tr><tr><td>parameters</td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="metadata-trigger-page"><p>List of parameters to be sent to the trigger</p>
+</div></td></tr><tr><td>value</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="metadata-trigger-page"><p>Value to match the field&#39;s with.</p>
+</div></td></tr></tbody></table></div>
+</div>

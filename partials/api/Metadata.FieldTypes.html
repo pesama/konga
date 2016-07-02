@@ -1,0 +1,758 @@
+<h1><code ng:non-bindable="">FieldTypes</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Metadata</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="metadata-fieldtypes-page"><p>Field types configure the appeareance of the input on the forms.</p>
+<h3 id="description_data-types-vs-field-types">Data types vs. Field types</h3>
+<p><a href="#/api/Metadata.DataTypes">Data types</a> define structure, while field types define rendering. Depending on the <a href="#/api/Metadata.DataTypes">Data type</a> of the field there would be different eligible field types to choose.</p>
+<p>Based on the <a href="#/api/Metadata.DataTypes">Data types</a> there is also a <code>default</code> field type to choose, though you can choose any other to adapt it to your favorite appeareance.</p>
+<h3 id="description_todo-usages-and-examples">TODO Usages and examples</h3>
+</div></div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_boolean">BOOLEAN</h3>
+<div class="boolean"><div class="boolean-page"><p>Default input for boolean values. It&#39;s intended for Yes/No fields. It renders two <code>radio buttons</code> as layout, one for <code>true</code> and one for <code>false</code>. On search mode it renders to <code>checkboxes</code> instead, for allowing selecting multiple/none options. On results table value is mapped and render &#39;Yes&#39; for <code>true</code> and &#39;No&#39; for <code>false</code>.</p>
+<h4 id="properties_boolean_data-types">Data types <span class="label label-success"><a href="#/api/Metadata.DataTypes#properties_boolean">boolean</a></span></h4>
+<p>The <code>boolean input</code> is designed to be used with <a href="#/api/Metadata.DataTypes#properties_boolean"><code>boolean</code></a> data types.</p>
+<p>The boolean input uses . </p>
+<h4 id="properties_boolean_multiplicities">Multiplicities</h4>
+<p>The <code>boolean input</code> is designed for <a href="#/api/Metadata.Multiplicities#properties_one"><code>ONE</code></a> multiplicity.</p>
+<h4 id="properties_boolean_configuration">Configuration</h4>
+<p><em>Inherited from <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a></em></p>
+<p>The <code>boolean input</code> does not extend nor override <code>raw</code> functionality.</p>
+<h4 id="properties_boolean_events">Events</h4>
+<p><em>Inherited from <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a></em></p>
+<p>The <code>boolean input</code> does not fire nor listen further events.</p>
+<h4 id="properties_boolean_validations">Validations</h4>
+<p>The <code>boolean input</code> allows these validations:</p>
+<ul>
+<li><strong><code>required</code>:</strong> The input won&#39;t be valid until it&#39;s some value it&#39;s filled. Although this works fine, on <code>boolean inputs</code> you should consider using <code>defaults</code> value.</li>
+</ul>
+</div><h4 id="properties_boolean_example">Example</h4>
+<div class="example"><div class="boolean-page"><h6 id="properties_boolean_example_source">Source</h6>
+<div source-edit="myAwesomeApp" source-edit-deps="angular.js controller.js" source-edit-html="boolean.html" source-edit-css="" source-edit-js="controller.js" source-edit-json="" source-edit-unit="" source-edit-scenario=""></div>
+<div class="tabbable"><div class="tab-pane" title="boolean.html">
+<pre class="prettyprint linenums" ng-set-text="boolean.html"></pre>
+<script type="text/ng-template" id="boolean.html">
+  <div class="form-demo row" ng-controller="FieldController">
+    <div class="col-md-6">
+      <raw-input 
+        property="field"
+        vertical="true"
+        ng-repeat="field in fields | filter:{ name: 'boolean-field' }" 
+        entity="entity" 
+        on-update="onUpdate"
+        on-change="onChange"
+        metadata="metadata"
+        mode="update"
+        creating="true"
+        index="0">
+      </raw-input>
+    </div>
+    <div class="col-md-6">
+    	<b>Value:</b> {{ entity['boolean-field'] }}
+    	<br />
+    	<b>Data type:</b> {{ typeof(entity['boolean-field']) }}
+    </div>
+  </div>
+</script>
+</div>
+<div class="tab-pane" title="controller.js">
+<pre class="prettyprint linenums" ng-set-text="controller.js"></pre>
+<script type="text/ng-template" id="controller.js">
+  angular.module('myAwesomeApp')
+    .controller('FieldController', ['$scope', 'util', 'scaffold', function($scope, util, scaffold) {
+      // Get metadata
+      $scope.metadata = util.getMetadata('fieldtype-demo');
+
+      // Get fields
+      $scope.fields = util.getEntityFields($scope.metadata);
+
+      // Create an entity
+      $scope.entity = scaffold.newEntity($scope.metadata);
+
+      // Listen for updates
+      $scope.log = [];
+      $scope.onUpdate = function(metadata, value, entity, parentField, parentEntity) {
+        entity[metadata.name] = value.text;
+        $scope.log.push('setting value ' + value.text);
+      }
+
+      $scope.typeof = function(value) {
+        if(value === null) return 'null';
+        if(value === undefined) return 'undefined';
+        return typeof(value);
+      };
+    }]);
+</script>
+</div>
+</div><h6 id="properties_boolean_example_demo">Demo</h6>
+<div class="well doc-example-live animate-container" ng-embed-app="myAwesomeApp" ng-set-html="boolean.html" ng-eval-javascript="controller.js"></div> </p>
+</div></div>
+</div>
+</li>
+<li><h3 id="properties_calendar">CALENDAR</h3>
+<div class="calendar"><div class="calendar-page"><p>The <code>calendarInput</code> is a <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a> field type that renders a <a href="http://fullcalendar.io/"><code>fullcalendar</code></a> as field&#39;s layout, if the <a href="#/api/Metadata.Field">field&#39;s</a> <code>fieldType</code> is set to <a href="#/api/Metadata.FieldTypes#properties_calendar"><code>CALENDAR</code></a>.</p>
+<p>The calendar field is just a container of objects, that have properties for defining an <a href="http://fullcalendar.io/docs/event_data/Event_Object/"><code>Event Object</code></a>. The calendar takes these properties and renders the events into the ui, giving you full access to your events - and the calendar for including new - through events.</p>
+<h4 id="properties_calendar_data-types">Data types <span class="label label-success"><a href="#/api/Metadata.DataTypes#properties_complex">calendar</a></span></h4>
+<p>The <code>calendar input</code> is designed to be used with <a href="#/api/Metadata.DataTypes#properties_complex"><code>calendar</code></a> data types.</p>
+<p>The calendar input uses . </p>
+<h4 id="properties_calendar_multiplicities">Multiplicities</h4>
+<p>The <code>calendar input</code> is designed for <a href="#/api/Metadata.Multiplicities#properties_many"><code>MANY</code></a> multiplicity.</p>
+<h4 id="properties_calendar_configuration">Configuration</h4>
+<p><em>Inherited from <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a></em></p>
+<p>The <code>calendar input</code> does not extend nor override <code>raw</code> functionality.</p>
+<h4 id="properties_calendar_events">Events</h4>
+<p><em>Inherited from <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a></em></p>
+<ul>
+<li><ul>
+<li><strong><code>calendar-day-clicked</code>:</strong> Fired when the user clicks on a calendar day.</li>
+</ul>
+</li>
+<li><strong><code>calendar-event-clicked</code>:</strong> Fired when the user clicks on an existing event.</li>
+<li><strong><code>calendar-event-render</code>:</strong> Used when an event finishes its <code>rendering</code> process.</li>
+</ul>
+<p>All <code>calendarInput</code> events include a data object with the information about the action:
+ <pre class="prettyprint linenums">
+   {
+     date: Date,
+     jsEvent: Event,
+     view: view,
+     resourceObj: resourceObj
+   }
+ </pre>
+<h4 id="properties_calendar_validations">Validations</h4>
+<p>The <code>calendar input</code> allows these validations:</p>
+<ul>
+<li><strong><code>[min|max]Length</code>:</strong> The input won&#39;t validate unless the event size is within the bounds defined.</li>
+</ul>
+<p>For the <code>calendar input</code> you might want to add <a href="#/api/Customisation.Action-driven#properties_customactions">custom actions</a> to allow easier interactions with the calendar and its events. </p>
+</div><h4 id="properties_calendar_example">Example</h4>
+<div class="example"><div class="calendar-page"><h6 id="properties_calendar_example_source">Source</h6>
+<div source-edit="myAwesomeApp" source-edit-deps="angular.js controller.js" source-edit-html="calendar.html" source-edit-css="" source-edit-js="controller.js" source-edit-json="" source-edit-unit="" source-edit-scenario=""></div>
+<div class="tabbable"><div class="tab-pane" title="calendar.html">
+<pre class="prettyprint linenums" ng-set-text="calendar.html"></pre>
+<script type="text/ng-template" id="calendar.html">
+  <div class="form-demo row" ng-controller="FieldController">
+    <raw-input 
+      property="field"
+      vertical="true"
+      ng-repeat="field in fields | filter:{ name: 'calendar-field' }" 
+      entity="entity" 
+      on-update="onUpdate"
+      on-change="onChange"
+      metadata="metadata"
+      mode="update"
+      creating="true"
+      index="0">
+    </raw-input>
+  </div>
+</script>
+</div>
+<div class="tab-pane" title="controller.js">
+<pre class="prettyprint linenums" ng-set-text="controller.js"></pre>
+<script type="text/ng-template" id="controller.js">
+  angular.module('myAwesomeApp')
+    .controller('FieldController', ['$scope', 'util', 'scaffold', function($scope, util, scaffold) {
+      // Get metadata
+      $scope.metadata = util.getMetadata('fieldtype-demo');
+
+      // Get fields
+      $scope.fields = util.getEntityFields($scope.metadata);
+
+      // Create an entity
+      $scope.entity = scaffold.newEntity($scope.metadata);
+
+      // Listen for updates
+      $scope.log = [];
+      $scope.onUpdate = function(metadata, value, entity, parentField, parentEntity) {
+        entity[metadata.name] = value.text;
+        $scope.log.push('setting value ' + value.text);
+      }
+
+      $scope.typeof = function(value) {
+        if(value === null) return 'null';
+        if(value === undefined) return 'undefined';
+        return typeof(value);
+      };
+    }]);
+</script>
+</div>
+</div><h6 id="properties_calendar_example_demo">Demo</h6>
+<div class="well doc-example-live animate-container" ng-embed-app="myAwesomeApp" ng-set-html="calendar.html" ng-eval-javascript="controller.js"></div> </p>
+</div></div>
+</div>
+</li>
+<li><h3 id="properties_color">COLOR</h3>
+<div class="color"><div class="color-page"><p>HTML5 Color picker. Let you quickly select and save colors.</p>
+<h4 id="properties_color_data-types">Data types <span class="label label-primary"><a href="#/api/Metadata.DataTypes#properties_string">string</a></span></h4>
+<p>The <code>color input</code> is designed to be used with <a href="#/api/Metadata.DataTypes#properties_string"><code>string</code></a> data types. You can use it for <a href="#/api/Metadata.FieldTypes#properties_numer"><code>numbers</code></a> or <a href="#/api/Metadata.FieldTypes#properties#date"><code>dates</code></a>, though they have their specific data types.</p>
+<p>The color input recovers <strong>exactly</strong> what&#39;s written on the input&#39;s value, and stores it <em>as-is</em> into the entity. </p>
+<h4 id="properties_color_multiplicities">Multiplicities</h4>
+<p>The <code>color input</code> is designed for <a href="#/api/Metadata.Multiplicities#properties_one"><code>ONE</code></a> multiplicity.</p>
+<h4 id="properties_color_configuration">Configuration</h4>
+<p><em>Inherited from <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a></em></p>
+<p>The <code>color input</code> does not extend nor override <code>raw</code> functionality.</p>
+<h4 id="properties_color_events">Events</h4>
+<p><em>Inherited from <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a></em></p>
+<p>The <code>color input</code> does not fire nor listen further events.</p>
+<h4 id="properties_color_validations">Validations</h4>
+<p>The <code>color input</code> allows several validations:</p>
+<ul>
+<li><strong><code>required</code>:</strong> The input won&#39;t be valid until it&#39;s some value it&#39;s filled.</li>
+<li><strong><code>pattern</code>:</strong> You can append a <a href="#/api/Metadata.ValidatorTypes#properties_regex"><code>regex</code></a> validator to your input, to match the text against the expression you set.</li>
+</ul>
+</div><h4 id="properties_color_example">Example</h4>
+<div class="example"><div class="color-page"><h6 id="properties_color_example_source">Source</h6>
+<div source-edit="myAwesomeApp" source-edit-deps="angular.js controller.js" source-edit-html="color.html" source-edit-css="" source-edit-js="controller.js" source-edit-json="" source-edit-unit="" source-edit-scenario=""></div>
+<div class="tabbable"><div class="tab-pane" title="color.html">
+<pre class="prettyprint linenums" ng-set-text="color.html"></pre>
+<script type="text/ng-template" id="color.html">
+  <div class="form-demo row" ng-controller="FieldController">
+    <div class="col-md-6">
+      <raw-input 
+        property="field"
+        vertical="true"
+        ng-repeat="field in fields | filter:{ name: 'color-field' }" 
+        entity="entity" 
+        on-update="onUpdate"
+        on-change="onChange"
+        metadata="metadata"
+        mode="update"
+        creating="true"
+        index="0">
+      </raw-input>
+    </div>
+    <div class="col-md-6">
+    	<b>Value:</b> {{ entity['color-field'] }}
+    	<br />
+    	<b>Data type:</b> {{ typeof(entity['color-field']) }}
+    </div>
+  </div>
+</script>
+</div>
+<div class="tab-pane" title="controller.js">
+<pre class="prettyprint linenums" ng-set-text="controller.js"></pre>
+<script type="text/ng-template" id="controller.js">
+  angular.module('myAwesomeApp')
+    .controller('FieldController', ['$scope', 'util', 'scaffold', function($scope, util, scaffold) {
+      // Get metadata
+      $scope.metadata = util.getMetadata('fieldtype-demo');
+
+      // Get fields
+      $scope.fields = util.getEntityFields($scope.metadata);
+
+      // Create an entity
+      $scope.entity = scaffold.newEntity($scope.metadata);
+
+      // Listen for updates
+      $scope.log = [];
+      $scope.onUpdate = function(metadata, value, entity, parentField, parentEntity) {
+        entity[metadata.name] = value.text;
+        $scope.log.push('setting value ' + value.text);
+      }
+
+      $scope.typeof = function(value) {
+        if(value === null) return 'null';
+        if(value === undefined) return 'undefined';
+        return typeof(value);
+      };
+    }]);
+</script>
+</div>
+</div><h6 id="properties_color_example_demo">Demo</h6>
+<div class="well doc-example-live animate-container" ng-embed-app="myAwesomeApp" ng-set-html="color.html" ng-eval-javascript="controller.js"></div> </p>
+</div></div>
+</div>
+</li>
+<li><h3 id="properties_combobox">COMBOBOX</h3>
+<div class="combobox"><div class="combobox-page"><p>Combo for rendering targeted-options chosen on the <a href="#/api/Metadata.DataType">dataType</a>&#39;s <code>list</code> attribute. It allows both <a href="#/api/Medatata.Multiplicities#properties_one"><code>ONE</code></a> and <a href="#/api/Medatata.Multiplicities#properties_many"><code>MANY</code></a> multiplicities.</p>
+<h4 id="properties_combobox_data-types">Data types <span class="label label-primary"><a href="#/api/Metadata.DataTypes#properties_string">string</a></span> <span class="label label-danger"><a href="#/api/Metadata.DataTypes#properties_number">number</a></span></h4>
+<p>The <code>combobox input</code> is designed to be used with <a href="#/api/Metadata.DataTypes#properties_string"><code>string</code></a> and <a href="#/api/Metadata.FieldTypes#properties_numer"><code>numbers</code></a> data types.</p>
+<p>The combobox input recovers <strong>exactly</strong> what&#39;s written on the input&#39;s value, and stores it <em>as-is</em> into the entity. </p>
+<h4 id="properties_combobox_multiplicities">Multiplicities</h4>
+<p>The <code>combobox input</code> supports both <a href="#/api/Metadata.Multiplicities#properties_one"><code>ONE</code></a> and <a href="#/api/Metadata.Multiplicities#properties_many"><code>MANY</code></a> multiplicities.</p>
+<h4 id="properties_combobox_configuration">Configuration</h4>
+<p><em>Inherited from <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a></em></p>
+<p>The <code>combobox input</code> does not extend nor override <code>raw</code> functionality.</p>
+<h4 id="properties_combobox_events">Events</h4>
+<p><em>Inherited from <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a></em></p>
+<p>The <code>combobox input</code> does not fire nor listen further events.</p>
+<h4 id="properties_combobox_validations">Validations</h4>
+<p>The <code>combobox input</code> allows several validations:</p>
+<ul>
+<li><strong><code>required</code>:</strong> The input won&#39;t be valid until it&#39;s some value it&#39;s filled.</li>
+<li><strong><code>[min|max]Length</code>:</strong> The input will match against a minimum and/or maximum peaks, and evaluated valid based on whether it&#39;s value is within bounds.</li>
+<li><strong><code>pattern</code>:</strong> You can append a <a href="#/api/Metadata.ValidatorTypes#properties_regex"><code>regex</code></a> validator to your input, to match the text against the expression you set.</li>
+</ul>
+</div><h4 id="properties_combobox_example">Example</h4>
+<div class="example"><div class="combobox-page"><h6 id="properties_combobox_example_source">Source</h6>
+<div source-edit="myAwesomeApp" source-edit-deps="angular.js controller.js" source-edit-html="combobox.html" source-edit-css="" source-edit-js="controller.js" source-edit-json="" source-edit-unit="" source-edit-scenario=""></div>
+<div class="tabbable"><div class="tab-pane" title="combobox.html">
+<pre class="prettyprint linenums" ng-set-text="combobox.html"></pre>
+<script type="text/ng-template" id="combobox.html">
+  <div class="form-demo row" ng-controller="FieldController">
+    <div class="col-md-6">
+      <raw-input 
+        property="field"
+        vertical="true"
+        ng-repeat="field in fields | filter:{ name: 'combobox-field' }" 
+        entity="entity" 
+        on-update="onUpdate"
+        on-change="onChange"
+        metadata="metadata"
+        mode="update"
+        creating="true"
+        index="0">
+      </raw-input>
+    </div>
+    <div class="col-md-6">
+    	<b>Value:</b> {{ entity['combobox-field'] }}
+    	<br />
+    	<b>Data type:</b> {{ typeof(entity['combobox-field']) }}
+    </div>
+  </div>
+</script>
+</div>
+<div class="tab-pane" title="controller.js">
+<pre class="prettyprint linenums" ng-set-text="controller.js"></pre>
+<script type="text/ng-template" id="controller.js">
+  angular.module('myAwesomeApp')
+    .controller('FieldController', ['$scope', 'util', 'scaffold', function($scope, util, scaffold) {
+      // Get metadata
+      $scope.metadata = util.getMetadata('fieldtype-demo');
+
+      // Get fields
+      $scope.fields = util.getEntityFields($scope.metadata);
+
+      // Create an entity
+      $scope.entity = scaffold.newEntity($scope.metadata);
+
+      // Listen for updates
+      $scope.log = [];
+      $scope.onUpdate = function(metadata, value, entity, parentField, parentEntity) {
+        entity[metadata.name] = value.text;
+        $scope.log.push('setting value ' + value.text);
+      }
+
+      $scope.typeof = function(value) {
+        if(value === null) return 'null';
+        if(value === undefined) return 'undefined';
+        return typeof(value);
+      };
+    }]);
+</script>
+</div>
+</div><h6 id="properties_combobox_example_demo">Demo</h6>
+<div class="well doc-example-live animate-container" ng-embed-app="myAwesomeApp" ng-set-html="combobox.html" ng-eval-javascript="controller.js"></div> </p>
+</div></div>
+</div>
+</li>
+<li><h3 id="properties_complex">COMPLEX</h3>
+<div class="complex"><div class="complex-page"><p>Complex fields renders configured inner fields instead of the field itself (e.g. if you want to render <code>Vehicle</code> properties (such as <code>brand</code> and <code>wheel number</code>) instead of the <code>vehicle</code> itself). You need to declare into the <a href="#/api/Metadata.Field">field</a>&#39;s <code>showInUpdate</code>-&gt;<code>fields</code> attribute the fields to render. </p>
+</div></div>
+</li>
+<li><h3 id="properties_css">CSS</h3>
+<div class="css"><div class="css-page"><p>Renders a container with a <code>css</code> class assigned with the value of the field. Useful for inserting colored bullets, icons to categorise...</p>
+</div></div>
+</li>
+<li><h3 id="properties_custom">CUSTOM</h3>
+<div class="custom"><div class="custom-page"><p>Custom input. If none of the existing field types suit your needs, you can tag the field as <code>CUSTOM</code> and provide a valid <a href="#/api/konga#viewmapper">mapped</a> value to a view with your custom view. it&#39;s done via <a href="#/api/Metadata.ConfigurationParam#properties_custom_field_type"><code>CUSTOM_FIELD_TYPE</code></a> property. </p>
+</div></div>
+</li>
+<li><h3 id="properties_date">DATE</h3>
+<div class="date"><div class="date-page"><p>Date fields render date objects and let users select dates from a tooltip. <code>Date fields</code> support validation both with <code>String</code> patterns and <code>date</code> validations.</p>
+<h4 id="properties_date_data-types">Data types <span class="label label-primary"><a href="#/api/Metadata.DataTypes#properties_string">string</a></span></h4>
+<p>The <code>date input</code> is designed to be used with <a href="#/api/Metadata.FieldTypes#properties#date"><code>dates</code></a>. However, it can handle <a href="#/api/Metadata.DataTypes#properties_string"><code>strings</code></a> with a <code>date</code> format - i.e. &#39;<code>yyyy-MM-dd</code>&#39; - and <a href="#/api/Metadata.FieldTypes#properties_numer"><code>numbers</code></a> for managing timestamps.</p>
+<h4 id="properties_date_multiplicities">Multiplicities</h4>
+<p>The <code>date input</code> is designed for <a href="#/api/Metadata.Multiplicities#properties_one"><code>ONE</code></a> multiplicity.</p>
+<h4 id="properties_date_configuration">Configuration</h4>
+<p><em>Inherited from <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a></em></p>
+<p>The <code>date input</code> does not extend nor override <code>raw</code> functionality.</p>
+<h4 id="properties_date_events">Events</h4>
+<p><em>Inherited from <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a></em></p>
+<p>The <code>date input</code> does not fire nor listen further events.</p>
+<h4 id="properties_date_validations">Validations</h4>
+<p>The <code>date input</code> allows several validations:</p>
+<ul>
+<li><strong><code>required</code>:</strong> The input won&#39;t be valid until it&#39;s some value it&#39;s filled.</li>
+<li><strong><code>[min|max]Length</code>:</strong> The input will match against a minimum and/or maximum peaks, and evaluated valid based on whether it&#39;s value is within bounds.</li>
+<li><strong><code>pattern</code>:</strong> You can append a <a href="#/api/Metadata.ValidatorTypes#properties_regex"><code>regex</code></a> validator to your input, to match the text against the expression you set.</li>
+</ul>
+</div><h4 id="properties_date_example">Example</h4>
+<div class="example"><div class="date-page"><h6 id="properties_date_example_source">Source</h6>
+<div source-edit="myAwesomeApp" source-edit-deps="angular.js controller.js" source-edit-html="date.html" source-edit-css="" source-edit-js="controller.js" source-edit-json="" source-edit-unit="" source-edit-scenario=""></div>
+<div class="tabbable"><div class="tab-pane" title="date.html">
+<pre class="prettyprint linenums" ng-set-text="date.html"></pre>
+<script type="text/ng-template" id="date.html">
+  <div class="form-demo row" ng-controller="FieldController">
+    <div class="col-md-6">
+      <raw-input 
+        property="field"
+        vertical="true"
+        ng-repeat="field in fields | filter:{ name: 'date-field' }" 
+        entity="entity" 
+        on-update="onUpdate"
+        on-change="onChange"
+        metadata="metadata"
+        mode="update"
+        creating="true"
+        index="0">
+      </raw-input>
+    </div>
+    <div class="col-md-6">
+    	<b>Value:</b> {{ entity['date-field'] | date }}
+    	<br />
+    	<b>Data type:</b> {{ typeof(entity['date-field']) }}
+    </div>
+  </div>
+</script>
+</div>
+<div class="tab-pane" title="controller.js">
+<pre class="prettyprint linenums" ng-set-text="controller.js"></pre>
+<script type="text/ng-template" id="controller.js">
+  angular.module('myAwesomeApp')
+    .controller('FieldController', ['$scope', 'util', 'scaffold', function($scope, util, scaffold) {
+      // Get metadata
+      $scope.metadata = util.getMetadata('fieldtype-demo');
+
+      // Get fields
+      $scope.fields = util.getEntityFields($scope.metadata);
+
+      // Create an entity
+      $scope.entity = scaffold.newEntity($scope.metadata);
+
+      // Listen for updates
+      $scope.log = [];
+      $scope.onUpdate = function(metadata, value, entity, parentField, parentEntity) {
+        entity[metadata.name] = value.text;
+        $scope.log.push('setting value ' + value.text);
+      }
+
+      $scope.typeof = function(value) {
+        if(value === null) return 'null';
+        if(value === undefined) return 'undefined';
+        return typeof(value);
+      };
+    }]);
+</script>
+</div>
+</div><h6 id="properties_date_example_demo">Demo</h6>
+<div class="well doc-example-live animate-container" ng-embed-app="myAwesomeApp" ng-set-html="date.html" ng-eval-javascript="controller.js"></div> </p>
+</div></div>
+</div>
+</li>
+<li><h3 id="properties_datetime">DATETIME</h3>
+<div class="datetime"><div class="datetime-page"><p>DateTime fields render datetime objects and let users select date and time from a tooltip. <code>DateTime fields</code> support validation both with <code>String</code> patterns and <code>date</code> validations.</p>
+<h4 id="properties_datetime_data-types">Data types <span class="label label-primary"><a href="#/api/Metadata.DataTypes#properties_string">string</a></span></h4>
+<p>The <code>datetime input</code> is designed to be used with <a href="#/api/Metadata.FieldTypes#properties#date"><code>dates</code></a>. However, it can handle <a href="#/api/Metadata.DataTypes#properties_string"><code>strings</code></a> with a <code>datetime</code> format - i.e. &#39;<code>yyyy-MM-dd HH:mm:ss</code>&#39; - and <a href="#/api/Metadata.FieldTypes#properties_numer"><code>numbers</code></a> for managing timestamps.</p>
+<h4 id="properties_datetime_multiplicities">Multiplicities</h4>
+<p>The <code>datetime input</code> is designed for <a href="#/api/Metadata.Multiplicities#properties_one"><code>ONE</code></a> multiplicity.</p>
+<h4 id="properties_datetime_configuration">Configuration</h4>
+<p><em>Inherited from <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a></em></p>
+<p>The <code>datetime input</code> does not extend nor override <code>raw</code> functionality.</p>
+<h4 id="properties_datetime_events">Events</h4>
+<p><em>Inherited from <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a></em></p>
+<p>The <code>datetime input</code> does not fire nor listen further events.</p>
+<h4 id="properties_datetime_validations">Validations</h4>
+<p>The <code>datetime input</code> allows several validations:</p>
+<ul>
+<li><strong><code>required</code>:</strong> The input won&#39;t be valid until it&#39;s some value it&#39;s filled.</li>
+<li><strong><code>[min|max]Length</code>:</strong> The input will match against a minimum and/or maximum peaks, and evaluated valid based on whether it&#39;s value is within bounds.</li>
+<li><strong><code>pattern</code>:</strong> You can append a <a href="#/api/Metadata.ValidatorTypes#properties_regex"><code>regex</code></a> validator to your input, to match the text against the expression you set.</li>
+</ul>
+</div><h4 id="properties_datetime_example">Example</h4>
+<div class="example"><div class="datetime-page"><h6 id="properties_datetime_example_source">Source</h6>
+<div source-edit="myAwesomeApp" source-edit-deps="angular.js controller.js" source-edit-html="datetime.html" source-edit-css="" source-edit-js="controller.js" source-edit-json="" source-edit-unit="" source-edit-scenario=""></div>
+<div class="tabbable"><div class="tab-pane" title="datetime.html">
+<pre class="prettyprint linenums" ng-set-text="datetime.html"></pre>
+<script type="text/ng-template" id="datetime.html">
+  <div class="form-demo row" ng-controller="FieldController">
+    <div class="col-md-6">
+      <raw-input 
+        property="field"
+        vertical="true"
+        ng-repeat="field in fields | filter:{ name: 'datetime-field' }" 
+        entity="entity" 
+        on-update="onUpdate"
+        on-change="onChange"
+        metadata="metadata"
+        mode="update"
+        creating="true"
+        index="0">
+      </raw-input>
+    </div>
+    <div class="col-md-6">
+    	<b>Value:</b> {{ entity['datetime-field'] | date:'yyyy-MM-dd HH:mm:ss' }}
+    	<br />
+    	<b>Data type:</b> {{ typeof(entity['datetime-field']) }}
+    </div>
+  </div>
+</script>
+</div>
+<div class="tab-pane" title="controller.js">
+<pre class="prettyprint linenums" ng-set-text="controller.js"></pre>
+<script type="text/ng-template" id="controller.js">
+  angular.module('myAwesomeApp')
+    .controller('FieldController', ['$scope', 'util', 'scaffold', function($scope, util, scaffold) {
+      // Get metadata
+      $scope.metadata = util.getMetadata('fieldtype-demo');
+
+      // Get fields
+      $scope.fields = util.getEntityFields($scope.metadata);
+
+      // Create an entity
+      $scope.entity = scaffold.newEntity($scope.metadata);
+
+      // Listen for updates
+      $scope.log = [];
+      $scope.onUpdatetime = function(metadata, value, entity, parentField, parentEntity) {
+        entity[metadata.name] = value.text;
+        $scope.log.push('setting value ' + value.text);
+      }
+
+      $scope.typeof = function(value) {
+        if(value === null) return 'null';
+        if(value === undefined) return 'undefined';
+        return typeof(value);
+      };
+    }]);
+</script>
+</div>
+</div><h6 id="properties_datetime_example_demo">Demo</h6>
+<div class="well doc-example-live animate-container" ng-embed-app="myAwesomeApp" ng-set-html="datetime.html" ng-eval-javascript="controller.js"></div> </p>
+</div></div>
+</div>
+</li>
+<li><h3 id="properties_file">FILE</h3>
+<div class="file"><div class="file-page"><p>File input. </p>
+</div></div>
+</li>
+<li><h3 id="properties_image">IMAGE</h3>
+<div class="image"><div class="image-page"><p>Image input. It renders an <code>&lt;img ng-src=&quot;...&quot;&gt;</code> with the <code>source</code> being the field&#39;s value.</p>
+</div></div>
+</li>
+<li><h3 id="properties_link">LINK</h3>
+<div class="link"><div class="link-page"><p>Renders a link to access the value. Field&#39;s value must be a valid URL.</p>
+</div></div>
+</li>
+<li><h3 id="properties_number">NUMBER</h3>
+<div class="number"><div class="number-page"><p>HTML5 <code>number text</code> input. It renders as an <code>&lt;input type=&quot;number&quot;&gt;</code>, and accepts by default any string as value. You can append validators to assure integrity of the data within your requirements.</p>
+<h4 id="properties_number_data-types">Data types <span class="label label-danger"><a href="#/api/Metadata.DataTypes#properties_number">number</a></span></h4>
+<p>The <code>number input</code> is designed to be used with <a href="#/api/Metadata.DataTypes#properties_number"><code>number</code></a> data types.</p>
+<p>The number input uses the numerical value set in the field. The input should restrict users for writing any <em>non-numerical</em> value tried to be written. </p>
+<h4 id="properties_number_multiplicities">Multiplicities</h4>
+<p>The <code>number input</code> is designed for <a href="#/api/Metadata.Multiplicities#properties_one"><code>ONE</code></a> multiplicity.</p>
+<h4 id="properties_number_configuration">Configuration</h4>
+<p><em>Inherited from <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a></em></p>
+<p>The <code>number input</code> does not extend nor override <code>raw</code> functionality.</p>
+<h4 id="properties_number_events">Events</h4>
+<p><em>Inherited from <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a></em></p>
+<p>The <code>number input</code> does not fire nor listen further events.</p>
+<h4 id="properties_number_validations">Validations</h4>
+<p>The <code>number input</code> allows several validations:</p>
+<ul>
+<li><strong><code>required</code>:</strong> The input won&#39;t be valid until it&#39;s some value it&#39;s filled.</li>
+<li><strong><code>[min|max]Length</code>:</strong> The input will match against a minimum and/or maximum number range, and evaluated valid based on whether it&#39;s value is within bounds.</li>
+</ul>
+</div><h4 id="properties_number_example">Example</h4>
+<div class="example"><div class="number-page"><h6 id="properties_number_example_source">Source</h6>
+<div source-edit="myAwesomeApp" source-edit-deps="angular.js controller.js" source-edit-html="number.html" source-edit-css="" source-edit-js="controller.js" source-edit-json="" source-edit-unit="" source-edit-scenario=""></div>
+<div class="tabbable"><div class="tab-pane" title="number.html">
+<pre class="prettyprint linenums" ng-set-text="number.html"></pre>
+<script type="text/ng-template" id="number.html">
+  <div class="form-demo row" ng-controller="FieldController">
+    <div class="col-md-6">
+      <raw-input 
+        property="field"
+        vertical="true"
+        ng-repeat="field in fields | filter:{ name: 'number-field' }" 
+        entity="entity" 
+        on-update="onUpdate"
+        on-change="onChange"
+        metadata="metadata"
+        mode="update"
+        creating="true"
+        index="0">
+      </raw-input>
+    </div>
+    <div class="col-md-6">
+    	<b>Value:</b> {{ entity['number-field'] }}
+    	<br />
+    	<b>Data type:</b> {{ typeof(entity['number-field']) }}
+    </div>
+  </div>
+</script>
+</div>
+<div class="tab-pane" title="controller.js">
+<pre class="prettyprint linenums" ng-set-text="controller.js"></pre>
+<script type="text/ng-template" id="controller.js">
+  angular.module('myAwesomeApp')
+    .controller('FieldController', ['$scope', 'util', 'scaffold', function($scope, util, scaffold) {
+      // Get metadata
+      $scope.metadata = util.getMetadata('fieldtype-demo');
+
+      // Get fields
+      $scope.fields = util.getEntityFields($scope.metadata);
+
+      // Create an entity
+      $scope.entity = scaffold.newEntity($scope.metadata);
+
+      // Listen for updates
+      $scope.log = [];
+      $scope.onUpdate = function(metadata, value, entity, parentField, parentEntity) {
+        entity[metadata.name] = value.text;
+        $scope.log.push('setting value ' + value.text);
+      }
+
+      $scope.typeof = function(value) {
+        if(value === null) return 'null';
+        if(value === undefined) return 'undefined';
+        return typeof(value);
+      };
+    }]);
+</script>
+</div>
+</div><h6 id="properties_number_example_demo">Demo</h6>
+<div class="well doc-example-live animate-container" ng-embed-app="myAwesomeApp" ng-set-html="number.html" ng-eval-javascript="controller.js"></div> </p>
+</div></div>
+</div>
+</li>
+<li><h3 id="properties_option">OPTION</h3>
+<div class="option"><div class="option-page"><p>An option is a boolean field rendered as a toggle-able checkbox.</p>
+</div></div>
+</li>
+<li><h3 id="properties_password">PASSWORD</h3>
+<div class="password"><div class="password-page"><p>HTML5&#39;s <code>password</code> input</p>
+</div></div>
+</li>
+<li><h3 id="properties_pick_list">PICK_LIST</h3>
+<div class="pick_list"><div class="pick-list-page"><p>Renders a list, for <a href="#/api/Metadata.Multiplicities#properties_many"><code>MANY</code></a> multiplitity fields. </p>
+</div></div>
+</li>
+<li><h3 id="properties_plain">PLAIN</h3>
+<div class="plain"><div class="plain-page"><p>The classical <code>plain text</code> input. It renders as an <code>&lt;input type=&quot;text&quot;&gt;</code>, and accepts by default any string as value. You can append validators to assure integrity of the data within your requirements.</p>
+<h4 id="properties_plain_data-types">Data types <span class="label label-primary"><a href="#/api/Metadata.DataTypes#properties_string">string</a></span></h4>
+<p>The <code>plain input</code> is designed to be used with <a href="#/api/Metadata.DataTypes#properties_string"><code>string</code></a> data types. You can use it for <a href="#/api/Metadata.FieldTypes#properties_numer"><code>numbers</code></a> or <a href="#/api/Metadata.FieldTypes#properties#date"><code>dates</code></a>, though they have their specific data types.</p>
+<p>The plain input recovers <strong>exactly</strong> what&#39;s written on the input&#39;s value, and stores it <em>as-is</em> into the entity. </p>
+<h4 id="properties_plain_multiplicities">Multiplicities</h4>
+<p>The <code>plain input</code> is designed for <a href="#/api/Metadata.Multiplicities#properties_one"><code>ONE</code></a> multiplicity.</p>
+<h4 id="properties_plain_configuration">Configuration</h4>
+<p><em>Inherited from <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a></em></p>
+<p>The <code>plain input</code> does not extend nor override <code>raw</code> functionality.</p>
+<h4 id="properties_plain_events">Events</h4>
+<p><em>Inherited from <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a></em></p>
+<p>The <code>plain input</code> does not fire nor listen further events.</p>
+<h4 id="properties_plain_validations">Validations</h4>
+<p>The <code>plain input</code> allows several validations:</p>
+<ul>
+<li><strong><code>required</code>:</strong> The input won&#39;t be valid until it&#39;s some value it&#39;s filled.</li>
+<li><strong><code>[min|max]Length</code>:</strong> The input will match against a minimum and/or maximum peaks, and evaluated valid based on whether it&#39;s value is within bounds.</li>
+<li><strong><code>pattern</code>:</strong> You can append a <a href="#/api/Metadata.ValidatorTypes#properties_regex"><code>regex</code></a> validator to your input, to match the text against the expression you set.</li>
+</ul>
+</div><h4 id="properties_plain_example">Example</h4>
+<div class="example"><div class="plain-page"><h6 id="properties_plain_example_source">Source</h6>
+<div source-edit="myAwesomeApp" source-edit-deps="angular.js controller.js" source-edit-html="plain.html" source-edit-css="" source-edit-js="controller.js" source-edit-json="" source-edit-unit="" source-edit-scenario=""></div>
+<div class="tabbable"><div class="tab-pane" title="plain.html">
+<pre class="prettyprint linenums" ng-set-text="plain.html"></pre>
+<script type="text/ng-template" id="plain.html">
+  <div class="form-demo row" ng-controller="FieldController">
+    <div class="col-md-6">
+      <raw-input 
+        property="field"
+        vertical="true"
+        ng-repeat="field in fields | filter:{ name: 'plain-field' }" 
+        entity="entity" 
+        on-update="onUpdate"
+        on-change="onChange"
+        metadata="metadata"
+        mode="update"
+        creating="true"
+        index="0">
+      </raw-input>
+    </div>
+    <div class="col-md-6">
+    	<b>Value:</b> {{ entity['plain-field'] }}
+    	<br />
+    	<b>Data type:</b> {{ typeof(entity['plain-field']) }}
+    </div>
+  </div>
+</script>
+</div>
+<div class="tab-pane" title="controller.js">
+<pre class="prettyprint linenums" ng-set-text="controller.js"></pre>
+<script type="text/ng-template" id="controller.js">
+  angular.module('myAwesomeApp')
+    .controller('FieldController', ['$scope', 'util', 'scaffold', function($scope, util, scaffold) {
+      // Get metadata
+      $scope.metadata = util.getMetadata('fieldtype-demo');
+
+      // Get fields
+      $scope.fields = util.getEntityFields($scope.metadata);
+
+      // Create an entity
+      $scope.entity = scaffold.newEntity($scope.metadata);
+
+      // Listen for updates
+      $scope.log = [];
+      $scope.onUpdate = function(metadata, value, entity, parentField, parentEntity) {
+        entity[metadata.name] = value.text;
+        $scope.log.push('setting value ' + value.text);
+      }
+
+      $scope.typeof = function(value) {
+        if(value === null) return 'null';
+        if(value === undefined) return 'undefined';
+        return typeof(value);
+      };
+    }]);
+</script>
+</div>
+</div><h6 id="properties_plain_example_demo">Demo</h6>
+<div class="well doc-example-live animate-container" ng-embed-app="myAwesomeApp" ng-set-html="plain.html" ng-eval-javascript="controller.js"></div> </p>
+</div></div>
+</div>
+</li>
+<li><h3 id="properties_price">PRICE</h3>
+<div class="price"><div class="price-page"><p>Numerical input, for price representation. It&#39;s basically a <a href="#/api/Metadata.FieldTypes#properties_number"><code>NUMBER</code></a> input, but with <code>currency</code> rendering. It relies on a <a href="#/api/Metadata.ConfigurationParam#properties_currency"><code>CURRENCY</code></a> configuration param to setup the currency, and a <a href="#/api/Metadata.ConfigurationParam#properties_currency_source"><code>CURRENCY_SOURCE</code></a> to define where this currency comes from (useful for varying currencies depending on the entity).</p>
+</div></div>
+</li>
+<li><h3 id="properties_quantity">QUANTITY</h3>
+<div class="quantity"><div class="quantity-page"><p>It&#39;s basically a numerical input, but for referencing quantities. It has several <a href="#/api/Metadata.ConfigurationPara">configuration options</a> to setup the unit, the decimal amounts, etcetera:</p>
+<ul>
+<li><strong><a href="#/api/Metadata.ConfigurationParam#properties_quantity_unit"><code>QUANTITY_UNIT</code></a>:</strong> Unit.</li>
+<li><strong><a href="#/api/Metadata.ConfigurationParam#properties_quantity_unit_source"><code>QUANTITY_UNIT_SOURCE</code></a>:</strong> Where to get the unit from.</li>
+<li><strong><a href="#/api/Metadata.ConfigurationParam#properties_quantity_decimal"><code>QUANTITY_DECIMAL</code></a>:</strong> Decimal no.</li>
+<li><strong><a href="#/api/Metadata.ConfigurationParam#properties_quantity_decimal_source"><code>QUANTITY_DECIMAL_SOURCE</code></a>:</strong> Where to get the decimal no. configuration from.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_select">SELECT</h3>
+<div class="select"><div class="select-page"><p>Used for <a href="#/api/Metadata.DataTypes#properties_complex"><code>COMPLEX</code></a> data-typed fields. Text input with a button for quick targeting eligible elements. This field type uses all <code>complex</code>-intended parameters defined on the <a href="#/api/Metadata.DataType">data-type</a>. Supports both <a href="#/api/Metdata.Multiplicities">multiplicities</a>.</p>
+</div></div>
+</li>
+<li><h3 id="properties_switch">SWITCH</h3>
+<div class="switch"><div class="switch-page"><p>A switch is a physical toggle-button for selecting boolean values. </p>
+</div></div>
+</li>
+<li><h3 id="properties_table">TABLE</h3>
+<div class="table"><div class="table-page"><p>Renders a table to show data. These tables are intended to render numerical data, range-based, depending on several <a href="#/api/Metadata.ConfigurationParam">configuration parameters</a> given to the field&#39;s type:</p>
+<ul>
+<li><strong><a href="#/api/Metadata.ConfigurationParam#properties_table_cell_filter"><code>TABLE_CELL_FILTER</code></a>:</strong> Defines the filter to apply for each cell&#39;s value.</li>
+<li><strong><a href="#/api/Metadata.ConfigurationParam#properties_table_conf_x_axis_min"><code>TABLE_CONF_X_AXIS_MIN</code></a>:</strong> Defines the minimum <code>x-axis</code> value.</li>
+<li><strong><a href="#/api/Metadata.ConfigurationParam#properties_table_conf_x_axis_max"><code>TABLE_CONF_X_AXIS_MAX</code></a>:</strong> Defines the maximum <code>x-axis</code> value.</li>
+<li><strong><a href="#/api/Metadata.ConfigurationParam#properties_table_conf_x_axis_property"><code>TABLE_CONF_X_AXIS_PROPERTY</code></a>:</strong> Defines the property (whitin the inner&#39;s table entity) to render onto the <code>x-axis</code>.</li>
+<li><p><strong><a href="#/api/Metadata.ConfigurationParam#properties_table_conf_x_axis_step"><code>TABLE_CONF_X_AXIS_STEP</code></a>:</strong> Defines the numerical step between one column and the next.</p>
+</li>
+<li><p><strong><a href="#/api/Metadata.ConfigurationParam#properties_table_conf_y_axis_min"><code>TABLE_CONF_Y_AXIS_MIN</code></a>:</strong> Defines the minimum <code>x-axis</code> value.</p>
+</li>
+<li><strong><a href="#/api/Metadata.ConfigurationParam#properties_table_conf_y_axis_max"><code>TABLE_CONF_Y_AXIS_MAX</code></a>:</strong> Defines the maximum <code>x-axis</code> value.</li>
+<li><strong><a href="#/api/Metadata.ConfigurationParam#properties_table_conf_y_axis_property"><code>TABLE_CONF_Y_AXIS_PROPERTY</code></a>:</strong> Defines the property (whitin the inner&#39;s table entity) to render onto the <code>x-axis</code>.</li>
+<li><strong><a href="#/api/Metadata.ConfigurationParam#properties_table_conf_y_axis_step"><code>TABLE_CONF_Y_AXIS_STEP</code></a>:</strong> Defines the numerical step between one row and the next.</li>
+</ul>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

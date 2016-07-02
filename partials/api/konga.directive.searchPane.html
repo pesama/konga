@@ -1,0 +1,39 @@
+<h1><code ng:non-bindable="">searchPane</code>
+<div><span class="hint">directive in module <code ng:non-bindable="">konga</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="konga-directive-page konga-directive-searchpane-page"><p>The <code>searchPane</code> is in charge of all rendering operations of the search forms, along with the communication with the controller for upper-level tasks, using the info received by lower-level elements - the <a href="#/api/konga.directive:rawInput"><code>rawInputs</code></a>.</p>
+<p><img src="/static/search-pane-basic-flow.png" width="80%" class="center"></p>
+<h3 id="description_process">Process</h3>
+<p>The <code>searchPane</code> receives the <a href="#/api/Metadata.Entity">metadata</a>, the query to map values on, at the function to call once it&#39;s finished, and launches the form.</p>
+<h4 id="description_process_get-fields-and-categories">Get fields and categories</h4>
+<p>Leveraging <a href="#/api/Standards.Tools#methods_getentityfields"><code>getEntityFields</code></a> and <a href="#/api/Standards.Tools#methods_getentitycategories"><code>getEntityCategories</code></a> methods, the <code>searchPane</code> gets all fields and categories that will be used in the form.</p>
+<p>All field-dependent responsibilities are handled independently by each field, using <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a> directives. Hence, the main duty of the <code>searchPane</code> is to split form into independent pieces - the fields - and let them work. </p>
+<h4 id="description_process_setup-view-with">Setup view with <code>formType</code></h4>
+<p>Once the fields and categories are fetched, the <code>formType</code> assigned for <a href="#/api/Metadata.FormScopes#properties_search"><code>search</code> scope</a> on the <a href="#/api/Metadata.Field">field&#39;s definition</a> is used to determine which view to render. </p>
+<p>The selected view will be provided with the fields and categories fetched on earlier stages, so they could fully build the layout the form will have.</p>
+<p> <img src="/static/search-pane-formtype.png" width="50%" class="center"></p>
+<p>There&#39;s more detailed documentation about form types, along with examples, on the <a href="#/api/Metadata.FormTypes"><code>FormType</code></a> documentation.</p>
+<h3 id="description_submitting">Submitting</h3>
+<p>All submit responsibility relies on the <a href="#/api/konga.controller:EntitySearchController"><code>EntitySearchController</code></a>. All the <code>searchPane</code> does on submit is send the query up to the defined <code>submit</code> method.</p>
+<h3 id="description_resetting">Resetting</h3>
+<p>For resetting, a <a href="#/api/konga.directive:searchPane#events_reset-form"><code>reset-form</code></a> event will be <code>$broadcasted</code>, and every <a href="#/api/konga.directive:rawInput">field</a> will restore to defaults.</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as element:<pre class="prettyprint linenums">&lt;search-pane
+       entity-metadata="{Object}"
+       query="{Object}"
+       submit="{function()}"&gt;
+&lt;/search-pane&gt;</pre>
+<h3 id="usage_directive-info">Directive info</h3>
+<div class="directive-info"><ul><li>This directive creates new scope.</li>
+</ul>
+</div>
+<h4 id="usage_directive-info_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>entityMetadata</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="konga-directive-page konga-directive-searchpane-page"><p><span class="label type-hint type-hint-object"><a href="#/api/Metadata.Entity">Entity</a></span>
+The metadata of the entity to create a form to. </p>
+</div></td></tr><tr><td>query</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="konga-directive-page konga-directive-searchpane-page"><p>The query object to deal with (the search entity).</p>
+</div></td></tr><tr><td>submit</td><td><a href="" class="label type-hint type-hint-function">function()</a></td><td><div class="konga-directive-page konga-directive-searchpane-page"><p>The submit method. The <code>searchPane</code> will call it once the user launches the search.</p>
+</div></td></tr></tbody></table></div>
+</div>

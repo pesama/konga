@@ -1,0 +1,168 @@
+<h1><code ng:non-bindable="">ConfigurationParam</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Metadata</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="metadata-configurationparam-page"><p>A configuration param stores a raw property, which is normally attached to a Konga structure element (i.e. <a href="#/api/Metadata.Application">applications</a>, <a href="#/api/Metadata.Entity">entities</a> and <a href="#/api/Metadata.Field">fields</a>). Configuration is interpreted into Konga via a <a href="#/api/konga.configurationManager">configuration manager</a>, who reads all hierarchy configurations and applies the required value. </p>
+<h3 id="description_native-configuration-parameters">Native configuration parameters</h3>
+<p>You have all native configuration parameters here, as the properties of the element. </p>
+<h3 id="description_custom-configuration-parameters">Custom configuration parameters</h3>
+<p>Konga&#39;s <a href="#/api/konga.configurationManager">configuration manager</a> intention is not only to fulfill native Konga configurations, but also for giving you an expansion layer to put aditional configuration into elements, that could enrich your app in any way you want.</p>
+<p>An useful usage for this feature would be to define schemas for your entities and fields, that you could easily retrieve and render in your views, giving you full semantic compliance of your objects, and a better understanding of your app to machines. Well, it&#39;s just an example.</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">new ConfigurationParam(key, value);</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>key</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="metadata-configurationparam-page"><p>Key for the configuration parameter</p>
+</div></td></tr><tr><td>value</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="metadata-configurationparam-page"><p>Value for the configuration parameter</p>
+</div></td></tr></tbody></table></div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_cascade_update">CASCADE_UPDATE</h3>
+<div class="cascade_update"><div class="cascade-update-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_config_look_and_feel">CONFIG_LOOK_AND_FEEL</h3>
+<div class="config_look_and_feel"><div class="config-look-and-feel-page"><p><span class="label label-success"><a href="#/api/Metadata.Application">Application</a></p>
+<p>Defines the layout for the application</p>
+<p><strong>Tabbed</strong></p>
+<p>This mode displays a tabbed <code>navbar</code> on top of the <code>&lt;div ng-view&gt;
+&lt;/div&gt;</code> tag, that stores - and accesses - each of the views opened. </p>
+<p><strong>Plain</strong></p>
+<p>Plain rendering of the view. Here the tabs are not rendered, though still present. You can access via <code>$rootScope.tabs</code>. You can leverage the tab <a href="#/api/Standards.Operations">operations</a> for managing them in plain mode.</p>
+</div></div>
+</li>
+<li><h3 id="properties_currency">CURRENCY</h3>
+<div class="currency"><div class="currency-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_currency_source">CURRENCY_SOURCE</h3>
+<div class="currency_source"><div class="currency-source-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_custom_field_type">CUSTOM_FIELD_TYPE</h3>
+<div class="custom_field_type"><div class="custom-field-type-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_custom_field_type">CUSTOM_FIELD_TYPE</h3>
+<div class="custom_field_type"><div class="custom-field-type-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_disable_complex_field">DISABLE_COMPLEX_FIELD</h3>
+<div class="disable_complex_field"><div class="disable-complex-field-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_dont_create_copy">DONT_CREATE_COPY</h3>
+<div class="dont_create_copy"><div class="dont-create-copy-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_hide_category_header">HIDE_CATEGORY_HEADER</h3>
+<div class="hide_category_header"><div class="hide-category-header-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_image_height">IMAGE_HEIGHT</h3>
+<div class="image_height"><div class="image-height-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_image_width">IMAGE_WIDTH</h3>
+<div class="image_width"><div class="image-width-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_propagate_update">PROPAGATE_UPDATE</h3>
+<div class="propagate_update"><div class="propagate-update-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_quantity_decimal">QUANTITY_DECIMAL</h3>
+<div class="quantity_decimal"><div class="quantity-decimal-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_quantity_decimal_source">QUANTITY_DECIMAL_SOURCE</h3>
+<div class="quantity_decimal_source"><div class="quantity-decimal-source-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_quantity_unit">QUANTITY_UNIT</h3>
+<div class="quantity_unit"><div class="quantity-unit-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_quantity_unit">QUANTITY_UNIT</h3>
+<div class="quantity_unit"><div class="quantity-unit-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_quantity_unit">QUANTITY_UNIT</h3>
+<div class="quantity_unit"><div class="quantity-unit-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_quantity_unit_source">QUANTITY_UNIT_SOURCE</h3>
+<div class="quantity_unit_source"><div class="quantity-unit-source-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_read_only">READ_ONLY</h3>
+<div class="read_only"><div class="read-only-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_results_use_category">RESULTS_USE_CATEGORY</h3>
+<div class="results_use_category"><div class="results-use-category-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_search_custom_view">SEARCH_CUSTOM_VIEW</h3>
+<div class="search_custom_view"><div class="search-custom-view-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_search_use_category">SEARCH_USE_CATEGORY</h3>
+<div class="search_use_category"><div class="search-use-category-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_show_pagination">SHOW_PAGINATION</h3>
+<div class="show_pagination"><div class="show-pagination-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_table_cell_filter">TABLE_CELL_FILTER</h3>
+<div class="table_cell_filter"><div class="table-cell-filter-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_table_conf_x_axis_max">TABLE_CONF_X_AXIS_MAX</h3>
+<div class="table_conf_x_axis_max"><div class="table-conf-x-axis-max-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_table_conf_x_axis_min">TABLE_CONF_X_AXIS_MIN</h3>
+<div class="table_conf_x_axis_min"><div class="table-conf-x-axis-min-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_table_conf_x_axis_property">TABLE_CONF_X_AXIS_PROPERTY</h3>
+<div class="table_conf_x_axis_property"><div class="table-conf-x-axis-property-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_table_conf_x_axis_step">TABLE_CONF_X_AXIS_STEP</h3>
+<div class="table_conf_x_axis_step"><div class="table-conf-x-axis-step-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_table_conf_y_axis_max">TABLE_CONF_Y_AXIS_MAX</h3>
+<div class="table_conf_y_axis_max"><div class="table-conf-y-axis-max-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_table_conf_y_axis_min">TABLE_CONF_Y_AXIS_MIN</h3>
+<div class="table_conf_y_axis_min"><div class="table-conf-y-axis-min-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_table_conf_y_axis_property">TABLE_CONF_Y_AXIS_PROPERTY</h3>
+<div class="table_conf_y_axis_property"><div class="table-conf-y-axis-property-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_table_conf_y_axis_step">TABLE_CONF_Y_AXIS_STEP</h3>
+<div class="table_conf_y_axis_step"><div class="table-conf-y-axis-step-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_update_custom_view">UPDATE_CUSTOM_VIEW</h3>
+<div class="update_custom_view"><div class="update-custom-view-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_update_hide_buttons">UPDATE_HIDE_BUTTONS</h3>
+<div class="update_hide_buttons"><div class="update-hide-buttons-page"><p>TODO</p>
+</div></div>
+</li>
+<li><h3 id="properties_use_short_label">USE_SHORT_LABEL</h3>
+<div class="use_short_label"><div class="use-short-label-page"><p>TODO</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

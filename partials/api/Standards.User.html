@@ -1,0 +1,26 @@
+<h1><code ng:non-bindable="">User</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Standards</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="standards-user-page"><p>Konga stores basic user information. It mainly uses it to match permissions against the operations the user tries to perform, although you can extend the user information on any fashion you want (useful for private apps).</p>
+<p>User management is achieved thanks to a <a href="#/api/konga.userData"><code>userData</code></a> value, who stores the information you provide about the user.</p>
+<h3 id="description_role-management">Role management</h3>
+<p>If your application deals with permission-based forms (i.e. you have appended permissions to your entities and fields), you might need to let Konga know about user&#39;s roles - otherwise the restricted functionalities will be restricted to everyone. </p>
+<p>Konga comes with an empty array as the <a href="#/api/konga.userData#properties_roles">user&#39;s roles</a>. To append some role you can do as follows:</p>
+<pre class="prettyprint linenums">
+angular.module('myAwesomeApp')
+  .run('LoginController', ['userData', 'myUserRoles', function(userData, myUserRoles) {
+    userData.roles = myUserRoles;
+  }]);
+</pre>
+<p>You can append your role initialisation anywhere you want, but until you don&#39;t do this permissions won&#39;t be ready, and thus all restricted operations won&#39;t be available.</p>
+<h3 id="description_custom-parameters">Custom parameters</h3>
+<p><a href="#/api/konga.userData"><code>userData</code></a> value is essentially a plain <code>js</code> object. Therefore you can append any property, method, or any other utility you want or need to handle users properly in your app.</p>
+<h4 id="description_custom-parameters"><code>access_token</code></h4>
+<p>On private APIs that need OAuth2 authentication for accessing it, <code>userData</code> becomes useful to store the token to access it on your request interceptor to inject it into API calls. </p>
+<h4 id="description_custom-parameters_basic-information">Basic information</h4>
+<p>If you are dealing with a private app, that uses user information for anything, <code>userData</code> will be handy too. You can simply store the user information you need to use, and it will be available for you anywhere.</p>
+</div></div>
+</div>

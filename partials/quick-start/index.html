@@ -1,0 +1,39 @@
+<h1><code ng:non-bindable=""></code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><div class="index-page"><div style="margin-top: 3em;margin-left: 1em;" class="pull-right">
+  <iframe width="420" height="315" src="http://www.youtube.com/embed/ZJ5EaWzPAQ0?autoplay=0"></iframe>
+</div>
+
+<h2 id="what-is-konga">What is Konga?</h2>
+<p>Konga is an application engine, whose purpose is to improve development experience when dealing with form-based apps, by reducing required times and efforts drammatically - <b>up to 80%</b>. It does so by introducing a new concept into our classical development tasks: <b>Metadata modeling</b>.</p>
+<div class="text-center">
+<img src="/static/konga-bottom-first.png" width="300">
+</div>
+
+<div style="clear:both">
+</div>
+
+<h3 id="what-is-konga_metadata-modeling">Metadata modeling</h3>
+<div style="margin-left: 1em;" class="pull-right">
+  <iframe width="420" height="315" src="http://www.youtube.com/embed/TEFZLjadqAw?autoplay=0"></iframe>
+</div>
+
+<p><b>Metadata modeling</b> helps you define your elements, and convert them into an object, interpreted by the UI to generate your app. So instead of creating the forms manually for each entity, you would just define the metadata, and let Konga do the rest.</p>
+<p>The <b>metadata object</b> definitions cover all contextual information about the data of your app - e.g. <b>identification</b>, <b>data typing</b> or <b>validation</b>. Definitions are applied to these elements:</p>
+<ul>
+<li><strong><a href="#/api/Metadata.Application">Application</a>:</strong> Is the root of your app, and you can provide it with a name, and certain configuration.</li>
+<li><strong><a href="#/api/Metadata.Entity">Entities</a>:</strong> Define the elements of your app - e.g. Car, Person, ... - and can configure <b>identification</b>, <b>allowed operations</b> - CRUD -  and <b>appearance</b>.</li>
+<li><strong><a href="#/api/Metadata.Field">Fields</a>:</strong> Describe the properties of any <b>entity</b>, and can control <b>identification</b>, <b>data typing</b>, <b>appearance</b>, <b>validation</b> and <b>operations</b>.</li>
+</ul>
+<p>The metadata is stored in a JSON object, which is the input for the UI to start working with Konga. To simplify metadata definitions, we&#39;ve provided you with some <a href="#/api/Metadata.Generators">generators</a> that let you write metadata in an easier way, and get it transformed to JSON.</p>
+<div class="text-center" style="clear:both">
+<img src="/static/konga-bottom-second.png" width="300">
+</div>
+
+
+<h3 id="what-is-konga_konga-ui">Konga UI</h3>
+<p>Konga UI is an AngularJS library, that includes a set of standards that will help you create a fully-working UI to manage your data with very little coding. It contains all required features to read the metadata, and generate <b>search &amp; results</b> and <b>update</b> forms automatically. </p>
+<hr>
+</div></div>

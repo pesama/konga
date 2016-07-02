@@ -1,0 +1,179 @@
+<h1><code ng:non-bindable="">Operations</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Standards</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="standards-operations-page"><p>Konga comes with several built-in operations to easy you perform quick-common tasks - with your app, the metadata, the user...</p>
+<h3 id="description_graphical-aids">Graphical aids <span class="label label-success">UI</span></h3>
+<h4 id="description_graphical-aids_alerts">Alerts</h4>
+<p>Konga includes quick functionality for launching alerts to the user. An alert adopts the form of a <code>toastr</code>, and functionality for dissapearing after a few seconds. </p>
+<p>This functionality is triggered using the <a href="#/api/Standards.Operations#methods_addalert"><code>addAlert</code></a> method.</p>
+<p>Alerts could be configured for showing different kinds of information. If you want to show an error, you&#39;d like to use the <code>error</code> type, while for notifying a successful operation result you&#39;d use <code>success</code>. Here you have an example of all types:</p>
+<div class="alert-container row" style="margin-top: 2em;">
+<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center">
+    <div class="alert bg-success">
+        I&#39;m a <strong>success</strong> alert
+    </div> 
+</div>
+<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center">
+    <div class="alert bg-primary">
+        I&#39;m an <strong>info</strong> alert
+    </div> 
+</div>
+<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center">
+    <div class="alert bg-warning">
+        I&#39;m a <strong>warning</strong> alert
+    </div> 
+</div>
+<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center">
+    <div class="alert bg-danger">
+        I&#39;m an <strong>error</strong> alert
+    </div> 
+</div>
+</div>
+
+<p>If you want to remove an alert before it&#39;s <code>$timeout</code> finishes and it removes autommatically, you can use <a href="#/api/Standards.Operations#methods_removealert"><code>removeAlert</code></a> method, that will immediately remove it from the stack.</p>
+<h4 id="description_graphical-aids_modal-dialogs">Modal dialogs</h4>
+<p>Sometimes is useful to ask user for explicit confirmation upon certain action execution. Other times becomes handy to show a notification dialog with some info, warning, exception... Konga includes built-in features for handling these things:</p>
+<h5 id="description_graphical-aids_modal-dialogs_notifications">Notifications</h5>
+<p>Notifications are handled by the <a href="#/api/Standards.Operations#methods_notify"><code>notify</code></a> method. With this method you will launch a modal dialog with some information, and user will only be able to close it and keep doing what he was doing. </p>
+<h5 id="description_graphical-aids_modal-dialogs_confirmations">Confirmations</h5>
+<p>If you need explicit user confirmation for executing a task, you can leverage <a href="#/api/Standards.Operations#methods_confirm"><code>confirm</code></a> method, and you will have your confirmation shown. Depending on the user&#39;s choice on the confirmation, you will have triggered your <code>okHandler</code> or your <code>koHandler</code>, where you should continue doing the functionalities you were asking confirmation for. </p>
+<p><strong>TODO Example</strong></p>
+<h5 id="description_graphical-aids_modal-dialogs_loaders">Loaders</h5>
+<p>Your application might rely heavily on one or further data providers - i.e. APIs. When data is loading, normally users are disallowed to perform operations that require such data to be ready. To overcome this, you can use Konga&#39;s <a href="#/api/Standards.Operations#methods_requestloading"><code>requestLoading</code></a> operation, providing it with a unique String identifying what is what you are trying to load. Once the data comes, and the app is again ready to serve it, you can call the <a href="#/api/Standards.Operations#methods_freeloading"><code>freeLoading</code></a> method, with the same String, and that loader will be released. </p>
+<p>Konga loading uses a <a href="#/api/KongaController.loading"><code>loaders</code></a> array, and the two methods menctioned above insert and removes elements into that array. If the <code>loaders</code> array has any element, a global loader will appear, blocking the whole screen from users to operate with the application. Once every element is removed from the <code>loaders</code> array, the graphical loader will disappear, and the user could resume the usage of the app.</p>
+<p><strong>TODO Example</strong></p>
+<p>When your app is loading everything would be blocked, and the user wouldn&#39;t be able to perform any operation. It the estimated loading time is real short, user wouldn&#39;t mind about this. But it you are about to perform a heavy data load - or any other operation that would leave the user unable to use the app for a long time - you can append a message to the graphical loader, so the users have some more info about what&#39;s going on. This is achieved using the <a href="#/api/Standards.Operations#methods_setloadingmessage"><code>setLoadingMessage</code></a> method, that receives a String, tries to translate it, and renders the result into the loading view.</p>
+<p>Konga uses the loaders for all standard operations that require data retrieval.</p>
+<h3 id="description_views">Views <span class="label label-success">UI</span></h3>
+<h4 id="description_views_modal-views">Modal views</h4>
+<p>Sometimes along your app&#39;s development, you will find yourself wanting to open a modal for rendering some content. Konga supports native modal opening, using <a href="#/api/Standards.Operations#methods_openmodal"><code>openModal</code></a> method. This method receives a <a href="#/api/Standards.Data%20types#properties_modal"><code>Modal</code></a> object definition and renders a modal with the configuration you set up on it.</p>
+<p><strong>TODO Example</strong></p>
+<p>To maintain controlled the <code>$watcher</code> count, once a modal opens natively, all <code>$watchers</code> enabled on the elements behind the modal are suspended, and resumed back once the modal closes. </p>
+<h4 id="description_views_tabs">Tabs</h4>
+<p>As we have seen on the <a href="#/api/Standards.Apps"><code>apps</code></a> page, Konga is in its basis a tab-based engine. </p>
+<p>Furthermore the standard tabs - created on standard operations <a href="#/api/Standards.Operations#methods_openentitysearch"><code>openEntitySearch</code></a> and <a href="#/api/Standards.Operations#methods_openentityupdate"><code>openEntityUpdate</code></a> - you can append custom tabs to your own features, by using <a href="#/api/Standards.Operations#methods_addtab">Standards.Operations#methods_addTab</a>. Tabs are stored at <a href="#/api/konga.controller:KongaController#properties_tabs"><code>tabs</code></a> array, accessible everywhere via <code>$rootScope</code>. You can close them using <a href="#/api/Standards.Operations#methods_closetab"><code>closeTab</code></a>, <a href="#/api/Standards.Operations#methods_closetabbyid"><code>closeTabById</code></a>, and <a href="#/api/Standards.Operations#methods_closealltabs"><code>closeAllTabs</code> methods</a>.</p>
+<p>Structure of a tab is defined on the <a href="#/api/Standards.Data%20types#properties_tab"><code>Tab</code></a> specification. </p>
+<p><strong>TODO Example</strong></p>
+<h3 id="description_standard-forms">Standard forms <span class="label label-danger">CORE</span></h3>
+<p>Form generation features let you generate rich forms based on a metadata for an entity. Metadata objects could be easily retrieved using <a href="#/api/Standards.Tools#methods_getmetadata"><code>util.getMetadata(&#39;entityName&#39;)</code></a> method. Once we have a metadata object we want a form from, there are three operations you could use:</p>
+<ul>
+<li><strong><a href="#/api/Standards.Operations#methods_openentitysearch"><code>openEntitySearch</code></a>:</strong> Opens a search form.</li>
+<li><strong><a href="#/api/Standards.Operations#methods_openentityupdate"><code>openEntityUpdate</code></a>:</strong> Opens an update form.</li>
+<li><strong><a href="#/api/Standards.Operations#methods_openentitycreate"><code>openEntityCreate</code></a>:</strong> Opens an update form, with a brand new <a href="#/api/konga.scaffold"><code>scaffolded</code></a> entity.</li>
+</ul>
+<p>These methods generate the <a href="#/api/Standards.Forms">forms</a>, appends a tab into the system, and redirects the user to it. Except for creating, an API call will be needed, so a loader appends whilst the request is flying. Once it returns, the loader is released and the data rendered, and the user is able to start using the form.</p>
+<h3 id="description_customisation">Customisation <span class="label label-danger">CORE</span></h3>
+<h4 id="description_customisation_action-dispatching">Action dispatching</h4>
+<p>TODO</p>
+<h4 id="description_customisation_redirections">Redirections</h4>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_addalert">addAlert(type, message, parameters)</h3>
+<div class="addalert"><div class="addalert-page"><p>Show a toast alert to the user, with a translatable/parametrizeable message.</p>
+</div><h5 id="methods_addalert_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>type</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addalert-page"><p>The type of alert (e.g. <code>success</code>, <code>error</code>). It inherites <em>Bootstrap</em>&#39;s <code>bg-...</code> classes.</p>
+</div></td></tr><tr><td>message</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addalert-page"><p>The message for the alert</p>
+</div></td></tr><tr><td>parameters <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="addalert-page"><p>If the message provided is a placeholder for a locale-provided text, you can give the translator a key-value parameters for the message.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_addtab">addTab(tab)</h3>
+<div class="addtab"><div class="addtab-page"><p>Opens a tab with the configured <a href="#/api/DataTypes.Tab"><code>parameters</code></a>.</p>
+</div><h5 id="methods_addtab_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>tab</td><td><a href="" class="label type-hint type-hint-tab">Tab</a></td><td><div class="addtab-page"><p>The tab configuration</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_changelocale">changeLocale(locale)</h3>
+<div class="changelocale"><div class="changelocale-page"><p>This mehtod changes the language of the full engine and its running application. It also notifies via a <a href="#/api/Events.locale-change"><code>locale-change</code></a> event broadcasted to all listening controllers.</p>
+</div><h5 id="methods_changelocale_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>locale <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-string">String</a></td><td><div class="changelocale-page"><p>The language to change to</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_closealltabs">closeAllTabs(force)</h3>
+<div class="closealltabs"><div class="closealltabs-page"><p>Closes all opened tabs</p>
+</div><h5 id="methods_closealltabs_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>force <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-boolean">Boolean</a></td><td><div class="closealltabs-page"><p>whether to force closing (and discard changes - if any)</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_closetab">closeTab(tab, force)</h3>
+<div class="closetab"><div class="closetab-page"><p>Closes the tab given. If the tab has change management enabled, and there is any change on the model, a confirmation will show. If you pass force=true, you will override confirmation and the tab will be instantly closed.</p>
+</div><h5 id="methods_closetab_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>tab</td><td><a href="" class="label type-hint type-hint-tab">Tab</a></td><td><div class="closetab-page"><p>tab to be closed</p>
+</div></td></tr><tr><td>force <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-boolean">Boolean</a></td><td><div class="closetab-page"><p>whether to force closing (and discard changes - if any)</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_closetabbyid">closeTabById(id)</h3>
+<div class="closetabbyid"><div class="closetabbyid-page"><p>Closes the tab that matches an id given. If no tab is found, it doesn&#39;t do anything.</p>
+</div><h5 id="methods_closetabbyid_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>id</td><td><a href="" class="label type-hint type-hint-id">id</a></td><td><div class="closetabbyid-page"><p>id of the tab to be closed</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_confirm">confirm(title, message, okHandler, koHandler, params)</h3>
+<div class="confirm"><div class="confirm-page"><p>Shows a confirm dialog, and execute custom actions depending on user&#39;s response.</p>
+</div><h5 id="methods_confirm_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>title</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="confirm-page"><p>The title for the confirmation dialog.</p>
+</div></td></tr><tr><td>message</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="confirm-page"><p>The message for the confirm dialog</p>
+</div></td></tr><tr><td>okHandler <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-function">Function</a></td><td><div class="confirm-page"><p>Callback to execute when the user confirms</p>
+</div></td></tr><tr><td>koHandler <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-function">Function</a></td><td><div class="confirm-page"><p>Callback to execute when the user cancels</p>
+</div></td></tr><tr><td>params <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="confirm-page"><p>Parameters for the translation messages and the handlers.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_dispatchaction">dispatchAction(action, parameters)</h3>
+<div class="dispatchaction"><div class="dispatchaction-page"><p>Dispatches an action, within the scope the user&#39;s at, and attaching to it&#39;s execution the given parameters.</p>
+</div><h5 id="methods_dispatchaction_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>action</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="dispatchaction-page"><p>It contains the action to execute. It <strong>must be an object</strong>, and include a property called <code>name</code>, which must store the name for the action. </p>
+</div></td></tr><tr><td>parameters</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="dispatchaction-page"><p>Add a set of parameters to the action&#39;s execution environment</p>
+</div> <p><em>(default: new Object)</em></p></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_freeloading">freeLoading(id)</h3>
+<div class="freeloading"><div class="freeloading-page"><p>Removes a loader from the <code>loader stack</code>. When the stack is emptied, the user recovers control of the screen.</p>
+</div><h5 id="methods_freeloading_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>id</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="freeloading-page"><p>Unique id for the loader. It must be the same id given when the loader was requested.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_notify">notify(title, message, type, params)</h3>
+<div class="notify"><div class="notify-page"><p>Shows a notification to the user.</p>
+</div><h5 id="methods_notify_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>title</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="notify-page"><p>The title for the confirmation dialog.</p>
+</div></td></tr><tr><td>message</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="notify-page"><p>The message for the confirm dialog</p>
+</div></td></tr><tr><td>type <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-string">String</a></td><td><div class="notify-page"><p>Type of dialog (inherited from Bootstrap&#39;s <code>bg...</code> classes)</p>
+</div> <p><em>(default: notify)</em></p></td></tr><tr><td>params <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="notify-page"><p>Parameters for the translation messages and the handlers.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_openentitycreated">openEntityCreated(metadata)</h3>
+<div class="openentitycreated"><div class="openentitycreated-page"><p>Opens an entity-update tab to create a new entity of the metadata given.</p>
+</div><h5 id="methods_openentitycreated_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>metadata</td><td><a href="" class="label type-hint type-hint-entity">Entity</a></td><td><div class="openentitycreated-page"><p>The metadata of the entity to be updated.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_openentitysearch">openEntitySearch(metadata)</h3>
+<div class="openentitysearch"><div class="openentitysearch-page"><p>Opens an entity-search tab to search an entity.</p>
+</div><h5 id="methods_openentitysearch_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>metadata</td><td><a href="" class="label type-hint type-hint-entity">Entity</a><a href="" class="label type-hint type-hint-string">String</a></td><td><div class="openentitysearch-page"><p>The metadata of the entity (or it&#39;s name) to be searched.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_openentityupdate">openEntityUpdate(metadata, entity)</h3>
+<div class="openentityupdate"><div class="openentityupdate-page"><p>Opens an entity-update tab to update a given entity.</p>
+</div><h5 id="methods_openentityupdate_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>metadata</td><td><a href="" class="label type-hint type-hint-entity">Entity</a><a href="" class="label type-hint type-hint-string">String</a></td><td><div class="openentityupdate-page"><p>The metadata of the entity (or it&#39;s name) to be updated.</p>
+</div></td></tr><tr><td>entity</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="openentityupdate-page"><p>The entity to be updated</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_openmodal">openModal(parameters)</h3>
+<div class="openmodal"><div class="openmodal-page"><p>Opens an entity-update tab to update a given entity. The parameters are given in a <a href="#/api/lib.konga.types.Modal"><code>Modal</code></a> object.</p>
+</div><h5 id="methods_openmodal_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>parameters</td><td><a href="" class="label type-hint type-hint-modal">Modal</a></td><td><div class="openmodal-page"><p>The parameters that define the action. <a href="#/api/lib.konga.types.Modal"><code>See Modal specification</code></a></p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_redirectto">redirectTo(tab)</h3>
+<div class="redirectto"><div class="redirectto-page"><p>Switches the system into a tab. The tab <b>must be</b> in the <code>tab stack</code>.</p>
+</div><h5 id="methods_redirectto_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>tab</td><td><a href="" class="label type-hint type-hint-tab">Tab</a></td><td><div class="redirectto-page"><p>tab to be focused</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_removealert">removeAlert(index)</h3>
+<div class="removealert"><div class="removealert-page"><p>Removes an alert from the stack, and therefore from the screen. This method is executed automatically after alert timeout&#39;s reached</p>
+</div><h5 id="methods_removealert_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>index</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="removealert-page"><p>the position of the alert within the stack.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_requestloading">requestLoading(id, message)</h3>
+<div class="requestloading"><div class="requestloading-page"><p>Appends a loader into the <code>loader stack</code>. When the stack contains elements, the whole screen is blocked until all loaders are freed.</p>
+</div><h5 id="methods_requestloading_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>id</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="requestloading-page"><p>Unique id for the loader. It will be identified with this parameter for deletion when freed.</p>
+</div></td></tr><tr><td>message <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-string">String</a></td><td><div class="requestloading-page"><p>If defined, appends a message to the loader (useful for heavy loading)</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setloadingmessage">setLoadingMessage(message)</h3>
+<div class="setloadingmessage"><div class="setloadingmessage-page"><p>During longer loading processes, you can redefine the message being shown via this method. The message will be live-updated, and you could provide the user with more information. This method is useful for uploading progresses.</p>
+</div><h5 id="methods_setloadingmessage_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>message <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-string">String</a></td><td><div class="setloadingmessage-page"><p>The message to set into the loading process</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+</div>

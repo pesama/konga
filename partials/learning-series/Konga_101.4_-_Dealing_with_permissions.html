@@ -1,0 +1,76 @@
+<h1><code ng:non-bindable="">4_-_Dealing_with_permissions</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Konga_101</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="konga-101-4-dealing-with-permissions-page"><h3 id="description_permission-management">Permission management</h3>
+<p>Public apps don&#39;t usually need to handle permissions (as assets, pages and content are public). However, private apps most of the times need permissions to decide whether a content can be rendered, an operation executed, etcetera. Konga allows both entity and field level permission management, to allow/dissallow operations to users depending on their permission set.</p>
+<p>If you want to download the source of this step directly, do this at your project&#39;s root:</p>
+<pre><code>git checkout -f step-4
+</code></pre><h4 id="description_permission-management_determining-our-permissions">Determining our permissions.</h4>
+<p>Just as before, let&#39;s have a sit-down with the team to decide the permissions needed for our app:</p>
+<ul>
+<li><strong>Organisations</strong> can only be managed (created, searched, updated) by someone with the &#39;<code>org-admin</code>&#39; permission within her permission set. </li>
+<li>Everyone can see apps&#39;s key, yet <strong>only &#39;<code>app-admin</code>&#39;</strong> personnel can edit it**.</li>
+<li>A &#39;<code>dev-admin</code>&#39; permission is required to delete <strong>developers</strong>.</li>
+</ul>
+<h4 id="description_permission-management_modifying-the-metadata">Modifying the metadata</h4>
+<p>Let&#39;s go through our metadata classes again, setting up the permissions needed.</p>
+<ul>
+<li><p><strong><code>Organisation.java</code>:</strong> Organisation operations are only enabled for &quot;org-admin&quot;:
+<pre class="prettyprint linenums">
+@ Entity("organisation")
+@ Label("Organisation")
+@ Createable("org-admin")
+@ Searchable("org-admin")
+@ Editable("org-admin")
+public class Organisation {
+</pre>
+</li>
+<li><p><strong><code>Application.java</code>:</strong> Application&#39;s <code>key</code> is only editable to &quot;app-admin&quot;:
+<pre class="prettyprint linenums">
+@ Field
+@ Label("App key")
+@ EntityKey
+@ Searchable
+@ ShowInResults
+@ ShowInUpdate
+@ Required
+@ Editable("app-admin")
+private String code;
+</pre>
+</li>
+<li><p><strong><code>Developer.java</code>:</strong> Developers can&#39;t be deleted, except for &quot;dev-admin&quot;:
+<pre class="prettyprint linenums">
+@ Entity("developer")
+@ Label("Developer")
+@ Createable
+@ Searchable
+@ Editable
+@ Deleteable("dev-admin")
+public class Developer {
+</pre>
+</li>
+</ul>
+<p>Generate your metadata again and inject it into the <code>metadata</code> constant, just as <a href="#/learning-series/Basics.2%20-%20Injecting%20Metadata">before</a>. Then open your app again. </p>
+<p>You won&#39;t see any effect on your app at first sight. Entities are public and readable, and your access problems won&#39;t be faced until Konga tries to execute the restricted functionalities (or render access to them). If you go to the <code>Applications</code> form, and click on <code>+Add</code>, the field <code>App key</code> should be disabled - as expected. </p>
+<h4 id="description_permission-management_handling-permissions--&gt;">Handling permissions -&gt; <code>userData</code></h4>
+<p>We&#39;ve seen how we declare permissions within the metadata, to restrict operations and accesses depending on them. This is a cool feature, yet we need some method to tell Konga what we are actually allowed to do. This is what the <a href="#/api/konga.userData"><code>userData</code></a> value is for.</p>
+<p>Konga does not fetch your permissions from any server, nor read them from any object. Instead, it publishes a <code>roles</code> array within <code>userData</code>, where you can fill the permissions for the user within our app. Let&#39;s grant ourselves some permissions. On the <code>/app/scripts/app.js</code> file, let&#39;s create another <code>.run()</code> method to handle permissions:</p>
+<p><strong><code>/app/scripts/app.js</code></strong> (append)
+<pre class="prettyprint linenums">
+.run(['userData', function(userData) {
+
+    // We want to edit 'app key'
+    userData.roles.push('app-admin');
+
+    // We want to create and manage 'orgs'
+    userData.roles.push('org-admin');
+  }]);
+</pre>
+<p>Once you&#39;ve done this change, open your app and the <code>Applications</code> form. Under the creation form, you will see how the &#39;app key&#39; field is now enabled, and ready for you to use it. </p>
+<h4 id="description_permission-management_enhancing-our-application">Enhancing our application</h4>
+<p>More steps of this tutorial coming. <strong>Stay tuned!</strong></p>
+</div></div>
+</div>

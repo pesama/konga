@@ -1,0 +1,55 @@
+<h1><code ng:non-bindable="">Generators</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Metadata</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="metadata-generators-page"><p>Metadata objects are cool, and easily to understand if you read them properly formatted. However, writing yourself all the metadata required to successfully - and contextually completely - define an application would be a really tedious job. To simplify your life, Konga has a few generators available. </p>
+<h3 id="description_what-are-generators">What are generators</h3>
+<p>Generators allow you to define metadata in an easier way than the plain JSON. Current generators support from <code>@Annotation</code>-based metadata modeling, to graphical tools to generate them via forms. The outcome is always the same: a <code>json</code> object. You can build your custom generator if none existing fits your needs. But please, if you do so, share it with all here! (just fork, edit, and pull-request).</p>
+<h3 id="description_konga-java-annotations">Konga Java annotations</h3>
+<button class="btn btn-success">
+    <i class="fa fa-github"></i>Fork on GitHub
+    <br />
+    <span class="muted">v1.0.0 Stable</span>
+</button>
+
+<p><br /></p>
+<p>The very first generator (and the most thoroughly tested) is the <a href="https://github.com/pritok/konga-metadata"><code>konga-java-annotations</code></a> library. It comes with built-in annotations to define the app, the entities and the fields, directly into your Java POJOs data model. It&#39;s real graphical for JavaEE backends, as it allows both data definitions and metadata definitions within the same files. It also frees you from annotating all, as its generator comes with a tough <code>convention-over-configuration</code> system, and it also reads reflexive information of the entities and fields themselves in order to determine the better metadata outcome - though if you haven&#39;t explicitely declared the parameters. </p>
+<h4 id="description_konga-java-annotations_installation">Installation</h4>
+<p>If you&#39;re planning to use <code>konga-metadata</code> within your Java-based backend, the easiest way to get it up and running is to use a dependency management system (e.g. <a href="https://maven.apache.org/"><code>Maven</code></a> or <a href="http://gradle.org/"><code>Gradle</code></a>):</p>
+<p><strong>Installing with maven:</strong>
+<pre class="prettyprint linenums">
+# pom.xml
+&lt;dependencies&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;io.konga&lt;/groupId&gt;
+    &lt;artifactId&gt;konga-metadata&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+  &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</pre>
+<p><strong>Installing with Gradle:</strong>
+<pre class="prettyprint linenums">
+; build.gradle
+dependencies(
+  compile "io.konga:konga-metadata:1.0.0"
+)
+</pre>
+<p>Then you can directly start annotating your classes and their fields. Here you got an example:</p>
+<p>TODO Example</p>
+<h4 id="description_konga-java-annotations_generation">Generation</h4>
+<p>Within <code>konga-metadata</code> you will find a generator class (called <code>KongaGenerator</code>). You can therefore launch a metadata generation using it:</p>
+<pre class="prettyprint linenums">
+KongaDefinition definition = new KongaDefinition( "Your App's name", "com.your.model.package" );
+KongaMetadata metadata = KongaGenerator.readPackage( definition );
+String metadataJson = metadata.toJson( );
+</pre>
+<p>These lines will take all your annotated elements from the source package <code>com.your.model.package</code>, and parse all annotations, extracting a final <code>json</code> object, who you are eventually converting to a <code>json</code> String, either to store it or to transfer it anywhere. </p>
+<h4 id="description_konga-java-annotations_usage">Usage</h4>
+<p>The metadata this generator gives you is a valid metadata object to be directly injected into Konga. The way you perform such injection is of your choice. Learn more about <a href="#/api/Standards.metadataInjection">metadata injection</a>.</p>
+<h3 id="description_konga-cloud">Konga Cloud</h3>
+<p>Konga cloud is an enterprise project to generate metadata quickly via a graphical metadata-generation form. The secret is that we have annotated <code>konga-metadata</code> model itself, and generated the metadata, injecting it into Konga cloud&#39;s generation system. </p>
+<p>This project is currently ongoing and we sadly can&#39;t yet offer you access to it. We hope you can test it out soon!</p>
+</div></div>
+</div>

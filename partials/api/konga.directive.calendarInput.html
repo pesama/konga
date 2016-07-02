@@ -1,0 +1,23 @@
+<h1><code ng:non-bindable="">calendarInput</code>
+<div><span class="hint">directive in module <code ng:non-bindable="">konga</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="konga-directive-page konga-directive-calendarinput-page"><p>The <code>calendarInput</code> is a <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a> field type that renders a <a href="http://fullcalendar.io/"><code>fullcalendar</code></a> as field&#39;s layout, if the <a href="#/api/Metadata.Field">field&#39;s</a> <code>fieldType</code> is set to <a href="#/api/Metadata.FieldTypes#properties_calendar"><code>CALENDAR</code></a>.</p>
+<p>The calendar field is just a container of objects, that have properties for defining an <a href="http://fullcalendar.io/docs/event_data/Event_Object/"><code>Event Object</code></a>. The calendar takes these properties and renders the events into the ui, giving you full access to your events - and the calendar for including new - through events.</p>
+<h3 id="description"><span class="text-success"><i class="fa fa-rocket"></i>Events</span></h3>
+<p>The <code>calendarInput</code> communicates with the outside via events. Events are fired on the ui component once an user triggers an action within its bounds. The events the <code>calendarInput</code> fires are:</p>
+<ul>
+<li><strong><code>calendar-day-clicked</code>:</strong> Fired when the user clicks on a calendar day.</li>
+<li><strong><code>calendar-event-clicked</code>:</strong> Fired when the user clicks on an existing event.</li>
+<li><strong><code>calendar-event-render</code>:</strong> Used when an event finishes its <code>rendering</code> process.</li>
+</ul>
+<p>All events include a data object that gives enough contextual information about where the event has its origin, letting you fully interact with the calendar creating events on <code>day click</code>, or opening modals with an existing event information...</p>
+<p>TODO Examples</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as element:<pre class="prettyprint linenums">&lt;calendar-input&gt;
+&lt;/calendar-input&gt;</pre>
+</div>
+</div>

@@ -1,0 +1,29 @@
+<h1><code ng:non-bindable="">updateForm</code>
+<div><span class="hint">directive in module <code ng:non-bindable="">konga</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="konga-directive-page konga-directive-updateform-page"><p>Handles rendering and operations of updation/creation forms. It connects to the <a href="#/api/konga.controller:EntityUpdateController"><code>EntityUpdateController</code></a> through several operations for field mapping, change notifictions, etcetera.</p>
+<p><img src="/static/update-form-basic-flow.png" width="80%" class="center"></p>
+<p>The first operation is to receive fields, categories and fieldSets, that are used to render the update layout. These elements are provided to the view determined on the <a href="#/api/Metadata.Field">field&#39;s <code>formType</code></a>.</p>
+<p>Views are based on <a href="#/api/konga.directive:rawInput"><code>rawInput</code></a> directives, who controls validation and mapping, along with all other field operations.</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as element:<pre class="prettyprint linenums">&lt;update-form
+       metadata="{Object}"
+       entity="{Object}"
+       creating="{Boolean}"
+       [fields="{Array}"]
+       on-update="{function()}"
+       [on-change="{function()}"]&gt;
+&lt;/update-form&gt;</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>metadata</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="konga-directive-page konga-directive-updateform-page"><p><span class="label type-hint type-hint-object"><a href="#/api/Metadata.Entity">Entity</a></span>
+The metadata of the entity being managed</p>
+</div></td></tr><tr><td>entity</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="konga-directive-page konga-directive-updateform-page"><p>The entity object to map values to</p>
+</div></td></tr><tr><td>creating</td><td><a href="" class="label type-hint type-hint-boolean">Boolean</a></td><td><div class="konga-directive-page konga-directive-updateform-page"><p>Whether the mode is <code>creation</code>.</p>
+</div></td></tr><tr><td>fields <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="konga-directive-page konga-directive-updateform-page"><p>Optionally, include a set of fields instead of retrieving all from the entity (default when this value is not set).</p>
+</div></td></tr><tr><td>onUpdate</td><td><a href="" class="label type-hint type-hint-function">function()</a></td><td><div class="konga-directive-page konga-directive-updateform-page"><p>Define the behavior for field-update procedures - when an input&#39;s value changes. This function signature shall be similar to the default <a href="#/api/konga.controller:EntityUpdateController#methods_updateentityfield"><code>updateEntityField</code></a> method, present on the <a href="#/api/konga.controller:EntityUpdateController"><code>EntityUpdateController</code></a>. </p>
+</div></td></tr><tr><td>onChange <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-function">function()</a></td><td><div class="konga-directive-page konga-directive-updateform-page"><p>Optional change tracker to know whether the field has changed</p>
+</div></td></tr></tbody></table></div>
+</div>

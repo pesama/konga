@@ -1,0 +1,20 @@
+<h1><code ng:non-bindable=""></code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><div class="konga-page"><p>#New konga UI</p>
+<h2 id="processes">Processes</h2>
+<h3 id="processes_authentication">Authentication</h3>
+<p>TODO Document</p>
+<h3 id="processes_metadata-retrieval">Metadata retrieval</h3>
+<p>Once the user is authenticated, all service calls for the api will have an authentication header, that will be used in the service to verify the identity, and provide the permissions the user has. 
+Such permissions would allow the user to manage entities from the interface, and perform some of the <i>CRUD</i> operations (those she has permissions for). </p>
+<h3 id="processes_interface-management">Interface management</h3>
+<p>Entity information is received from the api, and it contains enough information to build a user interface using it. Thus, the metadata information must contain all fields involved, including its data types, validation information, default values, etcetera (please see the <a href="NGE_DEV_GUIDE">Technical Documentation</a> for details on available metadata information).
+The system is capable of building user interfaces for searching entities, updating them, or creating new ones. Thanks to Angular&#39;s <code>$resource</code> class, all entities are engaged to the service they come from, and therefore you can permanently persist a change on the database by just calling the methods <code>$save</code> and <code>$create</code>, and scaffold new service-engaged entities by instantiating the class.</p>
+<h2 id="routes">Routes</h2>
+<p><code>/home</code>: Goes to the home screen and displays the favorites and other stuff.
+<code>/eds/:edsType/search</code>: Allows to search for entities.
+<code>/eds/:edsType/:edsId</code>: Updates an entity. If the <code>edsId</code> value is &#39;new&#39;, it creates a new entity.
+<code>/login</code>: Logs in into the application</p>
+</div></div>

@@ -1,0 +1,30 @@
+<h1><code ng:non-bindable="">api</code>
+<div><span class="hint">service in module <code ng:non-bindable="">konga</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="konga-api-page"><p>This factory connects the source to a factory, depending on the type of entity that&#39;s being looked for. </p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_get">get(id, success, error)</h3>
+<div class="get"><div class="get-page"><p>Returns an entity identified with the unique id provided</p>
+</div><h5 id="methods_get_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>id</td><td><a href="" class="label type-hint type-hint-object">*</a></td><td><div class="get-page"><p>The unique id for the entity</p>
+</div></td></tr><tr><td>success</td><td><a href="" class="label type-hint type-hint-function">Function</a></td><td><div class="get-page"><p>Function to call if the operation successes.</p>
+</div> <p><em>(default: undefined)</em></p></td></tr><tr><td>error</td><td><a href="" class="label type-hint type-hint-function">Function</a></td><td><div class="get-page"><p>Function to call if the operation fails.</p>
+</div> <p><em>(default: undefined)</em></p></td></tr></tbody></table><h5 id="methods_get_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="get-page"><p>The <code>$resource</code> with that entity</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_search">search(query, offset, limit, success, error)</h3>
+<div class="search"><div class="search-page"><p>Search for entities filtering with the input query</p>
+</div><h5 id="methods_search_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>query</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="search-page"><p>Query to filter with (sent via <code>GET</code> parameters, so they must be serializable, and serialized).</p>
+</div></td></tr><tr><td>offset</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="search-page"><p>Defines where to place the starting cursor.</p>
+</div></td></tr><tr><td>limit</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="search-page"><p>Defines how many results to get.</p>
+</div></td></tr><tr><td>success</td><td><a href="" class="label type-hint type-hint-function">Function</a></td><td><div class="search-page"><p>Function to call if the operation successes.</p>
+</div> <p><em>(default: undefined)</em></p></td></tr><tr><td>error</td><td><a href="" class="label type-hint type-hint-function">Function</a></td><td><div class="search-page"><p>Function to call if the operation fails.</p>
+</div> <p><em>(default: undefined)</em></p></td></tr></tbody></table><h5 id="methods_search_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="search-page"><p>Array containing all results. Each result is a <code>$resource</code> that contains an entity which matched the search criteria.</p>
+</div></td></tr></table></div>
+</li>
+</ul>
+</div>
+</div>

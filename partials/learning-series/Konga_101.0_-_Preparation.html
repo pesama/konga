@@ -1,0 +1,36 @@
+<h1><code ng:non-bindable="">0_-_Preparation</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Konga_101</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="konga-101-0-preparation-page"><h3 id="description_step-1-preparation">Step 1: Preparation</h3>
+<p>Welcome to <code>Konga Basics</code> <em>101</em>. On this step we will create the <code>metadata</code> and <code>ui</code> projects, ready to be served. On this step we won&#39;t develop any functionality, we will just create the projects using all the tools needed, and let the next steps do the rest. </p>
+<h4 id="description_step-1-preparation_downloading-the-projects">Downloading the projects</h4>
+<p>You can build your projects from scratch. However, for the sake of this tutorial, you can download the code from the <a href="https://github.com/pritok/konga-tutorial-basics.git"><code>tutorial repository</code></a>, fetching the source of the branch <code>step-1</code>.</p>
+<p>On a terminal, go to your project path - created in the <a href="#/learning-series/Basics">introduction</a> - and type this:</p>
+<pre><code> git checkout -f step-0
+</code></pre><p>Under your project structure you will see many folders. One <code>metadata</code> folder, that contains the <a href="https://github.com/pritok/konga-metadata"><code>konga-metadata</code></a> project to start creating your models, and the other folders contain a brand new - scaffolded with <a href="http://yeoman.io/"><code>Yeoman</code></a> - Angular application, with <code>konga</code> as <code>bower dependency</code>. All the code for the app is under <code>/app</code>.</p>
+<p><img src="/static/konga-tutorial-basics-step1-folders.png" width="30%" class="center"></p>
+<h4 id="description_step-1-preparation_install-dependencies">Install dependencies</h4>
+<p>For successfully running the app, you need to install <code>Maven</code> dependencies to your metadata project, and <code>npm</code> and <code>bower</code> dependencies for the ui.</p>
+<ul>
+<li><strong><code>Maven dependencies</code>:</strong><pre><code>cd metadata
+mvn clean install
+</code></pre></li>
+<li><strong><code>NPM and bower dependencies</code>:</strong><pre><code>cd ../ # You need to be at the root of the project
+npm install
+bower install
+</code></pre></li>
+</ul>
+<p>If these installation steps finish ok, you will be able to launch your app by typing:</p>
+<pre><code> grunt serve
+</code></pre><p>And your app will launch at <code>http://localhost:9000</code>.</p>
+<h4 id="description_step-1-preparation_your-application">Your application</h4>
+<p>The app you just launched is merely the <a href="http://yeoman.io"><code>Yeoman</code></a> scaffolding - using <a href="https://github.com/yeoman/generator-angular#readme"><code>Angular generator</code></a> - and a further command <code>bower install --save konga</code> to include <code>konga</code> as a bower dependency. </p>
+<p>This is the appeareance of your app right now:</p>
+<p><img src="/static/konga-tutorial-basics-boilerplate.png" width="40%" class="center"></p>
+<h4 id="description_step-1-preparation_next-step">Next step</h4>
+<p>Now that we have our app running, it&#39;s time to define some metadata. <strong><a href="#/learning-series/Basics.Application_Basic_Metadata">Go to the next step</a></strong>.</p>
+</div></div>
+</div>

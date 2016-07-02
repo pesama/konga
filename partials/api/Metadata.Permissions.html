@@ -1,0 +1,60 @@
+<h1><code ng:non-bindable="">Permissions</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Metadata</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="metadata-permissions-page"><p>Along with metadata definitions to select available operations and methods within entities and fields, Konga lets you configure permissions for these behaviors, to allow or deny different users to perform them. </p>
+<h3 id="description_permission-management">Permission management</h3>
+<p>Konga does not control which permissions a user has on an app. Instead, it leaves you an opened service - i.e. <a href="#/api/konga.userData"><code>userData</code></a> - and one of the parameters it publishes is a <code>roles</code> array. On app startup, you can retrieve your permissions using your favorite method, and inject them to the <a href="#/api/konga.userData#properties_roles"><code>userData.roles</code> array</a>. From that moment on all forms will rely on the permissions assigned to enable or disable the different options. </p>
+<p>You have a full comprehensive guide on how to use <code>userData</code> on the <a href="#/api/konga.userData"><code>userData</code></a> docs. </p>
+<h4 id="description_permission-management_what-is-a-permission">What is a permission?</h4>
+<p>A permission is a String, that is attached to any operation definition for entities and fields. Once the user tries to execute a permission-based operation, Konga launches an allowance verification for the operation, using the built-in <a href="#/api/konga.permissionManager">permission manager</a>. This service relies on the values present on the <code>roles</code> array, verifying if the user has the proper permissions for executing the intended task.</p>
+<p><strong>Example:</strong> 
+You have an entity <code>Vehicle</code>, whose <code>searchable</code> property is set with the permission &#39;<code>search-vehicle</code>&#39;. When your users try to search vehicles, they could only be able to do it if &#39;<code>search-vehicle</code>&#39; is a permission present on their <code>roles</code> array. </p>
+<h4 id="description_permission-management_public-operations">Public operations</h4>
+<p>Sometimes you want to leave a feature opened to the public. If that&#39;s your case, then you can easily do that by assigning an empty String (i.e. &quot;&quot;) to such operation. The <a href="#/api/konga.permissionManager">permission manager</a> will understand this as a public behavior, allowing users to perform the actions they&#39;re trying to execute.</p>
+<h4 id="description_permission-management_disabled-operations">Disabled operations</h4>
+<p>Same as above - though on the other hand - you will find yourself in a case you don&#39;t want anybody to do certain task. For that purpose the value to append to the operations is <code>null</code>. Once the <a href="#/api/konga.permissionManager">permission manager</a> finds a <code>nulled</code> operation, it will autommatically return <code>false</code>, leaving everybody outside that forbidden feature. </p>
+<h3 id="description_entity-level-permissions">Entity-level permissions</h3>
+<p>Permissions can be applied to entities to define the basic operations user can launch on them. These operations are:</p>
+<ul>
+<li><strong>Createable.</strong></li>
+<li><strong>Editable.</strong></li>
+<li><strong>Deleteable.</strong></li>
+<li><strong>Searchable.</strong></li>
+</ul>
+<pre class="prettyprint linenums">
+// Public
+entity.createable = "";
+// Hidden
+entity.editable = null;
+// Restricted
+entity.deleteable = "delete-entity";
+entity.searchable = "search-entity";
+</pre>
+<h3 id="description_field-level-permissions">Field-level permissions</h3>
+<p>Furthermore from entities, you can define permissions that will be engaged to field-level operations. The logic behind it is exactly the same:</p>
+<div class="text-muted">
+<strong>Note on field operations:</strong>
+    Field operations have more properties than just the permission String. It also have sub-field declarations, and aditional configuration parameters appendable. Be wise when putting your permission String to the field operation.
+</div>
+
+<ul>
+<li><strong>Searchable.value.</strong></li>
+<li><strong>ShowInResults.value.</strong></li>
+<li><strong>ShowInUpdate.value.</strong></li>
+<li><strong>ShowInDetails.value.</strong></li>
+<li><strong>Editable.value.</strong></li>
+</ul>
+<pre class="prettyprint linenums">
+// Public
+field.searchable = { value: "", ... };
+// Hidden
+field.showInResults = { value: null };
+// Restricted
+field.showInUpdate = { value: "view-update-entity-field", ... };
+field.editable = { value: "edit-entity-field", ... };
+</pre>
+</div></div>
+</div>

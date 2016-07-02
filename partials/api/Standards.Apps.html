@@ -1,0 +1,77 @@
+<h1><code ng:non-bindable="">Apps</code>
+<div><span class="hint">service in module <code ng:non-bindable="">Standards</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="standards-apps-page"><p>Konga apps are essentially Angular applications who include <code>konga</code> module:</p>
+<pre class="prettyprint linenums">
+angular.module('myAwesomeApp', [ ..., 'konga', ... ]);
+</pre>
+<p>This will provide you with a full set of features. Yet, you have to attach the controller. </p>
+<pre class="prettyprint linenums">
+&lt;html ng-app="myAwesomeApp" ng-controller="KongaController"&gt;
+  ...
+&lt;/html&gt;
+</pre>
+<div class="text-muted">You can engage <code>KongaController</code> at any level in your app&#39;s <code>dom</code>, and Konga will work from there. But as is non intrusive and you can call it when you need it, it&#39;s recommended to be placed at the root of the structure (or in the <code>&lt;body&gt;</code> tag) </div>
+
+<p>Then you will have all the operations engaged and your app ready to run with Konga. You need to define and inject though some metadata.</p>
+<pre class="prettyprint linenums">
+angular.module('myAwesomeApp')
+  .run(['common', 'util', '$rootScope', 'metadata', function(common, util, $rootScope, metadata) {
+    common.store('metadata', metadata);
+    util.init(metadata); 
+    $rootScope.metadata = metadata;
+  }]);
+</pre>
+<ul>
+<li><strong><a href="#/api/konga.common"><code>common.store(&#39;metadata&#39;, metadata)</code></a>:</strong> Store the metadata in the <a href="#/api/konga.commom">common storage</a>.</li>
+<li><strong><a href="#/api/Standards.Tools"><code>util.init(metadata)</code></a>:</strong> Initialize the tools.</li>
+<li><strong><code>$rootScope.metadata = metadata</code>:</strong> Save metadata on the <code>$rootScope</code>.</li>
+</ul>
+<div class="well text-warning">
+    When released v1.3.0, these initialisation requirements will disappear, and the <code>metadata</code> will be load using a constant with that name. 
+</div>
+
+
+<h3 id="description_application-configuration">Application configuration</h3>
+<h4 id="description_application-configuration_built-in-routes">Built-in routes <span class="label label-primary">Routing</span></h4>
+<p>Konga comes with two built-in <code>$routes</code> to handle standard operations:</p>
+<ul>
+<li><strong><code>/entity/:entityName/search</code></strong>: Used for search entities of <code>:entityName</code>&#39;s type.</li>
+<li><strong><code>/entity/:entityName/:entityId</code></strong>: Used for updating <code>:entityName</code>&#39;s entity identified with <code>:entityId</code>. If the <code>:entityId</code> attribute is set to the String <code>new</code>, then the updation will be a creation, and the system will act accordingly.</li>
+</ul>
+<p>You can configure several things in your konga application using <a href="#/api/konga.kongaConfig"><code>kongaConfig</code> value</a>:</p>
+<h4 id="description_application-configuration_api-connection">API connection <span class="label label-danger">APIs</span></h4>
+<p><br />
+Konga&#39;s built-in <a href="#/api/konga.standardApi"><code>standardApi</code></a> needs a valid <code>endpoint</code> to connect to. This endpoint must connect to a RESTful API. If you plan to use the <a href="#/api/konga.standardApi"><code>standardApi</code></a>, provide this value to <a href="#/api/konga.kongaConfig"><code>kongaConfig</code></a> on startup:
+<pre class="prettyprint linenums">
+angular.module('myAwesomeApp')
+  .run(['kongaConfig', function(kongaConfig) {
+    kongaConfig.apiEndpoint = 'http://api.konga.cloud/';
+  }]);
+</pre>
+<p>And the standard api will be ready to work with your API.</p>
+<h5 id="description_application-configuration_api-connection_using-to-query-apis">Using <code>access_tokens</code> to query APIs</h5>
+<p>Konga does not cover natively this feature. But once you&#39;ve got covered the authentication phase, you can inject the <code>token</code> via a request interceptor. This is a handy Angular capability, and it&#39;s documented <a href="https://docs.angularjs.org/api/ng/service/$http">here</a>.</p>
+<h4 id="description_application-configuration_view-stack">View stack <span class="label label-success">UI</span></h4>
+<p>Konga views are opened and kept in memory until you close them. It has also features for coming back to your view, restoring the full context and data of your previous form. This allows you to have several things opened at once.</p>
+<h4 id="description_application-configuration_application-layout">Application layout <span class="label label-success">UI</span></h4>
+<p>Konga places - by default - the forms into your <code>&lt;div ng-view&gt;
+&lt;/div&gt;</code> tag when you request it via <a href="#/api/Standards.Operations">operations</a>. Furthermore, it has a layout in case you want your application to be a full Konga-powered app. If you want to use this feature, include the <code>main.html</code> view into your app&#39;s <code>index.html</code>.
+<pre class="prettyprint linenums">
+&lt;body&gt;
+  &lt;div ng-include="'/konga/views/main.html'"&gt;&lt;/div&gt;
+&lt;/body&gt;
+</pre>
+<p>This will provide you with common features such as a <code>toastrs</code>, loaders, and let you configure further your application:</p>
+<h5 id="description_application-configuration_application-layout_look-and-feel">Look and feel</h5>
+<p>You can configure the application&#39;s <a href="#/api/Metadata.ConfigurationParam#properties_look_and_feel"><code>look&amp;field</code></a> via <a href="#/api/Metadata.Application">metadata</a>. There are two modes you can set your application to:</p>
+<p><strong>Tabbed</strong></p>
+<p>This mode displays a tabbed <code>navbar</code> on top of the <code>&lt;div ng-view&gt;
+&lt;/div&gt;</code> tag, that stores - and accesses - each of the views opened. </p>
+<p><strong>Plain</strong></p>
+<p>Plain rendering of the view. Here the tabs are not rendered, though still present. You can access via <code>$rootScope.tabs</code>. You can leverage the tab <a href="#/api/Standards.Operations">operations</a> for managing them in plain mode.</p>
+</div></div>
+</div>
