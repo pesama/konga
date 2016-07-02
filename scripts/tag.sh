@@ -46,18 +46,26 @@ export version_change
 
 if [[ ${version_change} == 1 ]]
 then
+
+  mkdir -p builds
+  cd builds
+  git remote add upstream "https://$GH_TOKEN@github.com/pritok/konga.git"
+  git fetch upstream
+  git checkout builds
+  git pull upstream builds
+
+  cp ../package.json ./
+  cp ../bower.json ./
+
   package="package.json"
-  yui="yuidoc.json"
-  sed -i "s/\"version\": \"${last_tag}\"/\"version\": \"$new_version\"/g" "$package"
-  sed -i "s/\"version\": \"${last_tag}\"/\"version\": \"${new_version}\"/g" "$yui"
+  bower="bower.json"
+  sed -i "s/\"version\": \"{version}\"/\"version\": \"$new_version\"/g" "$package"
+  sed -i "s/\"version\": \"{version}\"/\"version\": \"${new_version}\"/g" "$bower"
   git config user.name "SNAP BOT"
   git config user.email "snapbot@smarla.com"
 
-  git remote add upstream "https://$GH_TOKEN@github.com/smarla/metadatio.git"
-  git fetch upstream
-
-  git commit -am "[${change_type}] updated to version ${new_version} [ci skip]"
+  git commit -am "[${change_type}] updated to version ${new_version}"
 
   git tag ${new_version}
-  git push --tags upstream HEAD:master
+  git push --tags upstream HEAD:builds
 fi
