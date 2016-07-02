@@ -63,9 +63,8 @@ then
 fi
 
 mkdir -p builds/ && cd builds/
-git remote add upstream "https://$GH_TOKEN@github.com/pritok/konga.git"
-git fetch upstream
-git pull upstream builds
+git clone "https://$GH_TOKEN@github.com/pritok/konga.git"
+git checkout builds
 cp ../package.json ./
 cp ../bower.json ./
 git add .
