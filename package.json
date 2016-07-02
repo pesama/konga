@@ -75,6 +75,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha test/spec"
+    "test": "mocha test/spec",
+    "build": "grunt lib"
   }
 }
