@@ -62,9 +62,9 @@ then
   git push --tags upstream HEAD:master
 fi
 
-mkdir -p builds
-cd builds
-git checkout builds
+mkdir -p builds/ && cd builds/
+git remote add upstream "https://$GH_TOKEN@github.com/pritok/konga.git"
+git fetch upstream
 git pull upstream builds
 cp ../package.json ./
 cp ../bower.json ./
