@@ -4,7 +4,7 @@ npm run build
 
 rev=$(git rev-parse --short HEAD)
 
-cd build
+cd lib
 
 git init
 git config user.name "SNAP BOT"
