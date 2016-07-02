@@ -75,7 +75,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha test/spec",
-    "build": "grunt lib"
+    "build": "grunt lib",
+    "install:bower": "bower install",
+    "test": "mocha test/spec"
   }
 }
