@@ -2,6 +2,8 @@
 
 set -o errexit -o nounset
 
+rev=$(git rev-parse --short HEAD)
+
 comment=$(git log -1 --pretty=%B)
 #last_tag=$(git describe --abbrev=0)
 
