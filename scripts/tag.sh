@@ -69,4 +69,4 @@ cp ../package.json ./
 cp ../bower.json ./
 git add .
 git commit -am "Including dependency descriptors for build ${rev}"
-git push upstream HEAD:builds
+git push origin builds
