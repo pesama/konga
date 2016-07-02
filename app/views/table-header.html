@@ -1,8 +1,0 @@
-<div class="table-header {{ field.sortable ? 'sortable' : '' }}" ng-class="styles">
-	<span class="header-label">{{ label | translate:{label: owner} }}</span>
-	<!-- <b ng-class="showSorting(field.sorting, true)"><b ng-class="showSorting(field.sorting, false)"></b></b> -->
-	<span class="sorting" ng-if="field.sortable" ng-hide="field.derived">
-		<i class="select-sorting sorting-asc glyphicon glyphicon-chevron-up" ng-click="sorting('asc')" ng-class="{ active: sort === 'asc' }"></i>
-		<i class="select-sorting sorting-desc glyphicon glyphicon-chevron-down" ng-click="sorting('desc')" ng-class="{ active: sort === 'desc' }"></i>
-	</span>
-</div>

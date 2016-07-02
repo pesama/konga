@@ -1,9 +1,0 @@
-<div class="konga-container plain-app">
-	<div class="pwd text-center">
-        <h1>
-            <i class="{{ (tabs | filter:{ id: tabId })[0].type }}"></i>
-            {{ (tabs | filter:{ id: tabId })[0].title | translate:tabExtra[tabId] }}
-        </h1>
-    </div>
-	<div ng-view></div>
-</div>

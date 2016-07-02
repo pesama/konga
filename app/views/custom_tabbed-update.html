@@ -1,5 +1,0 @@
-<vertical-tabs>
-	<tab-content ng-repeat="fs in fieldsets" title="{{fs.name | translate}}" tab-id="fs.name" is-show="true">
-		<div ng-include="getView(fs.configuration.view)"></div>
-	</tab-content>
-</vertical-tabs>
