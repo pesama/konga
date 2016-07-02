@@ -76,6 +76,7 @@
   },
   "scripts": {
     "build": "grunt lib",
+    "install:dependencies": "npm install bower grunt-cli",
     "install:bower": "bower install",
     "test": "mocha test/spec"
   }
