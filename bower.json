@@ -1,6 +1,6 @@
 {
   "name": "konga",
-  "version": "{version}",
+  "version": "1.2.8",
   "repository": {
     "type": "git",
     "url": "git@github.com:pritok/konga.git"
@@ -9,8 +9,8 @@
     "konga"
   ],
   "main": [
-    "konga.js",
-    "konga.css"
+    "lib/konga.js",
+    "lib/konga.css"
   ],
   "ignore": [
     "app",
