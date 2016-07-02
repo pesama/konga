@@ -812,7 +812,6 @@ module.exports = function (grunt) {
     'copy:deployApp',
     'copy:deploy', 
     'copy:deployIndex',
-    'ngdocs',
     'concat:vendor_css',
     'concat:vendor_js',
     'concat:lib',
